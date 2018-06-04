@@ -12,7 +12,6 @@
   dnf: state=latest name={{ item }}
   with_items:
   - copr-frontend
-  - copr-selinux
   tags:
   - packages
 
