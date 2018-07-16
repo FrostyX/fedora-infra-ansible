@@ -59,9 +59,8 @@
     state: yes
     persistent: yes
 
-- name: install copr-frontend ssl vhost for production
+- name: install copr-frontend ssl vhost
   template: src="httpd/coprs_ssl.conf.j2" dest="/etc/httpd/conf.d/copr_ssl.conf"
-  when: not devel
   tags:
   - config
 
@@ -98,6 +97,16 @@
 - name: install ssl certificates for production
   import_tasks: "install_certs.yml"
   when: not devel
+  tags:
+  - config
+
+# We want to test the new letsencrypt role in order to migrate
+# also the production instance to use it.
+- name: install ssl certificates for dev
+  vars:
+    site_name: copr-fe-dev.cloud.fedoraproject.org
+  include_role: name=letsencrypt
+  when: devel
   tags:
   - config
 
