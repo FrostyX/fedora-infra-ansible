@@ -90,7 +90,6 @@
     - imagefactory-plugins-ovfcommon
     - imagefactory-plugins
     - imagefactory-plugins-OVA
-    - imagefactory-plugins-EC2
     - imagefactory-plugins-RHEVM
     - pykickstart
     - nosync
