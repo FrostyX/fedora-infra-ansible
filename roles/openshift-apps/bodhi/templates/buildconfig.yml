@@ -21,7 +21,8 @@ items:
 {% endif %}
         # While dnf has a --nodocs, it doesen't have a --docs...
         RUN sed -i '/nodocs/d' /etc/dnf/dnf.conf
-        RUN dnf install -y bodhi-server-{{bodhi_version}}
+        #RUN dnf install -y bodhi-server-{{bodhi_version}}
+        RUN dnf install -y https://kojipkgs.fedoraproject.org//packages/bodhi/5.1.0/2.fc30.infra/noarch/python3-bodhi-5.1.0-2.fc30.infra.noarch.rpm https://kojipkgs.fedoraproject.org//packages/bodhi/5.1.0/2.fc30.infra/noarch/python3-bodhi-client-5.1.0-2.fc30.infra.noarch.rpm https://kojipkgs.fedoraproject.org//packages/bodhi/5.1.0/2.fc30.infra/noarch/python3-bodhi-messages-5.1.0-2.fc30.infra.noarch.rpm https://kojipkgs.fedoraproject.org//packages/bodhi/5.1.0/2.fc30.infra/noarch/bodhi-server-5.1.0-2.fc30.infra.noarch.rpm
         # Set up krb5
         RUN rm -f /etc/krb5.conf && \
             ln -sf /etc/bodhi/krb5.conf /etc/krb5.conf && \
@@ -56,7 +57,8 @@ items:
           name="bodhi-web" \
           vendor="Fedora Infrastructure" \
           license="MIT"
-        RUN dnf install --refresh -y bodhi-docs-{{bodhi_version}} python3-pyramid_sawing
+        #RUN dnf install --refresh -y bodhi-docs-{{bodhi_version}} python3-pyramid_sawing
+        RUN dnf install --refresh -y https://kojipkgs.fedoraproject.org//packages/bodhi/5.1.0/2.fc30.infra/noarch/bodhi-docs-5.1.0-2.fc30.infra.noarch.rpm python3-pyramid_sawing
         EXPOSE 8080
         ENTRYPOINT bash /etc/bodhi/start.sh
       type: Dockerfile
