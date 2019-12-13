@@ -32,5 +32,5 @@
   vars:
      username: fedora-build-checks{{ env_suffix }}
      queue_name: fedora-build-checks{{ env_suffix }}
-    routing_keys:
+     routing_keys:
       - "org.centos.ci.#"
