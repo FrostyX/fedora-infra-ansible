@@ -14,6 +14,7 @@ fas_client_groups: sysadmin-noc,sysadmin-datanommer,sysadmin-veteran
 
 sudoers: "{{ private }}/files/sudo/notifs-sudoers"
 
+deployment_type: stg
 # These are consumed by a task in roles/fedmsg/base/main.yml
 fedmsg_certs:
 - service: shell

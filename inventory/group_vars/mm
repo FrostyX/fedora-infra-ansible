@@ -4,3 +4,4 @@ fas_client_groups: sysadmin-noc,sysadmin-web,sysadmin-veteran
 sudoers: "{{ private }}/files/sudo/mm2-sudoers"
 
 mm2_checkin: false
+deployment_type: prod
