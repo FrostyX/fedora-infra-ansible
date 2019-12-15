@@ -4,6 +4,8 @@ lvm_size: 20000
 mem_size: 1024
 num_cpus: 1
 
+deployment_type: stg
+
 # Definining these vars has a number of effects
 # 1) mod_wsgi is configured to use the vars for its own setup
 # 2) iptables opens enough ports for all threads for fedmsg
