@@ -1,6 +1,7 @@
 ---
 # defaults file for loopabull
 #
+loglevel: warn
 
 # playbooks git repo
 #
