@@ -13,6 +13,8 @@ fas_client_groups: sysadmin-noc,fi-apprentice,sysadmin-web,sysadmin-veteran,sysa
 # This gets overridden by whichever node we want to run special cronjobs.
 master_sundries_node: False
 
+deployment_type: stg
+
 # A host group for rsync config
 rsync_group: sundries-stg
 
