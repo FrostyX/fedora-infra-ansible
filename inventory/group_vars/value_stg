@@ -4,6 +4,8 @@ lvm_size: 30000
 mem_size: 6144
 num_cpus: 2
 
+deployment_type: stg
+
 # for systems that do not match the above - specify the same parameter in
 # the host_vars/$hostname file
 
