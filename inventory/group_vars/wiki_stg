@@ -4,6 +4,8 @@ lvm_size: 30000
 mem_size: 2048
 num_cpus: 2
 
+deployment_type: stg
+
 virt_install_command: "{{ virt_install_command_two_nic }}"
 
 tcp_ports: [ 80 ]
