@@ -47,9 +47,9 @@
   - { role: fedmsg/base,
       when: deployment_type == "prod" }
   # Set up for fedora-messaging
-  - { role: rabbit/user,
-      username: "pdc{{ env_suffix }}",
-      when: inventory_hostname.startswith(('pdc-web01','pdc-web01.stg')) }
+  - role: rabbit/user
+    username: "pdc{{ env_suffix }}"
+    when: inventory_hostname.startswith(('pdc-web01','pdc-web01.stg'))
   - pdc/frontend
 
 - name: stuff just for the backend nodes
