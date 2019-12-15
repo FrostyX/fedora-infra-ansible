@@ -15,6 +15,8 @@ tcp_ports: [ 80 ]
 
 fas_client_groups: sysadmin-noc,sysadmin-releng,sysadmin-mbs,sysadmin-veteran
 
+deployment_type: stg
+
 # This just defines the CN of the saml2 cert we pull from the private repo
 # Don't be confused.  The app is actually served at apps.stg.fp.o/pdc
 pdc_domain: pdc.stg.fedoraproject.org
