@@ -7,6 +7,8 @@ num_cpus: 1
 fas_client_groups: sysadmin-loopabull
 sudoers: "{{ private }}/files/sudo/mm2-sudoers"
 
+fedmsg_loglevel: WARN
+
 # For the MOTD
 csi_security_category: High
 csi_primary_contact: admin@fedoraproject.org / sysadmin-main-members
