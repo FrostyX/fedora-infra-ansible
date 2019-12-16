@@ -1,12 +1,49 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: distgit-bugzilla-sync
+  name: distgit-bugzilla-sync-email
 spec:
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
-  schedule: "35 */4 * * *"
+  schedule: "35 2 * * *"
+  startingDeadlineSeconds: 500
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            parent: "cronjobdistgit-bugzilla-sync"
+        spec:
+          hostAliases:
+          - hostnames:
+            - partner-bugzilla.redhat.com
+            ip: 209.132.183.72
+          containers:
+          - name: distgit-bugzilla-sync
+            image: docker-registry.default.svc:5000/distgit-bugzilla-sync/distgit-bugzilla-sync:latest
+            command: ["/usr/local/bin/distgit-bugzilla-sync", "--debug",
+                      "--add-config-file=/etc/distgit-bugzilla-sync/configuration.toml"]
+            volumeMounts:
+            - name: config-volume
+              mountPath: /etc/distgit-bugzilla-sync
+              readOnly: true
+          restartPolicy: Never
+          volumes:
+          - name: config-volume
+            configMap:
+                defaultMode: 420
+                name: distgit-bugzilla-sync-configmap
+--
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: distgit-bugzilla-sync-nomail
+spec:
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  schedule: "35 14 * * *"
   startingDeadlineSeconds: 500
   jobTemplate:
     spec:
