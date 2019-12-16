@@ -11,7 +11,7 @@ ExecStart=/usr/bin/podman run \
             --conmon-pidfile /%t/user/{{ mirrormanager_uid }}/%n-pid \
             --cidfile /%t/user/{{ mirrormanager_uid }}/%n-cid \
             --net=host --userns=keep-id \
-            --rm=true --name %n -d \
+            --rm=true --name %n \
             -v /usr/share/GeoIP:/usr/share/GeoIP \
             -v /srv/mirrorlist/data/mirrorlist{{ item }}:/var/lib/mirrormanager \
             -v /var/log/mirrormanager:/var/log/mirrormanager \
