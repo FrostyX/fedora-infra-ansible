@@ -6,7 +6,7 @@ Wants = network-online.target
 [Service]
 User = apache
 Group = apache
-ExecStart = /usr/bin/celery-3 worker -A bodhi.server.tasks.app -l info -Q celery,has_koji_mount
+ExecStart = /usr/bin/celery-3 worker -A bodhi.server.tasks.app -l info -Q has_koji_mount
 
 [Install]
 WantedBy = multi-user.target
