@@ -34,7 +34,7 @@ spec:
             configMap:
                 defaultMode: 420
                 name: distgit-bugzilla-sync-configmap
---
+---
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
