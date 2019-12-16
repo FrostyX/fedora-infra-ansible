@@ -34,6 +34,9 @@
     <Location /tmp>
         WSGIProcessGroup tmp
     </Location>
+    <LocationMatch "/repo/">
+        WSGIProcessGroup repo
+    </LocationMatch>
 
     #ErrorLog logs/error_coprs
     #CustomLog logs/access_coprs common
