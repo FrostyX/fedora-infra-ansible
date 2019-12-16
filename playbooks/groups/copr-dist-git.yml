@@ -21,7 +21,6 @@
    - "/srv/private/ansible/vars.yml"
 
   pre_tasks:
-  - include_vars: dir=/srv/web/infra/ansible/vars/all/ ignore_files=README
   - import_tasks: "{{ tasks_path }}/yumrepos.yml"
 
   tasks:
