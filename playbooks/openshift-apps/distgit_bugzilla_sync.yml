@@ -33,7 +33,7 @@
 
   - role: openshift/object
     app: distgit-bugzilla-sync
-    file: cron.yml
+    template: cron.yml
     objectname: cron.yml
     tags:
       - cron-job

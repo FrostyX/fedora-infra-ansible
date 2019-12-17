@@ -22,8 +22,13 @@ spec:
           containers:
           - name: distgit-bugzilla-sync
             image: docker-registry.default.svc:5000/distgit-bugzilla-sync/distgit-bugzilla-sync:latest
+{% if env == 'staging' %}
+            command: ["/usr/local/bin/distgit-bugzilla-sync", "--verbose", "--no-user-notifications",
+                      "--add-config-file=/etc/distgit-bugzilla-sync/configuration.toml"]
+{% else }
             command: ["/usr/local/bin/distgit-bugzilla-sync", "--verbose",
                       "--add-config-file=/etc/distgit-bugzilla-sync/configuration.toml"]
+{% endif %}
             volumeMounts:
             - name: config-volume
               mountPath: /etc/distgit-bugzilla-sync
