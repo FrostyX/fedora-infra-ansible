@@ -89,6 +89,7 @@ product_versions:
   - fedora-29-containers
   - fedora-29-flatpaks
   - fedora-epel-8
+  - fedora-epel-8-modular
   - fedora-epel-7
   - fedora-epel-6
 decision_context: bodhi_update_push_testing
@@ -109,6 +110,7 @@ product_versions:
   - fedora-29-containers
   - fedora-29-flatpaks
   - fedora-epel-8
+  - fedora-epel-8-modular
   - fedora-epel-7
   - fedora-epel-6
 decision_context: bodhi_update_push_stable
