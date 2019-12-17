@@ -31,7 +31,7 @@ Reassigning to the new maintainer of this component.
     "container" = "container"
 
 [email]
-    send_mails = false
+    send_mails = true
     smtp_host = "bastion.fedoraproject.org"
     from = "accounts@fedoraproject.org"
     notify_admins = [
