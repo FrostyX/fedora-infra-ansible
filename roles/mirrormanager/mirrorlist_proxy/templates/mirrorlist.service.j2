@@ -12,8 +12,8 @@ ExecStart=/usr/bin/podman run \
             --net=host --userns=keep-id \
             --rm=true --name %n -d \
             -v /usr/share/GeoIP:/usr/share/GeoIP \
-            -v /srv/mirrorlist/data/mirrorlist{{ item }}:/var/lib/mirrormanager:Z \
-            -v /var/log/mirrormanager:/var/log/mirrormanager:Z \
+            -v /srv/mirrorlist/data/mirrorlist{{ item }}:/var/lib/mirrormanager \
+            -v /var/log/mirrormanager:/var/log/mirrormanager \
 {% if env == "staging" %}
             {{ mirrorlist_container_image_stg }} \
 {% else %}
