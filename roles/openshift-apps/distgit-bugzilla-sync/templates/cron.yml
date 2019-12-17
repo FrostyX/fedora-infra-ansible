@@ -25,7 +25,7 @@ spec:
 {% if env == 'staging' %}
             command: ["/usr/local/bin/distgit-bugzilla-sync", "--verbose", "--no-user-notifications",
                       "--add-config-file=/etc/distgit-bugzilla-sync/configuration.toml"]
-{% else }
+{% else %}
             command: ["/usr/local/bin/distgit-bugzilla-sync", "--verbose",
                       "--add-config-file=/etc/distgit-bugzilla-sync/configuration.toml"]
 {% endif %}
