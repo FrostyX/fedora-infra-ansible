@@ -18,6 +18,7 @@
       - copr-selinux
       - python3-copr-common
       - python3-copr-messaging
+      - prunerepo
       update_cache: true
 
   handlers:
