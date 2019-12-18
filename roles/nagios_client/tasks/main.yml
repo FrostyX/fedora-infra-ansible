@@ -143,7 +143,6 @@
   - check_mirrorlist_docker_proxy.cfg
   - check_mirrorlist_cache.cfg
   - check_celery_redis_queue.cfg
-  - check_odcs_celery_proc.cfg
   - check_proxies.cfg
   notify:
   - restart nrpe

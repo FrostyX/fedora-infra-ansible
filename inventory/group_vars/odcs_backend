@@ -55,8 +55,11 @@ csi_relationship: |
     The process is called `odcs-backend`.
 
     This host:
-    
+
     - relies on db01 for its database of activity (what composes have been
       requested and what state are they in?)
     - Uses pungi to compose repos of content.
     - It also *provides* an nfs share used by odcs-frontend01.
+
+nagios_Check_Services:
+  odcs-celery-backend: true
