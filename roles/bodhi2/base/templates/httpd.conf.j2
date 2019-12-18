@@ -61,7 +61,7 @@ Alias /static/v{{ bodhi_version.split('-')[0] }} /srv/bodhi/bodhi/server/static/
 {% else %}
 Alias /static/v{{ bodhi_version.split('-')[0] }} /usr/lib/python3.7/site-packages/bodhi/server/static/
 {% endif %}
-WSGIDaemonProcess bodhi display-name=bodhi processes=2 threads=2 maximum-requests=1000 home=/httpdir
+WSGIDaemonProcess bodhi display-name=bodhi processes=2 threads=2 maximum-requests=1000 home=/httpdir request-timeout=60
 WSGIApplicationGroup %{GLOBAL}
 WSGISocketPrefix run/wsgi
 WSGIRestrictStdout Off
