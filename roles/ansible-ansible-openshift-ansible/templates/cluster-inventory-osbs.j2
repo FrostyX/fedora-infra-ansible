@@ -228,6 +228,7 @@ openshift_master_identity_providers=[{"name": "fedoraidp", "login": "true", "cha
 oreg_url=quay.io/multi-arch/aarch64-${component}:${version}
 oreg_auth_user="{{ os_multiarch_registry_user }}"
 oreg_auth_password="{{ os_multiarch_registry_password }}"
+oreg_test_login=false
 {% elif env == "staging" %}
 oreg_auth_user="{{ os_stg_registry_user }}"
 oreg_auth_password="{{ os_stg_registry_password }}"
