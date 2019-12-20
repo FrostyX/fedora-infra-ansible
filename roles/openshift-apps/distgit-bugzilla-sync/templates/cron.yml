@@ -48,7 +48,7 @@ spec:
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
-  schedule: "40 9,14 * * *"
+  schedule: "40 14 * * *"
   startingDeadlineSeconds: 500
   jobTemplate:
     spec:
