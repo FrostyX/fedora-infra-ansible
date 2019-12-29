@@ -2,10 +2,13 @@ RewriteEngine On
 RewriteRule ^/$ /koji/  [R,L]
 KeepAlive On
 
-StartServers           150
-ServerLimit            900
-MaxRequestWorkers      900
-MaxRequestsPerChild    10000
+ServerLimit         35
+StartServers        50
+MaxRequestWorkers   875
+MinSpareThreads     25
+MaxSpareThreads     75
+ThreadsPerChild     25
+MaxConnectionsPerChild 1000
 
 #We use wsgi by default
 Alias /koji "/usr/share/koji-web/scripts/wsgi_publisher.py"
