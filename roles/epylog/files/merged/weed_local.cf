@@ -450,6 +450,7 @@ systemd.*: iscsi.service\: Unit cannot be reloaded because it is inactive.
 systemd.*: Started Hostname Service.
 systemd: Removed slice User Slice of.*
 systemd: Created slice User Slice of.*
+systemd.*:.*mount\: Succeeded.
 supybot.*
 twistd.*
 tunir.*
