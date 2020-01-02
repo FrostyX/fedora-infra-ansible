@@ -1,0 +1,24 @@
+commit 6277990348da43d446468fbe9f3d47ef787e588e (HEAD -> separate-fc-for-worker, praiskup/separate-fc-for-worker)
+Author:     Pavel Raiskup <praiskup@redhat.com>
+AuthorDate: Thu Jan 2 17:09:18 2020 +0100
+Commit:     Pavel Raiskup <praiskup@redhat.com>
+CommitDate: Thu Jan 2 17:12:28 2020 +0100
+
+    backend: separate frontend_client for each Worker process
+    
+    Because we shared FrontendClient object with BuildDispatcher, we for
+    some reason weren't able to communicate with RedisLogHandler and some
+    log entries were lost.
+
+diff --git a/backend/backend/daemons/build_dispatcher.py b/backend/backend/daemons/build_dispatcher.py
+index 4546ca74..af7e0654 100644
+--- a/backend/backend/daemons/build_dispatcher.py
++++ b/backend/backend/daemons/build_dispatcher.py
+@@ -126,7 +126,6 @@ class BuildDispatcher(multiprocessing.Process):
+     def start_worker(self, vm, job, reattach=False):
+         worker = Worker(
+             opts=self.opts,
+-            frontend_client=self.frontend_client,
+             vm_manager=self.vm_manager,
+             worker_id=self.next_worker_id,
+             vm=vm, job=job, reattach=reattach

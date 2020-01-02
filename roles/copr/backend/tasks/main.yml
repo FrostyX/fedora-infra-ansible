@@ -33,6 +33,16 @@
          dest=/usr/bin/prunerepo
   tags: patches
 
+- name: patch 1 for https://pagure.io/copr/copr/pull-request/1172
+  patch: src=patches/fc-client-for-worker.patch
+         dest=/usr/share/copr/backend/daemons/worker.py
+  tags: patches
+
+- name: patch 2 for https://pagure.io/copr/copr/pull-request/1172
+  patch: src=patches/fc-client-for-worker-bd.patch
+         dest=/usr/share/copr/backend/daemons/build_dispatcher.py
+  tags: patches
+
 - name: install openstackclient for image preparation
   dnf: state=present name=python3-openstackclient
   when: devel|bool
