@@ -34,3 +34,13 @@
      queue_name: fedora-build-checks{{ env_suffix }}
      routing_keys:
       - "org.centos.ci.#"
+
+- name: rpminspect
+  run_once: true
+  include_role:
+    name: rabbit/queue
+  vars:
+     username: rpminspect{{ env_suffix }}
+     queue_name: rpminspect{{ env_suffix }}
+     routing_keys:
+      - "org.fedoraproject.prod.buildsys.build.state.change.#"
