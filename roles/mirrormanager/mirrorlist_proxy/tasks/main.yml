@@ -124,6 +124,15 @@
   - mirrorlist_proxy
   check_mode: yes
 
+- name: install mirrorlist-server package
+  package: name={{ item }} state=present enablerepo=epel-testing
+  with_items:
+  - mirrorlist-server
+  tags:
+  - packages
+  - mirrorlist_proxy
+  when: ansible_distribution_major_version|int >= 31
+
 # We deploy two service files. Both listen on a different port, so that we can switch
 # them out as part of the protobuf cache deployment without having any local downtime.
 - name: Deploy service files

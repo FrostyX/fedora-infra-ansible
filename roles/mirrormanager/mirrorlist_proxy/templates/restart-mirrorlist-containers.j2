@@ -1,7 +1,9 @@
 #!/bin/bash
 
 #
-# This job handles hourly restarting mirrorlist container(s) and making sure all is well. 
+# This job handles hourly restarting mirrorlist container(s) and making sure all is well.
+#
+# Starting with Fedora 31 this no longer uses containers.
 #
 
 ##
@@ -78,9 +80,11 @@ systemctl stop mirrorlist1
 sleep 1
 systemctl start mirrorlist1
 if [[ ${?} -ne 0 ]]; then
+{% if ansible_distribution_major_version|int < 31  %}
     # We have seen this to fail because podman was not able to completely
     # remove the container for some reason. First try this:
     sudo -u mirrormanager /usr/bin/podman rm mirrorlist1.service --storage --force
+{% endif %}
     systemctl start mirrorlist1
     if [[ ${?} -ne 0 ]]; then
         echo "Unable to start mirrorlist1"
