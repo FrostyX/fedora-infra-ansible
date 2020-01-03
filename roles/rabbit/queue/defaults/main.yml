@@ -1,8 +1,7 @@
 rabbitmq_server: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
 vhost: /pubsub
 default_exchange: amq.topic
-routing_keys:
-  - "#"
+routing_keys: []
 message_ttl: null
 thresholds: false
 nagios_server: noc01.phx2.fedoraproject.org
