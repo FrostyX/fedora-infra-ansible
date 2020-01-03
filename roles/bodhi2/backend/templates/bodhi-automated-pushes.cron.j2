@@ -2,5 +2,6 @@ MAILTO=sysadmin-releng-members@fedoraproject.org
 {% if RelEngFrozen %}
 {{ '#' }}00 00 * * * apache /usr/local/bin/bodhi-automated-pushes.py
 {% else %}
-00 00 * * * apache /usr/local/bin/bodhi-automated-pushes.py
+{{ '#' }}Disable automated pushes until we can fix ejected updates.
+{{ '#' }}00 00 * * * apache /usr/local/bin/bodhi-automated-pushes.py
 {% endif %}
