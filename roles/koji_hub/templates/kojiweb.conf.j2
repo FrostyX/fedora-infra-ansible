@@ -2,11 +2,8 @@ RewriteEngine On
 RewriteRule ^/$ /koji/  [R,L]
 KeepAlive On
 
-StartServers 5
-MinSpareServers 5
-MaxSpareServers 10
-ServerLimit 400
-MaxRequestWorkers 400
+ServerLimit 800
+MaxRequestWorkers 800
 MaxConnectionsPerChild 1000
 
 #We use wsgi by default
@@ -24,6 +21,8 @@ Alias /robots.txt /var/www/html/robots.txt
 <Directory "/usr/share/koji-web/scripts/">
     Options ExecCGI
     SetHandler wsgi-script
+    WSGIApplicationGroup %{GLOBAL}
+    WSGIScriptReloading Off
     Require all granted
 </Directory>
 
