@@ -51,13 +51,13 @@
   - config
   - dns
 
-- name: create GeoIP acl
-  command: /var/named/GeoIP.sh
-  changed_when: "1 != 1"
-  notify:
-  - restart named
-  tags:
-  - dns
+#- name: create GeoIP acl
+#  command: /var/named/GeoIP.sh
+#  changed_when: "1 != 1"
+#  notify:
+#  - restart named
+#  tags:
+#  - dns
 
 - name: copy update-dns
   copy: src=update-dns dest=/usr/local/bin/update-dns mode=0755
