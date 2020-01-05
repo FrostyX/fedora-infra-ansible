@@ -100,6 +100,7 @@ _osbs_reactor_config_map:
 
     flatpak:
         base_image: "registry.fedoraproject.org/fedora:latest"
+        metadata: both
 
     image_labels:
       vendor: "Fedora Project"
