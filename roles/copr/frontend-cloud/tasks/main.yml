@@ -164,10 +164,8 @@
   copy: src=systemd dest=/etc
 
 - name: compress rotated httpd logs
-  lineinfile: path=/etc/logrotate.d/httpd
-              line='    compress'
-              insertbefore='*delaycompress'
-              state=present
+  copy: src="httpd.logrotate" dest="/etc/logrotate.d/httpd"
+        path=/etc/logrotate.d/httpd
 
 - name: start logrotate service
   service: name=logrotate.timer state=started enabled=yes
