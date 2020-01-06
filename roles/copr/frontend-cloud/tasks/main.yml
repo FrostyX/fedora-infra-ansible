@@ -165,7 +165,7 @@
 
 - name: compress rotated httpd logs
   copy: src="httpd.logrotate" dest="/etc/logrotate.d/httpd"
-        path=/etc/logrotate.d/httpd
+  tags: [logrotate_tasks]
 
 - name: start logrotate service
   service: name=logrotate.timer state=started enabled=yes
