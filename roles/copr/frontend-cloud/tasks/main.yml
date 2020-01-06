@@ -163,6 +163,12 @@
 - name: install custom systemd service files
   copy: src=systemd dest=/etc
 
+- name: compress rotated httpd logs
+  lineinfile: path=/etc/logrotate.d/httpd
+              line='    compress'
+              insertbefore='*delaycompress'
+              state=present
+
 - name: start logrotate service
   service: name=logrotate.timer state=started enabled=yes
 
