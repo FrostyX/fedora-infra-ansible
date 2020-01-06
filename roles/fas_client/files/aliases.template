@@ -342,6 +342,7 @@ mingwmaint: mingw@lists.fedoraproject.org
 java-sig: java-devel@lists.fedoraproject.org
 upstream-release-monitoring: pingou,ralph
 aws: aws-members
+awsci: kevin@scrye.com
 msftazure: msftazure-members
 relicensing: relicensing@lists.fedoraproject.org
 abrt-bot: jmoskovc@redhat.com,kklic@redhat.com,mtoman@redhat.com,mlichvar@redhat.com
