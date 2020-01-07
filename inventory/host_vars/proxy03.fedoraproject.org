@@ -1,18 +1,19 @@
 ---
-eth0_ip: 8.43.85.73
-eth0_nm: 255.255.255.0
-gw: 8.43.85.254
 nm: 255.255.255.0
+gw: 8.43.85.254
 dns: 8.8.8.8
 
-mem_size: 8192
-max_mem_size: 8192
-
-ks_url: http://infrastructure.fedoraproject.org/repo/rhel/ks/kvm-fedora-29-ext
-ks_repo: http://infrastructure.fedoraproject.org/pub/fedora/linux/releases/29/Server/x86_64/os/
+ks_url: http://209.132.181.6/repo/rhel/ks/kvm-fedora-31-ext
+ks_repo: http://209.132.181.6/pub/fedora/linux/releases/31/Server/x86_64/os/
 
 vmhost: virthost-cc-rdu02.fedoraproject.org
 volgroup: /dev/vg_guests
+
+eth0_ip: 8.43.85.73
+eth0_nm: 255.255.255.0
+has_ipv6: true
+eth0_ipv6: "2620:52:3:1:dead:beef:cafe:fed6"
+eth0_ipv6_gw: "2620:52:3:1:ffff:ffff:ffff:fffe"
 
 # This is consumed by the roles/fedora-web/main role
 sponsor: redhat
@@ -23,7 +24,6 @@ vpn: true
 nrpe_procs_warn: 900
 nrpe_procs_crit: 1000
 
-# This is used in the httpd.conf to determine the value for serverlimit and 
-# maxrequestworkers. On 8gb proxies, 900 seems fine. But on 4gb proxies, this 
-# should be lowered in the host vars for that proxy.
-maxrequestworkers: 900
+mem_size: 16384
+max_mem_size: 32768
+num_cpus: 8

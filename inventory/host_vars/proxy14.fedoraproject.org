@@ -11,6 +11,9 @@ volgroup: /dev/vg_guests
 
 eth0_ip: 8.43.85.67
 eth0_nm: 255.255.255.0
+has_ipv6: true
+eth0_ipv6: "2620:52:3:1:dead:beef:cafe:fed7"
+eth0_ipv6_gw: "2620:52:3:1:ffff:ffff:ffff:fffe"
 
 # This is consumed by the roles/fedora-web/main role
 sponsor: redhat
