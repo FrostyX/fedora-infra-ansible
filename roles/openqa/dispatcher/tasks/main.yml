@@ -359,13 +359,13 @@
   when: "openqa_amqp_resultsdb_reporter_queue is defined and openqa_amqp_resultsdb_reporter_queue"
 
 - name: Create directory for consumer service config drop-in
-  file: path=/etc/systemd/system/fm-consumer@.d state=directory owner=root group=root mode=0755
+  file: path=/etc/systemd/system/fm-consumer@.service.d state=directory owner=root group=root mode=0755
 
 # This slows restarts of fm-consumer@ to every 60 seconds, instead of
 # near-instantly; this avoids huge floods of errors when resultsdb
 # or the wiki go down for a bit
 - name: Consumer service config drop-in to slow down restarts
-  copy: src=fmconsumer.restartsec.conf dest=/etc/systemd/system/fm-consumer@.d/10-restartsec.conf owner=root group=root mode=0644
+  copy: src=fmconsumer.restartsec.conf dest=/etc/systemd/system/fm-consumer@.service.d/10-restartsec.conf owner=root group=root mode=0644
 
 - name: Set up cron job to schedule live-respins jobs
   copy: src=schedule-live-respins.cron dest=/etc/cron.hourly/schedule-live-respins owner=root group=root mode=0755
