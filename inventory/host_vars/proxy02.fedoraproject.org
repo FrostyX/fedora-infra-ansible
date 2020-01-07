@@ -2,7 +2,6 @@
 nm: 255.255.255.240
 gw: 85.236.55.1
 dns: 8.8.8.8
-num_cpus: 6
 
 ks_url: http://infrastructure.fedoraproject.org/repo/rhel/ks/kvm-fedora-31-ext
 ks_repo: http://infrastructure.fedoraproject.org/pub/fedora/linux/releases/31/Server/x86_64/os/
@@ -25,4 +24,6 @@ vpn: true
 nrpe_procs_warn: 1200
 nrpe_procs_crit: 1400
 
+mem_size: 8192
 max_mem_size: 8192
+num_cpus: 6
