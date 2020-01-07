@@ -55,16 +55,16 @@ Content-Type: text/html; charset=UTF-8
         <p>The service that you are trying to access is currently unavailable.  Please try refreshing this page in a couple of minutes.  If you still see this message, then please follow the steps below:</p>
         <ol>
           <li>Check on <a href="http://status.fedoraproject.org/">the status page</a> if there are any known outages for our services.</li>
-          <li>Check the <a href="https://pagure.io/fedora-infrastructure/">fedora-infrastructure pagure instance</a> for an outage notification.</li>
+          <li>Check the <a href="https://pagure.io/fedora-infrastructure/issues">fedora-infrastructure pagure instance</a> for an outage notification.</li>
           <li>Ask around in #fedora-admin on irc.freenode.net.</li>
-          <li>If it is accessible, check the <a href="//fedoraproject.org/wiki/Infrastructure/SOP/Outage">Outage SOP</a> for more information.</li>
+          <li>If it is accessible, check the <a href="https://docs.pagure.org/infra-docs/sysadmin-guide/sops/outage.html">Outage SOP</a> for more information.</li>
         </ol>
       </div>
     </div>
     <div id="bottom">
       <div id="footer">
         <p class="copy">
-        &copy; 2010 Red Hat, Inc. and others.  For comments or queries, please <a href="/en/contact">contact us</a>.
+        &copy; 2010 Red Hat, Inc. and others.  For comments or queries, please <a href="https://fedoraproject.org/wiki/Communicating_and_getting_help">contact us</a>.
         </p>
         <p class="disclaimer">
         The Fedora Project is maintained and driven by the community and sponsored by Red Hat.  This is a community maintained site.  Red Hat is not responsible for content.
