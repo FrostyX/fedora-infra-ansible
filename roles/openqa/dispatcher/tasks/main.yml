@@ -358,6 +358,9 @@
   service: name=fm-consumer@fedora_openqa_resultsdb_reporter enabled=yes state=started
   when: "openqa_amqp_resultsdb_reporter_queue is defined and openqa_amqp_resultsdb_reporter_queue"
 
+- name: Create directory for consumer service config drop-in
+  file: path=/etc/systemd/system/fm-consumer@.d state=directory owner=root group=root mode=0755
+
 # This slows restarts of fm-consumer@ to every 60 seconds, instead of
 # near-instantly; this avoids huge floods of errors when resultsdb
 # or the wiki go down for a bit
