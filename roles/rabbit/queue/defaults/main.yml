@@ -3,5 +3,7 @@ vhost: /pubsub
 default_exchange: amq.topic
 routing_keys: []
 message_ttl: null
-thresholds: false
+thresholds:
+  warning:  10000
+  critical: 100000
 nagios_server: noc01.phx2.fedoraproject.org
