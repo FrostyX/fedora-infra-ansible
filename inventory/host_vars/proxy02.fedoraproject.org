@@ -3,17 +3,17 @@ nm: 255.255.255.240
 gw: 85.236.55.1
 dns: 8.8.8.8
 
-ks_url: http://infrastructure.fedoraproject.org/repo/rhel/ks/kvm-fedora-31-ext
-ks_repo: http://infrastructure.fedoraproject.org/pub/fedora/linux/releases/31/Server/x86_64/os/
+ks_url: http://209.132.181.6/repo/rhel/ks/kvm-fedora-31-ext
+ks_repo: http://209.132.181.6/pub/fedora/linux/releases/31/Server/x86_64/os/
 
 vmhost: internetx01.fedoraproject.org
 volgroup: /dev/vg_Server
 
 eth0_ip: 85.236.55.6
 eth0_nm: 255.255.255.240
-has_ipv6: false
-#eth0_ipv6: "2001:4178:2:1269::fed2"
-#eth0_ipv6_gw: "2001:4178:2:1269::1"
+has_ipv6: true
+eth0_ipv6: "2001:4178:2:1269::fed2"
+eth0_ipv6_gw: "2001:4178:2:1269::1"
 
 # This is consumed by the roles/fedora-web/main role
 sponsor: internetx
