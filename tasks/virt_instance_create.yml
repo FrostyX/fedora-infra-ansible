@@ -35,13 +35,6 @@
   delay: 20
   when: inventory_hostname not in result.list_vms
 
-- name: nuke the facts cache for this hosts/host
-  file:
-    path: /root/.ansible_facts_cache/{{ inventory_hostname }}
-    state: absent
-  delegate_to: localhost
-  when: inventory_hostname not in result.list_vms
-
 - name: ARMv7 copy the kernel out
   shell: "virt-builder --get-kernel {{ volgroup }}/{{ inventory_hostname }} --output /var/lib/libvirt/images/  | awk -F/ '{print $NF}' > /var/lib/libvirt/images/{{ inventory_hostname }}-details.txt"
   delegate_to: "{{ vmhost}}"
@@ -156,3 +149,10 @@
   - /etc/ssh/ssh_known_hosts
   when: inventory_hostname not in result.list_vms and inventory_hostname in groups['osbs_masters']+groups['osbs_nodes']
   delegate_to: osbs-control01.phx2.fedoraproject.org
+
+- name: gather facts
+  setup:
+  check_mode: no
+  ignore_errors: True
+  register: facts
+  when: inventory_hostname not in result.list_vms
