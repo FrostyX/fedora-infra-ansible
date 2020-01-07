@@ -59,6 +59,8 @@
   with_items:
   - rabbitmq.config
   - rabbitmq-env.conf
+  notify:
+    - restart rabbitmq
   tags:
   - rabbitmq_cluster
   - config
