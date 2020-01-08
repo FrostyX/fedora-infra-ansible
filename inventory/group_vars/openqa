@@ -23,6 +23,7 @@ openqa_env: production
 wikitcms_token: "{{ private }}/files/openidc/production/wikitcms.json"
 openqa_wikitcms_hostname: fedoraproject.org
 openqa_resultsdb_url: http://resultsdb01.qa.fedoraproject.org/resultsdb_api/api/v2.0/
+openqa_update_arches: ['x86_64']
 
 deployment_type: prod
 freezes: false

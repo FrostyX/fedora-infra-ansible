@@ -44,6 +44,7 @@ routing_keys = [{% for key in openqa_amqp_scheduler_routing_keys %}"{{ key }}",{
 
 [consumer_config]
 openqa_hostname = "{{ openqa_hostname }}"
+update_arches = [{% for arch in openqa_update_arches %}"{{ arch }}",{% endfor %}]
 
 [qos]
 prefetch_size = 0
