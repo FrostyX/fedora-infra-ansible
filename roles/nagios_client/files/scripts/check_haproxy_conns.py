@@ -28,7 +28,7 @@ def query(sockname="/var/run/haproxy-stat"):
     s.connect("/var/run/haproxy-stat")
     s.send('show info\n')
     try:
-        response = s.recv(1024).strip()
+        response = s.recv(2048).strip()
         lines = response.split('\n')
         data = dict([map(str.strip, line.split(':')) for line in lines])
         data = dict([(k, _numeric(v)) for k, v in data.items()])
