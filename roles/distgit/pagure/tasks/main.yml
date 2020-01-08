@@ -439,13 +439,3 @@
   tags:
   - pagure
   - logrotate
-
-
-- name: hotfix the default hook so it updates pending PR async
-  copy: >
-    src=hotfix-20190227-hooks-default.py
-    dest=/usr/lib/python2.7/site-packages/pagure/hooks/default.py
-    owner=root group=root mode=0644
-  tags:
-    - hotfix
-    - pagure
