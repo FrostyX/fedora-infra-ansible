@@ -26,7 +26,7 @@ spec:
             command: ["/usr/local/bin/distgit-bugzilla-sync", "--verbose", "--no-user-notifications",
                       "--add-config-file=/etc/distgit-bugzilla-sync/configuration.toml"]
 {% else %}
-            command: ["/usr/local/bin/distgit-bugzilla-sync", "--verbose",
+            command: ["/usr/local/bin/distgit-bugzilla-sync", "--verbose", "--no-user-notifications",
                       "--add-config-file=/etc/distgit-bugzilla-sync/configuration.toml"]
 {% endif %}
             volumeMounts:
