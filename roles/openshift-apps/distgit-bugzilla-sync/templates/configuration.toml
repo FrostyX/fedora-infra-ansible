@@ -34,9 +34,16 @@ Reassigning to the new maintainer of this component.
     send_mails = true
     smtp_host = "bastion.fedoraproject.org"
     from = "accounts@fedoraproject.org"
+{% if env == 'staging' %}
     notify_admins = [
         "pingou_stg@pingoured.fr",
     ]
+{% else %}
+    notify_admins = [
+        "pingou@fedoraproject.org",
+        "kevin@fedoraproject.org",
+    ]
+{% endif %}
 
     [email.templates]
         admin_notification = """
