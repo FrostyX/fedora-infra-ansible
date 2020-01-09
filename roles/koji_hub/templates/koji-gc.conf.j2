@@ -40,10 +40,12 @@ key_aliases =
     429476B4    fedora-29
     CFC659B9    fedora-30
     3C3359C4    fedora-31
+    12C944D0    fedora-32
     DBBDCF7C    fedora-iot-2019
     217521F6    fedora-epel
     0608B895    fedora-epel-6
     352C64E5    fedora-epel-7
+    2F86D6A1    fedora-epel-8
 
 unprotected_keys =
     fedora-15
@@ -63,12 +65,14 @@ unprotected_keys =
     fedora-29
     fedora-30
     fedora-31
+    fedora-32
     fedora-iot-2019
     fedora-extras
     redhat-beta
     fedora-epel
     fedora-epel-6
     fedora-epel-7
+    fedora-epel-8
 
 server = {{ koji_server_url }}
 serverca = /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
@@ -118,10 +122,12 @@ policy =
     sig fedora-29 && age < 12 weeks :: keep
     sig fedora-30 && age < 12 weeks :: keep
     sig fedora-31 && age < 12 weeks :: keep
+    sig fedora-32 && age < 12 weeks :: keep
     sig fedora-iot-2019 && age < 12 weeks :: keep
     sig fedora-epel && age < 12 weeks :: keep
     sig fedora-epel-6 && age < 12 weeks :: keep
     sig fedora-epel-7 && age < 12 weeks :: keep
+    sig fedora-epel-8 && age < 12 weeks :: keep
 
     #stuff to chuck semi-rapidly
     tag *-testing *-candidate *-override && order >= 2 :: untag
