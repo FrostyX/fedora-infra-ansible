@@ -61,6 +61,10 @@
 
 - name: put updated mock configs into /etc/mock
   copy: src=files/mock/ dest=/etc/mock
+  # conditional, per https://pagure.io/copr/copr/issue/1189 - as we don't want
+  # to bake broken mock configuration into the image.
+  when:
+  - prepare_base_image is not defined
 
 - name: put copr-rpmbuild configuration file in the right place
   copy: src=files/main.ini dest=/etc/copr-rpmbuild/main.ini
