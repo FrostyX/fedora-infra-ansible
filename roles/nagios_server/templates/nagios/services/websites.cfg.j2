@@ -322,6 +322,13 @@ define service {
   use                   websitetemplate
 }
 
+define service {
+  host_name             resultsdb01.iad2.fedoraproject.org
+  service_description   http-resultsdb-internal
+  check_command         check_website!resultsdb01.iad2.fedoraproject.org!/resultsdb/results!resultsdb_frontend
+  use                   websitetemplate
+}
+
 {% endif %}
 
 
