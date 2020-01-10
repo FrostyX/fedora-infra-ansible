@@ -46,18 +46,44 @@
   - role: loopabull/target
     loopabull_role: ociimage
     when: inventory_hostname == 'composer.stg.phx2.fedoraproject.org'
+
   - role: nfs/client
     mnt_dir: '/mnt/fedora_koji'
     nfs_src_dir: "{{ koji_hub_nfs }}"
     when: "'releng_stg' not in group_names"
+
   - role: nfs/client
     mnt_dir: '/pub'
     nfs_src_dir: 'fedora_ftp/fedora.redhat.com/pub'
     when: "'releng_compose' in group_names"
+#
+# mount archive volumes on composer so we can run the archiving script there. 
+#
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive00'
+    nfs_src_dir: '/fedora_koji_archive00'
+    when: "'releng_compose' in group_names"
+
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive01'
+    nfs_src_dir: '/fedora_koji_archive01'
+    when: "'releng_compose' in group_names"
+
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive02'
+    nfs_src_dir: '/fedora_koji_archive02'
+    when: "'releng_compose' in group_names"
+
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive03'
+    nfs_src_dir: '/fedora_koji_archive03'
+    when: "'releng_compose' in group_names"
+
   - role: nfs/client
     mnt_dir: '/mnt/fedora_koji_prod'
     nfs_src_dir: "{{ koji_hub_nfs }}"
     when: "'releng_stg' in group_names"
+
   - fedmsg/base
   - role: releng
     tags:
