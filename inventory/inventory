@@ -512,7 +512,7 @@ openqa-stg01.qa.fedoraproject.org
 qa01.qa.fedoraproject.org
 qa07.qa.fedoraproject.org
 qa09.qa.fedoraproject.org
-#openqa-ppc64le-01.qa.fedoraproject.org
+openqa-ppc64le-01.qa.fedoraproject.org
 openqa-ppc64le-02.qa.fedoraproject.org
 openqa-ppc64le-03.qa.fedoraproject.org
 aarch64-c26n1-oqa.arm.fedoraproject.org
