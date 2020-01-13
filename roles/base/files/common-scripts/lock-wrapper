@@ -44,5 +44,5 @@ trap cleanup EXIT SIGQUIT SIGHUP SIGTERM
 echo $$ > "$PIDFILE"
 
 $RESTORE_UMASK
-eval "$SCRIPT"
+eval "$SCRIPT $*"
 
