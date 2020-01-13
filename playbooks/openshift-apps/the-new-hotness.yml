@@ -16,6 +16,9 @@
       - "org.release-monitoring.*.anitya.project.version.update"
       - "org.release-monitoring.*.anitya.project.map.new"
       - "org.fedoraproject.*.buildsys.task.state.change"
+    thresholds:
+      warning: 10
+      critical: 100
 
   - role: openshift/project
     app: the-new-hotness
