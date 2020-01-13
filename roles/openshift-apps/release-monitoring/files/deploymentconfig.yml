@@ -61,13 +61,13 @@ items:
             mountPath: /etc/pki/rabbitmq/cert
             readOnly: true
           readinessProbe:
-            timeoutSeconds: 1
-            initialDelaySeconds: 5
+            timeoutSeconds: 10
+            initialDelaySeconds: 15
             httpGet:
               path: /
               port: 8080
           livenessProbe:
-            timeoutSeconds: 1
+            timeoutSeconds: 10
             initialDelaySeconds: 30
             httpGet:
               path: /
