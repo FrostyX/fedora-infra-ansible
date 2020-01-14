@@ -25,5 +25,12 @@
       - prunerepo
       update_cache: true
 
+  - name: Upgrade createrepo_c from updates-testing, when needed
+    dnf: state=latest
+         name=createrepo_c
+         enablerepo=updates-testing
+    when:
+    when: ansible_facts.packages['createrepo_c'][0].version is version('0.15.5', '<')
+
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
