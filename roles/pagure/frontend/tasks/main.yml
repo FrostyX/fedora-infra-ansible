@@ -17,7 +17,6 @@
   - libsemanage-python
   - mod_ssl
   - stunnel
-  - repoSpanner-bridge
   # Use haveged to ensure the server keeps some entropy
   - haveged
   tags:
@@ -216,7 +215,6 @@
   with_items:
   - { file: pagure.cfg, location: /etc/pagure }
   - { file: alembic.ini, location: /etc/pagure }
-  - { file: repobridge_ansible.json, location: /etc/pagure }
   tags:
   - config
   - web
@@ -224,27 +222,6 @@
   notify:
   - restart apache
 
-- name: Create the repoSpanner cert directory
-  file: path=/etc/pagure/repospanner state=directory mode=0750 owner=git group=git
-  tags:
-  - config
-  - pagure
-  - repospanner
-
-- name: Copy repoSpanner certs and keys
-  copy: src={{private}}/files/repoSpanner/{{env}}/ca/{{item}} dest=/etc/pagure/repospanner/{{item}}
-        owner=git group=git mode=0640
-  with_items:
-  - ca.crt
-  - ansible-push.crt
-  - ansible-push.key
-  - ansible-admin.crt
-  - ansible-admin.key
-  tags:
-  - config
-  - pagure
-  - repospanner
-  when: env == "production"
 
 - name: create the database scheme
   command: /usr/bin/python2 /usr/share/pagure/pagure_createdb.py
@@ -299,13 +276,6 @@
   - pagure
   notify:
   - restart apache
-
-- name: let repospanner read the pagure config
-  command: /usr/bin/setfacl -m user:repoSpanner:r /etc/pagure/pagure.cfg
-  tags:
-  - pagure
-  - mirror
-  when: env != 'pagure-staging'
 
 - name: let paguremirroring read the pagure config
   command: /usr/bin/setfacl -m user:paguremirroring:rx /etc/pagure/pagure.cfg
@@ -423,7 +393,6 @@
 #  - pagure_api_key_expire_mail.timer
   - pagure_mirror_project_in
   - pagure_mirror_project_in.timer
-  - repoSpanner@config
   - fedmsg-relay
   - haveged
   ignore_errors: true

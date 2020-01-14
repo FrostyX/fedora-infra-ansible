@@ -110,17 +110,6 @@
   notify:
   - restart apache
 
-- name: Allow repoSpanner access to Pagure config
-  acl: path=/etc/pagure/pagure.cfg
-       etype=user
-       entity=repoSpanner
-       permissions=r
-      state=present
-  tags:
-  - config
-  - pagure
-  when: env == "staging"
-
 - name: pagure configuration for the hooks
   template: src={{ item.file }}
             dest={{ item.location }}/{{ item.file }}
@@ -250,16 +239,6 @@
   - web
   - pagure
 
-- name: set sebooleans so pagure can talk to repospanner
-  seboolean: name=httpd_can_network_connect
-                    state=true
-                    persistent=true
-  tags:
-  - selinux
-  - web
-  - pagure
-  when: env == "staging"
-
 # HOTFIX: adjust bugzilla overrides
 - name: HOTFIX - adjust bugzilla overrides
   copy: src=fas2.py dest=/usr/lib/python2.7/site-packages/fedora/client/fas2.py
@@ -387,17 +366,17 @@
     - src: "{{private}}/files/rabbitmq/{{env}}/pki/issued/pagure{{ env_suffix }}.crt"
       dest: src.fp.o.crt
       owner: pagure
-      group: "{{ (env == 'production')|ternary('pagure', 'repoSpanner') }}"
+      group: "{{ (env == 'production')|ternary('pagure') }}"
       mode: "444"
     - src: "{{private}}/files/rabbitmq/{{env}}/pki/private/pagure{{ env_suffix }}.key"
       dest: src.fp.o.key
       owner: pagure
-      group: "{{ (env == 'production')|ternary('pagure', 'repoSpanner') }}"
+      group: "{{ (env == 'production')|ternary('pagure') }}"
       mode: "440"
     - src: "{{private}}/files/rabbitmq/{{env}}/pki/ca.crt"
       dest: src.fp.o.ca
       owner: pagure
-      group: "{{ (env == 'production')|ternary('pagure', 'repoSpanner') }}"
+      group: "{{ (env == 'production')|ternary('pagure') }}"
       mode: "444"
   tags:
   - pagure
