@@ -1,0 +1,7 @@
+- name: detect package versions
+  package_facts: manager=auto
+
+- name: assure minimal versions of dnf-plugins-core
+  dnf: name=dnf-plugins-core
+       state=latest
+  when: ansible_facts.packages['dnf-plugins-core'][0].version is version('4.0.12', '<')

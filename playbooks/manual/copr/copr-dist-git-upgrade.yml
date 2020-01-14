@@ -10,6 +10,9 @@
    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
 
   tasks:
+  - name: Generic upgrade tasks for copr servers
+    import_tasks: _generic_tasks.yml
+
   - name: Upgrade copr-distgit packages
     dnf:
       state: latest
@@ -18,6 +21,7 @@
       - dist-git-selinux
       - copr-dist-git
       - copr-selinux
+      - python3-copr
       - python3-copr-common
       update_cache: true
 

@@ -10,12 +10,16 @@
    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
 
   tasks:
+  - name: Generic upgrade tasks for copr servers
+    import_tasks: _generic_tasks.yml
+
   - name: Upgrade copr-backend packages
     dnf:
       state: latest
       name:
       - copr-backend
       - copr-selinux
+      - python3-copr
       - python3-copr-common
       - python3-copr-messaging
       - prunerepo

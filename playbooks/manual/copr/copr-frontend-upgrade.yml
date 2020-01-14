@@ -13,16 +13,18 @@
    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
 
   tasks:
+  - name: Generic upgrade tasks for copr servers
+    import_tasks: _generic_tasks.yml
+
   - name: Upgrade copr-frontend packages
     dnf:
       state: latest
       name:
       - copr-frontend
+      - copr-frontend-fedora
       - copr-selinux
       - python3-copr-common
       update_cache: true
-
-  - package_facts: manager=auto
 
   - name: cache the new package version
     copy: content="{{ ansible_facts.packages['copr-frontend'][0].version }}"

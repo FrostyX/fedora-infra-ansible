@@ -10,6 +10,9 @@
    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
 
   tasks:
+  - name: Generic upgrade tasks for copr servers
+    import_tasks: _generic_tasks.yml
+
   - name: Upgrade copr-keygen packages
     dnf:
       state: latest
