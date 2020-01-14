@@ -30,7 +30,7 @@
       mnt_dir: '/srv/cache/lookaside',
       nfs_src_dir: 'fedora_sourcecache', nfs_mount_opts='rw,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3' }
   - { role: nfs/client,
-      when: env == "staging" and inventory_hostname.startswith('pkgs02'),
+      when: env == "staging" and inventory_hostname.startswith('pkgs01'),
       mnt_dir: '/srv/cache/lookaside_prod',
       nfs_src_dir: 'fedora_sourcecache', nfs_mount_opts='ro,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3' }
   - role: distgit/pagure
@@ -56,6 +56,20 @@
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
+- name: setup users on pkgs
+  hosts: pkgs_stg:pkgs02.phx2.fedoraproject.org
+  user: root
+  gather_facts: True
+
+  tasks:
+  - name: Setup pagure user
+      user:
+        name: pagure
+        uid: "{{ pagure_static_uid }}"
+        shell: /sbin/nologin
+        comment: "Pagure User"
+      when: env == "staging" and inventory_hostname.startswith('pkgs01'),
+        
 
 - name: setup fedmsg on pkgs
   hosts: pkgs_stg:pkgs02.phx2.fedoraproject.org

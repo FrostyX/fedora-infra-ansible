@@ -17,6 +17,9 @@ wsgi_fedmsg_service: pagure
 wsgi_procs: 6
 wsgi_threads: 6
 
+pagure_static_uid: 600
+
+
 fas_client_groups: sysadmin-main,sysadmin-cvs,sysadmin-noc,sysadmin-veteran
 fas_client_restricted_app: PAGURE_CONFIG=/etc/pagure/pagure_hook.cfg HOME=/srv/git /usr/libexec/pagure/aclchecker.py %(username)s
 fas_client_admin_app: PAGURE_CONFIG=/etc/pagure/pagure_hook.cfg HOME=/srv/git /usr/libexec/pagure/aclchecker.py %(username)s
