@@ -68,7 +68,8 @@
         uid: "{{ pagure_static_uid }}"
         shell: /sbin/nologin
         comment: "Pagure User"
-      when: env == "staging" and inventory_hostname.startswith('pkgs01'),
+      when: env == "staging" and inventory_hostname.startswith('pkgs01')
+      ## The above should be deleted when we rebuild pkgs02 in future.
         
 
 - name: setup fedmsg on pkgs
