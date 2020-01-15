@@ -391,6 +391,9 @@ items:
         - name: bodhi-celery-beat
 {% if env == "staging" %}
           image: bodhi-base-prebuilt:staging
+          env:
+          - name: HOME
+            value: "/tmp"
           command: ["/usr/bin/celery"]
           args: ["beat", "-A", "bodhi.server.tasks.app", "-l", "info"]
 {% else %}
