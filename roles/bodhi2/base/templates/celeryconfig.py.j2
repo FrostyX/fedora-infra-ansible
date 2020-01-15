@@ -44,20 +44,20 @@ task_routes = {
 
 beat_schedule = {
     "approve-testing": {
-        "task": "approve_testing",
+        "task": "approve_testing_task",
         "schedule": 3 * 60,  # every 3 minutes
     },
     "check-policies": {
-        "task": "check_policies",
+        "task": "check_policies_task",
         "schedule": 60 * 60,  # every hour
     },
     "clean-old-composes": {
-        "task": "clean_old_composes",
+        "task": "clean_old_composes_task",
         "schedule": crontab(hour=3, minute=3),
         "kwargs": {"num_to_keep": 10},
     },
     "expire-overrides": {
-        "task": "expire_overrides",
+        "task": "expire_overrides_task",
         "schedule": 60 * 60,  # every hour
     },
 }
