@@ -1,5 +1,6 @@
 #!/usr/bin/bash
 
+set -x
 set -e
 
 swap_device=
@@ -11,5 +12,29 @@ fi
 
 test -n "$swap_device"
 
-mkswap "$swap_device"
-swapon "$swap_device"
+systemctl unmask tmp.mount
+systemctl start tmp.mount
+
+
+echo "\
+n
+p
+
+
++16G
+n
+p
+2
+
+
+w
+" | fdisk "$swap_device"
+
+mkfs.ext4 "${swap_device}p1"
+
+mount /dev/"$swap_device"p1 /var/lib/copr-rpmbuild
+chown root:mock /var/lib/copr-rpmbuild
+chmod 775 /var/lib/copr-rpmbuild
+
+mkswap "${swap_device}p2"
+swapon "${swap_device}p2"
