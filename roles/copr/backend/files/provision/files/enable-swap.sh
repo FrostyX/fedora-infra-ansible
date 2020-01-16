@@ -32,7 +32,7 @@ w
 
 mkfs.ext4 "${swap_device}p1"
 
-mount /dev/"$swap_device"p1 /var/lib/copr-rpmbuild
+mount "$swap_device"p1 /var/lib/copr-rpmbuild
 chown root:mock /var/lib/copr-rpmbuild
 chmod 775 /var/lib/copr-rpmbuild
 
