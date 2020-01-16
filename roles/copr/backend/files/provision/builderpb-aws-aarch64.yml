@@ -21,7 +21,7 @@
       - device_name: sdb
         delete_on_termination: True
         volume_type: gp2
-        volume_size: 100
+        volume_size: 120
 
   tasks:
   - include: "spinup_aws_task.yml"
