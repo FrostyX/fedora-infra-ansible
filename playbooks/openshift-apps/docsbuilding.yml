@@ -15,6 +15,7 @@
     appowners:
     - asamalik
     - jibecfed
+    - dustymabe
     tags:
       - apply-appowners
   - role: openshift/imagestream
