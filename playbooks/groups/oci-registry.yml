@@ -80,7 +80,7 @@
 
     # Setup compose-x86-01 push docker images to registry
     - {
-      role: push-docker,
+      role: login-registry,
         candidate_registry: "candidate-registry.stg.fedoraproject.org",
         candidate_registry_osbs_username: "{{candidate_registry_osbs_stg_username}}",
         candidate_registry_osbs_password: "{{candidate_registry_osbs_stg_password}}",
@@ -88,7 +88,7 @@
       delegate_to: compose-x86-01.phx2.fedoraproject.org
     }
     - {
-      role: push-docker,
+      role: login-registry,
         candidate_registry: "candidate-registry.fedoraproject.org",
         candidate_registry_osbs_username: "{{candidate_registry_osbs_prod_username}}",
         candidate_registry_osbs_password: "{{candidate_registry_osbs_prod_password}}",

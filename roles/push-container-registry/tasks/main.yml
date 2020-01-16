@@ -3,7 +3,7 @@
 # This role install skopeo and the certificates
 # needed to push container images to our production registry.
 # Note : push to the candidate-registry is done using docker login
-# see the push-docker role.
+# see the login-registry role.
 
 - name: install necessary packages
   package:
