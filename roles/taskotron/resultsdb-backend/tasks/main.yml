@@ -46,6 +46,9 @@
 - name: ensure selinux lets httpd talk to postgres
   seboolean: name=httpd_can_network_connect_db persistent=yes state=yes
 
+- name: ensure selinux lets fedora-messaging emit messages
+  seboolean: name=httpd_execmem persistent=yes state=yes
+
 - name: generate resultsdb config
   template: src=settings.py.j2 dest=/etc/resultsdb/settings.py owner=root group=root mode=0644
   notify:
