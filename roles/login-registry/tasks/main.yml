@@ -8,5 +8,5 @@
     name: podman
     state: present
 
-- name: Log into the candidate-registry
-  cmd: podman login {{candidate_registry}} -u {{candidate_registry_osbs_username}} -p {{candidate_registry_osbs_password}}
+- name: login into a registry
+  command: podman login {{candidate_registry}} -u {{candidate_registry_osbs_username}} -p {{candidate_registry_osbs_password}}
