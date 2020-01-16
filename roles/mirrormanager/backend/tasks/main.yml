@@ -71,7 +71,7 @@
         cron_file=create-statistics
 
 - name: create yesterdays mirrorlist statistics cronjob
-  cron: name="yesterdays-statistics" minute="15" hour="0" user="mirrormanager"
+  cron: name="yesterdays-statistics" minute="55" hour="0" user="mirrormanager"
         job="/usr/local/bin/create_statistics.sh yesterday"
         cron_file=yesterdays-statistics
 
