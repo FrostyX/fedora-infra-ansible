@@ -37,6 +37,9 @@
     <LocationMatch "/repo/">
         WSGIProcessGroup repo
     </LocationMatch>
+    <LocationMatch "^/coprs/.*/packages/">
+        WSGIProcessGroup packages
+    </LocationMatch>
 
     #ErrorLog logs/error_coprs
     #CustomLog logs/access_coprs common
