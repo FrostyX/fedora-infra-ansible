@@ -107,6 +107,11 @@ level = "WARNING"
 propagate = false
 handlers = ["console"]
 
+[log_config.loggers.fedora_openqa]
+level = "INFO"
+propagate = false
+handlers = ["console"]
+
 [log_config.root]
 level = "ERROR"
 {% if openqa_amqp_mailto is defined %}
