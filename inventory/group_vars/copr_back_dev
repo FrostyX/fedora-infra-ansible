@@ -17,8 +17,8 @@ copr_builder_images:
   ppc64le: copr-builder-ppc64le-f31-20200116_061641
   aarch64: copr-builder-20191126_114948
   aws:
-    x86_64: ami-008fb326dd5353591
-    aarch64: ami-091a14fe9c9fe138f
+    x86_64: ami-0a504847bfd6e5412
+    aarch64: ami-01cac95979532ace5
 
 do_sign: "true"
 
