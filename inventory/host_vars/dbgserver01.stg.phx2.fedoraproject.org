@@ -24,4 +24,10 @@ virt_install_command: "{{ virt_install_command_two_nic }}"
 sudoers: "{{ private }}/files/sudo/dbgserver-sudoers"
 
 # No monitoring requested for this host.
-nrpe: false
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  swap: false
+  ping: false
+
