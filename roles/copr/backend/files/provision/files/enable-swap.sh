@@ -33,8 +33,9 @@ w
 mkfs.ext4 "${swap_device}p1"
 
 mount "$swap_device"p1 /var/lib/copr-rpmbuild
-chown root:mock /var/lib/copr-rpmbuild
-chmod 775 /var/lib/copr-rpmbuild
+mkdir /var/lib/copr-rpmbuild/results
+rpm --setperms copr-rpmbuild
+rpm --setugids copr-rpmbuild
 
 mkswap "${swap_device}p2"
 swapon "${swap_device}p2"
