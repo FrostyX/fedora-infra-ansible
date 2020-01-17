@@ -39,6 +39,10 @@
     </LocationMatch>
     <LocationMatch "^/coprs/.*/packages/">
         WSGIProcessGroup packages
+        <RequireAll>
+            Require all granted
+            Require not ip 192.47.255.254
+        </RequireAll>
     </LocationMatch>
 
     #ErrorLog logs/error_coprs
