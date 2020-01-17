@@ -56,6 +56,7 @@
   - restart copr-fe-fedora-messaging-reader
   tags:
   - config
+  - copr_infrastructure_password
 
 - name: enable and start redis  # TODO: .service in copr-backend should depend on redis
   service: name=redis enabled=yes state=started

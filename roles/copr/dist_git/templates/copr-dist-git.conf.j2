@@ -5,7 +5,13 @@ frontend_base_url={{frontend_base_url}}
 
 # must have same value as BACKEND_PASSWORD from have frontend in /etc/copr/copr.conf
 # default is PASSWORDHERE but you really should change it. really.
+{% if env == 'production' %}
 frontend_auth={{ copr_backend_password }}
+{% elif devel %}
+frontend_auth={{ copr_backend_password_dev }}
+{% else %}
+frontend_auth={{ copr_backend_password_stg }}
+{% endif %}
 
 # where import logs should be stored
 per_task_log_dir=/var/lib/copr-dist-git/per-task-logs/

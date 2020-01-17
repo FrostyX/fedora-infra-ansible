@@ -225,6 +225,7 @@
   - restart copr-backend
   tags:
   - config
+  - copr_infrastructure_password
 
 - name: create messaging config directory
   file: dest=/etc/copr/msgbuses state=directory owner=copr group=copr mode=0700

@@ -40,6 +40,7 @@
   template: src=copr-dist-git.conf.j2 dest=/etc/copr/copr-dist-git.conf mode=0644
   tags:
   - config
+  - copr_infrastructure_password
 
 - name: set git variables for copr-dist-git user
   copy: src=".gitconfig" dest="/home/copr-dist-git/.gitconfig"
