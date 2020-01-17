@@ -85,6 +85,11 @@
     when: "'releng_compose' in group_names"
 
   - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive05'
+    nfs_src_dir: '/fedora_koji_archive05'
+    when: "'releng_compose' in group_names"
+
+  - role: nfs/client
     mnt_dir: '/mnt/fedora_koji_prod'
     nfs_src_dir: "{{ koji_hub_nfs }}"
     when: "'releng_stg' in group_names"

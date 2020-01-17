@@ -70,6 +70,10 @@
     nfs_src_dir: 'fedora_koji_archive04'
     when: env == 'production' and inventory_hostname.startswith('koji')
   - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive05'
+    nfs_src_dir: 'fedora_koji_archive05'
+    when: env == 'production' and inventory_hostname.startswith('koji')
+  - role: nfs/client
     mnt_dir: '/mnt/koji'
     nfs_src_dir: 'fedora_s390/data'
     when: env == 'production' and inventory_hostname.startswith('s390')

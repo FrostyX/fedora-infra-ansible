@@ -41,6 +41,9 @@
     mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive04'
     nfs_src_dir: 'fedora_koji_archive04'
   - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive05'
+    nfs_src_dir: 'fedora_koji_archive05'
+  - role: nfs/client
     mnt_dir: '/mnt/fedora_app/app'
     nfs_src_dir: 'fedora_app/app'
   - role: nfs/client
