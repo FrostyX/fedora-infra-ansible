@@ -39,6 +39,7 @@ minsources 1
 allow 10.0.0.0/8
 {% elif ansible_hostname.startswith('cloud-noc') %}
 allow 209.132.184.0/24
+allow 38.145.48.0/23
 {% endif %}
 
 # Serve time even if not synchronized to a time source.
