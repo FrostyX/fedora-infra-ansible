@@ -48,7 +48,7 @@
     - libcurl # temporarily, for rhbz#1690971
 
 - name: stat /etc/copr-rpmbuild/mock.cfg.j2.rpmnew
-  stat: /etc/copr-rpmbuild/mock.cfg.j2.rpmnew
+  stat: path=/etc/copr-rpmbuild/mock.cfg.j2.rpmnew
   register: stat_mock_cfg_new
 
 - name: restore mock.cfg.j2 from package contents
