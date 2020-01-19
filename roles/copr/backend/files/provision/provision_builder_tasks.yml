@@ -40,16 +40,20 @@
 
 - package_facts: manager=auto
 
-- name: remove the baked-in-image mock.cfg.j2, will be reinstalled
-  file: path=/etc/copr-rpmbuild/mock.cfg.j2 state=absent
-  when: ansible_facts.packages['copr-builder'][0].version is version('0.31', '<=')
-
 - name: install copr-builder and other latest packages
   dnf: state=latest pkg="{{ packages }}"
   vars:
     packages:
     - copr-builder
     - libcurl # temporarily, for rhbz#1690971
+
+- name: stat /etc/copr-rpmbuild/mock.cfg.j2.rpmnew
+  stat: /etc/copr-rpmbuild/mock.cfg.j2.rpmnew
+  register: stat_mock_cfg_new
+
+- name: restore mock.cfg.j2 from package contents
+  shell: mv -f /etc/copr-rpmbuild/mock.cfg.j2.rpmnew /etc/copr-rpmbuild/mock.cfg.j2
+  when: stat_mock_cfg_new.exists
 
 # temporary thing, till we have merged:
 # https://pagure.io/copr/copr/pull-request/1109
