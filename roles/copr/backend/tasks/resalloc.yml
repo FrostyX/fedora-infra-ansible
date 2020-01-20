@@ -118,6 +118,8 @@
   with_items:
   - server.yaml
   - pools.yaml
+  tags:
+  - provision_config
 
 - name: start/enable resalloc server
   service:
