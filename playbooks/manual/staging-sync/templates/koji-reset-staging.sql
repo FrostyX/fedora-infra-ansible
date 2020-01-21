@@ -83,7 +83,7 @@ select now() as time, 'adding staging host {{ host }}' as msg;
 delete from host_config where host_id in (select id from host where name='{{host}}');
 delete from host where name='{{ host }}';
 delete from users where name='{{ host }}';
-insert into users (name, usertype, krb_principal, status) values ('{{ host }}', 1, 'compile/{{ host }}@STG.FEDORAPROJECT.ORG', 0);
+insert into user_krb_principals (name, user_krb_principal) values ('{{ host }}', 'compile/{{ host }}@STG.FEDORAPROJECT.ORG');
 insert into host (user_id, name) values (
     (select id from users where name='{{host}}'), '{{host}}');
 insert into host_config (host_id, arches, creator_id) values (
@@ -122,8 +122,8 @@ insert into cg_users (cg_id, user_id, creator_id) values (
                                ('containerbuild', 'osbs/osbs.stg.fedoraproject.org'),
                                ('bodhi', 'bodhi/bodhi.stg.fedoraproject.org'),
                                ('kojira', 'kojira/koji.stg.fedoraproject.org')] %}
-update users set krb_principal='{{principal}}@STG.FEDORAPROJECT.ORG' where name='{{username}}';
+update user_krb_principals set krb_principal='{{principal}}@STG.FEDORAPROJECT.ORG' where name='{{username}}';
 {% endfor %}
-update users set krb_principal=replace(krb_principal, '@FEDORAPROJECT.ORG', '@STG.FEDORAPROJECT.ORG');
+update user_krb_principals set krb_principal=replace(krb_principal, '@FEDORAPROJECT.ORG', '@STG.FEDORAPROJECT.ORG');
 
 -- TODO fix kojipkgs url in external repos
