@@ -3,7 +3,7 @@
   package:
     state: present
     name:
-    - python-psycopg2
+    - python3-psycopg2
     - postgresql-server
     - postgresql
     - pg-semver
@@ -20,7 +20,7 @@
     state: present
     name:
     - memcached
-    - python-memcached
+    - python3-memcached
   when: ansible_distribution == "RedHat" and faf_web_cache_type == "memcached"
 
 - name: memcached fedora
@@ -30,5 +30,5 @@
     - libmemcached
     - memcached
     - zlib
-    - python-pylibmc
+    - python3-pylibmc
   when: ansible_distribution == "Fedora" and faf_web_cache_type == "memcached"

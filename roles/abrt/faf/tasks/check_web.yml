@@ -14,9 +14,9 @@
   check_mode: no
   delegate_to: localhost
 
-- fail: msg="{{ main_url }} doesn't contain 'FAF' string"
+- fail: msg="{{ main_url }} doesn't contain 'ABRT' string"
   when:
-    "'FAF' not in uri_res.content"
+    "'ABRT' not in uri_res.content"
 
 - name: fetch problems
   uri:

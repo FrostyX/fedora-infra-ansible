@@ -88,8 +88,8 @@ domain: example.org
 # the URL can be also with /path part (e.g. example-faf.org/faf)
 faf_server_name: "example-faf.org"
 
-faf_web_brand_title: "FAF"
-faf_web_brand_subtitle: "Fedora Analysis Framework"
+faf_web_brand_title: "ABRT"
+faf_web_brand_subtitle: "Analysis"
 
 faf_web_fedmenu_url:
 # https://apps.fedoraproject.org/fedmenu
@@ -162,7 +162,7 @@ faf_opsys_list:
 faf_packages:
   - faf
   - faf-migrations
-  - faf-yum
+  - faf-dnf
 
 faf_problem_packages:
   - faf-problem-coredump

@@ -2,7 +2,7 @@
 
 - name: enable Copr repo for RHEL
   copy:
-    src: group_abrt-faf-el7-epel-7.repo
+    src: group_abrt-faf-el8-epel-8.repo
     dest: /etc/yum.repos.d/
   when: ansible_distribution == 'RedHat'
 
