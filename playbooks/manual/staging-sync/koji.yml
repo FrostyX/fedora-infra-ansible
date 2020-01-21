@@ -34,19 +34,19 @@
   - db-sync
   vars:
   - builder_groups:
-    - name: buildvm-stg
+    - name: buildvm_stg
       arches: i386 x86_64
       extra_channels:
       - container
       - createrepo
       - livemedia
-    - name: buildvm-aarch64-stg
+    - name: buildvm_aarch64_stg
       arches: aarch64
-    - name: buildvm-armv7-stg
+    - name: buildvm_armv7_stg
       arches: armhfp
-    - name: buildvm-ppc64le-stg
+    - name: buildvm_ppc64le_stg
       arches: ppc64le
-    - name: buildvm-s390x-stg
+    - name: buildvm_s390x_stg
       arches: s390x
   # Users allowed to use content generators, only in staging
   - cg_users:
