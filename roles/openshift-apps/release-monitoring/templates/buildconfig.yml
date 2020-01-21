@@ -45,7 +45,7 @@ items:
             dnf autoremove -y && \
             dnf clean all -y
         RUN pip-3 install sqlalchemy_schemadisplay
-        RUN git clone https://github.com/release-monitoring/anitya.git && \
+        RUN git clone https://github.com/fedora-infra/anitya.git && \
                 pushd anitya && \
 {% if env == 'staging' %}
                 git checkout staging && \
@@ -77,7 +77,7 @@ items:
         EXPOSE 9940
       type: Dockerfile
       git:
-        uri: https://github.com/release-monitoring/anitya.git
+        uri: https://github.com/fedora-infra/anitya.git
 {% if env == 'staging' %}
         ref: staging
 {% else %}
