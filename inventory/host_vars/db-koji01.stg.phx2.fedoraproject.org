@@ -8,8 +8,8 @@ mac_address: 52:54:00:71:a6:eb
 vmhost: bvirthost01.stg.phx2.fedoraproject.org
 datacenter: phx2
 
-ks_url: http://10.5.126.23/repo/rhel/ks/kvm-fedora-29
-ks_repo: http://10.5.126.23/pub/fedora/linux/releases/29/Server/x86_64/os/
+ks_url: http://10.5.126.23/repo/rhel/ks/kvm-fedora-31
+ks_repo: http://10.5.126.23/pub/fedora/linux/releases/31/Server/x86_64/os/
 
 # This is a generic list, monitored by collectd
 databases:
