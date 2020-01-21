@@ -10,7 +10,7 @@
 
 
 - name: bring staging services down
-  hosts: koji-stg
+  hosts: koji_stg
   user: root
   vars_files:
    - /srv/web/infra/ansible/vars/global.yml
@@ -85,7 +85,7 @@
     shell: psql -v ON_ERROR_STOP=1 koji <<<"VACUUM ANALYZE"
 
 - name: bring staging services up
-  hosts: koji-stg
+  hosts: koji_stg
   user: root
   vars_files:
    - /srv/web/infra/ansible/vars/global.yml
