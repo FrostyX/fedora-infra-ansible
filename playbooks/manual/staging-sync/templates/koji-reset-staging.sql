@@ -116,13 +116,13 @@ insert into cg_users (cg_id, user_id, creator_id) values (
 {% endfor %}
 
 -- Fix krb principals for some users
-{% for username, principal in [('releng', 'compose/koji.stg.fedoraproject.org'),
-                               ('koschei', 'koschei/koschei-backend01.stg.phx2.fedoraproject.org'),
-                               ('hotness', 'hotness/hotness01.stg.phx2.fedoraproject.org'),
-                               ('containerbuild', 'osbs/osbs.stg.fedoraproject.org'),
-                               ('bodhi', 'bodhi/bodhi.stg.fedoraproject.org'),
-                               ('kojira', 'kojira/koji.stg.fedoraproject.org')] %}
-update user_krb_principals set krb_principal='{{principal}}@STG.FEDORAPROJECT.ORG' where name='{{username}}';
+{% for user_id, principal in [('3445', 'compose/koji.stg.fedoraproject.org'),
+                               ('3199', 'koschei/koschei-backend01.stg.phx2.fedoraproject.org'),
+                               ('3139', 'hotness/hotness01.stg.phx2.fedoraproject.org'),
+                               ('3538', 'osbs/osbs.stg.fedoraproject.org'),
+                               ('428', 'bodhi/bodhi.stg.fedoraproject.org'),
+                               ('129', 'kojira/koji.stg.fedoraproject.org')] %}
+update user_krb_principals set krb_principal='{{principal}}@STG.FEDORAPROJECT.ORG' where user_id='{{user_id}}';
 {% endfor %}
 update user_krb_principals set krb_principal=replace(krb_principal, '@FEDORAPROJECT.ORG', '@STG.FEDORAPROJECT.ORG');
 
