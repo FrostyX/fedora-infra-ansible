@@ -83,7 +83,9 @@ select now() as time, 'adding staging host {{ host }}' as msg;
 delete from host_config where host_id in (select id from host where name='{{host}}');
 delete from host where name='{{ host }}';
 delete from users where name='{{ host }}';
-insert into user_krb_principals (name, user_krb_principal) values ('{{ host }}', 'compile/{{ host }}@STG.FEDORAPROJECT.ORG');
+insert into users (name, status, usertype) values ('{{ host }}', 0, 1);
+insert into user_krb_principals (user_id, krb_principal) values (
+    (select id from users where name ='{{ host }}'), 'compile/{{ host }}@STG.FEDORAPROJECT.ORG');
 insert into host (user_id, name) values (
     (select id from users where name='{{host}}'), '{{host}}');
 insert into host_config (host_id, arches, creator_id) values (
