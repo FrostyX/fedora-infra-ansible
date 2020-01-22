@@ -7,6 +7,15 @@ indexes:
         registry_public: /
         tags: ['latest']
         required_annotations: ['org.flatpak.ref']
+        skip_flatpak_labels: True
+        extract_icons: True
+    flatpak_labels:
+        output: /var/lib/regindexer/index/flatpak-labels.json
+        registry: https://registry{{ env_suffix }}.fedoraproject.org
+        registry_public: /
+        tags: ['latest']
+        required_labels: ['org.flatpak.ref']
+        skip_flatpak_annotations: True
         extract_icons: True
     flatpak_testing:
         output: /var/lib/regindexer/index/flatpak-testing.json
@@ -14,6 +23,15 @@ indexes:
         registry_public: /
         tags: ['testing']
         required_annotations: ['org.flatpak.ref']
+        skip_flatpak_labels: True
+        extract_icons: True
+    flatpak_testing_labels:
+        output: /var/lib/regindexer/index/flatpak-testing-labels.json
+        registry: https://registry{{ env_suffix }}.fedoraproject.org
+        registry_public: /
+        tags: ['testing']
+        required_labels: ['org.flatpak.ref']
+        skip_flatpak_annotations: True
         extract_icons: True
     flatpak_amd64:
         output: /var/lib/regindexer/index/flatpak-amd64.json
@@ -22,6 +40,16 @@ indexes:
         tags: ['latest']
         required_annotations: ['org.flatpak.ref']
         architectures: ['amd64']
+        skip_flatpak_labels: True
+        extract_icons: True
+    flatpak_amd64_labels:
+        output: /var/lib/regindexer/index/flatpak-amd64-labels.json
+        registry: https://registry{{ env_suffix }}.fedoraproject.org
+        registry_public: /
+        tags: ['latest']
+        required_labels: ['org.flatpak.ref']
+        architectures: ['amd64']
+        skip_flatpak_annotations: True
         extract_icons: True
     flatpak_testing_amd64:
         output: /var/lib/regindexer/index/flatpak-testing-amd64.json
@@ -30,6 +58,16 @@ indexes:
         tags: ['testing']
         required_annotations: ['org.flatpak.ref']
         architectures: ['amd64']
+        skip_flatpak_labels: True
+        extract_icons: True
+    flatpak_testing_amd64_labels:
+        output: /var/lib/regindexer/index/flatpak-testing-amd64-labels.json
+        registry: https://registry{{ env_suffix }}.fedoraproject.org
+        registry_public: /
+        tags: ['testing']
+        required_labels: ['org.flatpak.ref']
+        architectures: ['amd64']
+        skip_flatpak_annotations: True
         extract_icons: True
 daemon: 
     topic_prefix: org.fedoraproject
