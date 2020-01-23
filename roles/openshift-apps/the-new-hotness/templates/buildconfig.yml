@@ -13,7 +13,7 @@ items:
     runPolicy: Serial
     source:
       dockerfile: |-
-        FROM fedora:29
+        FROM fedora:30
         LABEL \
           name="the-new-hotness" \
           vendor="Fedora Infrastructure" \
