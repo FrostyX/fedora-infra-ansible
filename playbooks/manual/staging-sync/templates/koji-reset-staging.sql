@@ -82,6 +82,7 @@ update repo set state = 3 where state in (0, 1, 2);
 select now() as time, 'adding staging host {{ host }}' as msg;
 delete from host_config where host_id in (select id from host where name='{{host}}');
 delete from host where name='{{ host }}';
+delete from user_krb_principals where id = (select id from users where name ='{{ host }}');
 delete from users where name='{{ host }}';
 insert into users (name, status, usertype) values ('{{ host }}', 0, 1);
 insert into user_krb_principals (user_id, krb_principal) values (
