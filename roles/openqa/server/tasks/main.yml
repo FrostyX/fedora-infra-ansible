@@ -279,6 +279,11 @@
   changed_when: "admin.rc == 0"
   failed_when: "(admin.rc > 0) and (admin.stderr is not defined or admin.stderr.find('already exists') == -1)"
 
+- name: Check if we're on upstream template format or FIF
+  stat: 
+    path: /var/lib/openqa/share/tests/fedora/templates.fif.json
+  register: templatesfif
+
 - name: Dump existing config for checking changes
   shell: "/usr/share/openqa/script/dump_templates --json > /tmp/tmpl-old.json"
   when: "(gittests is defined) and (gittests is changed)"
@@ -286,16 +291,21 @@
 
 # Because of the boring details of how template loading works, getting
 # a correct 'changed' for this step is too difficult. Instead we have
-# the prior and following steps; when the templates actually changed,
-# the *following* step will register as changed.
-- name: Load main tests
+# the dump (above) and check (later) steps; when the templates actually
+# changed, the *check* step will register as changed.
+- name: Load main tests (upstream format)
   command: "/var/lib/openqa/share/tests/fedora/templates --clean"
-  when: "(gittests is defined) and (gittests is changed)"
+  when: "(gittests is defined) and (gittests is changed) and (templatesfif.stat.exists == false)"
   changed_when: "1 != 1"
 
-- name: Load update tests
+- name: Load update tests (upstream format)
   command: "/var/lib/openqa/share/tests/fedora/templates-updates --update"
-  when: "(gittests is defined) and (gittests is changed)"
+  when: "(gittests is defined) and (gittests is changed) and (templatesfif.stat.exists == false)"
+  changed_when: "1 != 1"
+
+- name: Load all tests (FIF format)
+  command: "/var/lib/openqa/share/tests/fedora/fifloader -l --clean templates.fif.json templates-updates.fif.json"
+  when: "(gittests is defined) and (gittests is changed) and (templatesfif.stat.exists == true)"
   changed_when: "1 != 1"
 
 - name: Check if the tests changed in previous step
