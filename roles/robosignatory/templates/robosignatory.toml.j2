@@ -105,6 +105,12 @@ handlers = ["console"]
             keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
 
             [[consumer_config.koji_instances.primary.tags]]
+            from = "f32-rebuild"
+            to = "f32-rebuild"
+            key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
+
+            [[consumer_config.koji_instances.primary.tags]]
             from = "f32-python"
             to = "f32-python"
             key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
