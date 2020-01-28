@@ -404,6 +404,7 @@ proxy11.fedoraproject.org
 proxy12.fedoraproject.org
 proxy13.fedoraproject.org
 proxy14.fedoraproject.org
+proxy30.fedoraproject.org
 proxy101.phx2.fedoraproject.org
 proxy110.phx2.fedoraproject.org
 
@@ -1373,3 +1374,6 @@ virthost-aarch64-os02.fedorainfracloud.org
 [os_proxies]
 os-proxy01.fedorainfracloud.org
 os-proxy02.fedorainfracloud.org
+
+[ec2]
+proxy30.fedoraproject.org
