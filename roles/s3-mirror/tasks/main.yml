@@ -117,6 +117,38 @@
   tags:
   - s3-mirror
 
+- name: s3sync cron - epel 8 Everything x86_64
+  cron: name="s3sync-epel8-everything-x86_64" minute="43" hour="3,6,9,12,15,17,20,23" user="s3-mirror"
+        job='/usr/local/bin/lock-wrapper s3sync-epel8-everything-x86_64 "/usr/local/bin/s3-sync-path.sh /pub/epel/8/Everything/x86_64/" 2>&1 | /usr/local/bin/nag-once s3-epel8-everything-x86_64.sh 1d 2>&1'
+        cron_file=s3-epel8-everything-x86_64.sh
+  when: env != 'staging' and inventory_hostname.startswith('mm-backend01.')
+  tags:
+  - s3-mirror
+
+- name: s3sync cron - epel 8 Everything aarch64
+  cron: name="s3sync-epel8-everything-aarch64" minute="38" hour="4,7,10,13,16,19,22" user="s3-mirror"
+        job='/usr/local/bin/lock-wrapper s3sync-epel8-everything-aarch64 "/usr/local/bin/s3-sync-path.sh /pub/epel/8/Everything/aarch64/" 2>&1 | /usr/local/bin/nag-once s3-epel8-everything-aarch64.sh 1d 2>&1'
+        cron_file=s3-epel8-everything-aarch64.sh
+  when: env != 'staging' and inventory_hostname.startswith('mm-backend01.')
+  tags:
+  - s3-mirror
+
+- name: s3sync cron - epel 8 Modular x86_64
+  cron: name="s3sync-epel8-modular-x86_64" minute="32" hour="3,6,9,12,15,17,20,23" user="s3-mirror"
+        job='/usr/local/bin/lock-wrapper s3sync-epel8-modular-x86_64 "/usr/local/bin/s3-sync-path.sh /pub/epel/8/Modular/x86_64/" 2>&1 | /usr/local/bin/nag-once s3-epel8-modular-x86_64.sh 1d 2>&1'
+        cron_file=s3-epel8-modular-x86_64.sh
+  when: env != 'staging' and inventory_hostname.startswith('mm-backend01.')
+  tags:
+  - s3-mirror
+
+- name: s3sync cron - epel 8 Modular aarch64
+  cron: name="s3sync-epel8-modular-aarch64" minute="27" hour="4,7,10,13,16,19,22" user="s3-mirror"
+        job='/usr/local/bin/lock-wrapper s3sync-epel8-modular-aarch64 "/usr/local/bin/s3-sync-path.sh /pub/epel/8/Modular/aarch64/" 2>&1 | /usr/local/bin/nag-once s3-epel8-modular-aarch64.sh 1d 2>&1'
+        cron_file=s3-epel8-modular-aarch64.sh
+  when: env != 'staging' and inventory_hostname.startswith('mm-backend01.')
+  tags:
+  - s3-mirror
+
 #- name: s3sync-logs cron
 #  cron: name="s3sync-logs" hour="0" user="root"
 #        job='/usr/local/bin/lock-wrapper s3sync-logs "/bin/sleep $((${RANDOM} \% 300)); /usr/local/bin/s3sync-logs >> /var/log/s3-mirror-logs/s3sync-logs.log 2>&1" | /usr/local/bin/nag-once s3mirror-logs 12h 2>&1'
