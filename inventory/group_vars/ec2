@@ -1,2 +1,5 @@
 # For Fedora instances, we want to ssh as 'fedora', not as 'root'
-#ansible_ssh_user: fedora
+ansible_ssh_user: fedora
+ansible_become: true
+ansible_become_user: root
+ansible_become_method: sudo
