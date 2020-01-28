@@ -3,3 +3,6 @@ ansible_ssh_user: fedora
 ansible_become: true
 ansible_become_user: root
 ansible_become_method: sudo
+
+# Disable ethX ifcfg, let amazon handle these via DHCP.
+ansible_ifcfg_whitelist: ['eth0', 'eth1', 'eth2', 'eth3']
