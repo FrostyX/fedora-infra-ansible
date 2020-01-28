@@ -5,4 +5,4 @@ ansible_become_user: root
 ansible_become_method: sudo
 
 # Disable ethX ifcfg, let amazon handle these via DHCP.
-ansible_ifcfg_whitelist: ['eth0', 'eth1', 'eth2', 'eth3']
+ansible_ifcfg_blacklist: true
