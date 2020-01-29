@@ -75,7 +75,6 @@ items:
       github:
         secret: "{{ hotness_github_secret }}"
 {% endif %}
-    - type: ConfigChange
     - type: ImageChange
 kind: List
 metadata: {}
