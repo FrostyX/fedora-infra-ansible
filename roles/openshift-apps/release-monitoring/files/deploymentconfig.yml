@@ -15,7 +15,7 @@ items:
       activeDeadlineSeconds: 21600
       recreateParams:
         timeoutSeconds: 600
-        pre:
+        mid:
           failurePolicy: Abort
           execNewPod:
             containerName: release-monitoring-web
