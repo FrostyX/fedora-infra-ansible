@@ -91,5 +91,6 @@ items:
           name: the-new-hotness:latest
           namespace: the-new-hotness
       type: ImageChange
+    - type: ConfigChange
 kind: List
 metadata: {}
