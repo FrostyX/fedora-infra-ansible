@@ -34,17 +34,12 @@ frontend_auth={{ copr_backend_password_stg }}
 
 build_groups=5
 
+# new OS cloud, VMM based backend
 group0_name=PC
 group0_archs=i386,x86_64,i586,armhfp
-
-group1_name=PPC64LE
-group1_archs=ppc64le
-
-# new OS cloud, VMM based backend
 group0_spawn_playbook=/home/copr/provision/builderpb_nova.yml
 group0_terminate_playbook=/home/copr/provision/terminatepb_nova.yml
 group0_vm_spawn_min_interval=5
-
 {% if devel %}
 group0_max_vm_per_user=4
 group0_max_vm_total=12
@@ -55,9 +50,10 @@ group0_max_spawn_processes=5
 {% endif %}
 group0_playbook_timeout=1000
 
+group1_name=PPC64LE
+group1_archs=ppc64le
 group1_spawn_playbook=/home/copr/provision/builderpb_nova_ppc64le.yml
 group1_terminate_playbook=/home/copr/provision/terminatepb_nova.yml
-
 {% if devel %}
 group1_max_vm_per_user=2
 group1_max_vm_total=2
@@ -95,7 +91,6 @@ group3_terminate_playbook=/home/copr/provision/terminatepb-aws.yml
 group3_vm_health_check_period=30
 group3_vm_health_check_max_time=80
 group3_vm_spawn_min_interval=5
-
 {% if not devel %}
 group3_max_vm_total=32
 group3_max_vm_per_user=4
@@ -113,7 +108,6 @@ group4_terminate_playbook=/home/copr/provision/terminatepb-aws.yml
 group4_vm_health_check_period=30
 group4_vm_health_check_max_time=80
 group4_vm_spawn_min_interval=5
-
 {% if not devel %}
 group4_max_vm_total=10
 group4_max_vm_per_user=3
