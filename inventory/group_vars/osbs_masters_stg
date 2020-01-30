@@ -75,7 +75,7 @@ _osbs_reactor_config_map:
       aarch64:
       - name: "aarch64"
         max_concurrent_builds: 1
-        enabled: False
+        enabled: True
 
     clusters_client_config_dir: "/var/run/secrets/atomic-reactor/client-config-secret"
 
