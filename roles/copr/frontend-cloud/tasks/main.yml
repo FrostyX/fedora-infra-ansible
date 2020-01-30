@@ -12,12 +12,12 @@
 
 - name: install daily custom copr-frontend-crontab
   copy: src=cron.daily/copr-frontend-optional dest=/etc/cron.daily/
-  mode: 0755
+        mode=0755
   tags: [cron_tasks]
 
 - name: install hourly custom copr-frontend-crontab
   copy: src=cron.hourly/copr-frontend-optional dest=/etc/cron.hourly/
-  mode: 0755
+        mode=0755
   tags: [cron_tasks]
 
 - name: install copr-frontend and copr-selinux
