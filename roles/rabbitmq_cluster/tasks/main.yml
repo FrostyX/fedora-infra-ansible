@@ -250,7 +250,7 @@
     configure_priv: .*
     read_priv: .*
     write_priv: .*
-    tags: management
+    tags: administrator
   with_items:
   - /
   - /pubsub
