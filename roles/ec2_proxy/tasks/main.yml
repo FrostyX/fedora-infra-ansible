@@ -1,0 +1,15 @@
+---
+- name: Create partition for /srv
+  parted: device=/dev/nvme1n1 number=1 state=present
+  tags:
+  - ec2_proxy
+
+- name: Make it ext3
+  filesystem: fstype=ext3 dev=/dev/nvme1n1p1
+  tags:
+  - ec2_proxy
+
+- name: mount /srv
+  mount: name=/srv src=/dev/nvme1n1p1 fstype=ext3 state=mounted
+  tags:
+  - ec2_proxy
