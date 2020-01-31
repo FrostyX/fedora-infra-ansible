@@ -22,7 +22,7 @@
   - rkhunter
   - nagios_client
   - { role: ec2_proxy,
-      when: inventory_hostname in groups['ec2'] }
+      when: "inventory_hostname in groups['ec2']" }
   - collectd/base
   - sudo
   - rsyncd
