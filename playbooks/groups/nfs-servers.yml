@@ -46,46 +46,79 @@
       file: path=/srv/nfs state=directory owner=root group=root
       tags:
         - drives
+        - copr
 
-    - name: create copr storage
+    - name: create copr-dist-git storage
       lvol: vg=VG_nfs lv=copr-dist-git size=10t shrink=no
       tags:
         - drives
+        - copr
 
-    - name: Create FS for copr
+    - name: Create FS for copr-dist-git
       filesystem: fstype=xfs dev=/dev/VG_nfs/copr-dist-git
       tags:
         - drives
+        - copr
 
-    - name: Create copr tree directory
+    - name: Create copr-dist-git tree directory
       file: path=/srv/nfs/copr-dist-git state=directory owner=root group=root
       tags:
         - drives
+        - copr
 
-    - name: Mount copr tree directory
+    - name: Mount copr-dist-git tree directory
       mount: name=/srv/nfs/copr-dist-git src=/dev/mapper/VG_nfs-copr--dist--git fstype=xfs state=mounted
       tags:
         - drives
+        - copr
 
-    - name: create dev copr storage
+    - name: create dev copr-dist-git-dev storage
       lvol: vg=VG_nfs lv=copr-dist-git-dev size=1t shrink=no
       tags:
-      - drives
+        - drives
+        - copr
 
-    - name: Create FS for dev copr
+    - name: Create FS for dev copr-dist-git-dev
       filesystem: fstype=xfs dev=/dev/VG_nfs/copr-dist-git-dev
       tags:
-      - drives
+        - drives
+        - copr
 
-    - name: Create dev copr tree directory
+    - name: Create dev copr-dist-git tree directory
       file: path=/srv/nfs/copr-dist-git-dev state=directory owner=root group=root
       tags:
-      - drives
+        - drives
+        - copr
 
-    - name: Mount dev copr tree directory
+    - name: Mount dev copr-dist-git tree directory
       mount: name=/srv/nfs/copr-dist-git-dev src=/dev/mapper/VG_nfs-copr--dist--git--dev fstype=xfs state=mounted
       tags:
-      - drives
+        - drives
+        - copr
+
+    - name: create copr-be storage
+      lvol: vg=VG_nfs lv=copr-be size=20t shrink=no
+      tags:
+        - drives
+        - copr
+
+    - name: Create FS for copr-be
+      filesystem: fstype=xfs dev=/dev/VG_nfs/copr-be
+      tags:
+        - drives
+        - copr
+
+    - name: Create copr-be tree directory
+      file: path=/srv/nfs/copr-be state=directory owner=root group=root
+      tags:
+        - drives
+        - copr
+
+    - name: Mount copr-be tree directory
+      mount: name=/srv/nfs/copr-be src=/dev/mapper/VG_nfs-copr--be fstype=xfs state=mounted
+      tags:
+        - drives
+        - copr
 
     - name: create 1 GB communishift logical volumes
       lvol: vg=VG_nfs lv=openshift-01gb-{{item}} size=1g shrink=no
