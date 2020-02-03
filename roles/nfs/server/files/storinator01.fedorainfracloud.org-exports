@@ -1,4 +1,5 @@
 ## COPR items
+/srv/nfs/copr-be 209.132.184.48(rw,no_root_squash)
 /srv/nfs/copr-dist-git 209.132.184.163(rw,no_root_squash)
 /srv/nfs/copr-dist-git-dev 209.132.184.179(rw,no_root_squash)
 ## OpenShift Items
