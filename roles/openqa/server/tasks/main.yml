@@ -304,7 +304,7 @@
   changed_when: "1 != 1"
 
 - name: Load all tests (FIF format)
-  command: "/var/lib/openqa/share/tests/fedora/fifloader -l --clean templates.fif.json templates-updates.fif.json"
+  command: "/var/lib/openqa/share/tests/fedora/fifloader.py -l --clean templates.fif.json templates-updates.fif.json"
   when: "(gittests is defined) and (gittests is changed) and (templatesfif.stat.exists == true)"
   changed_when: "1 != 1"
 
