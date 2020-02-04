@@ -124,6 +124,7 @@ insert into cg_users (cg_id, user_id, creator_id) values (
                                ('3139', 'hotness/hotness01.stg.phx2.fedoraproject.org'),
                                ('3538', 'osbs/osbs.stg.fedoraproject.org'),
                                ('428', 'bodhi/bodhi.stg.fedoraproject.org'),
+                               ('3638', 'autosign/autosign01.stg.phx2.fedoraproject.org'),
                                ('129', 'kojira/koji.stg.fedoraproject.org')] %}
 update user_krb_principals set krb_principal='{{principal}}@STG.FEDORAPROJECT.ORG' where user_id='{{user_id}}';
 {% endfor %}
