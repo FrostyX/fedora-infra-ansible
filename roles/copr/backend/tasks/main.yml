@@ -111,11 +111,15 @@
   copy: src="lighttpd/access_log.conf" dest=/etc/lighttpd/conf.d/access_log.conf owner=root group=root mode=0644
   notify:
   - restart lighttpd
+  tags:
+  - config
 
 - name: add config for copr-repo path
   copy: src="{{ _lighttpd_conf_src }}" dest=/etc/lighttpd/lighttpd.conf owner=root group=root mode=0644
   notify:
   - restart lighttpd
+  tags:
+  - config
 
 # TODO: move production to Let's Encrypt as well as devel
 - name: install certificates for production
@@ -142,6 +146,8 @@
   - mime.conf
   notify:
   - restart lighttpd
+  tags:
+  - config
 
 - name: provisional copr-backend cron.weekly job
   copy: src="cron.weekly/copr-backend" dest="/etc/cron.weekly/copr-backend" owner=root group=root mode=0644
