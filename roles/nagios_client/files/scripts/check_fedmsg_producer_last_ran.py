@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 import arrow
 import json
@@ -16,18 +16,18 @@ try:
     fname = '/var/run/fedmsg/monitoring-%s.socket' % service
 
     if not os.path.exists(fname):
-        print "UNKNOWN - %s does not exist" % fname
+        print("UNKNOWN - %s does not exist" % fname)
         sys.exit(3)
 
     if not os.access(fname, os.W_OK):
-        print "UNKNOWN - cannot write to %s" % fname
+        print("UNKNOWN - cannot write to %s" % fname)
         sys.exit(3)
 
     connect_to = "ipc:///%s" % fname
     ctx = zmq.Context()
     s = ctx.socket(zmq.SUB)
     s.connect(connect_to)
-    s.setsockopt(zmq.SUBSCRIBE, '')
+    s.setsockopt_string(zmq.SUBSCRIBE, '')
 
     poller = zmq.Poller()
     poller.register(s, zmq.POLLIN)
@@ -39,7 +39,7 @@ try:
         msg = s.recv()
         msg = json.loads(msg)
     else:
-       print 'UNKNOWN - ZMQ timeout.  No message received in %i ms' % timeout
+       print('UNKNOWN - ZMQ timeout.  No message received in %i ms' % timeout)
        sys.exit(3)
 
     now = time.time()
@@ -50,20 +50,20 @@ try:
         diff = now - prod['last_ran']
         then = arrow.get(prod['last_ran']).humanize()
         if diff > elapsed_critical:
-            print "CRITICAL: %s last ran %s (%i seconds ago)" % (
+            print("CRITICAL: %s last ran %s (%i seconds ago)" % ()
                 check_producer, then, diff)
             sys.exit(2)
         elif diff > elapsed_warning:
-            print "WARNING: %s last ran %s (%i seconds ago)" % (
+            print("WARNING: %s last ran %s (%i seconds ago)" % ()
                 check_producer, then, diff)
             sys.exit(1)
         else:
-            print "OK: %s last ran %s (%i seconds ago)" % (
+            print("OK: %s last ran %s (%i seconds ago)" % ()
                 check_producer, then, diff)
             sys.exit(0)
 
-    print "UNKNOWN: fedmsg producer %s not found" % check_producer
+    print("UNKNOWN: fedmsg producer %s not found" % check_producer)
     sys.exit(3)
 except Exception as err:
-    print "UNKNOWN:", str(err)
+    print("UNKNOWN:", str(err))
     sys.exit(3)

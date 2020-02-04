@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 import json
 import os
@@ -14,14 +14,14 @@ try:
     fname = '/var/run/fedmsg/monitoring-%s.socket' % service
 
     if not os.path.exists(fname):
-        print "UNKNOWN - %s does not exist" % fname
+        print("UNKNOWN - %s does not exist" % fname)
         sys.exit(3)
 
     connect_to = "ipc:///%s" % fname
     ctx = zmq.Context()
     s = ctx.socket(zmq.SUB)
     s.connect(connect_to)
-    s.setsockopt(zmq.SUBSCRIBE, '')
+    s.setsockopt_string(zmq.SUBSCRIBE, '')
 
     poller = zmq.Poller()
     poller.register(s, zmq.POLLIN)
@@ -33,26 +33,26 @@ try:
         msg = s.recv()
         msg = json.loads(msg)
     else:
-       print 'UNKNOWN - ZMQ timeout.  No message received in %i ms' % timeout
+       print('UNKNOWN - ZMQ timeout.  No message received in %i ms' % timeout)
        sys.exit(3)
 
     for consumer in msg['consumers']:
         if consumer['name'] == check_consumer:
             if consumer['backlog'] is None:
-                print 'ERROR: fedmsg consumer %s is not initialized' % consumer['name']
+                print('ERROR: fedmsg consumer %s is not initialized' % consumer['name'])
                 sys.exit(3)
             elif consumer['backlog'] > backlog_critical:
-                print 'CRITICAL: fedmsg consumer %s backlog value is %i' % (consumer['name'],consumer['backlog'])
+                print('CRITICAL: fedmsg consumer %s backlog value is %i' % (consumer['name'],consumer['backlog']))
                 sys.exit(2)
             elif consumer['backlog'] > backlog_warning:
-                print 'WARNING: fedmsg consumer %s backlog value is %i' % (consumer['name'],consumer['backlog'])
+                print('WARNING: fedmsg consumer %s backlog value is %i' % (consumer['name'],consumer['backlog']))
                 sys.exit(1)
             else:
-                print 'OK: fedmsg consumer %s backlog value is %i' % (consumer['name'],consumer['backlog'])
+                print('OK: fedmsg consumer %s backlog value is %i' % (consumer['name'],consumer['backlog']))
                 sys.exit(0)
 
-    print "UNKNOWN: fedmsg consumer %s not found" % check_consumer
+    print("UNKNOWN: fedmsg consumer %s not found" % check_consumer)
     sys.exit(3)
 except Exception as err:
-    print "UNKNOWN:", str(err)
+    print("UNKNOWN:", str(err))
     sys.exit(3)

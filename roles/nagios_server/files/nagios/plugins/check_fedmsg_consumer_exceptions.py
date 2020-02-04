@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 
 import json
 import os
@@ -14,14 +14,14 @@ try:
     fname = '/var/run/fedmsg/monitoring-%s.socket' % service
 
     if not os.path.exists(fname):
-        print "UNKNOWN - %s does not exist" % fname
+        print("UNKNOWN - %s does not exist" % fname)
         sys.exit(3)
 
     connect_to = "ipc:///%s" % fname
     ctx = zmq.Context()
     s = ctx.socket(zmq.SUB)
     s.connect(connect_to)
-    s.setsockopt(zmq.SUBSCRIBE, '')
+    s.setsockopt_string(zmq.SUBSCRIBE, '')
     poller = zmq.Poller()
     poller.register(s, zmq.POLLIN)
 
@@ -32,23 +32,23 @@ try:
         msg = s.recv()
         msg = json.loads(msg)
     else:
-       print 'UNKNOWN - ZMQ timeout.  No message received in %i ms' % timeout
+       print('UNKNOWN - ZMQ timeout.  No message received in %i ms' % timeout)
        sys.exit(3)
 
     for consumer in msg['consumers']:
         if consumer['name'] == check_consumer:
             if consumer['exceptions'] > exceptions_critical:
-                print 'CRITICAL: fedmsg consumer %s exceptions value is %i' % (consumer['name'],consumer['exceptions'])
+                print('CRITICAL: fedmsg consumer %s exceptions value is %i' % (consumer['name'],consumer['exceptions']))
                 sys.exit(2)
             elif consumer['exceptions'] > exceptions_warning:
-                print 'WARNING: fedmsg consumer %s exceptions value is %i' % (consumer['name'],consumer['exceptions'])
+                print('WARNING: fedmsg consumer %s exceptions value is %i' % (consumer['name'],consumer['exceptions']))
                 sys.exit(1)
             else:
-                print 'OK: fedmsg consumer %s exceptions value is %i' % (consumer['name'],consumer['exceptions'])
+                print('OK: fedmsg consumer %s exceptions value is %i' % (consumer['name'],consumer['exceptions']))
                 sys.exit(0)
 
-    print "UNKNOWN: fedmsg consumers %s not found" % check_consumer
+    print("UNKNOWN: fedmsg consumers %s not found" % check_consumer)
     sys.exit(3)
 except Exception as err:
-    print "UNKNOWN:", str(err)
+    print("UNKNOWN:", str(err))
     sys.exit(3)
