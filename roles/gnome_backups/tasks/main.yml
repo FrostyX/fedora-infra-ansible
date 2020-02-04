@@ -26,7 +26,6 @@
   file: dest=/gnome_backups/{{ item }} owner=gnomebackup group=gnomebackup state=directory
   with_items:
   - signal.gnome.org
-  - webapps2.gnome.org
   - view.gnome.org
   - puppetmaster01.gnome.org
   - palette.gnome.org
