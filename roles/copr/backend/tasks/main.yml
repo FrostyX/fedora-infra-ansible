@@ -27,6 +27,7 @@
       - python3-keystoneclient
       - php-cli
       - cronolog
+      - nfs-utils
 
 #- name: patch for prunerepo, issue 1090
 #  patch: src=patches/prunerepo-dataloss.patch
