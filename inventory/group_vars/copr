@@ -10,7 +10,7 @@ keygen_host: "172.25.33.75"
 
 resolvconf: "resolv.conf/cloud"
 
-backend_base_url: "https://download.copr.fedorainfracloud.org/"
+backend_base_url: "https://download.copr.fedorainfracloud.org"
 postfix_maincf: "postfix/main.cf/main.cf.copr"
 
 frontend_base_url: "https://copr.fedorainfracloud.org"
