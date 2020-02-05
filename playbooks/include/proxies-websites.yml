@@ -744,7 +744,8 @@
 
   - role: httpd/website
     site_name: lists.fedorahosted.org
-    server_aliases: [lists.stg.fedorahosted.org]
+    server_aliases: 
+      - lists.stg.fedorahosted.org
     sslonly: true
     certbot: true
     tags: fedorahosted
@@ -1007,7 +1008,11 @@
   - role: httpd/website
     site_name: fedorahosted.org
     sslonly: true
-    server_aliases: [git.fedorahosted.org bzr.fedorahosted.org hg.fedorahosted.org svn.fedorahosted.org]
+    server_aliases: 
+      - git.fedorahosted.org 
+      - bzr.fedorahosted.org 
+      - hg.fedorahosted.org 
+      - svn.fedorahosted.org
     certbot: true
     tags: fedorahosted
 
