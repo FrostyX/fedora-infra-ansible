@@ -395,10 +395,10 @@
     server_aliases:
     - www.fedoracommunity.org
     - stg.fedoracommunity.org
-    - fedoraproject.community
-    - fedora.community
-    - www.fedora.community
-    - www.fedoraproject.community
+    # - fedoraproject.community
+    # - fedora.community
+    # - www.fedora.community
+    # - www.fedoraproject.community
     ssl: true
     certbot: true
     # cert_name: fedoracommunity.org
