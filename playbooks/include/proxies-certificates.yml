@@ -19,9 +19,9 @@
     certname: wildcard-2017.fedoraproject.org
     SSLCertificateChainFile: wildcard-2017.fedoraproject.org.intermediate.cert
 
-  - role: httpd/certificate
-    certname: wildcard-2017.fedorahosted.org
-    SSLCertificateChainFile: wildcard-2017.fedorahosted.org.intermediate.cert
+  # - role: httpd/certificate
+  #   certname: wildcard-2017.fedorahosted.org
+  #   SSLCertificateChainFile: wildcard-2017.fedorahosted.org.intermediate.cert
 
   - role: httpd/certificate
     certname: wildcard-2017.id.fedoraproject.org

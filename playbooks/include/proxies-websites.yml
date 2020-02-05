@@ -746,8 +746,8 @@
     site_name: lists.fedorahosted.org
     server_aliases: [lists.stg.fedorahosted.org]
     sslonly: true
-    SSLCertificateChainFile: wildcard-2017.fedorahosted.org.intermediate.cert
-    cert_name: wildcard-2017.fedorahosted.org
+    certbot: true
+    tags: fedorahosted
 
   - role: httpd/website
     site_name: "id{{ env_suffix }}.fedoraproject.org"
@@ -1007,15 +1007,9 @@
   - role: httpd/website
     site_name: fedorahosted.org
     sslonly: true
-    server_aliases: [bzr.fedorahosted.org hg.fedorahosted.org svn.fedorahosted.org]
-    SSLCertificateChainFile: wildcard-2017.fedorahosted.org.intermediate.cert
-    cert_name: wildcard-2017.fedorahosted.org
-
-  - role: httpd/website
-    site_name: git.fedorahosted.org
-    sslonly: true
-    SSLCertificateChainFile: wildcard-2017.fedorahosted.org.intermediate.cert
-    cert_name: wildcard-2017.fedorahosted.org
+    server_aliases: [git.fedorahosted.org bzr.fedorahosted.org hg.fedorahosted.org svn.fedorahosted.org]
+    certbot: true
+    tags: fedorahosted
 
 # planet.fedoraproject.org is not to be used, it's fedoraplanet.org
 # We only have it here so we can redirect it with the correct cert

@@ -550,10 +550,11 @@
     website: port389.org
     target: https://directory.fedoraproject.org/
 
-  - role: httpd/redirect
-    shortname: k12linux
-    website: k12linux.org
-    target: https://fedorahosted.org/k12linux/
+  # comment out 2020-02-05 .. this has been broken for 2 years
+  # - role: httpd/redirect
+  #   shortname: k12linux
+  #   website: k12linux.org
+  #   target: https://fedorahosted.org/k12linux/
 
   - role: httpd/redirect
     shortname: dogtagpki
