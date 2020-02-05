@@ -232,18 +232,18 @@
   with_items:
     - src: "{{private}}/files/rabbitmq/staging/pki/issued/pagure.stg.crt"
       dest: pagure.crt
-      owner: pagure
-      group: pagure
+      owner: git
+      group: root
       mode: "444"
     - src: "{{private}}/files/rabbitmq/staging/pki/private/pagure.stg.key"
       dest: pagure.key
-      owner: pagure
-      group: pagure
+      owner: git
+      group: root
       mode: "440"
     - src: "{{private}}/files/rabbitmq/staging/pki/ca.crt"
       dest: pagure.ca
-      owner: pagure
-      group: pagure
+      owner: git
+      group: root
       mode: "444"
   tags:
   - pagure
@@ -257,18 +257,18 @@
   with_items:
     - src: "{{private}}/files/rabbitmq/production/pki/issued/pagure{{ env_suffix }}.crt"
       dest: pagure.crt
-      owner: pagure
-      group: pagure
+      owner: git
+      group: root
       mode: "444"
     - src: "{{private}}/files/rabbitmq/production/pki/private/pagure{{ env_suffix }}.key"
       dest: pagure.key
-      owner: pagure
-      group: pagure
+      owner: git
+      group: root
       mode: "440"
     - src: "{{private}}/files/rabbitmq/production/pki/ca.crt"
       dest: pagure.ca
-      owner: pagure
-      group: pagure
+      owner: git
+      group: root
       mode: "444"
   tags:
   - pagure
