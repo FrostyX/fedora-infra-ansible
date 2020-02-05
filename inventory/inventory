@@ -1010,8 +1010,6 @@ copr-fe-dev.cloud.fedoraproject.org
 fas2-dev.fedorainfracloud.org
 # Ansible Magazine
 ansiblemagazine.fedorainfracloud.org
-# Flock RegCfp instance
-regcfp2.fedorainfracloud.org
 # Fedora Bootstrap VM
 fedora-bootstrap.fedorainfracloud.org
 # lists development instance
