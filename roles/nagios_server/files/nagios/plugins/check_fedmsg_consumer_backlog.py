@@ -21,7 +21,10 @@ try:
     ctx = zmq.Context()
     s = ctx.socket(zmq.SUB)
     s.connect(connect_to)
-    s.setsockopt_string(zmq.SUBSCRIBE, '')
+    try:
+        s.setsockopt(zmq.SUBSCRIBE, '')
+    except TypeError:
+        s.setsockopt_string(zmq.SUBSCRIBE, '')
 
     poller = zmq.Poller()
     poller.register(s, zmq.POLLIN)
