@@ -66,8 +66,8 @@
   #   certname: secondary.koji.fedoraproject.org.letsencrypt
   #   SSLCertificateChainFile: secondary.koji.fedoraproject.org.letsencrypt.intermediate.crt
 
-  - role: httpd/certificate
-    certname: fedoracommunity.org
-    SSLCertificateChainFile: fedoracommunity.org.intermediate.cert
-    tags:
-    - fedoracommunity.org
+  # - role: httpd/certificate
+  #   certname: fedoracommunity.org
+  #   SSLCertificateChainFile: fedoracommunity.org.intermediate.cert
+  #   tags:
+  #   - fedoracommunity.org
