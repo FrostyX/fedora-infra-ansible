@@ -228,18 +228,19 @@
   copy: src={{ item.src }}
         dest=/etc/pki/rabbitmq/pagurecert/{{ item.dest }}
         owner={{ item.owner }} group={{ item.group}} mode={{ item.mode }}
+  when: env == 'pagure-staging'
   with_items:
-    - src: "{{private}}/files/rabbitmq/{{env}}/pki/issued/pagure{{ env_suffix }}.crt"
+    - src: "{{private}}/files/rabbitmq/staging/pki/issued/pagure{{ env_suffix }}.crt"
       dest: pagure.crt
       owner: pagure
       group: pagure
       mode: "444"
-    - src: "{{private}}/files/rabbitmq/{{env}}/pki/private/pagure{{ env_suffix }}.key"
+    - src: "{{private}}/files/rabbitmq/staging/pki/private/pagure{{ env_suffix }}.key"
       dest: pagure.key
       owner: pagure
       group: pagure
       mode: "440"
-    - src: "{{private}}/files/rabbitmq/{{env}}/pki/ca.crt"
+    - src: "{{private}}/files/rabbitmq/staging/pki/ca.crt"
       dest: pagure.ca
       owner: pagure
       group: pagure
@@ -247,6 +248,32 @@
   tags:
   - pagure
   - fedora-messaging
+
+- name: deploy pagure/rabbitmq certificate
+  copy: src={{ item.src }}
+        dest=/etc/pki/rabbitmq/pagurecert/{{ item.dest }}
+        owner={{ item.owner }} group={{ item.group}} mode={{ item.mode }}
+  when: env != 'pagure-staging'
+  with_items:
+    - src: "{{private}}/files/rabbitmq/production/pki/issued/pagure{{ env_suffix }}.crt"
+      dest: pagure.crt
+      owner: pagure
+      group: pagure
+      mode: "444"
+    - src: "{{private}}/files/rabbitmq/production/pki/private/pagure{{ env_suffix }}.key"
+      dest: pagure.key
+      owner: pagure
+      group: pagure
+      mode: "440"
+    - src: "{{private}}/files/rabbitmq/production/pki/ca.crt"
+      dest: pagure.ca
+      owner: pagure
+      group: pagure
+      mode: "444"
+  tags:
+  - pagure
+  - fedora-messaging
+
 
 # Set-up Pagure
 
