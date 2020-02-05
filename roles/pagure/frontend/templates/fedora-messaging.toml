@@ -10,9 +10,9 @@ amqp_url = "amqps://pagure:@rabbitmq.fedoraproject.org/%2Fpubsub"
 # The topic_prefix configuration value will add a prefix to the topics of every sent message.
 # This is used for migrating from fedmsg, and should not be used afterwards.
 {% if env == "pagure-staging" %}
-topic_prefix = "org.fedoraproject.stg"
+topic_prefix = "io.pagure.stg"
 {% else %}
-topic_prefix = "org.fedoraproject.prod"
+topic_prefix = "io.pagure.prod"
 {% endif %}
 
 [tls]
