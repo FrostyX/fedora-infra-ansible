@@ -34,16 +34,6 @@
 #         dest=/usr/bin/prunerepo
 #  tags: patches
 
-- name: issue 1213
-  patch: src=patches/fixup-copr-repo-script.patch
-         dest=/usr/bin/copr-repo
-  tags: patches
-
-- name: patch for https://pagure.io/fedora-infrastructure/issue/8560
-  patch: src=patches/dont-send-msg-N-times.patch
-         dest=/usr/share/copr/backend/msgbus.py
-  tags: patches
-
 - name: install openstackclient for image preparation
   dnf: state=present name=python3-openstackclient
   when: devel|bool
