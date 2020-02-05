@@ -45,9 +45,9 @@
     tags:
     - app.os.fedoraproject.org
 
-  - role: httpd/certificate
-    certname: fedoramagazine.org
-    SSLCertificateChainFile: fedoramagazine.org.intermediate.cert
+  # - role: httpd/certificate
+  #   certname: fedoramagazine.org
+  #   SSLCertificateChainFile: fedoramagazine.org.intermediate.cert
 
   - role: httpd/certificate
     certname: getfedora.org
@@ -62,9 +62,9 @@
     certname: qa.fedoraproject.org
     SSLCertificateChainFile: qa.fedoraproject.org.intermediate.cert
 
-  - role: httpd/certificate
-    certname: secondary.koji.fedoraproject.org.letsencrypt
-    SSLCertificateChainFile: secondary.koji.fedoraproject.org.letsencrypt.intermediate.crt
+  # - role: httpd/certificate
+  #   certname: secondary.koji.fedoraproject.org.letsencrypt
+  #   SSLCertificateChainFile: secondary.koji.fedoraproject.org.letsencrypt.intermediate.crt
 
   - role: httpd/certificate
     certname: fedoracommunity.org
