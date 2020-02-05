@@ -194,6 +194,59 @@
   tags:
   - pagure
 
+# setup fedora-messaging
+
+- name: install fedora-messaging as a dependency
+  package: name={{ item }} state=present
+  with_items:
+  - python2-fedora-messaging
+  tags:
+  - pagure
+  - fedora-messaging
+
+- name: create the config folder for fedora-messaging
+  file: path=/etc/fedora-messaging/ owner=root group=root mode=0755 state=directory
+  tags:
+  - pagure
+  - fedora-messaging
+
+- name: install the configuration file for fedora-messaging
+  template:
+      src=fedora-messaging.toml
+      dest=/etc/fedora-messaging/config.toml
+  tags:
+  - pagure
+  - fedora-messaging
+
+- name: create folder where we'll place the certs
+  file: path=/etc/pki/rabbitmq/pagurecert/ owner=root group=root mode=0755 state=directory
+  tags:
+  - pagure
+  - fedora-messaging
+
+- name: deploy pagure/rabbitmq certificate
+  copy: src={{ item.src }}
+        dest=/etc/pki/rabbitmq/pagurecert/{{ item.dest }}
+        owner={{ item.owner }} group={{ item.group}} mode={{ item.mode }}
+  with_items:
+    - src: "{{private}}/files/rabbitmq/{{env}}/pki/issued/pagure{{ env_suffix }}.crt"
+      dest: pagure.crt
+      owner: pagure
+      group: pagure
+      mode: "444"
+    - src: "{{private}}/files/rabbitmq/{{env}}/pki/private/pagure{{ env_suffix }}.key"
+      dest: pagure.key
+      owner: pagure
+      group: pagure
+      mode: "440"
+    - src: "{{private}}/files/rabbitmq/{{env}}/pki/ca.crt"
+      dest: pagure.ca
+      owner: pagure
+      group: pagure
+      mode: "444"
+  tags:
+  - pagure
+  - fedora-messaging
 
 # Set-up Pagure
 
