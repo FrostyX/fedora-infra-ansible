@@ -403,6 +403,7 @@
     certbot: true
     # cert_name: fedoracommunity.org
     # SSLCertificateChainFile: fedoracommunity.org.intermediate.cert
+    tags: fedoracommunity
 
   - role: httpd/website
     site_name: get.fedoraproject.org
