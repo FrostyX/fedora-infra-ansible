@@ -34,14 +34,11 @@ storinator01.fedorainfracloud.org
 ##
 ## Clients
 ##
-ansiblemagazine.fedorainfracloud.org
 arm03-packager00.cloud.fedoraproject.org
 arm03-packager01.cloud.fedoraproject.org
 arm03-qa00.cloud.fedoraproject.org
 arm03-qa01.cloud.fedoraproject.org
-artboard.fedorainfracloud.org
 cloud-noc01.cloud.fedoraproject.org
-commops.fedorainfracloud.org
 copr-be.cloud.fedoraproject.org
 copr-be-dev.cloud.fedoraproject.org
 copr-be-stg.fedorainfracloud.org

@@ -997,8 +997,6 @@ pdc-backend02.stg.phx2.fedoraproject.org
 pdc-backend03.stg.phx2.fedoraproject.org
 
 [persistent_cloud]
-# artboard instance
-artboard.fedorainfracloud.org
 # copr production instances
 copr-be.cloud.fedoraproject.org
 copr-fe.cloud.fedoraproject.org
@@ -1008,8 +1006,6 @@ copr-be-dev.cloud.fedoraproject.org
 copr-fe-dev.cloud.fedoraproject.org
 # fas2-dev
 fas2-dev.fedorainfracloud.org
-# Ansible Magazine
-ansiblemagazine.fedorainfracloud.org
 # Fedora Bootstrap VM
 fedora-bootstrap.fedorainfracloud.org
 # lists development instance
@@ -1020,8 +1016,6 @@ java-deptools.fedorainfracloud.org
 developer.fedorainfracloud.org
 # iddev
 iddev.fedorainfracloud.org
-# commops - ticket 5380
-commops.fedorainfracloud.org
 # respins
 respins.fedorainfracloud.org
 # upstreamfirst - ticket 6066
