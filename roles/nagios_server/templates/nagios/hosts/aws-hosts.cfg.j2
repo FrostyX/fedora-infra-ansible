@@ -1,5 +1,5 @@
-{% for host in groups['all']|sort %}
-{% if hostvars[host].datacenter == 'ec2' and hostvars[host].nagios_Check_Services['ping'] == true %}
+{% for host in groups['ec2']|sort %}
+{% if hostvars[host].nagios_Check_Services['ping'] %}
 define host {
 {% if vars['nagios_location'] == 'internal' %}
    use                     defaulttemplate
