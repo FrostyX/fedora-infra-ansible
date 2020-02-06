@@ -115,7 +115,7 @@
 # So when adding or modifying them change the .j2 version in git.
 #
 - name: install nrpe client configs
-  template: src={{ item }}.j2 dest=/etc/nrpe.d/{{ item }}
+  template: src={{ item }}.j2 dest=/etc/nrpe.d/{{ item }} owner=root group=root mode=0644
   with_items:
   - check_raid.cfg
   - check_ipa.cfg
@@ -155,7 +155,7 @@
 # So when adding or modifying them change the .j2 version in git.
 #
 - name: install nrpe openvpn check config
-  template: src=check_openvpn_link.cfg.j2 dest=/etc/nrpe.d/check_openvpn_link.cfg
+  template: src=check_openvpn_link.cfg.j2 dest=/etc/nrpe.d/check_openvpn_link.cfg owner=root group=root mode=0644
   when: vpn == true
   notify:
   - restart nrpe
@@ -166,7 +166,7 @@
 # So when adding or modifying them change the .j2 version in git.
 #
 - name: install nrpe unbound check config
-  template: src=check_unbound_proc.cfg.j2 dest=/etc/nrpe.d/check_unbound_proc.cfg
+  template: src=check_unbound_proc.cfg.j2 dest=/etc/nrpe.d/check_unbound_proc.cfg owner=root group=root mode=0644
   when: inventory_hostname.startswith('unbound')
   notify:
   - restart nrpe
@@ -177,7 +177,7 @@
 # So when adding or modifying them change the .j2 version in git.
 #
 - name: install nrpe merged log check script on log01
-  template: src=check_merged_file_age.cfg.j2 dest=/etc/nrpe.d/check_merged_file_age.cfg
+  template: src=check_merged_file_age.cfg.j2 dest=/etc/nrpe.d/check_merged_file_age.cfg owner=root group=root mode=0644
   when: inventory_hostname.startswith('log0')
   notify:
   - restart nrpe
@@ -188,7 +188,7 @@
 # So when adding or modifying them change the .j2 version in git.
 #
 - name: install nrpe check_mysql config for mariadb servers
-  template: src=check_mysql.cfg.j2 dest=/etc/nrpe.d/check_mysql.cfg
+  template: src=check_mysql.cfg.j2 dest=/etc/nrpe.d/check_mysql.cfg owner=root group=root mode=0644
   when: inventory_hostname.startswith('db03')
   notify:
   - restart nrpe
@@ -196,7 +196,7 @@
   - nagios_client
 
 - name: install nrpe checks for mailman01
-  template: src={{ item }}.j2 dest=/etc/nrpe.d/{{ item }}
+  template: src={{ item }}.j2 dest=/etc/nrpe.d/{{ item }} owner=root group=root mode=0644
   with_items:
   - check_mailman_api.cfg
   when: inventory_hostname.startswith('mailman01')
@@ -206,7 +206,7 @@
   - nagios_client
 
 - name: install nrpe checks for proxies
-  template: src={{ item }}.j2 dest=/etc/nrpe.d/{{ item }}
+  template: src={{ item }}.j2 dest=/etc/nrpe.d/{{ item }} owner=root group=root mode=0644
   with_items:
   - check_happroxy_conns.cfg
   - check_varnish_proc.cfg
@@ -217,7 +217,7 @@
   - nagios_client
 
 - name: install nrpe checks for sigul_bridge
-  template: src={{ item }}.j2 dest=/etc/nrpe.d/{{ item }}
+  template: src={{ item }}.j2 dest=/etc/nrpe.d/{{ item }} owner=root group=root mode=0644
   with_items:
   - check_sigul_bridge_proc.cfg
   when: inventory_hostname.startswith('sign-bridge')
