@@ -29,6 +29,7 @@
     - ralph
     - cverna
     - pingou
+    - vmaljulin
     tags:
       - apply-appowners
   - role: openshift/secret-file
