@@ -13,7 +13,6 @@
 - include_playbook: /srv/web/infra/ansible/playbooks/groups/elections.yml
 - include_playbook: /srv/web/infra/ansible/playbooks/groups/fedocal.yml
 - include_playbook: /srv/web/infra/ansible/playbooks/groups/gallery.yml
-- include_playbook: /srv/web/infra/ansible/playbooks/groups/keyserver.yml
 - include_playbook: /srv/web/infra/ansible/playbooks/groups/koji-hub.yml
 - include_playbook: /srv/web/infra/ansible/playbooks/groups/mailman.yml
 - include_playbook: /srv/web/infra/ansible/playbooks/groups/notifs-backend.yml

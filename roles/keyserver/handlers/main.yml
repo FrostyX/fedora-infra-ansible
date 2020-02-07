@@ -1,6 +1,0 @@
-- name: restart sks-db
-  service: name=sks-db state=restarted
-
-- name: restart sks-recon
-  service: name=sks-recon state=restarted
-
