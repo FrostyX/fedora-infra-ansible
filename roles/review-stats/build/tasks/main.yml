@@ -37,7 +37,7 @@
   template: >
     src=review-stats.cfg
     dest=/usr/local/share/review-stats/review-stats.cfg
-    owner=root group=root mode=0600
+    owner=apache group=root mode=0600
   tags:
   - review-stats
   - review-stats/build
