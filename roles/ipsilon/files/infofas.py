@@ -52,6 +52,7 @@ aws_groups = {
     'aws-copr': 'arn:aws:iam::125523088429:role/aws-copr',
     'aws-centos': 'arn:aws:iam::125523088429:role/aws-centos',
     'aws-min': 'arn:aws:iam::125523088429:role/aws-min',
+    'aws-fedora-ci': 'arn:aws:iam::125523088429:role/aws-fedora-ci',
 }
 
 
