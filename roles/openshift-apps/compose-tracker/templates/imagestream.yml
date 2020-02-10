@@ -1,7 +1,7 @@
 apiVersion: v1
 kind: List
 items:
-# ImageStream for Fedora 30 image
+# ImageStream for Fedora 31 image
 - apiVersion: image.openshift.io/v1
   kind: ImageStream
   metadata:
@@ -15,7 +15,7 @@ items:
     - name: "30"
       from:
         kind: DockerImage
-        name: registry.fedoraproject.org/fedora:30
+        name: registry.fedoraproject.org/fedora:31
       importPolicy: 
         scheduled: true
       referencePolicy:
