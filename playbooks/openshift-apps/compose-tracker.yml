@@ -17,6 +17,7 @@
     - mizdebsk
     - mohanboddu
     - humaton
+    - cverna
 
   - role: openshift/object
     app: compose-tracker
