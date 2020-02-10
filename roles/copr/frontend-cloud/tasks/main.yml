@@ -171,3 +171,8 @@
 - name: start fm-consumer service
   service: state=started enabled=yes name="fm-consumer@copr_messaging"
   when: ansible_facts.packages['copr-frontend'][0].version is version('1.156', '>=')
+
+- name: add amount of time the server will wait for certain events before failing a request
+  lineinfile:
+    path: /etc/httpd/conf/httpd.conf
+    line: "TimeOut 7200"
