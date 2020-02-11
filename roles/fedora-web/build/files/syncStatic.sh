@@ -7,7 +7,6 @@ function build {
     err=$(
         {
             cd "$site" && \
-            make syncpos && \
             make && \
             rsync -qa --delete-after --delay-updates out/ "/srv/web/$site/"; \
         } 2>&1
