@@ -3,7 +3,7 @@ kind: BuildConfig
 metadata:
   name: monitor_gating_build
   labels:
-    environment: "monitor_gating"
+    environment: "monitor-gating"
 spec:
   source:
     git:
