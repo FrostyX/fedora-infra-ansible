@@ -16,31 +16,6 @@ spec:
 {% endif %}
   strategy:
     type: Docker
-  template:
-    metadata:
-      labels:
-        app: monitor-gating
-        deploymentconfig: monitor-gating
-    spec:
-      containers:
-      - name: monitor-gating
-        image: monitor-gating:latest
-        resources: {}
-        volumeMounts:
-        - name: monitor-gating-secret-volume
-          mountPath: /config/
-          readOnly: true
-        - name: monitor-gating-ssh-volume
-          mountPath: /root/.ssh/
-          readOnly: true
-      volumes:
-       - name: monitor-gating-secret-volume
-         secret:
-           secretName: monitor-gating-secret
-       - name: monitor-gating-ssh-volume
-         secret:
-           secretName: monitor-gating-ssh
-
   triggers:
   - type: ConfigChange
   - type: ImageChange
