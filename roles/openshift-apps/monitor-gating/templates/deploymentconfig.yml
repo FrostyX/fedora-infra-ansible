@@ -24,7 +24,7 @@ spec:
         resources: {}
         volumeMounts:
         - name: monitor-gating-secret-volume
-          mountPath: /config/app-config/
+          mountPath: /config/
           readOnly: true
         - name: monitor-gating-ssh-volume
           mountPath: /root/.ssh/
