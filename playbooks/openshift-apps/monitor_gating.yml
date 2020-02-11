@@ -29,11 +29,6 @@
 
   - role: openshift/object
     app: monitor-gating
-    template: configmap.yml
-    objectname: configmap.yml
-
-  - role: openshift/object
-    app: monitor-gating
     template: secret.yml
     objectname: secret.yml
 
