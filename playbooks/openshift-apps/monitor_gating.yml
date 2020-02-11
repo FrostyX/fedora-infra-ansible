@@ -10,7 +10,7 @@
 
   roles:
   - role: openshift/project
-    app: monitor_gating
+    app: monitor-gating
     description: Monitor the packager and gating workflow
     appowners:
     - cverna
@@ -18,39 +18,39 @@
     - asaleh
 
   - role: openshift/object
-    app: monitor_gating
+    app: monitor-gating
     template: imagestream.yml
     objectname: imagestream.yml
 
   - role: openshift/object
-    app: monitor_gating
+    app: monitor-gating
     template: buildconfig.yml
     objectname: buildconfig.yml
 
   - role: openshift/object
-    app: monitor_gating
+    app: monitor-gating
     template: configmap.yml
     objectname: configmap.yml
 
   - role: openshift/object
-    app: monitor_gating
+    app: monitor-gating
     template: secret.yml
     objectname: secret.yml
 
   - role: openshift/secret-file
-    app: monitor_gating
-    secret_name: monitor_gating-ssh
+    app: monitor-gating
+    secret_name: monitor-gating-ssh
     key: id_rsa
     privatefile: "git-ssh/monitor_gating"
 
   - role: openshift/object
-    app: monitor_gating
+    app: monitor-gating
     template: deploymentconfig.yml
     objectname: deploymentconfig.yml
 
   - role: openshift/start-build
-    app: monitor_gating
-    buildname: monitor_gating-build
-    objectname: monitor_gating-build
+    app: monitor-gating
+    buildname: monitor-gating-build
+    objectname: monitor-gating-build
     tags:
         - build

@@ -1,4 +1,4 @@
 apiVersion: v1
 kind: ImageStream
 metadata:
-   name: "monitor_gating"
+   name: "monitor-gating"
