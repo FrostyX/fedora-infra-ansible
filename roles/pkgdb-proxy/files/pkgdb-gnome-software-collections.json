@@ -4,12 +4,23 @@
       "allow_retire": true,
       "branchname": "master",
       "date_created": "2014-05-14 12:36:15",
-      "date_updated": "2019-08-14 17:07:23",
-      "dist_tag": ".fc32",
+      "date_updated": "2020-02-11 17:07:23",
+      "dist_tag": ".fc33",
       "koji_name": "rawhide",
       "name": "Fedora",
       "status": "Under Development",
       "version": "devel"
+    },
+    {
+      "allow_retire": false,
+      "branchname": "f32",
+      "date_created": "2014-05-14 12:36:15",
+      "date_updated": "2020-02-11 17:07:23",
+      "dist_tag": ".fc32",
+      "koji_name": "f32",
+      "name": "Fedora",
+      "status": "Active",
+      "version": "32"
     },
     {
       "allow_retire": false,
