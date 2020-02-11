@@ -1,3 +1,0 @@
----
-- name: restart regcfp
-  service: name=regcfp state=restarted
