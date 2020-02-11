@@ -118,7 +118,6 @@
     description: "ZeroMQ <-> AMQP bridges"
     appowners:
     - abompard
-    - jcline
 
   - role: openshift/secret-file
     app: messaging-bridges

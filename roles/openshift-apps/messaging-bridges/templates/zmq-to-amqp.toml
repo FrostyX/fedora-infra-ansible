@@ -33,7 +33,7 @@ filters = ["ratelimit"]
 formatter = "simple"
 mailhost = "bastion"
 fromaddr = "fedmsg-migration-tools@fedoraproject.org"
-toaddrs = ["jcline@fedoraproject.org", "abompard@fedoraproject.org"]
+toaddrs = ["abompard@fedoraproject.org"]
 subject = "ERROR: fedmsg-migration-tools zmq-to-amqp bridge"
 [log_config.loggers.fedora_messaging]
 level = "INFO"
