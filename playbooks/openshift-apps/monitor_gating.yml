@@ -1,0 +1,56 @@
+- name: make the app be real
+  hosts: os_masters_stg[0]:os_masters
+  user: root
+  gather_facts: False
+
+  vars_files:
+    - /srv/web/infra/ansible/vars/global.yml
+    - "/srv/private/ansible/vars.yml"
+    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  roles:
+  - role: openshift/project
+    app: monitor_gating
+    description: Monitor the packager and gating workflow
+    appowners:
+    - cverna
+    - pingou
+    - asaleh
+
+  - role: openshift/object
+    app: monitor_gating
+    template: imagestream.yml
+    objectname: imagestream.yml
+
+  - role: openshift/object
+    app: monitor_gating
+    template: buildconfig.yml
+    objectname: buildconfig.yml
+
+  - role: openshift/object
+    app: monitor_gating
+    template: configmap.yml
+    objectname: configmap.yml
+
+  - role: openshift/object
+    app: monitor_gating
+    template: secret.yml
+    objectname: secret.yml
+
+  - role: openshift/secret-file
+    app: monitor_gating
+    secret_name: monitor_gating-ssh
+    key: id_rsa
+    privatefile: "git-ssh/monitor_gating"
+
+  - role: openshift/object
+    app: monitor_gating
+    template: deploymentconfig.yml
+    objectname: deploymentconfig.yml
+
+  - role: openshift/start-build
+    app: monitor_gating
+    buildname: monitor_gating-build
+    objectname: monitor_gating-build
+    tags:
+        - build
