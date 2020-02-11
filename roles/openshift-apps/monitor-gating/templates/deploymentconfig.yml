@@ -23,9 +23,6 @@ spec:
         image: monitor-gating:latest
         resources: {}
         volumeMounts:
-        - name: config-volume
-          mountPath: /config/
-          readOnly: true
         - name: monitor-gating-secret-volume
           mountPath: /config/app-config/
           readOnly: true
@@ -33,9 +30,6 @@ spec:
           mountPath: /root/.ssh/
           readOnly: true
       volumes:
-      - name: config-volume
-        configMap:
-          name: monitor-gating-configmap
        - name: monitor-gating-secret-volume
          secret:
            secretName: monitor-gating-secret
