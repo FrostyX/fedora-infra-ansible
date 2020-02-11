@@ -24,10 +24,10 @@ spec:
         resources: {}
         volumeMounts:
         - name: monitor-gating-secret-volume
-          mountPath: /config/
+          mountPath: /home/packagerbot/config/
           readOnly: true
         - name: monitor-gating-ssh-volume
-          mountPath: /root/.ssh/
+          mountPath: /home/packagerbot/.ssh/
           readOnly: true
       volumes:
        - name: monitor-gating-secret-volume
