@@ -9,9 +9,6 @@
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
   tasks:
-  - name: ask puiterwijk if he would like to capture debug info before restarting.
-    pause: seconds=30 prompt="Restarting pagure, abort if you want to get puiterwijk's attention first."
-
   - debug: msg="Karate Chop!"
 
   - name: Reload apache...
