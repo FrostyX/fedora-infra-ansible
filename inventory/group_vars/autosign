@@ -18,8 +18,7 @@ ansible_ifcfg_whitelist:
 fas_client_groups: sysadmin-releng
 host_group: autosign
 
-fedmsg_error_recipients:
-- puiterwijk@fedoraproject.org
+fedmsg_error_recipients: []
 
 nfs_mount_opts: "rw,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3"
 
