@@ -1958,7 +1958,7 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
     }
     host buildvmhost-aarch64-18  {
          hardware ethernet 68:05:CA:92:CA:5E;
-         fixed-address 10.5.78.19;
+         fixed-address 10.5.78.2;
          option host-name "buildvmhost-aarch64-18";
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
