@@ -999,10 +999,6 @@ copr-keygen.cloud.fedoraproject.org
 # copr dev instances
 copr-be-dev.cloud.fedoraproject.org
 copr-fe-dev.cloud.fedoraproject.org
-# fas2-dev
-fas2-dev.fedorainfracloud.org
-# Ansible Magazine
-ansiblemagazine.fedorainfracloud.org
 # Fedora Bootstrap VM
 fedora-bootstrap.fedorainfracloud.org
 # lists development instance
