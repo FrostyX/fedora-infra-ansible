@@ -12,6 +12,14 @@ spec:
     deploymentconfig: monitor-gating
   strategy:
     type: Recreate
+  containers:
+  - args:
+    - -c
+    - ssh-keyscan pkgs.stg.fedoraproject.org >> /.ssh/known_hosts
+      && cd /home/packagerbot
+      &&  USER=packagerbot python3 runner.py runner.cfg
+   command:
+     - sh
   template:
     metadata:
       labels:
@@ -28,14 +36,15 @@ spec:
           readOnly: true
         - name: monitor-gating-ssh-volume
           mountPath: /home/packagerbot/.ssh/
-          readOnly: true
       volumes:
        - name: monitor-gating-secret-volume
          secret:
            secretName: monitor-gating-secret
+           defaultMode: 365
        - name: monitor-gating-ssh-volume
          secret:
            secretName: monitor-gating-ssh
+           defaultMode: 365
 
   triggers:
   - type: ConfigChange
