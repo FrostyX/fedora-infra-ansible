@@ -529,6 +529,17 @@
 # rhel8 hosts do not have /usr/bin/python, but there are a few things we call 
 # with that because they also run the same on python2 hosts. 
 # So, we set python3 to /usr/bin/python on those hosts:
+- name : ensure that platform-python is installed on EL8 boxes
+  package: name={{ item }} state=present
+  with_items:
+  - platform-python
+  when: ansible_distribution == 'RedHat' and ansible_distribution_major_version|int == 8
+  tags:
+  - base
+  - config
+  - python3alternative
+
+
 - name: set /usr/bin/python to python3 on rhel8 hosts
   alternatives:
     name: python
