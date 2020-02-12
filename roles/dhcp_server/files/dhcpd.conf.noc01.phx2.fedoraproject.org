@@ -829,6 +829,13 @@ subnet 10.5.129.0 netmask 255.255.255.0 {
         filename "/uefi/grubaa64.efi";
     }
 
+    host openqa-aarch64-03-br0 {
+        hardware ethernet 50:6b:4b:6a:c2:c0;
+        fixed-address 10.5.129.243;
+        next-server 10.5.126.41;
+        option host-name "openqa-aarch64-03-br0.arm.fedoraproject.org";
+        filename "/uefi/grubaa64.efi";
+    }
     host openqa-aarch64-04-br0 {
         hardware ethernet 50:6B:4B:6A:D3:C0;
         fixed-address 10.5.129.244;
@@ -1957,31 +1964,31 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
-    host tbc-aarch64-03  {
+    host openqa-aarch64-03  {
          hardware ethernet  68:05:CA:92:CB:12;
          fixed-address 10.5.78.243;
-         option host-name "tbc-aarch64-03";
+         option host-name "openqa-aarch64-03";
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
-    host tbc-aarch64-04  {
+    host openqa-aarch64-04  {
          hardware ethernet  68:05:CA:8A:F4:29;
          fixed-address 10.5.78.244;
-         option host-name "tbc-aarch64-04";
+         option host-name "openqa-aarch64-04";
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
-    host tbc-aarch64-05  {
+    host openqa-aarch64-05  {
          hardware ethernet  68:05:CA:8B:05:8C;
          fixed-address 10.5.78.245;
-         option host-name "tbc-aarch64-05";
+         option host-name "openqa-aarch64-05";
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
-    host tbc-aarch64-06  {
+    host openqa-aarch64-06  {
          hardware ethernet  68:05:CA:8A:F2:05;
          fixed-address 10.5.78.246;
-         option host-name "tbc-aarch64-06";
+         option host-name "openqa-aarch64-06";
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
