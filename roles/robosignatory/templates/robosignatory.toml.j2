@@ -140,12 +140,6 @@ handlers = ["console"]
             key = "{{ (env == 'production')|ternary('fedora-30', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('cfc659b9', 'd300e724') }}"
 
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f29-kde"
-            to = "f29-kde"
-            key = "{{ (env == 'production')|ternary('fedora-29', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('429476b4', 'd300e724') }}"
-
             # Infra tags
 
             [[consumer_config.koji_instances.primary.tags]]
@@ -163,12 +157,6 @@ handlers = ["console"]
             [[consumer_config.koji_instances.primary.tags]]
             from = "epel8-infra-candidate"
             to = "epel8-infra-stg"
-            key = "{{ (env == 'production')|ternary('fedora-infra', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('47dd8ef9', 'd300e724') }}"
-
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f29-infra-candidate"
-            to = "f29-infra-stg"
             key = "{{ (env == 'production')|ternary('fedora-infra', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('47dd8ef9', 'd300e724') }}"
 
@@ -191,12 +179,6 @@ handlers = ["console"]
             keyid = "{{ (env == 'production')|ternary('47dd8ef9', 'd300e724') }}"
 
             # Gated coreos-pool tag
-
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f29-coreos-signing-pending"
-            to = "coreos-pool"
-            key = "{{ (env == 'production')|ternary('fedora-29', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('429476b4', 'd300e724') }}"
 
             [[consumer_config.koji_instances.primary.tags]]
             from = "f30-coreos-signing-pending"
@@ -256,23 +238,23 @@ handlers = ["console"]
             keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
             type = "modular"
 
-#            [[consumer_config.koji_instances.primary.tags]]
-#            from = "f32-signing-pending"
-#            to = "f32-updates-testing-pending"
-#            key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
-#            keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "f32-signing-pending"
+            to = "f32-updates-testing-pending"
+            key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
 
-#            [consumer_config.koji_instances.primary.tags.sidetags]
-#            pattern = 'f32-build-side-<seq_id>'
-#            from = '<sidetag>-signing-pending'
-#            to = '<sidetag>-testing-pending'
-#            trusted_taggers = ['bodhi']
+            [consumer_config.koji_instances.primary.tags.sidetags]
+            pattern = 'f32-build-side-<seq_id>'
+            from = '<sidetag>-signing-pending'
+            to = '<sidetag>-testing-pending'
+            trusted_taggers = ['bodhi']
 
-#            [[consumer_config.koji_instances.primary.tags]]
-#            from = "f32-pending"
-#            to = "f32"
-#            key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
-#            keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "f32-pending"
+            to = "f32"
+            key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
 
             [[consumer_config.koji_instances.primary.tags]]
             from = "f32-modular-pending"
@@ -330,19 +312,6 @@ handlers = ["console"]
             key = "{{ (env == 'production')|ternary('fedora-30', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('cfc659b9', 'd300e724') }}"
             type = "modular"
-
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f29-modular-signing-pending"
-            to = "f29-modular-updates-testing-pending"
-            key = "{{ (env == 'production')|ternary('fedora-29', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('429476b4', 'd300e724') }}"
-            type = "modular"
-
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f29-signing-pending"
-            to = "f29-updates-testing-pending"
-            key = "{{ (env == 'production')|ternary('fedora-29', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('429476b4', 'd300e724') }}"
 
             [[consumer_config.koji_instances.primary.tags]]
             from = "epel8-signing-pending"
