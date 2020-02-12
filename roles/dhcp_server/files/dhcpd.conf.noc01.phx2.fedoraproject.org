@@ -1951,8 +1951,15 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
     }
     host buildvmhost-aarch64-17 {
          hardware ethernet 00:1B:21:DE:34:63;
-         fixed-address 10.5.78.241;
+         fixed-address 10.5.78.18;
          option host-name "buildvmhost-aarch64-17";
+         next-server 10.5.126.41;
+	 filename "/uefi/grubaa64.efi";
+    }
+    host buildvmhost-aarch64-18  {
+         hardware ethernet 68:05:CA:92:CA:5E;
+         fixed-address 10.5.78.19;
+         option host-name "buildvmhost-aarch64-18";
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
@@ -1961,13 +1968,6 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
          hardware ethernet 00:1B:21:E0:6E:5B;
          fixed-address 10.5.78.240;
          option host-name "tbc-aarch64-00";
-         next-server 10.5.126.41;
-	 filename "/uefi/grubaa64.efi";
-    }
-    host tbc-aarch64-02  {
-         hardware ethernet 68:05:CA:92:CA:5E;
-         fixed-address 10.5.78.242;
-         option host-name "tbc-aarch64-02";
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
