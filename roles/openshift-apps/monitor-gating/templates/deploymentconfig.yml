@@ -18,8 +18,8 @@ spec:
     - ssh-keyscan pkgs.stg.fedoraproject.org >> /.ssh/known_hosts
       && cd /home/packagerbot
       &&  USER=packagerbot python3 runner.py runner.cfg
-   command:
-     - sh
+    command:
+    - sh
   template:
     metadata:
       labels:
