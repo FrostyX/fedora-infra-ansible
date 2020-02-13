@@ -2425,14 +2425,6 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
 	 filename "/uefi/grubaa64.efi";
     }
 
-    host openqa-aarch64-01 {
-         hardware ethernet 2c:59:e5:36:9a:50;
-	 fixed-address 10.5.78.75;
-	 option host-name "openqa-aarch64-01";
-	 next-server 10.5.126.41;
-	 filename "/uefi/grubaa64.efi";
-    }
-
     host autocloud-backend-aarch64 {
          hardware ethernet 2c:59:e5:36:9a:4e;
 	 fixed-address 10.5.78.80;
@@ -2453,14 +2445,6 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
          hardware ethernet 00:01:73:02:0d:2f;
          fixed-address 10.5.78.150;
          option host-name "aarch64-05a";
-         next-server 10.5.126.41;
-         filename "/uefi/grubaa64.efi";
-    }
-
-    host openqa-aarch64-02 {
-         hardware ethernet 00:01:73:02:0c:fb;
-         fixed-address 10.5.78.155;
-         option host-name "openqa-aarch64-02";
          next-server 10.5.126.41;
          filename "/uefi/grubaa64.efi";
     }
