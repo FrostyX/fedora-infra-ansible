@@ -28,6 +28,7 @@ spec:
           readOnly: true
         - name: monitor-gating-ssh-volume
           mountPath: /.ssh/
+          readOnly: false
       volumes:
        - name: monitor-gating-secret-volume
          secret:
