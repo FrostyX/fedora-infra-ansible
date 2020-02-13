@@ -36,7 +36,7 @@ spec:
        - name: monitor-gating-ssh-volume
          secret:
            secretName: monitor-gating-ssh
-           defaultMode: 365
+           defaultMode: 0660
 
   triggers:
   - type: ConfigChange
