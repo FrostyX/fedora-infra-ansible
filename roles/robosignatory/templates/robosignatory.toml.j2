@@ -210,8 +210,8 @@ handlers = ["console"]
             [[consumer_config.koji_instances.primary.tags]]
             from = "f33-modular-updates-candidate"
             to = "f33-modular"
-            key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
+            key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
             type = "modular"
 
             [[consumer_config.koji_instances.primary.tags]]
