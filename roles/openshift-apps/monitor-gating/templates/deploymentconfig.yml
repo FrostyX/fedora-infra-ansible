@@ -27,7 +27,7 @@ spec:
           mountPath: /opt/config/
           readOnly: true
         - name: monitor-gating-ssh-volume
-          mountPath: /.ssh/id_rsa
+          mountPath: /opt/ssh/
           readOnly: false
       volumes:
        - name: monitor-gating-secret-volume
