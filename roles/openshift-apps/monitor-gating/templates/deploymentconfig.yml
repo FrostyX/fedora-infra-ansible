@@ -32,7 +32,7 @@ spec:
        - name: monitor-gating-secret-volume
          secret:
            secretName: monitor-gating-secret
-           defaultMode: 365
+           defaultMode: 0660
        - name: monitor-gating-ssh-volume
          secret:
            secretName: monitor-gating-ssh
