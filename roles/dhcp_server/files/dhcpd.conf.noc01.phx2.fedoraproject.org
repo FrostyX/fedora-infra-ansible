@@ -1243,7 +1243,12 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
     host buildvmhost-a64-18-mgmt {
         hardware ethernet E8:6A:64:39:19:35;
 	fixed-address 10.5.130.139;
-	option host-name "buildvmhost-aarch64-17";
+	option host-name "buildvmhost-aarch64-18";
+    }
+    host buildvmhost-a64-19-mgmt {
+        hardware ethernet E8:6A:64:97:6B:49;
+	fixed-address 10.5.130.143;
+	option host-name "buildvmhost-aarch64-18";
     }
 
     host openqa-a64-01-mgmt {
@@ -1275,11 +1280,6 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
         hardware ethernet E8:6A:64:97:6B:41;
 	fixed-address 10.5.130.142;
 	option host-name "tbc-aarch64-08";
-    }
-    host tbc-a64-09-mgmt {
-        hardware ethernet E8:6A:64:97:6B:49;
-	fixed-address 10.5.130.143;
-	option host-name "tbc-aarch64-09";
     }
 
 
@@ -1953,6 +1953,13 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
          hardware ethernet 68:05:CA:92:CA:5E;
          fixed-address 10.5.78.2;
          option host-name "buildvmhost-aarch64-18";
+         next-server 10.5.126.41;
+	 filename "/uefi/grubaa64.efi";
+    }
+    host buildvmhost-aarch64-19  {
+         hardware ethernet 00:1B:21:E0:78:B2;
+         fixed-address 10.5.78.3;
+         option host-name "buildvmhost-aarch64-19";
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
