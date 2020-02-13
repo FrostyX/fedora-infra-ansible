@@ -257,6 +257,11 @@
   tags:
   - people
 
+- name: copy static files for user pages
+  copy: src=userdefs/ dest=/srv/people/site/userdefs
+  tags:
+  - people
+
 - name: setup script to make main fedorapeople.org index page
   copy: src=make-people-page.py dest=/usr/local/bin/make-people-page.py mode=755
   tags:
