@@ -186,7 +186,7 @@ handlers = ["console"]
             from = "f33-signing-pending"
             to = "f33-updates-testing-pending"
             key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
+            keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
 
             [consumer_config.koji_instances.primary.tags.sidetags]
             pattern = 'f33-build-side-<seq_id>'
@@ -198,13 +198,13 @@ handlers = ["console"]
             from = "f33-pending"
             to = "f33"
             key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
+            keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
 
             [[consumer_config.koji_instances.primary.tags]]
             from = "f33-modular-pending"
             to = "f33-modular"
             key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
+            keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
             type = "modular"
 
             [[consumer_config.koji_instances.primary.tags]]
