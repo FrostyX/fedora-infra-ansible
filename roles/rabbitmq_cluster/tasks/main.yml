@@ -124,72 +124,6 @@
   - rabbitmq_cluster
   - config
 
-# Users with the "monitoring" tag have read-only access vhosts, connections,
-# channels, node-level resource usage, and cluster stats.
-- name: Create the Nagios monitoring user in staging
-  rabbitmq_user:
-    user: nagios-monitoring
-    password: "{{ rabbitmq_monitoring_password_staging }}"
-    update_password: always
-    permissions:
-      - vhost: /
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-      - vhost: /pubsub
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-      - vhost: /public_pubsub
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-      - vhost: /bodhi
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-      - vhost: /odcs
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-    tags: monitoring
-  when: env == "staging" and inventory_hostname.startswith('rabbitmq01')
-  tags:
-  - rabbitmq_cluster
-  - config
-
-- name: Create the Nagios monitoring user in production
-  rabbitmq_user:
-    user: nagios-monitoring
-    password: "{{ rabbitmq_monitoring_password_production }}"
-    update_password: always
-    permissions:
-      - vhost: /
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-      - vhost: /pubsub
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-      - vhost: /public_pubsub
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-      - vhost: /bodhi
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-      - vhost: /odcs
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-    tags: monitoring
-  when: env == "production" and inventory_hostname.startswith('rabbitmq01')
-  tags:
-  - rabbitmq_cluster
-  - config
-
 
 - name: Configure the pubsub virtual host
   rabbitmq_vhost:
@@ -267,6 +201,72 @@
     mode: 0600
     owner: root
     group: root
+  tags:
+  - rabbitmq_cluster
+  - config
+
+# Users with the "monitoring" tag have read-only access vhosts, connections,
+# channels, node-level resource usage, and cluster stats.
+- name: Create the Nagios monitoring user in staging
+  rabbitmq_user:
+    user: nagios-monitoring
+    password: "{{ rabbitmq_monitoring_password_staging }}"
+    update_password: always
+    permissions:
+      - vhost: /
+        configure_priv: "^$"
+        read_priv: "^$"
+        write_priv: "^$"
+      - vhost: /pubsub
+        configure_priv: "^$"
+        read_priv: "^$"
+        write_priv: "^$"
+      - vhost: /public_pubsub
+        configure_priv: "^$"
+        read_priv: "^$"
+        write_priv: "^$"
+      - vhost: /bodhi
+        configure_priv: "^$"
+        read_priv: "^$"
+        write_priv: "^$"
+      - vhost: /odcs
+        configure_priv: "^$"
+        read_priv: "^$"
+        write_priv: "^$"
+    tags: monitoring
+  when: env == "staging" and inventory_hostname.startswith('rabbitmq01')
+  tags:
+  - rabbitmq_cluster
+  - config
+
+- name: Create the Nagios monitoring user in production
+  rabbitmq_user:
+    user: nagios-monitoring
+    password: "{{ rabbitmq_monitoring_password_production }}"
+    update_password: always
+    permissions:
+      - vhost: /
+        configure_priv: "^$"
+        read_priv: "^$"
+        write_priv: "^$"
+      - vhost: /pubsub
+        configure_priv: "^$"
+        read_priv: "^$"
+        write_priv: "^$"
+      - vhost: /public_pubsub
+        configure_priv: "^$"
+        read_priv: "^$"
+        write_priv: "^$"
+      - vhost: /bodhi
+        configure_priv: "^$"
+        read_priv: "^$"
+        write_priv: "^$"
+      - vhost: /odcs
+        configure_priv: "^$"
+        read_priv: "^$"
+        write_priv: "^$"
+    tags: monitoring
+  when: env == "production" and inventory_hostname.startswith('rabbitmq01')
   tags:
   - rabbitmq_cluster
   - config
