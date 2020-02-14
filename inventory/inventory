@@ -1094,6 +1094,7 @@ virthost_comm
 [copr_keygen]
 copr-keygen.cloud.fedoraproject.org
 
+
 [copr_front]
 copr-fe.cloud.fedoraproject.org
 
@@ -1111,6 +1112,10 @@ copr-be-dev.cloud.fedoraproject.org
 
 [copr_keygen_dev]
 copr-keygen-dev.cloud.fedoraproject.org
+
+[copr_keygen_dev_aws]
+# stg machine in AWS
+18.215.229.156
 
 [copr_dist_git_dev]
 copr-dist-git-dev.fedorainfracloud.org
