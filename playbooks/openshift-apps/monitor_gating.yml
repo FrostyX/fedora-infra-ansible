@@ -22,6 +22,7 @@
     key: koji-keytab
     secret_name: monitor-gating-keytab
     service: monitor-gating
+    host: os{{ env_suffix }}.fedoraproject.org
 
   - role: openshift/object
     app: monitor-gating
