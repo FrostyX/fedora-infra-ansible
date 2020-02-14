@@ -23,12 +23,15 @@ spec:
         image: monitor-gating:latest
         resources: {}
         volumeMounts:
+        - name: keytab-volume
+            mountPath: /etc/keytabs
+            readOnly: true
         - name: monitor-gating-secret-volume
           mountPath: /opt/config/
           readOnly: true
         - name: monitor-gating-ssh-volume
           mountPath: /opt/ssh/
-          readOnly: false
+          readOnly: true
       volumes:
        - name: monitor-gating-secret-volume
          secret:
@@ -39,6 +42,9 @@ spec:
          secret:
            secretName: monitor-gating-ssh
            defaultMode: 0660
+       - name: keytab-volume
+         secret:
+           secretName: monitor-gating-keytab
 
   triggers:
   - type: ConfigChange
