@@ -23,6 +23,7 @@
     description: FAS
     appowners:
     - puiterwijk
+    - pingou
     allow_fas_db: true
   - role: openshift/imagestream
     app: fas
