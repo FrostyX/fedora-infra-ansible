@@ -12,7 +12,7 @@
     state: present
     name:
     - rabbitmq-server
-    - nagios-plugins-rabbitmq
+#    - nagios-plugins-rabbitmq
   tags:
   - rabbitmq_cluster
   - packages
