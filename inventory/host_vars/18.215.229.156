@@ -2,7 +2,7 @@
 ansible_ssh_user: fedora
 ansible_become_user: root
 ansible_become: yes
-datacenter: "aws"
+datacenter: aws
 #instance_type: t3a.small
 #image: "{{ fedora31_x86_64 }}"
 #keypair: fedora-admin-20130801
