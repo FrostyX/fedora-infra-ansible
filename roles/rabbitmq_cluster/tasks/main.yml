@@ -225,14 +225,6 @@
         configure_priv: "^$"
         read_priv: "^$"
         write_priv: "^$"
-      - vhost: /bodhi
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-      - vhost: /odcs
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
     tags: monitoring
   when: env == "staging" and inventory_hostname.startswith('rabbitmq01')
   tags:
@@ -254,14 +246,6 @@
         read_priv: "^$"
         write_priv: "^$"
       - vhost: /public_pubsub
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-      - vhost: /bodhi
-        configure_priv: "^$"
-        read_priv: "^$"
-        write_priv: "^$"
-      - vhost: /odcs
         configure_priv: "^$"
         read_priv: "^$"
         write_priv: "^$"

@@ -78,6 +78,21 @@
   - config
   - bodhi
 
+- name: Grant the nagios-monitoring user access to the bodhi vhost
+  run_once: true
+  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  rabbitmq_user:
+    user: nagios-monitoring
+    vhost: /bodhi
+    configure_priv: "^$"
+    read_priv: "^$"
+    write_priv: "^$"
+    tags: monitoring
+  tags:
+  - rabbitmq_cluster
+  - config
+  - bodhi
+
 # Create a user for Celery
 # - name: Create a user for Celery usage
 #   run_once: true

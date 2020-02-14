@@ -140,6 +140,22 @@
   - odcs
   - odcs/backend
 
+- name: Grant the nagios-monitoring user access to the odcs vhost
+  run_once: true
+  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  rabbitmq_user:
+    user: nagios-monitoring
+    vhost: /odcs
+    configure_priv: "^$"
+    read_priv: "^$"
+    write_priv: "^$"
+    tags: monitoring
+  tags:
+  - rabbitmq_cluster
+  - config
+  - odcs
+  - odcs/backend
+
 # Create a user with:
 - name: Create a user for odcs access
   run_once: true
