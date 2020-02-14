@@ -108,17 +108,16 @@
   - odcs
   - odcs/backend
 
-- name: Create the admin user for the odcs vhost (prod)
+- name: Create the odcs-admin user for the odcs vhost (prod)
   run_once: true
   delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
   rabbitmq_user:
-    user: admin
+    user: odcs-admin
     password: "{{ (env == 'production')|ternary(rabbitmq_odcs_admin_password_production, rabbitmq_odcs_admin_password_staging) }}"
     vhost: /odcs
     configure_priv: .*
     read_priv: .*
     write_priv: .*
-    tags: management
   tags:
   - rabbitmq_cluster
   - config
@@ -140,6 +139,21 @@
   - odcs
   - odcs/backend
 
+- name: Grant the admin user access to the odcs vhost
+  run_once: true
+  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  rabbitmq_user:
+    user: admin
+    vhost: /odcs
+    configure_priv: .*
+    read_priv: .*
+    write_priv: .*
+  tags:
+  - rabbitmq_cluster
+  - config
+  - odcs
+  - odcs/backend
+
 - name: Grant the nagios-monitoring user access to the odcs vhost
   run_once: true
   delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
@@ -149,7 +163,6 @@
     configure_priv: "^$"
     read_priv: "^$"
     write_priv: "^$"
-    tags: monitoring
   tags:
   - rabbitmq_cluster
   - config

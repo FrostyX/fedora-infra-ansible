@@ -72,7 +72,6 @@
     configure_priv: .*
     read_priv: .*
     write_priv: .*
-    tags: management
   tags:
   - rabbitmq_cluster
   - config
@@ -87,7 +86,6 @@
     configure_priv: "^$"
     read_priv: "^$"
     write_priv: "^$"
-    tags: monitoring
   tags:
   - rabbitmq_cluster
   - config
