@@ -24,8 +24,8 @@ spec:
         resources: {}
         volumeMounts:
         - name: keytab-volume
-            mountPath: /etc/keytabs
-            readOnly: true
+          mountPath: /etc/keytabs
+          readOnly: true
         - name: monitor-gating-secret-volume
           mountPath: /opt/config/
           readOnly: true
