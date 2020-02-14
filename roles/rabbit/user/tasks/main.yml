@@ -19,7 +19,9 @@
     - username != "guest"
     - username != "nagios-monitoring"
     fail_msg: "This user name is reserved"
-  tags: fedora-messaging
+  tags:
+    - fedora-messaging
+    - rabbitmq_cluster
 
 - name: Create the user in RabbitMQ
   delegate_to: "{{ rabbitmq_server }}"
@@ -33,3 +35,4 @@
   tags:
     - config
     - fedora-messaging
+    - rabbitmq_cluster

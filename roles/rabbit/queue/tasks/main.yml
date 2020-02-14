@@ -26,7 +26,9 @@
     that:
     - "queue_name.startswith(username)"
     fail_msg: "Your queue name must be prefixed with your username"
-  tags: fedora-messaging
+  tags:
+    - fedora-messaging
+    - rabbitmq_cluster
 
 - name: Validate the user parameter
   assert:
@@ -35,7 +37,9 @@
     - username != "guest"
     - username != "nagios-monitoring"
     fail_msg: "This user name is reserved"
-  tags: fedora-messaging
+  tags:
+    - fedora-messaging
+    - rabbitmq_cluster
 
 # See https://www.rabbitmq.com/access-control.html#permissions for details on
 # the RabbitMQ permissions configuration.
@@ -51,7 +55,9 @@
     write_priv: "^(amq\\.topic)|({{ username }}.*){% for queue in write_queues|default([]) %}|({{ queue }}.*){% endfor %}$"
     configure_priv: "^$"  # No configuration permissions
     state: present
-  tags: fedora-messaging
+  tags:
+    - fedora-messaging
+    - rabbitmq_cluster
 
 - name: Create the {{ queue_name }} queue in RabbitMQ
   delegate_to: "{{ rabbitmq_server }}"
@@ -64,7 +70,9 @@
     state: present
     login_user: admin
     login_password: "{{ (env == 'production')|ternary(rabbitmq_admin_password_production, rabbitmq_admin_password_staging) }}"
-  tags: fedora-messaging
+  tags:
+    - fedora-messaging
+    - rabbitmq_cluster
 
 - name: Bind the {{ queue_name }} queue to the amq.topic exchange
   delegate_to: "{{ rabbitmq_server }}"
@@ -78,7 +86,9 @@
     login_user: admin
     login_password: "{{ (env == 'production')|ternary(rabbitmq_admin_password_production, rabbitmq_admin_password_staging) }}"
   loop: "{{ routing_keys }}"
-  tags: fedora-messaging
+  tags:
+    - fedora-messaging
+    - rabbitmq_cluster
 
 # This can be removed when we're done with fedmsg and the bridges are retired.
 - name: Bind the {{ queue_name }} queue to the zmq.topic exchange
@@ -93,7 +103,9 @@
     login_user: admin
     login_password: "{{ (env == 'production')|ternary(rabbitmq_admin_password_production, rabbitmq_admin_password_staging) }}"
   loop: "{{ routing_keys }}"
-  tags: fedora-messaging
+  tags:
+    - fedora-messaging
+    - rabbitmq_cluster
 
 - name: Monitor the {{ queue_name }} queue in Nagios (NRPE)
   when: thresholds and env == "production"
@@ -105,7 +117,9 @@
     group: root
     mode: 0644
   notify: restart nrpe on rabbitmq
-  tags: fedora-messaging
+  tags:
+    - fedora-messaging
+    - rabbitmq_cluster
 
 - name: Monitor the {{ queue_name }} queue in Nagios
   when: thresholds and env == "production"
@@ -114,4 +128,6 @@
     src: nagios.cfg.j2
     dest: /etc/nagios/services/rabbitmq-queue-{{ queue_name }}.cfg
   notify: restart nagios on noc
-  tags: fedora-messaging
+  tags:
+    - fedora-messaging
+    - rabbitmq_cluster
