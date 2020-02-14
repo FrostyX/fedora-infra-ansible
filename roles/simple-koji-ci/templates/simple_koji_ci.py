@@ -1,3 +1,9 @@
+class TargetTagsDict(dict):
+    """A dict that returns the key for missing values"""
+    def __missing__(self, key):
+        return key
+
+
 config = {
     'simple-koji-ci.enabled': True,
 
@@ -23,15 +29,7 @@ config = {
         'krb_sessionopts': {'timeout': 3600, 'krb_rdns': False},
         'opts': {'scratch': True},
         'priority': 30,
-        'target_tags': {
-            'master': 'rawhide',
-            'f31': 'f31',
-            'f30': 'f30',
-            'f29': 'f29',
-            'epel7': 'epel7',
-            'el6': 'el6',
-        }
-
+        'target_tags': TargetTagsDict(master='rawhide'),
     },
 
     "simple-koji-ci.cache": {
