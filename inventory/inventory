@@ -1211,21 +1211,21 @@ osbs-control01.stg.phx2.fedoraproject.org
 osbs-node01.phx2.fedoraproject.org
 osbs-node02.phx2.fedoraproject.org
 
-#[osbs_masters]
-#osbs-master01.phx2.fedoraproject.org
+[osbs_masters]
+osbs-master01.phx2.fedoraproject.org
 
-[osbs_aarch64_masters]
-osbs-aarch64-master01.arm.fedoraproject.org
+#[osbs_aarch64_masters]
+#osbs-aarch64-master01.arm.fedoraproject.org
 
-[osbs_aarch64_nodes]
-osbs-aarch64-master01.arm.fedoraproject.org
+#[osbs_aarch64_nodes]
+#osbs-aarch64-master01.arm.fedoraproject.org
 
 [osbs:children]
 osbs_control
 osbs_nodes
 osbs_masters
-osbs_aarch64_nodes
-osbs_aarch64_masters
+#osbs_aarch64_nodes
+#osbs_aarch64_masters
 
 [osbs_masters_stg]
 osbs-master01.stg.phx2.fedoraproject.org
