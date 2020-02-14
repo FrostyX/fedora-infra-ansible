@@ -36,7 +36,7 @@
     hostname: name="{{copr_hostbase}}.cloud.fedoraproject.org"
 
 - name: provision instance
-  hosts: copr_keygen_dev:copr_keygen_stg:copr_keygen
+  hosts: copr_keygen_dev:copr_keygen_stg:copr_keygen:copr_keygen_dev_aws
   gather_facts: True
 
   vars_files:
