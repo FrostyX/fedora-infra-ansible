@@ -41,7 +41,6 @@
   dnf:
     state: present
     pkg:
-      - "system-config-firewall-base"
       - "nrpe"
   tags:
   - packages
