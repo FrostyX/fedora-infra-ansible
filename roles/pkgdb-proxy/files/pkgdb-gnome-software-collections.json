@@ -12,7 +12,7 @@
       "version": "devel"
     },
     {
-      "allow_retire": false,
+      "allow_retire": true,
       "branchname": "f32",
       "date_created": "2014-05-14 12:36:15",
       "date_updated": "2020-02-11 17:07:23",
