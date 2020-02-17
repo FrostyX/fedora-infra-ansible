@@ -25,18 +25,18 @@ spec:
         volumeMounts:
         - name: fedora-ostree-content-volume
           mountPath: /mnt/koji
-        - name: fedora-messaging-config
+        - name: fedora-messaging-config-volume
           mountPath: /etc/fedora-messaging
           readOnly: true
-        - name: fedora-messaging-ca
+        - name: fedora-messaging-ca-volume
           mountPath: "/etc/pki/fedora-messaging/{{ fedora_messaging_ca_file }}"
           subPath: "{{ fedora_messaging_ca_file }}"
           readOnly: true
-        - name: fedora-messaging-crt
+        - name: fedora-messaging-crt-volume
           mountPath: "/etc/pki/fedora-messaging/{{ fedora_messaging_cert_file }}"
           subPath: "{{ fedora_messaging_cert_file }}"
           readOnly: true
-        - name: fedora-messaging-key
+        - name: fedora-messaging-key-volume
           mountPath: "/etc/pki/fedora-messaging/{{ fedora_messaging_key_file }}"
           subPath: "{{ fedora_messaging_key_file }}"
           readOnly: true
