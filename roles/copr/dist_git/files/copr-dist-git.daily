@@ -1,0 +1,8 @@
+#!/usr/bin/bash
+
+(
+flock -n 9 || exit 1
+# ... commands executed under lock ...
+runuser -c 'prune-dist-git.py --repos /var/lib/dist-git/git/ --lookasidepkgs /var/lib/dist-git/cache/lookaside/pkgs/ --copr-config ~/.config/copr --always-yes' - copr-dist-git
+
+) 9>/var/lock/copr-dist-git-cron-daily

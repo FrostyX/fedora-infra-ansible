@@ -136,3 +136,11 @@
 
 - name: Create /var/cache/cgit/repo-list.rc if does not exists (it last 30 minutes to generate)
   command: /etc/cron.hourly/copr-dist-git creates=/var/cache/cgit/repo-list.rc
+
+- name: install .config/copr for copr-dist-git user (required for pruning)
+  template: src="copr.conf" dest="/home/copr-dist-git/.config/copr" owner=copr-dist-git group=copr-dist-git
+
+- name: install copr-dist-git.daily cron file
+  copy: src="copr-dist-git.daily" dest="/etc/cron.daily/copr-dist-git" mode=755
+  tags:
+  - config
