@@ -33,7 +33,7 @@
       - "org.fedoraproject.*.faf.problem.threshold1000000"
 
 - name: Setup retrace hosts
-  hosts: retrace
+  hosts: retrace,retrace_stg
   user: root
   gather_facts: True
 
@@ -60,7 +60,7 @@
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
 - name: setup FAF server
-  hosts: retrace
+  hosts: retrace,retrace_stg
   gather_facts: True
 
   vars_files:
@@ -81,7 +81,7 @@
     - import_role: name=abrt/faf-post
 
 - name: setup retrace server
-  hosts: retrace
+  hosts: retrace,retrace_stg
   gather_facts: True
 
   vars_files:
