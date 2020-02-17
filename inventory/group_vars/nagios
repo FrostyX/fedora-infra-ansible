@@ -151,3 +151,12 @@ phx2_external:
   - retrace01.fedoraproject.org
   - secondary01.fedoraproject.org
   - stg.fedoraproject.org
+
+# Exclude these ansible host groups in hostgroups/all.cfg
+exclude_hostgroups:
+  - nixnagios
+  - rhel8beta
+  - dbgserver_stg
+  - copr_keygen_dev_aws
+  - retrace_stg
+  - retrace_stg_aws
