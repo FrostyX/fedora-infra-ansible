@@ -152,6 +152,7 @@
   tags:
   - config
   - robosignatory
+  - robosignatory-config
 
 - name: Create /etc/systemd/system/fm-consumer@.service.d
   file:
