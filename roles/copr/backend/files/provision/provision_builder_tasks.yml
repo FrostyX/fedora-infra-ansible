@@ -30,6 +30,7 @@
     warn: no
   with_items:
     - "@copr/copr"
+    - "@copr/copr-dev"
   when:
     - devel
     - prepare_base_image is not defined
