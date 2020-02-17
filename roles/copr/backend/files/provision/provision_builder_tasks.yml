@@ -18,7 +18,7 @@
   shell: dnf -y upgrade
   when: prepare_base_image is defined
 
-- name: enable copr and copr-dev repos in staging
+- name: enable copr repo in staging
   command:
     cmd: dnf copr -y enable {{ item }}
     warn: no
