@@ -77,7 +77,7 @@
         faf_web_openid_privileged_teams: "provenpackager,proventesters"
         faf_web_secret_key: "{{fedora_faf_web_secret_key}}"
         faf_spool_dir: /srv/faf/
-      tags: never
+      when: datacenter | default("") == "aws"
     - import_role: name=abrt/faf-post
 
 - name: setup retrace server
@@ -105,5 +105,5 @@
         rs_faf_link_dir: /srv/retrace/hardlink-local
         hostname: retrace.fedoraproject.org
         faf_spool_dir: /srv/faf
-      tags: never
+      when: datacenter | default("") == "aws"
     - import_role: name=abrt/retrace-post
