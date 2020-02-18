@@ -43,7 +43,7 @@ spec:
         secret:
           secretName: keytab
   triggers:
-    type: ImageChange
+  - type: ImageChange
     imageChangeParams:
       automatic: true
       from:
