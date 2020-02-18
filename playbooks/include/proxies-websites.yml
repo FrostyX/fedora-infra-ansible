@@ -251,12 +251,6 @@
     cert_name: "{{wildcard_cert_name}}"
 
   - role: httpd/website
-    site_name: boot.fedoraproject.org
-    server_aliases: [boot.stg.fedoraproject.org]
-    sslonly: true
-    cert_name: "{{wildcard_cert_name}}"
-
-  - role: httpd/website
     site_name: smolts.org
     ssl: false
     server_aliases:
