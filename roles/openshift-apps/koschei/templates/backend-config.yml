@@ -11,8 +11,8 @@ stringData:
     {{ lookup('template', roles_path + '/base/templates/krb5.conf.j2') | indent }}
 data:
   rabbitmq-ca.crt: |
-    {{ lookup('file', private + '/files/rabbitmq/' + env + '/pki/ca.crt') | b64encode | indent }}
+    {{ lookup('file', private + '/files/rabbitmq/' + env + '/pki/ca.crt', rstrip=False) | b64encode | indent }}
   rabbitmq-client.crt: |
-    {{ lookup('file', private + '/files/rabbitmq/' + env + '/pki/issued/' + app + env_suffix + '.crt') | b64encode | indent }}
+    {{ lookup('file', private + '/files/rabbitmq/' + env + '/pki/issued/' + app + env_suffix + '.crt', rstrip=False) | b64encode | indent }}
   rabbitmq-client.key: |
-    {{ lookup('file', private + '/files/rabbitmq/' + env + '/pki/private/' + app + env_suffix + '.key') | b64encode | indent }}
+    {{ lookup('file', private + '/files/rabbitmq/' + env + '/pki/private/' + app + env_suffix + '.key', rstrip=False) | b64encode | indent }}
