@@ -9,14 +9,6 @@ callback = "fedora_messaging.example:printer"
 # and configured correctly.
 passive_declares = true
 
-# The topic_prefix configuration value will add a prefix to the topics of every sent message.
-# This is used for migrating from fedmsg, and should not be used afterwards.
-{% if env == "staging" %}
-topic_prefix = "org.fedoraproject.stg"
-{% else %}
-topic_prefix = "org.fedoraproject.prod"
-{% endif %}
-
 [tls]
 ca_cert = "/etc/pki/fedora-messaging/{{ fedora_messaging_ca_file }}"
 keyfile = "/etc/pki/fedora-messaging/{{ fedora_messaging_key_file }}"

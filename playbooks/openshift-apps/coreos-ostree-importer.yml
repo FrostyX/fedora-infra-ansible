@@ -11,11 +11,16 @@
   vars:
     - fedora_messaging_username: "coreos-ostree-importer{{ env_suffix }}"
     - fedora_messaging_queue_name: "coreos-ostree-importer{{ env_suffix }}"
-    - fedora_messaging_routing_keys:
-      - "org.fedoraproject.*.coreos.build.request.ostree-import"
     - fedora_messaging_ca_file: "coreos-ostree-importer-fedora-messaging-cacert.pem"
     - fedora_messaging_cert_file: "coreos-ostree-importer-fedora-messaging-cert.pem"
     - fedora_messaging_key_file: "coreos-ostree-importer-fedora-messaging-key.pem"
+{% if env == "staging" %}
+    - fedora_messaging_routing_keys:
+      - "org.fedoraproject.stg.coreos.build.request.ostree-import"
+{% else %}
+    - fedora_messaging_routing_keys:
+      - "org.fedoraproject.prod.coreos.build.request.ostree-import"
+{% endif %}
 
   roles:
   - role: openshift/project
