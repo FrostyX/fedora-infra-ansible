@@ -1,0 +1,26 @@
+---
+ansible_ssh_user: fedora
+ansible_become_user: root
+ansible_become: yes
+datacenter: aws
+inventory_hostname: "copr-fe-dev.cloud.fedoraproject.org"
+inventory_instance_name: copr-fe-dev
+
+hostbase: copr-fe-dev-
+public_ip: 54.152.63.88
+root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar
+description: copr frontend - dev instance
+
+# Copr vars
+copr_hostbase: copr-fe-dev
+
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  named: false
+  dhcpd: false
+  httpd: false
+  swap: false
+  ping: false
+  raid: false

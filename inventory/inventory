@@ -1115,6 +1115,10 @@ copr-dist-git.fedorainfracloud.org
 [copr_front_dev]
 copr-fe-dev.cloud.fedoraproject.org
 
+[copr_front_dev_aws]
+# stg machine in AWS
+54.152.63.88
+
 [copr_back_dev]
 copr-be-dev.cloud.fedoraproject.org
 
@@ -1158,6 +1162,7 @@ copr_front_dev
 copr_back_dev
 copr_keygen_dev
 copr_dist_git_dev
+copr_front_dev_aws
 copr_keygen_dev_aws
 
 [copr_hypervisors_aarch64]
