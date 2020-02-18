@@ -49,3 +49,12 @@ spec:
       - name: config
         secret:
           secretName: frontend-config
+  triggers:
+  - type: ImageChange
+    imageChangeParams:
+      automatic: true
+      from:
+        kind: ImageStreamTag
+        name: koschei:latest
+      containerNames:
+        - frontend

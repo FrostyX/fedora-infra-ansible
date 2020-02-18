@@ -60,3 +60,12 @@ spec:
       - name: keytab
         secret:
           secretName: keytab
+  triggers:
+  - type: ImageChange
+    imageChangeParams:
+      automatic: true
+      from:
+        kind: ImageStreamTag
+        name: koschei:latest
+      containerNames:
+        - {{service}}
