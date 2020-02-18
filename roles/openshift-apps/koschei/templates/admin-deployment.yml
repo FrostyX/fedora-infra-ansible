@@ -1,0 +1,44 @@
+# https://docs.openshift.com/container-platform/3.11/rest_api/oapi/v1.DeploymentConfig.html#object-schema
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  name: admin
+  labels:
+    service: admin
+spec:
+  replicas: 1
+  selector:
+    service: admin
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        service: admin
+    spec:
+      containers:
+      - name: admin
+        image: docker-registry.default.svc:5000/koschei/koschei:latest
+        command: ["/usr/bin/sleep", "infinity"]
+        env:
+          - name: KRB5_CONFIG
+            value: /etc/koschei/krb5.conf
+          - name: KRB5_CLIENT_KTNAME
+            value: /etc/krb5.keytab
+          - name: FEDORA_MESSAGING_CONF
+            value: /etc/koschei/fedora-messaging.toml
+        volumeMounts:
+        - name: config
+          mountPath: /etc/koschei
+          readOnly: true
+        - name: keytab
+          mountPath: /etc/krb5.keytab
+          subPath: krb5.keytab
+          readOnly: true
+      volumes:
+      - name: config
+        secret:
+          secretName: backend-config
+      - name: keytab
+        secret:
+          secretName: keytab

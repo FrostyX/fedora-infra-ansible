@@ -42,6 +42,7 @@
         - imagestream
         - frontend-config
         - backend-config
+        - admin-deployment
         - frontend-deployment
         - frontend-service
 
