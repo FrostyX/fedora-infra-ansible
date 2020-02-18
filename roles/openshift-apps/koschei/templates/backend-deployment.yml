@@ -21,6 +21,8 @@ spec:
         image: docker-registry.default.svc:5000/koschei/koschei:latest
         command: [/usr/bin/koschei-{{service}}]
         env:
+          - name: SUDO_USER
+            value: admin
           - name: KRB5_CONFIG
             value: /etc/koschei/krb5.conf
           - name: KRB5_CLIENT_KTNAME
