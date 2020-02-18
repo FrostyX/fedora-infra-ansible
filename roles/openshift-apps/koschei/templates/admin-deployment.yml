@@ -48,6 +48,6 @@ spec:
       automatic: true
       from:
         kind: ImageStreamTag
-        name: docker-registry.default.svc:5000/koschei/koschei:latest
+        name: koschei:latest
       containerNames:
         - admin
