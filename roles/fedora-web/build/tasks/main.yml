@@ -35,7 +35,6 @@
   with_items:
   - fedora-web
   - fedoraproject.org
-  - boot.fedoraproject.org
   - spins.fedoraproject.org
   - talk.fedoraproject.org
   - start.fedoraproject.org

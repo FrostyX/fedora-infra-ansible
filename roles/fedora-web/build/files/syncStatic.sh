@@ -65,7 +65,6 @@ popd > /dev/null
 
 build flocktofedora.org
 build spins.fedoraproject.org
-build boot.fedoraproject.org
 build fedoracommunity.org
 build fudcon.fedoraproject.org
 build start.fedoraproject.org

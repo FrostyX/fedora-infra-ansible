@@ -26,7 +26,6 @@
     with_items:
     - getfedora.org
     - arm.fedoraproject.org
-    - boot.fedoraproject.org
     - fedoracommunity.org
     - developer.fedoraproject.org
     - fedoraproject.org

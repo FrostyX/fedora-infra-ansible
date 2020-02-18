@@ -561,6 +561,13 @@
     website: pki.fedoraproject.org
     target: http://dogtagpki.org/
 
+  # We no longer run boot
+  - role: httpd/redirect
+    shortname: boot
+    website: boot.fedoraproject.org
+    target: https://netboot.xyz/
+
+
   # Cloudy bits
   - role: httpd/redirect
     shortname: cloud-front-page
