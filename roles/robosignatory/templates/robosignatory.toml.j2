@@ -154,6 +154,12 @@ handlers = ["console"]
             key = "{{ (env == 'production')|ternary('fedora-infra', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('47dd8ef9', 'd300e724') }}"
 
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "f33-infra-candidate"
+            to = "f33-infra-stg"
+            key = "{{ (env == 'production')|ternary('fedora-infra', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('47dd8ef9', 'd300e724') }}"
+
             # Gated coreos-pool tag
 
             [[consumer_config.koji_instances.primary.tags]]
