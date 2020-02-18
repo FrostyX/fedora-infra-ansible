@@ -27,8 +27,6 @@
     - kevin
 
   # Fedora Messaging User/Queue information
-  - role: rabbit/user
-    username: "{{ fedora_messaging_username }}"
   - role: rabbit/queue
     username: "{{ fedora_messaging_username }}"
     queue_name: "{{ fedora_messaging_queue_name }}"
