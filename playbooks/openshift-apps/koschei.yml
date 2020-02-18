@@ -70,3 +70,11 @@
       with_items: "{{ koschei_cron_jobs }}"
       loop_control:
         label: "{{ item.name }}"
+
+    - name: Import upstream container image to local registry
+      include_role: name=openshift/import-image
+      vars:
+        imagestreamname: koschei
+      tags:
+        - never
+        - import-image
