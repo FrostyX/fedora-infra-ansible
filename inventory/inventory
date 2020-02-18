@@ -1042,7 +1042,10 @@ testdays.fedorainfracloud.org
 [maintainer_test]
 f30-test.fedorainfracloud.org
 f31-test.fedorainfracloud.org
+f32-test.fedorainfracloud.org
 rawhide-test.fedorainfracloud.org
+
+[maintainer_test_oldcloud]
 ppc64le-test.fedorainfracloud.org
 el6-test.fedorainfracloud.org
 el7-test.fedorainfracloud.org
