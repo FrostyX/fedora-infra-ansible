@@ -15,3 +15,5 @@ messaging:
 # Copr vars
 copr_hostbase: copr-be-dev
 _copr_be_conf: copr-be.conf-dev
+
+datacenter: aws

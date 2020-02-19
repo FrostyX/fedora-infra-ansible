@@ -20,6 +20,7 @@
 
 - name: enable PostgreSQL service
   service: state=started enabled=yes name=postgresql
+  when: not services_disabled|bool
 
 - name: Create PG user
   postgresql_user: name="resalloc"
@@ -126,3 +127,4 @@
     name: resalloc
     state: started
     enabled: yes
+  when: not services_disabled|bool

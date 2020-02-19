@@ -272,6 +272,7 @@
 
 - name: enable and run copr-backend services
   service: name="{{ item }}" enabled=yes state=started
+  when: not services_disabled|bool
   with_items:
   - redis       # TODO: .service in copr-backend should depend on redis
   - copr-backend
