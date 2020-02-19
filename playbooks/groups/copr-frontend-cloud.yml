@@ -1,5 +1,5 @@
 - name: check/create instance
-  hosts: copr_front_dev:copr_front:copr_front_dev:aws
+  hosts: copr_front_dev:copr_front:copr_front_dev_aws
   # hosts: copr_front
   gather_facts: False
 
