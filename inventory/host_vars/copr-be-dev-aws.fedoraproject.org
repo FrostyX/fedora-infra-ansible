@@ -1,0 +1,17 @@
+---
+
+hostbase: copr-be-dev-
+public_ip: 54.174.143.212
+root_auth_users: msuchy pingou frostyx dturecek praiskup schlupov thrnciar
+description: copr dispatcher and repo server - dev instance
+
+# consumed by roles/messaging/base
+messaging:
+  certificates:
+  - key: copr
+    username: copr
+    app_name: Copr build system
+
+# Copr vars
+copr_hostbase: copr-be-dev
+_copr_be_conf: copr-be.conf-dev
