@@ -662,6 +662,7 @@ composer.stg.phx2.fedoraproject.org
 copr-be-dev.cloud.fedoraproject.org
 copr-be-stg.fedorainfracloud.org
 copr-dist-git-dev.fedorainfracloud.org
+copr-dist-git-dev-aws.fedorainfracloud.org
 copr-dist-git-stg.fedorainfracloud.org
 copr-fe-dev.cloud.fedoraproject.org
 copr-frontend01.stg.phx2.fedoraproject.org
@@ -1131,6 +1132,9 @@ copr-keygen-dev-aws.fedorainfracloud.org
 
 [copr_dist_git_dev]
 copr-dist-git-dev.fedorainfracloud.org
+
+[copr_dist_git_dev_aws]
+copr-dist-git-dev-aws.fedorainfracloud.org
 
 [copr_front_stg]
 copr-frontend01.stg.phx2.fedoraproject.org

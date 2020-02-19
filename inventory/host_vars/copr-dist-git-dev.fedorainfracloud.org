@@ -1,25 +1,30 @@
 ---
-instance_type: ms1.small
-image: "{{ fedora30_x86_64 }}"
-#image: rhel7-20141015
-keypair: fedora-admin-20130801
-security_group: web-80-anywhere-persistent,web-443-anywhere-persistent,ssh-anywhere-persistent,default,all-icmp-persistent
-zone: nova
-hostbase: copr-dist-git-dev-
-public_ip: 209.132.184.179
-root_auth_users:  ryanlerch pingou msuchy dturecek frostyx praiskup schlupov thrnciar
-description: dist-git for copr service - dev instance
-tcp_ports: [22, 80, 443]
-# volumes:  copr-dist-git-dev
-volumes: [ {volume_id: '64f21445-d758-4b19-8401-e497cd0ae012', device: '/dev/vdc'} ]
-inventory_tenant: persistent
-# name of machine in OpenStack
+ansible_ssh_user: fedora
+ansible_become_user: root
+ansible_become: yes
+datacenter: aws
+inventory_hostname: "copr-dist-git-dev.cloud.fedoraproject.org"
 inventory_instance_name: copr-dist-git-dev
-cloud_networks:
-  # persistent-net
-  - net-id: "67b77354-39a4-43de-b007-bb813ac5c35f"
+
+#instance_type: t3a.medium
+#image: "{{ fedora31_x86_64 }}"
+#keypair: fedora-admin-20130801
+hostbase: copr-dist-git-dev-
+public_ip: 35.153.206.59
+root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar
+description: copr dist git - dev instance
+
 
 # Copr vars
 copr_hostbase: copr-dist-git-dev
 
-# There is no python2 on F30
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  named: false
+  dhcpd: false
+  httpd: false
+  swap: false
+  ping: false
+  raid: false
