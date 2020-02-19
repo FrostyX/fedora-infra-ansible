@@ -1,2 +1,4 @@
 ---
 services_disabled: true
+nm_controlled_resolv: True
+ansible_ifcfg_blacklist: True
