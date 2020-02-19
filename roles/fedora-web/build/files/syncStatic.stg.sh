@@ -65,7 +65,6 @@ popd > /dev/null
 /usr/bin/git pull -q --ff-only || exit 1
 
 build flocktofedora.org
-build boot.fedoraproject.org
 build fedoracommunity.org
 build fudcon.fedoraproject.org
 build start.fedoraproject.org

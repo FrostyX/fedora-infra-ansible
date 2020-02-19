@@ -257,8 +257,8 @@
     cert_name: "{{wildcard_cert_name}}"
 
   - role: httpd/website
-    site_name: boot.fedoraproject.org
-    server_aliases: [boot.stg.fedoraproject.org]
+    site_name: keys.fedoraproject.org
+    server_aliases: [keys.stg.fedoraproject.org]
     sslonly: true
     cert_name: "{{wildcard_cert_name}}"
 

@@ -4,7 +4,6 @@
 
 PO_DIR=/var/tmp/po_dir
 SITES="alt.fedoraproject.org \
-       boot.fedoraproject.org \
        fedoracommunity.org \
        fedorahosted.org \
        fedoraproject.org \

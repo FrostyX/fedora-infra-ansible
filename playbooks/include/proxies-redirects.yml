@@ -561,6 +561,16 @@
     website: pki.fedoraproject.org
     target: http://dogtagpki.org/
 
+  - role: httpd/redirect
+    shortname: keys
+    website: keys.fedoraproject.org
+    target: https://fedoraproject.org/wiki/Infrastructure/graveyard
+
+  - role: httpd/redirect
+    shortname: boot
+    website: boot.fedoraproject.org
+    target: https://fedoraproject.org/wiki/Infrastructure/graveyard
+
   # Cloudy bits
   - role: httpd/redirect
     shortname: cloud-front-page

@@ -19,8 +19,6 @@
     website: spins.fedoraproject.org
   - role: fedora-web/start
     website: start.fedoraproject.org
-  - role: fedora-web/boot
-    website: boot.fedoraproject.org
   - role: fedora-web/mirrors
     website: mirrors.fedoraproject.org
   - role: fedora-web/communityblog
