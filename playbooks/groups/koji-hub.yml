@@ -91,15 +91,25 @@
     nfs_src_dir: 'fedora_koji'
     when: env == 'staging' and inventory_hostname.startswith('koji')
   - role: nfs/client
-    mnt_dir: '/mnt/koji/ostree'
+    mnt_dir: '/mnt/koji/ostree-new'
     nfs_src_dir: 'fedora-ostree-content/ostree'
     mount_stg: true
-    when: env == 'staging' and inventory_hostname.startswith('koji')
+    when: env != 'staging'
+  - role: nfs/client
+    mnt_dir: '/mnt/koji/compose/ostree-new'
+    mount_stg: true
+    nfs_src_dir: 'fedora-ostree-content/compose/ostree'
+    when: env != 'staging'
+  - role: nfs/client
+    mnt_dir: '/mnt/koji/ostree'
+    nfs_src_dir: 'fedora-ostree-content-stg/ostree'
+    mount_stg: true
+    when: env == 'staging'
   - role: nfs/client
     mnt_dir: '/mnt/koji/compose/ostree'
     mount_stg: true
-    nfs_src_dir: 'fedora-ostree-content/compose/ostree'
-    when: env == 'staging' and inventory_hostname.startswith('koji')
+    nfs_src_dir: 'fedora-ostree-content-stg/compose/ostree'
+    when: env == 'staging'
   - sudo
   - role: rabbit/user
     username: "koji{{ env_suffix }}"
