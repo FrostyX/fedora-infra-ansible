@@ -7,7 +7,6 @@ export PATH=$PATH:/bin:/usr/bin:/usr/local/bin
 
 MACHINES='signal.gnome.org
           palette.gnome.org 
-          webapps.gnome.org
           bastion.gnome.org
           spinner.gnome.org
           master.gnome.org
