@@ -5,7 +5,7 @@ ansible_become: yes
 
 datacenter: aws
 
-faf_server_name: retrace.fedoraproject.org/faf
+faf_server_name: retrace.stg.fedoraproject.org/faf
 rs_use_faf_packages: true
 
 # we do not have enough storage on stg

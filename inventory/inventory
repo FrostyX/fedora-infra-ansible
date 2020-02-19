@@ -49,7 +49,7 @@ composer.stg.phx2.fedoraproject.org
 retrace01.qa.fedoraproject.org
 
 [retrace_stg_aws]
-3.228.218.234
+retrace.stg.fedoraproject.org
 
 [retrace_stg:children]
 retrace_stg_aws
