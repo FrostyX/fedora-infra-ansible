@@ -6,6 +6,9 @@ datacenter: aws
 inventory_hostname: "copr-fe-dev.aws.fedoraproject.org"
 inventory_instance_name: copr-fe-dev
 
+nm_controlled_resolv: True
+ansible_ifcfg_blacklist: True
+
 hostbase: copr-fe-dev-
 public_ip: 3.80.191.161
 root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar
