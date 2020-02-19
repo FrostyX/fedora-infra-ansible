@@ -1172,6 +1172,7 @@ copr_keygen_dev
 copr_dist_git_dev
 copr_front_dev_aws
 copr_keygen_dev_aws
+copr_dist_git_dev_aws
 
 [copr_hypervisors_aarch64]
 virthost-aarch64-os01.fedorainfracloud.org
