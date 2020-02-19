@@ -3,32 +3,20 @@ ansible_ssh_user: fedora
 ansible_become_user: root
 ansible_become: yes
 datacenter: aws
-inventory_hostname: "copr-keygen-dev.cloud.fedoraproject.org"
-inventory_instance_name: copr-keygen-dev
+inventory_hostname: "copr-keygen-dev-aws.cloud.fedoraproject.org"
+inventory_instance_name: copr-keygen-dev-aws
 
 #instance_type: t3a.small
 #image: "{{ fedora31_x86_64 }}"
 #keypair: fedora-admin-20130801
-## todo: remove some security groups ?
-#security_group: web-80-anywhere-persistent,web-443-anywhere-persistent,ssh-anywhere-persistent,default,all-icmp-persistent
-#zone: nova
 hostbase: copr-keygen-dev-
 public_ip: 18.215.229.156
 root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar
 #volumes: [ {volume_id: '9e2b4c55-9ec3-4508-af46-a40f3a5bd982', device: '/dev/vdc'} ]
 description: copr key gen and sign host - dev instance
 
-#inventory_tenant: persistent
-# name of machine in OpenStack
-#inventory_instance_name: copr-keygen-dev
-#cloud_networks:
-#  # persistent-net
-#  - net-id: "67b77354-39a4-43de-b007-bb813ac5c35f"
-
 # Copr vars
 copr_hostbase: copr-keygen-dev
-
-# There is no python2 on F30
 
 nagios_Check_Services:
   mail: false
