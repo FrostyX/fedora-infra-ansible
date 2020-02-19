@@ -1,0 +1,30 @@
+---
+ansible_ssh_user: fedora
+ansible_become_user: root
+ansible_become: yes
+datacenter: aws
+inventory_hostname: "copr-dist-git-dev.cloud.fedoraproject.org"
+inventory_instance_name: copr-dist-git-dev
+
+#instance_type: t3a.medium
+#image: "{{ fedora31_x86_64 }}"
+#keypair: fedora-admin-20130801
+hostbase: copr-dist-git-dev-
+public_ip: 35.153.206.59
+root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar
+description: copr dist git - dev instance
+
+
+# Copr vars
+copr_hostbase: copr-dist-git-dev
+
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  named: false
+  dhcpd: false
+  httpd: false
+  swap: false
+  ping: false
+  raid: false
