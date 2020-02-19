@@ -28,7 +28,7 @@
   - import_tasks: "{{ tasks_path }}/cloud_setup_basic.yml"
   - name: set hostname (required by some services, at least postfix need it)
     hostname: name="{{copr_hostbase}}.cloud.fedoraproject.org"
-    when: datacenter != "aws"
+    # when: datacenter != "aws"
 
 - name: provision instance
   hosts: copr_front:copr_front_dev:copr_front_dev_aws
