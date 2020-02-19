@@ -1,4 +1,5 @@
-# c&p from persistent_cloud.yml, with necessary edits
+# c&p from persistent_cloud.yml, with necessary edits, this only works
+# with modern Fedora for now, not RHEL/CentOS
 
 - include_vars: dir=/srv/web/infra/ansible/vars/all/ ignore_files=README
 
@@ -8,6 +9,31 @@
   # ignore_errors: true
   changed_when: false
   check_mode: no
+
+#####################################################x
+# from https://github.com/praiskup/ansible-role-fix-root-ssh
+- name: allow root ssh connections
+  lineinfile:
+    path: /etc/cloud/cloud.cfg
+    regexp: '^disable_root:'
+    line: 'disable_root: 0'
+  remote_user: fedora
+  become: true
+  become_user: root
+
+- name: use the same authorized_keys
+  replace:
+    path: /root/.ssh/authorized_keys
+    regexp: '.*Please login as the user.* ssh-rsa '
+    replace: 'ssh-rsa '
+    backup: yes
+  remote_user: fedora
+  become: true
+  become_user: root
+
+- meta: reset_connection
+# from https://github.com/praiskup/ansible-role-fix-root-ssh
+#####################################################x
 
 ###   - name: spin UP VM using nova_compute
 ###     become: False
@@ -92,7 +118,7 @@
 #
 
 - name: install python3 and dnf stuff
-  raw: dnf -y install python3-dnf python3-libselinux python3
+  raw: sudo dnf -y install python3-dnf python3-libselinux python3
   when: facts is failed
 
 # TODO - somehow guess when keypair is finally deployed and return little bit earlier
