@@ -6,6 +6,7 @@ datacenter: aws
 inventory_hostname: "copr-dist-git-dev-aws.fedorainfracloud.org"
 inventory_instance_name: copr-dist-git-dev-aws
 nm_controlled_resolv: True
+ansible_ifcfg_blacklist: True
 
 #instance_type: t3a.medium
 #image: "{{ fedora31_x86_64 }}"
