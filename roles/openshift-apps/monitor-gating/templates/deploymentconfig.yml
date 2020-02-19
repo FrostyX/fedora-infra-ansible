@@ -22,6 +22,11 @@ spec:
       - name: monitor-gating
         image: monitor-gating:latest
         resources: {}
+        env:
+          - name: KRB5_CONFIG
+            value: /opt/config/krb5.conf
+          - name: KRB5_CLIENT_KTNAME
+            value: /etc/keytab/koji-keytab
         volumeMounts:
         - name: keytab-volume
           mountPath: /etc/keytabs
