@@ -4,6 +4,7 @@
 
 - name: setup networking
   import_tasks: "network.yml"
+  when: datacenter != 'aws'
 
 - name: create obsrun group for `sign' command
   group: name=obsrun
