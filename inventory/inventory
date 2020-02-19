@@ -1118,7 +1118,7 @@ copr-fe-dev.cloud.fedoraproject.org
 
 [copr_front_dev_aws]
 # stg machine in AWS
-3.95.236.19
+3.80.191.161
 
 [copr_back_dev]
 copr-be-dev.cloud.fedoraproject.org
