@@ -3,7 +3,7 @@ ansible_ssh_user: fedora
 ansible_become_user: root
 ansible_become: yes
 datacenter: aws
-inventory_hostname: "copr-fe-dev.cloud.fedoraproject.org"
+inventory_hostname: "copr-fe-dev.aws.fedoraproject.org"
 inventory_instance_name: copr-fe-dev
 
 hostbase: copr-fe-dev-
