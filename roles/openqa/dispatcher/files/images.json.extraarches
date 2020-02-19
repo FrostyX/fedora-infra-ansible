@@ -61,6 +61,14 @@
     },
     {
         "match": {
+            "subvariant": "IoT",
+            "type": "dvd-ostree",
+            "format": "iso",
+            "arch": "x86_64"
+        }
+    },
+    {
+        "match": {
             "subvariant": "Cloud_Base",
             "type": "qcow2",
             "format": "qcow2",
@@ -122,6 +130,14 @@
     {
         "match": {
             "subvariant": "Silverblue",
+            "type": "dvd-ostree",
+            "format": "iso",
+            "arch": "ppc64le"
+        }
+    },
+    {
+        "match": {
+            "subvariant": "IoT",
             "type": "dvd-ostree",
             "format": "iso",
             "arch": "ppc64le"
