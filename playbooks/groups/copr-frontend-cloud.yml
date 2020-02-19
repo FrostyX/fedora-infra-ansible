@@ -31,7 +31,7 @@
     when: datacenter != "aws"
 
 - name: provision instance
-  hosts: copr_front:copr_front_dev
+  hosts: copr_front:copr_front_dev:copr_front_dev_aws
   # hosts: copr_front
   gather_facts: True
 
