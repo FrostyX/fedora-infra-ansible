@@ -91,8 +91,8 @@
 # If that failed, then we use the raw module to install things
 #
 
-- name: install python2 and dnf stuff
-  raw: dnf -y install python-dnf python-libselinux
+- name: install python3 and dnf stuff
+  raw: dnf -y install python3-dnf python3-libselinux python3
   when: facts is failed
 
 # TODO - somehow guess when keypair is finally deployed and return little bit earlier
