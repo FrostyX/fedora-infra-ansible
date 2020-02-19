@@ -3,8 +3,8 @@ ansible_ssh_user: fedora
 ansible_become_user: root
 ansible_become: yes
 datacenter: aws
-inventory_hostname: "copr-dist-git-dev.cloud.fedoraproject.org"
-inventory_instance_name: copr-dist-git-dev
+inventory_hostname: "copr-dist-git-dev-aws.cloud.fedoraproject.org"
+inventory_instance_name: copr-dist-git-dev-aws
 
 #instance_type: t3a.medium
 #image: "{{ fedora31_x86_64 }}"
