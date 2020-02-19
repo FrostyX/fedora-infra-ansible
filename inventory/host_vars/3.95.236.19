@@ -7,7 +7,7 @@ inventory_hostname: "copr-fe-dev.cloud.fedoraproject.org"
 inventory_instance_name: copr-fe-dev
 
 hostbase: copr-fe-dev-
-public_ip: 54.152.63.88
+public_ip: 3.95.236.19
 root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar
 description: copr frontend - dev instance
 
