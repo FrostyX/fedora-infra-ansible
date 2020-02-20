@@ -136,4 +136,4 @@
 
 
 - name: Disable iptables, we have Security Groups in EC2
-  systemd: name=iptables state=stopped enabled=no
+  systemd: name=iptables state=stopped enabled=no masked=yes
