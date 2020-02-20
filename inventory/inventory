@@ -1016,8 +1016,6 @@ copr-be-dev.cloud.fedoraproject.org
 copr-fe-dev.cloud.fedoraproject.org
 # Fedora Bootstrap VM
 fedora-bootstrap.fedorainfracloud.org
-# lists development instance
-lists-dev.fedorainfracloud.org
 # java-deptools ticket 4846
 java-deptools.fedorainfracloud.org
 # developer ticket 4876

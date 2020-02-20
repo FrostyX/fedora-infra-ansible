@@ -119,7 +119,6 @@
 - import_playbook: /srv/web/infra/ansible/playbooks/hosts/fedora-bootstrap.fedorainfracloud.org.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/hosts/grobisplitter01.phx2.fedoraproject.org.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/hosts/iddev.fedorainfracloud.org.yml
-- import_playbook: /srv/web/infra/ansible/playbooks/hosts/lists-dev.fedorainfracloud.org.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/hosts/respins.fedorainfracloud.org.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/hosts/testdays.fedorainfracloud.org.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/hosts/upstreamfirst.fedorainfracloud.org.yml
