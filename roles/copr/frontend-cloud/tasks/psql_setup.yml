@@ -3,6 +3,7 @@
   with_items:
   - "postgresql-server"
   - "postgresql-contrib"
+  - "pspg"
 
 - name: See if PostgreSQL is initialized
   stat: path=/var/lib/pgsql/data/PG_VERSION
