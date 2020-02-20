@@ -18,6 +18,10 @@ spec:
         app: monitor-gating
         deploymentconfig: monitor-gating
     spec:
+      hostAliases:
+        - hostnames:
+          - apps.stg.fedoraproject.org
+          ip: 10.5.128.177
       containers:
       - name: monitor-gating
         image: monitor-gating:latest
