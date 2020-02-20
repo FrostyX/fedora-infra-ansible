@@ -41,3 +41,30 @@ csi_purpose: Provide the backend for copr (3rd party packages)
 csi_relationship: |
   - Backend: Management of copr cloud infrastructure (OpenStack).
   - Small frontend with copr's public stats
+
+root_auth_users: msuchy pingou frostyx dturecek praiskup schlupov thrnciar
+
+tcp_ports: [ 22, 80, 443,
+# These 8 ports are used by fedmsg.  One for each wsgi thread.
+         3000, 3001, 3002, 3003, 3004, 3005, 3006, 3007]
+
+# consumed by roles/messaging/base
+messaging:
+  certificates:
+  - key: copr
+    username: copr
+    app_name: Copr build system
+
+# Copr vars
+copr_hostbase: copr-be
+
+host_backup_targets: ['/var/lib/copr/public_html/results']
+_copr_be_conf: copr-be.conf
+
+nagios_Check_Services:
+  nrpe: true
+  sshd: true
+  httpd: true
+  swap: false
+
+# There is no python2 on F30
