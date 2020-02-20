@@ -1,6 +1,7 @@
 - name: check/create instance
   hosts: copr_front_dev:copr_front:copr_front_dev_aws
   # hosts: copr_front
+  user: root
   gather_facts: False
 
   vars_files:
