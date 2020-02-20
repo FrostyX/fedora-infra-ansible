@@ -22,7 +22,7 @@
   package: state=present name={{ item }}
   with_items:
   - https://kojipkgs.fedoraproject.org/packages/mock/2.0/2.fc31/noarch/mock-2.0-2.fc31.noarch.rpm
-  - https://kojipkgs.fedoraproject.org/packages/mock-core-configs/32.1/1.fc31/noarch/mock-core-configs-32.1-1.fc31.noarch.rpm
+  - https://kojipkgs.fedoraproject.org/packages/mock-core-configs/32.2/1.fc31/noarch/mock-core-configs-32.2-1.fc31.noarch.rpm
 
 - name: enable copr repo in staging
   command:
