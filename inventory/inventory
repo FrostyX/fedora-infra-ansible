@@ -1135,6 +1135,9 @@ copr-be-dev.aws.fedoraproject.org
 [copr_keygen_dev]
 copr-keygen-dev.cloud.fedoraproject.org
 
+[copr_keygen_aws]
+copr-keygen-aws.fedorainfracloud.org
+
 [copr_keygen_dev_aws]
 # stg machine in AWS
 copr-keygen-dev-aws.fedorainfracloud.org
