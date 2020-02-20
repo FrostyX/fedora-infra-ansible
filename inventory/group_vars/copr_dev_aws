@@ -1,5 +1,8 @@
 ---
 devel: true
+
+datacenter: aws
+
 #_forward-src: "{{ files }}/copr/forward-dev"
 _forward_src: "forward_dev"
 
