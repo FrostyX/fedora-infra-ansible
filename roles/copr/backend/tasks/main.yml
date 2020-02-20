@@ -106,7 +106,7 @@
   - config
 
 - name: add config for copr-repo path
-  copy: src="{{ _lighttpd_conf_src }}" dest=/etc/lighttpd/lighttpd.conf owner=root group=root mode=0644
+  template: src="{{ _lighttpd_conf_src }}" dest=/etc/lighttpd/lighttpd.conf owner=root group=root mode=0644
   notify:
   - restart lighttpd
   tags:
