@@ -1116,6 +1116,9 @@ copr-be-aws.fedorainfracloud.org
 [copr_dist_git]
 copr-dist-git.fedorainfracloud.org
 
+[copr_dist_git_aws]
+copr-dist-git.aws.fedoraproject.org
+
 [copr_front_dev]
 copr-fe-dev.cloud.fedoraproject.org
 
