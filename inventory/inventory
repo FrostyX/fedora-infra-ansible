@@ -664,12 +664,14 @@ copr-be-dev.cloud.fedoraproject.org
 copr-be-stg.fedorainfracloud.org
 copr-dist-git-dev.fedorainfracloud.org
 copr-dist-git-dev-aws.fedorainfracloud.org
+copr-dist-git-dev.aws.fedoraproject.org
 copr-dist-git-stg.fedorainfracloud.org
 copr-fe-dev.aws.fedoraproject.org
 copr-fe-dev.cloud.fedoraproject.org
 copr-frontend01.stg.phx2.fedoraproject.org
 copr-frontend02.stg.phx2.fedoraproject.org
 copr-keygen-dev.cloud.fedoraproject.org
+copr-keygen-dev.aws.fedoraproject.org
 copr-keygen-dev-aws.fedorainfracloud.org
 copr-keygen-stg.fedorainfracloud.org
 datagrepper01.stg.phx2.fedoraproject.org
