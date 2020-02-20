@@ -48,6 +48,7 @@ RUN dnf install -y \
 #RUN git clone -b 5.1 https://github.com/fedora-infra/bodhi.git /srv/bodhi && \
 RUN git clone -b 5.1 https://github.com/pypingou/bodhi.git /srv/bodhi && \
     cd /srv/bodhi && \
+    git log -1 && \
     python3 -m pip install . --no-use-pep517 && \
     mkdir -p /usr/share/bodhi && \
     cp /srv/bodhi/apache/bodhi.wsgi /usr/share/bodhi/bodhi.wsgi
