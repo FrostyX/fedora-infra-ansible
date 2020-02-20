@@ -18,7 +18,7 @@ root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar
 description: copr key gen and sign host - dev instance
 
 # Copr vars
-copr_hostbase: copr-keygen-dev
+copr_hostbase: copr-keygen-dev-aws
 
 nagios_Check_Services:
   mail: false
