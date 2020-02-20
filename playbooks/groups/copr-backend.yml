@@ -1,5 +1,5 @@
 - name: check/create instance
-  hosts: copr_back_dev:copr_back_stg:copr_back:copr_back_dev_aws
+  hosts: copr_back_dev:copr_back_stg:copr_back:copr_back_dev_aws:copr_back_aws
   user: root
   gather_facts: False
 
@@ -16,7 +16,7 @@
     when: datacenter == 'aws'
 
 - name: cloud basic setup
-  hosts: copr_back_dev:copr_back_stg:copr_back:copr_back_dev_aws
+  hosts: copr_back_dev:copr_back_stg:copr_back:copr_back_dev_aws:copr_back_aws
   user: root
   gather_facts: True
   vars_files:
@@ -36,7 +36,7 @@
 #    when: env != 'production'
 
 - name: provision instance
-  hosts: copr_back_dev:copr_back_stg:copr_back:copr_back_dev_aws
+  hosts: copr_back_dev:copr_back_stg:copr_back:copr_back_dev_aws:copr_back_aws
   user: root
   gather_facts: True
 
