@@ -81,3 +81,9 @@
   when: updated is defined
   tags:
   - packages
+
+- name: ensure tmp.mount is not masked, logrotate start would fail
+  systemd:
+    name: tmp.mount
+    masked: no
+  when: ansible_distribution_major_version|int >= 30 and ansible_distribution == 'Fedora'
