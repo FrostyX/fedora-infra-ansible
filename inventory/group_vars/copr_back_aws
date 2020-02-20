@@ -1,0 +1,43 @@
+---
+description: copr dispatcher and repo server
+
+_lighttpd_conf_src: "lighttpd/lighttpd.conf"
+
+copr_nova_auth_url: "https://fedorainfracloud.org:5000/v2.0"
+copr_nova_tenant_id: "5d99f099b7fe4b0387f0352f6301ba6a"
+copr_nova_tenant_name: "copr"
+copr_nova_username: "copr"
+
+# copr_builder_image_name: "Fedora-Cloud-Base-20141203-21"
+copr_builder_flavor_name: "ms2.builder"
+copr_builder_network_name: "copr-net"
+copr_builder_key_name: "buildsys"
+copr_builder_security_groups: "ssh-anywhere-copr,default,ssh-from-persistent-copr"
+
+copr_builder_images:
+  x86_64: copr-builder-x86_64-f31-20200117_120726
+  ppc64le: copr-builder-ppc64le-f31-20200117_132023
+  aarch64: copr-builder-20200120_133457
+  aws:
+    x86_64: ami-009d97ed84d6b6fba  # copr-builder-x86_64-f31-20200117_142517
+    aarch64: ami-05694f6d50e78cb91 # copr-builder-aarch64-f31-20200117_142544
+
+nrpe_procs_warn: 2200
+nrpe_procs_crit: 2500
+
+do_sign: "true"
+
+spawn_in_advance: "true"
+frontend_base_url: "https://copr-fe.aws.fedoraproject.org"
+
+
+# These variables are pushed into /etc/system_identification by the base role.
+# Groups and individual hosts should override them with specific info.
+# See http://infrastructure.fedoraproject.org/csi/security-policy/
+
+csi_security_category: High
+csi_primary_contact: "msuchy (mirek), frostyx, dturecek, praiskup IRC #fedora-admin, #fedora-buildsys"
+csi_purpose: Provide the backend for copr (3rd party packages)
+csi_relationship: |
+  - Backend: Management of copr cloud infrastructure (OpenStack).
+  - Small frontend with copr's public stats
