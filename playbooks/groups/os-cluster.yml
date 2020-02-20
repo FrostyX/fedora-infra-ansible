@@ -231,6 +231,7 @@
       command: oadm policy add-cluster-role-to-user cluster-monitoring-view {{item}}
       with_items:
       - abompard
+      - asaleh
       - bowlofeggs
       - cverna
       - dcallagh
@@ -243,7 +244,6 @@
       - ralph
       - sanja
       - zlopez
-      - asaleh
       changed_when: false
     - name: Enable wildcard routes
       command: oc -n default set env dc/router ROUTER_ALLOW_WILDCARD_ROUTES=true
