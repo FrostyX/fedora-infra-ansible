@@ -15,6 +15,12 @@
 #  tags:
 #  - config
 
+- name: enable service tmp.mount and ensure it is not masked
+  systemd:
+    name: tmp.mount
+    enabled: yes
+    masked: no
+
 - name: enable epel for non-fedora hosts
   package: state=present pkg="epel-release"
   when: ansible_distribution != 'Fedora'
@@ -80,6 +86,7 @@
   lineinfile: dest=/etc/sysconfig/network create=yes backup=yes state=present line='PEERDNS=no' regexp=^PEERDNS=
   tags:
   - config
+
 
 # - name: enable and run logrotate service
 #   service: name="logrotate" state=started
