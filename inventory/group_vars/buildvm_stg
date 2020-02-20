@@ -41,7 +41,7 @@ virt_install_command: "{{ virt_install_command_one_nic }} --cpu=host-passthrough
 
 # These variables are for koji-containerbuild/osbs
 osbs_url: "osbs.stg.fedoraproject.org"
-source_registry: "registry.stg.fedoraproject.org"
+source_registry: "registry.fedoraproject.org"
 docker_registry: "candidate-registry.stg.fedoraproject.org"
 koji_root: "koji.stg.fedoraproject.org/koji"
 koji_hub: "koji.stg.fedoraproject.org/kojihub"

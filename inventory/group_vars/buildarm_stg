@@ -23,6 +23,6 @@ csi_relationship: |
 # These variables are for koji-containerbuild/osbs
 osbs_url: "osbs.stg.fedoraproject.org"
 docker_registry: "candidate-registry.stg.fedoraproject.org"
-source_registry: "registry.stg.fedoraproject.org"
+source_registry: "registry.fedoraproject.org"
 koji_root: "koji.stg.fedoraproject.org/koji"
 koji_hub: "koji.stg.fedoraproject.org/kojihub"
