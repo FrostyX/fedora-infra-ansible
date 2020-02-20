@@ -1,5 +1,22 @@
 ---
 datacenter: aws
+
+_forward_src: "forward"
+
+# eth0, eth1
+copr_backend_ips: ["34.227.76.72", "172.30.2.166"]
+keygen_host: "18.215.235.130"
+
+backend_base_url: "https://copr-be.aws.fedoraproject.org"
+postfix_maincf: "postfix/main.cf/main.cf.copr"
+
+frontend_base_url: "https://copr-fe.aws.fedoraproject.org"
+dist_git_base_url: "copr-dist-git.aws.fedoraproject.org"
+
+ansible_ifcfg_blacklist: true
+
+copr_aws_region: us-east-1
+
 services_disabled: true
 nm_controlled_resolv: True
 
