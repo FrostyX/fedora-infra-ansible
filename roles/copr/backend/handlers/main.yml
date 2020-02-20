@@ -3,6 +3,7 @@
 
 - name: restart copr-backend
   service: name=copr-backend state=restarted
+  when: not services_disabled
 
 - name: systemctl daemon-reload
   command: /usr/bin/systemctl daemon-reload
