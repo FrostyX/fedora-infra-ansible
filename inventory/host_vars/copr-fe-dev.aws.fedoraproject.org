@@ -25,4 +25,4 @@ nagios_Check_Services:
   ping: false
   raid: false
 
-ansible_ssh_common_args='-o StrictHostKeyChecking=no'
+ansible_ssh_common_args: '-o StrictHostKeyChecking=no'
