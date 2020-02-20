@@ -3,7 +3,7 @@ ansible_ssh_user: fedora
 ansible_become_user: root
 ansible_become: yes
 datacenter: aws
-inventory_hostname: "copr-keygen-dev-aws.cloud.fedoraproject.org"
+inventory_hostname: "copr-keygen-dev-aws.fedorainfracloud.org"
 inventory_instance_name: copr-keygen-dev-aws
 nm_controlled_resolv: True                                                                                               
 ansible_ifcfg_blacklist: True
