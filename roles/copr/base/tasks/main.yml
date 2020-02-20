@@ -15,12 +15,6 @@
 #  tags:
 #  - config
 
-- name: enable service tmp.mount and ensure it is not masked
-  systemd:
-    name: tmp.mount
-    enabled: yes
-    masked: no
-
 - name: enable epel for non-fedora hosts
   package: state=present pkg="epel-release"
   when: ansible_distribution != 'Fedora'
@@ -87,7 +81,6 @@
   tags:
   - config
   when: datacenter != "aws"
-
 
 # - name: enable and run logrotate service
 #   service: name="logrotate" state=started
