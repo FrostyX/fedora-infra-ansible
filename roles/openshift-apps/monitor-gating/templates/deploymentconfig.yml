@@ -28,7 +28,7 @@ spec:
           - name: KRB5_CLIENT_KTNAME
             value: /etc/keytab/koji-keytab
           - name: OPENSHIFT
-            value: true
+            value: "True"
         volumeMounts:
         - name: keytab-volume
           mountPath: /etc/keytabs
