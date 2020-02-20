@@ -1,0 +1,32 @@
+---
+ansible_ssh_user: fedora
+ansible_become_user: root
+ansible_become: yes
+datacenter: aws
+inventory_hostname: "copr-dist-git-aws.fedorainfracloud.org"
+inventory_instance_name: copr-dist-git-aws
+nm_controlled_resolv: True
+ansible_ifcfg_blacklist: True
+
+#instance_type: t3a.medium
+#image: "{{ fedora31_x86_64 }}"
+#keypair: fedora-admin-20130801
+hostbase: copr-dist-git--aws-
+public_ip: 3.89.184.181
+root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar
+description: copr dist git - prod instance
+
+
+# Copr vars
+copr_hostbase: copr-dist-git-aws
+
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  named: false
+  dhcpd: false
+  httpd: false
+  swap: false
+  ping: false
+  raid: false
