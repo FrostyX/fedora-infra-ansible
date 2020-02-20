@@ -1,0 +1,2 @@
+hostbase: copr-be-dev-
+public_ip: 54.174.143.212

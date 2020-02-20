@@ -1111,7 +1111,7 @@ copr-fe.cloud.fedoraproject.org
 copr-be.cloud.fedoraproject.org
 
 [copr_back_aws]
-copr-be-aws.fedorainfracloud.org
+copr-be.aws.fedoraproject.org
 
 [copr_dist_git]
 copr-dist-git.fedorainfracloud.org
