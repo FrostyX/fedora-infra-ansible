@@ -133,3 +133,7 @@
 #
 - name: Include SSH config
   import_role: name=basessh
+
+
+- name: Disable iptables, we have Security Groups in EC2
+  systemd: name=iptables state=stopped enabled=no
