@@ -105,6 +105,7 @@
   - "httpd"
   - "dist-git.socket"
   - "copr-dist-git"
+  when: not services_disabled|bool
 
 - name: create place for our custom SELinux policy
   file: path=/usr/local/share/selinux state=directory
