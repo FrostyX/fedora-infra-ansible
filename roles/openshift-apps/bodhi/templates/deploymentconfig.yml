@@ -58,7 +58,7 @@ items:
         containers:
         - name: bodhi-web
 {% if env == "staging" %}
-          image: bodhi-base-prebuilt:staging
+          image: bodhi-base:latest
           command: ["bash"]
           args: ["/etc/bodhi/start.sh"]
 {% else %}
@@ -133,7 +133,7 @@ items:
         from:
           kind: ImageStreamTag
 {% if env == "staging" %}
-          name: bodhi-base-prebuilt:staging
+          name: bodhi-base:latest
 {% else %}
           name: bodhi-web:latest
 {% endif %}
@@ -182,7 +182,7 @@ items:
         containers:
         - name: bodhi-consumer
 {% if env == "staging" %}
-          image: bodhi-base-prebuilt:staging
+          image: bodhi-base:latest
           command: ["/usr/bin/fedora-messaging"]
           args: ["consume"]
 {% else %}
@@ -238,7 +238,7 @@ items:
         from:
           kind: ImageStreamTag
 {% if env == "staging" %}
-          name: bodhi-base-prebuilt:staging
+          name: bodhi-base:latest
 {% else %}
           name: bodhi-consumer:latest
 {% endif %}
@@ -287,7 +287,7 @@ items:
         containers:
         - name: bodhi-celery
 {% if env == "staging" %}
-          image: bodhi-base-prebuilt:staging
+          image: bodhi-base:latest
           command: ["/usr/bin/celery"]
           args: ["worker", "-A", "bodhi.server.tasks.app", "-l", "info", "-Q", "celery"]
 {% else %}
@@ -343,7 +343,7 @@ items:
         from:
           kind: ImageStreamTag
 {% if env == "staging" %}
-          name: bodhi-base-prebuilt:staging
+          name: bodhi-base:latest
 {% else %}
           name: bodhi-celery:latest
 {% endif %}
@@ -390,7 +390,7 @@ items:
         containers:
         - name: bodhi-celery-beat
 {% if env == "staging" %}
-          image: bodhi-base-prebuilt:staging
+          image: bodhi-base:latest
           workingDir: "/tmp"
           command: ["/usr/bin/celery"]
           args: ["beat", "-A", "bodhi.server.tasks.app", "-l", "info"]
@@ -447,7 +447,7 @@ items:
         from:
           kind: ImageStreamTag
 {% if env == "staging" %}
-          name: bodhi-base-prebuilt:staging
+          name: bodhi-base:latest
 {% else %}
           name: bodhi-celery-beat:latest
 {% endif %}
