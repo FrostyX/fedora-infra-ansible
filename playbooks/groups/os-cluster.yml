@@ -235,14 +235,19 @@
       - bowlofeggs
       - cverna
       - dcallagh
+      - dustymabe
       - gnaponie
+      - jlebon
       - lholecek
+      - lucab
       - misc
       - mizdebsk
       - mjia
+      - mohanboddu
       - pingou
       - ralph
       - sanja
+      - walters
       - zlopez
       changed_when: false
     - name: Enable wildcard routes
