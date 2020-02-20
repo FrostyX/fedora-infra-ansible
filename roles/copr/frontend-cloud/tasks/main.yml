@@ -62,6 +62,7 @@
 
 - name: enable and start redis  # TODO: .service in copr-backend should depend on redis
   service: name=redis enabled=yes state=started
+  when: not services_disabled|bool
 
 - name: copy apache files to conf.d
   copy: src="httpd/{{ item }}" dest="/etc/httpd/conf.d/{{ item }}"
@@ -119,6 +120,7 @@
   with_items:
   - httpd
   - crond
+  when: not services_disabled|bool
 
 - name: set dev banner for dev instance
   when: devel|bool
@@ -167,10 +169,13 @@
 
 - name: start logrotate service
   service: name=logrotate.timer state=started enabled=yes
+  when: not services_disabled|bool
 
 - name: start fm-consumer service
   service: state=started enabled=yes name="fm-consumer@copr_messaging"
-  when: ansible_facts.packages['copr-frontend'][0].version is version('1.156', '>=')
+  when:
+  - ansible_facts.packages['copr-frontend'][0].version is version('1.156', '>=')
+  - not services_disabled|bool
 
 - name: add amount of time the server will wait for certain events before failing a request
   lineinfile:

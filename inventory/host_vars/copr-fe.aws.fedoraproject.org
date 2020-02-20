@@ -1,0 +1,40 @@
+---
+datacenter: aws
+inventory_hostname: "copr-fe.aws.fedoraproject.org"
+inventory_instance_name: copr-fe
+
+nm_controlled_resolv: True
+ansible_ifcfg_blacklist: True
+
+hostbase: copr-fe-
+public_ip: 54.162.234.149
+root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar
+description: copr frontend server - prod instance
+
+# Copr vars
+copr_hostbase: copr-fe
+
+# dbs to be backed up on this host
+dbs_to_backup:
+- coprdb
+
+db_backup_dir: ['/backups']
+
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  named: false
+  dhcpd: false
+  httpd: false
+  swap: false
+  ping: false
+  raid: false
+
+# this overrides vars/Fedora.yml
+base_pkgs_erase: ['PackageKit*', 'sendmail', 'at']
+
+# GDPR SAR variables
+sar_script: /usr/share/copr/coprs_frontend/run/copr-gdpr-sar.sh
+sar_script_user: copr-fe
+sar_output_file: copr.json

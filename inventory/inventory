@@ -1110,6 +1110,9 @@ copr-keygen.cloud.fedoraproject.org
 [copr_front]
 copr-fe.cloud.fedoraproject.org
 
+[copr_front_aws]
+copr-fe.aws.fedoraproject.org
+
 [copr_back]
 copr-be.cloud.fedoraproject.org
 
@@ -1171,6 +1174,7 @@ copr_keygen
 copr_dist_git
 
 [copr_aws:children]
+copr_front_aws
 copr_back_aws
 copr_dist_git_aws
 copr_keygen_aws

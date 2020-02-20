@@ -7,3 +7,4 @@
 - name: restart copr-fe-fedora-messaging-reader
   service: name="fm-consumer@copr_messaging"
            state=restarted
+  when: not services_disabled|bool
