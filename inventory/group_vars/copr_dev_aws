@@ -9,9 +9,7 @@ _forward_src: "forward_dev"
 copr_backend_ips: ["172.25.33.80", "172.25.144.254"]
 keygen_host: "172.25.33.73"
 
-resolvconf: "resolv.conf/cloud"
-
-backend_base_url: "https://download.copr-dev.fedorainfracloud.org"
+backend_base_url: "https://copr-dev-be.aws.fedoraproject.org"
 postfix_maincf: "postfix/main.cf/main.cf.copr"
 
 frontend_base_url: "https://copr-fe-dev.cloud.fedoraproject.org"
