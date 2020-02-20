@@ -105,9 +105,7 @@
 # development servers use Let's Encrypt
 - name: install letsencrypt ssl certificates for dev
   include_role: name=copr/certbot
-  when:
-  - devel|bool
-  - datacenter != "aws"
+  when: devel|bool
   tags:
   - config
 
