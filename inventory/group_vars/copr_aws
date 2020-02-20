@@ -2,3 +2,6 @@
 services_disabled: true
 nm_controlled_resolv: True
 ansible_ifcfg_blacklist: True
+
+# override defaults from vars/Fedora.yml
+service_enabled: []
