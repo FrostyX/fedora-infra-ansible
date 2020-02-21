@@ -1,4 +1,5 @@
 ---
+tcp_ports: [22, 80, 443]
 copr_hostname: "copr-fe.aws.fedoraproject.org"
 copr_frontend_public_hostname: "copr-fe.aws.fedoraproject.org"
 

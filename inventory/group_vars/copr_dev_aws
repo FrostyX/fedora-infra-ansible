@@ -25,7 +25,5 @@ copr_aws_region: us-east-1
 services_disabled: false
 nm_controlled_resolv: True
 
-baseiptables: False
-
 # override defaults from vars/Fedora.yml
 #service_enabled: []
