@@ -3,7 +3,6 @@ devel: true
 
 datacenter: aws
 
-#_forward-src: "{{ files }}/copr/forward-dev"
 _forward_src: "forward_dev"
 
 # don't forget to update ip in ./copr-keygen-stg, due to custom firewall rules
@@ -24,6 +23,3 @@ copr_aws_region: us-east-1
 
 services_disabled: false
 nm_controlled_resolv: True
-
-# override defaults from vars/Fedora.yml
-#service_enabled: []

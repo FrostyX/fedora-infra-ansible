@@ -4,6 +4,8 @@ datacenter: aws
 
 _forward_src: "forward"
 
+# don't forget to update ip in ./copr-keygen, due to custom firewall rules
+
 # eth0, eth1
 copr_backend_ips: ["34.227.76.72", "172.30.2.166"]
 keygen_host: "52.202.64.55"
@@ -20,8 +22,3 @@ copr_aws_region: us-east-1
 
 services_disabled: true
 nm_controlled_resolv: True
-
-baseiptables: False
-
-# override defaults from vars/Fedora.yml
-service_enabled: []
