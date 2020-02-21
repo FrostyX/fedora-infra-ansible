@@ -55,7 +55,7 @@
 ###           - "{{public_ip}}"
 ###     register: nova_result
 ###     when: host_is_up is failed
-###   
+###
 ###   # instance can be both id and name, volume must be id
 ###   # volume must be id
 ###   #
@@ -69,7 +69,7 @@
 ###     ignore_errors: True
 ###     when: volumes is defined
 ###     check_mode: no
-###   
+###
 ###   #
 ###   # If it is attach it.
 ###   #
@@ -78,14 +78,14 @@
 ###     ignore_errors: True
 ###     failed_when: False
 ###     when: volumes is defined and volume_available is defined and item.changed
-###   
+###
 ###   - name: wait for he host to be hot
 ###     local_action: wait_for host={{ public_ip }} port=22 delay=1 timeout=600
 ###     when: host_is_up is failed
-###   
+###
 ###   # SSH is up and running, however cloud-init still did not deployed ssh keypair
 ###   # we have to wait some time. 10 sec is usually enough, but not always.
-###   
+###
 ###   - name: waiting for cloud-init
 ###     pause: seconds=30
 ###     when: host_is_up is failed
