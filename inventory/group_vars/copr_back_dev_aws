@@ -49,9 +49,7 @@ letsencrypt:
 
 root_auth_users: msuchy pingou frostyx dturecek praiskup schlupov thrnciar
 
-tcp_ports: [ 22, 80, 443,
-# These 8 ports are used by fedmsg.  One for each wsgi thread.
-         3000, 3001, 3002, 3003, 3004, 3005, 3006, 3007]
+tcp_ports: [ 22, 80, 443 ]
 
 # consumed by roles/messaging/base
 messaging:
