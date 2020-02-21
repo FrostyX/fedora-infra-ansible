@@ -20,6 +20,7 @@
   remote_user: fedora
   become: true
   become_user: root
+  when: birthday is defined
 
 - name: use the same authorized_keys
   replace:
@@ -30,8 +31,11 @@
   remote_user: fedora
   become: true
   become_user: root
+  when: birthday is defined
 
 - meta: reset_connection
+  when: birthday is defined
+
 # from https://github.com/praiskup/ansible-role-fix-root-ssh
 #####################################################x
 
@@ -94,6 +98,7 @@
   local_action: command ssh-keyscan -t rsa {{ inventory_hostname }}
 ###  ignore_errors: True
   register: hostkey
+  when: birthday is defined
 ###   when: host_is_up is failed
 
 - name: add new ssh host key (until we can sign it)
@@ -101,6 +106,7 @@
 ###  ignore_errors: True
   with_items:
   - /root/.ssh/known_hosts
+  when: birthday is defined
 ###   when: host_is_up is failed
 
 #
