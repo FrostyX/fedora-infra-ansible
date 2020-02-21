@@ -1,2 +1,13 @@
 hostbase: copr-be-
 public_ip: 34.227.76.72
+
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  named: false
+  dhcpd: false
+  httpd: false
+  swap: false
+  ping: false
+  raid: false
