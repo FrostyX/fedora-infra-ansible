@@ -2,9 +2,9 @@
 {% if hostvars[host].nagios_Check_Services['ping'] %}
 define host {
 {% if vars['nagios_location'] == 'internal' %}
-   use                     defaulttemplate
+   use                        aws
 {% else %}
-  use                          aws
+  use                         aws
 {% endif %}
 
    host_name               {{ host }}
