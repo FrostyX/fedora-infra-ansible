@@ -8,9 +8,9 @@ SSLRandomSeed connect builtin
 SSLCryptoDevice builtin
 
 <VirtualHost _default_:443>
-    SSLCertificateFile    /etc/letsencrypt/live/{{ inventory_hostname }}/cert.pem
-    SSLCertificateKeyFile  /etc/letsencrypt/live/{{ inventory_hostname }}/privkey.pem
-    SSLCertificateChainFile /etc/letsencrypt/live/{{ inventory_hostname }}/fullchain.pem
+    SSLCertificateFile    /etc/letsencrypt/live/{{ dist_git_base_url }}/cert.pem
+    SSLCertificateKeyFile  /etc/letsencrypt/live/{{ dist_git_base_url }}/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/{{ dist_git_base_url }}/fullchain.pem
 
     ErrorLog logs/ssl_error_log
     TransferLog logs/ssl_access_log
