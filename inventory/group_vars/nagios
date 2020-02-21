@@ -159,7 +159,5 @@ exclude_hostgroups:
   - dbgserver_stg
   - retrace_stg
   - retrace_stg_aws
-  - copr_aws
-  - copr_dev_aws
   - virt_guest
   - virt_host

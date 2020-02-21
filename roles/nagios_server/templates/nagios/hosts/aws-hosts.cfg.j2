@@ -4,7 +4,7 @@ define host {
 {% if vars['nagios_location'] == 'internal' %}
    use                     defaulttemplate
 {% else %}
-  use                          mincheck
+  use                          aws
 {% endif %}
 
    host_name               {{ host }}
