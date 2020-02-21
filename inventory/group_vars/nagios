@@ -160,3 +160,4 @@ exclude_hostgroups:
   - retrace_stg
   - retrace_stg_aws
   - copr_aws
+  - copr_dev_aws
