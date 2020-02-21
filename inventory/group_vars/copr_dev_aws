@@ -10,7 +10,7 @@ _forward_src: "forward_dev"
 
 # eth0, eth1
 copr_backend_ips: ["54.174.143.212", "172.30.2.128"]
-keygen_host: "172.30.2.173"
+keygen_host: "18.209.1.14"
 
 backend_base_url: "https://copr-be-dev.aws.fedoraproject.org"
 postfix_maincf: "postfix/main.cf/main.cf.copr"
