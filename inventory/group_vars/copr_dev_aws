@@ -12,7 +12,7 @@ _forward_src: "forward_dev"
 copr_backend_ips: ["54.174.143.212", "172.30.2.128"]
 keygen_host: "18.209.1.14"
 
-backend_base_url: "https://copr-be-dev.cloud.fedoraproject.org"
+backend_base_url: "https://download.copr-dev.fedorainfracloud.org"
 postfix_maincf: "postfix/main.cf/main.cf.copr"
 
 frontend_base_url: "https://copr-fe-dev.cloud.fedoraproject.org"
