@@ -139,5 +139,5 @@
 #  ignore_errors: True
 #
 
-## - name: Include SSH config
-##   import_role: name=basessh
+- name: Include SSH config
+  import_role: name=basessh
