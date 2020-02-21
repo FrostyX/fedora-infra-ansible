@@ -30,5 +30,5 @@ nagios_Check_Services:
   dhcpd: false
   httpd: false
   swap: false
-  ping: true
+  ping: false
   raid: false
