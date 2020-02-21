@@ -1424,3 +1424,7 @@ copr-fe.aws.fedoraproject.org
 copr-fe-dev.aws.fedoraproject.org
 copr-keygen.aws.fedoraproject.org
 copr-keygen-dev.aws.fedoraproject.org
+copr-be-dev.cloud.fedoraproject.org
+copr-dist-git-dev.fedorainfracloud.org
+copr-fe-dev.cloud.fedoraproject.org
+copr-keygen-dev.cloud.fedoraproject.org
