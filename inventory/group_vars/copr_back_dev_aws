@@ -25,7 +25,7 @@ copr_builder_images:
 do_sign: "true"
 
 spawn_in_advance: "false"
-frontend_base_url: "https://copr-fe-dev.aws.fedoraproject.org"
+frontend_base_url: "https://copr-fe-dev.cloud.fedoraproject.org"
 
 
 # These variables are pushed into /etc/system_identification by the base role.
@@ -41,9 +41,9 @@ csi_relationship: This host is the testing environment for the cloud infrastruct
 letsencrypt:
   predefined_deploy_script: lighttpd
   certificates:
-    copr-be-dev.aws.fedoraproject.org:
+    copr-be-dev.cloud.fedoraproject.org:
       domains:
-      - copr-be-dev.aws.fedoraproject.org
+      - copr-be-dev.cloud.fedoraproject.org
       challenge_dir: /var/lib/copr/public_html
       mail: copr-devel@lists.fedorahosted.org
 
