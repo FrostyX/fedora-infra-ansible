@@ -1134,7 +1134,7 @@ copr-fe-dev.aws.fedoraproject.org
 copr-be-dev.cloud.fedoraproject.org
 
 [copr_back_dev_aws]
-copr-be-dev.aws.fedoraproject.org birthday=yes
+copr-be-dev.aws.fedoraproject.org
 
 [copr_keygen_dev]
 copr-keygen-dev.cloud.fedoraproject.org
