@@ -41,6 +41,8 @@
   tags:
   - config
   - copr_infrastructure_password
+  notify:
+  - restart copr-dist-git
 
 - name: set git variables for copr-dist-git user
   copy: src=".gitconfig" dest="/home/copr-dist-git/.gitconfig"
