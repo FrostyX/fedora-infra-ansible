@@ -13,9 +13,9 @@ copr_mbs_cli_login: Y29wcg==##vtvvikhcjncwkfkdcssv
 letsencrypt:
   predefined_deploy_script: httpd
   certificates:
-    copr-fe-dev.aws.fedoraproject.org:
+    copr-fe-dev.cloud.fedoraproject.org:
       domains:
-      - copr-fe-dev.aws.fedoraproject.org
+      - copr-fe-dev.cloud.fedoraproject.org
       challenge_dir: /var/www/html
       mail: copr-devel@lists.fedorahosted.org
 
