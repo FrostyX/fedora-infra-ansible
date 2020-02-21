@@ -181,6 +181,3 @@
   lineinfile:
     path: /etc/httpd/conf/httpd.conf
     line: "TimeOut 7200"
-
-- name: Disable iptables, we have Security Groups in EC2
-  service: name=iptables state=stopped enabled=no
