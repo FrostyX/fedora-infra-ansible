@@ -118,6 +118,7 @@
   check_mode: no
   ignore_errors: True
   register: facts
+  when: birthday is defined
 
 #
 # If that failed, then we use the raw module to install things
@@ -125,7 +126,9 @@
 
 - name: install python3 and dnf stuff
   raw: sudo dnf -y install python3-dnf python3-libselinux python3
-  when: facts is failed
+  when:
+  - birthday is defined
+  - facts is failed
 
 # TODO - somehow guess when keypair is finally deployed and return little bit earlier
 ## We need to specify user, here we trying with fedora or root
