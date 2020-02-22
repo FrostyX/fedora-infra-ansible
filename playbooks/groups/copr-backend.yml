@@ -1,24 +1,3 @@
-- name: test pg plugin
-  hosts: copr_back_dev_aws
-  user: root
-  gather_facts: True
-
-  vars_files:
-   - /srv/web/infra/ansible/vars/global.yml
-   - /srv/private/ansible/vars.yml
-   - /srv/web/infra/ansible/vars/fedora-cloud.yml
-   - /srv/private/ansible/files/openstack/passwords.yml
-
-  tasks:
-  - shell: sleep 1000
-    become: true
-    become_user: postgres
-
-  - name: try become with potsgres ansible plugin
-    postgresql_db: name="coprdb" encoding='UTF-8'
-    become: true
-    become_user: postgres
-
 - name: check/create instance
   hosts: copr_back_dev:copr_back_stg:copr_back:copr_back_dev_aws:copr_back_aws
   user: root
