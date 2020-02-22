@@ -9,11 +9,6 @@
    - /srv/web/infra/ansible/vars/fedora-cloud.yml
    - /srv/private/ansible/files/openstack/passwords.yml
 
-  vars:
-    ansible_become: false
-    ansible_become_user: root
-    ansible_become_method: sudo
-
   tasks:
   - shell: sleep 1000
     become: true
