@@ -7,7 +7,7 @@ nm_controlled_resolv: True
 ansible_ifcfg_blacklist: True
 
 hostbase: copr-fe-dev-
-public_ip: 18.207.201.32
+public_ip: 35.153.70.58
 root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar
 description: copr frontend - dev instance
 
