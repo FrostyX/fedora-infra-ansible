@@ -4,10 +4,10 @@ copr_hostbase: copr-keygen
 tcp_ports: [22]
 
 # http + signd dest ports
-custom_rules: [ '-A INPUT -p tcp -m tcp -s {{ backend_ips[0] }} --dport   80 -j ACCEPT',
-                '-A INPUT -p tcp -m tcp -s {{ backend_ips[0] }} --dport 5167 -j ACCEPT',
-                '-A INPUT -p tcp -m tcp -s {{ backend_ips[1] }} --dport   80 -j ACCEPT',
-                '-A INPUT -p tcp -m tcp -s {{ backend_ips[1] }} --dport 5167 -j ACCEPT']
+custom_rules: [ '-A INPUT -p tcp -m tcp -s 34.227.76.72 --dport   80 -j ACCEPT',
+                '-A INPUT -p tcp -m tcp -s 34.227.76.72 --dport 5167 -j ACCEPT',
+                '-A INPUT -p tcp -m tcp -s 172.30.2.166 --dport   80 -j ACCEPT',
+                '-A INPUT -p tcp -m tcp -s 172.30.2.166 --dport 5167 -j ACCEPT']
 
 datacenter: aws
 
