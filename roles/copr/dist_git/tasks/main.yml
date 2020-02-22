@@ -71,24 +71,29 @@
   notify:
   - reload httpd
 
-- template: src="ssl.conf.j2" dest="/etc/httpd/conf.d/ssl.conf" owner=root group=root mode=0644
+- name: install /etc/httpd/conf.d/ssl.conf
+  template: src="ssl.conf.j2" dest="/etc/httpd/conf.d/ssl.conf" owner=root group=root mode=0644
   notify:
   - reload httpd
 
 - name: temporary logrotation fix until copr-dist-git 0.26 is released & deployed
   copy: src="logrotate.d/copr-dist-git" dest="/etc/logrotate.d/copr-dist-git"
 
-- copy: src="dist-git.conf" dest="/etc/dist-git/dist-git.conf" mode=0644
+- name: install /etc/dist-git/dist-git.conf file
+  copy: src="dist-git.conf" dest="/etc/dist-git/dist-git.conf" mode=0644
   tags:
   - config
 
-- copy: src="copr-dist-git.hourly" dest="/etc/cron.hourly/copr-dist-git" mode=755
+- name: install /etc/cron.hourly/copr-dist-git cron job
+  copy: src="copr-dist-git.hourly" dest="/etc/cron.hourly/copr-dist-git" mode=755
   tags:
   - config
 
-- template: src="cgitrc" dest="/etc/cgitrc" owner=root group=root mode=0644
+- name: install cgitrc
+  template: src="cgitrc" dest="/etc/cgitrc" owner=root group=root mode=0644
 
-- template: src="cgitrc.slow" dest="/etc/cgitrc.slow" owner=root group=root mode=0644
+- name: install cgitrc.slow
+  template: src="cgitrc.slow" dest="/etc/cgitrc.slow" owner=root group=root mode=0644
 
 - name: allow httpd to run cgit
   seboolean: name=httpd_enable_cgi state=true persistent=true
