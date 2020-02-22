@@ -2,13 +2,17 @@
   hosts: copr_back_dev_aws
   user: root
   gather_facts: True
-  become: false
-  
+
   vars_files:
    - /srv/web/infra/ansible/vars/global.yml
    - /srv/private/ansible/vars.yml
    - /srv/web/infra/ansible/vars/fedora-cloud.yml
    - /srv/private/ansible/files/openstack/passwords.yml
+
+  vars:
+    ansible_become: false
+    ansible_become_user: root
+    ansible_become_method: sudo
 
   tasks:
   - name: try become with potsgres ansible plugin
