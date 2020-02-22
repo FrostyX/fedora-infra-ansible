@@ -1,3 +1,14 @@
+- name: test pg plugin
+  hosts: copr_back_dev_aws
+  user: root
+  gather_facts: True
+
+  tasks:
+  - name: Create db
+    postgresql_db: name="coprdb" encoding='UTF-8'
+    become: yes
+    become_user: postgres
+
 - name: check/create instance
   hosts: copr_back_dev:copr_back_stg:copr_back:copr_back_dev_aws:copr_back_aws
   user: root
