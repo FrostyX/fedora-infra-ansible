@@ -4,6 +4,11 @@
   gather_facts: True
 
   tasks:
+  - name: touch something in homedir
+    shell: touch ~/test.touch
+    become: yes
+    become_user: praiskup
+
   - name: Create db
     postgresql_db: name="coprdb" encoding='UTF-8'
     become: yes
