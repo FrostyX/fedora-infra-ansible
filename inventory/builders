@@ -164,10 +164,10 @@ ppc9-02.ppc.fedoraproject.org
 #aarch64-c19n1.arm.fedoraproject.org
 #aarch64-c20n1.arm.fedoraproject.org
 #aarch64-c21n1.arm.fedoraproject.org
-aarch64-c22n1.arm.fedoraproject.org
-aarch64-c23n1.arm.fedoraproject.org
-aarch64-c24n1.arm.fedoraproject.org
-aarch64-c25n1.arm.fedoraproject.org
+#aarch64-c22n1.arm.fedoraproject.org
+#aarch64-c23n1.arm.fedoraproject.org
+#aarch64-c24n1.arm.fedoraproject.org
+#aarch64-c25n1.arm.fedoraproject.org
 buildvmhost-aarch64-01.arm.fedoraproject.org
 buildvmhost-aarch64-02.arm.fedoraproject.org
 buildvmhost-s390x-01.s390.fedoraproject.org
