@@ -1109,7 +1109,7 @@ copr-keygen.cloud.fedoraproject.org
 copr-fe.cloud.fedoraproject.org
 
 [copr_front_aws]
-copr-fe.aws.fedoraproject.org
+copr-fe.aws.fedoraproject.org birthday=yes
 
 [copr_back]
 copr-be.cloud.fedoraproject.org
