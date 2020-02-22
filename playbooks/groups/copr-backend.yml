@@ -2,6 +2,7 @@
   hosts: copr_back_dev_aws
   user: root
   gather_facts: True
+  become: false
   
   vars_files:
    - /srv/web/infra/ansible/vars/global.yml
@@ -10,9 +11,9 @@
    - /srv/private/ansible/files/openstack/passwords.yml
 
   tasks:
-  - name: touch something in homedir
-    shell: touch ~/test.touch
-    become: yes
+  - name: try become with potsgres ansible plugin
+    postgresql_db: name="coprdb" encoding='UTF-8'
+    become: true
     become_user: postgres
 
 - name: check/create instance
