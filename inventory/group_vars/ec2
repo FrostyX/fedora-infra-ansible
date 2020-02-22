@@ -1,8 +1,9 @@
 # For Fedora instances, we want to ssh as 'fedora', not as 'root'
 #ansible_ssh_user: fedora
-ansible_become: true
-ansible_become_user: root
-ansible_become_method: sudo
+# Disabled, it was only needed initially for proxy30.fedoraproject.org
+#ansible_become: true
+#ansible_become_user: root
+#ansible_become_method: sudo
 
 # Disable ethX ifcfg, let amazon handle these via DHCP.
 ansible_ifcfg_blacklist: true
