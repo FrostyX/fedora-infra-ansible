@@ -16,9 +16,6 @@ public_ip: 52.202.64.55
 root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar
 description: copr key gen and sign host - prod instance
 
-# Copr vars
-copr_hostbase: copr-keygen
-
 nagios_Check_Services:
   mail: false
   nrpe: false
