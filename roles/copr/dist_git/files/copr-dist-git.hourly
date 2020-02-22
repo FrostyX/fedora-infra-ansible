@@ -1,5 +1,8 @@
 #!/usr/bin/bash
 
+# we need to optimize this
+exit 0
+
 (
 flock -n 9 || exit 1
 # ... commands executed under lock ...
