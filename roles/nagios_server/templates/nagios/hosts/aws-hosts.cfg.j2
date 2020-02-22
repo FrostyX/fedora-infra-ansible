@@ -1,12 +1,6 @@
 {% for host in groups['ec2']|sort %}
-{% if hostvars[host].nagios_Check_Services['ping'] %}
 define host {
-{% if vars['nagios_location'] == 'internal' %}
-   use                        aws
-{% else %}
-  use                         aws
-{% endif %}
-
+   use                     aws
    host_name               {{ host }}
 {% if hostvars[host].ansible_hostname is defined %}
    alias                   {{ hostvars[host].ansible_hostname }}
@@ -15,5 +9,4 @@ define host {
 {% endif %}
    address                 {{ host }}
 }
-{% endif %}
 {% endfor %}
