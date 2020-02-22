@@ -1012,8 +1012,8 @@ copr-be.cloud.fedoraproject.org
 copr-fe.cloud.fedoraproject.org
 copr-keygen.cloud.fedoraproject.org
 # copr dev instances
-copr-be-dev.cloud.fedoraproject.org
-copr-fe-dev.cloud.fedoraproject.org
+#copr-be-dev.cloud.fedoraproject.org
+#copr-fe-dev.cloud.fedoraproject.org
 # Fedora Bootstrap VM
 fedora-bootstrap.fedorainfracloud.org
 # java-deptools ticket 4846
