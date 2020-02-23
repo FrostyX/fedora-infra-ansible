@@ -660,7 +660,7 @@ buildvm-s390x-01.stg.s390.fedoraproject.org
 busgateway01.stg.phx2.fedoraproject.org
 composer.stg.phx2.fedoraproject.org
 copr-be-dev.aws.fedoraproject.org
-copr-be-dev.cloud.fedoraproject.org
+#copr-be-dev.cloud.fedoraproject.org
 copr-be-stg.fedorainfracloud.org
 copr-dist-git-dev.fedorainfracloud.org
 copr-dist-git-dev.aws.fedoraproject.org
@@ -669,7 +669,6 @@ copr-fe-dev.aws.fedoraproject.org
 copr-fe-dev.cloud.fedoraproject.org
 copr-frontend01.stg.phx2.fedoraproject.org
 copr-frontend02.stg.phx2.fedoraproject.org
-copr-keygen-dev.cloud.fedoraproject.org
 copr-keygen-dev.aws.fedoraproject.org
 copr-keygen-stg.fedorainfracloud.org
 datagrepper01.stg.phx2.fedoraproject.org
@@ -1123,8 +1122,8 @@ copr-dist-git.fedorainfracloud.org
 [copr_dist_git_aws]
 copr-dist-git.aws.fedoraproject.org
 
-[copr_front_dev]
-copr-fe-dev.cloud.fedoraproject.org
+#[copr_front_dev]
+#copr-fe-dev.cloud.fedoraproject.org
 
 [copr_front_dev_aws]
 # stg machine in AWS
@@ -1136,8 +1135,8 @@ copr-be-dev.cloud.fedoraproject.org
 [copr_back_dev_aws]
 copr-be-dev.aws.fedoraproject.org
 
-[copr_keygen_dev]
-copr-keygen-dev.cloud.fedoraproject.org
+#[copr_keygen_dev]
+#copr-keygen-dev.cloud.fedoraproject.org
 
 [copr_keygen_aws]
 copr-keygen.aws.fedoraproject.org
@@ -1426,5 +1425,3 @@ copr-keygen.aws.fedoraproject.org
 copr-keygen-dev.aws.fedoraproject.org
 copr-be-dev.cloud.fedoraproject.org
 copr-dist-git-dev.fedorainfracloud.org
-copr-fe-dev.cloud.fedoraproject.org
-copr-keygen-dev.cloud.fedoraproject.org
