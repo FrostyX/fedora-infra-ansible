@@ -28,7 +28,7 @@ nrpe_procs_crit: 2500
 do_sign: "true"
 
 spawn_in_advance: "true"
-frontend_base_url: "https://copr-fe.aws.fedoraproject.org"
+frontend_base_url: "https://copr.fedorainfracloud.org"
 
 
 # These variables are pushed into /etc/system_identification by the base role.
