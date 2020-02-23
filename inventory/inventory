@@ -1181,11 +1181,11 @@ copr_back_stg
 copr_keygen_stg
 copr_dist_git_stg
 
-[copr_dev:children]
-copr_front_dev
-copr_back_dev
-copr_keygen_dev
-copr_dist_git_dev
+#[copr_dev:children]
+#copr_front_dev
+#copr_back_dev
+#copr_keygen_dev
+#copr_dist_git_dev
 
 [copr_dev_aws:children]
 copr_front_dev_aws
