@@ -42,6 +42,9 @@ koschei_cron_jobs:
   - name: refresh-scitech
     schedule: "11 0-23/3 * * *"
     command: "koschei-refresh-distgit-group scitech_sig scitech_sig"
+  - name: refresh-neuro
+    schedule: "13 0-23/3 * * *"
+    command: "koschei-refresh-distgit-group neuro-sig neuro-sig"
   - name: track-rust
     schedule: "15 0-23/3 * * *"
     command: "koschei-track-group rust-sig"
@@ -54,3 +57,6 @@ koschei_cron_jobs:
   - name: track-scitech
     schedule: "21 0-23/3 * * *"
     command: "koschei-track-group scitech_sig"
+  - name: track-neuro
+    schedule: "23 0-23/3 * * *"
+    command: "koschei-track-group neuro-sig"
