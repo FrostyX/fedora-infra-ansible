@@ -26,8 +26,14 @@ datacenter: cloud
 copr_hostbase: copr-keygen
 
 nagios_Check_Services:
-  nrpe: true
-  sshd: true
+  mail: false
+  nrpe: false
+  sshd: false
+  named: false
+  dhcpd: false
+  httpd: false
   swap: false
+  ping: false
+  raid: false
 
 # There is no python2 on F30

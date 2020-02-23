@@ -36,9 +36,13 @@ host_backup_targets: ['/var/lib/copr/public_html/results']
 _copr_be_conf: copr-be.conf
 
 nagios_Check_Services:
-  nrpe: true
-  sshd: true
-  httpd: true
+  mail: false
+  nrpe: false
+  sshd: false
+  named: false
+  dhcpd: false
+  httpd: false
   swap: false
-
+  ping: false
+  raid: false
 # There is no python2 on F30

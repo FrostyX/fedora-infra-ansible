@@ -23,4 +23,14 @@ copr_hostbase: copr-dist-git
 
 host_backup_targets: ['/var/lib/dist-git/git', '/var/lib/dist-git/cache']
 
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  named: false
+  dhcpd: false
+  httpd: false
+  swap: false
+  ping: false
+  raid: false
 # There is no python2 on F30

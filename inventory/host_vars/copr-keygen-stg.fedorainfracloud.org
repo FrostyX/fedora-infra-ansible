@@ -20,3 +20,14 @@ cloud_networks:
 
 # Copr vars
 copr_hostbase: copr-keygen-stg
+
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  named: false
+  dhcpd: false
+  httpd: false
+  swap: false
+  ping: false
+  raid: false
