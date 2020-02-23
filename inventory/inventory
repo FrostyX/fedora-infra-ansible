@@ -1129,8 +1129,8 @@ copr-dist-git.aws.fedoraproject.org
 # stg machine in AWS
 copr-fe-dev.aws.fedoraproject.org
 
-[copr_back_dev]
-copr-be-dev.cloud.fedoraproject.org
+#[copr_back_dev]
+#copr-be-dev.cloud.fedoraproject.org
 
 [copr_back_dev_aws]
 copr-be-dev.aws.fedoraproject.org
@@ -1423,5 +1423,5 @@ copr-fe.aws.fedoraproject.org
 copr-fe-dev.aws.fedoraproject.org
 copr-keygen.aws.fedoraproject.org
 copr-keygen-dev.aws.fedoraproject.org
-copr-be-dev.cloud.fedoraproject.org
+#copr-be-dev.cloud.fedoraproject.org
 copr-dist-git-dev.fedorainfracloud.org
