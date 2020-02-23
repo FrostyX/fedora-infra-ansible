@@ -19,7 +19,7 @@ description: copr key gen and sign host - prod instance
 nagios_Check_Services:
   mail: false
   nrpe: false
-  sshd: false
+  sshd: true
   named: false
   dhcpd: false
   httpd: false

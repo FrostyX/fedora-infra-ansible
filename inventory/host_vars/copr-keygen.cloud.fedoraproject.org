@@ -28,7 +28,7 @@ copr_hostbase: copr-keygen
 nagios_Check_Services:
   mail: false
   nrpe: false
-  sshd: false
+  sshd: true
   named: false
   dhcpd: false
   httpd: false
