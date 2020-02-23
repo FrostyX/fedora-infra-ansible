@@ -15,10 +15,6 @@ db-qa01.qa.fedoraproject.org
 db-qa02.qa.fedoraproject.org
 db-qa03.qa.fedoraproject.org
 #db-koji01.phx2.fedoraproject.org
-#copr-be.cloud.fedoraproject.org
-copr-fe.cloud.fedoraproject.org
-copr-keygen.cloud.fedoraproject.org
-#copr-dist-git.fedorainfracloud.org
 value01.phx2.fedoraproject.org
 tang01.phx2.fedoraproject.org
 taskotron01.qa.fedoraproject.org

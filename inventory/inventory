@@ -660,17 +660,11 @@ buildvm-s390x-01.stg.s390.fedoraproject.org
 busgateway01.stg.phx2.fedoraproject.org
 composer.stg.phx2.fedoraproject.org
 copr-be-dev.aws.fedoraproject.org
-#copr-be-dev.cloud.fedoraproject.org
-copr-be-stg.fedorainfracloud.org
-copr-dist-git-dev.fedorainfracloud.org
 copr-dist-git-dev.aws.fedoraproject.org
-copr-dist-git-stg.fedorainfracloud.org
 copr-fe-dev.aws.fedoraproject.org
-copr-fe-dev.cloud.fedoraproject.org
 copr-frontend01.stg.phx2.fedoraproject.org
 copr-frontend02.stg.phx2.fedoraproject.org
 copr-keygen-dev.aws.fedoraproject.org
-copr-keygen-stg.fedorainfracloud.org
 datagrepper01.stg.phx2.fedoraproject.org
 db-fas01.stg.phx2.fedoraproject.org
 db-koji01.stg.phx2.fedoraproject.org
@@ -1006,13 +1000,6 @@ pdc-backend02.stg.phx2.fedoraproject.org
 pdc-backend03.stg.phx2.fedoraproject.org
 
 [persistent_cloud]
-# copr production instances
-# copr-be.cloud.fedoraproject.org
-# copr-fe.cloud.fedoraproject.org
-# copr-keygen.cloud.fedoraproject.org
-# copr dev instances
-# copr-be-dev.cloud.fedoraproject.org
-# copr-fe-dev.cloud.fedoraproject.org
 # Fedora Bootstrap VM
 fedora-bootstrap.fedorainfracloud.org
 # java-deptools ticket 4846
@@ -1100,23 +1087,11 @@ bvirthost
 buildvmhost
 virthost_comm
 
-[copr_keygen]
-copr-keygen.cloud.fedoraproject.org
-
-[copr_front]
-copr-fe.cloud.fedoraproject.org
-
 [copr_front_aws]
 copr-fe.aws.fedoraproject.org
 
-[copr_back]
-copr-be.cloud.fedoraproject.org
-
 [copr_back_aws]
 copr-be.aws.fedoraproject.org
-
-[copr_dist_git]
-copr-dist-git.fedorainfracloud.org
 
 [copr_dist_git_aws]
 copr-dist-git.aws.fedoraproject.org
@@ -1139,34 +1114,6 @@ copr-dist-git-dev.fedorainfracloud.org
 
 [copr_dist_git_dev_aws]
 copr-dist-git-dev.aws.fedoraproject.org
-
-# [copr_front_dev]
-# copr-fe-dev.cloud.fedoraproject.org
-
-# [copr_back_dev]
-# copr-be-dev.cloud.fedoraproject.org
-
-# [copr_keygen_dev]
-# copr-keygen-dev.cloud.fedoraproject.org
-
-# [copr_front_stg]
-# copr-frontend01.stg.phx2.fedoraproject.org
-# copr-frontend02.stg.phx2.fedoraproject.org
-
-# [copr_back_stg]
-# copr-be-stg.fedorainfracloud.org
-
-# [copr_keygen_stg]
-# copr-keygen-stg.fedorainfracloud.org
-
-# [copr_dist_git_stg]
-# copr-dist-git-stg.fedorainfracloud.org
-
-[copr:children]
-copr_front
-copr_back
-copr_keygen
-copr_dist_git
 
 [copr_aws:children]
 copr_front_aws
@@ -1358,8 +1305,6 @@ pkgs02.phx2.fedoraproject.org
 fed-cloud09.cloud.fedoraproject.org
 # Ansible from time to time in large runs has zombie threads
 batcave01.phx2.fedoraproject.org
-# Copr backend gets zombies
-copr-be.cloud.fedoraproject.org
 # bodhi-backend01 gets zombies right at the end of pushes
 bodhi-backend01.phx2.fedoraproject.org
 
@@ -1377,7 +1322,6 @@ value01.phx2.fedoraproject.org
 pkgs02.phx2.fedoraproject.org
 notifs-web01.phx2.fedoraproject.org
 wiki02.phx2.fedoraproject.org
-copr-fe.cloud.fedoraproject.org
 retrace01.qa.fedoraproject.org
 
 [nfs_servers]
