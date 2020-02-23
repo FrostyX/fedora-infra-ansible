@@ -155,21 +155,14 @@ phx2_external:
 # Exclude these ansible host groups in hostgroups/all.cfg
 exclude_hostgroups:
   - nixnagios
-  - copr
   - copr_aws
-  - copr_back
   - copr_back_aws
   - copr_back_dev_aws
   - copr_dev_aws
-  - copr_dist_git
   - copr_dist_git_aws
-  - copr_dist_git_dev
   - copr_dist_git_dev_aws
-  - copr_front
   - copr_front_aws
   - copr_front_dev_aws
-  - copr_hypervisors_aarch64
-  - copr_keygen
   - copr_keygen_aws
   - copr_keygen_dev_aws
   - dbgserver_stg

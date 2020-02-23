@@ -1007,12 +1007,12 @@ pdc-backend03.stg.phx2.fedoraproject.org
 
 [persistent_cloud]
 # copr production instances
-copr-be.cloud.fedoraproject.org
-copr-fe.cloud.fedoraproject.org
-copr-keygen.cloud.fedoraproject.org
+# copr-be.cloud.fedoraproject.org
+# copr-fe.cloud.fedoraproject.org
+# copr-keygen.cloud.fedoraproject.org
 # copr dev instances
-#copr-be-dev.cloud.fedoraproject.org
-#copr-fe-dev.cloud.fedoraproject.org
+# copr-be-dev.cloud.fedoraproject.org
+# copr-fe-dev.cloud.fedoraproject.org
 # Fedora Bootstrap VM
 fedora-bootstrap.fedorainfracloud.org
 # java-deptools ticket 4846
@@ -1173,18 +1173,6 @@ copr_front_aws
 copr_back_aws
 copr_dist_git_aws
 copr_keygen_aws
-
-# [copr_stg:children]
-# copr_front_stg
-# copr_back_stg
-# copr_keygen_stg
-# copr_dist_git_stg
-
-# [copr_dev:children]
-# copr_front_dev
-# copr_back_dev
-# copr_keygen_dev
-# copr_dist_git_dev
 
 [copr_dev_aws:children]
 copr_front_dev_aws
