@@ -1103,7 +1103,6 @@ virthost_comm
 [copr_keygen]
 copr-keygen.cloud.fedoraproject.org
 
-
 [copr_front]
 copr-fe.cloud.fedoraproject.org
 
@@ -1122,21 +1121,12 @@ copr-dist-git.fedorainfracloud.org
 [copr_dist_git_aws]
 copr-dist-git.aws.fedoraproject.org
 
-#[copr_front_dev]
-#copr-fe-dev.cloud.fedoraproject.org
-
 [copr_front_dev_aws]
 # stg machine in AWS
 copr-fe-dev.aws.fedoraproject.org
 
-#[copr_back_dev]
-#copr-be-dev.cloud.fedoraproject.org
-
 [copr_back_dev_aws]
 copr-be-dev.aws.fedoraproject.org
-
-#[copr_keygen_dev]
-#copr-keygen-dev.cloud.fedoraproject.org
 
 [copr_keygen_aws]
 copr-keygen.aws.fedoraproject.org
@@ -1150,18 +1140,27 @@ copr-dist-git-dev.fedorainfracloud.org
 [copr_dist_git_dev_aws]
 copr-dist-git-dev.aws.fedoraproject.org
 
-[copr_front_stg]
-copr-frontend01.stg.phx2.fedoraproject.org
-copr-frontend02.stg.phx2.fedoraproject.org
+# [copr_front_dev]
+# copr-fe-dev.cloud.fedoraproject.org
 
-[copr_back_stg]
-copr-be-stg.fedorainfracloud.org
+# [copr_back_dev]
+# copr-be-dev.cloud.fedoraproject.org
 
-[copr_keygen_stg]
-copr-keygen-stg.fedorainfracloud.org
+# [copr_keygen_dev]
+# copr-keygen-dev.cloud.fedoraproject.org
 
-[copr_dist_git_stg]
-copr-dist-git-stg.fedorainfracloud.org
+# [copr_front_stg]
+# copr-frontend01.stg.phx2.fedoraproject.org
+# copr-frontend02.stg.phx2.fedoraproject.org
+
+# [copr_back_stg]
+# copr-be-stg.fedorainfracloud.org
+
+# [copr_keygen_stg]
+# copr-keygen-stg.fedorainfracloud.org
+
+# [copr_dist_git_stg]
+# copr-dist-git-stg.fedorainfracloud.org
 
 [copr:children]
 copr_front
@@ -1175,17 +1174,17 @@ copr_back_aws
 copr_dist_git_aws
 copr_keygen_aws
 
-[copr_stg:children]
-copr_front_stg
-copr_back_stg
-copr_keygen_stg
-copr_dist_git_stg
+# [copr_stg:children]
+# copr_front_stg
+# copr_back_stg
+# copr_keygen_stg
+# copr_dist_git_stg
 
-#[copr_dev:children]
-#copr_front_dev
-#copr_back_dev
-#copr_keygen_dev
-#copr_dist_git_dev
+# [copr_dev:children]
+# copr_front_dev
+# copr_back_dev
+# copr_keygen_dev
+# copr_dist_git_dev
 
 [copr_dev_aws:children]
 copr_front_dev_aws
