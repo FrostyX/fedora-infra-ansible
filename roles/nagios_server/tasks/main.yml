@@ -153,7 +153,7 @@
     - udp.cfg
     - unbound.cfg
   tags:
-  - nagios-config
+  - nagios_config
   - nagios_server
   notify: restart nagios
 
@@ -161,7 +161,7 @@
 - name: Copy /etc/nagios/contacts
   synchronize: src=nagios/contacts/ dest=/etc/nagios/contacts/
   tags:
-  - nagios-config
+  - nagios_config
   - nagios_server
   notify: restart nagios
 
@@ -169,7 +169,7 @@
 - name: Copy /etc/nagios/contactgroups
   synchronize: src=nagios/contactgroups/ dest=/etc/nagios/contactgroups/
   tags:
-  - nagios-config
+  - nagios_config
   - nagios_server
   notify: restart nagios
 
@@ -177,7 +177,7 @@
 - name: Copy /etc/nagios/hosts
   copy: src=nagios/hosts/ dest=/etc/nagios/hosts/
   tags:
-  - nagios-config
+  - nagios_config
   - nagios_server
   notify: restart nagios
 
@@ -219,7 +219,7 @@
     - vpnclients.cfg
     - certgetter.cfg
   tags:
-  - nagios-config
+  - nagios_config
   - nagios_server
   when: env == "production" and nagios_location == "internal"
   notify: restart nagios
@@ -232,7 +232,7 @@
     - smtp-mm.cfg
     - templates.cfg
   tags:
-  - nagios-config
+  - nagios_config
   - nagios_server
   when: env == "production" and nagios_location == "external"
   notify: restart nagios
@@ -245,7 +245,7 @@
     - ping.cfg
     - templates.cfg
   tags:
-  - nagios-config
+  - nagios_config
   - nagios_server
   when: env == "staging"
   notify: restart nagios
@@ -254,7 +254,7 @@
 - name: Copy /etc/nagios/servicegroups
   synchronize: src=nagios/servicegroups/ dest=/etc/nagios/servicegroups/
   tags:
-  - nagios-config
+  - nagios_config
   - nagios_server
   when: nagios_location == "internal"
   notify: restart nagios
@@ -304,14 +304,14 @@
   template: src=nagios/configs/cgi.cfg.j2 dest=/etc/nagios/cgi.cfg mode=0644 owner=root group=root
   tags:
   - nagios_server
-  - nagios-config
+  - nagios_config
   notify: restart nagios
 
 - name: Override config.inc.php for the given environment
   template: src=nagios/config.inc.php.j2 dest=/usr/share/nagios/html/config.inc.php mode=0640 owner=root group=apache
   tags:
   - nagios_server
-  - nagios-config
+  - nagios_config
   notify: restart nagios
 
 - name: Template over commands
@@ -320,7 +320,7 @@
     - postgres.cfg
   tags:
   - nagios_server
-  - nagios-config
+  - nagios_config
   notify: restart nagios
 
 - name: Template over services (internal)
@@ -331,7 +331,7 @@
   when: env == "production" and nagios_location == "internal"
   tags:
   - nagios_server
-  - nagios-config
+  - nagios_config
   notify: restart nagios
 
 - name: Template over services (both)
@@ -341,7 +341,7 @@
   when: env == "production"
   tags:
   - nagios_server
-  - nagios-config
+  - nagios_config
   - websites
   notify: restart nagios
 
@@ -364,7 +364,7 @@
   when: env == "production"
   tags:
   - nagios_server
-  - nagios-config
+  - nagios_config
   notify: restart nagios
 
 ## These are only available to the internal server
@@ -377,7 +377,7 @@
   when: env == "production" and nagios_location == "internal"
   tags:
   - nagios_server
-  - nagios-config
+  - nagios_config
   notify: restart nagios
 
 - name: Build out nagios host templates (production)
@@ -387,10 +387,8 @@
   when: env == "production" and nagios_location == "external"
   tags:
   - nagios_server
-  - nagios-config
+  - nagios_config
   notify: restart nagios
-
-
 
 - name: Build out nagios host templates (staging)
   template: src=nagios/hosts/{{item}}.j2 dest=/etc/nagios/hosts/{{item}} mode=0644 owner=root group=root
@@ -401,7 +399,8 @@
   when: env == "staging"
   tags:
   - nagios_server
-  - nagios-config
+  - nagios_config
+  - nagios_hosts
   notify: restart nagios
 
 - name: Build out nagios hostgroup templates
@@ -415,7 +414,8 @@
   when: nagios_location == "internal"
   tags:
   - nagios_server
-  - nagios-config
+  - nagios_config
+  - nagios_hostgroups
   notify: restart nagios
 
 - name: Build out nagios hostgroup templates
@@ -425,7 +425,8 @@
   when: nagios_location == "external"
   tags:
   - nagios_server
-  - nagios-config
+  - nagios_config
+  - nagios_hostgroups
   notify: restart nagios
 
 - name: Build out nagios servicegroup templates
@@ -442,7 +443,8 @@
   when: nagios_location == "internal"
   tags:
   - nagios_server
-  - nagios-config
+  - nagios_config
+  - nagios_servicegroups
   notify: restart nagios
 
 
