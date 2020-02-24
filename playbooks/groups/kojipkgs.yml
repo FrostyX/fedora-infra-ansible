@@ -49,6 +49,14 @@
   - role: nfs/client
     mnt_dir: '/pub'
     nfs_src_dir: 'fedora_ftp/fedora.redhat.com/pub'
+  - role: nfs/client
+    mnt_dir: '/mnt/koji/ostree'
+    nfs_src_dir: 'fedora-ostree-content/ostree'
+    mount_stg: true
+  - role: nfs/client
+    mnt_dir: '/mnt/koji/compose/ostree'
+    mount_stg: true
+    nfs_src_dir: 'fedora-ostree-content/compose/ostree'
   - role: kojipkgs
   - role: varnish
 

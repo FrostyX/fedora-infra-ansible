@@ -51,6 +51,23 @@
     mnt_dir: '/mnt/fedora_koji'
     nfs_src_dir: "{{ koji_hub_nfs }}"
     when: "'releng_stg' not in group_names"
+  - role: nfs/client
+    mnt_dir: '/mnt/koji/ostree'
+    nfs_src_dir: 'fedora-ostree-content/ostree'
+    when: "'releng_stg' not in group_names"
+  - role: nfs/client
+    mnt_dir: '/mnt/koji/compose/ostree'
+    nfs_src_dir: 'fedora-ostree-content/compose/ostree'
+    when: "'releng_stg' not in group_names"
+
+  - role: nfs/client
+    mnt_dir: '/mnt/koji/ostree'
+    nfs_src_dir: 'fedora-ostree-content-stg/ostree'
+    when: "'releng_stg' in group_names"
+  - role: nfs/client
+    mnt_dir: '/mnt/koji/compose/ostree'
+    nfs_src_dir: 'fedora-ostree-content-stg/compose/ostree'
+    when: "'releng_stg' in group_names"
 
   - role: nfs/client
     mnt_dir: '/pub'
