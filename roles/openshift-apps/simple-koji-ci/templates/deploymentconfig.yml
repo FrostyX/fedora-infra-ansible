@@ -41,7 +41,7 @@ spec:
           mountPath: /etc/krb/
           readOnly: true
         - name: simple-koji-ci-fedmsg-volume
-          mountPath: /etc/fedmsg.d
+          mountPath: /opt/config
           readOnly: true
       volumes:
        - name: keytab-volume
