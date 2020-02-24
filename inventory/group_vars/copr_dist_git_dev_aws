@@ -3,6 +3,8 @@ tcp_ports: [22, 80, 443]
 datacenter: aws
 freezes: false
 devel: true
+swap_file_size_mb: 2048
+swap_file_path: /swap
 
 # consumed by roles/copr/certbot
 letsencrypt:
