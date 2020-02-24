@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  name: simple-koji-ci-build
+  labels:
+    environment: "simple-koji-ci"
+spec:
+  source:
+    git:
+{% if env == 'staging' %}
+      uri: https://pagure.io/forks/pingou/fedora-ci/simple-koji-ci.git
+      ref: "staging"
+{% else %}
+      uri: https://pagure.io/fedora-ci/simple-koji-ci/.git
+      ref: "production"
+{% endif %}
+  strategy:
+    type: Docker
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange
+  output:
+    to:
+      kind: ImageStreamTag
+      name: simple-koji-ci:latest

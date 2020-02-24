@@ -1,0 +1,23 @@
+{% macro load_file(filename) %}{% include filename %}{%- endmacro -%}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: simple-koji-ci-fedmsg
+  labels:
+    app: simple-koji-ci
+data:
+  endpoints.py: |-
+    {{ load_file('endpoints.py') | indent }}
+  runner.cfg: |-
+    {{ load_file('simple_koji_ci.py') | indent }}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: simple-koji-ci-krb
+  labels:
+    app: simple-koji-ci
+data:
+  krb5.conf: |
+    {{ lookup('template', roles_path + '/base/templates/krb5.conf.j2') | indent }}

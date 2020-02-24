@@ -1,0 +1,66 @@
+---
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: simple-koji-ci
+  name: simple-koji-ci
+spec:
+  replicas: 1
+  selector:
+    app: simple-koji-ci
+    deploymentconfig: simple-koji-ci
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: simple-koji-ci
+        deploymentconfig: simple-koji-ci
+    spec:
+      hostAliases:
+        - hostnames:
+          - apps.stg.fedoraproject.org
+          ip: 10.5.128.177
+      containers:
+      - name: simple-koji-ci
+        image: simple-koji-ci:latest
+        resources: {}
+        env:
+          - name: KRB5_CONFIG
+            value: /etc/krb/krb5.conf
+          - name: KRB5_CLIENT_KTNAME
+            value: /etc/keytab/koji-keytab
+          - name: OPENSHIFT
+            value: "True"
+        volumeMounts:
+        - name: keytab-volume
+          mountPath: /etc/keytabs
+          readOnly: true
+        - name: simple-koji-ci-krb-volume
+          mountPath: /etc/krb/
+          readOnly: true
+        - name: simple-koji-ci-fedmsg-volumes
+          mountPath: /etc/fedmsg.d
+          readOnly: true
+      volumes:
+       - name: keytab-volume
+         secret:
+           secretName: simple-koji-ci-keytab
+       - name: simple-koji-ci-krb-volume
+         configMap:
+           name: simple-koji-ci-krb
+       - name: simple-koji-ci-fedmsg-volume
+         configMap:
+           name: simple-koji-ci-fedmsg
+
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange
+    imageChangeParams:
+      automatic: true
+      containerNames:
+      - simple-koji-ci
+      from:
+        kind: ImageStreamTag
+        name: simple-koji-ci:latest
