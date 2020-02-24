@@ -63,6 +63,14 @@ config = {
     'simple-koji-ci.requests_retries': 3,
 
     "logging": {
+        "handlers": {
+            "console": {
+                "class": "logging.StreamHandler",
+                "formatter": "bare",
+                "level": "DEBUG",
+                "stream": "ext://sys.stdout",
+            },
+        },
         "loggers": {
             "simple_koji_ci": {
                 "level": "DEBUG",
