@@ -43,7 +43,8 @@
    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
 
   pre_tasks:
-  - import_tasks: "{{ tasks_path }}/yumrepos.yml"
+    - import_tasks: "{{ tasks_path }}/yumrepos.yml"
+      when: datacenter != 'aws'
 
   tasks:
     - import_role: name=base
@@ -77,7 +78,7 @@
         faf_web_openid_privileged_teams: "provenpackager,proventesters"
         faf_web_secret_key: "{{fedora_faf_web_secret_key}}"
         faf_spool_dir: /srv/faf/
-      when: datacenter | default("") == "aws"
+      when: datacenter == "aws"
     - import_role: name=abrt/faf-post
 
 - name: setup retrace server
@@ -105,5 +106,5 @@
         rs_faf_link_dir: /srv/retrace/hardlink-local
         hostname: retrace.fedoraproject.org
         faf_spool_dir: /srv/faf
-      when: datacenter | default("") == "aws"
+      when: datacenter == "aws"
     - import_role: name=abrt/retrace-post
