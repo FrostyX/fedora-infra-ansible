@@ -9,7 +9,7 @@ metadata:
 data:
   endpoints.py: |-
     {{ load_file('endpoints.py') | indent }}
-  runner.cfg: |-
+  simple_koji_ci.py: |-
     {{ load_file('simple_koji_ci.py') | indent }}
 ---
 apiVersion: v1
