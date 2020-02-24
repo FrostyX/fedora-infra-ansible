@@ -49,7 +49,7 @@ composer.stg.phx2.fedoraproject.org
 retrace01.qa.fedoraproject.org
 
 [retrace_stg_aws]
-retrace-stg.aws.fedoraproject.org
+retrace-stg.aws.fedoraproject.org birthday=yes
 
 [retrace_stg:children]
 retrace_stg_aws
