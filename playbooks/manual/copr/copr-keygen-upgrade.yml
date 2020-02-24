@@ -1,6 +1,6 @@
 ---
 - name: upgrade copr keygen
-  hosts: copr_keygen_dev:copr_keygen_stg:copr_keygen
+  hosts: copr_keygen_dev_aws:copr_keygen_aws
   user: root
   gather_facts: True
 

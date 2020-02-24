@@ -1,6 +1,6 @@
 ---
 - name: upgrade copr distgit
-  hosts: copr_dist_git_dev:copr_dist_git_stg:copr_dist_git
+  hosts: copr_dist_git_dev_aws:copr_dist_git_aws
   user: root
   gather_facts: True
 

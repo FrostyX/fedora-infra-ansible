@@ -1,6 +1,6 @@
 ---
 - name: upgrade copr frontend
-  hosts: copr_front_dev:copr_front
+  hosts: copr_front_dev_aws:copr_front_aws
   user: root
   gather_facts: True
 
