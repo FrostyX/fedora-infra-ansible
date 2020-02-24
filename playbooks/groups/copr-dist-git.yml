@@ -13,7 +13,7 @@
   - import_tasks: "{{ tasks_path }}/persistent_cloud.yml"
     when: datacenter != 'aws'
 
-  - import_tasks: "{{ tasks_path }}/aws_cloud.yml"                                                                                       
+  - import_tasks: "{{ tasks_path }}/aws_cloud.yml"
     when: datacenter == 'aws'
 
 - name: cloud basic setup
