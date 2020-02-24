@@ -40,7 +40,7 @@ spec:
         - name: simple-koji-ci-krb-volume
           mountPath: /etc/krb/
           readOnly: true
-        - name: simple-koji-ci-fedmsg-volumes
+        - name: simple-koji-ci-fedmsg-volume
           mountPath: /etc/fedmsg.d
           readOnly: true
       volumes:
