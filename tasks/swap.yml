@@ -51,7 +51,7 @@
 
 - name: Mount swap
   command: "swapon {{ swap_file_path }}"
-  when: ansible_swaptotal_mb|int < 1
+  #when: ansible_swaptotal_mb|int < 1
   tags:
     - swap.file.swapon
     - swap
