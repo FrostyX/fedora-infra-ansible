@@ -13,6 +13,8 @@
     assign_public_ip: yes
     instance_tags:
       FedoraGroup: copr
+      CoprPurpose: builder
+      CoprInstance: "{% if devel %}devel{% else %}production{% endif %}"
       Name: "{{ vm_name }}"
       arch: "{{ arch }}"
     aws_access_key: "{{ aws_access_key }}"
