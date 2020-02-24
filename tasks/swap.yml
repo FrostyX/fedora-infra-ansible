@@ -23,6 +23,7 @@
 - name: Check swap file type
   command: file {{ swap_file_path }}
   register: swapfile
+  changed_when: False
   tags:
     - swap.file.mkswap
     - swap
