@@ -3,6 +3,10 @@ class TargetTagsDict(dict):
     def __missing__(self, key):
         return key
 
+    def get(self, key, default):
+        """Normally, get() doesn't go trough __missing__"""
+        return self[key]
+
 
 config = {
     'simple-koji-ci.enabled': True,
