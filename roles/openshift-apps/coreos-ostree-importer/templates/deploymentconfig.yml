@@ -43,6 +43,10 @@ spec:
         image: ""
         imagePullPolicy: IfNotPresent
         resources: {}
+      # The files in the ostree volumes are created by either 48 (apache user by bodhi/pungi)
+      # or 263 (ftpsync by new-updates-sync). We need to have these as our supplemental groups
+      securityContext:
+        supplementalGroups: [48, 263]
       volumes:
       - name: fedora-ostree-content-volume
         persistentVolumeClaim:
