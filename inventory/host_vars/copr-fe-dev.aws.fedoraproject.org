@@ -6,6 +6,9 @@ inventory_instance_name: copr-fe-dev
 nm_controlled_resolv: True
 ansible_ifcfg_blacklist: True
 
+swap_file_size_mb: 4096
+swap_file_path: /swap
+
 hostbase: copr-fe-dev-
 public_ip: 35.153.70.58
 root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar

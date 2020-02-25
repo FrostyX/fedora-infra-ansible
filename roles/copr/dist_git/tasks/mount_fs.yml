@@ -11,5 +11,24 @@
   mount: name=/var/lib/copr-dist-git src='LABEL=cdg-log' fstype=ext4 state=mounted
   when: not devel
 
+- name: Write swap entry in fstab
+  mount:
+    path: none
+    src: UUID=0ffcf9f2-8a79-4973-bee4-2d16c410fd77
+    fstype=swap
+    opts=sw
+    passno=0
+    dump=0
+    state=present
+  tags:
+    - swap.fstab
+    - swap
+
+- name: Mount swap
+  command: "swapon -a"
+  tags:
+    - swap.file.swapon
+    - swap
+
 - name: mount tmp on tmpfs
   mount: name=/tmp src=tmpfs fstype=tmpfs state=mounted opts=defaults,size=39G,nr_inodes=2g

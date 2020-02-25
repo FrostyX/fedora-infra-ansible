@@ -1,3 +1,6 @@
+swap_file_size_mb: 16384
+swap_file_path: /swap
+
 hostbase: copr-be-
 public_ip: 34.227.76.72
 
