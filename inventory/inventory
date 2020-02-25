@@ -680,7 +680,6 @@ github2fedmsg01.stg.phx2.fedoraproject.org
 happinesspackets-stg.fedorainfracloud.org
 ipa01.stg.phx2.fedoraproject.org
 koji01.stg.phx2.fedoraproject.org
-libravatar-stg.fedorainfracloud.org
 loopabull01.stg.phx2.fedoraproject.org
 mailman01.stg.phx2.fedoraproject.org
 mbs-backend01.stg.phx2.fedoraproject.org
@@ -1017,8 +1016,6 @@ telegram-irc.fedorainfracloud.org
 # Happiness packets
 happinesspackets.fedorainfracloud.org
 happinesspackets-stg.fedorainfracloud.org
-libravatar.fedorainfracloud.org
-libravatar-stg.fedorainfracloud.org
 
 #
 # These are in the new cloud
@@ -1126,11 +1123,11 @@ copr_keygen_dev_aws
 virthost-aarch64-os01.fedorainfracloud.org
 virthost-aarch64-os02.fedorainfracloud.org
 
-[libravatar]
-libravatar.fedorainfracloud.org
+#[libravatar]
+#libravatar.fedorainfracloud.org
 
-[libravatar_stg]
-libravatar-stg.fedorainfracloud.org
+#[libravatar_stg]
+#libravatar-stg.fedorainfracloud.org
 
 [pagure]
 pagure01.fedoraproject.org
