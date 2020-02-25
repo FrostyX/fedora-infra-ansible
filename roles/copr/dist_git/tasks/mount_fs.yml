@@ -15,11 +15,11 @@
   mount:
     path: none
     src: UUID=0ffcf9f2-8a79-4973-bee4-2d16c410fd77
-    fstype=swap
-    opts=sw
-    passno=0
-    dump=0
-    state=present
+    fstype: swap
+    opts: sw
+    passno: 0
+    dump: 0
+    state: present
   tags:
     - swap.fstab
     - swap
