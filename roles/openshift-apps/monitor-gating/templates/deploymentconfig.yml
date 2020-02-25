@@ -43,7 +43,22 @@ spec:
         - name: monitor-gating-ssh-volume
           mountPath: /opt/ssh/
           readOnly: true
+        - name: fedora-messaging-config-volume
+          mountPath: /etc/fedora-messaging
+          readOnly: true
+        - name: fedora-messaging-ca-volume
+          mountPath: /etc/pki/rabbitmq/ca
+          readOnly: true
+        - name: fedora-messaging-crt-volume
+          mountPath: /etc/pki/rabbitmq/crt
+          readOnly: true
+        - name: fedora-messaging-key-volume
+          mountPath: /etc/pki/rabbitmq/key
+          readOnly: true
       volumes:
+       - name: keytab-volume
+         secret:
+           secretName: monitor-gating-keytab
        - name: monitor-gating-secret-volume
          secret:
            secretName: monitor-gating-secret
@@ -53,10 +68,18 @@ spec:
          secret:
            secretName: monitor-gating-ssh
            defaultMode: 0660
-       - name: keytab-volume
+       - name: fedora-messaging-config-volume
+         configMap:
+           name: fedora-messaging-configmap
+       - name: fedora-messaging-ca-volume
          secret:
-           secretName: monitor-gating-keytab
-
+           secretName: monitor-gating-fedora-messaging-ca
+       - name: fedora-messaging-crt-volume
+         secret:
+           secretName: monitor-gating-fedora-messaging-crt
+       - name: fedora-messaging-key-volume
+         secret:
+           secretName: monitor-gating-fedora-messaging-key
   triggers:
   - type: ConfigChange
   - type: ImageChange

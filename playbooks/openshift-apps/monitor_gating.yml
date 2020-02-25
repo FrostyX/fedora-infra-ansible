@@ -24,6 +24,24 @@
     secret_name: monitor-gating-keytab
     service: packagerbot
 
+  - role: openshift/secret-file
+    app: monitor-gating
+    secret_name: monitor-gating-fedora-messaging-key
+    key: monitor-gating.key
+    privatefile: "rabbitmq/{{env}}/pki/private/monitor-gating{{env_suffix}}.key"
+
+  - role: openshift/secret-file
+    app: monitor-gating
+    secret_name: monitor-gating-fedora-messaging-crt
+    key: monitor-gating.crt
+    privatefile: "rabbitmq/{{env}}/pki/issued/monitor-gating{{env_suffix}}.crt"
+
+  - role: openshift/secret-file
+    app: monitor-gating
+    secret_name: monitor-gating-fedora-messaging-ca
+    key: monitor-gating.ca
+    privatefile: "rabbitmq/{{env}}/pki/ca.crt"
+
   - role: openshift/object
     app: monitor-gating
     template: imagestream.yml
