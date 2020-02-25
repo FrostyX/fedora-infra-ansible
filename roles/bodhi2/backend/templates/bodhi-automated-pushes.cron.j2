@@ -1,6 +1,6 @@
 MAILTO=sysadmin-releng-members@fedoraproject.org
 {% if RelEngFrozen %}
-{{ '#' }}00 00 * * * apache /usr/local/bin/bodhi-automated-pushes.py
+{{ '#' }}14 00 * * * apache /usr/local/bin/bodhi-automated-pushes.py
 {% else %}
-00 00 * * * apache /usr/local/bin/bodhi-automated-pushes.py
+14 00 * * * apache /usr/local/bin/bodhi-automated-pushes.py
 {% endif %}
