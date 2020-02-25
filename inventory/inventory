@@ -1002,8 +1002,6 @@ pdc-backend03.stg.phx2.fedoraproject.org
 [persistent_cloud]
 # Fedora Bootstrap VM
 fedora-bootstrap.fedorainfracloud.org
-# java-deptools ticket 4846
-java-deptools.fedorainfracloud.org
 # developer ticket 4876
 developer.fedorainfracloud.org
 # iddev
