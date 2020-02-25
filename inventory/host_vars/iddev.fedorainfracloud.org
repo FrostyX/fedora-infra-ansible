@@ -1,2 +1,3 @@
 ---
 ansible_ifcfg_blacklist: true
+datacenter: aws
