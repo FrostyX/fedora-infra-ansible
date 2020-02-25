@@ -1964,24 +1964,10 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
 	 filename "/uefi/grubaa64.efi";
     }
 
-    host openqa-aarch64-02  {
-         hardware ethernet  68:05:CA:8A:F4:29;
-         fixed-address 10.5.78.7;
-         option host-name "openqa-aarch64-02";
-         next-server 10.5.126.41;
-	 filename "/uefi/grubaa64.efi";
-    }
-    host openqa-aarch64-03  {
-         hardware ethernet  68:05:CA:8B:05:8C;
-         fixed-address 10.5.78.8;
-         option host-name "openqa-aarch64-03";
-         next-server 10.5.126.41;
-	 filename "/uefi/grubaa64.efi";
-    }
-    host openqa-aarch64-04  {
-         hardware ethernet  68:05:CA:8A:F2:05;
-         fixed-address 10.5.78.9;
-         option host-name "openqa-aarch64-04";
+    host openqa-aarch64-01 {
+         hardware ethernet 00:1b:21:e0:6a:72;
+         fixed-address 10.5.78.6;
+         option host-name "openqa-aarch64-01";
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
@@ -1990,13 +1976,6 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
          hardware ethernet 00:1B:21:E0:6E:5B;
          fixed-address 10.5.78.240;
          option host-name "tbc-aarch64-00";
-         next-server 10.5.126.41;
-	 filename "/uefi/grubaa64.efi";
-    }
-    host tbc-aarch64-01 {
-         hardware ethernet 00:1b:21:e0:6a:72;
-         fixed-address 10.5.78.241;
-         option host-name "tbc-aarch64-01";
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
@@ -2854,6 +2833,15 @@ shared-network qa {
        option ntp-servers 66.187.233.4, 192.43.244.18, 128.118.25.5, 204.152.184.72;
        next-server 10.5.126.41;
        filename "pxelinux.0";
+
+
+       host openqa-a64-01 {
+         hardware ethernet 50:6b:4b:7f:a8:b0;
+         fixed-address 10.5.131.25;
+         option host-name "openqa-aarch64-01";
+         next-server 10.5.126.41;
+	 filename "/uefi/grubaa64.efi";
+       }
 
        host cosmos02-mgmt {
           hardware ethernet  0c:c4:7a:36:f2:aa;
