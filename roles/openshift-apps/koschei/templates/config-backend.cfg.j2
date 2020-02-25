@@ -90,11 +90,7 @@ config = {
     },
     "plugins": ['fedmsg'],
     "fedmsg": {
-        {% if env == 'staging' %}
-        "topic": "org.fedoraproject.stg.buildsys",
-        {% else %}
-        "topic": "org.fedoraproject.prod.buildsys",
-        {% endif %}
+        "topic": "org.fedoraproject.{{ fedmsg_env }}.buildsys",
     },
     "fedmsg-publisher": {
         "enabled": True,
