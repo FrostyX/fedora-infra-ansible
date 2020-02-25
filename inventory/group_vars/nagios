@@ -166,6 +166,7 @@ exclude_hostgroups:
   - copr_keygen_aws
   - copr_keygen_dev_aws
   - dbgserver_stg
+  - ipsilon_dev
   - retrace_stg
   - retrace_stg_aws
   - virt_guest
@@ -183,3 +184,4 @@ no_ping:
   - copr_front_dev_aws
   - copr_keygen_aws
   - copr_keygen_dev_aws
+  - ipsilon_dev
