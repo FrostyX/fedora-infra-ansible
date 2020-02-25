@@ -186,7 +186,6 @@
   copy: src=nagios/services/{{ item }} dest=/etc/nagios/services/{{ item }}
   with_items:
     - basset.cfg
-    - copr.cfg
     - db_backups.cfg
     - disk.cfg
     - dns.cfg
