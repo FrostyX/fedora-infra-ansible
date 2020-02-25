@@ -169,6 +169,7 @@ define service {
   service_description   http-badges.fedoraproject.org-tahrir
   check_command         check_website!localhost!/!Tahrir
   use                   websitetemplate
+  event_handler         restart_httpd
 }
 
 define service {
