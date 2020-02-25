@@ -88,13 +88,38 @@ config = {
             },
         },
     },
+    {% if env == 'staging' %}
+    "plugins": ['fedmsg', 'osci'],
+    {% else %}
     "plugins": ['fedmsg'],
+    {% endif %}
     "fedmsg": {
         "topic": "org.fedoraproject.{{ fedmsg_env }}.buildsys",
     },
     "fedmsg-publisher": {
         "enabled": True,
         "modname": "koschei",
+    },
+    "osci": {
+        "namespace": "osci",
+        "build_artifact_type": "koji-build",
+        "build_group_artifact_type": "koji-build-group",
+        "contact": {
+            "name": "Koschei",
+            "team": "Koschei sysadmins",
+            "docs": "https://fedoraproject.org/wiki/Koschei",
+            "email": "sysadmin-koschei-members@fedoraproject.org",
+            "irc": "#fedora-admin",
+        },
+        "pipeline": {
+            "id": "koschei-pipeline",
+            "name": "Koschei pipeline",
+        },
+        "test": {
+            "type": "koschei",
+            "category": "integration",
+            "namespace": "koschei",
+        },
     },
     "caching": {
         "rpm_requires": {
