@@ -31,22 +31,22 @@
     - role: nfs/client
       mnt_dir: '/mnt/koji/ostree'
       nfs_src_dir: 'fedora-ostree-content/ostree'
-      when: env != 'staging' and 'runroot' in group_names
+      when: env != 'staging' and 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x')
 
     - role: nfs/client
       mnt_dir: '/mnt/koji/compose/ostree'
       nfs_src_dir: 'fedora-ostree-content/compose/ostree'
-      when: env != 'staging' and 'runroot' in group_names
+      when: env != 'staging' and 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x')
 
     - role: nfs/client
       mnt_dir: '/mnt/koji/ostree'
       nfs_src_dir: 'fedora-ostree-content-stg/ostree'
-      when: env == 'staging' and 'runroot' in group_names
+      when: env == 'staging' and 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x')
 
     - role: nfs/client
       mnt_dir: '/mnt/koji/compose/ostree'
       nfs_src_dir: 'fedora-ostree-content-stg/compose/ostree'
-      when: env == 'staging' and 'runroot' in group_names
+      when: env == 'staging' and 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x')
 
     - { role: fas_client, when: not inventory_hostname.startswith('bkernel') }
     - { role: sudo, when: not inventory_hostname.startswith('bkernel') }
