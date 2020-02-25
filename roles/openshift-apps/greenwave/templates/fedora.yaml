@@ -81,6 +81,9 @@ rules:
 --- !Policy
 id: "no_requirements_testing"
 product_versions:
+  - fedora-32-modular
+  - fedora-32-containers
+  - fedora-32-flatpaks
   - fedora-31-modular
   - fedora-31-containers
   - fedora-31-flatpaks
@@ -102,6 +105,9 @@ rules: []
 --- !Policy
 id: "no_requirements_for_stable"
 product_versions:
+  - fedora-32-modular
+  - fedora-32-containers
+  - fedora-32-flatpaks
   - fedora-31-modular
   - fedora-31-containers
   - fedora-31-flatpaks
@@ -124,6 +130,7 @@ rules: []
 # openQA policies
 id: "openqa_release_critical_tasks_for_testing"
 product_versions:
+  - fedora-32
   - fedora-31
   - fedora-30
   - fedora-29
@@ -136,6 +143,7 @@ rules:
 --- !Policy
 id: "openqa_release_critical_tasks_for_stable"
 product_versions:
+  - fedora-32
   - fedora-31
   - fedora-30
   - fedora-29
