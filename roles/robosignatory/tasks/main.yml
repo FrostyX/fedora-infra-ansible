@@ -161,6 +161,7 @@
     owner: root
     group: root
     mode: 0755
+  when: env == 'staging'
   tags:
   - config
   - robosignatory
@@ -172,6 +173,7 @@
     owner: root
     group: root
     mode: 0644
+  when: env == 'staging'
   notify:
   - reload systemd
   tags:
@@ -183,6 +185,7 @@
     name: fm-consumer@robosignatory.service
     enabled: yes
     state: started
+  when: env == 'staging'
   tags:
   - config
   - robosignatory
