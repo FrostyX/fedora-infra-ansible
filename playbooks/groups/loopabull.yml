@@ -66,7 +66,6 @@
         loglevel: info,
         plugin: fedmsgrabbitmq,
         routing_keys: [
-          "org.fedoraproject.stg.buildsys.build.state.change",
           "org.fedoraproject.prod.buildsys.build.state.change",
           "org.centos.prod.ci.dist-git-pr.test.complete",
           "org.centos.prod.ci.dist-git-pr.test.error",
@@ -74,9 +73,24 @@
         ],
         playbooks_dir: /srv/loopabull-tasks/playbooks,
         ansible_cfg_path: /etc/ansible/ansible.cfg,
-        playbook_cmd: /usr/bin/ansible-playbook
+        playbook_cmd: /usr/bin/ansible-playbook,
+        when: env != 'staging',
     }
-
+    - {
+      role: loopabull,
+        loglevel: info,
+        plugin: fedmsgrabbitmq,
+        routing_keys: [
+          "org.fedoraproject.stg.buildsys.build.state.change",
+          "org.centos.stage.ci.dist-git-pr.test.complete",
+          "org.centos.stage.ci.dist-git-pr.test.error",
+          "org.centos.stage.ci.dist-git-pr.test.running"
+        ],
+        playbooks_dir: /srv/loopabull-tasks/playbooks,
+        ansible_cfg_path: /etc/ansible/ansible.cfg,
+        playbook_cmd: /usr/bin/ansible-playbook,
+        when: env == 'staging',
+    }
 
 - name: Post Loopabull install configuration
   hosts: loopabull:loopabull_stg
