@@ -29,6 +29,26 @@
     mnt_dir: '/mnt/fedora_koji'
     nfs_src_dir: 'fedora_koji'
     when: env != 'staging'
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/ostree'
+    nfs_src_dir: 'fedora-ostree-content/ostree'
+    when: env != 'staging'
+
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/compose/ostree'
+    nfs_src_dir: 'fedora-ostree-content/compose/ostree'
+    when: env != 'staging'
+
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/ostree'
+    nfs_src_dir: 'fedora-ostree-content-stg/ostree'
+    when: env == 'staging'
+
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/compose/ostree'
+    nfs_src_dir: 'fedora-ostree-content-stg/compose/ostree'
+    when: env == 'staging'
+
   - role: rabbit/queue
     username: "robosignatory{{ env_suffix }}"
     queue_name: "robosignatory{{ env_suffix }}"
