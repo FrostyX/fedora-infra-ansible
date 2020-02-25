@@ -20,6 +20,7 @@
     passno: 0
     dump: 0
     state: present
+  when: not devel
   tags:
     - swap.fstab
     - swap
