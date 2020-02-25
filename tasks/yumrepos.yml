@@ -10,7 +10,7 @@
 
 - name: put rhel repos on rhel systems
   copy: src="{{ files }}/common/rhel{{ ansible_distribution_major_version }}.repo" dest="/etc/yum.repos.d/rhel{{ ansible_distribution_major_version }}.repo"
-  when: ansible_distribution == 'RedHat' and not inventory_hostname.startswith('ppc9')
+  when: ansible_distribution == 'RedHat' and not inventory_hostname.startswith('ppc9') and datacenter != "aws"
   tags:
   - config
   - packages
@@ -18,7 +18,7 @@
 
 - name: put rhel repos on rhel systems (power9)
   copy: src="{{ files }}/common/rhel{{ ansible_distribution_major_version }}-power9.repo" dest="/etc/yum.repos.d/rhel{{ ansible_distribution_major_version }}.repo"
-  when: ansible_distribution == 'RedHat' and inventory_hostname.startswith('ppc9')
+  when: ansible_distribution == 'RedHat' and inventory_hostname.startswith('ppc9') and datacenter != "aws"
   tags:
   - config
   - packages
@@ -34,7 +34,7 @@
 
 - name: put openshift 3.4 repo on os- systems
   copy: src="{{ files }}/openshift/openshift.repo" dest="/etc/yum.repos.d/openshift.repo"
-  when: ansible_distribution == 'RedHat' and ansible_distribution_major_version == 7 and inventory_hostname.startswith('os-')
+  when: ansible_distribution == 'RedHat' and ansible_distribution_major_version == 7 and inventory_hostname.startswith('os-') and datacenter != "aws"
   tags:
   - config
   - packages
@@ -42,7 +42,7 @@
 
 - name: put epel repos on el systems
   copy: src="{{ files }}/common/epel{{ ansible_distribution_major_version }}.repo" dest="/etc/yum.repos.d/epel{{ ansible_distribution_major_version }}.repo"
-  when: ((ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS') and use_default_epel)
+  when: ((ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS') and use_default_epel) and datacenter != "aws"
   tags:
   - config
   - packages
@@ -98,7 +98,7 @@
 
 - name: add aarch64 server rpms repo
   copy: src="{{ files }}/common/rhel-{{ ansible_distribution_major_version }}-aarch64-server-rpms.repo" dest="/etc/yum.repos.d/rhel-{{ ansible_distribution_major_version }}-aarch64-server-rpms.repo"
-  when: (ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS') and inventory_hostname.startswith('aarch64-c') and ansible_distribution_major_version >= 7
+  when: (ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS') and inventory_hostname.startswith('aarch64-c') and ansible_distribution_major_version >= 7 and datacenter != "aws"
   tags:
   - config
   - packages
