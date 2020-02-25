@@ -16,6 +16,10 @@
 
   - import_tasks: "{{ tasks_path }}/aws_cloud.yml"
     when: datacenter == "aws"
+  - import_tasks: "{{ tasks_path }}/swap.yml"
+    when:
+      - datacenter == 'aws'
+      - swap_file_size_mb is defined
 
 - name: cloud basic setup
   hosts: copr_front_dev:copr_front:copr_front_dev_aws:copr_front_aws
