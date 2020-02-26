@@ -18,14 +18,6 @@ qa-prod01.qa.fedoraproject.org
 [qa_stg]
 qa-stg01.qa.fedoraproject.org:222
 
-[arm_packager]
-arm03-packager00.cloud.fedoraproject.org
-arm03-packager01.cloud.fedoraproject.org
-
-[arm_qa]
-arm03-qa00.cloud.fedoraproject.org
-arm03-qa01.cloud.fedoraproject.org
-
 [rabbitmq]
 rabbitmq01.phx2.fedoraproject.org
 rabbitmq02.phx2.fedoraproject.org
@@ -999,28 +991,13 @@ pdc-backend02.stg.phx2.fedoraproject.org
 pdc-backend03.stg.phx2.fedoraproject.org
 
 [persistent_cloud]
-# Fedora Bootstrap VM
-fedora-bootstrap.fedorainfracloud.org
-# developer ticket 4876
-developer.fedorainfracloud.org
 # iddev
 iddev.fedorainfracloud.org
 # respins
-respins.fedorainfracloud.org
-# upstreamfirst - ticket 6066
-upstreamfirst.fedorainfracloud.org
+# exists in aws, we don't manage it.
+#respins01.fedorainfracloud.org
 # koji simple ci development - ticket 6419
 simple-koji-ci-prod.fedorainfracloud.org
-# telegram-irc bridge machine - ticket 6781
-telegram-irc.fedorainfracloud.org
-# Happiness packets
-happinesspackets.fedorainfracloud.org
-happinesspackets-stg.fedorainfracloud.org
-
-#
-# These are in the new cloud
-#
-testdays.fedorainfracloud.org
 
 [maintainer_test]
 f30-test.fedorainfracloud.org
@@ -1029,9 +1006,6 @@ f32-test.fedorainfracloud.org
 rawhide-test.fedorainfracloud.org
 el6-test.fedorainfracloud.org
 el7-test.fedorainfracloud.org
-
-[maintainer_test_oldcloud]
-ppc64le-test.fedorainfracloud.org
 
 [aarch64_test]
 aarch64-test01.fedorainfracloud.org

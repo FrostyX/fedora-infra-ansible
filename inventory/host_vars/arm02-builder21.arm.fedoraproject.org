@@ -1,2 +1,0 @@
----
-koji_hub_nfs: "fedora_koji"

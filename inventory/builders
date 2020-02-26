@@ -248,38 +248,6 @@ buildvm-ppc64le-31.ppc.fedoraproject.org
 bkernel03.phx2.fedoraproject.org
 bkernel04.phx2.fedoraproject.org
 
-#
-# These are misc 
-#
-[arm03]
-#arm03-builder00.arm.fedoraproject.org
-#arm03-builder01.arm.fedoraproject.org
-#arm03-builder02.arm.fedoraproject.org
-#arm03-builder03.arm.fedoraproject.org
-# These are in use as arm03-qa00 - 03
-#arm03-builder04.arm.fedoraproject.org
-#arm03-builder05.arm.fedoraproject.org
-#arm03-builder06.arm.fedoraproject.org
-#arm03-builder07.arm.fedoraproject.org
-# These are in use as arm03-packager01-02
-#arm03-builder08.arm.fedoraproject.org
-#arm03-builder09.arm.fedoraproject.org
-# These are off currently
-#arm03-builder10.arm.fedoraproject.org
-#arm03-builder11.arm.fedoraproject.org
-#arm03-builder12.arm.fedoraproject.org
-#arm03-builder13.arm.fedoraproject.org
-#arm03-builder14.arm.fedoraproject.org
-#arm03-builder15.arm.fedoraproject.org
-#arm03-builder16.arm.fedoraproject.org
-#arm03-builder17.arm.fedoraproject.org
-#arm03-builder18.arm.fedoraproject.org
-#arm03-builder19.arm.fedoraproject.org
-#arm03-builder20.arm.fedoraproject.org
-#arm03-builder21.arm.fedoraproject.org
-#arm03-builder22.arm.fedoraproject.org
-#arm03-builder23.arm.fedoraproject.org
-
 # These hosts get the runroot plugin installed.
 # They should be added to their own 'compose' channel in the koji db
 # .. and they should not appear in the default channel for builds.

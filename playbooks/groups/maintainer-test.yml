@@ -25,10 +25,8 @@
   - name: set hostname (required by some services, at least postfix need it)
     hostname: name="{{inventory_hostname}}"
 
-- import_playbook: "/srv/web/infra/ansible/playbooks/include/happy_birthday.yml myhosts=arm_packager"
-
 - name: Setup maintainer test hosts
-  hosts: arm_packager:maintainer_test:aarch64_test:maintainer_test_oldcloud
+  hosts: maintainer_test:aarch64_test:maintainer_test_oldcloud
   gather_facts: True
   tags:
    - maintainer-test

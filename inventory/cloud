@@ -22,37 +22,12 @@ fed-cloud15.cloud.fedoraproject.org
 fed-cloud-ppc02.cloud.fedoraproject.org
 virthost-aarch64-os01.fedorainfracloud.org
 virthost-aarch64-os02.fedorainfracloud.org
-
 virthost-cloud01.fedorainfracloud.org
 virthost-os01.fedorainfracloud.org
 virthost-os02.fedorainfracloud.org
 virthost-os03.fedorainfracloud.org
-
 storinator01.fedorainfracloud.org
 
-
-##
-## Clients
-##
-arm03-packager00.cloud.fedoraproject.org
-arm03-packager01.cloud.fedoraproject.org
-arm03-qa00.cloud.fedoraproject.org
-arm03-qa01.cloud.fedoraproject.org
-cloud-noc01.cloud.fedoraproject.org
-developer.fedorainfracloud.org
-#el6-test.fedorainfracloud.org
-#el7-test.fedorainfracloud.org
-#f30-test.fedorainfracloud.org
-#f31-test.fedorainfracloud.org
-#f32-test.fedorainfracloud.org
-#aarch64-test01.fedorainfracloud.org
-#aarch64-test02.fedorainfracloud.org
-fedora-bootstrap.fedorainfracloud.org
-happinesspackets.fedorainfracloud.org
-happinesspackets-stg.fedorainfracloud.org
-#simple-koji-ci-prod.fedorainfracloud.org
-ppc64le-test.fedorainfracloud.org
-upstreamfirst.fedorainfracloud.org
 ##
 ## New Community Hardware
 ##

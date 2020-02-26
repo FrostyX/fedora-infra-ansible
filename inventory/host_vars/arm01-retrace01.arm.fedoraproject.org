@@ -1,3 +1,0 @@
----
-# This is a 32bit host
-libdir: /usr/lib
