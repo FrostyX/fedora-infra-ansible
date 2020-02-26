@@ -142,6 +142,30 @@
     nfs_mount_opts: "rw,hard,bg,intr,noatime,nodev,nosuid,nfsvers=3"
     when: env != 'staging'
 
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive00'
+    nfs_src_dir: '/fedora_koji_archive00'
+
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive01'
+    nfs_src_dir: '/fedora_koji_archive01'
+
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive02'
+    nfs_src_dir: '/fedora_koji_archive02'
+
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive03'
+    nfs_src_dir: '/fedora_koji_archive03'
+
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive04'
+    nfs_src_dir: '/fedora_koji_archive04'
+
+  - role: nfs/client
+    mnt_dir: '/mnt/fedora_koji/koji/vol/fedora_koji_archive05'
+    nfs_src_dir: '/fedora_koji_archive05'
+
   post_tasks:
   - file: src=/mnt/fedora_koji/koji dest=/mnt/koji state=link
     tags: nfs/client
