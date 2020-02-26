@@ -990,15 +990,6 @@ pdc-backend01.stg.phx2.fedoraproject.org
 pdc-backend02.stg.phx2.fedoraproject.org
 pdc-backend03.stg.phx2.fedoraproject.org
 
-[persistent_cloud]
-# iddev
-iddev.fedorainfracloud.org
-# respins
-# exists in aws, we don't manage it.
-#respins01.fedorainfracloud.org
-# koji simple ci development - ticket 6419
-simple-koji-ci-prod.fedorainfracloud.org
-
 [maintainer_test]
 f30-test.fedorainfracloud.org
 f31-test.fedorainfracloud.org
