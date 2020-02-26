@@ -24,8 +24,10 @@
         - gnaponie
         - cverna
         - pingou
+        - lholecek
       tags:
         - apply-appowners
+
     - role: openshift/object
       app: waiverdb
       template: secret.yml
