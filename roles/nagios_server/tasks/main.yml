@@ -330,6 +330,7 @@
   tags:
   - nagios_server
   - nagios_config
+  - nagios_hostgroups
   notify: restart nagios
 
 - name: Template over services (both)
@@ -340,7 +341,6 @@
   tags:
   - nagios_server
   - nagios_config
-  - nagios_hostgroups
   - websites
   notify: restart nagios
 
