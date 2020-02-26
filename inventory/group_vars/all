@@ -372,6 +372,8 @@ nagios_Check_Services:
   ping: true
   raid: false
 
+nagios_Can_Connect: true
+
 # Set variable if we want to use our global iptables defaults
 # Some things need to set their own.
 baseiptables: True
