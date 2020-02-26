@@ -1,5 +1,5 @@
 define service {
-  hostgroup_name		*, !buildvm_armv7, !buildvm_s390x, !buildvm_s390x_stg
+  hostgroup_name		{% for host in groups['all']|sort %}{% if hostvars[host].nagios_Can_Connect == true or hostvars[host].nagios_Check_Services['ping'] = true %}{{host}}, {% endif %}{% endfor %}, !buildvm_armv7, !buildvm_s390x, !buildvm_s390x_stg
   service_description		ICMP-Ping4
   check_command			check_ping4!350.0,20%!500.0,60%
   use				criticaltemplate

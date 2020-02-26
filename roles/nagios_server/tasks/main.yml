@@ -205,7 +205,6 @@
     - osbs.cfg
     - pagure_redis.cfg
     - pgsql.cfg
-    - ping.cfg
     - procs.cfg
     - rabbitmq.cfg
     - raid.cfg
@@ -337,10 +336,12 @@
   template: src=nagios/services/{{item}}.j2 dest=/etc/nagios/services/{{item}} mode=0644 owner=root group=root
   with_items:
     - websites.cfg
+    - ping.cfg
   when: env == "production"
   tags:
   - nagios_server
   - nagios_config
+  - nagios_hostgroups
   - websites
   notify: restart nagios
 
