@@ -14,6 +14,14 @@ define hostgroup{
 {% endfor %}
 
 ## Services with minimal monitoring
+
+define hostgroup{
+       hostgroup_name cloud_aws_group
+       alias          cloud_aws_group
+       members        {% for host in groups['cloud_aws']|sort %}{{host}}, {% endfor %} 
+}
+
+
 define hostgroup{
        hostgroup_name mincheckgrp
        alias          mincheckgrp
