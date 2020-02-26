@@ -204,6 +204,7 @@
     - nrpe.cfg
     - osbs.cfg
     - pagure_redis.cfg
+    - ping.cfg
     - pgsql.cfg
     - procs.cfg
     - rabbitmq.cfg
@@ -240,6 +241,7 @@
   copy: src=nagios/services/{{ item }} dest=/etc/nagios/services/{{ item }}
   with_items:
     - mail_queue.cfg
+    - ping.cfg
     - templates.cfg
   tags:
   - nagios_config
@@ -325,7 +327,6 @@
   with_items:
     - phx2-mgmt.cfg
     - mirrorlist-proxies.cfg
-    - ping.cfg
   when: env == "production" and nagios_location == "internal"
   tags:
   - nagios_server
