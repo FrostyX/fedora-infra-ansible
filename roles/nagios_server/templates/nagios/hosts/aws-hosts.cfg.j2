@@ -1,4 +1,4 @@
-{% for host in groups['ec2']|sort %}
+{% for host in groups['cloud_aws']|sort %}
 define host {
    use                     aws
    host_name               {{ host }}

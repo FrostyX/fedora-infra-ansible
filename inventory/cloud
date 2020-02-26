@@ -59,13 +59,31 @@ upstreamfirst.fedorainfracloud.org
 os-proxy01.fedorainfracloud.org
 os-proxy02.fedorainfracloud.org
 
-[cloud_external]
+[cloud_aws]
 iddev.fedorainfracloud.org
 rawhide-test.fedorainfracloud.org
 respins.fedorainfracloud.org
 telegram-irc.fedorainfracloud.org
 testdays.fedorainfracloud.org
+proxy30.fedoraproject.org
+copr-be.aws.fedoraproject.org
+copr-be-dev.aws.fedoraproject.org
+copr-dist-git.aws.fedoraproject.org
+copr-dist-git-dev.aws.fedoraproject.org
+copr-fe.aws.fedoraproject.org
+copr-fe-dev.aws.fedoraproject.org
+copr-keygen.aws.fedoraproject.org
+copr-keygen-dev.aws.fedoraproject.org
+#copr-be-dev.cloud.fedoraproject.org
+copr-dist-git-dev.fedorainfracloud.org
+iddev.fedorainfracloud.org
+f30-test.fedorainfracloud.org
+f31-test.fedorainfracloud.org
+f32-test.fedorainfracloud.org
+rawhide-test.fedorainfracloud.org
+el6-test.fedorainfracloud.org
+el7-test.fedorainfracloud.org
 
 [cloud:children]
 cloud_phx2
-cloud_external
+cloud_aws
