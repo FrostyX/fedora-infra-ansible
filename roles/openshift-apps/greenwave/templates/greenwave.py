@@ -11,12 +11,16 @@ config = dict(
     logging={
       "loggers": {
           "greenwave": {
-              "handlers": ["console"], "propagate": False, "level": "DEBUG"},
-          "fedmsg": {
+              "handlers": ["console"], "propagate": True, "level": "DEBUG"},
+          "fedora_messaging": {
               "handlers": ["console"], "propagate": False, "level": "DEBUG"},
           "moksha": {
               "handlers": ["console"], "propagate": False, "level": "DEBUG"},
           "requests": {
+              "handlers": ["console"], "propagate": False, "level": "DEBUG"},
+          "resultsdb_handler": {
+              "handlers": ["console"], "propagate": False, "level": "DEBUG"},
+          "waiverdb_handler": {
               "handlers": ["console"], "propagate": False, "level": "DEBUG"},
       },
       "handlers": {
