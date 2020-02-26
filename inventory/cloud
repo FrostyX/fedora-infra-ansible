@@ -50,7 +50,7 @@ developer.fedorainfracloud.org
 fedora-bootstrap.fedorainfracloud.org
 happinesspackets.fedorainfracloud.org
 happinesspackets-stg.fedorainfracloud.org
-simple-koji-ci-prod.fedorainfracloud.org
+#simple-koji-ci-prod.fedorainfracloud.org
 ppc64le-test.fedorainfracloud.org
 upstreamfirst.fedorainfracloud.org
 ##
