@@ -7,7 +7,7 @@
 define hostgroup{
        hostgroup_name {{ key }}
        alias          {{ key }}
-       members        {% for host in groups[key]|sort %}{% if hostvars[host].nagios_Check_Services['ping'] == true %}{{host}}, {% endif %}{% endfor %} 
+       members        {% for host in groups[key]|sort %}{% if hostvars[host].nagios_Check_Services['ping'] == true or hostvars[host].nagios_Check_Services['sshd'] == true %}{{host}}, {% endif %}{% endfor %} 
 
 }
 {% endif %}

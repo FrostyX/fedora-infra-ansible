@@ -152,25 +152,13 @@ phx2_external:
   - secondary01.fedoraproject.org
   - stg.fedoraproject.org
 
+# When you have a group which comes up with empty members in all.cfg, it
+# is because it contains all hosts which aren't pinganble. You may want
+# to add that group to this list. Other items on this list are ones
+# where it is an enormous group not needed.
 # Exclude these ansible host groups in hostgroups/all.cfg
 exclude_hostgroups:
   - nixnagios
-  - aarch64_test
-  - cloud_aws
-  - copr_aws
-  - copr_back_aws
-  - copr_back_dev_aws
-  - copr_dev_aws
-  - copr_dist_git_aws
-  - copr_dist_git_dev_aws
-  - copr_front_aws
-  - copr_front_dev_aws
-  - copr_keygen_aws
-  - copr_keygen_dev_aws
   - dbgserver_stg
-  - ipsilon_dev
-  - maintainer_test
-  - retrace_stg
-  - retrace_stg_aws
   - virt_guest
   - virt_host
