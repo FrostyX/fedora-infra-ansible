@@ -18,6 +18,9 @@
     - asaleh
     - nphilipp
 
+  - role: rabbit/user
+    username: "monitor-gating{{ env_suffix }}"
+
   - role: openshift/keytab
     app: monitor-gating
     key: monitor-gating-keytab
