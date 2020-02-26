@@ -13,6 +13,12 @@ define hostgroup{
 {% endif %}
 {% endfor %}
 
+define hostgroup{
+       hostgroup_name no_ping
+       alias          no_ping
+       members        {% for host in groups['all']|sort %}{% if hostvars[host].nagios_Check_Services['ping'] == true or hostvars[host].nagios_Can_Connect == true %}{{host}}, {% endif %}{% endfor %} 
+}
+
 ## Services with minimal monitoring
 
 define hostgroup{
