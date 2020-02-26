@@ -149,7 +149,7 @@ spec:
     spec:
       containers:
       - name: greenwave-memcached
-        image: registry.fedoraproject.org/f28/memcached
+        image: memcached:1.5
         ports:
         - containerPort: 11211
         resources:
