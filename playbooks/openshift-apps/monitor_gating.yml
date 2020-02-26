@@ -57,6 +57,11 @@
     template: secret.yml
     objectname: secret.yml
 
+  - role: openshift/object
+    app: monitor-gating
+    template: configmap.yml
+    objectname: configmap.yml
+
   - role: openshift/secret-file
     app: monitor-gating
     secret_name: monitor-gating-ssh
