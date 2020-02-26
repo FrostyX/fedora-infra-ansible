@@ -1,2 +1,3 @@
 ---
 tcp_ports: [22]
+datacenter: aws
