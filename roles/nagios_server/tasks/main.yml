@@ -240,7 +240,6 @@
   copy: src=nagios/services/{{ item }} dest=/etc/nagios/services/{{ item }}
   with_items:
     - mail_queue.cfg
-    - ping.cfg
     - templates.cfg
   tags:
   - nagios_config
@@ -326,6 +325,7 @@
   with_items:
     - phx2-mgmt.cfg
     - mirrorlist-proxies.cfg
+    - ping.cfg
   when: env == "production" and nagios_location == "internal"
   tags:
   - nagios_server
@@ -336,7 +336,6 @@
   template: src=nagios/services/{{item}}.j2 dest=/etc/nagios/services/{{item}} mode=0644 owner=root group=root
   with_items:
     - websites.cfg
-    - ping.cfg
   when: env == "production"
   tags:
   - nagios_server
