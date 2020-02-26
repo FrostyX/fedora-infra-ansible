@@ -22,6 +22,8 @@ config = dict(
               "handlers": ["console"], "propagate": False, "level": "DEBUG"},
           "waiverdb_handler": {
               "handlers": ["console"], "propagate": False, "level": "DEBUG"},
+          "fedora_messaging_consumer": {
+              "handlers": ["console"], "propagate": False, "level": "DEBUG"},
       },
       "handlers": {
           "console": {
