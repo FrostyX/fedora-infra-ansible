@@ -220,6 +220,7 @@
   tags:
   - nagios_config
   - nagios_server
+  - nagios_hostgroups
   when: env == "production" and nagios_location == "internal"
   notify: restart nagios
 
@@ -331,7 +332,6 @@
   tags:
   - nagios_server
   - nagios_config
-  - nagios_hostgroups
   notify: restart nagios
 
 - name: Template over services (both)
