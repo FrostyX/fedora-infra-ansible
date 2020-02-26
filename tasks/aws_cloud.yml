@@ -116,7 +116,6 @@
   check_mode: no
   ignore_errors: True
   register: facts
-  when: birthday is defined
 
 #
 # If that failed, then we use the raw module to install things
