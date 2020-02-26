@@ -7,3 +7,14 @@
 
 # Disable ethX ifcfg, let amazon handle these via DHCP.
 ansible_ifcfg_blacklist: true
+
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  named: false
+  dhcpd: false
+  httpd: false
+  swap: false
+  ping: false
+  raid: false
