@@ -1,4 +1,4 @@
-[cloud]
+[cloud_phx2]
 ##
 ## Hardware
 ##
@@ -50,16 +50,22 @@ developer.fedorainfracloud.org
 fedora-bootstrap.fedorainfracloud.org
 happinesspackets.fedorainfracloud.org
 happinesspackets-stg.fedorainfracloud.org
-#iddev.fedorainfracloud.org
 simple-koji-ci-prod.fedorainfracloud.org
 ppc64le-test.fedorainfracloud.org
-#rawhide-test.fedorainfracloud.org
-#respins.fedorainfracloud.org
-#telegram-irc.fedorainfracloud.org
-#testdays.fedorainfracloud.org
 upstreamfirst.fedorainfracloud.org
 ##
 ## New Community Hardware
 ##
 os-proxy01.fedorainfracloud.org
 os-proxy02.fedorainfracloud.org
+
+[cloud_external]
+iddev.fedorainfracloud.org
+rawhide-test.fedorainfracloud.org
+respins.fedorainfracloud.org
+telegram-irc.fedorainfracloud.org
+testdays.fedorainfracloud.org
+
+[cloud:children]
+cloud_phx2
+cloud_external
