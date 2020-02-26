@@ -31,6 +31,15 @@
 
 - name: configure crond
   copy: src=sysconfig.crond dest=/etc/sysconfig/crond
+  notify: restart crond
+
+- name: configure anacrond to not send mails to root user
+  lineinfile: dest=/etc/anacrontab
+              backup=yes
+              state=present
+              line='MAILTO=praiskup@redhat.com'
+              regexp="^MAILTO"
+  notify: restart crond
 
 - name: install copr-selinux
   dnf: state=latest pkg=copr-selinux
