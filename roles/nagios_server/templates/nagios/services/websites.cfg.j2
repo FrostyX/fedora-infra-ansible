@@ -316,4 +316,14 @@ define service {
   use                   ppc-secondarytemplate
 }
 
+## Auxillary to websites but necessary to make them happen
+
+define service {
+  host_name             sundries01.phx2.fedoraproject.org
+  service_description   websites build happened recently
+  check_command         check_by_nrpe!check_websites_buildtime
+  use                   websitetemplate
+}
+
+
 {% endif %}

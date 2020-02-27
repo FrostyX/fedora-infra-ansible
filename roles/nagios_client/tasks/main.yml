@@ -47,6 +47,7 @@
   - check_osbs_api.py
   - check_ipa_replication
   - check_redis_queue.sh
+  - check_timestamp_from_file
   when: not inventory_hostname.startswith('noc')
   tags:
   - nagios_client
@@ -221,6 +222,16 @@
   with_items:
   - check_sigul_bridge_proc.cfg
   when: inventory_hostname.startswith('sign-bridge')
+  notify:
+  - restart nrpe
+  tags:
+  - nagios_client
+
+- name: install nrpe checks for sundries/websites
+  template: src={{ item }}.j2 dest=/etc/nrpe.d/{{ item }} owner=root group=root mode=0644
+  with_items:
+  - check_websites_buildtime.cfg
+  when: inventory_hostname.startswith('sundries')
   notify:
   - restart nrpe
   tags:
