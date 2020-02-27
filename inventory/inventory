@@ -516,8 +516,8 @@ aarch64-c28n1-oqa.arm.fedoraproject.org
 aarch64-c29n1-oqa.arm.fedoraproject.org
 aarch64-c30n1-oqa.arm.fedoraproject.org
 openqa-aarch64-01.arm.fedoraproject.org
-#openqa-aarch64-02.arm.fedoraproject.org
-#openqa-aarch64-03.arm.fedoraproject.org
+openqa-aarch64-02.arm.fedoraproject.org
+openqa-aarch64-03.arm.fedoraproject.org
 
 
 
