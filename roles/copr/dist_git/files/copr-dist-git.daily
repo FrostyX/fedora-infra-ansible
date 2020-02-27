@@ -1,5 +1,7 @@
 #!/usr/bin/bash
 
+# temporaily disabled, waiting for review
+exit 0
 (
 flock -n 9 || exit 1
 # ... commands executed under lock ...
