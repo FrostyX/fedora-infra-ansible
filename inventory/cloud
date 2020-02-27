@@ -38,7 +38,6 @@ os-proxy02.fedorainfracloud.org
 [cloud_aws]
 iddev.fedorainfracloud.org
 rawhide-test.fedorainfracloud.org
-respins.fedorainfracloud.org
 testdays.fedorainfracloud.org
 proxy30.fedoraproject.org
 copr-be.aws.fedoraproject.org
