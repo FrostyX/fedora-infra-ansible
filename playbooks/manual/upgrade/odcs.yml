@@ -84,16 +84,12 @@
     nagios: action=downtime minutes=15 service=host host={{ inventory_hostname_short }}{{ env_suffix }}
     delegate_to: noc01.phx2.fedoraproject.org
     ignore_errors: true
-  - name: Stop the odcs backend
-    service: name="fedmsg-hub-3" state=stopped
 
   roles:
   - odcs/base
   - odcs/backend
 
   post_tasks:
-  - name: Start the odcs backend
-    service: name="fedmsg-hub-3" state=started
   - name: tell nagios to unshush w.r.t. the backend
     nagios: action=unsilence service=host host={{ inventory_hostname_short }}{{ env_suffix }}
     delegate_to: noc01.phx2.fedoraproject.org
