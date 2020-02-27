@@ -843,7 +843,7 @@ subnet 10.5.129.0 netmask 255.255.255.0 {
         option host-name "bvh-aarch64-21-br0.arm.fedoraproject.org";
         filename "/uefi/grubaa64.efi";
     }
-    host cvh-aarch64-01-br0
+    host cvh-aarch64-01-br0 {
         hardware ethernet  50:6B:4B:6A:C4:B0;
         fixed-address 10.5.129.32;
         next-server 10.5.126.41;
