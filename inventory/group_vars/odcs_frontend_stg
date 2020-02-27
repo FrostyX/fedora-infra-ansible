@@ -36,6 +36,9 @@ odcs_target_dir_url: https://odcs.stg.fedoraproject.org/composes
 # for taskotron.
 odcs_allowed_clients_users:
   jscotka: {}
+  humaton: {"source_types": ["tag", "module", "build", "raw_config"]}
+  mohanboddu: {"source_types": ["tag", "module", "build", "raw_config"]}
+  jkaluza: {"source_types": ["tag", "module", "build", "raw_config"]}
 
 nfs_mount_opts: "ro,hard,bg,intr,noatime,nodev,nosuid,nfsvers=3"
 
