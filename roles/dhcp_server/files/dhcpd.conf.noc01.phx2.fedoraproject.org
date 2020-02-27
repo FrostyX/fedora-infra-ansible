@@ -836,7 +836,6 @@ subnet 10.5.129.0 netmask 255.255.255.0 {
         option host-name "bvh-aarch64-20-br0.arm.fedoraproject.org";
         filename "/uefi/grubaa64.efi";
     }
-
     host bvh-aarch64-21-br0 {
         hardware ethernet  50:6B:4B:6B:0A:40;
         fixed-address 10.5.129.37;
@@ -844,6 +843,14 @@ subnet 10.5.129.0 netmask 255.255.255.0 {
         option host-name "bvh-aarch64-21-br0.arm.fedoraproject.org";
         filename "/uefi/grubaa64.efi";
     }
+    host cvh-aarch64-01-br0
+        hardware ethernet  50:6B:4B:6A:C4:B0;
+        fixed-address 10.5.129.32;
+        next-server 10.5.126.41;
+        option host-name "cvhost-aarch64-01-br0.arm.fedoraproject.org";
+        filename "/uefi/grubaa64.efi";
+    }
+
 
 }
 
@@ -1962,6 +1969,13 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
+    host cloudvmhost-aarch64-01 {
+         hardware ethernet  68:05:CA:8A:F2:05;
+         fixed-address 10.5.78.9;
+         option host-name "cloudvmhost-aarch64-01";
+         next-server 10.5.126.41;
+	 filename "/uefi/grubaa64.efi";
+    }
 
     host openqa-aarch64-01 {
          hardware ethernet 00:1b:21:e0:6a:72;
@@ -1977,7 +1991,6 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
-
     host openqa-aarch64-03 {
          hardware ethernet 00:1B:21:E0:6E:5B;
          fixed-address 10.5.78.8;
