@@ -817,6 +817,7 @@ virthost19.phx2.fedoraproject.org
 virthost21.phx2.fedoraproject.org
 virthost22.phx2.fedoraproject.org
 qa09.qa.fedoraproject.org
+cloudvmhost-aarch64-01.arm.fedoraproject.org
 
 [virthost_comm]
 virthost-comm01.qa.fedoraproject.org
