@@ -142,7 +142,7 @@ storinator01.fedorainfracloud.org
 # 2 thunderx2 machines on loan for builders
 buildvmhost-aarch64-01.arm.fedoraproject.org
 buildvmhost-aarch64-02.arm.fedoraproject.org
-# 22 thunderx1 machines on loan for copr builders
+# 2 thunderx1 machines on loan for copr builders
 virthost-aarch64-os01.fedorainfracloud.org
 virthost-aarch64-os02.fedorainfracloud.org
 
@@ -158,10 +158,9 @@ buildvmhost-aarch64-17.arm.fedoraproject.org
 buildvmhost-aarch64-18.arm.fedoraproject.org
 buildvmhost-aarch64-19.arm.fedoraproject.org
 buildvmhost-a64-osbs-01.arm.fedoraproject.org
-#openqa-aarch64-01.qa.fedoraproject.org
+openqa-aarch64-01.qa.fedoraproject.org
 #openqa-aarch64-02.qa.fedoraproject.org
 #openqa-aarch64-03.qa.fedoraproject.org
-#openqa-aarch64-04.qa.fedoraproject.org
 
 [hardware:children]
 moonshot
