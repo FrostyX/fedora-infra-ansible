@@ -16,8 +16,8 @@
   - role: httpd/mod_ssl
 
   - role: httpd/certificate
-    certname: wildcard-2017.fedoraproject.org
-    SSLCertificateChainFile: wildcard-2017.fedoraproject.org.intermediate.cert
+    certname: wildcard-2020.fedoraproject.org
+    SSLCertificateChainFile: wildcard-2020.fedoraproject.org.intermediate.cert
 
   # - role: httpd/certificate
   #   certname: wildcard-2017.fedorahosted.org

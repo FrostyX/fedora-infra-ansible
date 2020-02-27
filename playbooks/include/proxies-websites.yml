@@ -903,7 +903,7 @@
   - role: httpd/website
     site_name: nagios.fedoraproject.org
     server_aliases: [nagios.stg.fedoraproject.org]
-    SSLCertificateChainFile: wildcard-2017.fedoraproject.org.intermediate.cert
+    SSLCertificateChainFile: wildcard-2020.fedoraproject.org.intermediate.cert
     sslonly: true
     cert_name: "{{wildcard_cert_name}}"
 
