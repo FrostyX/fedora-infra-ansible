@@ -32,13 +32,6 @@ ibiblio05.fedoraproject.org
 virthost-comm01.qa.fedoraproject.org
 virthost-comm03.qa.fedoraproject.org
 virthost-comm04.qa.fedoraproject.org
-fed-cloud09.cloud.fedoraproject.org
-#fed-cloud10.cloud.fedoraproject.org
-#fed-cloud11.cloud.fedoraproject.org
-fed-cloud12.cloud.fedoraproject.org
-fed-cloud13.cloud.fedoraproject.org
-#fed-cloud14.cloud.fedoraproject.org
-fed-cloud15.cloud.fedoraproject.org
 #osuosl03.fedoraproject.org
 # ssh often disabled
 #autosign01.phx2.fedoraproject.org
@@ -75,14 +68,6 @@ bkernel04.phx2.fedoraproject.org
 [ibms]
 virthost-cc-rdu03.fedoraproject.org
 osuosl02.fedoraproject.org
-#fed-cloud01.cloud.fedoraproject.org
-#fed-cloud02.cloud.fedoraproject.org
-fed-cloud03.cloud.fedoraproject.org
-fed-cloud04.cloud.fedoraproject.org
-fed-cloud05.cloud.fedoraproject.org
-fed-cloud06.cloud.fedoraproject.org
-fed-cloud07.cloud.fedoraproject.org
-fed-cloud08.cloud.fedoraproject.org
 #cloud-noc01.cloud.fedoraproject.org
 data-analysis01.phx2.fedoraproject.org
 download-rdu01.fedoraproject.org
