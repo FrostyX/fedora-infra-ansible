@@ -19,7 +19,6 @@
     appowners:
     - jlebon
     - lucab
-    - sanja
     - dustymabe
     egress_policy_template: "{{ roles_path }}/openshift-apps/coreos-cincinnati/templates/egresspolicy.yml"
 
