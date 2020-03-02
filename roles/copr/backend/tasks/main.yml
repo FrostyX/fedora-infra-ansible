@@ -264,9 +264,9 @@
   command: "restorecon -vvRF /var/lib/copr/public_html/"
   when: "public_html_ls is defined and 'copr_data_t' not in  public_html_ls.stdout"
 
-- name: install cert to access fed-cloud09
-  # TODO: remove this when fed-cloud09 receives external cert
-  import_tasks: install_cloud_cert.yml
+# - name: install cert to access fed-cloud09
+#   # TODO: remove this when fed-cloud09 receives external cert
+#   import_tasks: install_cloud_cert.yml
 
 - name: enable and run copr-backend services
   service: name="{{ item }}" enabled=yes state=started
