@@ -51,7 +51,8 @@ RUN git clone -b staging https://github.com/fedora-infra/bodhi.git /srv/bodhi &&
     cd /srv/bodhi && \
     python3 -m pip install . --no-use-pep517 && \
     mkdir -p /usr/share/bodhi && \
-    cp /srv/bodhi/apache/bodhi.wsgi /usr/share/bodhi/bodhi.wsgi
+    cp /srv/bodhi/apache/bodhi.wsgi /usr/share/bodhi/bodhi.wsgi &&\
+    curl -o /usr/lib/python3.7/site-packages/bodhi/server/templates/errors.html https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/files/bodhi/errors.html
 
 RUN rm -f /etc/krb5.conf && \
     ln -sf /etc/bodhi/krb5.conf /etc/krb5.conf && \
