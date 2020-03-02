@@ -16,10 +16,10 @@ items:
           vendor="Fedora Infrastructure" \
           license="MIT"
         RUN curl -o /etc/yum.repos.d/infra-tags.repo https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/files/common/fedora-infra-tags.repo
-        RUN curl -o /usr/lib/python3.7/site-packages/bodhi/server/templates/errors.html https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/files/bodhi/errors.html
         # While dnf has a --nodocs, it doesen't have a --docs...
         RUN sed -i '/nodocs/d' /etc/dnf/dnf.conf
-        RUN dnf install -y bodhi-server-{{bodhi_version}}
+        RUN dnf install -y bodhi-server-{{bodhi_version}} && \
+            curl -o /usr/lib/python3.7/site-packages/bodhi/server/templates/errors.html https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/files/bodhi/errors.html
         # Set up krb5
         RUN rm -f /etc/krb5.conf && \
             ln -sf /etc/bodhi/krb5.conf /etc/krb5.conf && \
