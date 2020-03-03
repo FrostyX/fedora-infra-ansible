@@ -12,15 +12,6 @@ nrpe_procs_crit: 300
 
 sudoers: "{{ private }}/files/sudo/qavirt-sudoers"
 
-# openQA tap worker hosts (like this one) do stuff with ifcfg that base
-# doesn't understand. terrible, terrible stuff. seriously - it doesn't
-# handle the openvswitch config well. so let's tell it to just configure
-# the regular interfaces (which on this system is eth0-eth3) for us,
-# disabling all but the one we want to use (eth2), and leave everything
-# else alone.
-ansible_ifcfg_whitelist: ['eth0', 'eth1', 'eth2', 'eth3']
-ansible_ifcfg_disabled: ['eth2', 'eth1', 'eth3']
-
 # this is a powerful machine, can handle more openQA workers
 openqa_workers: 8
 # firewall ports for server->worker websockets connections

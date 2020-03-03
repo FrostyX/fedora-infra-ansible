@@ -17,8 +17,10 @@ gw: 10.5.124.254
 # handle the openvswitch config well. so let's tell it to just configure
 # the regular interfaces (which on this system is em1-4) for us,
 # disabling all but the one we want to use (em3), and leave everything
-# else alone.
-ansible_ifcfg_whitelist: ['em1', 'em2', 'em3', 'em4']
+# else alone. We use a variable definition here so the firewall config
+# (in the openqa_tap_workers group_vars) can reuse it.
+openqa_tap_iface: em3
+ansible_ifcfg_whitelist: ['em1', 'em2', {{ openqa_tap_iface }}, 'em4']
 ansible_ifcfg_disabled: ['em1', 'em2', 'em4']
 
 # Has a hardware RNG

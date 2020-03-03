@@ -519,21 +519,19 @@ openqa-aarch64-01.arm.fedoraproject.org
 openqa-aarch64-02.arm.fedoraproject.org
 openqa-aarch64-03.arm.fedoraproject.org
 
-
-
 # the workers that can run networked jobs. each server should have *one* of these per arch
 [openqa_tap_workers]
 qa01.qa.fedoraproject.org
 qa02.qa.fedoraproject.org
 openqa-ppc64le-02.qa.fedoraproject.org
-aarch64-c26n1-oqa.arm.fedoraproject.org
+openqa-aarch64-01.arm.fedoraproject.org
 
 # the workers that need rw access to the factory share to run createhdds. again,
 # only one per arch per instance should be present. usually x86_64 images are created
 # on the server, images for other arches on a worker.
 [openqa_hdds_workers]
 openqa-ppc64le-02.qa.fedoraproject.org
-aarch64-c26n1-oqa.arm.fedoraproject.org
+openqa-aarch64-01.arm.fedoraproject.org
 qa01.qa.fedoraproject.org
 qa02.qa.fedoraproject.org
 

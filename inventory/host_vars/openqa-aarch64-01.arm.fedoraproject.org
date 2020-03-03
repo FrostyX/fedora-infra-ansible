@@ -17,11 +17,13 @@ sudoers: "{{ private }}/files/sudo/qavirt-sudoers"
 # openQA tap worker hosts (like this one) do stuff with ifcfg that base
 # doesn't understand. terrible, terrible stuff. seriously - it doesn't
 # handle the openvswitch config well. so let's tell it to just configure
-# the regular interfaces (which on this system is eth0-eth3) for us,
-# disabling all but the one we want to use (eth2), and leave everything
-# else alone.
-ansible_ifcfg_whitelist: ['eth3']
-ansible_ifcfg_disabled: ['eth0', 'eth1', 'eth2']
+# the regular interfaces (which on this system is eth0-eth2) for us,
+# disabling all but the one we want to use (eth0), and leave everything
+# else alone. We use a variable definition here so the firewall config
+# (in the openqa_tap_workers group_vars) can reuse it.
+openqa_tap_iface: eth0
+ansible_ifcfg_whitelist: [{{ openqa_tap_iface }}, 'eth1', 'eth2']
+ansible_ifcfg_disabled: ['eth1', 'eth2']
 
 # this is a powerful machine, can handle more openQA workers
 openqa_workers: 8

@@ -5,12 +5,9 @@ openqa_tap: true
 host_group: openqa-tap-workers
 
 # firewall rules to allow openQA openvswitch guests to communicate
-# eth0 for older x86_64 worker hosts, eth2 for ppc64 worker host,
-# em3 for newer x86_64 worker hosts
+# uses interface definition from host vars
 custom_rules: [
     '-A FORWARD -i br0 -j ACCEPT',
-    '-A FORWARD -m state -i eth0 -o br0 --state RELATED,ESTABLISHED -j ACCEPT',
-    '-A FORWARD -m state -i eth2 -o br0 --state RELATED,ESTABLISHED -j ACCEPT',
-    '-A FORWARD -m state -i em3 -o br0 --state RELATED,ESTABLISHED -j ACCEPT',
+    '-A FORWARD -m state -i {{ openqa_tap_iface }} -o br0 --state RELATED,ESTABLISHED -j ACCEPT',
     '-A INPUT -i br0 -j ACCEPT'
 ]
