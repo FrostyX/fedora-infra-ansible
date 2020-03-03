@@ -14,6 +14,10 @@ nrpe_procs_crit: 300
 
 sudoers: "{{ private }}/files/sudo/qavirt-sudoers"
 
+# we seem to have an eth2 plugged in that isn't configured here,
+# which breaks "copy ifcfg files - non virthost" role
+ansible_ifcfg_whitelist: ['eth0', 'eth1']
+
 # this is a powerful machine, can handle more openQA workers
 openqa_workers: 8
 # firewall ports for server->worker websockets connections
