@@ -407,8 +407,6 @@
     # - www.fedoraproject.community
     ssl: true
     certbot: true
-    # cert_name: fedoracommunity.org
-    # SSLCertificateChainFile: fedoracommunity.org.intermediate.cert
     tags: fedoracommunity
 
   - role: httpd/website
@@ -514,13 +512,6 @@
     certbot: true
     tags:
     - whatcanidoforfedora.org
-
-  - role: httpd/website
-    site_name: fedoramagazine.org
-    server_aliases: [www.fedoramagazine.org stg.fedoramagazine.org]
-    cert_name: fedoramagazine.org
-    SSLCertificateChainFile: fedoramagazine.org.intermediate.cert
-    sslonly: true
 
   - role: httpd/website
     site_name: k12linux.org

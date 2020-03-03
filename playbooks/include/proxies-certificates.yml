@@ -19,10 +19,6 @@
     certname: wildcard-2020.fedoraproject.org
     SSLCertificateChainFile: wildcard-2020.fedoraproject.org.intermediate.cert
 
-  # - role: httpd/certificate
-  #   certname: wildcard-2017.fedorahosted.org
-  #   SSLCertificateChainFile: wildcard-2017.fedorahosted.org.intermediate.cert
-
   - role: httpd/certificate
     certname: wildcard-2017.id.fedoraproject.org
     SSLCertificateChainFile: wildcard-2017.id.fedoraproject.org.intermediate.cert
@@ -45,10 +41,6 @@
     tags:
     - app.os.fedoraproject.org
 
-  # - role: httpd/certificate
-  #   certname: fedoramagazine.org
-  #   SSLCertificateChainFile: fedoramagazine.org.intermediate.cert
-
   - role: httpd/certificate
     certname: getfedora.org
     SSLCertificateChainFile: getfedora.org.intermediate.cert
@@ -66,8 +58,3 @@
   #   certname: secondary.koji.fedoraproject.org.letsencrypt
   #   SSLCertificateChainFile: secondary.koji.fedoraproject.org.letsencrypt.intermediate.crt
 
-  # - role: httpd/certificate
-  #   certname: fedoracommunity.org
-  #   SSLCertificateChainFile: fedoracommunity.org.intermediate.cert
-  #   tags:
-  #   - fedoracommunity.org
