@@ -72,7 +72,7 @@
 
 - name: Install the review-stats cronjob
   copy: >
-    src=review-stats-new.cron dest=/etc/cron.d/review-stats.cron
+    src=review-stats.cron dest=/etc/cron.d/review-stats.cron
     owner=root group=root mode=0644
   tags:
   - cron
