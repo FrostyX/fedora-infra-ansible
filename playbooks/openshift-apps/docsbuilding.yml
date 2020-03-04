@@ -32,7 +32,20 @@
     app: docsbuilding
     template: cron.yml
     objectname: cron.yml
+    tags:
+      - deploy-cronjob
   - role: openshift/object
     app: docsbuilding
     file: pvc.yml
     objectname: pvc.yml
+
+
+###############################################
+# actions to delete the project from OpenShift
+###############################################
+# to run: sudo rbac-playbook -l os_masters_stg[0] -t delete openshift-apps/docsbuilding.yml
+  - role: openshift/object-delete
+    app: docsbuilding
+    objecttype: cronjob
+    objectname: build
+    tags: [ never, delete ]
