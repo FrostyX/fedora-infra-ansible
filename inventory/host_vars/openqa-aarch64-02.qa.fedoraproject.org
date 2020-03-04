@@ -1,7 +1,8 @@
 ---
 freezes: false
-# the if connected to the infra network on this box is eth2, not eth0
-gw: 10.5.78.254
+# eth0 is on the .arm. network. eth1 is on the .qa. network
+ansible_ifcfg_infra_net_devices: ['eth0', 'eth1']
+gw: 10.5.131.254
 dns: 10.5.126.21
 eth0_ip: 10.5.78.7
 eth0_nm: 255.255.255.0
