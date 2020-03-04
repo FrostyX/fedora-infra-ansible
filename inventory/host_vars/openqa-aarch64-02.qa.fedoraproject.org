@@ -3,9 +3,9 @@ freezes: false
 # the if connected to the infra network on this box is eth2, not eth0
 gw: 10.5.78.254
 dns: 10.5.126.21
-eth0_ip: 10.5.78.6
+eth0_ip: 10.5.78.7
 eth0_nm: 255.255.255.0
-eth1_ip: 10.5.131.25
+eth1_ip: 10.5.131.26
 eth1_nm: 255.255.255.0
 datacenter: phx2
 fas_client_groups: sysadmin-qa,sysadmin-main,sysadmin-noc,fi-apprentice,sysadmin-veteran
@@ -14,16 +14,11 @@ nrpe_procs_crit: 300
 
 sudoers: "{{ private }}/files/sudo/qavirt-sudoers"
 
-# openQA tap worker hosts (like this one) do stuff with ifcfg that base
-# doesn't understand. terrible, terrible stuff. seriously - it doesn't
-# handle the openvswitch config well. so let's tell it to just configure
-# the regular interfaces (which on this system is eth0-eth2) for us,
-# disabling all but the one we want to use (eth0), and leave everything
-# else alone. We use a variable definition here so the firewall config
-# (in the openqa_tap_workers group_vars) can reuse it.
-openqa_tap_iface: eth0
-ansible_ifcfg_whitelist: ['{{ openqa_tap_iface }}', 'eth1', 'eth2']
-ansible_ifcfg_disabled: ['eth1', 'eth2']
+# we seem to have an eth2 plugged in that isn't configured here,
+# which breaks "copy ifcfg files - non virthost" role
+ansible_ifcfg_whitelist: ['eth0', 'eth1']
+# we just want the eth1 (qa network) interface active
+ansible_ifcfg_disabled: ['eth0']
 
 # this is a powerful machine, can handle more openQA workers
 openqa_workers: 8
