@@ -7,6 +7,10 @@
   - review-stats
   - review-stats/build
 
+- name: Install new version of the app
+  package: name=python-review_stats state=present
+  when: env == "staging"
+
 - name: Ensure dir for content exists
   file: dest=/srv/web/review-stats owner=apache group=apache mode=0755 state=directory
   tags:
@@ -20,18 +24,21 @@
   tags:
   - review-stats
   - review-stats/build
+  when: env != "staging"
 
 - name: Create /usr/local/share/review-stats
   file: path=/usr/local/share/review-stats state=directory owner=root group=root
   tags:
   - review-stats
   - review-stats/build
+  when: env != "staging"
 
 - name: Copy templates
   synchronize: src=templates dest=/usr/local/share/review-stats/
   tags:
   - review-stats
   - review-stats/build
+  when: env != "staging"
 
 - name: Copy config file
   template: >
@@ -41,6 +48,17 @@
   tags:
   - review-stats
   - review-stats/build
+  when: env != "staging"
+
+- name: Copy config file
+  template: >
+    src=review-stats-new.cfg
+    dest=/etc/review-stats.cfg
+    owner=apache group=root mode=0600
+  tags:
+  - review-stats
+  - review-stats/build
+  when: env == "staging"
 
 - name: Install the review-stats cronjob
   copy: >
@@ -50,3 +68,14 @@
   - cron
   - review-stats
   - review-stats/build
+  when: env != "staging"
+
+- name: Install the review-stats cronjob
+  copy: >
+    src=review-stats-new.cron dest=/etc/cron.d/review-stats.cron
+    owner=root group=root mode=0644
+  tags:
+  - cron
+  - review-stats
+  - review-stats/build
+  when: env == "staging"
