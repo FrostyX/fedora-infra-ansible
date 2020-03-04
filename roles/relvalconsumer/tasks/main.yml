@@ -220,13 +220,6 @@
   tags:
   - config
 
-- name: Wipe the old fedmsg consumer config file
-  file: path=/etc/fedmsg.d/relvalconsumer.py state=absent
-  notify:
-  - restart fedmsg-hub
-  tags:
-  - config
-
 - name: Enable and start fedora-messaging relvalconsumer
   service: name=fm-consumer@relvalconsumer enabled=yes state=started
   when: not relvalconsumer_disabled|bool

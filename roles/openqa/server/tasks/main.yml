@@ -94,7 +94,7 @@
 # stable and testing
 - name: Install openQA packages
   package:
-    name: ['openqa', 'openqa-httpd', 'openqa-plugin-fedmsg', 'openqa-plugin-fedoraupdaterestart',
+    name: ['openqa', 'openqa-httpd', 'openqa-plugin-fedora-messaging', 'openqa-plugin-fedoraupdaterestart',
            'python3-fedfind']
     state: present
 #    enablerepo: "updates-testing"
@@ -265,9 +265,10 @@
   pause: seconds=5
   when: "services is defined and services is changed"
 
-# the 'dispatcher' role requires this to be root.fedmsg 0640. so we
-# don't enforce ownership here and set mode to 0640 so we don't wind
-# up ping-ponging it between server and dispatcher roles.
+# the 'dispatcher' role may require this to have a non-root group and
+# sets it 0640, so we don't enforce ownership here and set mode to
+# 0640 so we don't wind up ping-ponging it between server and
+# dispatcher roles.
 - name: openQA client config
   template: src=client.conf.j2 dest=/etc/openqa/client.conf mode=0640
   tags:

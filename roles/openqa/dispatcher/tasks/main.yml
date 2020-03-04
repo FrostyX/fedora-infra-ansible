@@ -3,10 +3,6 @@
 ##      string - hostname of openQA server to run jobs for and query
 ##               job results from
 ##      default - localhost
-# - openqa_consumer
-##      bool - whether to enable the fedmsg consumer and run whenever
-##             a compose completes
-##      default - true
 # - external_hostname
 ##      string - The public hostname of the openQA server (used in
 ##               links back from ResultsDB and wiki results)
@@ -232,8 +228,12 @@
   notify:
   - restart openqa scheduler consumer
 
+# FIXME: we should probably have the fedora-messaging consumers run as
+# someone other than root and then we'd need another token file for
+# them, as we used to have for the fedmsg user. But for now they run
+# as root and use this one.
 - name: openQA client config
-  template: src=client.conf.j2 dest=/etc/openqa/client.conf owner=root group=fedmsg mode=0640
+  template: src=client.conf.j2 dest=/etc/openqa/client.conf owner=root group=root mode=0640
   tags:
   - config
 
@@ -252,22 +252,16 @@
   tags:
   - config
 
-- name: Create /root/.openidc (token file location for manual runs as root)
+# FIXME: we should probably have the fedora-messaging consumers run as
+# someone other than root and then we'd need another token file for
+# them, as we used to have for the fedmsg user. But for now they run
+# as root and use this one.
+- name: Create /root/.openidc (wiki access token file location)
   file: path=/root/.openidc state=directory owner=root group=root mode=0700
-
-- name: Create /usr/share/fedmsg/.openidc (token file location for fedmsg consumer runs)
-  file: path=/usr/share/fedmsg/.openidc state=directory owner=root group=fedmsg mode=0750
 
 - name: Write wikitcms token file for root
   copy: src={{ wikitcms_token }} dest=/root/.openidc/oidc_wikitcms.json owner=root group=root mode=0600
   when: "wikitcms_token is defined"
-  tags:
-  - config
-
-- name: Wipe the old fedmsg consumer config file
-  file: path=/etc/fedmsg.d/openqa_consumer.py state=absent
-  notify:
-  - restart fedmsg-hub
   tags:
   - config
 

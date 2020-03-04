@@ -175,13 +175,6 @@
   tags:
   - config
 
-- name: Wipe the old fedmsg consumer config file
-  file: path=/etc/fedmsg.d/checkcomp_consumer.py state=absent
-  notify:
-  - restart fedmsg-hub
-  tags:
-  - config
-
 - name: Install config file
   template: src=check-compose.conf.j2 dest=/etc/check-compose.conf mode=0644
   tags:
