@@ -212,7 +212,7 @@
   check_mode: no
 
 - name: Install fedora_openqa
-  command: "python3 setup.py install --nodeps"
+  command: "python3 setup.py install"
   args:
     chdir: /root/fedora_openqa
   when: "gittools is changed or not insttools.stat.exists"
