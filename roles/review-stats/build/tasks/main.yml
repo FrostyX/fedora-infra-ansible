@@ -8,7 +8,7 @@
   - review-stats/build
 
 - name: Install new version of the app
-  package: name=python-review_stats state=present
+  package: name=python3-review_stats state=present
   when: env == "staging"
 
 - name: Ensure dir for content exists
