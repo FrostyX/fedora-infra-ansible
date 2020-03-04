@@ -11,3 +11,7 @@ custom_rules: [
     '-A FORWARD -m state -i {{ openqa_tap_iface }} -o br0 --state RELATED,ESTABLISHED -j ACCEPT',
     '-A INPUT -i br0 -j ACCEPT'
 ]
+nat_rules: [
+    # masquerade for openQA openvswitch workers to reach the outside
+    '-A POSTROUTING -o {{ openqa_tap_iface }} -j MASQUERADE'
+ ]
