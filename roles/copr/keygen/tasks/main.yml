@@ -18,9 +18,6 @@
   notify:
   - restart haveged
 
-- name: install yum
-  dnf: name=yum state=latest
-
 - name: change owner of data to copr-signer
   file: path=/var/lib/copr-keygen owner=copr-signer group=copr-signer recurse=yes
 
