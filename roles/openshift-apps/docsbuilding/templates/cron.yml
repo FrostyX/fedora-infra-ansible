@@ -1,7 +1,7 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: build
+  name: cron
 spec:
   concurrencyPolicy: Forbid
   schedule: "0 * * * *"

@@ -47,5 +47,5 @@
   - role: openshift/object-delete
     app: docsbuilding
     objecttype: cronjob
-    objectname: build
+    objectname: cron
     tags: [ never, delete ]
