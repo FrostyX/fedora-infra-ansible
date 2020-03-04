@@ -1,1 +1,1 @@
-0,30 * * * * apache /usr/local/bin/review-stats.py -d /srv/web/review-stats/
+0,30 * * * * apache /usr/bin/review-stats -d /srv/web/review-stats/
