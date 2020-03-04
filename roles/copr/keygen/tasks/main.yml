@@ -9,6 +9,10 @@
 #mount: name=/var/lib/copr-keygen src='UUID=9e2b4c55-9ec3-4508-af46-a40f3a5bd982' fstype=ext4 state=mounted
 #when: devel|devel
 
+- group: name="copr-signer" state=present gid=989
+- group: name="apache" state=present gid=48
+- user: name="copr-signer" group=copr-signer groups=packager,apache uid=992
+
 - name: install copr-keygen
   dnf: state=present name=copr-keygen
   notify:
