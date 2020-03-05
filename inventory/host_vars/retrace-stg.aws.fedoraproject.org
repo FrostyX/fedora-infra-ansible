@@ -2,7 +2,9 @@
 ansible_ssh_user: ec2-user
 ansible_become_user: root
 ansible_become: yes
-
+nm_controlled_resolv: True
+ansible_ifcfg_blacklist: True
+public_ip: 3.228.218.234
 datacenter: aws
 
 faf_server_name: retrace.stg.fedoraproject.org/faf
