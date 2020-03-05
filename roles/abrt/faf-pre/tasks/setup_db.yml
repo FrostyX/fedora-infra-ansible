@@ -1,4 +1,11 @@
 ---
+- name: Ensure PostgreSQL database is initialized.
+  command: "initdb --no-locale -D /var/lib/pgsql/data"
+  become: true
+  become_user: "postgres"
+  args:
+    creates: "/var/lib/pgsql/data/PG_VERSION"
+
 - name: set max_connections for PostgreSQL
   lineinfile:
     path: /var/lib/pgsql/data/postgresql.conf
