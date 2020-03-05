@@ -48,6 +48,9 @@ iddev.fedorainfracloud.org
 #respins01.fedorainfracloud.org
 # koji simple ci development - ticket 6419
 simple-koji-ci-prod.fedorainfracloud.org
+retrace-stg.aws.fedoraproject.org
+
+
 
 [cloud:children]
 cloud_phx2
