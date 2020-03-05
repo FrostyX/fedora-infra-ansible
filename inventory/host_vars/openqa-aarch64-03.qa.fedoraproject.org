@@ -4,8 +4,6 @@ freezes: false
 ansible_ifcfg_infra_net_devices: ['eth0', 'eth1']
 gw: 10.5.131.254
 dns: 10.5.126.21
-eth0_ip: 10.5.78.8
-eth0_nm: 255.255.255.0
 eth1_ip: 10.5.131.27
 eth1_nm: 255.255.255.0
 datacenter: phx2
