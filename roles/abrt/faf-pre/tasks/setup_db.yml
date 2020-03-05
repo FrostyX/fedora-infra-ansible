@@ -39,13 +39,6 @@
     line: 'maintenance_work_mem = 2GB'
   notify: restart postgresql
 
-- name: set checkpoint_segments for PostgreSQL
-  lineinfile:
-    path: /var/lib/pgsql/data/postgresql.conf
-    regexp: '^checkpoint_segments ='
-    line: 'checkpoint_segments = 32'
-  notify: restart postgresql
-
 - name: set checkpoint_completion_target for PostgreSQL
   lineinfile:
     path: /var/lib/pgsql/data/postgresql.conf
