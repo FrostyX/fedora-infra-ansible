@@ -1,8 +1,6 @@
 ---
 - name: Ensure PostgreSQL database is initialized.
-  command: "initdb --no-locale -D /var/lib/pgsql/data"
-  become: true
-  become_user: "postgres"
+  command: "postgresql-setup --initdb --unit postgresql"
   args:
     creates: "/var/lib/pgsql/data/PG_VERSION"
 
@@ -75,16 +73,6 @@
     owner: postgres
     state: absent
   when: faf_recreate_database|bool
-
-- name: check postgresql initdb
-  stat:
-    path: /var/lib/pgsql/initdb.log
-  register: st
-
-- name: initdb postgresql
-  command: postgresql-setup initdb
-  when: st.stat.exists == False
-  become: true
 
 - name: start service postgresql
   service:
