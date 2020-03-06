@@ -22,7 +22,7 @@ faf_opsys_list:
 
 # Clean-up packages of following EOLed operating systems
 eol_opsys:
-  - { opsys: "Fedora", release: "30"}
+#  - { opsys: "Fedora", release: "30"}
 
 # GDPR SAR variables
 sar_script: '/usr/bin/faf sar'
