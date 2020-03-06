@@ -8,6 +8,13 @@
 # Allow https and start httpd
 - import_tasks: services.yml
 
+- name: Create a directory /srv/faf
+  file:
+    path: /srv/faf
+    state: directory
+    owner: faf
+    group: faf
+
 # landing page
 - name: install abrt-server-info-page
   package:
