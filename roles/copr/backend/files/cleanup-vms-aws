@@ -85,6 +85,7 @@ aws_command=(
         --query "Reservations[].Instances[].{Id:InstanceId,Name:Tags[?Key=='Name']|[0].Value,Time:LaunchTime}"
         --filters "Name=tag-key,Values=FedoraCopr,Name=tag-value,Values=copr"
                   "Name=instance-state-name,Values=running"
+                  "Name=tag-key,Values=CoprPurpose,Name=tag-value,Values=builder"
         --output text
 )
 
