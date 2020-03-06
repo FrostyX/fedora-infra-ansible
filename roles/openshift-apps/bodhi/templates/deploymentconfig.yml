@@ -95,14 +95,22 @@ items:
             timeoutSeconds: 10
             initialDelaySeconds: 5
             httpGet:
+{% if env == "staging" %}
+              path: /healthz/ready
+{% else %}
               path: /
+{% endif %}
               port: 8080
           livenessProbe:
             timeoutSeconds: 10
             initialDelaySeconds: 30
             periodSeconds: 30
             httpGet:
+{% if env == "staging" %}
+              path: /healthz/live
+{% else %}
               path: /
+{% endif %}
               port: 8080
         volumes:
         - name: config-volume

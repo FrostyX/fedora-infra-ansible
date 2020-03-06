@@ -1,6 +1,0 @@
-FROM bodhi-base
-LABEL \
-  name="bodhi-celery-beat" \
-  vendor="Fedora Infrastructure" \
-  license="MIT"
-ENTRYPOINT /usr/bin/celery beat -A bodhi.server.tasks.app -l info
