@@ -952,6 +952,7 @@ f32-test.fedorainfracloud.org
 rawhide-test.fedorainfracloud.org
 el6-test.fedorainfracloud.org
 el7-test.fedorainfracloud.org
+ppc64le-test.fedorainfracloud.org
 
 [aarch64_test]
 aarch64-test01.fedorainfracloud.org

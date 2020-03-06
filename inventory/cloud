@@ -49,8 +49,8 @@ iddev.fedorainfracloud.org
 # koji simple ci development - ticket 6419
 simple-koji-ci-prod.fedorainfracloud.org
 retrace-stg.aws.fedoraproject.org
-
-
+# This is not in aws, but here is good enough for now
+ppc64le-test.fedorainfracloud.org
 
 [cloud:children]
 cloud_phx2
