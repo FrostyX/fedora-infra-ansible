@@ -18,16 +18,17 @@
     - tasks:
         - abicheck
 
-- when:
-    message_type: KojiTagChanged
-    tag:
-      $and:
-        - $regex: '/^f[0-9]{2}-updates(-testing)?-pending$$/'
-        - $not:
-            $regex: '/^f33-.*/'  # Rawhide CI gating not supported yet
-  do:
-    - tasks:
-        - rpmdeplint
+# disable rpmdeplint temporarily because of https://github.com/fedora-infra/bodhi/issues/3944
+# - when:
+#     message_type: KojiTagChanged
+#     tag:
+#       $and:
+#         - $regex: '/^f[0-9]{2}-updates(-testing)?-pending$$/'
+#         - $not:
+#             $regex: '/^f33-.*/'  # Rawhide CI gating not supported yet
+#   do:
+#     - tasks:
+#         - rpmdeplint
 
 {% if deployment_type in ['dev'] %}
 {# This is sufficient to run in a single environment only #}
