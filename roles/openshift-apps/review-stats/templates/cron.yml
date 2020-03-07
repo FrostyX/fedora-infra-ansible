@@ -1,0 +1,22 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cron
+spec:
+  concurrencyPolicy: Forbid
+  schedule: "0 * * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            parent: "cronjobbuild"
+        spec:
+          containers:
+          - name: build
+            image: docker-registry.default.svc:5000/review-stats/builder:latest
+            env:
+            - name: BUILD_ENV
+              value: "{{ env_short }}"
+          restartPolicy: Never
+          startingDeadlineSeconds: 600

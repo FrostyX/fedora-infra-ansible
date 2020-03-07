@@ -1,0 +1,35 @@
+- name: make the app be real
+  hosts: os_masters_stg[0]
+  user: root
+  gather_facts: False
+
+  vars_files:
+    - /srv/web/infra/ansible/vars/global.yml
+    - "/srv/private/ansible/vars.yml"
+    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  roles:
+  - role: openshift/project
+    app: review-stats
+    description: Generate HTML with statistics about Fedora review tickets
+    appowners:
+    - mattia
+    - cverna
+    tags:
+      - apply-appowners
+  - role: openshift/imagestream
+    app: review-stats
+    imagename: builder
+  - role: openshift/object
+    app: review-stats
+    objectname: buildconfig.yml
+    template: buildconfig.yml
+  - role: openshift/start-build
+    app: review-stats
+    buildname: builder-build
+  - role: openshift/object
+    app: review-stats
+    template: cron.yml
+    objectname: cron.yml
+    tags:
+      - deploy-cronjob
