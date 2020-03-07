@@ -1,0 +1,11 @@
+{% macro load_file(filename) %}{% include filename %}{%- endmacro -%}
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: review-stats-configmap
+  labels:
+    app: review-stats
+data:
+  config.cfg: |-
+    {{ load_file('config.cfg') | indent }}

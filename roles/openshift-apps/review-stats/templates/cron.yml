@@ -18,5 +18,13 @@ spec:
             env:
             - name: BUILD_ENV
               value: "{{ env_short }}"
+            volumeMounts:
+            - name: review-stats-config
+              mountPath: /etc/review-stats
+              readOnly: true
           restartPolicy: Never
           startingDeadlineSeconds: 600
+          volumes:
+          - name: review-stats-config
+            configMap:
+              name: review-stats-configmap

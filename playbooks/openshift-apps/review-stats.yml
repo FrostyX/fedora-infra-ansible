@@ -24,6 +24,10 @@
     app: review-stats
     objectname: buildconfig.yml
     template: buildconfig.yml
+  - role: openshift/object
+    app: review-stats
+    template: configmap.yml
+    objectname: configmap.yml
   - role: openshift/start-build
     app: review-stats
     buildname: builder-build
