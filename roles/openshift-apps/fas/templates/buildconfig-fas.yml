@@ -27,6 +27,10 @@ spec:
           httpd \
           python-gunicorn
 
+{% if env == "staging" %}
+      RUN sed -i -e 's|//localhost/|//yubikey:8080/|' /usr/lib/python2.6/site-packages/fas_yubikey/__init__.py
+{% endif %}
+
       # Set up config symlinks
       RUN rm -f /etc/krb5.conf && \
         rm -f /etc/fas.cfg && \
