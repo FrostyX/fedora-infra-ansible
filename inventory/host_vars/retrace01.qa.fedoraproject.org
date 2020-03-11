@@ -3,7 +3,7 @@ faf_server_name: retrace.fedoraproject.org/faf
 rs_use_faf_packages: true
 
 # we do not have enough storage on stg
-rs_internal_fedora_vers: [30, 31, rawhide]
+rs_internal_fedora_vers: [30, 31, 32, rawhide]
 rs_internal_fedora_vers_removed: [27, 28, 29]
 rs_internal_arch_list: [source, x86_64, i386]
 
@@ -141,4 +141,39 @@ faf_repos:
       url: ['http://dl01.fedoraproject.org/pub/fedora/linux/updates/31/Everything/x86_64/'],
       arch: 'x86_64',
       opsys: 'Fedora 31',
+    }
+  - { name: 'fedora-32-source',
+      url: ['http://dl01.fedoraproject.org/pub/fedora/linux/releases/32/Everything/source/tree/', 'http://dl01.fedoraproject.org/pub/fedora/linux/development/32/Everything/source/tree/'],
+      arch: 'src',
+      opsys: 'Fedora 32',
+    }
+  - { name: 'fedora-32-x86_64',
+      url: ['http://dl01.fedoraproject.org/pub/fedora/linux/releases/32/Everything/x86_64/os/', 'http://dl01.fedoraproject.org/pub/fedora/linux/development/32/Everything/x86_64/os/'],
+      arch: 'x86_64',
+      opsys: 'Fedora 32',
+    }
+  - { name: 'fedora-32-x86_64-debug',
+      url: ['http://dl01.fedoraproject.org/pub/fedora/linux/releases/32/Everything/x86_64/debug/tree/', 'http://dl01.fedoraproject.org/pub/fedora/linux/development/32/Everything/x86_64/debug/tree/'],
+      arch: 'x86_64',
+      opsys: 'Fedora 32',
+    }
+  - { name: 'fedora-32-x86_64-testing-debug',
+      url: ['http://dl01.fedoraproject.org/pub/fedora/linux/updates/testing/32/Everything/x86_64/debug/'],
+      arch: 'x86_64',
+      opsys: 'Fedora 32',
+    }
+  - { name: 'fedora-32-x86_64-testing',
+      url: ['http://dl01.fedoraproject.org/pub/fedora/linux/updates/testing/32/Everything/x86_64/'],
+      arch: 'x86_64',
+      opsys: 'Fedora 32',
+    }
+  - { name: 'fedora-32-x86_64-updates-debug',
+      url: ['http://dl01.fedoraproject.org/pub/fedora/linux/updates/32/Everything/x86_64/debug/'],
+      arch: 'x86_64',
+      opsys: 'Fedora 32',
+    }
+  - { name: 'fedora-32-x86_64-updates',
+      url: ['http://dl01.fedoraproject.org/pub/fedora/linux/updates/32/Everything/x86_64/'],
+      arch: 'x86_64',
+      opsys: 'Fedora 32',
     }
