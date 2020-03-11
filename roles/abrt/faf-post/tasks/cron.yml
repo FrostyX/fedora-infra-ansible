@@ -42,7 +42,6 @@
       special_time: daily
       state: present
     loop:
-      - "29"
       - "30"
       - "31"
       - "32"
@@ -60,6 +59,7 @@
       - "26"
       - "27"
       - "28"
+      - "29"
 
   - name: update BZ bugs fedora
     cron:
