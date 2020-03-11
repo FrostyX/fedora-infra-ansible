@@ -9,7 +9,7 @@ virthost-os01.fedorainfracloud.org
 virthost-os02.fedorainfracloud.org
 virthost-os03.fedorainfracloud.org
 storinator01.fedorainfracloud.org
-cloud-noc01.cloud.fedoraproject.org
+cloudvmhost-aarch64-01.fedorainfracloud.org
 
 ##
 ## New Community Hardware

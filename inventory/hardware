@@ -148,7 +148,7 @@ buildvmhost-a64-osbs-01.arm.fedoraproject.org
 openqa-aarch64-01.qa.fedoraproject.org
 openqa-aarch64-02.qa.fedoraproject.org
 openqa-aarch64-03.qa.fedoraproject.org
-cloudvmhost-aarch64-01.arm.fedoraproject.org
+cloudvmhost-aarch64-01.fedorainfracloud.org
 
 [hardware:children]
 moonshot
