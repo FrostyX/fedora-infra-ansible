@@ -1,5 +1,6 @@
 ---
 fas_client_groups: retrace
+devel: true
 
 tcp_ports: [ 80, 443 ]
 
