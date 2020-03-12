@@ -5,6 +5,8 @@ DBName = koji
 DBUser = koji
 {% if env == "staging" %}
 DBHost = db-koji01
+LogLevel = koji:INFO koji-fedmsg-plugin:INFO
+LogFormat = %(asctime)s [%(levelname)s] m=%(method)s u=%(user_name)s p=%(process)s r=%(remoteaddr)s %(name)s: %(message)s
 {% else %}
 DBHost = db-koji01
 {% endif %}
