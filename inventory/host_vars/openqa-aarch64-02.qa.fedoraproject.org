@@ -30,3 +30,12 @@ tcp_ports: ['20013', '20023', '20033', '20043', '20053', '20063', '20073', '2008
 
 # has an HW RNG, so let's have rngd
 openqa_rngd: True
+
+# FIXME this box is suffering from a mysterious bug that prevents VMs
+# working properly:
+# https://pagure.io/fedora-infrastructure/issue/8750
+# this means all openQA tests run on it fail. We cannot currently work
+# out why this is happening, so until we can, we will give it a special
+# worker class that prevents it picking up regular jobs, but allows us
+# to manually target it with jobs for debugging
+openqa_worker_class: aarch64-02-broken

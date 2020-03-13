@@ -14,6 +14,8 @@
 # - openqa_rngd
 ##      string - if set to any value, rng-tools package will be
 ##               installed and rngd.service enabled/started
+# - openqa_worker_class
+##      string - custom WORKER_CLASS value for workers.ini
 
 - name: Install required packages (testing)
   package:
