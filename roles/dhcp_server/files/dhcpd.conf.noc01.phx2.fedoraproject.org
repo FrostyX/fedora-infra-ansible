@@ -1969,13 +1969,6 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
-    host cloudvmhost-aarch64-01 {
-         hardware ethernet  68:05:CA:8A:F2:05;
-         fixed-address 10.5.78.9;
-         option host-name "cloudvmhost-aarch64-01";
-         next-server 10.5.126.41;
-	 filename "/uefi/grubaa64.efi";
-    }
 
     host openqa-aarch64-01 {
          hardware ethernet 00:1b:21:e0:6a:72;
