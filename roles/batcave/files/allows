@@ -118,6 +118,7 @@ require ip 8.43.85.79
 
 # ec2 instances
 require ip 13.250.126.156
+require ip 13.125.120.8
 
 #
 # We put this at the end because it fails for hosts with no reverse dns
