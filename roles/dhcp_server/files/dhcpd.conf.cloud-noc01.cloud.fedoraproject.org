@@ -338,6 +338,23 @@ shared-network pubcloud {
           filename "pxelinux.0";
       }
 
+      host cloudvmhost-aarch64-01 {
+          hardware ethernet 68:05:ca:8a:f2:05;
+          fixed-address 38.145.48.29;
+          option host-name "cloudvmhost-aarch64-01.fedorainfracloud.org";
+          next-server 38.145.48.10;
+          filename "pxelinux.0";
+      }
+
+      host cvmhost-aarch64-01-br0 {
+          hardware ethernet 50:6b:4b:6a:c4:b0;
+          fixed-address 38.145.48.29;
+          option host-name "cloudvmhost-aarch64-01.fedorainfracloud.org";
+          next-server 38.145.48.10;
+          filename "pxelinux.0";
+      }
+
+
 #      host virthost-ppc64le-os01 {
 #          hardware ethernet TODO;
 #          fixed-address 38.145.48.25;
