@@ -1,0 +1,9 @@
+--- /usr/share/copr/coprs_frontend/coprs/views/apiv3_ns/apiv3_build_chroots.py	2020-02-24 13:58:42.000000000 +0100
++++ /usr/share/copr/coprs_frontend/coprs/views/apiv3_ns/apiv3_build_chroots.py	2020-03-17 14:25:55.660388927 +0100
+@@ -13,6 +13,7 @@
+         "started_on": build_chroot.started_on,
+         "ended_on": build_chroot.ended_on,
+         "result_url": build_chroot.result_dir_url,
++        "state": build_chroot.state,
+     }
+

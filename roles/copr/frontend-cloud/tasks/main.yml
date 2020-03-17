@@ -47,6 +47,11 @@
 #         dest=/the/patched/file.py
 #  tags: patches
 
+- name: patch to provide build_chroot status over API
+  patch: src=patches/build_chroot_status_api.patch
+         dest=/usr/share/copr/coprs_frontend/coprs/views/apiv3_ns/apiv3_build_chroots.py
+  tags: patches
+
 - name: directory for postgresql dumps
   file: state=directory path=/var/www/html/db_dumps/
         owner=copr-fe mode=755
