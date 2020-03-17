@@ -45,6 +45,7 @@
          passno=0
          dump=0
          state=present
+  register: swap_fstab_added
   tags:
     - swap.fstab
     - swap
@@ -52,6 +53,7 @@
 - name: Mount swap
   command: "swapon -a"
   #when: ansible_swaptotal_mb|int < 1
+  when: swap_fstab_added.changed
   tags:
     - swap.file.swapon
     - swap
