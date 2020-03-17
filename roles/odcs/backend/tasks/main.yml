@@ -50,10 +50,11 @@
   command: "{{ item }}"
   with_items:
   - odcs-manager upgradedb
-  - odcs-manager db migrate
   become: yes
   become_user: odcs
   when: odcs_migrate_db
+  notify:
+  - restart odcs-celery-backend
   tags:
   - odcs
   - odcs/backend
