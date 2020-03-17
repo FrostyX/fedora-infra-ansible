@@ -9,7 +9,7 @@ dns: 8.8.8.8
 freezes: false
 ansible_ifcfg_whitelist: ['eth1']
 baseiptables: false
-ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -q cloud-noc01.cloud.fedoraproject.org"'
+ansible_ssh_common_args: '-o ProxyCommand="ssh -W %h:%p -q cloud-noc01.fedorainfracloud.org"'
 nagios_Check_Services:
   mail: false
   nrpe: false

@@ -12,7 +12,7 @@ spec:
     storage:
       files:
       - contents:
-          source: "data:,server%20cloud-noc01.cloud.fedoraproject.org%20port%20124"
+          source: "data:,server%20cloud-noc01.fedorainfracloud.org%20port%20124"
           verification: {}
         filesystem: root
         mode: 0644

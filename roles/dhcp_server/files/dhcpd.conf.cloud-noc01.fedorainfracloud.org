@@ -1,4 +1,4 @@
-server-identifier cloud-noc01.cloud.fedoraproject.org;
+server-identifier cloud-noc01.fedorainfracloud.org;
 ddns-update-style none;
 
 #subnet 172.16.1.0 netmask 255.255.255.0 {

@@ -112,7 +112,7 @@
 # host playbooks
 #
 
-- import_playbook: /srv/web/infra/ansible/playbooks/hosts/cloud-noc01.cloud.fedoraproject.org.yml
+- import_playbook: /srv/web/infra/ansible/playbooks/hosts/cloud-noc01.fedorainfracloud.org.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/hosts/data-analysis01.phx2.fedoraproject.org.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/hosts/grobisplitter01.phx2.fedoraproject.org.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/hosts/iddev.fedorainfracloud.org.yml

@@ -9,7 +9,7 @@ gw: 38.145.49.254
 nm: 255.255.254.0
 eth1_ip: 172.23.1.1
 freezes: false
-resolvconf: "{{ files }}/resolv.conf/cloud-noc01.cloud.fedoraproject.org"
+resolvconf: "{{ files }}/resolv.conf/cloud-noc01.fedorainfracloud.org"
 
 vmhost: virthost-cloud01.fedorainfracloud.org
 volgroup: /dev/vg_guests

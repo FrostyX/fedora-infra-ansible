@@ -3,7 +3,7 @@
 server bastion01.phx2.fedoraproject.org iburst
 server bastion02.phx2.fedoraproject.org iburst
 {% elif datacenter == 'cloud'  and not ansible_hostname.startswith('cloud-noc') %}
-server cloud-noc01.cloud.fedoraproject.org port 124
+server cloud-noc01.fedorainfracloud.org port 124
 {% elif datacenter == 'cloud'  and ansible_hostname.startswith('cloud-noc') %}
 server 0.rhel.pool.ntp.org iburst
 server 1.rhel.pool.ntp.org iburst
