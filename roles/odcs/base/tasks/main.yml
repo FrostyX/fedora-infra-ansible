@@ -51,17 +51,21 @@
 
 - name: create ODCS_TARGET_DIR
   file:
-    path: "{{ odcs_target_dir }}"
+    path: "{{ item }}"
     state: directory
     owner: apache
     group: apache
     mode: 0777
 #    recurse: yes
     follow: no
+  with_items:
+  - "{{ odcs_target_dir }}"
+  - "{{ odcs_target_dir }}/private"
   tags:
    - odcs
    - odcs/backend
    - odcs/frontend
+
 
 # this app config is shared by backend and frontend, but has different
 # owner groups on backend and frontend, and notify different handlers,

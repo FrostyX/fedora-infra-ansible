@@ -97,6 +97,8 @@ class ProdConfiguration(BaseConfiguration):
     TARGET_DIR = "{{ odcs_target_dir }}"
     TARGET_DIR_URL = "{{ odcs_target_dir_url }}"
 
+    EXTRA_TARGET_DIRS = {{ odcs_extra_target_dirs }}
+
     ALLOWED_SOURCE_TYPES = {{ odcs_allowed_source_types }}
     RAW_CONFIG_URLS = {{ odcs_raw_config_urls }}
 

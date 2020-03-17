@@ -48,4 +48,5 @@ odcs_seconds_to_live: 86400
 # # The default is 72 hours
 odcs_max_seconds_to_live: 259200
 odcs_celery_concurrency: 2
+odcs_extra_target_dirs: {"private": "/srv/odcs/private"}
 

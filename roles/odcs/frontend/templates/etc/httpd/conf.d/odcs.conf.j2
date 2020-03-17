@@ -67,3 +67,8 @@ Alias "/composes" "{{ odcs_target_dir }}"
 
     Options +Indexes
 </Directory>
+
+<Directory "{{ odcs_target_dir }}/private">
+    Require all denied
+</Directory>
+
