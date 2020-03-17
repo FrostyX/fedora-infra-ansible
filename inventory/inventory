@@ -333,6 +333,7 @@ log01.phx2.fedoraproject.org
 noc01.phx2.fedoraproject.org
 noc02.fedoraproject.org
 data-analysis01.phx2.fedoraproject.org
+cloud-noc01.fedorainfracloud.org
 
 [logging]
 log01.phx2.fedoraproject.org
@@ -925,7 +926,6 @@ openqa
 ## END fedmsg services
 
 [cloud_hardware]
-cloud-noc01.cloud.fedoraproject.org
 virthost-aarch64-os01.fedorainfracloud.org
 virthost-aarch64-os02.fedorainfracloud.org
 virthost-cloud01.fedorainfracloud.org
