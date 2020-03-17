@@ -4,10 +4,7 @@ nrpe_procs_crit: 1000
 datacenter: cloud
 fas_client_groups: sysadmin-main
 dns: 8.8.8.8
-# eth0_ip: 38.145.48.7
-# gw: 38.145.49.254
-# nm: 255.255.254.0
-eth0_ip: 38.145.48.7
+eth0_ip: 38.145.48.10
 gw: 38.145.49.254
 nm: 255.255.254.0
 eth1_ip: 172.23.1.1
