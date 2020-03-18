@@ -475,6 +475,7 @@ odcs-frontend01.stg.phx2.fedoraproject.org
 
 [odcs_backend]
 odcs-backend01.phx2.fedoraproject.org
+odcs-backend-releng01.phx2.fedoraproject.org
 
 [odcs_backend_stg]
 odcs-backend01.stg.phx2.fedoraproject.org
