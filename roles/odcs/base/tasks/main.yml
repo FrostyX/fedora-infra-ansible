@@ -68,7 +68,7 @@
     owner: odcs-server
     group: odcs-server
     mode: 0644
-    recurse: yes
+    # recurse: yes
     follow: no
   with_items:
   - "{{ odcs_target_dir }}"
