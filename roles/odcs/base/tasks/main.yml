@@ -93,6 +93,18 @@
     - odcs
     - odcs/backend
 
+- name: ensure Pungi cache files have right ownership
+  file:
+    path: "{{ item }}"
+    owner: odcs-server
+    group: odcs-server
+  with_items:
+  - /var/tmp/pungi_cache_file.dbm.rw.lock
+  - /var/tmp/pungi_cache_file.dbm.rw
+  tags:
+    - odcs
+    - odcs/backend
+
 # this app config is shared by backend and frontend, but has different
 # owner groups on backend and frontend, and notify different handlers,
 # we can have vars set for frontend and backend seperately to do that,
