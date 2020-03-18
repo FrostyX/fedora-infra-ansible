@@ -1,0 +1,36 @@
+---
+vmhost: cloudvmhost-aarch64-01.fedorainfracloud.org
+eth0_ip: 38.145.48.52
+nm: 255.255.254.0
+gw: 38.145.49.254
+dns: 8.8.8.8
+ks_url: http://infrastructure.fedoraproject.org/repo/rhel/ks/kvm-fedora-31-ext-aarch64
+ks_repo: http://infrastructure.fedoraproject.org/pub/fedora/linux/releases/31/Server/aarch64/os/
+
+virt_install_command_one_nic: virt-install -n {{ inventory_hostname }}
+                 --memory={{ mem_size }},maxmemory={{ max_mem_size }}
+                 --disk bus=virtio,path={{ volgroup }}/{{ inventory_hostname }}
+                 --vcpus={{ num_cpus }},maxvcpus={{ max_cpu }} -l {{ ks_repo }} -x
+                 'net.ifnames=0 ksdevice=eth0 ks={{ ks_url }} console=ttyS0
+                  hostname={{ inventory_hostname }} nameserver={{ dns }}
+                  ip={{ eth0_ip }}::{{ gw }}:{{ nm }}:{{ inventory_hostname }}:eth0:none'
+                 --network bridge={{ main_bridge }},model=virtio,mac={{ mac_address }}
+                 --autostart --noautoconsole --rng /dev/random
+
+volgroup: /dev/vg_guests
+lvm_size: 140000
+mem_size: 40960
+max_mem_size: "{{ mem_size }}"
+num_cpus: 5
+datacenter: cloud
+
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  named: false
+  dhcpd: false
+  httpd: false
+  swap: false
+  ping: false
+  raid: false
