@@ -4,8 +4,8 @@ After=network.target remote-fs.target nss-lookup.target
 
 [Service]
 Type=forking
-User=odcs
-Group=fedmsg
+User=odcs-server
+Group=odcs-server
 WorkingDirectory=/tmp
 ExecStart=/bin/sh -c '/usr/bin/celery-3 multi start worker \
   -A odcs.server.celery_tasks --pidfile=/var/run/odcs-backend/%%n.pid \

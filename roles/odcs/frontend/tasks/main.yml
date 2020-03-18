@@ -15,19 +15,6 @@
   - odcs/frontend
   - selinux
 
-- name: create ODCS_TARGET_DIR
-  file:
-    path: "{{ odcs_target_dir }}"
-    state: directory
-    owner: apache
-    group: apache
-    mode: 0777
-#    recurse: yes
-    follow: no
-  tags:
-  -  odcs
-  -  odcs/frontend
-
 - name: generate the ODCS Apache config
   template:
     src: etc/httpd/conf.d/odcs.conf.j2
@@ -80,18 +67,10 @@
   with_items:
   - odcs-manager upgradedb
   become: yes
-  become_user: odcs
+  become_user: odcs-server
   when: odcs_migrate_db
   tags:
   - odcs
   - odcs/frontend
 
-## THIS IS BROKEN BECAUSE fedora-messaging. and other things.
-# - name: install cron job for cleanup msg
-#   cron:
-#     name="Send ODCS cleanup message"
-#     job="/usr/bin/echo '{}'| fedmsg-logger --cert-prefix odcs --topic odcs.internal.msg --json-input"
-#   tags:
-#   - odcs
-#   - odcs/frontend
 

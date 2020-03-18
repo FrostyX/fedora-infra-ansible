@@ -49,14 +49,26 @@
   - odcs
   - odcs/backend
 
+- name: create odcs-server group
+  group:
+    name: odcs-server
+    gid: 64321
+    state: present
+
+- name: create odcs-server user
+  user:
+    name: odcs-server
+    uid: 64321
+    group: odcs-server
+
 - name: create ODCS_TARGET_DIR
   file:
     path: "{{ item }}"
     state: directory
-    owner: apache
-    group: apache
-    mode: 0777
-#    recurse: yes
+    owner: odcs-server
+    group: odcs-server
+    mode: 0644
+    recurse: yes
     follow: no
   with_items:
   - "{{ odcs_target_dir }}"
@@ -78,7 +90,7 @@
   template:
     src: etc/odcs/config.py.j2
     dest: /etc/odcs/config.py
-    owner: odcs
+    owner: odcs-server
     group: apache
     mode: 0440
   notify:
@@ -92,8 +104,8 @@
   template:
     src: etc/odcs/config.py.j2
     dest: /etc/odcs/config.py
-    owner: odcs
-    group: fedmsg
+    owner: odcs-server
+    group: odcs-server
     mode: 0440
   notify:
   - restart odcs-celery-backend
@@ -106,8 +118,8 @@
   template:
     src: etc/odcs/raw_config_wrapper.conf.j2
     dest: /etc/odcs/raw_config_wrapper.conf
-    owner: odcs
-    group: fedmsg
+    owner: odcs-server
+    group: odcs-server
     mode: 0440
   notify:
   - restart odcs-celery-backend
@@ -120,8 +132,8 @@
   template:
     src: etc/odcs/runroot_koji.conf.j2
     dest: /etc/odcs/runroot_koji.conf
-    owner: odcs
-    group: fedmsg
+    owner: odcs-server
+    group: odcs-server
     mode: 0440
   notify:
   - restart odcs-celery-backend
@@ -142,8 +154,8 @@
   copy:
     src: "{{ roles_path }}/odcs/base/files/pungi.conf"
     dest: /etc/odcs/pungi.conf
-    owner: odcs
-    group: fedmsg
+    owner: odcs-server
+    group: odcs-server
     mode: 0640
   notify:
   - restart odcs-celery-backend
@@ -156,8 +168,8 @@
   template:
     src: "etc/systemd/system/odcs-celery-backend.service.j2"
     dest: /etc/systemd/system/odcs-celery-backend.service
-    owner: odcs
-    group: fedmsg
+    owner: odcs-server
+    group: odcs-server
     mode: 0640
   notify:
   - restart odcs-celery-backend
@@ -180,8 +192,8 @@
   template:
     src: "etc/systemd/system/odcs-celery-beat.service.j2"
     dest: /etc/systemd/system/odcs-celery-beat.service
-    owner: odcs
-    group: fedmsg
+    owner: odcs-server
+    group: odcs-server
     mode: 0640
   notify:
   - restart odcs-celery-beat
@@ -194,8 +206,8 @@
   template:
     src: "fedora-messaging.toml.j2"
     dest: /etc/fedora-messaging/config.toml
-    owner: odcs
-    group: apache
+    owner: odcs-server
+    group: odcs-server
     mode: 0640
   tags:
   - odcs
@@ -216,8 +228,8 @@
   copy:
     src: "{{ roles_path }}/odcs/base/files/tmpfiles.d/odcs-backend.conf"
     dest: /etc/tmpfiles.d/odcs-backend.conf
-    owner: odcs
-    group: fedmsg
+    owner: odcs-server
+    group: odcs-server
     mode: 0640
   notify:
   - restart odcs-celery-backend
@@ -241,7 +253,7 @@
   copy:
     src: "{{private}}/files/rabbitmq/{{env}}/pki/issued/odcs-private-queue{{env_suffix}}.crt"
     dest: /etc/odcs/odcs-private-queue.crt
-    owner: odcs
+    owner: odcs-server
     group: apache
     mode: 0640
   tags:
@@ -253,7 +265,7 @@
   copy:
     src: "{{private}}/files/rabbitmq/{{env}}/pki/private/odcs-private-queue{{env_suffix}}.key"
     dest: /etc/odcs/odcs-private-queue.key
-    owner: odcs
+    owner: odcs-server
     group: apache
     mode: 0640
   tags:
@@ -265,7 +277,7 @@
   copy:
     src: "{{private}}/files/rabbitmq/{{env}}/pki/issued/odcs{{env_suffix}}.crt"
     dest: /etc/odcs/odcs-rabbitmq.crt
-    owner: odcs
+    owner: odcs-server
     group: apache
     mode: 0640
   tags:
@@ -277,7 +289,7 @@
   copy:
     src: "{{private}}/files/rabbitmq/{{env}}/pki/private/odcs{{env_suffix}}.key"
     dest: /etc/odcs/odcs-rabbitmq.key
-    owner: odcs
+    owner: odcs-server
     group: apache
     mode: 0640
   tags:
@@ -289,7 +301,7 @@
   copy:
     src: "{{private}}/files/rabbitmq/{{env}}/pki/ca.crt"
     dest: /etc/odcs/ca.crt
-    owner: odcs
+    owner: odcs-server
     group: apache
     mode: 0640
   tags:

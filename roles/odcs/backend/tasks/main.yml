@@ -35,9 +35,9 @@
   tags:
   - odcs
   - odcs/backend
-- name: add the odcs user to the apache group
+- name: add the odcs-server user to the apache group
   user:
-    name: odcs
+    name: odcs-server
     group: apache
     groups: apache
     append: true
@@ -51,7 +51,7 @@
   with_items:
   - odcs-manager upgradedb
   become: yes
-  become_user: odcs
+  become_user: odcs-server
   when: odcs_migrate_db
   notify:
   - restart odcs-celery-backend
