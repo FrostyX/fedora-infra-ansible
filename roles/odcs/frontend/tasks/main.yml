@@ -15,6 +15,17 @@
   - odcs/frontend
   - selinux
 
+- name: Add apache user to odcs-server group.
+  user:
+    name: apache
+    groups: odcs-server
+    append: yes
+  notify:
+  - reload apache
+  tags:
+  - odcs
+  - odcs/frontend
+
 - name: generate the ODCS Apache config
   template:
     src: etc/httpd/conf.d/odcs.conf.j2
