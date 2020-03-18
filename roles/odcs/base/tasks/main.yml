@@ -78,6 +78,17 @@
    - odcs/backend
    - odcs/frontend
 
+- name: ensure /var/log/odcs-backend has right ownership
+  file:
+    path: /var/log/odcs-backend
+    state: directory
+    owner: odcs-server
+    group: odcs-server
+    recurse: yes
+    follow: no
+  tags:
+    - odcs
+    - odcs/backend
 
 # this app config is shared by backend and frontend, but has different
 # owner groups on backend and frontend, and notify different handlers,
