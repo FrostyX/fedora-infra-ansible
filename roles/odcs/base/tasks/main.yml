@@ -67,7 +67,7 @@
     state: directory
     owner: odcs-server
     group: odcs-server
-    mode: 0644
+    mode: 0770
     # recurse: yes
     follow: no
   with_items:
