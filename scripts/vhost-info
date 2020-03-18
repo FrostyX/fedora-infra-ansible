@@ -6,7 +6,7 @@
 
 
 import sys
-from collections import namedtuple
+from ansible.module_utils.common.collections import ImmutableDict
 from ansible.parsing.dataloader import DataLoader
 from ansible.vars.manager import VariableManager
 from ansible.inventory.manager import InventoryManager
@@ -14,6 +14,7 @@ from ansible import constants as C
 from ansible.playbook.play import Play
 from ansible.executor.task_queue_manager import TaskQueueManager
 from ansible.plugins.callback import CallbackBase
+from ansible import context
 from optparse import OptionParser
 
 
@@ -59,12 +60,8 @@ if not opts.host:
 else:
  hosts = ';'.join(opts.host)
 
-
-
-Options = namedtuple('Options', ['connection','module_path', 'forks', 'remote_user', 'private_key_file', 'ssh_common_args', 'ssh_extra_args', 'sftp_extra_args', 'scp_extra_args', 'become', 'become_method', 'become_user', 'verbosity', 'check', 'timeout', 'diff'])
-
-options = Options(connection='ssh', module_path=None, forks=25, remote_user=None, private_key_file=None, ssh_common_args=None, ssh_extra_args=None, sftp_extra_args=None, scp_extra_args=None, become=None, become_method=None, become_user=None, verbosity=None, check=False, timeout=10, diff=False)
-
+# since the API is constructed for CLI it expects certain options to always be set in the context object
+context.CLIARGS = ImmutableDict(connection='ssh', module_path=['/usr/lib/python2.7/site-packages/ansible/modules/'], forks=25, become=None, become_method=None, become_user=None, check=False, diff=False)
 
 # create inventory and pass to var manager
 loader = DataLoader()
@@ -89,7 +86,6 @@ try:
               inventory=inv,
               variable_manager=variable_manager,
               loader=loader,
-              options=options,
               passwords=None,run_additional_callbacks=False,
               stdout_callback=cb,
           )
