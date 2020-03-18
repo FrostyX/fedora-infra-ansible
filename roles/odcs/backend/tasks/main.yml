@@ -30,7 +30,7 @@
     group: odcs-server
   with_items:
   - /var/tmp/pungi_cache_file.dbm.rw.lock
-  - /var/tmp/pungi_cache_file.dbm.rw
+  - /var/tmp/pungi_cache_file.dbm
   tags:
     - odcs
     - odcs/backend
