@@ -98,6 +98,7 @@
   roles:
   - role: odcs/backend
   - role: fedmsg/base
+    when: not inventory_hostname.startswith('odcs-backend-releng01')
   - role: keytab/service
     service: odcs
     owner_user: odcs
