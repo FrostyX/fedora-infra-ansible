@@ -30,7 +30,6 @@
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/copr-backend.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/copr-aarch64-hypervisors.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/copr-dist-git.yml
-- import_playbook: /srv/web/infra/ansible/playbooks/groups/copr-frontend.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/copr-frontend-cloud.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/copr-keygen.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/datagrepper.yml

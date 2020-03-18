@@ -250,8 +250,6 @@ badges-web01.stg.phx2.fedoraproject.org
 blockerbugs01.stg.phx2.fedoraproject.org
 bodhi-backend01.stg.phx2.fedoraproject.org
 busgateway01.stg.phx2.fedoraproject.org
-copr-frontend01.stg.phx2.fedoraproject.org
-copr-frontend02.stg.phx2.fedoraproject.org
 datagrepper01.stg.phx2.fedoraproject.org
 elections01.stg.phx2.fedoraproject.org
 fedocal01.stg.phx2.fedoraproject.org
@@ -655,8 +653,6 @@ composer.stg.phx2.fedoraproject.org
 copr-be-dev.aws.fedoraproject.org
 copr-dist-git-dev.aws.fedoraproject.org
 copr-fe-dev.aws.fedoraproject.org
-copr-frontend01.stg.phx2.fedoraproject.org
-copr-frontend02.stg.phx2.fedoraproject.org
 copr-keygen-dev.aws.fedoraproject.org
 datagrepper01.stg.phx2.fedoraproject.org
 db-fas01.stg.phx2.fedoraproject.org
