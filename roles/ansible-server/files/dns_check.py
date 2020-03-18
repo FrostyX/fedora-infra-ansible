@@ -10,6 +10,7 @@ ZONE_REGEX = "(\S+)\s+IN\s+([A-Z]+)\s+(\S+)"
 DNS_REGEX = "([a-z0-9._-]+)$"
 
 ZONE_FILENAMES = [
+	"master/0.16.10.in-addr.arpa",
 	"master/125.5.10.in-addr.arpa",
 	"master/126.5.10.in-addr.arpa",
 	"master/127.5.10.in-addr.arpa",
