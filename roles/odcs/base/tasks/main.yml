@@ -78,14 +78,17 @@
    - odcs/backend
    - odcs/frontend
 
-- name: ensure /var/log/odcs-backend has right ownership
+- name: ensure ODCS service directories have right ownership
   file:
-    path: /var/log/odcs-backend
+    path: "{{ item }}"
     state: directory
     owner: odcs-server
     group: odcs-server
     recurse: yes
     follow: no
+  with_items:
+  - /var/run/odcs-backend
+  - /var/log/odcs-backend
   tags:
     - odcs
     - odcs/backend
