@@ -710,7 +710,6 @@ pgbdr01.stg.phx2.fedoraproject.org
 pgbdr02.stg.phx2.fedoraproject.org
 pkgs01.stg.phx2.fedoraproject.org
 proxy01.stg.phx2.fedoraproject.org
-qa-stg01.qa.fedoraproject.org ansible_port=222
 rabbitmq01.stg.phx2.fedoraproject.org
 rabbitmq02.stg.phx2.fedoraproject.org
 rabbitmq03.stg.phx2.fedoraproject.org

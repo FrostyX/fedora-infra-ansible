@@ -551,32 +551,10 @@
 
   - role: httpd/reverseproxy
     website: qa.stg.fedoraproject.org
-    destname: qa-stg
-    # Talk directly to the app server, not haproxy
-    proxyurl: http://qa-stg01.qa.fedoraproject.org
-    when: env == "staging"
-
-  - role: httpd/reverseproxy
-    website: qa.stg.fedoraproject.org
     destname: blockerbugs
     remotepath: /blockerbugs
     localpath: /blockerbugs
     proxyurl: "{{ varnish_url }}"
-    when: env == "staging"
-
-  - role: httpd/reverseproxy
-    website: phab.qa.stg.fedoraproject.org
-    destname: qa-stg-phab
-    # Talk directly to the app server, not haproxy
-    proxyurl: http://phab.qa-stg01.qa.fedoraproject.org
-    keephost: true
-    when: env == "staging"
-
-  - role: httpd/reverseproxy
-    website: docs.qa.stg.fedoraproject.org
-    destname: qa-stg-docs
-    # Talk directly to the app server, not haproxy
-    proxyurl: http://docs.qa-stg01.qa.fedoraproject.org
     when: env == "staging"
 
   ### QA production
