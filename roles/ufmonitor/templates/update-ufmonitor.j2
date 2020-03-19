@@ -1,7 +1,0 @@
-#!/bin/bash
-
-#
-# This job handles updating the ufmonitor database with new data from a pagure instance
-#
-
-docker run --add-host=postgres:{{ ufmonitor_db_host}} -e POSTGRES_DB_PASSWORD="{{ ufmonitor_db_password }}" {{ updater_container_image }}

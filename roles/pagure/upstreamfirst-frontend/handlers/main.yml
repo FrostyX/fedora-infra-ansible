@@ -1,3 +1,0 @@
----
-- name: restart pagure_milter
-  service: name=pagure_milter state=restarted
