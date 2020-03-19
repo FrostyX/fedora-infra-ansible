@@ -15,9 +15,6 @@ grobisplitter01.phx2.fedoraproject.org
 [qa_prod]
 qa-prod01.qa.fedoraproject.org
 
-[qa_stg]
-qa-stg01.qa.fedoraproject.org:222
-
 [rabbitmq]
 rabbitmq01.phx2.fedoraproject.org
 rabbitmq02.phx2.fedoraproject.org
