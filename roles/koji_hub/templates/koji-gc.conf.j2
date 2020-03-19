@@ -94,8 +94,6 @@ policy =
     #stuff to protect
     #note that tags with master lock engaged are already protected
     tag *-updates :: keep
-    tag *-infra :: keep
-    tag *-infra-stg :: keep
     tag f26-modularity :: keep
     age < 1 day :: skip
     sig fedora-gold :: skip
@@ -134,6 +132,10 @@ policy =
     tag *-testing *-candidate *-override && order >= 2 :: untag
     tag *-testing *-candidate && order > 0 && age > 6 weeks :: untag
     tag *-candidate && age > 8 weeks :: untag
+
+    #stuff for infrastructure repositories
+    tag *-infra && order >= 2 :: untag
+    tag *-infra-stg && order >= 2 && age > 4 weeks :: untag
 
     #default: keep the last 3
     order > 2 :: untag
