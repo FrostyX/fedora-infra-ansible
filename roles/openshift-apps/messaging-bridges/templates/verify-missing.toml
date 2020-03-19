@@ -35,11 +35,19 @@ durable = true
 [[verify_missing.bindings]]
 exchange = "zmq.topic"
 queue = "amqp_bridge_verify_missing"
+{% if env == 'staging' %}
+routing_keys = ["#"]
+{% else %}
 routing_key = "#"
+{% endif %}
 [[verify_missing.bindings]]
 exchange = "amq.topic"
 queue = "amqp_bridge_verify_missing"
+{% if env == 'staging' %}
+routing_keys = ["#"]
+{% else %}
 routing_key = "#"
+{% endif %}
 
 [log_config]
 version = 1
