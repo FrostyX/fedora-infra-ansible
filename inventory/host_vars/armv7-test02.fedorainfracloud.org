@@ -1,6 +1,6 @@
 ---
 vmhost: cloudvmhost-aarch64-01.fedorainfracloud.org
-eth0_ip: 38.145.48.50
+eth0_ip: 38.145.48.53
 nm: 255.255.254.0
 gw: 38.145.49.254
 dns: 8.8.8.8
