@@ -14,7 +14,35 @@ define host {
 {% if hostvars[host].eth0_ip is defined %}
    address                 {{ hostvars[host].eth0_ip }}
 {% elif hostvars[host].ansible_default_ipv4 is defined %}
-{% if hostvars[host].ansible_default_ipv4.address is defined and host not in groups['cloud_phx2'] %}
+{% if hostvars[host].ansible_default_ipv4.address is defined %}
+   address                 {{ hostvars[host].ansible_default_ipv4.address }}
+{% endif %}
+{% else %}
+   address                 {{ host }}
+{% endif %}
+{% if hostvars[host].datacenter is defined %}
+   parents                 cloud-gw
+{% endif %}
+}
+{% endfor %}
+
+{% for host in groups['cloud_phx2_guests']|sort %}
+define host {
+{% if hostvars[host].nagios_Check_Services['nrpe'] and vars['nagios_location'] == 'internal' %}
+   use                     defaulttemplate
+{% else %}
+  use                      mincheck
+{% endif %}
+   host_name               {{ host }}
+{% if hostvars[host].ansible_hostname is defined %}
+   alias                   {{ hostvars[host].ansible_hostname }}
+{% else %}
+   alias                   {{ host }}
+{% endif %}
+{% if hostvars[host].eth0_ip is defined %}
+   address                 {{ hostvars[host].eth0_ip }}
+{% elif hostvars[host].ansible_default_ipv4 is defined %}
+{% if hostvars[host].ansible_default_ipv4.address is defined %}
    address                 {{ hostvars[host].ansible_default_ipv4.address }}
 {% endif %}
 {% else %}
