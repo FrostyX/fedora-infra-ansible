@@ -16,7 +16,6 @@ MACHINES='signal.gnome.org
           puppetmaster01.gnome.org
           accelerator.gnome.org
           range.gnome.org
-          pentagon.gimp.org
           account.gnome.org
           bugzilla.gnome.org
           gesture.gnome.org

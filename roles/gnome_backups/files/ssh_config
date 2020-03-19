@@ -8,6 +8,6 @@ Host oscp-master01.gnome.org
      IdentityFile /usr/local/etc/gnome_backup_id.rsa
      ProxyCommand ssh -W %h:%p gesture.gnome.org -F /usr/local/etc/gnome_ssh_config
 
-Host *.gnome.org pentagon.gimp.org
+Host *.gnome.org
      User root
      IdentityFile /usr/local/etc/gnome_backup_id.rsa
