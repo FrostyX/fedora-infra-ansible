@@ -392,7 +392,7 @@ shared-network pubcloud {
           fixed-address 38.145.48.31;
           option host-name "retrace03.fedorainfracloud.org";
           next-server 38.145.48.10;
-          filename "pxelinux.0";
+          filename "/uefi/grubx64.efi";
       }
 
 
