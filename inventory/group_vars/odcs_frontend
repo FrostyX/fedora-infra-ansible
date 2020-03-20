@@ -37,11 +37,10 @@ fedmsg_certs:
 
 
 odcs_target_dir_url: https://odcs.fedoraproject.org/composes
-# Give access to jscotka to be able to develop module testing integration
-# for taskotron.
-# Give access to sgallagh to be able to generate testing composes for new
-# modules.
-odcs_allowed_clients_users: {"jscotka": {}, "sgallagh": {}}
+odcs_allowed_clients_users:
+  humaton: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
+  mohanboddu: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
+  jkaluza: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
 
 virt_install_command: "{{ virt_install_command_two_nic }}"
 
