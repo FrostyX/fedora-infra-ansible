@@ -10,8 +10,6 @@ odcs_raw_config_urls:
 # Default queues for general ODCS backends.
 odcs_celery_queues:
 - pungi_composes
-- releng_raw_pungi_composes
-- releng_pungi_composes
 - cleanup
 
 odcs_celery_router_config:
