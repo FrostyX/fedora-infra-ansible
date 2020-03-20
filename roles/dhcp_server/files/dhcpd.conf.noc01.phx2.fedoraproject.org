@@ -1272,7 +1272,11 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
 	fixed-address 10.5.130.143;
 	option host-name "openqa-aarch64-02";
     }
-
+    host retrace03-mgmt {
+        hardware ethernet f4:02:70:fa:79:7e;
+	fixed-address 10.5.130.129;
+	option host-name "openqa-aarch64-02";
+    }
 
 
 
