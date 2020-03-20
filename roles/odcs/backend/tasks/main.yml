@@ -23,6 +23,14 @@
   tags:
   - odcs
   - odcs/backend
+- name: Make sure odcs-celery-backend isn't running.
+  service:
+    name: odcs-celery-backend
+    state: stopped
+    enabled: false
+  tags:
+  - odcs
+  - odcs/backend
 - name: ensure Pungi cache files have right ownership
   file:
     path: "{{ item }}"

@@ -66,6 +66,7 @@
 
   post_tasks:
   - service: name="httpd" state=stopped
+  - service: name="odcs-celery-beat" state=stopped
 
 - name: verify the backend, stop it, and then upgrade the db
   hosts: odcs_backend:odcs_backend_stg
