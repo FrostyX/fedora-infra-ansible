@@ -73,6 +73,7 @@
   with_items:
   - "{{ odcs_target_dir }}"
   - "{{ odcs_target_dir }}/private"
+  when: inventory_hostname.startswith('odcs-frontend')
   tags:
    - odcs
    - odcs/frontend
