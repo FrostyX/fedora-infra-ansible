@@ -3,22 +3,18 @@
 # A sample configuration for fedora-messaging. This file is in the TOML format.
 # For complete details on all configuration options, see the documentation.
 
-amqp_url = "amqps://faf:@rabbitmq{{ env_suffix }}.fedoraproject.org/%2Fpubsub"
+amqp_url = "amqp://{{ faf_fedmsg_server }}?connection_attempts=3&retry_delay=5"
 
 passive_declares = true
 
 # The topic_prefix configuration value will add a prefix to the topics of every sent message.
 # This is used for migrating from fedmsg, and should not be used afterwards.
-{% if env == "staging" %}
-      topic_prefix = "org.fedoraproject.stg"
-{% else %}
-      topic_prefix = "org.fedoraproject.prod"
-{% endif %}
+topic_prefix = {{ faf_fedmsg_topic_prefix }}
 
 [tls]
-ca_cert = "/etc/fedora-messaging/faf/ca.crt"
-keyfile = "/etc/fedora-messaging/faf/faf.key"
-certfile = "/etc/fedora-messaging/faf/faf.crt"
+ca_cert = {{ faf_fedmsg_ca_cert }}
+keyfile = {{ faf_fedmsg_keyfile }}
+certfile = {{ faf_fedmsg_certfile }}
 
 [client_properties]
 app = "FAF"

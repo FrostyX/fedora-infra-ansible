@@ -4,7 +4,8 @@
 
 - meta: flush_handlers
 
-- set_fact:
+- name: Set settings_url fact
+  set_fact:
     settings_url: "https://{{ ansible_default_ipv4.address }}/settings"
 
 - name: fetch settings
@@ -16,6 +17,7 @@
   check_mode: no
   delegate_to: localhost
 
-- fail: msg="{{ settings_url }} doesn't contain supported_releases"
+- name: Fail if /settings does not contain supported_releases
+  fail: msg="{{ settings_url }} doesn't contain supported_releases"
   when:
     "'supported_releases' not in uri_res.content"

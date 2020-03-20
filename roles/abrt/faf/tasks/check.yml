@@ -2,14 +2,25 @@
 
 # check backend functionality
 
-- name: faf
-  shell: faf {{ item }}
+- name: Add dummy Fedora 42 release
+  command: faf releaseadd -o fedora --opsys-release 42
   become: yes
   become_user: faf
-  loop:
-    - "releaseadd -o fedora --opsys-release 42"
-    - "releaselist | grep 'Fedora 42'"
-    - "compadd -o fedora --opsys-release 42 meta_faf"
+  changed_when: false
+
+- name: Get releases from FAF
+  command: faf releaselist
+  become: yes
+  become_user: faf
+  register: release_list
+  failed_when: "'Fedora 42' not in release_list.stdout"
+  changed_when: false
+
+- name: Add dummy meta_faf component to Fedora 42 release
+  command: faf compadd -o fedora --opsys-release 42 meta_faf
+  become: yes
+  become_user: faf
+  changed_when: false
 
 - name: cpf
   copy:
@@ -19,9 +30,11 @@
     group: faf
 
 - name: faf
-  shell: faf {{ item }}
+  command: faf {{ item }}
   become: yes
   become_user: faf
   loop:
     - "save-reports -v"
     - "create-problems -v"
+  # This task is 100% idempotent, no questions asked.
+  changed_when: false

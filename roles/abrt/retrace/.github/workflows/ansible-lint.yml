@@ -1,0 +1,21 @@
+name: Check Ansible Role
+
+on:
+  push:
+    branches: [ master ]
+  pull_request:
+    branches: [ master ]
+
+jobs:
+  lint:
+    # The GitHub-hosted runners don’t do Fedora
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Check out sources
+      uses: actions/checkout@v2
+
+    - name: Lint 
+      uses: ansible/ansible-lint-action@master
+      with:
+        targets: ./

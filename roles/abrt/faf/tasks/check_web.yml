@@ -1,7 +1,8 @@
 
 # check web functionality
 #
-- set_fact:
+- name: Set URL facts
+  set_fact:
     main_url: "https://{{ ansible_default_ipv4.address }}{{ url_suffix }}"
     problems_url: "https://{{ ansible_default_ipv4.address }}{{ url_suffix }}/problems/"
 
@@ -13,10 +14,7 @@
   register: uri_res
   check_mode: no
   delegate_to: localhost
-
-- fail: msg="{{ main_url }} doesn't contain 'ABRT' string"
-  when:
-    "'ABRT' not in uri_res.content"
+  failed_when: "'ABRT' not in uri_res.content"
 
 - name: fetch problems
   uri:
@@ -26,7 +24,4 @@
   register: uri_res
   check_mode: no
   delegate_to: localhost
-
-- fail: msg="{{ main_url }} doesn't contain 'State' string"
-  when:
-    "'State' not in uri_res.content"
+  failed_when: "'State' not in uri_res.content"

@@ -3,3 +3,4 @@
   command: faf-migrate-db
   become: yes
   become_user: faf
+  changed_when: false

@@ -10,10 +10,10 @@ galaxy_info:
       - 7
    - name: Fedora
      versions:
-      - 30
-      - 31
-      - 32
-  categories:
+      - 26
+      - 27
+      - 28
+  galaxy_tags:
    - system
 #dependencies:
 #  - { role: httpd }

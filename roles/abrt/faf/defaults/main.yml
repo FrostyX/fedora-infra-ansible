@@ -57,7 +57,7 @@ smtp_server: localhost
 smtp_port: 25
 smtp_username:
 smtp_password:
-faf_from: no-reply-retrace@fedoraproject.org
+faf_from: no-reply@localhost
 
 # [uREPORT]
 faf_spool_dir: /var/spool/faf
@@ -109,8 +109,6 @@ faf_web_openid: true
 # Members of these teams will be granted maintainer privileges
 faf_web_openid_privileged_teams:
 # provenpackager,proventesters
-
-# [DUMPDIR]
 
 # [CACHE]
 # cache type either: memcached/simple/none

@@ -1,9 +1,11 @@
 
-- set_fact:
+- name: Set url_suffix fact
+  set_fact:
     url_suffix: ""
   when: faf_web_on_root|bool
 
-- set_fact:
+- name: Set url_suffix fact
+  set_fact:
     url_suffix: "/faf"
   when: not faf_web_on_root|bool
 
@@ -12,7 +14,8 @@
     name: "{{ faf_web_packages }}"
     state: present
 
-- import_tasks: celery.yml
+- name: Import Celery tasks
+  import_tasks: celery.yml
   when: faf_with_celery|bool
 
 - name: install faf web symboltransfer packages

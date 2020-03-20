@@ -4,14 +4,17 @@
   loop: "{{ eol_opsys | selectattr('opsys') | selectattr('release') | list }}"
   become: yes
   become_user: faf
+  changed_when: false
 
 - name: remove EOLed packages
   command: faf cleanup-packages "{{ item.opsys | capitalize }}" "{{ item.release }}"
   loop: "{{ eol_opsys | selectattr('opsys') | selectattr('release') | list }}"
   become: yes
   become_user: faf
+  changed_when: false
 
 - name: remove unassigned packages
   command: faf cleanup-unassigned -f
   become: yes
   become_user: faf
+  changed_when: false
