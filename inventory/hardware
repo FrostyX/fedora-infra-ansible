@@ -63,7 +63,7 @@ qa13.qa.fedoraproject.org
 qa14.qa.fedoraproject.org
 bkernel03.phx2.fedoraproject.org
 bkernel04.phx2.fedoraproject.org
-
+copr-vmhost01.fedorainfracloud.org
 
 [ibms]
 virthost-cc-rdu03.fedoraproject.org
@@ -99,10 +99,10 @@ ppc8-04.ppc.fedoraproject.org
 #aarch64-c19n1.arm.fedoraproject.org
 #aarch64-c20n1.arm.fedoraproject.org
 #aarch64-c21n1.arm.fedoraproject.org
-aarch64-c22n1.arm.fedoraproject.org
-aarch64-c23n1.arm.fedoraproject.org
-aarch64-c24n1.arm.fedoraproject.org
-aarch64-c25n1.arm.fedoraproject.org
+#aarch64-c22n1.arm.fedoraproject.org
+#aarch64-c23n1.arm.fedoraproject.org
+#aarch64-c24n1.arm.fedoraproject.org
+#aarch64-c25n1.arm.fedoraproject.org
 aarch64-c26n1-oqa.arm.fedoraproject.org
 aarch64-c27n1-oqa.arm.fedoraproject.org
 aarch64-c28n1-oqa.arm.fedoraproject.org

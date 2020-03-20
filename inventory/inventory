@@ -117,6 +117,7 @@ virthost-cc-rdu02.fedoraproject.org
 virthost-cc-rdu03.fedoraproject.org
 virthost-cloud01.fedorainfracloud.org
 cloudvmhost-aarch64-01.fedorainfracloud.org
+copr-vmhost01.fedorainfracloud.org
 
 [datagrepper]
 datagrepper01.phx2.fedoraproject.org
@@ -834,7 +835,7 @@ virthost-os02.fedorainfracloud.org
 virthost-os03.fedorainfracloud.org
 storinator01.fedorainfracloud.org
 cloudvmhost-aarch64-01.fedorainfracloud.org
-
+copr-vmhost01.fedorainfracloud.org
 
 [wiki_stg]
 wiki01.stg.phx2.fedoraproject.org
@@ -939,6 +940,8 @@ openqa
 virthost-aarch64-os01.fedorainfracloud.org
 virthost-aarch64-os02.fedorainfracloud.org
 virthost-cloud01.fedorainfracloud.org
+copr-vmhost01.fedorainfracloud.org
+
 
 [pdc_web]
 pdc-web01.phx2.fedoraproject.org
@@ -1260,7 +1263,6 @@ storinator01.fedorainfracloud.org
 
 # communishift -- community openshift
 [virthost_communishift]
-#virthost-cloud01.fedorainfracloud.org
 virthost-os01.fedorainfracloud.org
 virthost-os02.fedorainfracloud.org
 virthost-os03.fedorainfracloud.org

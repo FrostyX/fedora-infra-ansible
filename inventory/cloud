@@ -17,6 +17,9 @@ cloudvmhost-aarch64-01.fedorainfracloud.org
 os-proxy01.fedorainfracloud.org
 os-proxy02.fedorainfracloud.org
 
+## COPR
+copr-vmhost01.fedorainfracloud.org
+
 [cloud_phx2_guests]
 cloud-noc01.fedorainfracloud.org
 armv7-test01.fedorainfracloud.org
