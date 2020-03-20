@@ -312,7 +312,6 @@
     certbot: true
     tags:
     - updates.coreos.fedoraproject.org
-    when: env == "staging"
 
   - role: httpd/website
     site_name: "status.updates.coreos{{ env_suffix }}.fedoraproject.org"
@@ -320,7 +319,6 @@
     certbot: true
     tags:
     - status.updates.coreos.fedoraproject.org
-    when: env == "staging"
 
   - role: httpd/website
     site_name: "raw-updates.coreos{{ env_suffix }}.fedoraproject.org"
@@ -328,7 +326,6 @@
     certbot: true
     tags:
     - raw-updates.coreos.fedoraproject.org
-    when: env == "staging"
 
   - role: httpd/website
     site_name: "status.raw-updates.coreos{{ env_suffix }}.fedoraproject.org"
@@ -336,7 +333,6 @@
     certbot: true
     tags:
     - status.raw-updates.coreos.fedoraproject.org
-    when: env == "staging"
 
   - role: httpd/website
     site_name: caiapi.fedoraproject.org
