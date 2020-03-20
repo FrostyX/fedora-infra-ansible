@@ -91,6 +91,9 @@ policy =
     tag module-* :: keep
     tag *-modular :: keep
 
+    # coreos-pool is used for coreos releases, keep it always
+    tag coreos-pool :: keep
+
     #stuff to protect
     #note that tags with master lock engaged are already protected
     tag *-updates :: keep
