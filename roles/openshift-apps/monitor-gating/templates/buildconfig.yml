@@ -11,7 +11,7 @@ spec:
       uri: https://pagure.io/forks/pingou/fedora-ci/monitor-gating.git
       ref: "staging"
 {% else %}
-      uri: https://pagure.io/fedora-ci/monitor-gating/.git
+      uri: https://pagure.io/fedora-ci/monitor-gating.git
       ref: "production"
 {% endif %}
   strategy:
