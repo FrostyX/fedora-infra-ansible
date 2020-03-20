@@ -1,4 +1,9 @@
 ---
+# create uid/gid - this is normaly done by retrace package
+# but the package is not installed yet at this momement
+- group: name="retrace" state=present gid=174
+- user: name="retrace" group=retrace groups=mock uid=174
+
 - file:
     path: /srv/retrace/repos
     state: directory
