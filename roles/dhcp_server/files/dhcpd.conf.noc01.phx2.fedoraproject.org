@@ -1969,6 +1969,13 @@ subnet 10.5.78.0 netmask 255.255.255.0 {
          next-server 10.5.126.41;
 	 filename "/uefi/grubaa64.efi";
     }
+    host buildvmhost-aarch64-22 {
+         hardware ethernet  00:1B:21:DC:B1:D8;
+         fixed-address 10.5.78.247;
+         option host-name "buildvmhost-aarch64-22";
+         next-server 10.5.126.41;
+	 filename "/uefi/grubaa64.efi";
+    }
 
     host openqa-aarch64-01 {
          hardware ethernet 00:1b:21:e0:6a:72;
