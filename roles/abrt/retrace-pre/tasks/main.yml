@@ -1,7 +1,7 @@
 ---
 # create uid - this is normaly done by retrace package
 # but the package is not installed yet at this momement
-- user: name="retrace" group=retrace groups=mock uid=174
+- user: name="retrace" group=retrace uid=174
 
 - file:
     path: /srv/retrace/repos
