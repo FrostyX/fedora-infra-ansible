@@ -13,6 +13,63 @@
   - name: set hostname (required by some services, at least postfix need it)
     hostname: name="{{inventory_hostname}}"
 
+- name: setup second disk on aws maintainer-test instances
+  hosts: maintainer_test:\!ppc64le-test.fedorainfracloud.org
+  gather_facts: True
+  tags:
+   - maintainer-test
+
+  vars_files:
+   - /srv/web/infra/ansible/vars/global.yml
+   - "/srv/private/ansible/vars.yml"
+   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  tasks:
+
+  - name: make a partition on second disk
+    parted: device=/dev/nvme1n1 number=1 state=present
+    tags:
+     - maintainer-test
+    when: 
+    when: inventory_hostname.startswith(('rawhide-test','f32-test','el7-test'))
+
+  - name: make a partition on first disk
+    parted: device=/dev/nvme0n1 number=1 state=present
+    tags:
+     - maintainer-test
+    when: 
+    when: inventory_hostname.startswith(('f31-test','f30-test'))
+
+  - name: format the partition if it's not already
+    filesystem: dev=/dev/nvme1n1p1 fstype=ext4
+    tags:
+     - maintainer-test
+    when: inventory_hostname.startswith(('rawhide-test','f32-test','el7-test'))
+
+  - name: format the partition if it's not already
+    filesystem: dev=/dev/nvme0n1p1 fstype=ext4
+    tags:
+     - maintainer-test
+    when: inventory_hostname.startswith(('f31-test','f30-test'))
+
+  - name: mount cache filesystem on /var/cache/mock
+    mount: path=/var/cache/mock state=mounted src=/dev/nvme1n1p1 fstype=ext4
+    tags:
+     - maintainer-test
+    when: inventory_hostname.startswith(('rawhide-test','f32-test','el7-test'))
+
+  - name: mount cache filesystem on /var/cache/mock
+    mount: path=/var/cache/mock state=mounted src=/dev/nvme0n1p1 fstype=ext4
+    tags:
+     - maintainer-test
+    when: inventory_hostname.startswith(('f31-test','f30-test'))
+
+  - name: bind mount cache filesystem on /var/lib/mock
+    mount: path=/var/lib/mock state=mounted src=/var/cache/mock fstype=none opts=bind
+    tags:
+     - maintainer-test
+    when: inventory_hostname.startswith(('rawhide-test','f32-test','el7-test','f31-test','f30-test'))
+
 - name: Setup maintainer test hosts
   hosts: maintainer_test:aarch64_test:armv7_test
   gather_facts: True

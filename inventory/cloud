@@ -30,7 +30,6 @@ aarch64-test02.fedorainfracloud.org
 
 [cloud_aws]
 iddev.fedorainfracloud.org
-rawhide-test.fedorainfracloud.org
 testdays.fedorainfracloud.org
 proxy30.fedoraproject.org
 proxy31.fedoraproject.org
