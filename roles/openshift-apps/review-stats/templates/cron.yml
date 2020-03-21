@@ -12,10 +12,16 @@ spec:
           labels:
             parent: "cronjobbuild"
         spec:
+          hostAliases:
+          - hostnames:
+            - partner-bugzilla.redhat.com
+            ip: 209.132.183.72
           containers:
           - name: build
             image: docker-registry.default.svc:5000/review-stats/builder:latest
             env:
+            - name: HOME
+              value: "/tmp"
             volumeMounts:
             - name: review-stats-config
               mountPath: /etc/review-stats
