@@ -1284,6 +1284,11 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
 	fixed-address 10.5.130.126;
 	option host-name "copr-vmhost02-mgmt";
     }
+    host copr-vmhost03-mgmt {
+        hardware ethernet f4:02:70:cf:c2:ca;
+	fixed-address 10.5.130.127;
+	option host-name "copr-vmhost03-mgmt";
+    }
 
     host retrace03-mgmt {
         hardware ethernet f4:02:70:fa:79:7e;
