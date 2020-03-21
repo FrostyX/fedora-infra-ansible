@@ -30,14 +30,12 @@
     parted: device=/dev/nvme1n1 number=1 state=present
     tags:
      - maintainer-test
-    when: 
     when: inventory_hostname.startswith(('rawhide-test','f32-test','el7-test'))
 
   - name: make a partition on first disk
     parted: device=/dev/nvme0n1 number=1 state=present
     tags:
      - maintainer-test
-    when: 
     when: inventory_hostname.startswith(('f31-test','f30-test'))
 
   - name: format the partition if it's not already
