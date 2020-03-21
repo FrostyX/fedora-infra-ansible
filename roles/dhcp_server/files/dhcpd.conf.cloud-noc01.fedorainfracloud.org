@@ -386,10 +386,17 @@ shared-network pubcloud {
           next-server 38.145.48.10;
           filename "pxelinux.0";
       }
+      host copr-vmhost02 {
+          hardware ethernet f4:02:70:d0:04:4a ;
+          fixed-address 38.145.48.32;
+          option host-name "copr-vmhost02.fedorainfracloud.org";
+          next-server 38.145.48.10;
+          filename "/uefi/grubx64.efi";
+      }
 
       host retrace03 {
           hardware ethernet f4:02:70:fa:79:84;
-          fixed-address 38.145.48.31;
+          fixed-address 38.145.48.35;
           option host-name "retrace03.fedorainfracloud.org";
           next-server 38.145.48.10;
           filename "/uefi/grubx64.efi";

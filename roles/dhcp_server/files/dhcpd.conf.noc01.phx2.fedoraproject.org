@@ -1273,6 +1273,12 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
 	option host-name "openqa-aarch64-02";
     }
 
+    host qa-vmhost01-mgmt {
+        hardware ethernet f4:02:70:cf:c2:ca;
+	fixed-address 10.5.130.175;
+	option host-name "copr-vmhost03-mgmt";
+    }
+
 
     host copr-vmhost01-mgmt {
         hardware ethernet f4:02:70:d3:11:90;
@@ -1283,11 +1289,6 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
         hardware ethernet f4:02:70:d3:13:70;
 	fixed-address 10.5.130.126;
 	option host-name "copr-vmhost02-mgmt";
-    }
-    host copr-vmhost03-mgmt {
-        hardware ethernet f4:02:70:cf:c2:ca;
-	fixed-address 10.5.130.127;
-	option host-name "copr-vmhost03-mgmt";
     }
 
     host retrace03-mgmt {
