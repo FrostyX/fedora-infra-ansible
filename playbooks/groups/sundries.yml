@@ -38,7 +38,7 @@
   - { role: openvpn/client,
       when: env != "staging" }
   - role: review-stats/build
-    when: master_sundries_node|bool
+    when: master_sundries_node|bool and env != 'staging'
   - role: zanata
     when: master_sundries_node|bool
   - role: fedora-web/build
@@ -68,6 +68,11 @@
     nfs_src_dir: 'openshift_{{ env_short }}_websites'
     mount_stg: true
     when: '"sundries01" in ansible_fqdn'
+  - role: nfs/client
+    mnt_dir: '/srv/web/review-stats'
+    nfs_src_dir: 'openshift_{{ env_short }}_reviewstats'
+    mount_stg: true
+    when: env == 'staging'
 
   pre_tasks:
   - import_tasks: "{{ tasks_path }}/yumrepos.yml"
