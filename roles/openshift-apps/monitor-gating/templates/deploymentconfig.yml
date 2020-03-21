@@ -36,7 +36,7 @@ spec:
           {%- if env != "staging" %}
           - name: PRODUTION
             value: "True"
-          {% endif -%}
+          {% endif %}
         volumeMounts:
         - name: keytab-volume
           mountPath: /etc/keytabs
