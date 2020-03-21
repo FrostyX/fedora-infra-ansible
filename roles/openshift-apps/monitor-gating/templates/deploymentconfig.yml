@@ -33,6 +33,10 @@ spec:
             value: /etc/keytab/koji-keytab
           - name: OPENSHIFT
             value: "True"
+          {% if env != "staging" %}
+          - name: PRODUTION
+            value: "True"
+          {% endif %}
         volumeMounts:
         - name: keytab-volume
           mountPath: /etc/keytabs
