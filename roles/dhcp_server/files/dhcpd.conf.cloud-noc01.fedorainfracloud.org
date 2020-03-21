@@ -393,6 +393,13 @@ shared-network pubcloud {
           next-server 38.145.48.10;
           filename "/uefi/grubx64.efi";
       }
+      host copr-vmhost03 {
+          hardware ethernet f4:02:70:d3:42:48 ;
+          fixed-address 38.145.48.33;
+          option host-name "copr-vmhost03.fedorainfracloud.org";
+          next-server 38.145.48.10;
+          filename "/uefi/grubx64.efi";
+      }
 
       host retrace03 {
           hardware ethernet f4:02:70:fa:79:84;
