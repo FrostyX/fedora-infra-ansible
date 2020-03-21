@@ -31,6 +31,7 @@
   - role: openshift/object
     app: review-stats
     template: pvc.yml
+    objectname: pvc.yml
   - role: openshift/start-build
     app: review-stats
     buildname: builder-build
