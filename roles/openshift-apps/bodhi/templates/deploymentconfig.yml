@@ -57,13 +57,9 @@ items:
       spec:
         containers:
         - name: bodhi-web
-{% if env == "staging" %}
           image: bodhi-base:latest
           command: ["bash"]
           args: ["/etc/bodhi/start.sh"]
-{% else %}
-          image: bodhi-web:latest
-{% endif %}
           ports:
           - containerPort: 8080
           resources: {}
@@ -95,22 +91,14 @@ items:
             timeoutSeconds: 10
             initialDelaySeconds: 5
             httpGet:
-{% if env == "staging" %}
               path: /healthz/ready
-{% else %}
-              path: /
-{% endif %}
               port: 8080
           livenessProbe:
             timeoutSeconds: 10
             initialDelaySeconds: 30
             periodSeconds: 30
             httpGet:
-{% if env == "staging" %}
               path: /healthz/live
-{% else %}
-              path: /
-{% endif %}
               port: 8080
         volumes:
         - name: config-volume
@@ -140,11 +128,7 @@ items:
         - bodhi-web
         from:
           kind: ImageStreamTag
-{% if env == "staging" %}
           name: bodhi-base:latest
-{% else %}
-          name: bodhi-web:latest
-{% endif %}
           namespace: bodhi
       type: ImageChange
     - type: ConfigChange
@@ -189,13 +173,9 @@ items:
       spec:
         containers:
         - name: bodhi-consumer
-{% if env == "staging" %}
           image: bodhi-base:latest
           command: ["/usr/bin/fedora-messaging"]
           args: ["consume"]
-{% else %}
-          image: bodhi-consumer:latest
-{% endif %}
           resources: {}
           volumeMounts:
           - name: config-volume
@@ -245,11 +225,7 @@ items:
         - bodhi-consumer
         from:
           kind: ImageStreamTag
-{% if env == "staging" %}
           name: bodhi-base:latest
-{% else %}
-          name: bodhi-consumer:latest
-{% endif %}
           namespace: bodhi
       type: ImageChange
     - type: ConfigChange
@@ -294,13 +270,9 @@ items:
       spec:
         containers:
         - name: bodhi-celery
-{% if env == "staging" %}
           image: bodhi-base:latest
           command: ["/usr/bin/celery"]
           args: ["worker", "-A", "bodhi.server.tasks.app", "-l", "info", "-Q", "celery"]
-{% else %}
-          image: bodhi-celery:latest
-{% endif %}
           resources: {}
           volumeMounts:
           - name: config-volume
@@ -350,17 +322,12 @@ items:
         - bodhi-celery
         from:
           kind: ImageStreamTag
-{% if env == "staging" %}
           name: bodhi-base:latest
-{% else %}
-          name: bodhi-celery:latest
-{% endif %}
           namespace: bodhi
       type: ImageChange
     - type: ConfigChange
 kind: List
 metadata: {}
-{% if env == "staging" %}
 ---
 apiVersion: v1
 items:
@@ -397,14 +364,10 @@ items:
       spec:
         containers:
         - name: bodhi-celery-beat
-{% if env == "staging" %}
           image: bodhi-base:latest
           workingDir: "/tmp"
           command: ["/usr/bin/celery"]
           args: ["beat", "-A", "bodhi.server.tasks.app", "-l", "info"]
-{% else %}
-          image: bodhi-celery-beat:latest
-{% endif %}
           resources: {}
           volumeMounts:
           - name: config-volume
@@ -454,14 +417,9 @@ items:
         - bodhi-celery-beat
         from:
           kind: ImageStreamTag
-{% if env == "staging" %}
           name: bodhi-base:latest
-{% else %}
-          name: bodhi-celery-beat:latest
-{% endif %}
           namespace: bodhi
       type: ImageChange
     - type: ConfigChange
 kind: List
 metadata: {}
-{% endif %}

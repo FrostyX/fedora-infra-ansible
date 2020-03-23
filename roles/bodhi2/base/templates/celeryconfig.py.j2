@@ -39,9 +39,7 @@ task_routes = {
     'clean_old_composes': {'queue': 'has_koji_mount'},
 }
 
-{% if env == "staging" %}
 # Periodic tasks
-
 beat_schedule = {
     "approve-testing": {
         "task": "approve_testing",
@@ -63,4 +61,3 @@ beat_schedule = {
 }
 
 beat_schedule_filename = "/tmp/celery-beat-schedule"
-{% endif %}

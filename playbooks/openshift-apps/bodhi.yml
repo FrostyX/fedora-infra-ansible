@@ -91,18 +91,6 @@
   - role: openshift/imagestream
     app: bodhi
     imagename: bodhi-base
-  - role: openshift/imagestream
-    app: bodhi
-    imagename: bodhi-web
-  - role: openshift/imagestream
-    app: bodhi
-    imagename: bodhi-consumer
-  - role: openshift/imagestream
-    app: bodhi
-    imagename: bodhi-celery
-  - role: openshift/imagestream
-    app: bodhi
-    imagename: bodhi-celery-beat
   - role: openshift/object
     app: bodhi
     template: buildconfig.yml

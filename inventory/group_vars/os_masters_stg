@@ -11,5 +11,5 @@ nagios_Check_Services:
 # Set some bodhi variables here.
 # Since they are used when running playbooks against the master nodes.
 #
-bodhi_version: 5.1.1-1.fc30
+bodhi_version: 5.2.0-1.fc30
 bodhi_openshift_pods: 1

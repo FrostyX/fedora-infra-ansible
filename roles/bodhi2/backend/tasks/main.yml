@@ -184,7 +184,7 @@
     user: apache
     job: "/usr/bin/bodhi-approve-testing /etc/bodhi/production.ini > /dev/null"
     cron_file: bodhi-approve-testing-job
-    state: "{{ (env == 'production')|ternary('present', 'absent') }}"
+    state: absent
   tags:
   - config
   - bodhi
@@ -198,7 +198,7 @@
     user: apache
     job: "/usr/bin/bodhi-check-policies >& /dev/null"
     cron_file: bodhi-check-policies-job
-    state: "{{ (env == 'production')|ternary('present', 'absent') }}"
+    state: absent
   tags:
   - config
   - bodhi
@@ -212,7 +212,7 @@
     user: root
     job: "/usr/bin/bodhi-clean-old-composes 2>&1 | logger -t bodhi-clean-old-composes"
     cron_file: bodhi-clean-old-composes
-    state: "{{ (env == 'production')|ternary('present', 'absent') }}"
+    state: absent
   tags:
   - config
   - bodhi
@@ -226,7 +226,7 @@
     user: apache
     job: "/usr/bin/bodhi-expire-overrides /etc/bodhi/production.ini 2>&1 | logger -t bodhi-expire-overrides"
     cron_file: bodhi-expire-overrides-job
-    state: "{{ (env == 'production')|ternary('present', 'absent') }}"
+    state: absent
   tags:
   - config
   - bodhi
