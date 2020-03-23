@@ -34,7 +34,7 @@ spec:
           - name: OPENSHIFT
             value: "True"
 {% if env != "staging" %}
-          - name: PRODUTION
+          - name: PRODUCTION
             value: "True"
 {% endif %}
         volumeMounts:
