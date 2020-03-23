@@ -108,6 +108,7 @@
 
   tasks:
   - service: name="httpd" state=started
+  - service: name="odcs-celery-beat" state=started
 
   post_tasks:
   - name: tell nagios to unshush w.r.t. the frontend
