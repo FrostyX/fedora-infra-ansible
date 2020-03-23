@@ -2945,6 +2945,15 @@ shared-network qa {
            fixed-address 10.5.131.22;
         }
 
+	host kernel03 {
+	  hardware ethernet d0:94:66:7c:b2:e3;
+           fixed-address 10.5.131.177;
+           option host-name "kernel03";
+           option ntp-servers 10.5.126.21 10.5.126.22;
+           next-server 10.5.126.41;
+           filename "pxelinux.0";
+        }
+
         host beaker-client01 {
            hardware ethernet  44:A8:42:03:49:CB;
            fixed-address 10.5.131.31;
