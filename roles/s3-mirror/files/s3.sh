@@ -93,8 +93,9 @@ excludes=(
 CMD1=( "${aws_sync[@]}" "${excludes[@]}" --exclude "*/repomd.xml" )
 
 # Next we run this command which syncs repomd.xml files.  Include must precede
-# the large set of excludes.
-CMD2=( "${aws_sync[@]}" --exclude "*" --include "*/repomd.xml" "${excludes[@]}" )
+# the large set of excludes.  Make sure that the 'max-age' isn't too large so
+# we know that we can start removing old data ASAP.
+CMD2=( "${aws_sync[@]}" --exclude "*" --include "*/repomd.xml" "${excludes[@]}" --cache-control max-age=300 )
 
 # Then we delete old RPMs and old metadata (but after invalidating caches).
 CMD3=( "${aws_sync[@]}" "${excludes[@]}" --delete )
