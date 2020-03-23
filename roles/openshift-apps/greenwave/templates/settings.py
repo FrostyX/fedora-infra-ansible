@@ -2,6 +2,7 @@ HOST= '0.0.0.0'
 PORT = 8080
 DEBUG = False
 POLICIES_DIR = '/etc/greenwave/'
+SUBJECT_TYPES_DIR = '/src/conf/subject_types'
 
 {% if env == 'staging' %}
 DIST_GIT_BASE_URL = 'https://src.stg.fedoraproject.org'
