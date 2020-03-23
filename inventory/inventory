@@ -36,6 +36,7 @@ composer.stg.phx2.fedoraproject.org
 
 [retrace]
 retrace01.qa.fedoraproject.org
+retrace03.fedorainfracloud.org
 
 [retrace_stg_aws]
 retrace-stg.aws.fedoraproject.org
