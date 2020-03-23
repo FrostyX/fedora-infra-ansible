@@ -3,9 +3,9 @@
 # LGPL
 # Author: Rick Elrod <relrod@redhat.com>
 
-base_cmd=(
-  aws s3 sync
-  --no-follow-symlinks
+aws_sync=( aws s3 sync --no-follow-symlinks )
+
+excludes=(
   --exclude "*/.snapshot/*"
   --exclude "*/source/*"
   --exclude "*/SRPMS/*"
@@ -89,14 +89,15 @@ base_cmd=(
 )
 
 # First run this command that syncs, but does not delete.
-# It also excludes repodata. 
-CMD1=( "${base_cmd[@]}" --exclude "*/repodata/*" )
+# It also excludes repomd.xml.
+CMD1=( "${aws_sync[@]}" "${excludes[@]}" --exclude "*/repomd.xml" )
 
-# Next we run this command which also includes repodata.
-CMD2=( "${base_cmd[@]}" )
+# Next we run this command which syncs repomd.xml files.  Include must precede
+# the large set of excludes.
+CMD2=( "${aws_sync[@]}" --exclude "*" --include "*/repomd.xml" "${excludes[@]}" )
 
 # Then we delete old RPMs and old metadata (but after invalidating caches).
-CMD3=( "${base_cmd[@]}" --delete )
+CMD3=( "${aws_sync[@]}" "${excludes[@]}" --delete )
 
 S3_MIRROR=s3-mirror-us-west-1-02.fedoraproject.org
 DIST_ID=E2KJMDC0QAJDMU
