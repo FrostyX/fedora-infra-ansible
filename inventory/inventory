@@ -311,6 +311,7 @@ kerneltest01.phx2.fedoraproject.org
 [kernel_qa]
 kernel01.qa.fedoraproject.org
 kernel02.qa.fedoraproject.org
+kernel03.qa.fedoraproject.org
 
 [koji]
 koji01.phx2.fedoraproject.org
