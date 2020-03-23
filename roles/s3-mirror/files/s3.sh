@@ -119,7 +119,6 @@ done
 for file in $(echo /srv/pub/epel/8/*/repodata/repomd.xml | sed 's#/srv##g'); do
   aws cloudfront create-invalidation --distribution-id "$DIST_ID" --paths "$file"
 done
-"${CMD3[@]}" /srv/pub/epel/ "s3://$S3_MIRROR/pub/epel/"
 
 # Sync Fedora
 #echo $CMD /srv/pub/fedora/ s3://$S3_MIRROR/pub/fedora/
@@ -131,4 +130,11 @@ echo "Ending Fedora sync at $(date)" >> /var/log/s3-mirror/timestamps
 for file in $(echo /srv/pub/fedora/linux/updates/*/*/*/repodata/repomd.xml | sed 's#/srv##g'); do
   aws cloudfront create-invalidation --distribution-id "$DIST_ID" --paths "$file"
 done
+
+# Consider some DNF processes started downloading metadata before we invalidated
+# caches, and started with outdated repomd.xml file.  Give it 10 minutes so they
+# have chance to download the rest of metadata and RPMs.
+sleep 600
+
+"${CMD3[@]}" /srv/pub/epel/ "s3://$S3_MIRROR/pub/epel/"
 "${CMD3[@]}" /srv/pub/fedora/ s3://$S3_MIRROR/pub/fedora/
