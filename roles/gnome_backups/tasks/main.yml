@@ -30,6 +30,8 @@
   - puppetmaster01.gnome.org
   - palette.gnome.org
   - oscp-master01.gnome.org
+  - oscp-master02.gnome.org
+  - oscp-master03.gnome.org
   - bugzilla.gnome.org
   - bastion.gnome.org
   - master.gnome.org
