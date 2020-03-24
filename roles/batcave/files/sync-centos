@@ -1,0 +1,1 @@
+30 4 * * * root /mnt/fedora/app/fi-repo/centos/centos-8-sync > /dev/null

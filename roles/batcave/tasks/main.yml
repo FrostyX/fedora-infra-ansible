@@ -257,6 +257,16 @@
   - config
   when: inventory_hostname.startswith('batcave01')
 
+#
+# sync-centos cron job
+#
+- name: setup sync-rhn cron
+  copy: src=sync-centos dest=/etc/cron.d/sync-centos mode=0644
+  tags:
+  - batcave
+  - config
+  when: inventory_hostname.startswith('batcave01')
+
 
 #
 # Setup web server config
