@@ -39,16 +39,16 @@ class OutputCallback(CallbackBase):
 
 
         if result._result['invocation']['module_args']['command'] == 'info':
-         mem_used = 0
-         cpu_used = 0
-         for vm in result._result.keys():
-          if vm not in ['invocation', 'changed', '_ansible_no_log']:
-           if vm and type(result._result[vm]) == dict:
-            mem_used += int(result._result[vm]['memory'])/1024
-            cpu_used += int(result._result[vm]['nrVirtCpu'])
-    
-         self.mem_used_in_vm[vhostname]=mem_used
-         self.cpu_used_in_vm[vhostname]=cpu_used
+            mem_used = 0
+            cpu_used = 0
+            for vm in result._result.keys():
+                if vm not in ['invocation', 'changed', '_ansible_no_log']:
+                    if vm and type(result._result[vm]) == dict:
+                        mem_used += int(result._result[vm]['memory'])/1024
+                        cpu_used += int(result._result[vm]['nrVirtCpu'])
+
+            self.mem_used_in_vm[vhostname]=mem_used
+            self.cpu_used_in_vm[vhostname]=cpu_used
 
 parser = OptionParser(version = "1.0")
 parser.add_option('--host', default=[], action='append', help="hosts to act on, defaults to virtservers")
