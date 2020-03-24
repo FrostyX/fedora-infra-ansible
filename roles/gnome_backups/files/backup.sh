@@ -8,14 +8,10 @@ export PATH=$PATH:/bin:/usr/bin:/usr/local/bin
 MACHINES='signal.gnome.org
           palette.gnome.org 
           bastion.gnome.org
-          spinner.gnome.org
           master.gnome.org
           restaurant.gnome.org
-          expander.gnome.org
           view.gnome.org
           puppetmaster01.gnome.org
-          accelerator.gnome.org
-          range.gnome.org
           account.gnome.org
           bugzilla.gnome.org
           gesture.gnome.org
