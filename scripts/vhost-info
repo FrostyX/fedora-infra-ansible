@@ -47,8 +47,8 @@ class OutputCallback(CallbackBase):
                         mem_used += int(result._result[vm]['memory'])/1024
                         cpu_used += int(result._result[vm]['nrVirtCpu'])
 
-            self.mem_used_in_vm[vhostname]=mem_used
-            self.cpu_used_in_vm[vhostname]=cpu_used
+                self.mem_used_in_vm[vhostname]=mem_used
+                self.cpu_used_in_vm[vhostname]=cpu_used
 
 parser = OptionParser(version = "1.0")
 parser.add_option('--host', default=[], action='append', help="hosts to act on, defaults to virtservers")
