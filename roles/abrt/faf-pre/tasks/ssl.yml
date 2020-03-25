@@ -1,4 +1,17 @@
 ---
+- name: check whether we need to initialize letsencrypt first
+  stat: path="/etc/letsencrypt/live/{{ item.key }}"
+  register: le_stat_checks
+  with_dict: "{{ letsencrypt.certificates }}"
+
+- name: stop httpd when letsencrypt has not been run
+  service:                                                                                                               
+    name: httpd
+    state: stopped
+  when:
+  - not item.stat.exists
+  - letsencrypt is defined
+
 - name: install letsencrypt ssl certificates for dev
   include_role: name=copr/certbot
   tags:
