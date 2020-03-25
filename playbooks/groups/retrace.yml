@@ -117,7 +117,7 @@
         rs_repo_dir: /srv/retrace/repos
         rs_save_dir: /srv/retrace/tasks
         rs_faf_link_dir: /srv/retrace/hardlink-local
-        hostname: retrace.fedoraproject.org
+        hostname: "{{ public_hostname }}"
         faf_spool_dir: /srv/faf
         faf_fedmsg_ca_cert: /etc/fedora-messaging/faf/ca.crt
         faf_fedmsg_keyfile: /etc/fedora-messaging/faf/faf.key
