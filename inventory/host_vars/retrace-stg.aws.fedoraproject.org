@@ -7,6 +7,7 @@ ansible_ifcfg_blacklist: True
 public_ip: 3.228.218.234
 datacenter: aws
 
+public_hostname: retrace.stg.fedoraproject.org
 faf_server_name: retrace.stg.fedoraproject.org/faf
 rs_use_faf_packages: true
 

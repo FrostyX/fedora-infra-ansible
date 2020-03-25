@@ -1,0 +1,27 @@
+<VirtualHost *:443>
+    SSLEngine on
+    SSLProtocol {{ ssl_protocols }}
+    # Use secure TLSv1.1 and TLSv1.2 ciphers
+    SSLCipherSuite {{ ssl_ciphers }}
+    SSLHonorCipherOrder on
+    Header always add Strict-Transport-Security "max-age=31536000; preload"
+
+    {% if not devel %}
+      # NA
+    {% else %}
+    SSLCertificateFile    /etc/letsencrypt/live/{{ public_hostname }}/cert.pem
+    SSLCertificateKeyFile  /etc/letsencrypt/live/{{ public_hostname }}/privkey.pem
+    SSLCertificateChainFile /etc/letsencrypt/live/{{ public_hostname }}/fullchain.pem
+    {% endif %}
+
+    ServerName {{ public_hostname }}
+
+    WSGIPassAuthorization On
+    WSGIPythonOptimize 1
+    WSGISocketPrefix /srv/faf/wsgi
+    WSGIDaemonProcess faf user=faf group=faf processes=3 threads=5
+    WSGIScriptAlias /faf /usr/lib/python3.6/site-packages/webfaf/hub.wsgi process-group=faf application-group=%{GLOBAL}
+
+    WSGIProcessGroup 127.0.0.1
+
+</VirtualHost>
