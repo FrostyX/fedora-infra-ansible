@@ -30,6 +30,16 @@ sar_script: '/usr/bin/faf sar'
 sar_script_user: faf
 sar_output_file: faf.json
 
+# consumed by roles/copr/certbot
+letsencrypt:
+  predefined_deploy_script: httpd
+  certificates:
+    retrace-stg.aws.fedoraproject.org:
+      domains:
+      - retrace-stg.aws.fedoraproject.org
+      challenge_dir: /var/www/html
+      mail: ekulik@redhat.com
+
 nagios_Check_Services:
   mail: false
   nrpe: false

@@ -1,12 +1,11 @@
 ---
 - name: install letsencrypt ssl certificates for dev
   include_role: name=copr/certbot
-  when: devel|bool
   tags:
   - config
 
 - name: install copr-frontend ssl vhost
   template: src="httpd/retrace_ssl.conf.j2" dest="/etc/httpd/conf.d/retrace_ssl.conf"
-  when: devel|bool
+  when: letsencrypt is defined
   tags:
   - config
