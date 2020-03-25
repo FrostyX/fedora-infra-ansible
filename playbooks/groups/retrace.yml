@@ -119,5 +119,8 @@
         rs_faf_link_dir: /srv/retrace/hardlink-local
         hostname: retrace.fedoraproject.org
         faf_spool_dir: /srv/faf
+        faf_fedmsg_ca_cert: /etc/fedora-messaging/faf/ca.crt
+        faf_fedmsg_keyfile: /etc/fedora-messaging/faf/faf.key
+        faf_fedmsg_certfile: /etc/fedora-messaging/faf/faf.crt
       when: datacenter == "aws"
     - import_role: name=abrt/retrace-post
