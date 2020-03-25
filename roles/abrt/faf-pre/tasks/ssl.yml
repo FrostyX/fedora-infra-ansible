@@ -9,9 +9,9 @@
     name: httpd
     state: stopped
   when:
+  - letsencrypt is defined
   - not item.stat.exists
   with_items: "{{ le_stat_checks.results }}"
-  - letsencrypt is defined
   
 
 - name: install letsencrypt ssl certificates for dev
