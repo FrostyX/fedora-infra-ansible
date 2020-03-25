@@ -10,7 +10,9 @@
     state: stopped
   when:
   - not item.stat.exists
+  with_items: "{{ le_stat_checks.results }}"
   - letsencrypt is defined
+  
 
 - name: install letsencrypt ssl certificates for dev
   include_role: name=copr/certbot
