@@ -70,4 +70,4 @@
     line: '    MORE_SATYR = "https://github.com/abrt/satyr/"'
   notify: restart httpd
 
--import_tasks: ssl.yml
+- import_tasks: ssl.yml
