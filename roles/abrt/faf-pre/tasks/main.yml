@@ -5,6 +5,8 @@
 # Create database for faf
 - import_tasks: setup_db.yml
 
+- import_tasks: ssl.yml
+
 # Allow https and start httpd
 - import_tasks: services.yml
 
@@ -69,5 +71,3 @@
     regexp: 'MORE_SATYR ='
     line: '    MORE_SATYR = "https://github.com/abrt/satyr/"'
   notify: restart httpd
-
-- import_tasks: ssl.yml
