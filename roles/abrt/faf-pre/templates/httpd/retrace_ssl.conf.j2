@@ -16,12 +16,4 @@
 
     ServerName {{ public_hostname }}
 
-    WSGIPassAuthorization On
-    WSGIPythonOptimize 1
-    WSGISocketPrefix /srv/faf/wsgi
-    WSGIDaemonProcess faf user=faf group=faf processes=3 threads=5
-    WSGIScriptAlias /faf /usr/lib/python3.6/site-packages/webfaf/hub.wsgi process-group=faf application-group=%{GLOBAL}
-
-    WSGIProcessGroup 127.0.0.1
-
 </VirtualHost>
