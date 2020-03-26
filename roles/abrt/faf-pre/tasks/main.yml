@@ -25,7 +25,7 @@
         dest=/etc/fedora-messaging/faf/{{ item.dest }}
         owner={{ item.owner }} group=root mode={{ item.mode }}
   loop:
-    - { src: "{{private}}/files/rabbitmq/{{env}}/pki/ca{{env_suffix}}.crt",
+    - { src: "{{private}}/files/rabbitmq/{{env}}/pki/ca.crt",
         dest: "ca.crt",
         owner: faf,
         mode: 0644
