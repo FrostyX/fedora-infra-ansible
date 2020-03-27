@@ -95,3 +95,10 @@
     regexp: 'MORE_SATYR ='
     line: '    MORE_SATYR = "https://github.com/abrt/satyr/"'
   notify: restart httpd
+
+- name: configure URL_FOR_FAF
+  lineinfile:
+    dest: /usr/lib/python3.6/site-packages/abrt-server-info-page/config.py
+    regexp: 'URL_FOR_FAF ='
+    line: '    URL_FOR_FAF = "https://{{ faf_server_name }}"'
+  notify: restart httpd
