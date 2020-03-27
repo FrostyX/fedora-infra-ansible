@@ -84,12 +84,6 @@ rs_save_dir: /var/spool/retrace-server
 # Directory where old tasks are moved
 rs_drop_dir: /srv/retrace/archive
 
-# Whether to use explicit working directory, otherwise default mock settings are used
-rs_use_work_dir: false
-
-# Working directory
-rs_work_dir: /tmp/retrace-server
-
 # Whether to use createrepo's --update option (faster, but requires a lot of memory)
 rs_use_createrepo_update: false
 
@@ -126,20 +120,17 @@ rs_kernel_debuginfo_url: http://kojipkgs.fedoraproject.org/packages/$BASENAME/$V
 # Run makedumpfile with specified dumplevel; <= 0 or >= 32 means disabled
 rs_vmcore_dump_level: 0
 
-# Whether to run kmem command by default (this may take a long time on large vmcores)
-# 1 => run 'kmem -f'; 2 => run 'kmem -f' with 'set hash off'; 3 => run 'kmem -z'; anything else => do not run kmem
-rs_vmcore_run_kmem: 0
-
 # EXPERIMENTAL! Use ABRT Server's storage to map build-ids
 # into debuginfo packages and resolve dependencies
 # Requires support from ABRT Server
 rs_use_faf_packages: false
 
-# where faf store data
+# Spool directory for FAF packages
 faf_spool_dir: /var/spool/faf
 
-# Where to hardlink faf packages
-rs_faf_link_dir: "{{ faf_spool_dir }}/retrace-tmp"
+# Run the retrace in a Mock chroot (default), or a Podman container
+# (mock|podman)
+rs_retrace_environment: mock
 
 # Whether to enable e-mail notifications
 rs_email_notify: false
@@ -186,32 +177,18 @@ rs_archhosts:
   - { arch: armhfp, url: }
   - { arch: s390x, url: }
 
-# Parameters are replaced using python's format.
-# Available parameters: hook_name, task_id, task_dir
-# Example: pre_start = /bin/echo {hook_name} {task_id} {task_dir}
-# When worker.start() is called
-rs_hookscripts:
-  - { hook: pre_start, cmd: }
-  - { hook: start, cmd: }
-  - { hook: pre_prepare_debuginfo, cmd: }
-  - { hook: post_prepare_debuginfo, cmd: }
-  - { hook: pre_prepare_mock, cmd: }
-  - { hook: post_prepare_mock, cmd: }
-  - { hook: pre_retrace, cmd: }
-  - { hook: post_retrace, cmd: }
-  - { hook: success, cmd: }
-  - { hook: fail, cmd: }
-  - { hook: pre_remove_task, cmd: }
-  - { hook: post_remove_task, cmd: }
-  - { hook: pre_clean_task, cmd: }
-  - { hook: post_clean_task, cmd: }
-
-
 # Force package reinstall
 rs_force_reinstall: false
 
 # Check server health after installation
 rs_check_health: true
+
+# Path to the executable hook scripts
+# https://github.com/abrt/retrace-server/wiki/Hook-scripts
+rs_hooks_executable_path: /usr/libexec/retrace-server/hooks/
+
+# Global time limit for hook scripts (in seconds)
+rs_hooks_global_timeout: 300
 
 # Hostname
 hostname: example.org

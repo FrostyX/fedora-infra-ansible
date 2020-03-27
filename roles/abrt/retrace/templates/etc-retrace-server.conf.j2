@@ -91,12 +91,6 @@ SaveDir = {{ rs_save_dir }}
 # Directory where old tasks are moved
 DropDir = {{ rs_drop_dir }}
 
-# Whether to use explicit working directory, otherwise default mock settings are used
-UseWorkDir = {{ rs_use_work_dir|int }}
-
-# Working directory
-WorkDir = {{ rs_work_dir }}
-
 # Whether to use createrepo's --update option (faster, but requires a lot of memory)
 UseCreaterepoUpdate = {{ rs_use_createrepo_update|int }}
 
@@ -133,17 +127,17 @@ KernelDebuginfoURL = {{ rs_kernel_debuginfo_url }}
 # Run makedumpfile with specified dumplevel; <= 0 or >= 32 means disabled
 VmcoreDumpLevel = {{ rs_vmcore_dump_level|int }}
 
-# Whether to run kmem command by default (this may take a long time on large vmcores)
-# 1 => run 'kmem -f'; 2 => run 'kmem -f' with 'set hash off'; 3 => run 'kmem -z'; anything else => do not run kmem
-VmcoreRunKmem = {{ rs_vmcore_run_kmem|int }}
-
 # EXPERIMENTAL! Use ABRT Server's storage to map build-ids
 # into debuginfo packages and resolve dependencies
 # Requires support from ABRT Server
 UseFafPackages = {{ rs_use_faf_packages|int }}
 
-# Where to hardlink faf packages
-FafLinkDir = {{ rs_faf_link_dir }}
+# Spool directory for FAF packages
+FafLinkDir = {{ faf_spool_dir }}
+
+# Run the retrace in a Mock chroot (default), or a Podman container
+# (mock|podman)
+RetraceEnvironment = {{ rs_retrace_environment }}
 
 # Whether to enable e-mail notifications
 EmailNotify = {{ rs_email_notify|int }}
@@ -181,9 +175,4 @@ ProcessCommunicateTimeout = {{ rs_process_communicate_timeout|int }}
 [archhosts]
 {% for a in rs_archhosts %}
 {{ a.arch }} = {{ a.url|default('', true) }}
-{% endfor %}
-
-[hookscripts]
-{% for h in rs_hookscripts %}
-{{ h.hook }} = {{ h.cmd|default('', true) }}
 {% endfor %}

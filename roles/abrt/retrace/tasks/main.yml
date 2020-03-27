@@ -12,6 +12,9 @@
 - import_tasks: config.yml
   tags: [rs, config]
 
+- import_tasks: podman.yml
+  tags: [rs, podman]
+
 # Check functionality of the retrace-server
 - import_tasks: check.yml
   when: rs_check_health|bool

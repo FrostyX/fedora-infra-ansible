@@ -1,0 +1,60 @@
+---
+- name: Install podman package
+  package:
+    name: podman
+    state: present
+
+- name: Set home directory for retrace user
+  user:
+    name: retrace
+    home: /var/lib/retrace
+
+- name: Check if subuid is set for retrace user
+  command: cat /etc/subuid
+  changed_when: false
+  register: retrace_subuid
+
+- block:
+  - name: Get last subuid entry
+    shell: |
+      set -o pipefail
+      cut -d ':' -f2 /etc/subuid | sort | tail -1
+    changed_when: false
+    register: t_subuid
+    args:
+      executable: /usr/bin/bash
+
+  - name: Set variables for min and max subuid
+    set_fact:
+      rs_subuid_min: "{{ t_subuid.stdout | default(100000) | int + 65536 }}"
+      rs_subuid_max: "{{ t_subuid.stdout | default(100000) | int + 2 * 65536 - 1 }}"
+
+  - name: Set subuid for retrace user.
+    command: usermod retrace --add-subuids "{{ rs_subuid_min }}-{{ rs_subuid_max }}"
+
+  when: '"retrace" not in retrace_subgid.stdout'
+
+- name: Check if subgid is set for retrace user
+  command: cat /etc/subgid
+  changed_when: false
+  register: retrace_subgid
+
+- block:
+  - name: Get last subgid entry
+    shell: |
+      set -o pipefail
+      cut -d ':' -f2 /etc/subgid | sort | tail -1
+    changed_when: false
+    register: t_subgid
+    args:
+      executable: /usr/bin/bash
+
+  - name: Set variables for min and max subgid
+    set_fact:
+      rs_subgid_min: "{{ t_subgid.stdout | default(100000) | int + 65536 }}"
+      rs_subgid_max: "{{ t_subgid.stdout | default(100000) | int + 2 * 65536 - 1 }}"
+
+  - name: Set subgid for retrace user
+    command: usermod retrace --add-subgids "{{ rs_subgid_min }}-{{ rs_subgid_max }}"
+
+  when: '"retrace" not in retrace_subgid.stdout'

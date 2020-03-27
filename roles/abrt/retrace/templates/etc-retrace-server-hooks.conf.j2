@@ -1,0 +1,8 @@
+#{{ ansible_managed }}
+
+[main]
+# Path to the executable hook scripts
+HookDir = {{ rs_executable_hooks_path }}
+
+# Global time limit for hook scripts (in seconds)
+Timeout = {{ rs_global_hook_timeout }}

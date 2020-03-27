@@ -10,6 +10,7 @@ faf_with_fedmsg: false
 faf_with_solutionfinders: true
 faf_with_symboltransfer: false
 faf_with_web: true
+faf_python_version: "python3.6"
 
 # dangerous, delete and re-create PostgreSQL database
 # (will wipe Postgre's data dir and re-create from scratch)
@@ -89,7 +90,7 @@ domain: example.org
 faf_server_name: "example-faf.org"
 
 faf_web_brand_title: "ABRT"
-faf_web_brand_subtitle: "Analysis"
+faf_web_brand_subtitle: "Analytics"
 
 faf_web_fedmenu_url:
 # https://apps.fedoraproject.org/fedmenu
