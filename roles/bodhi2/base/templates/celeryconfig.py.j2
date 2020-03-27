@@ -16,13 +16,23 @@ broker_login_method = "EXTERNAL"
 # broker_transport_options.
 
 broker_use_ssl = True
-broker_transport_options = {"ssl": {
-    "ca_certs": "/etc/pki/fedora-messaging/cacert.pem",
-    "keyfile": "/etc/pki/fedora-messaging/bodhi-key.pem",
-    "certfile": "/etc/pki/fedora-messaging/bodhi-cert.pem",
-    "cert_reqs": ssl.CERT_REQUIRED,
-    "ssl_version": ssl.PROTOCOL_TLSv1_2,
-}}
+
+# Avoid the task to hang forever if the rabbitmq broker is down
+# https://github.com/celery/celery/issues/4627#issuecomment-396907957
+broker_transport_options = {
+    "ssl":
+    {
+        "ca_certs": "/etc/pki/fedora-messaging/cacert.pem",
+        "keyfile": "/etc/pki/fedora-messaging/bodhi-key.pem",
+        "certfile": "/etc/pki/fedora-messaging/bodhi-cert.pem",
+        "cert_reqs": ssl.CERT_REQUIRED,
+        "ssl_version": ssl.PROTOCOL_TLSv1_2,
+    },
+    "max_retries": 3,
+    "interval_start": 0,
+    "interval_step": 0.2,
+    "interval_max": 0.5
+}
 
 # Where the tasks are defined
 imports = "bodhi.server.tasks"
