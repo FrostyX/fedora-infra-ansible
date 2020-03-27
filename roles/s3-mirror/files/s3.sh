@@ -88,6 +88,11 @@ excludes=(
   --exclude "*/updates/testing/29/*"
 )
 
+S3_MIRROR=s3-mirror-us-west-1-02.fedoraproject.org
+DIST_ID=E2KJMDC0QAJDMU
+MAX_CACHE_SEC=60
+DNF_GENTLY_TIMEOUT=120
+
 # First run this command that syncs, but does not delete.
 # It also excludes repomd.xml.
 CMD1=( "${aws_sync[@]}" "${excludes[@]}" --exclude "*/repomd.xml" )
@@ -95,13 +100,11 @@ CMD1=( "${aws_sync[@]}" "${excludes[@]}" --exclude "*/repomd.xml" )
 # Next we run this command which syncs repomd.xml files.  Include must precede
 # the large set of excludes.  Make sure that the 'max-age' isn't too large so
 # we know that we can start removing old data ASAP.
-CMD2=( "${aws_sync[@]}" --exclude "*" --include "*/repomd.xml" "${excludes[@]}" --cache-control max-age=300 )
+CMD2=( "${aws_sync[@]}" --exclude "*" --include "*/repomd.xml" "${excludes[@]}"
+                        --cache-control "max-age=$MAX_CACHE_SEC" )
 
 # Then we delete old RPMs and old metadata (but after invalidating caches).
 CMD3=( "${aws_sync[@]}" "${excludes[@]}" --delete )
-
-S3_MIRROR=s3-mirror-us-west-1-02.fedoraproject.org
-DIST_ID=E2KJMDC0QAJDMU
 
 # Sync EPEL
 #echo $CMD /srv/pub/epel/ s3://$S3_MIRROR/pub/epel/
@@ -132,10 +135,12 @@ for file in $(echo /srv/pub/fedora/linux/updates/*/*/*/repodata/repomd.xml | sed
   aws cloudfront create-invalidation --distribution-id "$DIST_ID" --paths "$file"
 done
 
+SLEEP=$(( MAX_CACHE_SEC + DNF_GENTLY_TIMEOUT ))
+
 # Consider some DNF processes started downloading metadata before we invalidated
-# caches, and started with outdated repomd.xml file.  Give it 10 minutes so they
-# have chance to download the rest of metadata and RPMs.
-sleep 600
+# caches, and started with outdated repomd.xml file.  Give it few more seconds
+# so they have chance to download the rest of metadata and RPMs.
+sleep $SLEEP
 
 "${CMD3[@]}" /srv/pub/epel/ "s3://$S3_MIRROR/pub/epel/"
 "${CMD3[@]}" /srv/pub/fedora/ s3://$S3_MIRROR/pub/fedora/
