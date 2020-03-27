@@ -6,7 +6,7 @@
 
 - name: Set settings_url fact
   set_fact:
-    settings_url: "https://{{ ansible_default_ipv4.address }}/settings"
+    settings_url: "https://{{ hostname }}/settings"
 
 - name: fetch settings
   uri:
