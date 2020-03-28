@@ -63,6 +63,7 @@
   cron: name="s3sync-updates-current" minute="40" hour="5,9,13,19" user="s3-mirror"
         job='/usr/local/bin/lock-wrapper s3sync-test-releases "/usr/local/bin/s3-sync-path.sh /pub/fedora/linux/releases/test/" 2>&1 | /usr/local/bin/nag-once s3-test-releases.sh 1d 2>&1'
         cron_file=s3-test-releases.sh
+        disabled=true
   when: env != 'staging' and inventory_hostname.startswith('mm-backend01.')
   tags:
   - s3-mirror
