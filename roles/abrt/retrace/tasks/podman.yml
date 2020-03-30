@@ -4,6 +4,11 @@
     name: podman
     state: present
 
+- name: Stop httpd to allow retrace user modification
+  service:
+    name: httpd
+    state: stopped
+
 - name: Set home directory for retrace user
   user:
     name: retrace
@@ -58,3 +63,8 @@
     command: usermod retrace --add-subgids "{{ rs_subgid_min }}-{{ rs_subgid_max }}"
 
   when: '"retrace" not in retrace_subgid.stdout'
+
+- name: Start httpd afterretrace user modification
+  service:
+    name: httpd
+    state: started
