@@ -37,7 +37,7 @@
   - name: Set subuid for retrace user.
     command: usermod retrace --add-subuids "{{ rs_subuid_min }}-{{ rs_subuid_max }}"
 
-  when: '"retrace" not in retrace_subgid.stdout'
+  when: '"retrace" not in retrace_subuid.stdout'
 
 - name: Check if subgid is set for retrace user
   command: cat /etc/subgid
