@@ -71,7 +71,7 @@
 #  - config
 
 - name: fas_client cron job
-  copy: src=fas-client.cron dest=/etc/cron.d/fas-client owner=root mode=0644
+  template: src=fas-client.cron.j2 dest=/etc/cron.d/fas-client owner=root mode=0644
   tags:
   - config
   - fas_client

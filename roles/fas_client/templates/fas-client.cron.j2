@@ -1,0 +1,5 @@
+{% if ansible_hostname == 'pkgs02.phx2.fedoraproject.org' %}
+*/15 * * * * root /usr/local/bin/lock-wrapper fasClient "/usr/bin/fasClient -i |& grep -vi deprecation | /usr/local/bin/nag-once fassync 1d 2>&1"
+{% else %}
+00 20 * * * root /usr/local/bin/lock-wrapper fasClient "/bin/sleep $(($RANDOM \% 3600)); /usr/bin/fasClient -i |& grep -vi deprecation | /usr/local/bin/nag-once fassync 1d 2>&1"
+{% endif %}
