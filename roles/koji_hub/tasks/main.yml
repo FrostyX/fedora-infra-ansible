@@ -147,6 +147,29 @@
   - fedora-messaging
 
 #
+# rpmautospec plugin
+#
+
+- name: install koji hub rpmautospec plugin
+  package: name={{ item }} state=present
+  with_items:
+  - koji-hub-plugin-rpmautospec
+  when: env == 'staging'
+  tags:
+  - packages
+  - koji_hub
+  - rpmautospec
+
+- name: install the configuration file for rpmautospec
+  template:
+	src=rpmautospec_hub.conf
+    dest=/etc/koji-hub/plugins/rpmautospec_hub.conf
+  when: env == 'staging'
+  tags:
+  - koji_hub
+  - rpmautospec
+
+#
 # install keytabs
 #
 
