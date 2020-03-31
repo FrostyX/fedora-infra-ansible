@@ -101,7 +101,7 @@
 #
 
 - name: install koji builder rpmautospec plugin
-  package: name={{ item }} state=present
+  package: name={{ item }} state=latest
   with_items:
   - koji-builder-plugin-rpmautospec
   when: env == 'staging'
