@@ -162,8 +162,8 @@
 
 - name: install the configuration file for rpmautospec
   template:
-	src=rpmautospec_hub.conf
-    dest=/etc/koji-hub/plugins/rpmautospec_hub.conf
+    src: rpmautospec_hub.conf
+    dest: /etc/koji-hub/plugins/rpmautospec_hub.conf
   when: env == 'staging'
   tags:
   - koji_hub
