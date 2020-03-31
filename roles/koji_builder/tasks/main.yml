@@ -96,6 +96,20 @@
   tags:
   - koji_builder
 
+#
+# rpmautospec plugin
+#
+
+- name: install koji builder rpmautospec plugin
+  package: name={{ item }} state=present
+  with_items:
+  - koji-builder-plugin-rpmautospec
+  when: env == 'staging'
+  tags:
+  - packages
+  - koji_builder
+  - rpmautospec
+
 - name: Install arm UEFI firmware package (aarch64 only)
   package: name=edk2-arm state=present
   tags:
