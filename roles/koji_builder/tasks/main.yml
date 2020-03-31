@@ -136,6 +136,7 @@
   - restart kojid
   tags:
   - koji_builder
+  - rpmautospec
 
 - name: build /etc/koji/koji.conf from group vars
   template: src=koji.conf dest=/etc/koji.conf
