@@ -11,12 +11,15 @@
   - geoip-city-wsgi
   - geoip-city-wsgi/app
 
-- name: install geolite2-city
-  package: name=geolite2-city state=present
+- name: install GeoIP-data
+  package: name=GeoIP-data state=present
   tags:
   - packages
   - geoip-city-wsgi
   - geoip-city-wsgi/app
+
+- name: link the data file to the one we use
+  file: state=link dest=/usr/share/GeoIP/GeoIPCity.dat src=/usr/share/GeoIP/GeoLiteCity.dat
 
 - name: install geoip-city-wsgi.conf file
   copy: >
