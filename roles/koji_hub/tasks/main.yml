@@ -151,7 +151,7 @@
 #
 
 - name: install koji hub rpmautospec plugin
-  package: name={{ item }} state=present
+  package: name={{ item }} state=latest
   with_items:
   - koji-hub-plugin-rpmautospec
   when: env == 'staging'
