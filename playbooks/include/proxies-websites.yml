@@ -724,7 +724,7 @@
     site_name: taskotron.stg.fedoraproject.org
     server_aliases: [taskotron.stg.fedoraproject.org]
     # Set this explicitly to stg here.. as per the original puppet config.
-    SSLCertificateChainFile: wildcard-2017.stg.fedoraproject.org.intermediate.cert
+    SSLCertificateChainFile: wildcard-2020.stg.fedoraproject.org.intermediate.cert
     sslonly: true
     cert_name: "{{wildcard_cert_name}}"
     when: env == "staging"
@@ -765,8 +765,8 @@
     # Must not be sslonly, because example.id.fedoraproject.org must be reachable
     # via plain http for openid identity support
     sslonly: false
-    cert_name: wildcard-2017.id.fedoraproject.org
-    SSLCertificateChainFile: wildcard-2017.id.fedoraproject.org.intermediate.cert
+    cert_name: wildcard-2020.id.fedoraproject.org
+    SSLCertificateChainFile: wildcard-2020.id.fedoraproject.org.intermediate.cert
     tags:
     - id.fedoraproject.org
     when: env == "production"
@@ -779,7 +779,7 @@
     # via plain http for openid identity support
     sslonly: false
     cert_name: "{{wildcard_cert_name}}"
-    SSLCertificateChainFile: wildcard-2017.stg.fedoraproject.org.intermediate.cert
+    SSLCertificateChainFile: wildcard-2020.stg.fedoraproject.org.intermediate.cert
     tags:
     - id.fedoraproject.org
     when: env == "staging"
@@ -838,7 +838,7 @@
     site_name: beaker.stg.fedoraproject.org
     server_aliases: [beaker.stg.fedoraproject.org]
     # Set this explicitly to stg here.. as per the original puppet config.
-    SSLCertificateChainFile: wildcard-2017.stg.fedoraproject.org.intermediate.cert
+    SSLCertificateChainFile: wildcard-2020.stg.fedoraproject.org.intermediate.cert
     sslonly: true
     cert_name: "{{wildcard_cert_name}}"
     when: env == "staging"
