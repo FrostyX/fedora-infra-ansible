@@ -21,8 +21,10 @@
 - name: install the latest mock and mock-core-configs from updates-testing
   package: state=present name={{ item }}
   with_items:
-  - https://kojipkgs.fedoraproject.org/packages/mock/2.0/2.fc31/noarch/mock-2.0-2.fc31.noarch.rpm
-  - https://kojipkgs.fedoraproject.org/packages/mock-core-configs/32.3/2.fc31/noarch/mock-core-configs-32.3-2.fc31.noarch.rpm
+  - https://kojipkgs.fedoraproject.org/packages/mock/2.2/1.fc31/noarch/mock-2.2-1.fc31.noarch.rpm
+  - https://kojipkgs.fedoraproject.org/packages/mock-core-configs/32.6/1.fc31/noarch/mock-core-configs-32.6-1.fc31.noarch.rpm
+  when:
+  - devel
 
 - name: enable copr repo in staging
   command:
