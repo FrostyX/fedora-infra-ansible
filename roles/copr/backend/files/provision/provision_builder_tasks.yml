@@ -20,7 +20,6 @@
 
 - name: install the latest mock and mock-core-configs from updates-testing
   package: state=present name={{ packages }}
-  with_items:
   vars:
     packages:
     - https://kojipkgs.fedoraproject.org/packages/mock/2.2/1.fc31/noarch/mock-2.2-1.fc31.noarch.rpm
