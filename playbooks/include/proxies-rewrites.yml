@@ -13,6 +13,12 @@
 
   roles:
 
+  - role: httpd/domainrewrite
+    destname: 00-keys
+    website: keys.fedoraproject.org
+    path: ^.*$
+    status: 301
+    target: https://fedoraproject.org/wiki/Infrastructure/graveyard
 
   - role: httpd/domainrewrite
     destname: admin
