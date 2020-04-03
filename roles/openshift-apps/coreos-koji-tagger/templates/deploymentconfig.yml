@@ -23,14 +23,15 @@ spec:
 {% if env == "staging" %}
         - name: COREOS_KOJI_TAGGER_USE_STG
           value: "true"
-        # We are using https://github.com/dustymabe/fedora-coreos-config/tree/fedora-infra-staging
-        # for now. Feel free to fork/create your own repo to test with and replace the values below.
-        # The repo must be set up with https://apps.fedoraproject.org/github2fedmsg so that it
-        # can get messages on the message bus when commits are made.
+        # Knobs you can change to point to whatever repo you want for testing
+        # stage code. Feel free to fork/create your own repo to test with and
+        # replace the values below. The repo must be set up with
+        # https://apps.fedoraproject.org/github2fedmsg so that it can get
+        # messages on the message bus when commits are made.
         - name: GITHUB_REPO_FULLNAME
-          value: "dustymabe/fedora-coreos-config"
-        - name: GITHUB_REPO_BRANCH
-          value: "refs/heads/fedora-infra-staging"
+          value: "jlebon/fedora-coreos-config"
+        - name: GITHUB_REPO_BRANCHES
+          value: "refs/heads/testing-devel refs/heads/next-devel"
 {% endif %}
         # sleep infinity is useful for debugging environment issues
         # comment out when not debugging
