@@ -561,14 +561,17 @@
     website: pki.fedoraproject.org
     target: http://dogtagpki.org/
 
-  - role: httpd/redirect
+    # all of this goes to one place the graveyard.
+  - role: httpd/redirectmatch
     shortname: keys
     website: keys.fedoraproject.org
+    regex: /.*$
     target: https://fedoraproject.org/wiki/Infrastructure/graveyard
 
-  - role: httpd/redirect
+  - role: httpd/redirectmatch
     shortname: boot
     website: boot.fedoraproject.org
+    regex: /.*$
     target: https://fedoraproject.org/wiki/Infrastructure/graveyard
 
   - role: httpd/redirect
