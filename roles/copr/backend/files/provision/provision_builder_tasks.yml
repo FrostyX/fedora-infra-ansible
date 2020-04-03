@@ -69,20 +69,15 @@
 - name: install qemu-user-static
   dnf: state=present pkg=qemu-user-static
 
-- name: run /bin/copr-update-builder from copr-builder package
-  shell: /usr/bin/copr-update-builder
-
-# temporarily, till https://pagure.io/copr/copr/pull-request/1273 lands
-# production
-- name: restore config files from mock-core-configs
-  shell: find /etc/mock -name '*.rpmnew' | while read file; do mv -f "$file" "${file%%.rpmnew}"; done
-
 - name: put updated mock configs into /etc/mock
-  copy: src=files/mock/ dest=/etc/mock
+  copy: src=files/mock/ dest=/etc/copr-rpmbuild/mock-config-overrides
   # conditional, per https://pagure.io/copr/copr/issue/1189 - as we don't want
   # to bake broken mock configuration into the image.
   when:
   - prepare_base_image is not defined
+
+- name: run /bin/copr-update-builder from copr-builder package
+  shell: /usr/bin/copr-update-builder
 
 - name: put copr-rpmbuild configuration file in the right place
   copy: src=files/main.ini dest=/etc/copr-rpmbuild/main.ini
