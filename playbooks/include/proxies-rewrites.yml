@@ -14,10 +14,10 @@
   roles:
 
   - role: httpd/domainrewrite
-    destname: 00-keys
+    destname: keys
     website: keys.fedoraproject.org
     path: ^.*$
-    status: 301, QSD
+    status: 301,QSD
     target: https://fedoraproject.org/wiki/Infrastructure/graveyard
     tags: keys
 
