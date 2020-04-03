@@ -567,6 +567,7 @@
     website: keys.fedoraproject.org
     regex: /.*$
     target: https://fedoraproject.org/wiki/Infrastructure/graveyard
+    tags: keys
 
   - role: httpd/redirectmatch
     shortname: boot
