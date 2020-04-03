@@ -19,6 +19,7 @@
     path: ^.*$
     status: 301, QSD
     target: https://fedoraproject.org/wiki/Infrastructure/graveyard
+    tags: keys
 
   - role: httpd/domainrewrite
     destname: admin
