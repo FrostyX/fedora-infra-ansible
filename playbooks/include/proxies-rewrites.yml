@@ -15,14 +15,6 @@
 
 
   - role: httpd/domainrewrite
-    destname: keys-rewrite
-    website: keys.fedoraproject.org
-    path: ^/.*$
-    status: 301
-    target: https://fedoraproject.org/wiki/Infrastructure/graveyard
-    tags: keys
-
-  - role: httpd/domainrewrite
     destname: admin
     website: admin.fedoraproject.org
     target: https://apps.fedoraproject.org/
