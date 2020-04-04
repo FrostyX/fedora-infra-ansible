@@ -69,6 +69,7 @@
 
 - name: don't remove rpmnew files, but always use them
   lineinfile: state=absent regexp='^find /etc/mock.*-delete'
+              path=/usr/bin/copr-update-builder
 
 - name: run /bin/copr-update-builder from copr-builder package
   shell: /usr/bin/copr-update-builder
