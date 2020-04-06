@@ -1,3 +1,7 @@
+appowners:
+  - mizdebsk
+  - sturivny
+
 koschei_container_image: quay.io/koschei/koschei:fedora-stage
 
 koschei_topurl: https://koschei.stg.fedoraproject.org

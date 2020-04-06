@@ -1,3 +1,6 @@
+appowners:
+  - mizdebsk
+
 koschei_container_image: quay.io/koschei/koschei:fedora-prod
 
 koschei_topurl: https://koschei.fedoraproject.org
