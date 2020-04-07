@@ -224,6 +224,17 @@
     localpath: /kerneltest
     header_scheme: true
     proxyurl: "{{ varnish_url }}"
+    when: env != "staging"
+
+  - role: httpd/reverseproxy
+    website: apps.fedoraproject.org
+    destname: kerneltest
+    remotepath: /kerneltest
+    localpath: /kerneltest
+    balancer_name: app-os
+    targettype: openshift
+    keephost: true
+    when: env == "staging"
 
   - role: httpd/reverseproxy
     website: qa.fedoraproject.org
