@@ -45,6 +45,8 @@
     when: master_sundries_node|bool
   - role: fedora-docs/build
     when: master_sundries_node|bool
+  - role: fedora-docs/translation
+    when: master_sundries_node|bool
   - role: membership-map/build
     when: master_sundries_node|bool
   - role: developer/build

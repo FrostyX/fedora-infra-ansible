@@ -1,0 +1,15 @@
+#!/bin/bash
+OLD=$(mktemp -d -t fedora_docs_trans_XXXX)
+cd $OLD
+
+function clean_tmp() {
+  [ -n "$OLD" ] && echo rm -Rf "$OLD"
+}
+
+trap clean_tmp exit
+
+git clone https://pagure.io/fedora-docs/translations-scripts.git
+cd translations-scripts
+./build.py --clone_sources true --commit_l10n true --commit_tsources true --clone-po4a
+./stats/compute.sh
+
