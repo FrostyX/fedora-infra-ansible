@@ -113,7 +113,7 @@
 - name: install the configuration file for rpmautospec
   template:
     src: "{{ playbook_dir }}/../../roles/koji_hub/templates/rpmautospec.conf"
-    dest: /etc/koji-hub/plugins/rpmautospec.conf
+    dest: /etc/kojid/plugins/rpmautospec.conf
   when: env == 'staging'
   tags:
   - koji_builder
