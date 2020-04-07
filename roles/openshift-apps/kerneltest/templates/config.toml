@@ -1,6 +1,6 @@
 {% if env == 'staging' %}
-SECRET_KEY = "{{ stg_kerneltest_secretkey }}"
-DB_URL = "postgresql://{{ stg_kerneltest_db_user }}:{{ stg_kerneltest_db_pass }}@{{ stg_kerneltest_db_host }}/kerneltest"
+SECRET_KEY = "{{ kerneltest_stg_secret_key }}"
+DB_URL = "postgresql://{{ kerneltest_stg_db_user }}:{{ kerneltest_stg_db_pass }}@{{ kerneltest_stg_db_host }}/kerneltest"
 {% else %}
 SECRET_KEY = "{{ kerneltest_secretkey }}"
 DB_URL = "postgresql://{{ kerneltest_db_user }}:{{ kerneltest_db_pass }}@{{ kerneltest_db_host }}/kerneltest"
