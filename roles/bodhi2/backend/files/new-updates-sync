@@ -234,16 +234,22 @@ def sync_ostree(dst, ref):
     if src_commit == dst_commit:
         logger.info('OSTree at %s, ref %s in sync', dst, ref)
     else:
-        print('Syncing ostree ref %s: %s -> %s'
-              % (ref, src_commit, dst_commit))
-        logger.info('Syncing OSTree to %s, ref %s: %s -> %s',
-                    dst, ref, src_commit, dst_commit)
-        cmd = ['ostree', 'pull-local', '--verbose', '--repo',
-               dst, OSTREESOURCE, ref]
-        out = run_command(cmd)
-        cmd = ['ostree', 'summary', '--verbose', '--repo', dst, '--update']
-        run_command(cmd)
-        print('Ostree ref %s now at %s' % (ref, src_commit))
+        # Set the umask to be more permissive so directories get group write
+        # https://github.com/ostreedev/ostree/pull/1984
+        oldumask = os.umask(0o0002)
+        try:
+            print('Syncing ostree ref %s: %s -> %s'
+                  % (ref, src_commit, dst_commit))
+            logger.info('Syncing OSTree to %s, ref %s: %s -> %s',
+                        dst, ref, src_commit, dst_commit)
+            cmd = ['ostree', 'pull-local', '--verbose', '--repo',
+                   dst, OSTREESOURCE, ref]
+            out = run_command(cmd)
+            cmd = ['ostree', 'summary', '--verbose', '--repo', dst, '--update']
+            run_command(cmd)
+            print('Ostree ref %s now at %s' % (ref, src_commit))
+        finally:
+            os.umask(oldumask)
 
 
 def update_fullfilelist(modules):
