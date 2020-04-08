@@ -19,12 +19,15 @@
   tags:
   - fedora-docs-translation
 
-# the key is going to be added to pagure for pushing
-- name: Display the public key
-  command: cat ~_update_docs_trans/.ssh/id_rsa_docs_trans.pub
+- copy:
+    src: ssh_config
+    dest: ~_update_docs_trans/.ssh/config
+    owner: _update_docs_trans
+    group: _update_docs_trans
+    mode: 0644
   tags:
   - fedora-docs-translation
-
+ 
 - copy:
     src: docs-translation-update
     dest: /usr/local/bin/docs-translation-update
