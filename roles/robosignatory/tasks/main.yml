@@ -15,7 +15,7 @@
     name: robosignatory
     state: present
     system: yes
-    gid: 988
+    gid: 263
   tags:
   - config
   - robosignatory
@@ -29,6 +29,7 @@
     home: /etc/robosignatory
     comment: Robosignatory
     shell: /sbin/nologin
+    uid: 263
   tags:
   - config
   - robosignatory
