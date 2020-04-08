@@ -30,13 +30,13 @@
     objectname: buildconfig.yml
   - role: openshift/object
     app: kerneltest
-    file: deploymentconfig.yml
-    objectname: deploymentconfig.yml
-  - role: openshift/object
-    app: kerneltest
     file: service.yml
     objectname: service.yml
   - role: openshift/object
     app: kerneltest
     template: configmap.yml
     objectname: configmap.yml
+  - role: openshift/object
+    app: kerneltest
+    file: deploymentconfig.yml
+    objectname: deploymentconfig.yml
