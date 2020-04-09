@@ -3,23 +3,14 @@
 #
 # This is the role for geoip-city-wsgi.
 #
-# install python-paste-deploy
-- name: install python-paste-deploy
-  package: name=python-paste-deploy state=present
-  tags:
-  - packages
-  - geoip-city-wsgi
-  - geoip-city-wsgi/app
-
-- name: install GeoIP-data
-  package: name=GeoIP-data state=present
-  tags:
-  - packages
-  - geoip-city-wsgi
-  - geoip-city-wsgi/app
-
-- name: link the data file to the one we use
-  file: state=link dest=/usr/share/GeoIP/GeoIPCity.dat src=/usr/share/GeoIP/GeoLiteCity.dat
+# install necessary packages
+- name: install python-paste-deploy geolite2-city python2-iso3166
+  package:
+    name:
+      - python-paste-deploy
+      - geolite2-city
+      - python2-iso3166
+    state: present
 
 - name: install geoip-city-wsgi.conf file
   copy: >
