@@ -1,6 +1,5 @@
 # For Fedora instances, we want to ssh as 'fedora', not as 'root'
 #ansible_ssh_user: fedora
-# Disabled, it was only needed initially for proxy30.fedoraproject.org
 #ansible_become: true
 #ansible_become_user: root
 #ansible_become_method: sudo
