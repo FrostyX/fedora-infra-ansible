@@ -112,14 +112,6 @@
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
-- name: set releng user keytab
-  copy:
-    src: "{{private}}/files/keytabs/{{env}}/releng"
-    dest: /etc/krb5.releng.keytab
-    owner: root
-    group: "releng-team"
-    mode: 0640
-
 - name: Set up /mnt/koji on both the frontend and backend
   hosts: odcs:odcs_stg
   user: root

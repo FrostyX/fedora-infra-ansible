@@ -207,3 +207,12 @@
   - config
   - odcs
   - odcs/backend
+
+- name: set releng user keytab
+  copy:
+    src: "{{private}}/files/keytabs/{{env}}/releng"
+    dest: /etc/krb5.releng.keytab
+    owner: odcs-server
+    group: odcs-server
+    mode: 0640
+  when: inventory_hostname.startswith('odcs-backend-releng')
