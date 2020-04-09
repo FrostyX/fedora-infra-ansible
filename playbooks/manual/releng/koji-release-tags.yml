@@ -17,11 +17,13 @@
 
   - name: create the main koji tag
     koji_tag:
+      koji: koji
       name: f33
       state: present
-      perm: admin
+      perm: autosign
   - name: create the updates tag
     koji_tag:
+      koji: koji
       name: f33-updates
       state: present
       perm: admin
