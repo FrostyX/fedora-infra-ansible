@@ -104,6 +104,18 @@
     owner_user: odcs
     owner_group: odcs
     host: "odcs{{env_suffix}}.fedoraproject.org"
+  # keytab for odcs releng backend
+  - role: keytab/service
+    service: odcs
+    host: "odcs-backend-releng01.phx2.fedoraproject.org"
+
+  - name: set releng user keytab
+    copy:
+      src: "{{private}}/files/keytabs/{{env}}/releng"
+      dest: /etc/krb5.releng.keytab
+      owner: root
+      group: "releng-team"
+      mode: 0640
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
