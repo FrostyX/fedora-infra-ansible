@@ -72,6 +72,9 @@ data:
         Header set Cache-Control no-cache
         Header set Expires 0
         Alias /totpcgiprovision /var/www/totpcgi-provisioning
+{% if env == "staging" %}
+        Alias /totpcgiprovision/ /var/www/totpcgi-provisioning
+{% endif %}
         AddHandler cgi-script .cgi
 
         DocumentRoot /var/www/totpcgi-provisioning
