@@ -4,12 +4,13 @@
 # This is the role for geoip-city-wsgi.
 #
 # install necessary packages
-- name: install python-paste-deploy geolite2-city python2-iso3166
+- name: install python-paste-deploy geolite2-city python2-iso3166 python2-geoip2
   package:
     name:
       - python-paste-deploy
       - geolite2-city
       - python2-iso3166
+      - python2-geoip2
     state: present
 
 - name: install geoip-city-wsgi.conf file
