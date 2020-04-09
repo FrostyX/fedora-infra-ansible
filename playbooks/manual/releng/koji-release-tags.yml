@@ -3,6 +3,9 @@
   hosts: composer.stg.phx2.fedoraproject.org
   gather_facts: no
 
+  collections:
+  - ktdreyer.koji_ansible
+
   tasks:
   - name: create the main koji tag
     koji_tag:
