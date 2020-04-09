@@ -10,6 +10,7 @@
     - python36-PyYAML
     - python-virtualenv
     - python2-pip
+    - translate-toolkit
     state: present
   tags:
   - fedora-docs-translation
