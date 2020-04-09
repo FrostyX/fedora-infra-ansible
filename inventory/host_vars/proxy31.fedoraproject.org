@@ -12,3 +12,5 @@ nrpe_procs_crit: 1400
 
 nagios_Check_Services:
   swap: false
+
+public_ip: 13.125.120.8
