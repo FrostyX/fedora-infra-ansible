@@ -7,6 +7,9 @@
     - perl-Pod-Parser
     - perl(YAML::Tiny)
     - perl(Unicode::GCString)
+    - PyYAML
+    - python-virtualenv
+    - python2-pip
     state: present
   tags:
   - fedora-docs-translation
