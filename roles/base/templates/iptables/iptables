@@ -106,7 +106,7 @@
 -A INPUT -p tcp -m tcp --dport {{ port }} --src {{ hostvars[proxy]['ansible_tun0']['ipv4']['address'] }} -j ACCEPT
 {% endfor %}
 # nagios
--A INPUT -p tcp -m tcp --dport {{ port }} --src {{ hostvars['noc01.phx2.fedoraproject.org']['ansible_eth0']['ipv4']['address'] }} -j ACCEPT
+-A INPUT -p tcp -m tcp --dport {{ port }} --src  10.5.126.41 -j ACCEPT
 {% endfor %}
 {% endif %}
 
