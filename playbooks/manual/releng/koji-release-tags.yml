@@ -1,0 +1,21 @@
+---
+- name: Create the release tags in koji.
+  hosts: composer.stg.phx2.fedoraproject.org
+  gather_facts: no
+
+  tasks:
+  - name: create the main koji tag
+    koji_tag:
+      koji: stg
+      name: f33
+      state: present
+      perm: admin
+  - name: create the updates tag
+    koji_tag:
+      koji: stg
+      name: f33-updates
+      state: present
+      perm: admin
+      inheritance:
+      - parent: f33
+        priority: 0
