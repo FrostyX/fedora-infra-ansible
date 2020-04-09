@@ -1,2 +1,3 @@
 Host pagure.io
 	IdentityFile ~/.ssh/id_rsa_docs_trans
+	StrictHostKeyChecking no
