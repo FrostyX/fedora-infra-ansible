@@ -7,15 +7,21 @@
   - ktdreyer.koji_ansible
 
   tasks:
+  - name: copy the koji.conf file with the correct variables
+    template:
+      src: koji.conf.j2
+      dest: /etc/koji.conf
+      owner: root
+      group: root
+      mode: 0644
+
   - name: create the main koji tag
     koji_tag:
-      koji: stg
       name: f33
       state: present
       perm: admin
   - name: create the updates tag
     koji_tag:
-      koji: stg
       name: f33-updates
       state: present
       perm: admin
