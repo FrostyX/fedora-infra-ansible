@@ -3,7 +3,7 @@
 
 # This is consumed by the roles/fedora-web/main role
 sponsor: amazon
-datacenter: amazon-ap-northeast-2
+datacenter: aws
 postfix_group: vpn
 vpn: true
 
