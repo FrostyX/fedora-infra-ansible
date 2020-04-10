@@ -9,3 +9,5 @@ metadata:
 data:
   config.toml: |-
     {{ load_file('config.toml') | indent }}
+  client_secrets.json: |-
+    {{ load_file('client_secrets.json') | indent }}

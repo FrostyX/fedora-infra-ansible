@@ -6,3 +6,4 @@ SECRET_KEY = "{{ kerneltest_secretkey }}"
 DB_URL = "postgresql://{{ kerneltest_db_user }}:{{ kerneltest_db_pass }}@{{ kerneltest_db_host }}/kerneltest"
 {% endif %}
 ADMIN_GROUP = ["sysadmin-kernel", "sysadmin-main"]
+OIDC_CLIENT_SECRETS = "/etc/kerneltest/client_secrets.json"
