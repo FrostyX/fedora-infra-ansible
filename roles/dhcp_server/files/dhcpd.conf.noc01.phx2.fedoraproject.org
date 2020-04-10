@@ -885,6 +885,11 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
         fixed-address 10.5.130.23;
         option host-name "vmhost-iad-10-mgmt";
     }
+    host vmhost-iad-11-mgmt {
+        hardware ethernet b8:2a:72:fc:f2:44;
+        fixed-address 10.5.130.25;
+        option host-name "vmhost-iad-11-mgmt";
+    }
     host vmhost-qa-04-mgmt {
         hardware ethernet 74:E6:E2:F9:FF:7E;
         fixed-address 10.5.130.26;
