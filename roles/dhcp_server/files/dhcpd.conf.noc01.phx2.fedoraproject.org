@@ -1327,12 +1327,12 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
         hardware ethernet 40:5C:FD:A5:87:B8;
         fixed-address 10.5.130.158;
         option host-name "cloudfx01-08";
-     }
-     host vmhost-os03-mgmt {
-         hardware ethernet    B8:2A:72:FC:C5:2C;
-         fixed-address 10.5.130.159;
-         option host-name "vmhost-os03";
-      }
+    }
+    host vmhost-os03-mgmt {
+        hardware ethernet  f0:1f:af:e2:6d:1f;
+        fixed-address 10.5.130.159;
+        option host-name "vmhost-os03";
+    }
         
     host qa-vmhost01-mgmt {
         hardware ethernet f4:02:70:cf:c2:ca;
@@ -1425,19 +1425,15 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
         fixed-address 10.5.130.239;
         option host-name "virthost20";
     } 
-    
-    
-   host virthost21-mgmt {
-       hardware ethernet 74:E6:E2:FD:76:DE;
-       fixed-address 10.5.130.240;
-       option host-name "virthost21";
-       }
-     host virthost22-mgmt {
-         hardware ethernet 74:E6:E2:FD:76:BA;
-         option host-name "virthost22";
-         }
-
-
+    host virthost21-mgmt {
+        hardware ethernet 74:E6:E2:FD:76:DE;
+        fixed-address 10.5.130.240;
+        option host-name "virthost21";
+    }
+    host virthost22-mgmt {
+        hardware ethernet 74:E6:E2:FD:76:BA;
+        option host-name "virthost22";
+    }
     host virthost-comm01-mgmt {
         hardware ethernet 5c:f3:fc:53:db:fd;
         fixed-address 10.5.130.207;
