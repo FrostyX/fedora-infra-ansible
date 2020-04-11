@@ -1432,7 +1432,7 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
     }
     host virthost22-mgmt {
         hardware ethernet 74:e6:e2:fd:76:ba
-	fixed-address 10.5.130.241
+	fixed-address 10.5.130.241;
         option host-name "virthost22";
     }
     host virthost-comm01-mgmt {
