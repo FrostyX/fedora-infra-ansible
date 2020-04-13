@@ -825,16 +825,16 @@ virthost-comm01.qa.fedoraproject.org
 virthost-comm03.qa.fedoraproject.org
 virthost-comm04.qa.fedoraproject.org
 
-[virthost_cloud]
-virthost-aarch64-os01.fedorainfracloud.org
-virthost-aarch64-os02.fedorainfracloud.org
-virthost-cloud01.fedorainfracloud.org
-virthost-os01.fedorainfracloud.org
-virthost-os02.fedorainfracloud.org
-virthost-os03.fedorainfracloud.org
-storinator01.fedorainfracloud.org
-cloudvmhost-aarch64-01.fedorainfracloud.org
-copr-vmhost01.fedorainfracloud.org
+#[virthost_cloud]
+#virthost-aarch64-os01.fedorainfracloud.org
+#virthost-aarch64-os02.fedorainfracloud.org
+#virthost-cloud01.fedorainfracloud.org
+#virthost-os01.fedorainfracloud.org
+#virthost-os02.fedorainfracloud.org
+#virthost-os03.fedorainfracloud.org
+#storinator01.fedorainfracloud.org
+#cloudvmhost-aarch64-01.fedorainfracloud.org
+#copr-vmhost01.fedorainfracloud.org
 
 [wiki_stg]
 wiki01.stg.phx2.fedoraproject.org
