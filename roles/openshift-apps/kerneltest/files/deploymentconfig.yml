@@ -24,7 +24,7 @@ items:
       spec:
         containers:
         - name: kerneltest-web
-          image: kerneltest/kerneltest:latest
+          image: docker-registry.default.svc:5000/kerneltest/kerneltest:latest
           env:
             - name: KERNELTEST_CONFIG
               value: /etc/kerneltest/config.toml
