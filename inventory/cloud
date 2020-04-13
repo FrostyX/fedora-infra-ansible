@@ -1,32 +1,32 @@
-[cloud_phx2]
+#[cloud_phx2]
 ##
 ## Hardware
 ##
-virthost-aarch64-os01.fedorainfracloud.org
-virthost-aarch64-os02.fedorainfracloud.org
-virthost-cloud01.fedorainfracloud.org
-virthost-os01.fedorainfracloud.org
-virthost-os02.fedorainfracloud.org
-virthost-os03.fedorainfracloud.org
-storinator01.fedorainfracloud.org
-cloudvmhost-aarch64-01.fedorainfracloud.org
+#virthost-aarch64-os01.fedorainfracloud.org
+#virthost-aarch64-os02.fedorainfracloud.org
+#virthost-cloud01.fedorainfracloud.org
+#virthost-os01.fedorainfracloud.org
+#virthost-os02.fedorainfracloud.org
+#virthost-os03.fedorainfracloud.org
+#storinator01.fedorainfracloud.org
+#cloudvmhost-aarch64-01.fedorainfracloud.org
 
 ##
 ## New Community Hardware
 ##
-os-proxy01.fedorainfracloud.org
-os-proxy02.fedorainfracloud.org
+#os-proxy01.fedorainfracloud.org
+#os-proxy02.fedorainfracloud.org
 
 ## COPR
-copr-vmhost01.fedorainfracloud.org
-retrace03.fedorainfracloud.org
+#copr-vmhost01.fedorainfracloud.org
+#retrace03.fedorainfracloud.org
 
-[cloud_phx2_guests]
-cloud-noc01.fedorainfracloud.org
-armv7-test01.fedorainfracloud.org
-armv7-test02.fedorainfracloud.org
-aarch64-test01.fedorainfracloud.org
-aarch64-test02.fedorainfracloud.org
+#[cloud_phx2_guests]
+#cloud-noc01.fedorainfracloud.org
+#armv7-test01.fedorainfracloud.org
+#armv7-test02.fedorainfracloud.org
+#aarch64-test01.fedorainfracloud.org
+#aarch64-test02.fedorainfracloud.org
 
 
 [cloud_aws]
@@ -65,6 +65,6 @@ retrace-stg.aws.fedoraproject.org
 ppc64le-test.fedorainfracloud.org
 
 [cloud:children]
-cloud_phx2
 cloud_aws
-cloud_phx2_guests
+#cloud_phx2
+#cloud_phx2_guests

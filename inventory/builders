@@ -181,9 +181,6 @@ buildvmhost-aarch64-15.arm.fedoraproject.org
 buildvmhost-aarch64-16.arm.fedoraproject.org
 buildvmhost-aarch64-17.arm.fedoraproject.org
 buildvmhost-aarch64-18.arm.fedoraproject.org
-buildvmhost-aarch64-19.arm.fedoraproject.org
-buildvmhost-aarch64-20.arm.fedoraproject.org
-buildvmhost-aarch64-21.arm.fedoraproject.org
 buildvmhost-a64-osbs-01.arm.fedoraproject.org
 
 [buildhw]
