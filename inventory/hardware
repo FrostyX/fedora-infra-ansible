@@ -117,16 +117,16 @@ buildhw-aarch64-06.arm.fedoraproject.org
 buildhw-aarch64-07.arm.fedoraproject.org
 buildhw-aarch64-08.arm.fedoraproject.org
 
-[storinator]
-storinator01.fedorainfracloud.org
+# [storinator]
+# storinator01.fedorainfracloud.org
 
 [cavium]
 # 2 thunderx2 machines on loan for builders
 buildvmhost-aarch64-01.arm.fedoraproject.org
 buildvmhost-aarch64-02.arm.fedoraproject.org
 # 2 thunderx1 machines on loan for copr builders
-virthost-aarch64-os01.fedorainfracloud.org
-virthost-aarch64-os02.fedorainfracloud.org
+# virthost-aarch64-os01.fedorainfracloud.org
+# virthost-aarch64-os02.fedorainfracloud.org
 
 [emag]
 buildvmhost-aarch64-10.arm.fedoraproject.org

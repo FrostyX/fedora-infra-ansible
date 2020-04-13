@@ -1059,9 +1059,9 @@ copr_back_dev_aws
 copr_dist_git_dev_aws
 copr_keygen_dev_aws
 
-[copr_hypervisors_aarch64]
-virthost-aarch64-os01.fedorainfracloud.org
-virthost-aarch64-os02.fedorainfracloud.org
+# [copr_hypervisors_aarch64]
+# virthost-aarch64-os01.fedorainfracloud.org
+# virthost-aarch64-os02.fedorainfracloud.org
 
 #[libravatar]
 #libravatar.fedorainfracloud.org
@@ -1256,22 +1256,22 @@ notifs-web01.phx2.fedoraproject.org
 wiki02.phx2.fedoraproject.org
 retrace01.qa.fedoraproject.org
 
-[nfs_servers]
-storinator01.fedorainfracloud.org
+# [nfs_servers]
+# storinator01.fedorainfracloud.org
 
 # communishift -- community openshift
-[virthost_communishift]
-virthost-os01.fedorainfracloud.org
-virthost-os02.fedorainfracloud.org
-virthost-os03.fedorainfracloud.org
-#os-storage-node12.fedorainfracloud.org
-#os-storage-node13.fedorainfracloud.org
-#os-storage-node14.fedorainfracloud.org
-#virthost-ppc64le-os01.fedorainfracloud.org
-virthost-aarch64-os01.fedorainfracloud.org
-virthost-aarch64-os02.fedorainfracloud.org
+# [virthost_communishift]
+# virthost-os01.fedorainfracloud.org
+# virthost-os02.fedorainfracloud.org
+# virthost-os03.fedorainfracloud.org
+# os-storage-node12.fedorainfracloud.org
+# os-storage-node13.fedorainfracloud.org
+# os-storage-node14.fedorainfracloud.org
+# virthost-ppc64le-os01.fedorainfracloud.org
+# virthost-aarch64-os01.fedorainfracloud.org
+# virthost-aarch64-os02.fedorainfracloud.org
 
-[os_proxies]
-os-proxy01.fedorainfracloud.org
-os-proxy02.fedorainfracloud.org
+# [os_proxies]
+# os-proxy01.fedorainfracloud.org
+# os-proxy02.fedorainfracloud.org
 
