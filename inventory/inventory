@@ -1020,7 +1020,7 @@ virthost
 bvirthost
 buildvmhost
 virthost_comm
-virthost_cloud
+#virthost_cloud
 
 [copr_front_aws]
 copr-fe.aws.fedoraproject.org
