@@ -935,11 +935,11 @@ openqa
 
 ## END fedmsg services
 
-[cloud_hardware]
-virthost-aarch64-os01.fedorainfracloud.org
-virthost-aarch64-os02.fedorainfracloud.org
-virthost-cloud01.fedorainfracloud.org
-copr-vmhost01.fedorainfracloud.org
+#[cloud_hardware]
+#virthost-aarch64-os01.fedorainfracloud.org
+#virthost-aarch64-os02.fedorainfracloud.org
+#virthost-cloud01.fedorainfracloud.org
+#copr-vmhost01.fedorainfracloud.org
 
 
 [pdc_web]
