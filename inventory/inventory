@@ -116,8 +116,8 @@ virthost-rdu02.fedoraproject.org
 virthost-cc-rdu01.fedoraproject.org
 virthost-cc-rdu02.fedoraproject.org
 virthost-cc-rdu03.fedoraproject.org
-virthost-cloud01.fedorainfracloud.org
-cloudvmhost-aarch64-01.fedorainfracloud.org
+#virthost-cloud01.fedorainfracloud.org
+#cloudvmhost-aarch64-01.fedorainfracloud.org
 
 [datagrepper]
 datagrepper01.phx2.fedoraproject.org
@@ -968,13 +968,13 @@ el6-test.fedorainfracloud.org
 el7-test.fedorainfracloud.org
 ppc64le-test.fedorainfracloud.org
 
-[aarch64_test]
-aarch64-test01.fedorainfracloud.org
-aarch64-test02.fedorainfracloud.org
+#[aarch64_test]
+#aarch64-test01.fedorainfracloud.org
+#aarch64-test02.fedorainfracloud.org
 
-[armv7_test]
-armv7-test01.fedorainfracloud.org
-armv7-test02.fedorainfracloud.org
+#[armv7_test]
+#armv7-test01.fedorainfracloud.org
+#armv7-test02.fedorainfracloud.org
 
 [osuosl]
 proxy06.fedoraproject.org
