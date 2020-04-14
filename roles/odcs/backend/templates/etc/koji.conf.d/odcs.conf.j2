@@ -5,6 +5,11 @@ topurl = https://kojipkgs.fedoraproject.org/
 authtype = kerberos
 krb_rdns = false
 
+{% if inventory_hostname.startswith('odcs-backend-releng') %}
+principal = releng@FEDORAPROJECT.ORG
+keytab = /etc/krb5.releng.keytab
+{% endif  %}
+
 [odcs_stg]
 server = https://koji.stg.fedoraproject.org/kojihub
 weburl = https://koji.stg.fedoraproject.org/koji
