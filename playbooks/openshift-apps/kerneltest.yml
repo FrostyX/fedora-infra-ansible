@@ -25,18 +25,29 @@
     app: kerneltest
     file: imagestream.yml
     objectname: imagestream.yml
+
   - role: openshift/object
     app: kerneltest
     template: buildconfig.yml
     objectname: buildconfig.yml
+
   - role: openshift/object
     app: kerneltest
     file: service.yml
     objectname: service.yml
+
   - role: openshift/object
     app: kerneltest
     template: configmap.yml
     objectname: configmap.yml
+
+ - role: openshift/route
+   app: kerneltest
+   routename: kerneltest
+   host: "apps{{ env_suffix }}.fedoraproject.org/kerneltest"
+   serviceport: 8080-tcp
+   servicename: kerneltest
+
   - role: openshift/object
     app: kerneltest
     file: deploymentconfig.yml
