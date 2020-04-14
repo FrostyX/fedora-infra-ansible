@@ -237,6 +237,16 @@
     when: env == "staging"
 
   - role: httpd/reverseproxy
+    website: kerneltest.fedoraproject.org
+    destname: kerneltest
+    balancer_name: app-os
+    targettype: openshift
+    keephost: true
+    tags: kerneltest
+    header_scheme: true
+    when: env == "staging"
+
+  - role: httpd/reverseproxy
     website: qa.fedoraproject.org
     destname: blockerbugs
     remotepath: /blockerbugs
