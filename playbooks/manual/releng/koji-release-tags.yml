@@ -2,7 +2,12 @@
 - name: Create the release tags in koji.
   hosts: composer.stg.phx2.fedoraproject.org
   gather_facts: no
-
+  vars:
+    - appliance_build: [appliance-tools, bash, coreutils, grub, parted, perl, policycoreutils, selinux-policy, shadow-utils, sssd-client]
+    - build: [bash, bzip2, coreutils, cpio, diffutils, fedora-release, findutils, gawk, glibc-minimal-langpack, grep, gzip, info, make, patch, redhat-rpm-config, rpm-build, sed, shadow-utils, tar, unzip, util-linux, which, xz]
+    - livecd_build: [bash, coreutils, fedora-logos, fedora-release, livecd-tools, policycoreutils, python-dbus, sed, selinux-policy-targeted, shadow-utils, squashfs-tools, sssd-client, tar, unzip, util-linux, which, yum]
+    - livemedia_build: [bash, coreutils, glibc-all-langpacks, lorax-lmc-novirt, selinux-policy-targeted, shadow-utils, util-linux]
+    - srpm_build: [bash, fedora-release, fedpkg-minimal, glibc-minimal-langpack, gnupg2, redhat-rpm-config, rpm-build, shadow-utils]
   collections:
   - ktdreyer.koji_ansible
 
@@ -21,12 +26,49 @@
       name: f33
       state: present
       perm: autosign
-  - name: create the updates tag
+      groups:
+        appliance-build: "{{appliance_build}}"
+        build: "{{build}}"
+        livecd-build: "{{livecd_build}}"
+        livemedia-build: "{{livemedia_build}}"
+        srpm-build: "{{srpm_build}}"
+      extra:
+        mock.package_manager: dnf
+        mock.new_chroot : 0
+
+  - name: create the release tags
     koji_tag:
       koji: koji
-      name: f33-updates
+      name: "{{ item.name }}"
       state: present
-      perm: admin
+      perm: "{{ item.perm }}"
+      arches: "{{item.arches}}"
       inheritance:
-      - parent: f33
+      - parent: "{{ item.parent }}"
         priority: 0
+    loop:
+      - { name: f33-updates, perm: admin, parent: f33 , arches: ""}
+      - { name: f33-updates-testing, perm: admin, parent: f33, arches: "" }
+      - { name: f33-updates-pending, perm: admin, parent: f33, arches: "" }
+      - { name: f33-override, perm: fedora-override, parent: f33, arches: "" }
+      - { name: f33-updates-candidate, perm: '', parent: f33, arches: "" }
+      - { name: f33-compose, perm: '', parent: f33, arches: "" }
+      - { name: f33-updates-testing-pending, perm: 'autosign', parent: f33-updates-testing, arches: "" }
+      - { name: f33-signing-pending, perm: 'autosign', parent: f33-updates-testing-pending, arches: "" }
+      - { name: f33-pending, perm: '', parent: f33-updates, arches: "" }
+      - { name: f33-build, perm: 'admin', parent: f33-override, arches: "armv7hl i686 x86_64 aarch64 ppc64le s390x" }
+
+  - name: create the infra tags
+    koji_tag:
+      koji: koji
+      name: "{{ item.name }}"
+      state: present
+      perm: "{{ item.perm }}"
+      inheritance:
+      - parent: "{{ item.parent }}"
+        priority: 0
+    loop:
+      - { name: f33-infra, perm: 'infra', parent: f33-build, arches: "" }
+      - { name: f33-infra-stg, perm: 'infra', parent: f33-infra, arches: "" }
+      - { name: f33-infra-candidate, perm: 'infra', parent: f33-infra-stg, arches: "" }
+      - { name: f33-infra-build, perm: 'infra', parent: f33-infra-stg, arches: "" }
