@@ -44,15 +44,6 @@
     },
     {
         "match": {
-            "subvariant": "Minimal",
-            "type": "raw-xz",
-            "format": "raw.xz",
-            "arch": "armhfp"
-        },
-        "dkboot": true
-    },
-    {
-        "match": {
             "subvariant": "Silverblue",
             "type": "dvd-ostree",
             "format": "iso",
