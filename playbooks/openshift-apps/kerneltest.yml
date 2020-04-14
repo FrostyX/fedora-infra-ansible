@@ -45,7 +45,7 @@
     app: kerneltest
     routename: kerneltest
     host: "kerneltest{{ env_suffix }}.fedoraproject.org"
-    serviceport: 8080-tcp
+    serviceport: web
     servicename: kerneltest-web
 
   - role: openshift/object
