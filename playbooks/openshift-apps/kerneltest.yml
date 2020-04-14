@@ -41,12 +41,12 @@
     template: configmap.yml
     objectname: configmap.yml
 
- - role: openshift/route
-   app: kerneltest
-   routename: kerneltest
-   host: "apps{{ env_suffix }}.fedoraproject.org/kerneltest"
-   serviceport: 8080-tcp
-   servicename: kerneltest
+  - role: openshift/route
+    app: kerneltest
+    routename: kerneltest
+    host: "apps{{ env_suffix }}.fedoraproject.org/kerneltest"
+    serviceport: 8080-tcp
+    servicename: kerneltest
 
   - role: openshift/object
     app: kerneltest
