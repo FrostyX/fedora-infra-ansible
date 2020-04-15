@@ -321,6 +321,14 @@ handlers = ["console"]
             key = "{{ (env == 'production')|ternary('epel-6', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('0608b895', 'd300e724') }}"
 
+            # ELN signing
+
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "eln-pending"
+            to = "eln-candidate"
+            key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
+
 
     [consumer_config.ostree_refs]
         [consumer_config.ostree_refs."fedora/rawhide/x86_64/iot"]
