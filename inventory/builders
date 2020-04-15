@@ -196,7 +196,7 @@ buildhw-09.phx2.fedoraproject.org
 buildhw-10.phx2.fedoraproject.org
 buildhw-11.phx2.fedoraproject.org
 buildhw-12.phx2.fedoraproject.org
-buildhw-aarch64-01.arm.fedoraproject.org
+# buildhw-aarch64-01.arm.fedoraproject.org
 buildhw-aarch64-02.arm.fedoraproject.org
 buildhw-aarch64-03.arm.fedoraproject.org
 buildhw-aarch64-04.arm.fedoraproject.org
@@ -245,7 +245,7 @@ buildvm-ppc64le-31.ppc.fedoraproject.org
 
 [bkernel]
 bkernel03.phx2.fedoraproject.org
-bkernel04.phx2.fedoraproject.org
+#bkernel04.phx2.fedoraproject.org
 
 # These hosts get the runroot plugin installed.
 # They should be added to their own 'compose' channel in the koji db
