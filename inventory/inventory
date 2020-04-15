@@ -249,7 +249,6 @@ blockerbugs01.stg.phx2.fedoraproject.org
 bodhi-backend01.stg.phx2.fedoraproject.org
 busgateway01.stg.phx2.fedoraproject.org
 datagrepper01.stg.phx2.fedoraproject.org
-elections01.stg.phx2.fedoraproject.org
 fedocal01.stg.phx2.fedoraproject.org
 koji01.stg.phx2.fedoraproject.org
 os-node01.stg.phx2.fedoraproject.org
@@ -291,13 +290,6 @@ download_phx2_virtual
 download_ibiblio
 download_rdu2
 download_cc_rdu
-
-[elections]
-elections01.phx2.fedoraproject.org
-elections02.phx2.fedoraproject.org
-
-[elections_stg]
-elections01.stg.phx2.fedoraproject.org
 
 [fas]
 fas01.phx2.fedoraproject.org
@@ -666,7 +658,6 @@ db01.stg.phx2.fedoraproject.org
 db03.stg.phx2.fedoraproject.org
 oci-candidate-registry01.stg.phx2.fedoraproject.org
 oci-registry01.stg.phx2.fedoraproject.org
-elections01.stg.phx2.fedoraproject.org
 #fas01.stg.phx2.fedoraproject.org
 fedimg01.stg.phx2.fedoraproject.org
 fedocal01.stg.phx2.fedoraproject.org
@@ -1246,7 +1237,6 @@ bodhi-backend01.phx2.fedoraproject.org
 mailman01.phx2.fedoraproject.org
 people02.fedoraproject.org
 db-datanommer02.phx2.fedoraproject.org
-elections01.phx2.fedoraproject.org
 fedocal02.phx2.fedoraproject.org
 nuancier01.phx2.fedoraproject.org
 pagure01.fedoraproject.org
