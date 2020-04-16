@@ -16,7 +16,7 @@ spec:
 {% endif %}
       RUN dnf install -y \
 {% if env == "staging" %}
-          --enablerepo=updates-testing
+          --enablerepo=updates-testing \
 {% endif %}
           ipsilon \
           ipsilon-authfas \
