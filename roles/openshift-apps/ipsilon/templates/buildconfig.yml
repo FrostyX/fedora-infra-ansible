@@ -15,6 +15,9 @@ spec:
       RUN curl -o /etc/yum.repos.d/fedora-updates-testing.repo https://src.fedoraproject.org/rpms/fedora-repos/raw/master/f/fedora-updates-testing.repo
 {% endif %}
       RUN dnf install -y \
+{% if env == "staging" %}
+          --enablerepo=updates-testing
+{% endif %}
           ipsilon \
           ipsilon-authfas \
           ipsilon-openid \
