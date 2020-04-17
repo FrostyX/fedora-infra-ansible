@@ -15,6 +15,8 @@
 
   - import_tasks: "{{ tasks_path }}/aws_cloud.yml"
     when: datacenter == "aws"
+    tags: always
+
   - import_tasks: "{{ tasks_path }}/swap.yml"
     when:
       - datacenter == 'aws'
