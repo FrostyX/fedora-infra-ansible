@@ -69,13 +69,6 @@
   service: name=redis enabled=yes state=started
   when: not services_disabled|bool
 
-- name: copy apache files to conf.d
-  copy: src="httpd/{{ item }}" dest="/etc/httpd/conf.d/{{ item }}"
-  with_items:
-  - "welcome.conf"
-  tags:
-  - config
-
 # This was state=yes for https://bugzilla.redhat.com/show_bug.cgi?id=1535689 for
 # some time, and since requests were fixed we want it the other way around
 # again.
