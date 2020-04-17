@@ -76,13 +76,6 @@
   tags:
   - config
 
-- name: copy apache files to conf.d (templates)
-  template: src="httpd/{{ item }}" dest="/etc/httpd/conf.d/{{ item }}"
-  with_items:
-  - "coprs.conf"
-  tags:
-  - config
-
 # This was state=yes for https://bugzilla.redhat.com/show_bug.cgi?id=1535689 for
 # some time, and since requests were fixed we want it the other way around
 # again.
@@ -117,10 +110,19 @@
   tags:
   - config
 
-- name: install copr-frontend ssl vhost
-  template: src="httpd/coprs_ssl.conf.j2" dest="/etc/httpd/conf.d/coprs_ssl.conf"
+- name: copy apache files to conf.d (templates)
+  template: src="httpd/{{ item }}" dest="/etc/httpd/conf.d/{{ item }}"
+  with_items:
+  - "coprs.conf"
+  notify:
+  - reload httpd
   tags:
   - config
+
+- name: drop old and now unused coprs_ssl.conf
+  file: path=/etc/httpd/conf.d/coprs_ssl.conf state=absent
+  notify:
+  - reload httpd
 
 - name: enable services
   service: state=started enabled=yes name={{ item }}
