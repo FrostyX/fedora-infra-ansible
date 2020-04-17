@@ -123,6 +123,8 @@
   file: path=/etc/httpd/conf.d/coprs_ssl.conf state=absent
   notify:
   - reload httpd
+  tags:
+  - config
 
 - name: enable services
   service: state=started enabled=yes name={{ item }}
