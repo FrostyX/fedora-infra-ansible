@@ -187,8 +187,3 @@
   when:
   - ansible_facts.packages['copr-frontend'][0].version is version('1.156', '>=')
   - not services_disabled|bool
-
-- name: add amount of time the server will wait for certain events before failing a request
-  lineinfile:
-    path: /etc/httpd/conf/httpd.conf
-    line: "TimeOut 7200"
