@@ -6,6 +6,9 @@ odcs_raw_config_urls:
   releng_jkaluza_test_config:
     url: https://pagure.io/jkaluza-test-compose.git
     config_filename: test.conf
+  eln:
+    url: https://pagure.io/pungi-fedora.git
+    config_filename: eln.conf
 
 # Default queues for general ODCS backends.
 odcs_celery_queues:
@@ -18,6 +21,9 @@ odcs_celery_router_config:
       releng_raw_pungi_composes:
         source_type: 5  # "raw_config"
         source: "releng_.*"
+      eln_raw_pungi_composes:
+        source_type: 5  # "raw_config"
+        source: "eln.*"
       releng_pungi_composes:
         source_type: [1, 2, 6, 7]  # "tag", "module", "build", "pungi_compose"
         owner: ["jkaluza", "mohanboddu", "humaton"]
