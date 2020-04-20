@@ -1,4 +1,4 @@
-{% if ansible_hostname.startswith(('pkgs02', 'people02')) %}
+{% if ansible_hostname.startswith(('pkgs01', 'pkgs02', 'people02')) %}
 */15 * * * * root /usr/local/bin/lock-wrapper fasClient "/usr/bin/fasClient -i |& grep -vi deprecation | /usr/local/bin/nag-once fassync 1d 2>&1"
 {% else %}
 00 20 * * * root /usr/local/bin/lock-wrapper fasClient "/bin/sleep $(($RANDOM \% 3600)); /usr/bin/fasClient -i |& grep -vi deprecation | /usr/local/bin/nag-once fassync 1d 2>&1"
