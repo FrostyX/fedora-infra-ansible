@@ -36,6 +36,7 @@
     path: "{{ item }}"
     owner: odcs-server
     group: odcs-server
+    state: touch
   with_items:
   - /var/tmp/pungi_cache_file.dbm.rw.lock
   - /var/tmp/pungi_cache_file.dbm
