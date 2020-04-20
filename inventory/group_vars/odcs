@@ -36,8 +36,8 @@ odcs_allowed_clients_users:
   jkaluza: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
   osbs@service: {}
 odcs_allowed_clients_groups:
-  sysadmin-odcs: {},
+  sysadmin-odcs: {}
   pungi-devel: {}
   packager: {"source_types": ["module"]}
-  eln-sig: {"source_types": ["tag", "module", "build", "raw_config"]}
+  eln-sig: {"source_types": ["tag", "module", "build", "raw_config"], "raw_config_keys": ["eln"]}
 
