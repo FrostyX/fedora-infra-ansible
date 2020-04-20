@@ -30,3 +30,14 @@ odcs_celery_router_config:
   cleanup_task: odcs.server.celery_tasks.run_cleanup
   default_queue: pungi_composes
 
+odcs_allowed_clients_users:
+  humaton: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
+  mohanboddu: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
+  jkaluza: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
+  osbs@service: {}
+odcs_allowed_clients_groups:
+  sysadmin-odcs: {},
+  pungi-devel: {}
+  packager: {"source_types": ["module"]}
+  eln-sig: {"source_types": ["tag", "module", "build", "raw_config"]}
+

@@ -37,16 +37,6 @@ fedmsg_certs:
 
 
 odcs_target_dir_url: https://odcs.fedoraproject.org/composes
-odcs_allowed_clients_users:
-  humaton: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
-  mohanboddu: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
-  jkaluza: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
-  osbs@service: {}
-odcs_allowed_clients_groups:
-  sysadmin-odcs: {},
-  pungi-devel: {}
-  packager: {"source_types": ["module"]}
-  eln-sig: {"source_types": ["tag", "module", "build", "raw_config"]}
 
 virt_install_command: "{{ virt_install_command_two_nic }}"
 
