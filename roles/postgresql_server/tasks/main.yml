@@ -37,7 +37,7 @@
     - postgresql-server
     - postgresql-contrib
     - postgresql-plpython
-    - python-psycopg2
+    - python3-psycopg
     - pxz
   when: ansible_distribution_major_version|int >= 8 and ansible_distribution == 'RedHat' and ansible_cmdline.ostree is not defined
   tags:
