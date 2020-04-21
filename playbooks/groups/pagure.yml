@@ -44,18 +44,21 @@
   pre_tasks:
   - name: install fedmsg-relay
     package: name=fedmsg-relay state=present
+    when: env != 'pagure-staging'
     tags:
     - pagure
     - pagure/fedmsg
   - name: and start it
     service: name=fedmsg-relay state=started
+    when: env != 'pagure-staging'
     tags:
     - pagure
     - pagure/fedmsg
 
   roles:
   - pagure/frontend
-  - pagure/fedmsg
+  - {name: pagure/fedmsg
+     when: env != 'pagure-staging'}
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
