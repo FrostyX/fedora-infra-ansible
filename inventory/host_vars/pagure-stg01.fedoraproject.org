@@ -1,5 +1,5 @@
 ---
-nm: 255.255.255.128
+nm: 255.255.255.0
 dns: 8.8.8.8
 
 ks_url: http://209.132.181.6/repo/rhel/ks/kvm-rhel-8-ext
