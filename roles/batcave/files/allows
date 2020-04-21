@@ -98,31 +98,6 @@ require ip 67.219.144.69
 require ip 67.219.144.70
 
 # rdu2 community cage machines
-# this doesn't sit on network boundaries and from no longer exists in 2.4
-require ip 8.43.85.40
-require ip 8.43.85.41
-require ip 8.43.85.42
-require ip 8.43.85.43
-require ip 8.43.85.44
-require ip 8.43.85.45
-require ip 8.43.85.46
-require ip 8.43.85.47
-require ip 8.43.85.48
-require ip 8.43.85.49
-require ip 8.43.85.50
-require ip 8.43.85.51
-require ip 8.43.85.52
-require ip 8.43.85.53
-require ip 8.43.85.54
-require ip 8.43.85.55
-require ip 8.43.85.56
-require ip 8.43.85.57
-require ip 8.43.85.58
-require ip 8.43.85.59
-require ip 8.43.85.60
-require ip 8.43.85.61
-require ip 8.43.85.62
-require ip 8.43.85.63
 require ip 8.43.85.64
 require ip 8.43.85.65
 require ip 8.43.85.66
@@ -139,14 +114,6 @@ require ip 8.43.85.76
 require ip 8.43.85.77
 require ip 8.43.85.78
 require ip 8.43.85.79
-require ip 8.43.85.80
-require ip 8.43.85.81
-require ip 8.43.85.82
-require ip 8.43.85.83
-require ip 8.43.85.84
-require ip 8.43.85.85
-require ip 8.43.85.86
-require ip 8.43.85.87
 
 
 # ec2 instances
