@@ -57,7 +57,7 @@
 
   roles:
   - pagure/frontend
-  - {name: pagure/fedmsg, when: env != 'pagure-staging'}
+  - {role: pagure/fedmsg, when: env != 'pagure-staging'}
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
