@@ -35,7 +35,7 @@
   - pagure-milters
   - pagure-webhook
   - python3-psycopg2
-  - python3-pygments2
+  - python3-pygments
   - redis
   - python3-libsemanage
   - mod_ssl
