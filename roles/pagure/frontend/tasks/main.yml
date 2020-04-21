@@ -42,7 +42,7 @@
   - stunnel
   # Use haveged to ensure the server keeps some entropy
   - haveged
-  when: env != 'pagure-staging'
+  when: env == 'pagure-staging'
   tags:
   - pagure
   - packages
