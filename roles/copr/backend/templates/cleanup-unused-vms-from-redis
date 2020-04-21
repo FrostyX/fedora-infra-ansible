@@ -36,8 +36,11 @@ for worker; do
 
     since=$(redis-cli hget "$worker" in_use_since)
 
-    remove=$(python -c "import time; out = ':' if time.time() - $since  > 1800 else 'false'; print(out)")
+    # race, hopefully - the in_use_since field is not yet set even though the
+    # worker is assigned to build
+    test -n "$since" || continue
 
+    remove=$(python -c "import time; out = ':' if time.time() - $since > 1800 else 'false'; print(out)")
     ! $remove && continue
 
     echo >&2 "REMOVING $since -- $worker"
