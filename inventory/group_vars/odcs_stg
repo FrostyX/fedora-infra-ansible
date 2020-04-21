@@ -1,0 +1,43 @@
+# Configs executed on releng backends must have "releng_" prefix.
+odcs_raw_config_urls:
+  releng_fmc:
+    url: https://pagure.io/releng/fmc.git
+    config_filename: fedora-minimal-compose.conf
+  releng_jkaluza_test_config:
+    url: https://pagure.io/jkaluza-test-compose.git
+    config_filename: test.conf
+  eln:
+    url: https://pagure.io/pungi-fedora.git
+    config_filename: eln.conf
+
+# Default queues for general ODCS backends.
+odcs_celery_queues:
+- pungi_composes
+- cleanup
+
+odcs_celery_router_config:
+  routing_rules:
+    odcs.server.celery_tasks.generate_pungi_compose:
+      releng_raw_pungi_composes:
+        source_type: 5  # "raw_config"
+        source: "releng_.*"
+      eln_raw_pungi_composes:
+        source_type: 5  # "raw_config"
+        source: "eln.*"
+      releng_pungi_composes:
+        source_type: [1, 2, 6, 7]  # "tag", "module", "build", "pungi_compose"
+        owner: ["jkaluza", "mohanboddu", "humaton"]
+  cleanup_task: odcs.server.celery_tasks.run_cleanup
+  default_queue: pungi_composes
+
+odcs_allowed_clients_users:
+  humaton: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
+  mohanboddu: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
+  jkaluza: {"source_types": ["tag", "module", "build", "raw_config"], "target_dirs": ["private"]}
+  osbs@service: {}
+odcs_allowed_clients_groups:
+  sysadmin-odcs: {}
+  pungi-devel: {}
+  packager: {"source_types": ["module"]}
+  eln-sig: {"source_types": ["tag", "module", "build", "raw_config"], "raw_config_keys": ["eln"]}
+
