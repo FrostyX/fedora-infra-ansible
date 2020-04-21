@@ -2,8 +2,8 @@
 nm: 255.255.255.128
 dns: 8.8.8.8
 
-ks_url: http://10.5.126.23/repo/rhel/ks/kvm-rhel-8-ext
-ks_repo: http://10.5.126.23/repo/rhel/RHEL8-x86_64/
+ks_url: http://209.132.181.6/repo/rhel/ks/kvm-rhel-8-ext
+ks_repo: http://209.132.181.6/repo/rhel/RHEL8-x86_64/
 
 volgroup: /dev/vg_server
 
