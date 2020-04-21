@@ -30,5 +30,5 @@ gpgcheck=1
 name = rhel8 CodeReadyBuilder $basearch
 basreurl=https://infrastructure.fedoraproject.org/repo/rhel/rhel8/$basearch/codeready-builder-for-rhel-8-$basearch-rpms/
 gpgkey = file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-beta,file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
-enabled=0
+enabled=1
 gpgcheck=1
