@@ -73,6 +73,14 @@
 - name: Create the "git" user
   command: useradd --move-home --login git --home /srv/git/
            creates=/srv/git/
+  when: env != 'pagure-staging'
+  tags:
+  - pagure
+
+- name: Create the "git" user
+  command: useradd --create-home --home-dir=/srv/git/  git
+           creates=/srv/git/
+  when: env == 'pagure-staging'
   tags:
   - pagure
 
