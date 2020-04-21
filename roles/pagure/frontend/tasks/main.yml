@@ -19,6 +19,30 @@
   - stunnel
   # Use haveged to ensure the server keeps some entropy
   - haveged
+  when: env != 'pagure-staging'
+  tags:
+  - pagure
+  - packages
+
+- name: install needed packages
+  package: name={{ item }} state=present
+  with_items:
+  - pagure
+  - pagure-ci
+  - pagure-ev
+  - pagure-loadjson
+  - pagure-logcom
+  - pagure-milters
+  - pagure-webhook
+  - python3-psycopg2
+  - python3-pygments2
+  - redis
+  - python3-libsemanage
+  - mod_ssl
+  - stunnel
+  # Use haveged to ensure the server keeps some entropy
+  - haveged
+  when: env != 'pagure-staging'
   tags:
   - pagure
   - packages
@@ -200,6 +224,16 @@
   package: name={{ item }} state=present
   with_items:
   - python2-fedora-messaging
+  when: env != 'pagure-staging'
+  tags:
+  - pagure
+  - fedora-messaging
+
+- name: install fedora-messaging as a dependency
+  package: name={{ item }} state=present
+  with_items:
+  - python3-fedora-messaging
+  when: env == 'pagure-staging'
   tags:
   - pagure
   - fedora-messaging
@@ -308,6 +342,17 @@
   changed_when: "1 != 1"
   environment:
       PAGURE_CONFIG: /etc/pagure/pagure.cfg
+  when: env != 'pagure-staging'
+  tags:
+  - web
+  - pagure
+
+- name: create the database scheme
+  command: /usr/bin/python3 /usr/share/pagure/pagure_createdb.py
+  changed_when: "1 != 1"
+  environment:
+      PAGURE_CONFIG: /etc/pagure/pagure.cfg
+  when: env == 'pagure-staging'
   tags:
   - web
   - pagure
