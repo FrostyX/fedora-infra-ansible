@@ -84,6 +84,7 @@
 
 - name: postgresql config template
   template: dest=/var/lib/pgsql/data/postgresql.conf src=postgresql.conf
+  when: (ansible_distribution_major_version|int < 8 and ansible_distribution == 'RedHat') or ansible_distribution != 'RedHat'
   notify:
   - restart postgresql
   tags:
