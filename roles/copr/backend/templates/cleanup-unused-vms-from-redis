@@ -1,7 +1,8 @@
 #! /bin/sh
 
-# check that the build assigned to worker isn't running, and if yes - shutdown
-# the VM (it will be later garbage collected).
+# Check if the build assigned to copr worker is actually running or not.
+# If it is not running, then this is some bug related to:
+# https://pagure.io/copr/copr/issue/987
 
 prefix=copr:backend:vm_instance:hset::
 
@@ -17,12 +18,22 @@ for worker; do
     build_id=$(redis-cli hget "$worker" build_id)
     test -z "$build_id" && continue
 
+    since=$(redis-cli hget "$worker" in_use_since)
+    # race, hopefully - the in_use_since field is not yet set even though the
+    # worker is assigned to build
+    test -n "$since" || continue
+
+    # don't kill younger VMs than half an hour
+    candidate=$(python -c "import time; out = ':' if time.time() - $since > 1800 else 'false'; print(out)")
+    ! $candidate && continue
+
+    # now check what's up with the build
     output=$(curl --fail "https://$hostname/api_3/build/$build_id/" 2>/dev/null)
     if test $? -ne 0; then
         # curl --fail said server error, but it still can be 404 (deleted build)
         case $(curl "https://$hostname/api_3/build/$build_id/" 2>/dev/null) in
             *'does not exist'*) state=deleted ;;
-            *) continue ;;
+            *) continue ;;  # skip normal curl failures, fe is just not available
         esac
     else
         state=$(echo "$output" | python3 -c 'import sys, json; print(json.load(sys.stdin)["state"])')
@@ -31,17 +42,8 @@ for worker; do
     case $state in
         running) continue ;;
         cancel*|succeeded|failed|deleted) ;; # go to delete
-        *) echo "$worker state=$state build_id=$build_id  skip" ; continue ;;
+        *) echo 2>&1 "$worker state=$state build_id=$build_id  skip" ; continue ;;
     esac
-
-    since=$(redis-cli hget "$worker" in_use_since)
-
-    # race, hopefully - the in_use_since field is not yet set even though the
-    # worker is assigned to build
-    test -n "$since" || continue
-
-    remove=$(python -c "import time; out = ':' if time.time() - $since > 1800 else 'false'; print(out)")
-    ! $remove && continue
 
     echo >&2 "REMOVING $since -- $worker"
     ip=$(redis-cli hget "$worker" vm_ip)
