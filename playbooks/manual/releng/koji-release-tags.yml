@@ -197,6 +197,29 @@
     tags: modularity
 
 
+  - name: add the modularity external repo
+    koji_external_repo:
+      koji: koji
+      name: "{{release}}-build"
+      url: "https://kojipkgs.fedoraproject.org/repos/{{release}}-build/latest/$arch/"
+      state: present
+    tags: modularity
+
+
+  - name: create the module-{{release}}-build tag
+    koji_tag:
+      koji: koji
+      name: "module-{{release}}-build"
+      state: present
+      inheritance:
+      - parent: "module-package-list"
+        priority: 0
+      external_repos:
+        - repo: "{{release}}-build"
+          priority: 5
+    tags: modularity
+
+
   - name: create the {{release}} target
     koji_target:
       koji: koji
