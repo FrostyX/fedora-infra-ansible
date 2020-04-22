@@ -6,6 +6,7 @@
     - /srv/web/infra/ansible/vars/all/00-FedoraCycleNumber.yaml
     - /srv/web/infra/ansible/vars/all/FedoraBranched.yaml
     - /srv/web/infra/ansible/vars/all/FedoraBranchedNumber.yaml
+    - /srv/web/infra/ansible/vars/all/FedoraRawhideNumber.yaml
   vars:
     - appliance_build: [appliance-tools, bash, coreutils, grub, parted, perl, policycoreutils, selinux-policy, shadow-utils, sssd-client]
     - build: [bash, bzip2, coreutils, cpio, diffutils, fedora-release, findutils, gawk, glibc-minimal-langpack, grep, gzip, info, make, patch, redhat-rpm-config, rpm-build, sed, shadow-utils, tar, unzip, util-linux, which, xz]
@@ -194,3 +195,65 @@
       - { name: "{{release}}-modular-override", perm: fedora-override, parent: "{{release}}-modular-updates", arches: "" }
       - { name: "{{release}}-modular-pending", perm: '', parent: "{{release}}-modular-updates", arches: "" }
     tags: modularity
+
+
+  - name: create the {{release}} target
+    koji_target:
+      koji: koji
+      name: "{{release}}"
+      build_tag: "{{release}}-build"
+      dest_tag: "{{release}}-updates-candidate"
+    tags: rpm
+
+
+  - name: create the {{release}}-candidate target
+    koji_target:
+      koji: koji
+      name: "{{release}}-candidate"
+      build_tag: "{{release}}-build"
+      dest_tag: "{{release}}-updates-candidate"
+    tags: rpm
+
+
+  - name: create the {{release}}-infra target
+    koji_target:
+      koji: koji
+      name: "{{release}}-infra"
+      build_tag: "{{release}}-infra-build"
+      dest_tag: "{{release}}-infra-candidate"
+    tags: infra
+
+
+  - name: create the {{release}}-container-candidate target
+    koji_target:
+      koji: koji
+      name: "{{release}}-container-candidate"
+      build_tag: "{{release}}-container-build"
+      dest_tag: "{{release}}-container-updates-candidate"
+    tags: container
+
+
+  - name: create the rawhide target
+    koji_target:
+      koji: koji
+      name: "rawhide"
+      build_tag: "f{{FedoraRawhideNumber}}-build"
+      dest_tag: "f{{FedoraRawhideNumber}}-updates-candidate"
+    tags: rawhide
+
+  - name: create the rawhide container target
+    koji_target:
+      koji: koji
+      name: "rawhide-container-candidate"
+      build_tag: "f{{FedoraRawhideNumber}}-container-build"
+      dest_tag: "f{{FedoraRawhideNumber}}-container"
+    tags: rawhide
+
+
+  - name: Change the rawhide tag inheritance
+    koji_tag_inheritance:
+      koji: koji
+      parent_tag: "f{{FedoraRawhideNumber}}"
+      child_tag: rawhide
+      priority: 0
+    tags: rawhide
