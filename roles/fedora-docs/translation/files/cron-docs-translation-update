@@ -1,2 +1,2 @@
 MAILTO=jibecfed
-0 2 * * * _update_docs_trans /usr/local/bin/lock-wrapper cron-docs-translation-update "/usr/local/bin/docs-translation-update"
+0 22 * * * _update_docs_trans /usr/local/bin/lock-wrapper cron-docs-translation-update "/usr/local/bin/docs-translation-update"
