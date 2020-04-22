@@ -35,7 +35,7 @@ virthost-comm04.qa.fedoraproject.org
 # ssh often disabled
 #autosign01.phx2.fedoraproject.org
 virthost-rdu01.fedoraproject.org
-virthost-rdu02.fedoraproject.org
+#virthost-rdu02.fedoraproject.org
 virthost-cc-rdu01.fedoraproject.org
 virthost-cc-rdu02.fedoraproject.org
 buildhw-01.phx2.fedoraproject.org
