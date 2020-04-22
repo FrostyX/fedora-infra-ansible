@@ -2,16 +2,21 @@
 - name: Create the release tags in koji.
   hosts: composer.stg.phx2.fedoraproject.org
   gather_facts: no
+  vars_files:
+    - /srv/web/infra/ansible/vars/all/00-FedoraCycleNumber.yaml
+    - /srv/web/infra/ansible/vars/all/FedoraBranched.yaml
+    - /srv/web/infra/ansible/vars/all/FedoraBranchedNumber.yaml
   vars:
     - appliance_build: [appliance-tools, bash, coreutils, grub, parted, perl, policycoreutils, selinux-policy, shadow-utils, sssd-client]
     - build: [bash, bzip2, coreutils, cpio, diffutils, fedora-release, findutils, gawk, glibc-minimal-langpack, grep, gzip, info, make, patch, redhat-rpm-config, rpm-build, sed, shadow-utils, tar, unzip, util-linux, which, xz]
     - livecd_build: [bash, coreutils, fedora-logos, fedora-release, livecd-tools, policycoreutils, python-dbus, sed, selinux-policy-targeted, shadow-utils, squashfs-tools, sssd-client, tar, unzip, util-linux, which, yum]
     - livemedia_build: [bash, coreutils, glibc-all-langpacks, lorax-lmc-novirt, selinux-policy-targeted, shadow-utils, util-linux]
     - srpm_build: [bash, fedora-release, fedpkg-minimal, glibc-minimal-langpack, gnupg2, redhat-rpm-config, rpm-build, shadow-utils]
+    - release: f{{FedoraBranchedNumber}}
   collections:
   - ktdreyer.koji_ansible
 
-  tasks:
+  pre_tasks:
   - name: copy the koji.conf file with the correct variables
     template:
       src: koji.conf.j2
@@ -20,10 +25,11 @@
       group: root
       mode: 0644
 
-  - name: create the main koji tag
+  tasks:
+  - name: create the main koji tag for {{release}}
     koji_tag:
       koji: koji
-      name: f33
+      name: "{{release}}"
       state: present
       perm: autosign
       groups:
@@ -35,8 +41,9 @@
       extra:
         mock.package_manager: dnf
         mock.new_chroot : 0
+    tags: rpm
 
-  - name: create the release tags
+  - name: create the {{release}} tags
     koji_tag:
       koji: koji
       name: "{{ item.name }}"
@@ -47,16 +54,17 @@
       - parent: "{{ item.parent }}"
         priority: 0
     loop:
-      - { name: f33-updates, perm: admin, parent: f33 , arches: ""}
-      - { name: f33-updates-testing, perm: admin, parent: f33, arches: "" }
-      - { name: f33-updates-pending, perm: admin, parent: f33, arches: "" }
-      - { name: f33-override, perm: fedora-override, parent: f33, arches: "" }
-      - { name: f33-updates-candidate, perm: '', parent: f33, arches: "" }
-      - { name: f33-compose, perm: '', parent: f33, arches: "" }
-      - { name: f33-updates-testing-pending, perm: 'autosign', parent: f33-updates-testing, arches: "" }
-      - { name: f33-signing-pending, perm: 'autosign', parent: f33-updates-testing-pending, arches: "" }
-      - { name: f33-pending, perm: '', parent: f33-updates, arches: "" }
-      - { name: f33-build, perm: 'admin', parent: f33-override, arches: "armv7hl i686 x86_64 aarch64 ppc64le s390x" }
+      - { name: "{{release}}-updates", perm: admin, parent: "{{release}}" , arches: ""}
+      - { name: "{{release}}-updates-testing", perm: admin, parent: "{{release}}", arches: "" }
+      - { name: "{{release}}-updates-pending", perm: admin, parent: "{{release}}", arches: "" }
+      - { name: "{{release}}-override", perm: fedora-override, parent: "{{release}}", arches: "" }
+      - { name: "{{release}}-updates-candidate", perm: '', parent: "{{release}}", arches: "" }
+      - { name: "{{release}}-compose", perm: '', parent: "{{release}}", arches: "" }
+      - { name: "{{release}}-updates-testing-pending", perm: 'autosign', parent: "{{release}}-updates-testing", arches: "" }
+      - { name: "{{release}}-signing-pending", perm: 'autosign', parent: "{{release}}-updates-testing-pending", arches: "" }
+      - { name: "{{release}}-pending", perm: '', parent: "{{release}}-updates", arches: "" }
+      - { name: "{{release}}-build", perm: 'admin', parent: "{{release}}-override", arches: "armv7hl i686 x86_64 aarch64 ppc64le s390x" }
+    tags: rpm
 
   - name: create the main infra tags
     koji_tag:
@@ -68,11 +76,12 @@
       - parent: "{{ item.parent }}"
         priority: 0
       extra:
-        tag2distrepo.enabled: true
+        tag2distrepo.enabled: "true"
         tag2distrepo.keys: 47dd8ef9
     loop:
-      - { name: f33-infra, perm: 'infra', parent: f33-build, arches: "" }
-      - { name: f33-infra-stg, perm: 'infra', parent: f33-infra, arches: "" }
+      - { name: "{{release}}-infra", perm: 'infra', parent: "{{release}}-build", arches: "" }
+      - { name: "{{release}}-infra-stg", perm: 'infra', parent: "{{release}}-infra", arches: "" }
+    tags: infra
 
   - name: create the other infra tags
     koji_tag:
@@ -84,59 +93,53 @@
       - parent: "{{ item.parent }}"
         priority: 0
     loop:
-      - { name: f33-infra-candidate, perm: 'infra', parent: f33-infra-stg, arches: "" }
-      - { name: f33-infra-build, perm: 'infra', parent: f33-infra-stg, arches: "" }
+      - { name: "{{release}}-infra-candidate", perm: 'infra', parent: "{{release}}-infra-stg", arches: "" }
+      - { name: "{{release}}-infra-build", perm: 'infra', parent: "{{release}}-infra-stg", arches: "" }
+    tags: infra
 
 
-  - name: create the container tags
+  - name: create the container tag
     koji_tag:
       koji: koji
-      name: "{{ item.name }}"
+      name: "{{release}}-container"
       state: present
-      perm: "{{ item.perm }}"
-      inheritance:
-      - parent: "{{ item.parent }}"
-        priority: 0
-    loop:
-      - { name: f33-container, perm: '', parent: "", arches: "" }
-      - { name: f33-container-build, perm: '', parent: f33-container, arches: "x86_64" }
+    tags: container
 
 
-  - name: create the container tags
+  - name: create the container build tag
     koji_tag:
       koji: koji
-      name: "{{ item.name }}"
+      name: "{{release}}-container-build"
       state: present
-      perm: "{{ item.perm }}"
+      arches: "x86_64"
       inheritance:
-      - parent: "{{ item.parent }}"
+      - parent: "{{release}}-container"
         priority: 0
-    loop:
-      - { name: f33-container, perm: '', parent: "", arches: "" }
-      - { name: f33-container-build, perm: '', parent: f33-container, arches: "x86_64" }
-
+    tags: container
 
   - name: create the openh264 tags
     koji_tag:
       koji: koji
-      name: "f33-openh264"
+      name: "{{release}}-openh264"
       state: present
       inheritance:
-      - parent: "f33"
+      - parent: "{{release}}"
         priority: 0
     loop:
-      - { name: f33-modularity, perm: '', parent: "", arches: "" }
-      - { name: f33-container-build, perm: '', parent: f33-container, arches: "x86_64" }
+      - { name: "{{release}}-modularity", perm: '', parent: "", arches: "" }
+      - { name: "{{release}}-container-build", perm: '', parent: "{{release}}-container", arches: "x86_64" }
+    tags: openh264
 
 
   - name: create the main coreos tag
     koji_tag:
       koji: koji
-      name: "f33-coreos-continuous"
+      name: "{{release}}-coreos-continuous"
       state: present
       arches: "x86_64 aarch64 ppc64le s390x"
       extra:
-        tag2distrepo.enabled: true
+        tag2distrepo.enabled: "true"
+    tags: coreos
 
   - name: create the coreos-pool tag
     koji_tag:
@@ -146,28 +149,30 @@
       arches: "x86_64 aarch64 ppc64le s390x"
       extra:
         tag2distrepo.keys: "429476b4 cfc659b9 3c3359c4 12c944d0"
+    tags: coreos
 
   - name: create the other coreos tags
     koji_tag:
       koji: koji
-      name: "f33-coreos-signing-pending"
+      name: "{{release}}-coreos-signing-pending"
       state: present
       arches: "x86_64 aarch64 ppc64le s390x"
       inheritance:
       - parent: "coreos-pool"
         priority: 0
       extra:
-        tag2distrepo.enabled: true
-
+        tag2distrepo.enabled: "true"
+    tags: coreos
 
   - name: create the main modularity tags
     koji_tag:
       koji: koji
-      name: f33-modular
+      name: "{{release}}-modular"
       state: present
       perm: autosign
       extra:
         mock.package_manager: dnf
+    tags: modularity
 
   - name: create the rest of the modularity tags
     koji_tag:
@@ -180,11 +185,12 @@
       - parent: "{{ item.parent }}"
         priority: 0
     loop:
-      - { name: f33-modular-updates, perm: admin, parent: f33-modular , arches: ""}
-      - { name: f33-modular-updates-candidate, perm: '', parent: f33-modular-updates, arches: "" }
-      - { name: f33-modular-updates-testing, perm: admin, parent: f33-modular-updates, arches: "" }
-      - { name: f33-modular-updates-testing-pending, perm: 'autosign', parent: f33-modular-updates-testing, arches: "" }
-      - { name: f33-modular-updates-pending, perm: admin, parent: f33-modular-updates, arches: "" }
-      - { name: f33-modular-signing-pending, perm: 'autosign', parent: f33-modular-updates-testing-pending, arches: "" }
-      - { name: f33-modular-override, perm: fedora-override, parent: f33-modular-updates, arches: "" }
-      - { name: f33-modular-pending, perm: '', parent: f33-modular-updates, arches: "" }
+      - { name: "{{release}}-modular-updates", perm: admin, parent: "{{release}}-modular" , arches: ""}
+      - { name: "{{release}}-modular-updates-candidate", perm: '', parent: "{{release}}-modular-updates", arches: "" }
+      - { name: "{{release}}-modular-updates-testing", perm: admin, parent: "{{release}}-modular-updates", arches: "" }
+      - { name: "{{release}}-modular-updates-testing-pending", perm: 'autosign', parent: "{{release}}-modular-updates-testing", arches: "" }
+      - { name: "{{release}}-modular-updates-pending", perm: admin, parent: "{{release}}-modular-updates", arches: "" }
+      - { name: "{{release}}-modular-signing-pending", perm: 'autosign', parent: "{{release}}-modular-updates-testing-pending", arches: "" }
+      - { name: "{{release}}-modular-override", perm: fedora-override, parent: "{{release}}-modular-updates", arches: "" }
+      - { name: "{{release}}-modular-pending", perm: '', parent: "{{release}}-modular-updates", arches: "" }
+    tags: modularity
