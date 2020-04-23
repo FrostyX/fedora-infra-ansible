@@ -1,0 +1,33 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: fmc-build
+  labels:
+    build: fmc
+spec:
+  source:
+    git:
+{% if env == "staging" %}
+      ref: staging
+{% else %}
+      ref: master
+{% endif %}
+      uri: https://pagure.io/releng/fmc.git
+    type: Git
+  strategy:
+    type: Docker
+    dockerStrategy:
+      from:
+        kind: ImageStreamTag
+        name: fedora:30
+  output:
+    to:
+      kind: ImageStreamTag
+      name: fmc-img:latest
+  triggers:
+  - type: ConfigChange
+{% if compose_tracker_webhook_secret is defined %}
+  - type: Generic
+    generic:
+      secret: "{{ compose_tracker_webhook_secret }}"
+{% endif %}

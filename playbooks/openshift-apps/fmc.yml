@@ -1,0 +1,57 @@
+- name: make the app be real
+  hosts: os_masters_stg[0]
+  user: root
+  gather_facts: False
+
+  vars_files:
+    - /srv/web/infra/ansible/vars/global.yml
+    - "/srv/private/ansible/vars.yml"
+    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  roles:
+  - role: openshift/project
+    app: fmc
+    description: Creates composes using ODCS
+    appowners:
+    - mohanboddu
+    - humaton
+    - cverna
+
+  - role: openshift/object
+    app: fmc
+    template: secret.yml
+    objectname: secret.yml
+
+  - role: openshift/object
+    app: fmc
+    template: imagestream.yml
+    objectname: imagestream.yml
+
+  - role: openshift/object
+    app: fmc
+    template: buildconfig.yml
+    objectname: buildconfig.yml
+
+  - role: openshift/start-build
+    app: fmc
+    buildname: fmc-build
+    objectname: fmc-build
+
+  - role: openshift/object
+    app: fmc
+    template: deploymentconfig.yml
+    objectname: deploymentconfig.yml
+
+  - role: openshift/rollout
+    app: fmc
+    dcname: fmc
+
+###############################################
+# actions to delete the project from OpenShift
+###############################################
+# to run: sudo rbac-playbook -l os_masters_stg[0] -t delete openshift-apps/fmc.yml
+  - role: openshift/object-delete
+    app: fmc
+    objecttype: project
+    objectname: fmc
+    tags: [ never, delete ]
