@@ -145,7 +145,6 @@
   notify: restart mailman3
 
 - name: install packages when not using source extracts
-  when: ansible_hostname != "lists-dev.cloud.fedoraproject.org"
   package: name={{ item }} state=present
   with_items:
   - mailman3
@@ -514,7 +513,6 @@
 
 #
 # Only run this on mailman01 for now.
-# TODO: run it on lists-dev too
 #
 
 # The post-update scripts needs memcached to be up (django-compressor will
@@ -560,14 +558,14 @@
   - postfix
   - webui-qcluster
   tags: mailman
-  when: inventory_hostname.startswith('mailman01.phx2') or inventory_hostname.startswith('lists-dev')
+  when: inventory_hostname.startswith('mailman01.phx2')
 
 - name: enable one-shot services
   service: enabled=yes name={{ item }}
   with_items:
   - webui-warm-up-cache
   tags: mailman
-  when: inventory_hostname.startswith('mailman01.phx2') or inventory_hostname.startswith('lists-dev')
+  when: inventory_hostname.startswith('mailman01.phx2')
 
 - name: Create /etc/pki/fedora-messaging
   file:
