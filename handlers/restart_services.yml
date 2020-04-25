@@ -170,8 +170,8 @@
   command: nmcli con up {{ item.split()[1] }}
   async: 1
   poll: 0
-  with_items:
-  - "{{ if_uuid.stdout_lines }}"
+  loop: "{{ if_uuid.stdout_lines|flatten(levels=1) }}"
+  when: item.split()[1] not in ansible_ifcfg_disabled
 
 - name: flush journald tmpfiles to persistent store
   command: pkill -f -USR1 systemd-journald
