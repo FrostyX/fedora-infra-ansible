@@ -155,6 +155,16 @@
   - packages
   - mailman
 
+## install hotfix for e-mails containing broken unicode
+## see issue https://pagure.io/fedora-infrastructure/issue/8824
+## see upstream merge request https://gitlab.com/mailman/mailman/-/merge_requests/350
+- name: hotfix - let mailman cope with e-mails containing broken unicode
+  patch: src=files/hotfix/mailman3/mailman3-broken-unicode-emails.patch dest=/usr/lib/python3.4/site-packages/mailman/email/message.py
+  when: env == "staging"
+  tags:
+  - mailman
+  - hotfix
+  - patches
 
 #
 # Initialize mailman (must be done after settings up the DBs)
