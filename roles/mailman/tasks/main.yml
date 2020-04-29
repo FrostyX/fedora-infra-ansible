@@ -160,6 +160,9 @@
 ## see upstream merge request https://gitlab.com/mailman/mailman/-/merge_requests/350
 - name: hotfix - let mailman cope with e-mails containing broken unicode
   patch: src={{ files }}/hotfix/mailman3/mailman3-broken-unicode-emails.patch dest=/usr/lib/python3.4/site-packages/mailman/email/message.py
+  notify:
+  - restart mailman3
+  - reload apache
   when: env == "staging"
   tags:
   - mailman
