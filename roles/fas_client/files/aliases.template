@@ -116,6 +116,7 @@ download-logs:        /dev/null
 accounts: sysadmin-main
 admin: sysadmin-main
 s3-mirror: sysadmin-main
+fedora-admin-xmlrpc: kevin
 
 hostmaster: admin,sysadmin-dns-members
 sysadmin-main: sysadmin-main-members
