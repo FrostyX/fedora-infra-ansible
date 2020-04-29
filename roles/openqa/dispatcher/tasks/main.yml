@@ -189,7 +189,7 @@
 # branch, as that usually means we're messing around on staging and
 # don't want the checkout reset to HEAD.
 - name: Check if tests are checked out and on a non-standard branch
-  command: "git status"
+  command: "git status" # noqa 303
   args:
     chdir: /root/fedora_openqa
   register: toolsbranch
@@ -199,7 +199,7 @@
 
 - name: Check out fedora_openqa (scheduler / reporter tool)
   git:
-    repo: https://pagure.io/fedora-qa/fedora_openqa.git
+    repo: https://pagure.io/fedora-qa/fedora_openqa.git # noqa 401
     dest: /root/fedora_openqa
   register: gittools
   when: "(toolsbranch.stderr.find('Not a git repository') != -1) or (toolsbranch.stdout.find('On branch master') != -1)"
@@ -278,8 +278,8 @@
 
 - name: Deploy the Fedora infra fedora-messaging cert
   copy:
-    src: "{{ private }}/files/rabbitmq/{{openqa_env}}/pki/issued/openqa{{openqa_env_suffix}}.crt"
-    dest: /etc/pki/fedora-messaging/openqa{{openqa_env_suffix}}-cert.pem
+    src: "{{ private }}/files/rabbitmq/{{ openqa_env }}/pki/issued/openqa{{ openqa_env_suffix }}.crt"
+    dest: /etc/pki/fedora-messaging/openqa{{ openqa_env_suffix }}-cert.pem
     mode: 0644
     owner: root
     group: root
@@ -289,8 +289,8 @@
 
 - name: Deploy the Fedora infra fedora-messaging key
   copy:
-    src: "{{ private }}/files/rabbitmq/{{openqa_env}}/pki/private/openqa{{openqa_env_suffix}}.key"
-    dest: /etc/pki/fedora-messaging/openqa{{openqa_env_suffix}}-key.pem
+    src: "{{ private }}/files/rabbitmq/{{ openqa_env }}/pki/private/openqa{{ openqa_env_suffix }}.key"
+    dest: /etc/pki/fedora-messaging/openqa{{ openqa_env_suffix }}-key.pem
     mode: 0640
     owner: root
     group: geekotest
@@ -308,7 +308,7 @@
   when: "deployment_type is defined and deployment_type == 'stg'"
   tags:
   - config
-  
+
 - name: Deploy the Fedora infra fedora-messaging prod key on stg (for scheduler)
   copy:
     src: "{{ private }}/files/rabbitmq/production/pki/private/openqa.key"
