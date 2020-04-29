@@ -605,11 +605,10 @@ f{{ FedoraRawhideNumber }}c.pre_beta.mandatory_days_in_testing = 0
 # Rawhide gating - Updates in rawhide don't require any days in testing.
 f{{ FedoraRawhideNumber }}.status = pre_beta
 f{{ FedoraRawhideNumber }}.pre_beta.mandatory_days_in_testing = 0
-{% if env == 'staging' %}
+
 # ELN gating - Updates in ELN don't require any days in testing.
 eln.status = pre_beta
 eln.pre_beta.mandatory_days_in_testing = 0
-{% endif %}
 ##
 ## Buildroot Override
 ##
