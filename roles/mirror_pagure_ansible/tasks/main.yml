@@ -1,0 +1,115 @@
+- name: Install packages                  
+  package: state=present name={{ item }}
+  with_items:
+  - fedora-messaging
+  - git
+  tags:
+  - packages
+  - mirror_pagure_ansible
+
+
+# Create the user the service will run under
+
+- name: Setup pagure user
+  user:
+     name: mirror_pagure_ansible
+     shell: /sbin/nologin
+     comment: "mirror_pagure_ansible User"
+  tags: 
+  - mirror_pagure_ansible
+  - mirror_pagure_ansible/user
+
+# configure all the fedora-messaging files
+
+- name: Create /etc/pki/fedora-messaging
+  file:
+    dest: /etc/pki/fedora-messaging
+    mode: 0775
+    owner: root
+    group: root
+    state: directory
+  tags:
+  - config
+  - mirror_pagure_ansible
+
+- name: deploy pagure/rabbitmq certificate
+  copy: src={{ item.src }}
+        dest=/etc/pki/fedora-messaging/{{ item.dest }}
+        owner={{ item.owner }} group={{ item.group}} mode={{ item.mode }}
+  with_items:
+    - src: "{{private}}/files/rabbitmq/production/pki/issued/mirror_pagure_ansible{{env_suffix}}.crt"
+      dest: mirror_pagure_ansible.crt
+      owner: mirror_pagure_ansible
+      group: mirror_pagure_ansible
+      mode: "0644"
+    - src: "{{private}}/files/rabbitmq/production/pki/private/mirror_pagure_ansible{{env_suffix}}.key"
+      dest: mirror_pagure_ansible.key
+      owner: mirror_pagure_ansible
+      group: mirror_pagure_ansible
+      mode: "0600"
+    - src: "{{private}}/files/rabbitmq/production/pki/ca.crt"
+      dest: cacert.pem
+      owner: mirror_pagure_ansible
+      group: mirror_pagure_ansible                                          
+      mode: "0644"
+  tags:
+  - pagure
+  - fedora-messaging
+
+- name: Setup mirror_pagure_ansible fedora-messaging config
+  template:
+    src: mirror_pagure_ansible.cfg
+    dest: /etc/fedora-messaging/mirror_pagure_ansible.toml
+    owner: mirror_pagure_ansible
+    group: mirror_pagure_ansible
+    mode: 0640
+  tags:
+  - config
+  - mirror_pagure_ansible
+
+# Install the script
+
+- name: Create /usr/local/libexec/mirror_pagure_ansible
+  file:
+    dest: /usr/local/libexec/mirror_pagure_ansible
+    mode: 0775
+    owner: root
+    group: root
+    state: directory
+  tags:
+  - config
+  - mirror_pagure_ansible
+
+- name: Install the consumer
+  template:
+    src: mirror_from_pagure_bus.py
+    dest: /usr/local/libexec/mirror_pagure_ansible/mirror_from_pagure_bus.py
+  tags:
+  - packages
+  - mirror_pagure_ansible
+
+
+# Install and start the service
+
+- name: Install the dedicated service file for mirror_pagure_ansible
+  template:
+    src: mirror_pagure_ansible.service
+    dest: /etc/systemd/system/mirror_pagure_ansible.service
+    owner: root
+    group: root
+    mode: 0755
+  notify:
+  - reload systemd
+  tags:
+  - config
+  - mirror_pagure_ansible
+
+- name: Enable and started the service
+  service:
+    name: mirror_pagure_ansible.service
+    enabled: yes
+    state: started
+  tags:
+  - config
+  - mirror_pagure_ansible
+
