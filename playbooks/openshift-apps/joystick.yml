@@ -20,6 +20,7 @@
     description: joystick
     appowners:
     - sayanchowdhury
+    - mobrien
 
   - role: openshift/secret-file
     app: joystick
