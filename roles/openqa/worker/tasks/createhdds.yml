@@ -32,7 +32,7 @@
 
 - name: Check out createhdds
   git:
-    repo: https://pagure.io/fedora-qa/createhdds.git
+    repo: https://pagure.io/fedora-qa/createhdds.git # noqa 401
     dest: /root/createhdds
 
 - name: Set up createhdds cron job

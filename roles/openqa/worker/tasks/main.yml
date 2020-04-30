@@ -66,7 +66,8 @@
   register: prepservice
 
 - name: Do systemctl daemon-reload to register new service (ppc64 only)
-  command: "systemctl daemon-reload"
+  systemd:
+    daemon_reload: yes
   when: "prepservice is defined and prepservice is changed"
 
 - name: Enable systemd service to run boot script (ppc64 only)
