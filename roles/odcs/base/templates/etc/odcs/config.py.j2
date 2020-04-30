@@ -127,7 +127,7 @@ class ProdConfiguration(BaseConfiguration):
     MESSAGING_TOPIC = "odcs.compose.state-changed"
     INTERNAL_MESSAGING_TOPIC = "odcs.internal.msg"
 
-    PUNGI_KOJI_ARGS = ['--nightly']
+    PUNGI_KOJI_ARGS = ['--no-latest-link']
     PUNGI_TIMEOUT=10800
 
     PUNGI_RUNROOT_ENABLED = {{ odcs_pungi_runroot_enabled }}
