@@ -40,6 +40,9 @@ openqa_extraarches: true
 # ON THE EDGE (radical guitar riff)
 openqa_repo: updates-testing
 
+# 2020-04-29/30 git bump scratch build
+openqa_scratch: ["43922990"]
+
 wikitcms_token: "{{ private }}/files/openidc/staging/wikitcms.json"
 openqa_wikitcms_hostname: stg.fedoraproject.org
 openqa_resultsdb_url: http://resultsdb-stg01.qa.fedoraproject.org/resultsdb_api/api/v2.0/
