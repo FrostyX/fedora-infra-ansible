@@ -40,31 +40,32 @@
   handlers:
    - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
-- name: configure taskotron master
-  hosts: taskotron_dev:taskotron_stg:taskotron_prod
-  user: root
-  gather_facts: True
-
-  vars_files:
-   - /srv/web/infra/ansible/vars/global.yml
-   - "/srv/private/ansible/vars.yml"
-   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
-
-  roles:
-   - { role: nfs/client, mnt_dir: '/srv/taskotron/',  nfs_src_dir: 'fedora_taskotron_dev', nfs_mount_opts: 'rw,hard,bg,intr,noatime,nodev,nosuid,nfsvers=3,sec=sys', when: deployment_type == 'dev' }
-   - { role: nfs/client, mnt_dir: '/srv/taskotron/',  nfs_src_dir: 'fedora_taskotron_stg', nfs_mount_opts: 'rw,hard,bg,intr,noatime,nodev,nosuid,nfsvers=3,sec=sys', when: deployment_type == 'stg' }
-   - { role: nfs/client, mnt_dir: '/srv/taskotron/',  nfs_src_dir: 'fedora_taskotron_prod', nfs_mount_opts: 'rw,hard,bg,intr,noatime,nodev,nosuid,nfsvers=3,sec=sys', when: deployment_type == 'prod' }
-   - { role: taskotron/grokmirror, tags: ['grokmirror'] }
-#   - { role: taskotron/cgit, tags: ['cgit'] }
-   - { role: taskotron/buildmaster, tags: ['buildmaster'] }
-   - { role: taskotron/buildmaster-configure, tags: ['buildmasterconfig'] }
-   - { role: taskotron/taskotron-trigger, tags: ['trigger'] }
-   - { role: taskotron/taskotron-frontend, tags: ['frontend'] }
-   - { role: taskotron/taskotron-master, tags: ['taskotronmaster'] }
-
-  handlers:
-   - import_tasks: "{{ handlers_path }}/restart_services.yml"
-
+# taskotron systems are in the process of being decomissioned
+#- name: configure taskotron master
+#  hosts: taskotron_dev:taskotron_stg:taskotron_prod
+#  user: root
+#  gather_facts: True
+#
+#  vars_files:
+#   - /srv/web/infra/ansible/vars/global.yml
+#   - "/srv/private/ansible/vars.yml"
+#   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+#
+#  roles:
+#   - { role: nfs/client, mnt_dir: '/srv/taskotron/',  nfs_src_dir: 'fedora_taskotron_dev', nfs_mount_opts: 'rw,hard,bg,intr,noatime,nodev,nosuid,nfsvers=3,sec=sys', when: deployment_type == 'dev' }
+#   - { role: nfs/client, mnt_dir: '/srv/taskotron/',  nfs_src_dir: 'fedora_taskotron_stg', nfs_mount_opts: 'rw,hard,bg,intr,noatime,nodev,nosuid,nfsvers=3,sec=sys', when: deployment_type == 'stg' }
+#   - { role: nfs/client, mnt_dir: '/srv/taskotron/',  nfs_src_dir: 'fedora_taskotron_prod', nfs_mount_opts: 'rw,hard,bg,intr,noatime,nodev,nosuid,nfsvers=3,sec=sys', when: deployment_type == 'prod' }
+#   - { role: taskotron/grokmirror, tags: ['grokmirror'] }
+##   - { role: taskotron/cgit, tags: ['cgit'] }
+#   - { role: taskotron/buildmaster, tags: ['buildmaster'] }
+#   - { role: taskotron/buildmaster-configure, tags: ['buildmasterconfig'] }
+#   - { role: taskotron/taskotron-trigger, tags: ['trigger'] }
+#   - { role: taskotron/taskotron-frontend, tags: ['frontend'] }
+#   - { role: taskotron/taskotron-master, tags: ['taskotronmaster'] }
+#
+#  handlers:
+#   - import_tasks: "{{ handlers_path }}/restart_services.yml"
+#
 - name: configure standalone taskotron host
   hosts: taskotron_dev
   user: root
