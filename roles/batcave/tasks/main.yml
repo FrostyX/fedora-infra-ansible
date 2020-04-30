@@ -502,3 +502,15 @@
   - config
   - batcave
   - selinux
+
+- name: Create the /var/tmux folder for shared tmux session
+  file: path=/var/tmux mode=774 owner=root group=sysadmin state=directory
+  tags:
+  - batcave
+  - tmux
+
+- name: Let the /var/tmux folder be writable to fi-apprentice as well
+  command: setfacl -Rdm g:fi-apprentice:rwx /var/tmux
+  tags:
+  - batcave
+  - tmux
