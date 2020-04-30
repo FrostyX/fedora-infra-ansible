@@ -154,4 +154,4 @@
 
 - name: Enable and start worker services
   service: name=openqa-worker@{{ item }} enabled=yes state=started
-  loop: "{{ range(1, {{ openqa_workers }} + 1)|list }}"
+  loop: "{{ range(1, {{ openqa_workers|int }} + 1)|list }}"
