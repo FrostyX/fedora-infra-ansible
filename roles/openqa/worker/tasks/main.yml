@@ -36,9 +36,9 @@
   file: path=/var/tmp/scratchrepo state=directory owner=root group=root
   when: "openqa_scratch is defined"
 
-- name: Install Koji CLI client
+- name: Install Koji CLI client and createrepo
   package:
-    name: koji
+    name: ["koji", "createrepo"]
     state: present
   tags:
   - packages
@@ -49,6 +49,12 @@
   args:
     chdir: /var/tmp/scratchrepo
   loop: "{{ openqa_scratch|flatten(levels=1) }}"
+  when: "openqa_scratch is defined"
+
+- name: Write repodata
+  command: "createrepo ."
+  args:
+    chdir: /var/tmp/scratchrepo
   when: "openqa_scratch is defined"
 
 - name: Write scratch build repo config
