@@ -6,6 +6,10 @@
 # - openqa_hostname
 ##      string - hostname of openQA server to run jobs for
 ##      default - localhost
+# - openqa_repo
+##      string - Repo to enable when updating openQA packages. Set to
+##               'updates-testing' to use packages from updates-testing
+##      default - 'updates', which is effectively a no-op
 
 # Optional vars
 # - openqa_tap
@@ -16,12 +20,52 @@
 ##               installed and rngd.service enabled/started
 # - openqa_worker_class
 ##      string - custom WORKER_CLASS value for workers.ini
+# - openqa_scratch
+##      list -   A list of task IDs of scratch builds to install. If set, we
+##               will download the scratch build(s) and set up a side repo
+##               containing them. We do this because openQA staging is our
+##               main platform for testing new openQA releases; we need to
+##               be able to run scratch builds to see if a new release is
+##               really bad before submitting it as an update, we don't want
+##               to send new builds to updates-testing if they have problems
 
-- name: Install required packages (testing)
+- name: Remove scratch repo directory
+  file: path=/var/tmp/scratchrepo state=absent
+
+- name: (Re-)create scratch repo directory
+  file: path=/var/tmp/scratchrepo state=directory owner=root group=root
+  when: "openqa_scratch is defined"
+
+- name: Install Koji CLI client
   package:
-    name: ['openqa-worker']
+    name: koji
     state: present
-    enablerepo: "updates-testing"
+  tags:
+  - packages
+  when: "openqa_scratch is defined"
+
+- name: Download scratch builds
+  command: "koji download-task --arch=noarch --arch={{ ansible_architecture }} {{ item }}"
+  args:
+    chdir: /var/tmp/scratchrepo
+  loop: "{{ openqa_scratch|flatten(levels=1) }}"
+  when: "openqa_scratch is defined"
+
+- name: Write scratch build repo config
+  copy: src=scratchrepo.conf dest=/etc/yum.repos.d/scratchrepo.conf owner=root group=root mode=0644
+  when: "openqa_scratch is defined"
+
+- name: Delete scratch build repo config
+  file: path=/etc/yum.repos.d/scratchrepo.conf state=absent
+  when: "openqa_scratch is not defined"
+
+- name: Install required packages
+  package:
+    name: ['openqa-worker', 'os-autoinst']
+    state: latest
+    enablerepo: "{{ openqa_repo }}"
+  notify:
+  - restart openqa workers
   tags:
   - packages
 
@@ -91,6 +135,8 @@
 
 - name: openQA worker config
   template: src=workers.ini.j2 dest=/etc/openqa/workers.ini owner=_openqa-worker group=root mode=0644
+  notify:
+  - restart openqa workers
   tags:
   - config
 
@@ -99,4 +145,4 @@
 
 - name: Enable and start worker services
   service: name=openqa-worker@{{ item }} enabled=yes state=started
-  with_sequence: "count={{ openqa_workers }}"
+  loop: "{{ range(1, {{ openqa_workers }} + 1)|list }}"

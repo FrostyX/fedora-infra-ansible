@@ -1,7 +1,8 @@
 - name: Install packages
   package:
     name: ['os-autoinst-openvswitch', 'tunctl', 'network-scripts']
-    state: present
+    state: latest
+    enablerepo: "{{ openqa_repo }}"
   tags:
   - packages
 

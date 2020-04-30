@@ -11,7 +11,9 @@ openqa_secret: "{{ stg_openqa_apisecret }}"
 openqa_env_suffix: .stg
 openqa_env: staging
 
-# These boxes are F30+, so we need Python 3 ansible
+# install openQA and os-autoinst from updates-testing - this is
+# staging, we live ON THE EDGE (radical guitar riff)
+openqa_repo: updates-testing
 
 deployment_type: stg
 freezes: false

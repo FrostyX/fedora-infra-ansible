@@ -22,6 +22,10 @@
 ##                also set openqa_amqp_publisher_prefix, openqa_amqp_publisher_url
 ##                and openqa_amqp_publisher_exchange
 ##       default - FedoraUpdateRestart
+# - openqa_repo
+##      string - Repo to enable when updating openQA packages. Set to
+##               'updates-testing' to use packages from updates-testing
+##      default - 'updates', which is effectively a no-op
 
 # Optional vars
 # - openqa_static_uid
@@ -68,6 +72,14 @@
 ##      string - Fedora Infrastructure thing; for this role, applies an
 ##               infra-specific tweak to httpd config. Don't set it outside
 ##               Fedora infra.
+# - openqa_scratch
+##      list -   A list of task IDs of scratch builds to install. If set, we
+##               will download the scratch build(s) and set up a side repo
+##               containing them. We do this because openQA staging is our
+##               main platform for testing new openQA releases; we need to
+##               be able to run scratch builds to see if a new release is
+##               really bad before submitting it as an update, we don't want
+##               to send new builds to updates-testing if they have problems
 
 # If openqa_dbhost is set, the other openqa_db* variables must be too,
 # and the server will be configured to use a pgsql database accordingly.
@@ -90,14 +102,44 @@
     shell: /sbin/nologin
   when: "openqa_static_uid is defined"
 
-# this is separate from the step below so we can easily flip it between
-# stable and testing
+- name: Remove scratch repo directory
+  file: path=/var/tmp/scratchrepo state=absent
+
+- name: (Re-)create scratch repo directory
+  file: path=/var/tmp/scratchrepo state=directory owner=root group=root
+  when: "openqa_scratch is defined"
+
+- name: Install Koji CLI client
+  package:
+    name: koji
+    state: present
+  tags:
+  - packages
+  when: "openqa_scratch is defined"
+
+- name: Download scratch builds
+  command: "koji download-task --arch=noarch --arch={{ ansible_architecture }} {{ item }}"
+  args:
+    chdir: /var/tmp/scratchrepo
+  loop: "{{ openqa_scratch|flatten(levels=1) }}"
+  when: "openqa_scratch is defined"
+
+- name: Write scratch build repo config
+  copy: src=scratchrepo.conf dest=/etc/yum.repos.d/scratchrepo.conf owner=root group=root mode=0644
+  when: "openqa_scratch is defined"
+
+- name: Delete scratch build repo config
+  file: path=/etc/yum.repos.d/scratchrepo.conf state=absent
+  when: "openqa_scratch is not defined"
+
+# this is separate from the step below so we can use openqa_repo just
+# for these packages
 - name: Install openQA packages
   package:
     name: ['openqa', 'openqa-httpd', 'openqa-plugin-fedora-messaging', 'openqa-plugin-fedoraupdaterestart',
            'python3-fedfind']
-    state: present
-#    enablerepo: "updates-testing"
+    state: latest
+    enablerepo: "{{ openqa_repo }}"
   tags:
   - packages
 
