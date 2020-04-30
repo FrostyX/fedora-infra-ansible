@@ -131,7 +131,7 @@
   when: "openqa_scratch is defined"
 
 - name: Write scratch build repo config
-  copy: src=scratchrepo.conf dest=/etc/yum.repos.d/scratchrepo.conf owner=root group=root mode=0644
+  copy: src=scratchrepo.repo dest=/etc/yum.repos.d/scratchrepo.repo owner=root group=root mode=0644
   when: "openqa_scratch is defined"
 
 - name: Delete scratch build repo config
