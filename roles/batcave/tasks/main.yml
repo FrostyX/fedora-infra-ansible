@@ -504,7 +504,7 @@
   - selinux
 
 - name: Create the /var/tmux folder for shared tmux session
-  file: path=/var/tmux mode=774 owner=root group=sysadmin state=directory
+  file: path=/var/tmux mode=2774 owner=root group=sysadmin state=directory
   tags:
   - batcave
   - tmux
