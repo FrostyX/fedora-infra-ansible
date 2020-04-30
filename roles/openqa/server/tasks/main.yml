@@ -118,7 +118,7 @@
 # branch, as that usually means we're messing around on staging and
 # don't want the checkout reset to HEAD.
 - name: Check if tests are checked out and on a non-standard branch
-  command: "git status"
+  command: "git status" # noqa 303
   args:
     chdir: /var/lib/openqa/share/tests/fedora
   register: testsbranch
@@ -128,19 +128,22 @@
 
 - name: Check out the tests
   git:
-    repo: https://pagure.io/fedora-qa/os-autoinst-distri-fedora.git
+    repo: https://pagure.io/fedora-qa/os-autoinst-distri-fedora.git # noqa 401
     dest: /var/lib/openqa/share/tests/fedora
   register: gittests
   become: true
   become_user: geekotest
-  when: "(testsbranch.stderr.find('Not a git repository') != -1) or (testsbranch.stdout.find('On branch master') != -1 and testsbranch.stdout.find('Changes not staged') == -1)"
+  when: >
+    (testsbranch.stderr.find('Not a git repository') != -1) or
+    (testsbranch.stdout.find('On branch master') != -1 and
+    testsbranch.stdout.find('Changes not staged') == -1)
 
 - name: Remove old openqa_fedora_tools checkout
   file: path=/root/openqa_fedora_tools state=absent
 
 - name: Check out createhdds
   git:
-    repo: https://pagure.io/fedora-qa/createhdds.git
+    repo: https://pagure.io/fedora-qa/createhdds.git # noqa 401
     dest: /root/createhdds
 
 - name: Create asset directories
@@ -238,7 +241,7 @@
   - config
 
 - name: Initialize database
-  shell: "/usr/share/openqa/script/initdb --user geekotest --init_database"
+  shell: "/usr/share/openqa/script/initdb --user geekotest --init_database" # noqa 305
   register: initdb
   changed_when: "initdb.rc == 0"
   failed_when: "(initdb.rc > 0) and (initdb.stdout is not defined or initdb.stdout.find('already exists') == -1)"
@@ -275,13 +278,16 @@
   - config
 
 - name: Create admin user
-  command: "/var/lib/openqa/script/create_admin --email {{ openqa_email }} --nickname {{ openqa_nickname }} --fullname '{{ openqa_fullname }}' --key {{ openqa_key }} --secret {{ openqa_secret }} {{ openqa_userid }}"
+  command: >
+    /var/lib/openqa/script/create_admin --email {{ openqa_email }} --nickname {{ openqa_nickname }}
+    --fullname '{{ openqa_fullname }}' --key {{ openqa_key }} --secret {{ openqa_secret }}
+    {{ openqa_userid }}
   register: admin
   changed_when: "admin.rc == 0"
   failed_when: "(admin.rc > 0) and (admin.stderr is not defined or admin.stderr.find('already exists') == -1)"
 
 - name: Check if we're on upstream template format or FIF
-  stat: 
+  stat:
     path: /var/lib/openqa/share/tests/fedora/templates.fif.json
   register: templatesfif
 
@@ -296,19 +302,19 @@
 # changed, the *check* step will register as changed.
 - name: Load main tests (upstream format)
   command: "/var/lib/openqa/share/tests/fedora/templates --clean"
-  when: "(gittests is defined) and (gittests is changed) and (templatesfif.stat.exists == false)"
+  when: "(gittests is defined) and (gittests is changed) and (not templatesfif.stat.exists)"
   changed_when: "1 != 1"
 
 - name: Load update tests (upstream format)
   command: "/var/lib/openqa/share/tests/fedora/templates-updates --update"
-  when: "(gittests is defined) and (gittests is changed) and (templatesfif.stat.exists == false)"
+  when: "(gittests is defined) and (gittests is changed) and (not templatesfif.stat.exists)"
   changed_when: "1 != 1"
 
 - name: Load all tests (FIF format)
   command: "/var/lib/openqa/share/tests/fedora/fifloader.py -l --clean templates.fif.json templates-updates.fif.json"
   args:
     chdir: /var/lib/openqa/share/tests/fedora
-  when: "(gittests is defined) and (gittests is changed) and (templatesfif.stat.exists == true)"
+  when: "(gittests is defined) and (gittests is changed) and (templatesfif.stat.exists)"
   changed_when: "1 != 1"
 
 - name: Check if the tests changed in previous step
@@ -322,7 +328,9 @@
   delegate_to: "{{ openqa_dbhost }}"
   become_user: postgres
   become: true
-  command: "psql -d {{ openqa_dbname }} -c \"UPDATE job_groups SET size_limit_gb = {{ openqa_assetsize }} WHERE name = 'fedora' AND (size_limit_gb != {{ openqa_assetsize }} OR size_limit_gb IS NULL);\""
+  command: >
+    psql -d {{ openqa_dbname }} -c "UPDATE job_groups SET size_limit_gb = {{ openqa_assetsize }}
+    WHERE name = 'fedora' AND (size_limit_gb != {{ openqa_assetsize }} OR size_limit_gb IS NULL);"
   when: "openqa_dbhost is defined and openqa_assetsize is defined"
   register: pgsqlsize
   changed_when: "pgsqlsize.stdout.find('UPDATE 0') == -1"
@@ -331,7 +339,10 @@
   delegate_to: "{{ openqa_dbhost }}"
   become_user: postgres
   become: true
-  command: "psql -d {{ openqa_dbname }} -c \"UPDATE job_groups SET size_limit_gb = {{ openqa_assetsize_ppc }} WHERE name = 'Fedora PowerPC' AND (size_limit_gb != {{ openqa_assetsize_ppc }} OR size_limit_gb IS NULL);\""
+  command: >
+    psql -d {{ openqa_dbname }} -c "UPDATE job_groups SET size_limit_gb = {{ openqa_assetsize_ppc }}
+    WHERE name = 'Fedora PowerPC' AND (size_limit_gb != {{ openqa_assetsize_ppc }}
+    OR size_limit_gb IS NULL);"
   when: "openqa_dbhost is defined and openqa_assetsize_ppc is defined"
   register: pgsqlsize
   changed_when: "pgsqlsize.stdout.find('UPDATE 0') == -1"
@@ -340,7 +351,10 @@
   delegate_to: "{{ openqa_dbhost }}"
   become_user: postgres
   become: true
-  command: "psql -d {{ openqa_dbname }} -c \"UPDATE job_groups SET size_limit_gb = {{ openqa_assetsize_aarch64 }} WHERE name = 'Fedora AArch64' AND (size_limit_gb != {{ openqa_assetsize_aarch64 }} OR size_limit_gb IS NULL);\""
+  command: >
+    psql -d {{ openqa_dbname }} -c "UPDATE job_groups SET size_limit_gb = {{ openqa_assetsize_aarch64 }}
+    WHERE name = 'Fedora AArch64' AND (size_limit_gb != {{ openqa_assetsize_aarch64 }}
+    OR size_limit_gb IS NULL);"
   when: "openqa_dbhost is defined and openqa_assetsize_aarch64 is defined"
   register: pgsqlsize
   changed_when: "pgsqlsize.stdout.find('UPDATE 0') == -1"
@@ -349,7 +363,10 @@
   delegate_to: "{{ openqa_dbhost }}"
   become_user: postgres
   become: true
-  command: "psql -d {{ openqa_dbname }} -c \"UPDATE job_groups SET size_limit_gb = {{ openqa_assetsize_updates }} WHERE name LIKE '%Updates%' AND (size_limit_gb != {{ openqa_assetsize_updates }} OR size_limit_gb IS NULL);\""
+  command: >
+    psql -d {{ openqa_dbname }} -c "UPDATE job_groups SET size_limit_gb = {{ openqa_assetsize_updates }}
+    WHERE name LIKE '%Updates%' AND (size_limit_gb != {{ openqa_assetsize_updates }}
+    OR size_limit_gb IS NULL);"
   when: "openqa_dbhost is defined and openqa_assetsize_updates is defined"
   register: pgsqlupdatesize
   changed_when: "pgsqlupdatesize.stdout.find('UPDATE 0') == -1"
