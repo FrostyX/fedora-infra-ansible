@@ -217,3 +217,9 @@
     group: odcs-server
     mode: 0640
   when: inventory_hostname.startswith('odcs-backend-releng')
+
+- name: set releng odcs oidc token
+  copy:
+    src: "{{private}}/files/releng/{{env}}/releng-odcs-oidc-token"
+    dest: /etc/releng-odcs-oidc-token
+  when: inventory_hostname.startswith('odcs-backend-releng')
