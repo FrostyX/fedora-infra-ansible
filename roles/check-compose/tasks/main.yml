@@ -117,7 +117,7 @@
 
 - name: Check out check-compose
   git:
-    repo: https://pagure.io/fedora-qa/check-compose.git
+    repo: https://pagure.io/fedora-qa/check-compose.git # noqa 401
     dest: /root/check-compose
   register: gitcc
 
@@ -144,8 +144,8 @@
 # need a separate identity for check-compose.
 - name: Deploy the Fedora infra fedora-messaging cert
   copy:
-    src: "{{ private }}/files/rabbitmq/{{checkcompose_env}}/pki/issued/openqa{{checkcompose_env_suffix}}.crt"
-    dest: /etc/pki/fedora-messaging/openqa{{checkcompose_env_suffix}}-cert.pem
+    src: "{{ private }}/files/rabbitmq/{{ checkcompose_env }}/pki/issued/openqa{{ checkcompose_env_suffix }}.crt"
+    dest: /etc/pki/fedora-messaging/openqa{{ checkcompose_env_suffix }}-cert.pem
     mode: 0644
     owner: root
     group: root
@@ -159,8 +159,8 @@
 # line. This needs making cleaner somehow.
 - name: Deploy the Fedora infra fedora-messaging key
   copy:
-    src: "{{ private }}/files/rabbitmq/{{checkcompose_env}}/pki/private/openqa{{checkcompose_env_suffix}}.key"
-    dest: /etc/pki/fedora-messaging/openqa{{checkcompose_env_suffix}}-key.pem
+    src: "{{ private }}/files/rabbitmq/{{ checkcompose_env }}/pki/private/openqa{{ checkcompose_env_suffix }}.key"
+    dest: /etc/pki/fedora-messaging/openqa{{ checkcompose_env_suffix }}-key.pem
     mode: 0640
     owner: root
     group: geekotest
