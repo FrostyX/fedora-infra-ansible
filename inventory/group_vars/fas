@@ -6,6 +6,8 @@ num_cpus: 8
 
 virt_install_command: "{{ virt_install_command_rhel6 }}"
 
+base_pkgs_inst: ['iptables']
+
 # for systems that do not match the above - specify the same parameter in
 # the host_vars/$hostname file
 
