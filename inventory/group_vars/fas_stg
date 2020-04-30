@@ -8,6 +8,9 @@ virt_install_command: "{{ virt_install_command_rhel6 }}"
 
 base_pkgs_inst: ['iptables']
 base_pkgs_erase: ['firstboot-tui','bluez-utils', 'sendmail','firewalld']
+service_disabled: []
+service_enabled: []
+is_rhel: True
 
 # for systems that do not match the above - specify the same parameter in
 # the host_vars/$hostname file
