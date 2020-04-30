@@ -72,6 +72,7 @@ syncHttpLogs download04.phx2.fedoraproject.org
 syncHttpLogs download05.phx2.fedoraproject.org
 syncHttpLogs download-rdu01.vpn.fedoraproject.org
 syncHttpLogs download-ib01.vpn.fedoraproject.org
+syncHttpLogs download-cc-rdu01.vpn.fedoraproject.org
 syncHttpLogs sundries01.phx2.fedoraproject.org
 syncHttpLogs sundries02.phx2.fedoraproject.org
 syncHttpLogs sundries01.stg.phx2.fedoraproject.org
