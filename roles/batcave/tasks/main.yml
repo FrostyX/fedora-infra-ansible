@@ -510,7 +510,7 @@
   - tmux
 
 - name: Let the /var/tmux folder be writable to fi-apprentice as well
-  command: setfacl -Rm d:g:fi-apprentice:rwx g:fi-apprentice:rwx /var/tmux
+  command: setfacl -R -m d:g:fi-apprentice:rwx -m g:fi-apprentice:rwx /var/tmux
   tags:
   - batcave
   - tmux
