@@ -1,6 +1,6 @@
 # Restart handler for worker services
 - name: Conditionally restart openQA workers
   command: /usr/local/bin/conditional-restart.sh openqa-worker@{{ item }}
-  loop: "{{ range(1, {{ openqa_workers|int }} + 1)|list }}"
+  loop: "{{ range(1, openqa_workers + 1)|list }}"
   listen:
   - restart openqa workers
