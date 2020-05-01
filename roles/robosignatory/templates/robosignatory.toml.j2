@@ -329,6 +329,14 @@ handlers = ["console"]
             key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
 
+            # ELN Mass Rebuild 
+
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "eln-rebuild"
+            to = "eln"
+            key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
+
 
     [consumer_config.ostree_refs]
         [consumer_config.ostree_refs."fedora/rawhide/x86_64/iot"]
