@@ -15,7 +15,7 @@ import time
 from fedora_messaging import api, config
 
 
-_log = logging.getLogger(__name__)
+_log = logging.getLogger("mirror_from_pagure_bus")
 
 
 def run_command(command, cwd=None):
