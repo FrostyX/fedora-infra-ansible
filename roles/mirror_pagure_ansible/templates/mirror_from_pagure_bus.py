@@ -68,6 +68,8 @@ class MirrorFromPagure(object):
         if not os.path.exists(self.path):
             raise OSError("No folder %s found on disk" % self.path)
 
+        _log.info("Ready to consume and trigger on %s", self.trigger_names)
+
     def __call__(self, message, cnt=0):
         """
         Invoked when a message is received by the consumer.
