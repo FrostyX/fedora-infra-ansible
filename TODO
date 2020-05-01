@@ -14,3 +14,5 @@
 
 - merge in tasks/playbooks/inventory/etc from:
   - builders
+
+- use external git to get PR's from.
