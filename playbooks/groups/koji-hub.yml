@@ -111,7 +111,7 @@
     nfs_src_dir: 'fedora-ostree-content-stg/compose/ostree'
     when: env == 'staging'
   - role: nfs/client
-    mnt_dir: '/src/odcs'
+    mnt_dir: '/srv/odcs'
     nfs_src_dir: 'fedora_odcs'
     when: env != 'staging'
   - sudo
