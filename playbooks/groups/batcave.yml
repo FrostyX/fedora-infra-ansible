@@ -40,6 +40,14 @@
     thresholds:
       warning: 10
       critical: 100
+  - role: rabbit/queue
+    username: "mirror_pagure_ansible{{ env_suffix }}"
+    queue_name: "mirror_pagure_ansible{{ env_suffix }}_13"
+    routing_keys:
+      - "io.pagure.*.pagure.git.receive"
+    thresholds:
+      warning: 10
+      critical: 100
   - batcave
   - { role: nfs/client, when: inventory_hostname.startswith('batcave'), mnt_dir: '/srv/web/pub',  nfs_src_dir: 'fedora_ftp/fedora.redhat.com/pub' }
   - { role: nfs/client, when: inventory_hostname.startswith('batcave01'), mnt_dir: '/mnt/fedora/app',  nfs_src_dir: 'fedora_app/app' }
