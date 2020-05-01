@@ -110,6 +110,10 @@
     mount_stg: true
     nfs_src_dir: 'fedora-ostree-content-stg/compose/ostree'
     when: env == 'staging'
+  - role: nfs/client
+    mnt_dir: '/src/odcs'
+    nfs_src_dir: 'fedora_odcs'
+    when: env != 'staging'
   - sudo
   - role: rabbit/user
     username: "koji{{ env_suffix }}"

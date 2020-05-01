@@ -33,6 +33,16 @@
     when: env == 'staging' and 'runroot' in group_names
 
   - role: nfs/client
+    mnt_dir: '/src/odcs'
+    nfs_src_dir: 'fedora_odcs'
+    when: env != 'staging' and 'runroot' in group_names
+
+  - role: nfs/client
+    mnt_dir: '/srv/odcs'
+    nfs_src_dir: 'fedora_odcs_stg'
+    when: env == 'staging' and 'runroot' in group_names
+
+  - role: nfs/client
     mnt_dir: '/mnt/koji/compose/ostree'
     nfs_src_dir: 'fedora-ostree-content-stg/compose/ostree'
     when: env == 'staging' and 'runroot' in group_names
