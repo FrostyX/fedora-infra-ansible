@@ -32,8 +32,10 @@ def run_command(command, cwd=None):
         output = subprocess.check_output(command, cwd=cwd, stderr=subprocess.PIPE)
     except subprocess.CalledProcessError as e:
         _log.error("Command `%s` return code: `%s`", " ".join(command), e.returncode)
-        _log.error("stdout:\n-------\n%s", e.stdout)
-        _log.error("stderr:\n-------\n%s", e.stderr)
+        _log.error("Output:\n------\n%s", e.output)
+# To enable when we move to python3
+#        _log.error("stdout:\n-------\n%s", e.stdout)
+#        _log.error("stderr:\n-------\n%s", e.stderr)
         raise
 
     return output
