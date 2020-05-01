@@ -18,7 +18,6 @@ from fedora_messaging import api, config
 _log = logging.getLogger(__name__)
 
 
-
 def run_command(command, cwd=None):
     """ Run the specified command in a specific working directory if one
     is specified.
@@ -80,10 +79,8 @@ class MirrorFromPagure(object):
         if message.topic == "io.pagure.prod.pagure.git.receive":
             repo_name = message.body.get("repo", {}).get("fullname")
             if repo_name not in self.trigger_names:
-                _log.info("Not the pagure repo of interest, bailing")
+                _log.info("%s is not a pagure repo of interest, bailing", repo_name)
                 return
-        elif message.topic == "org.fedoraproject.prod.infragit.receive":
-            pass
         else:
             _log.info("Unexpected topic received: %s", message.topic)
             return
@@ -100,8 +97,8 @@ class MirrorFromPagure(object):
                     run_command(cmd, cwd=self.path)
 
                 _log.info(
-                    "   Running git fetch with transfer.fsckObjects=1 in %s", 
-                    dest_folder
+                    "   Running git fetch with transfer.fsckObjects=1 in %s",
+                    dest_folder,
                 )
                 cmd = ["git", "-c", "transfer.fsckObjects=1", "fetch"]
                 run_command(cmd, cwd=dest_folder)
@@ -112,4 +109,4 @@ class MirrorFromPagure(object):
                 raise
             _log.info("  Re-running in 10 seconds")
             time.sleep(10)
-            self.__call__(message, cnt=cnt+1)
+            self.__call__(message, cnt=cnt + 1)
