@@ -250,5 +250,14 @@
       tags:
         - sshfs
 
+    - name: Add /srv/odcs sshfs
+      mount: path="/srv/odcs"
+        state=present
+        fstype=fuse.sshfs
+        src="root@koji01{{ env_suffix }}.phx2.fedoraproject.org:/srv/odcs"
+        opts="noauto,_netdev,ServerAliveInterval=20,IdentityFile=/etc/primary-s390x-sshfs"
+      tags:
+        - sshfs
+
   handlers:
     - import_tasks: "{{ handlers_path }}/restart_services.yml"
