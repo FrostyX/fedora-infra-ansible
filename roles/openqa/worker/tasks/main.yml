@@ -31,9 +31,6 @@
 
 - name: Remove scratch repo directory
   file: path=/var/tmp/scratchrepo state=absent
-  # HACK HACK HACK FIXME
-  notify:
-  - restart openqa workers
 
 - name: (Re-)create scratch repo directory
   file: path=/var/tmp/scratchrepo state=directory owner=root group=root
