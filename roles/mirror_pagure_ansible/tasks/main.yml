@@ -19,6 +19,15 @@
   - mirror_pagure_ansible
   - mirror_pagure_ansible/user
 
+
+# Ensure the user can write to where we want to store the mirror
+- name: give access to mirror_pagure_ansible to /srv
+  command: setfacl -m d:u:mirror_pagure_ansible:rwx /srv -m u:mirror_pagure_ansible:rwx /srv/
+  tags:
+  - config
+  - mirror_pagure_ansible
+
+
 # configure all the fedora-messaging files
 
 - name: Create /etc/pki/fedora-messaging
@@ -66,6 +75,7 @@
   tags:
   - config
   - mirror_pagure_ansible
+
 
 # Install the script
 
