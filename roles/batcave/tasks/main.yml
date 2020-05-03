@@ -399,7 +399,7 @@
   - httpd/website
 
 - name: /git/ansible file contexts
-  command: semanage fcontext -a -t git_content_t "/git/ansible(/.*)?"
+  command: semanage fcontext -a -t git_content_t "/srv/ansible(/.*)?"
   when: webdir.stdout.find('git_content_t') == -1
   tags:
   - config
