@@ -18,8 +18,6 @@
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/basset.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/bastion.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/batcave.yml
-#- import_playbook: /srv/web/infra/ansible/playbooks/groups/beaker.yml
-- import_playbook: /srv/web/infra/ansible/playbooks/groups/beaker-virthosts.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/blockerbugs.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/bodhi-backend.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/bugzilla2fedmsg.yml
