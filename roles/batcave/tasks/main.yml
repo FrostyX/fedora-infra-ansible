@@ -387,7 +387,7 @@
 #
 
 - name: check the selinux context of ansible
-  command: matchpathcon /git/ansible
+  command: matchpathcon /srv/ansible
   register: webdir
   check_mode: no
   changed_when: "1 != 1"
