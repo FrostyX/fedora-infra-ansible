@@ -387,7 +387,7 @@
 #
 
 - name: check the selinux context of ansible
-  command: matchpathcon /srv/ansible
+  command: matchpathcon /srv/ansible.git
   register: webdir
   check_mode: no
   changed_when: "1 != 1"
@@ -399,7 +399,7 @@
   - httpd/website
 
 - name: /git/ansible file contexts
-  command: semanage fcontext -a -t git_content_t "/srv/ansible(/.*)?"
+  command: semanage fcontext -a -t git_content_t "/srv/ansible.git(/.*)?"
   when: webdir.stdout.find('git_content_t') == -1
   tags:
   - config
