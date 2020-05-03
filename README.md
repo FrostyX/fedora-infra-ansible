@@ -1,20 +1,88 @@
 Fedora Infrastructure
 =====================
 
-Welcome! This is the Fedora Infrastructure Pagure project. 
+Welcome! This is the Fedora Infrastructure Ansible Pagure project.
 
-issues against this project are for issues in Fedora Infrastructure. 
-
-git repo of this project is misc scripts and tools for Fedora
-
-If you are looking for the Fedora Infrastructure ansible repo, 
-that is not here, look at: 
-
+This repository is also mirrored for production runs to
 https://infrastructure.fedoraproject.org/cgit/ansible.git/
 
-If you would like to help out with Fedora Infrastructure, 
-see: 
+If you would like to help out with Fedora Infrastructure, see:
 
-https://fedoraproject.org/wiki/Infrastructure/GettingStarted
-and
-https://fedoraproject.org/wiki/Infrastructure_Apprentice
+* https://fedoraproject.org/wiki/Infrastructure/GettingStarted
+* https://fedoraproject.org/wiki/Infrastructure_Apprentice
+
+Ansible repository/structure
+----------------------------
+
+```
+files - files and templates for use in playbooks/tasks
+      - subdirs for specific tasks/dirs highly recommended
+
+inventory - where the inventory and additional vars is stored
+          - All files in this directory in ini format
+          - added together for total inventory
+  group_vars:
+          - per group variables set here in a file per group
+  host_vars:
+          - per host variables set here in a file per host
+
+library - library of custom local ansible modules
+
+playbooks - collections of plays we want to run on systems
+
+  groups: groups of hosts configured from one playbook.
+
+  hosts: playbooks for single hosts.
+
+  manual: playbooks that are only run manually by an admin as needed.
+
+tasks - snippets of tasks that should be included in plays
+
+roles - specific roles to be use in playbooks.
+        Each role has it's own files/templates/vars
+
+filter_plugins - Jinja filters
+
+master.yml - This is the master playbook, consisting of all
+             current group and host playbooks. Note that the
+             daily cron doesn't run this, it runs even over
+             playbooks that are not yet included in master.
+             This playbook is usefull for making changes over
+             multiple groups/hosts usually with -t (tag).
+```
+
+Paths
+-----
+
+The public path for everything is `/srv/web/infra/ansible`
+
+The private path (which is sysadmin-main accessible only) is `/srv/private/ansible`
+
+In general to run any ansible playbook you will want to run:
+
+```
+sudo -i ansible-playbook /path/to/playbook.yml
+```
+
+Scheduled check-diff
+--------------------
+
+Every night a cron job runs over all playbooks under `playbooks/{groups}{hosts}`
+with `ansible --check --diff`. A report from this is sent to sysadmin-logs.
+In the ideal state this report would be empty.
+
+Idempotency
+-----------
+
+All playbooks should be idempotent. Ie, if run once they should bring the
+machine(s) to the desired state, and if run again N times after that they should
+make 0 changes (because the machine(s) are in the desired state).
+Please make sure your playbooks are idempotent.
+
+Can be run anytime
+------------------
+
+When a playbook or change is checked into ansible you should assume
+that it could be run at ***ANY TIME***. Always make sure the checked in state
+is the desired state. Always test changes when they land so they don't
+surprise you later.
