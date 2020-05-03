@@ -12,7 +12,7 @@ import subprocess
 import sys
 import time
 
-from fedora_messaging import api, config
+from fedora_messaging import api, config, message
 
 
 _log = logging.getLogger("mirror_from_pagure_bus")
@@ -33,9 +33,9 @@ def run_command(command, cwd=None):
     except subprocess.CalledProcessError as e:
         _log.error("Command `%s` return code: `%s`", " ".join(command), e.returncode)
         _log.error("Output:\n------\n%s", e.output)
-# To enable when we move to python3
-#        _log.error("stdout:\n-------\n%s", e.stdout)
-#        _log.error("stderr:\n-------\n%s", e.stderr)
+        # To enable when we move to python3
+        # _log.error("stdout:\n-------\n%s", e.stdout)
+        # _log.error("stderr:\n-------\n%s", e.stderr)
         raise
 
     return output
@@ -72,6 +72,11 @@ class MirrorFromPagure(object):
 
         _log.info("Ready to consume and trigger on %s", self.trigger_names)
 
+        msg = message.Message
+        msg.topic = "io.pagure.prod.pagure.git.receive"
+        msg.body = {"repo": {"fullname": self.trigger_names[0]}}
+        self.__call__(message=msg)
+
     def __call__(self, message, cnt=0):
         """
         Invoked when a message is received by the consumer.
@@ -106,6 +111,18 @@ class MirrorFromPagure(object):
                 )
                 cmd = ["git", "-c", "transfer.fsckObjects=1", "fetch"]
                 run_command(cmd, cwd=dest_folder)
+
+                cmd = ["git", "remote"]
+                output = run_command(cmd, cwd=dest_folder).decode("utf-8").strip()
+                if output:
+                    for remote in output.split("\n"):
+                        if remote == "origin":
+                            continue
+                        _log.info("  Running git push --mirror against %s", remote)
+                        cmd = ["git", "push", "--mirror", remote]
+                        run_command(cmd, cwd=dest_folder)
+                else:
+                    _log.info("  No remotes found")
 
         except Exception:
             _log.exception("Something happened while calling git")
