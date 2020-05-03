@@ -1,4 +1,3 @@
-
 == ansible repository/structure ==
 
 files - files and templates for use in playbooks/tasks
