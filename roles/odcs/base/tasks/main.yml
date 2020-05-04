@@ -23,6 +23,7 @@
   with_items:
   - python3-odcs-common
   - odcs
+  - odcs-client
   when: odcs_upgrade
   tags:
   - odcs
