@@ -15,4 +15,6 @@
    SSLCertificateFile /etc/pki/tls/certs/nagios-external.fedoraproject.org.cert
    SSLCertificateChainFile /etc/pki/tls/certs/nagios-external.fedoraproject.org.intermediate.cert
    SSLCertificateKeyFile /etc/pki/tls/certs/nagios-external.fedoraproject.org.key
+
+   ProxyPass "/.well-known/acme-challenge" "http://certgetter01/.well-known/acme-challenge"
 </VirtualHost>
