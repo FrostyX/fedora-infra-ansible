@@ -106,7 +106,7 @@ class MirrorFromPagure(object):
                     run_command(cmd, cwd=self.path)
 
                 _log.info(
-                    "   Running git fetch with transfer.fsckObjects=1 in %s",
+                    "   Running `git -c transfer.fsckObjects=1 fetch` in %s",
                     dest_folder,
                 )
                 cmd = ["git", "-c", "transfer.fsckObjects=1", "fetch"]
@@ -118,7 +118,9 @@ class MirrorFromPagure(object):
                     for remote in output.split("\n"):
                         if remote == "origin":
                             continue
-                        _log.info("  Running git push --mirror against %s", remote)
+                        _log.info(
+                            "  Running git push --mirror %s in %s",
+                            remote, dest_folder)
                         cmd = ["git", "push", "--mirror", remote]
                         run_command(cmd, cwd=dest_folder)
                 else:
