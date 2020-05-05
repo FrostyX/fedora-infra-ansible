@@ -33,7 +33,7 @@
     when: env == 'staging' and 'runroot' in group_names
 
   - role: nfs/client
-    mnt_dir: '/src/odcs'
+    mnt_dir: '/srv/odcs'
     nfs_src_dir: 'fedora_odcs'
     when: env != 'staging' and 'runroot' in group_names
 
