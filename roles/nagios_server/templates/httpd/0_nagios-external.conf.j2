@@ -1,5 +1,6 @@
 <VirtualHost *:80>
    ServerName nagios-external.fedoraproject.org
+   ProxyPass "/.well-known/acme-challenge" "http://certgetter01/.well-known/acme-challenge"
    Redirect permanent / https://nagios-external.fedoraproject.org/
 </VirtualHost>
 
@@ -11,7 +12,7 @@
    SSLCipherSuite {{ ssl_ciphers }}
    Header always add Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
 
-   SSLCertificateFile /etc/pki/tls/certs/noc02.fedoraproject.org.cert
-   SSLCertificateChainFile /etc/pki/tls/certs/noc02.fedoraproject.org.intermediate.cert
-   SSLCertificateKeyFile /etc/pki/tls/certs/noc02.fedoraproject.org.key
+   SSLCertificateFile /etc/pki/tls/certs/nagios-external.fedoraproject.org.cert
+   SSLCertificateChainFile /etc/pki/tls/certs/nagios-external.fedoraproject.org.intermediate.cert
+   SSLCertificateKeyFile /etc/pki/tls/certs/nagios-external.fedoraproject.org.key
 </VirtualHost>
