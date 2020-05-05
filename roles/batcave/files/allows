@@ -30,6 +30,7 @@ require ip 209.132.180.0/24
 require ip 209.132.181.0/24
 require ip 209.132.182.51
 require ip 209.132.184.0/24
+require ip 209.132.185.0/24
 require ip 213.175.193.204
 require ip 213.175.193.205
 require ip 213.175.193.206
