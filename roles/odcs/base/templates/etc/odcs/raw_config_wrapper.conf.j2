@@ -5,13 +5,6 @@ koji_profile = 'odcs_stg'
 koji_profile = 'odcs_production'
 {% endif %}
 
-# We do not have any old compose when generating ODCS compose, so do not
-# request using deltas.
-createrepo_deltas = False
-
-# In runroot, we cannot use guestmount, but have to use mount -o loop.
-buildinstall_use_guestmount=False
-
 {% if env == 'staging' %}
 # We cannot use hardlinks on stg, because it uses different volume and copy
 # just takes lot of storage.
