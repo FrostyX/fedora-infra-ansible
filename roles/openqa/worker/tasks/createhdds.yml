@@ -1,5 +1,7 @@
-# Required vars
-# (none)
+# Required vars with defaults
+# - openqa_createhdds_branch
+##       string - The git branch of createhdds to check out
+##       default - master
 
 - name: Install required packages
   package:
@@ -32,8 +34,9 @@
 
 - name: Check out createhdds
   git:
-    repo: https://pagure.io/fedora-qa/createhdds.git # noqa 401
+    repo: https://pagure.io/fedora-qa/createhdds.git
     dest: /root/createhdds
+    version: "{{ openqa_createhdds_branch }}"
 
 - name: Set up createhdds cron job
   copy: src=createhdds dest=/etc/cron.daily/createhdds owner=root group=root mode=0755

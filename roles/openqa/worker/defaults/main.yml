@@ -1,2 +1,3 @@
 openqa_hostname: localhost
 openqa_repo: updates
+openqa_createhdds_branch: master
