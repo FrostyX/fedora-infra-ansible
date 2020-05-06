@@ -448,6 +448,7 @@ torrent02.fedoraproject.org
 secondary01.phx2.fedoraproject.org
 
 [dns]
+ns01.iad2.fedoraproject.org
 ns02.fedoraproject.org
 ns03.phx2.fedoraproject.org
 ns04.phx2.fedoraproject.org
