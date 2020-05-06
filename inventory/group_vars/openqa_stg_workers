@@ -17,3 +17,6 @@ openqa_repo: updates-testing
 
 deployment_type: stg
 freezes: false
+
+# we're testing a createhdds git branch ATM
+openqa_createhdds_branch: minimal-shrink
