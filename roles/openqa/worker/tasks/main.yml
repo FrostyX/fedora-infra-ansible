@@ -62,7 +62,7 @@
   when: "openqa_scratch is defined"
 
 - name: Delete scratch build repo config
-  file: path=/etc/yum.repos.d/scratchrepo.conf state=absent
+  file: path=/etc/yum.repos.d/scratchrepo.repo state=absent
   when: "openqa_scratch is not defined"
 
 - name: Install required packages
