@@ -1,0 +1,19 @@
+---
+nm: 255.255.255.0
+gw: 10.3.163.254
+dns: 8.8.8.8
+
+volgroup: /dev/vg_guests
+
+eth0_ip: 10.3.163.31
+
+ks_url: http://209.132.181.6/repo/rhel/ks/kvm-rhel-8-ext
+ks_repo: http://209.132.181.6/repo/rhel/RHEL8-x86_64/
+
+vmhost: vmhost-x86-01.iad2.fedoraproject.org
+datacenter: iad2
+vpn: false
+
+ssh_hostnames:
+- bastion.fedoraproject.org
+- bastion01.fedoraproject.org
