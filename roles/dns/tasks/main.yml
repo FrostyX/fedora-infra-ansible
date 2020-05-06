@@ -5,8 +5,6 @@
   - bind
   - unzip
   - git
-  - libsemanage-python
-  - policycoreutils-python
   tags:
   - packages
   - dns
