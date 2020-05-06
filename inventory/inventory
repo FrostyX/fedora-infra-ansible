@@ -724,7 +724,6 @@ virthost04.stg.phx2.fedoraproject.org
 virthost05.stg.phx2.fedoraproject.org
 wiki01.stg.phx2.fedoraproject.org
 zanata2fedmsg01.stg.phx2.fedoraproject.org
-vmhost-x86-01.iad2.fedoraproject.org
 
 # This is a list of hosts that are a little "friendly" with staging.
 # They are exempted from the iptables wall between staging and prod.
@@ -812,6 +811,7 @@ virthost19.phx2.fedoraproject.org
 virthost21.phx2.fedoraproject.org
 virthost22.phx2.fedoraproject.org
 qa09.qa.fedoraproject.org
+vmhost-x86-01.iad2.fedoraproject.org
 
 [virthost_comm]
 virthost-comm01.qa.fedoraproject.org
