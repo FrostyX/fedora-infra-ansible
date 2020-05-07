@@ -17,3 +17,5 @@ vpn: false
 ssh_hostnames:
 - bastion.fedoraproject.org
 - bastion01.fedoraproject.org
+
+nagios_Can_Connect: false
