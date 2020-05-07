@@ -440,6 +440,8 @@ qa14.qa.fedoraproject.org
 [tang]
 tang01.phx2.fedoraproject.org
 tang02.phx2.fedoraproject.org
+tang01.iad2.fedoraproject.org
+tang02.iad2.fedoraproject.org
 
 [torrent]
 torrent02.fedoraproject.org

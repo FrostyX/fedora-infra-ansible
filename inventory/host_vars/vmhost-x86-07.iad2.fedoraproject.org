@@ -1,0 +1,3 @@
+---
+datacenter: iad2
+nagios_Can_Connect: false
