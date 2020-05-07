@@ -32,8 +32,8 @@ aws_x86_64_normal:
     - copr_builder
     - arch_x86_64
     - arch_x86_64_native
-    cmd_new: "/var/lib/resallocserver/resalloc_provision/aws-new --arch=x86_64"
-    cmd_delete: "/var/lib/resallocserver/resalloc_provision/aws-delete"
+    cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aws-new --arch=x86_64"
+    cmd_delete: "/var/lib/resallocserver/resalloc_provision/vm-aws-delete"
 
 # Development configuration.  On each aarch64 host we have
 # 2 guests vms of
