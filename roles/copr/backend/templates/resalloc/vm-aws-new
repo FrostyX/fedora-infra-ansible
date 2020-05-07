@@ -59,7 +59,9 @@ test -n "$opt_arch" || show_help 1
 playbook=/var/lib/resallocserver/provision/builderpb-aws-"$opt_arch".yml
 
 {
-    vm_ip=$(ansible-playbook "$playbook" |& tee >(cat - >&$stderr_fd) \
+    vm_ip=$(ansible-playbook "$playbook" \
+        --extra-vars '{"copr_task": {"vm_name": "'"$RESALLOC_NAME"'"}}' \
+        |& tee >(cat - >&$stderr_fd) \
         | sed -n 's/.*"VM_IP=\(.*\)"/\1/p' )
 } {stderr_fd}>&2
 
