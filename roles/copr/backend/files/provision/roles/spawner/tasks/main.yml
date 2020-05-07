@@ -4,3 +4,4 @@
 
 - name: set vm_name variable
   set_fact: vm_name="copr-{% if devel %}dev{% else %}prod{% endif %}-builder-{{ arch }}-{{ date.stdout }}"
+  when: vm_name is not defined
