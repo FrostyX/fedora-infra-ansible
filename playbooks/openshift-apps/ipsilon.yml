@@ -21,7 +21,11 @@
     description: ipsilon
     appowners:
     - puiterwijk
+    - pingou
     allow_fas_db: true
+    tags:
+      - apply-appowners
+
   - role: openshift/keytab
     app: ipsilon
     key: ipsilon-keytab
