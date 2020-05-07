@@ -14,9 +14,12 @@
           address: 
           - 10.3.163.11/24
           gateway4: 10.3.163.254
-          dns: 8.8.8.8
+          dns: 
+          - 10.3.163.33
+          - 10.3.163.34
           dns_search: 
           - iad2.fedoraproject.org
+          - vpn.fedoraproject.org
           - fedoraproject.org
           dhcp4: no
           auto6: no
@@ -26,11 +29,31 @@
         type: ethernet
         master: br0
         mac: E4:43:4B:B1:70:88
-      - name: br0-port1
+
+      - name: br1
+        state: up
+        type: bridge
+        autoconnect: yes
+        ip:
+          dhcp4: no
+          auto6: no
+
+      - name: br1-port0
         state: up
         type: ethernet
-        master: br0
+        master: br1
         mac: E4:43:4B:B1:70:8A
+
+      - name: deployment
+        state: down
+        type: ethernet
+        mac: e4:43:4b:b1:70:a8
+
+      - name: unused
+        state: down
+        type: ethernet
+        mac: e4:43:4b:b1:70:a9
+
   roles:
     - role: linux-system-roles.network
 

@@ -813,6 +813,11 @@ virthost21.phx2.fedoraproject.org
 virthost22.phx2.fedoraproject.org
 qa09.qa.fedoraproject.org
 vmhost-x86-01.iad2.fedoraproject.org
+vmhost-x86-02.iad2.fedoraproject.org
+vmhost-x86-03.iad2.fedoraproject.org
+vmhost-x86-04.iad2.fedoraproject.org
+vmhost-x86-05.iad2.fedoraproject.org
+vmhost-x86-06.iad2.fedoraproject.org
 
 [virthost_comm]
 virthost-comm01.qa.fedoraproject.org
