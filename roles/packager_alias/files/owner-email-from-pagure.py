@@ -6,6 +6,8 @@ This script is ran as a cronjob and bastion.
 Its goal is to generate all the <pkg>-owner email aliases we provide
 """
 
+import time
+
 import requests
 
 from requests.adapters import HTTPAdapter
@@ -36,8 +38,19 @@ def get_pagure_projects():
     pagure_projects_url = pagure_url + '/api/0/projects?page=1&per_page=100&fork=false'
     session = retry_session()
     while pagure_projects_url:
-        response = session.get(pagure_projects_url)
-        data = response.json()
+        cnt = 0
+        while True:
+            try:
+                response = session.get(pagure_projects_url)
+                data = response.json()
+                break
+            except Exception:
+                if cnt == 4:
+                    raise
+
+                cnt += 1
+                time.sleep(30)
+
         for project in data['projects']:
             yield project
         # This is set to None on the last page.
