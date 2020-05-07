@@ -53,9 +53,13 @@
   tags:
   - provision_config
 
-- name: resalloc, spawner script
-  template: src="resalloc/vm-aarch64-new" dest="/var/lib/resallocserver/resalloc_provision/"
+- name: resalloc, scripts
+  template: src="resalloc/{{ item }}" dest="/var/lib/resallocserver/resalloc_provision/"
             mode=755
+  with_items:
+  - vm-aarch64-new
+  - vm-aws-new
+  - vm-aws-delete
   tags:
   - provision_config
 

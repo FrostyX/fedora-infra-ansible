@@ -1,0 +1,6 @@
+#! /bin/sh -x
+
+die() { echo "$*" >&2 ; exit 1; }
+test -n "$RESALLOC_NAME" || die "no RESALLOC_NAME"
+ansible-playbook /home/copr/provision/terminatepb-aws.yml \
+    --extra-vars '{"copr_task": {"vm_name": "'"$RESALLOC_NAME"'"}}'

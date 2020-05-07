@@ -23,6 +23,18 @@ aarch64_02_prod:
     tags:
     - aarch64
 {% elif devel %}
+
+aws_x86_64_normal:
+    max: 15
+    max_starting: 5
+    max_prealloc: 2
+    tags:
+    - copr_builder
+    - arch_x86_64
+    - arch_x86_64_native
+    cmd_new: "/var/lib/resallocserver/resalloc_provision/aws-new --arch=x86_64"
+    cmd_delete: "/var/lib/resallocserver/resalloc_provision/aws-delete"
+
 # Development configuration.  On each aarch64 host we have
 # 2 guests vms of
 # -  2 VCPUs   (default)

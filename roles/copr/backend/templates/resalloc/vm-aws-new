@@ -1,0 +1,66 @@
+#! /usr/bin/bash
+
+set -e
+
+show_help()
+{
+cat <<EOHELP >&2
+Usage: $0 --arch ARCH
+
+Allocate AWS VM instance for Copr build system.
+
+Options:
+  --arch                native architecture (required)
+  -h, --help            show this help
+
+Environment variables:
+  \$RESALLOC_NAME       the name given to the allocated instance, will be
+                        later used for termination, too
+EOHELP
+
+test -z "$1" || exit "$1"
+}
+
+# handle no arguments
+test ${#@} -eq 0 && show_help 1
+
+ARGS=$(getopt -o "h" -l "arch:,help" -n "getopt" -- "$@") \
+    || show_help 1
+eval set -- "$ARGS"
+
+opt_arch=
+
+while true; do
+    # now the name is in $1 and argument in $2
+    case $1 in
+    --arch)
+        opt=${1##--}
+        opt=${opt##-}
+        opt=${opt//-/_}
+        eval "opt_$opt=\$2"
+        shift 2
+        ;;
+    -h|--help) show_help 0;;
+    --) # end!
+        shift; break;;
+    *) echo "programmer mistake ($1)" >&2; exit 1;;
+    esac
+done
+
+case $opt_arch in
+    x86_64|aarch64) ;;
+    *) echo >&2 "wrong arch: $opt_arch"; show_help 1;;
+esac
+test -n "$opt_arch" || show_help 1
+
+# TODO: We should call aws-cli directly here, instead of parsing output of
+# ansible playbook.  But at the time of writing this script we had the playbook
+# available, so parsing the output is the easiest way to start.
+playbook=/var/lib/resallocserver/provision/builderpb-aws-"$opt_arch".yml
+
+{
+    vm_ip=$(ansible-playbook "$playbook" |& tee >(cat - >&$stderr_fd) \
+        | sed -n 's/.*"VM_IP=\(.*\)"/\1/p' )
+} {stderr_fd}>&2
+
+test -n "$vm_ip"
