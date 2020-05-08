@@ -9,7 +9,7 @@ ks_repo: http://10.5.126.23/repo/rhel/RHEL7-x86_64/
 volgroup: /dev/vg_guests
 eth0_ip: 10.3.163.35
 #eth1_ip: 
-vmhost: vmhost01.iad2.fedoraproject.org
+vmhost: vmhost-x86-01.iad2.fedoraproject.org
 datacenter: iad2
 
 #host_backup_targets: ['/git', '/mnt/fedora/app/attachments']
