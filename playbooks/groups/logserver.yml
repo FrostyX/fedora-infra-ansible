@@ -20,7 +20,8 @@
   - collectd/base
   - collectd/server
   - sudo
-  - epylog
+  - role: epylog
+    when: datacenter != 'iad2'
   - openvpn/client
   - awstats
   - role: keytab/service
