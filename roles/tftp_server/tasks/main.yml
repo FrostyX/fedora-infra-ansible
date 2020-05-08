@@ -22,12 +22,14 @@
   tags:
   - config
   - tftp_server
+  when: datacenter != 'iad2' 
 
 - name: setup highbank default file
   copy: src=highbank.{{ inventory_hostname }} dest=/var/lib/tftpboot/pxelinux.cfg/default-arm-highbank mode=644
   tags:
   - config
   - tftp_server
+  when: datacenter != 'iad2' 
 
 - name: enable tftp socket service
   service: state=started enabled=true name=tftp.socket
