@@ -22,8 +22,10 @@
   - sudo
   - role: epylog
     when: datacenter != 'iad2'
-  - openvpn/client
-  - awstats
+  - role: openvpn/client
+    when: datacenter != 'iad2'
+  - role: awstats
+    when: datacenter != 'iad2'
   - role: keytab/service
     owner_user: apache
     owner_group: apache
