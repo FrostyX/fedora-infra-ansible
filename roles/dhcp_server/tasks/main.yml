@@ -1,10 +1,19 @@
 ---
-- name: install dhcp server package
+- name: install dhcp server package (rhel7)
   package: state=present name=dhcp
   tags:
   - packages
   - base
   - dhcp_server
+  when: ansible_distribution_major_version|int == 7
+
+- name: install dhcp server package (rhel8)
+  package: state=present name=dhcp-server
+  tags:
+  - packages
+  - base
+  - dhcp_server
+  when: ansible_distribution_major_version|int == 8
 
 - name: setup dhcpd.conf
   copy: src=dhcpd.conf.{{ inventory_hostname }} dest=/etc/dhcp/dhcpd.conf mode=644
