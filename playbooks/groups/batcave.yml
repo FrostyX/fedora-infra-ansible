@@ -19,10 +19,14 @@
   - ansible-server
   - sudo
   - collectd/base
-  - git/hooks
-  - cgit/base
-  - cgit/clean_lock_cron
-  - cgit/make_pkgs_list
+  - role: git/hooks
+    when: datacenter != 'iad2'
+  - role: cgit/base
+    when: datacenter != 'iad2'
+  - role: cgit/clean_lock_cron
+    when: datacenter != 'iad2'
+  - role: cgit/make_pkgs_list
+    when: datacenter != 'iad2'
   - rsyncd
   - apache
   - httpd/mod_ssl
@@ -32,6 +36,7 @@
   - openvpn/client
   - role: rabbit/user
     username: "mirror_pagure_ansible{{ env_suffix }}"
+    when: datacenter != 'iad2'
   - role: rabbit/queue
     username: "mirror_pagure_ansible{{ env_suffix }}"
     queue_name: "mirror_pagure_ansible{{ env_suffix }}"
@@ -40,6 +45,7 @@
     thresholds:
       warning: 10
       critical: 100
+    when: datacenter != 'iad2'
   - role: rabbit/queue
     username: "mirror_pagure_ansible{{ env_suffix }}"
     queue_name: "mirror_pagure_ansible{{ env_suffix }}_13"
@@ -48,6 +54,7 @@
     thresholds:
       warning: 10
       critical: 100
+    when: datacenter != 'iad2'
   - batcave
   - { role: nfs/client, when: inventory_hostname.startswith('batcave') and datacenter != 'iad2', mnt_dir: '/srv/web/pub',  nfs_src_dir: 'fedora_ftp/fedora.redhat.com/pub' }
   - { role: nfs/client, when: inventory_hostname.startswith('batcave01') and datacenter != 'iad2', mnt_dir: '/mnt/fedora/app',  nfs_src_dir: 'fedora_app/app' }
