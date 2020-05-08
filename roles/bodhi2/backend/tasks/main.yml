@@ -28,7 +28,7 @@
       - ostree
       - pungi-utils
       # Needed for runroot
-      - python2-koji-cli-plugins
+      - python3-koji-cli-plugins
       # needed to make comps
       - make
       # needed for updates sync
