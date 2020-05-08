@@ -2,7 +2,7 @@
 # collectd server setup
 
 # install pkg
-- name: install collectd server packages
+- name: install collectd server packages (rhel 7)
   package: name={{ item }} state=present
   with_items:
   - collectd-rrdtool
@@ -14,6 +14,19 @@
   tags:
   - config
   - collectd/server
+  when: ansible_distribution_major_version|int == 7
+
+- name: install collectd server packages (rhel 8)
+  package: name={{ item }} state=present
+  with_items:
+  - collectd-rrdtool
+  - collectd-web
+  notify:
+  - restart collectd
+  tags:
+  - config
+  - collectd/server
+  when: ansible_distribution_major_version|int == 8
 
 # install collectd ping config
 - name: install collectd ping config
