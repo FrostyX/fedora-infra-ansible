@@ -21,7 +21,7 @@
   - hosts
   - fas_client
   - collectd/base
-  - { role: rsyncd, when: datacenter == 'phx2' }
+  - { role: rsyncd, when: datacenter == 'phx2' or datacenter == 'iad2' }
   - sudo
   - { role: openvpn/client,
       when: env != "staging" }
@@ -61,8 +61,8 @@
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
   roles:
-  - { role: dhcp_server, when: datacenter == 'phx2' }
-  - { role: tftp_server, when: datacenter == 'phx2' }
+  - { role: dhcp_server, when: datacenter == 'phx2' or datacenter == 'iad2' }
+  - { role: tftp_server, when: datacenter == 'phx2' or datacenter == 'iad2' }
   - { role: nagios_server, when: datacenter == 'phx2' or datacenter == 'ibiblio'}
   - { role: fedmsg/base, when: deployment_type == "prod" }
   - { role: rabbit/user, when: deployment_type == "stg" }
