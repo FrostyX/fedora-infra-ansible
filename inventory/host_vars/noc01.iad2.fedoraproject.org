@@ -14,5 +14,14 @@ ks_repo: http://209.132.181.6/repo/rhel/RHEL8-x86_64/
 
 # Define resources for this group of hosts here.
 lvm_size: 20000
-mem_size: 4096
-num_cpus: 2
+mem_size: 8192
+num_cpus: 4
+
+tcp_ports: ['22', '80', '443', '67', '68']
+udp_ports: ['67','68','69']
+custom_rules: [
+    '-A INPUT -p tcp -m tcp -s 192.168.1.20 --dport 5666 -j ACCEPT',
+]
+
+nagios_srcdir: 'nagios'
+nagios_location: 'internal'
