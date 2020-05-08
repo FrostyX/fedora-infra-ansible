@@ -29,7 +29,6 @@
     dnf: state=latest
          name=createrepo_c
          enablerepo=updates-testing
-    when:
     when: ansible_facts.packages['createrepo_c'][0].version is version('0.15.5', '<')
 
   handlers:
