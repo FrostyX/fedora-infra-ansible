@@ -1,0 +1,413 @@
+#
+# DHCP Server Configuration file.
+#   see /usr/share/doc/dhcp*/dhcpd.conf.example
+#   see dhcpd.conf(5) man page
+#
+server-identifier noc01.iad2.fedoraproject.org;
+ddns-update-style none;
+authoritative;
+
+option space pxelinux;
+option pxelinux.magic code 208 = string;
+option pxelinux.configfile code 209 = text;
+option pxelinux.pathprefix code 210 = text;
+option pxelinux.reboottime code 211 = unsigned integer 32;
+option architecture-type code 93 = unsigned integer 16;
+
+subnet 10.3.160.0 netmask 255.255.255.0 {
+    allow booting;                       
+    allow bootp;                         
+
+    option domain-name "mgmt.iad2.fedoraproject.org";
+    option routers 10.3.160.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.160.160 10.3.160.180;
+
+    host temphost01 {
+        hardware ethernet 4c:d9:8f:bc:5a:ea;
+        fixed-address 10.3.160.230;
+        option host-name "temp01-mgmt";
+    }
+} 
+
+subnet 10.3.161.0 netmask 255.255.255.0 {
+    allow booting;                       
+    allow bootp;                         
+
+    option domain-name "mgmt.iad2.fedoraproject.org";
+    option routers 10.3.161.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.161.160 10.3.161.180;
+
+} 
+
+subnet 10.3.163.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.163.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.163.200 10.3.163.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.164.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.164.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.164.220 10.3.164.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.165.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.165.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.165.220 10.3.165.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.166.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.166.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.166.220 10.3.166.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.167.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.167.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.167.220 10.3.167.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.168.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.168.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.168.220 10.3.168.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.169.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.169.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.169.220 10.3.169.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.170.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.170.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.170.220 10.3.170.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.171.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.171.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.171.220 10.3.171.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.172.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.172.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.172.220 10.3.172.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.173.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.173.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.173.220 10.3.173.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.174.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.174.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.174.220 10.3.174.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.175.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.175.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.175.220 10.3.175.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
+subnet 10.3.176.0 netmask 255.255.255.0 {
+    allow booting;
+    allow bootp;
+    option domain-name "iad2.fedoraproject.org";
+    option routers 10.3.176.254;
+    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option log-servers 10.3.163.39;
+    option ntp-servers 10.3.163.31, 10.3.163.32;
+
+    range 10.3.176.220 10.3.176.249;
+
+    class "pxeclients" {
+          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
+          next-server 10.3.163.10;
+
+          if option architecture-type = 00:07 or option architecture-type = 00:09 {
+                    filename "uefi/grubx64.efi";
+          } else if option architecture-type = 00:0b {
+                    filename "uefi/grubaa64.efi";
+          } else {
+                    filename "pxelinux/pxelinux.0";
+          }
+    }
+
+}
+
