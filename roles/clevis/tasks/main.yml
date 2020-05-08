@@ -1,0 +1,23 @@
+---
+- name: copy in dracut config for clevis
+  template:
+   src: 99-clevis-fix.conf 
+   dest: /etc/dracut.conf.d/99-clevis-fix.conf
+  tags:
+  - clevis
+
+- name: copy in the systemd unit file to wipe dracut networking
+  copy:
+   src=flush-dracut-network@.service
+   dest=/etc/systemd/system/flush-dracut-network@.service
+  notify:
+   reload systemd
+  tags:
+   - clevis
+
+- name: enable the systemd unit to wipe dracut networking
+  systemd:
+   name: flush-dracut-network@{{ br0_dev }}
+   enabled: true
+  tags:
+   - clevis
