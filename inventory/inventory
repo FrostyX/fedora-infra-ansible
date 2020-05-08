@@ -321,6 +321,7 @@ kojipkgs02.phx2.fedoraproject.org
 batcave01.phx2.fedoraproject.org
 log01.phx2.fedoraproject.org
 noc01.phx2.fedoraproject.org
+noc01.iad2.fedoraproject.org
 noc02.fedoraproject.org
 data-analysis01.phx2.fedoraproject.org
 #cloud-noc01.fedorainfracloud.org
@@ -344,6 +345,7 @@ iddev.fedorainfracloud.org
 
 [nagios]
 noc01.phx2.fedoraproject.org
+noc01.iad2.fedoraproject.org
 noc02.fedoraproject.org
 
 [notifs_backend]
