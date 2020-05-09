@@ -21,7 +21,7 @@
   - packages
   - yumrepos
 
-- name: install packages needed
+- name: install packages needed (rhel7)
   package: name={{ item }} state=present
   with_items:
   - srm                       # secure rm to delete sensitive files.
@@ -55,6 +55,36 @@
   tags:
   - batcave
   - config
+  when: ansible_distribution_major_version|int == 7
+
+- name: install packages needed (rhel8)
+  package: name={{ item }} state=present
+  with_items:
+  - srm                       # secure rm to delete sensitive files.
+  - ansible                   # This is our ansible master, needs ansible installed.
+  - yum-metadata-parser       # Needed for rhn sync
+  - yum-rhn-plugin            # Needed for rhn sync
+  - createrepo_c              # Needed for rhn sync
+  - ostree                    # Needed for rhn sync
+  - python2-sqlalchemy         # Needed for repo2json
+  - bind                      # named-checkzone for dns repo
+  - emacs-nox                 # because smooge is weak
+  - rpm-sign                  # for the sign-and-import playbook
+  - createrepo                # for the sign-and-import playbook
+  - unzip                     # general useful util
+  - fpaste                    # general useful util
+  - mtr                       # useful for network debugging
+  - lftp                      # needed to easily pull in builds from koji for internal repos
+  - git-email                 # needed to send patches for review to the mailing list
+  - python3-dns                # needed to have ansible remove ip-based known_host entries
+  - libvirt-client            # needed to allow migrations to be run from here.
+  - easy-rsa                  # For easy copying into ansible-private for certs.
+  - dnf                       # To get dnf reposync
+  - dnf-plugins-core          # To get dnf reposync
+  tags:
+  - batcave
+  - config
+  when: ansible_distribution_major_version|int == 8
 
 - name: setup ssh_known_hosts file
   copy: src=ssh_known_hosts dest=/etc/ssh/ssh_known_hosts mode=0644
