@@ -98,6 +98,7 @@
   - cloud
   - batcave
   - config
+  when: datacenter != 'iad2'
 
 - name: install cloud client packages
   package: name={{ item }} state=present
@@ -112,6 +113,7 @@
   - cloud
   - batcave
   - config
+  when: datacenter != 'iad2'
 
 
 #
