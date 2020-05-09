@@ -358,6 +358,7 @@
   - rbac
   - batcave
   - config
+  when: inventory_hostname.startswith('batcave01.phx2')
 
 #
 # Setup geoip scripts.
@@ -369,23 +370,24 @@
   tags:
   - batcave
   - config
+  when: inventory_hostname.startswith('batcave01.phx2')
 
 - name: Install geoip download cron
   copy: src=geoip-download-databases.cron dest=/etc/cron.d/geoip-download-databases.cron mode=0644
   tags:
   - batcave
   - config
-  when: inventory_hostname.startswith('batcave01')
+  when: inventory_hostname.startswith('batcave01.phx2')
 
 #
 # fasClient fedmsg job
 #
 
-- name: Install config for fedmsg tigger for fasClient runs
-  copy: src=fedmsg-fasclient.py dest=/etc/fedmsg.d/fasclient.py mode=0644
-  tags:
-  - batcave
-  - config
+#- name: Install config for fedmsg tigger for fasClient runs
+#  copy: src=fedmsg-fasclient.py dest=/etc/fedmsg.d/fasclient.py mode=0644
+#  tags:
+#  - batcave
+#  - config
 
 #
 # set selinux context for /srv/web/infra
