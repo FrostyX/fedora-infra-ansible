@@ -34,6 +34,9 @@ aws_x86_64_normal:
     - arch_x86_64_native
     cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aws-new --arch=x86_64"
     cmd_delete: "/var/lib/resallocserver/resalloc_provision/vm-aws-delete"
+    reuse_opportunity_time: 180
+    reuse_max_count: 8
+    reuse_max_time: 1800
 
 # Development configuration.  On each aarch64 host we have
 # 2 guests vms of
