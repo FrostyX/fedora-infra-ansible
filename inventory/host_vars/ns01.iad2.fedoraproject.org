@@ -14,7 +14,9 @@ vmhost: vmhost-x86-01.iad2.fedoraproject.org
 datacenter: iad2
 
 nagios_Can_Connect: false
-
+nagios_Check_Services:
+  nrpe: false
+  ping: false
 
 csi_relationship: |
  

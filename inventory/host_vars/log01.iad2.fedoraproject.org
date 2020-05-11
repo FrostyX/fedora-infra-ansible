@@ -23,3 +23,8 @@ num_cpus: 16
 fas_client_groups: fi-apprentice,sysadmin-veteran,sysadmin-logs,sysadmin-noc,sysadmin-atomic
 
 #host_backup_targets: ['/var/log']
+
+nagios_Can_Connect: false
+nagios_Check_Services:
+  nrpe: false
+  ping: false

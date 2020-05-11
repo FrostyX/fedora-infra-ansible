@@ -1,6 +1,5 @@
 ---
 datacenter: iad2
-nagios_Can_Connect: false
 
 br0_ip: 10.3.163.15
 br0_nm: 255.255.255.0
@@ -8,3 +7,8 @@ br0_gw: 10.3.163.254
 br0_dev: eno1
 
 dns: 10.3.163.33
+
+nagios_Can_Connect: false
+nagios_Check_Services:
+  nrpe: false
+  ping: false

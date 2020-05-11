@@ -16,3 +16,8 @@ ks_repo: http://209.132.181.6/repo/rhel/RHEL8-x86_64/
 lvm_size: 20000
 mem_size: 4096
 num_cpus: 2
+
+nagios_Can_Connect: false
+nagios_Check_Services:
+  nrpe: false
+  ping: false
