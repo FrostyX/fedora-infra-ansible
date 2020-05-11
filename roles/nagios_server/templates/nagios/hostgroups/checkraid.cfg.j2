@@ -1,6 +1,6 @@
 define hostgroup {
         hostgroup_name  CheckRaid
         alias           Raid-Issue
-        members         {% for host in groups['all']|sort %}{% if hostvars[host].nagios_Check_Services['raid'] == true %}{{host}}{% if not loop.last %},{% endif %} {% endif %} {% endfor %}
+        members         {% for host in groups['all']|sort %}{% if hostvars[host].nagios_Check_Services['raid'] == true and hostvars[host].nagios_Can_Connect == true %}{{host}}{% if not loop.last %},{% endif %} {% endif %} {% endfor %}
 
 }
