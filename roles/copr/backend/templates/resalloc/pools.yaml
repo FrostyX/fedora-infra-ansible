@@ -34,6 +34,8 @@ aws_x86_64_normal:
     - arch_x86_64_native
     - arch_i386
     - arch_i386_native
+    - arch_armhfp
+    - arch_armhfp_emulated
     cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aws-new --arch=x86_64"
     cmd_delete: "/var/lib/resallocserver/resalloc_provision/vm-aws-delete"
     reuse_opportunity_time: 180
