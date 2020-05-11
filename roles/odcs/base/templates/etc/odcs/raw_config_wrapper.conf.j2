@@ -5,10 +5,11 @@ koji_profile = 'odcs_stg'
 koji_profile = 'odcs_production'
 {% endif %}
 
-{% if env == 'staging' %}
-# We cannot use hardlinks on stg, because it uses different volume and copy
-# just takes lot of storage.
+# We cannot use hardlinks, because ODCS uses different volume and copy
+# just takes lot of storage and time.
 link_type = 'symlink'
+
+{% if env == 'staging' %}
 
 # Staging is used only for testing, so allow only x86_64 composes
 tree_arches = ['x86_64']
