@@ -25,9 +25,9 @@ aarch64_02_prod:
 {% elif devel %}
 
 aws_x86_64_normal:
-    max: 15
+    max: 20
     max_starting: 5
-    max_prealloc: 2
+    max_prealloc: 5
     tags:
     - copr_builder
     - arch_x86_64
@@ -35,6 +35,20 @@ aws_x86_64_normal:
     - arch_i386
     - arch_i386_native
     cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aws-new --arch=x86_64"
+    cmd_delete: "/var/lib/resallocserver/resalloc_provision/vm-aws-delete"
+    reuse_opportunity_time: 180
+    reuse_max_count: 8
+    reuse_max_time: 1800
+
+aws_aarch64_normal:
+    max: 10
+    max_starting: 3
+    max_prealloc: 3
+    tags:
+    - copr_builder
+    - arch_aarch64
+    - arch_aarch64_native
+    cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aws-new --arch=aarch64"
     cmd_delete: "/var/lib/resallocserver/resalloc_provision/vm-aws-delete"
     reuse_opportunity_time: 180
     reuse_max_count: 8
