@@ -72,8 +72,20 @@ for project in get_pagure_projects():
         if group in group_data:
             users = users | group_data[group]
             continue
-        group_members = session.get(
-            pagure_group_url.format(group=group)).json()['members']
+
+        cnt = 0
+        while True:
+            try:
+                response = session.get(pagure_group_url.format(group=group))
+                data = response.json()
+                break
+            except Exception:
+                if cnt == 4:
+                    raise
+                cnt += 1
+                time.sleep(30)
+
+        group_members = data['members']
         users = users | set(group_members)
         group_data[group] = set(group_members)
 
