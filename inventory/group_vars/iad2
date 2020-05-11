@@ -11,3 +11,4 @@ nagios_Check_Services:
   sshd: false
   swap: false
   ping: false
+  raid: false
