@@ -32,6 +32,8 @@ aws_x86_64_normal:
     - copr_builder
     - arch_x86_64
     - arch_x86_64_native
+    - arch_i386
+    - arch_i386_native
     cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aws-new --arch=x86_64"
     cmd_delete: "/var/lib/resallocserver/resalloc_provision/vm-aws-delete"
     reuse_opportunity_time: 180
