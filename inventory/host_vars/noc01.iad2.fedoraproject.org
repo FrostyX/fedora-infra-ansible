@@ -25,8 +25,3 @@ custom_rules: [
 
 nagios_srcdir: 'nagios'
 nagios_location: 'internal'
-
-nagios_Can_Connect: false
-nagios_Check_Services:
-  nrpe: false
-  ping: false

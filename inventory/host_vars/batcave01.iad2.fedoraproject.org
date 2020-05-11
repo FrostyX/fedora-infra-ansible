@@ -28,8 +28,3 @@ sar_output_file: koji.json
 # SSH into batcave through VPN, like from bastion in a different DC.
 ssh_hostnames:
 - batcave01.vpn.fedoraproject.org
-
-nagios_Can_Connect: false
-nagios_Check_Services:
-  nrpe: false
-  ping: false

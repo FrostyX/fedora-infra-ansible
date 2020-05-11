@@ -1,0 +1,13 @@
+---
+# group variables for all hosts in iad2 datacenter
+
+# for now, lets not monitor any of them from phx2.
+
+nagios_Can_Connect: false
+
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  swap: false
+  ping: false

@@ -1281,7 +1281,7 @@ retrace01.qa.fedoraproject.org
 # os-proxy01.fedorainfracloud.org
 # os-proxy02.fedorainfracloud.org
 
-[nixnagios]
+[iad2]
 bastion01.iad2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org

@@ -140,3 +140,4 @@ exclude_hostgroups:
   - dbgserver_stg
   - virt_guest
   - virt_host
+  - iad2

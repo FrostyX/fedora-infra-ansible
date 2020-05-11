@@ -7,8 +7,3 @@ br0_gw: 10.3.163.254
 br0_dev: eno1
 
 dns: 10.3.163.33
-
-nagios_Can_Connect: false
-nagios_Check_Services:
-  nrpe: false
-  ping: false
