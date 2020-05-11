@@ -12,3 +12,7 @@ nagios_Check_Services:
   swap: false
   ping: false
   raid: false
+
+# we need to set the group priority here so this group 'wins' over the 'virthosts'
+# group and we can override values from that.
+ansible_group_priority: 10
