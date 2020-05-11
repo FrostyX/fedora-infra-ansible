@@ -1,4 +1,4 @@
-FROM fedora:31
+FROM fedora:32
 LABEL \
   name="bodhi-base" \
   vendor="Fedora Infrastructure" \
