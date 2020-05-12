@@ -58,6 +58,7 @@ update build set volume_id=(select id from volume where name='prod') where volum
 -- delete files from incomplete builds to keep DB in sync with
 -- filesystem; these builds are on default (staging) volume and their
 -- files are not there; keeping rpminfo's ma
+delete from archive_rpm_components where rpm_id in (select id from rpminfo where build_id in (select id from build where state<>1));
 delete from rpminfo where build_id in (select id from build where state<>1);
 
 -- expire any active buildroots
