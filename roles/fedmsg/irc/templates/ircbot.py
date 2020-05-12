@@ -614,6 +614,28 @@ config = dict(
                 ],
             ),
         ),
+
+        # Hook up #fedora-badges with badges messages
+        dict(
+            network='chat.freenode.net',
+            port=6667,
+            make_pretty=True,
+            make_terse=True,
+
+            {% if env == 'staging' %}
+            nickname='fm-stg-badges',
+            {% else %}
+            nickname='fm-badges',
+            {% endif %}
+            channel='#fedora-badges',
+            filters=dict(
+                topic=[
+                    '^((?!(pagure.*(new|added)|mailman)).)*$',
+                ],
+                body=['^((?!(fedora-badges|badges)).)*$'],
+            ),
+        ),
+
     ],
 
     ### Possible colors are ###
