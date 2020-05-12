@@ -8,7 +8,7 @@ ks_repo: http://209.132.181.6/repo/rhel/RHEL7-x86_64/
 
 volgroup: /dev/vg_guests
 eth0_ip: 10.3.163.65
-vmhost: vimhost-x86-04.iad2.fedoraproject.org
+vmhost: vmhost-x86-04.iad2.fedoraproject.org
 datacenter: iad2
 
 baseiptables: true
