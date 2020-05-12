@@ -42,6 +42,13 @@
   synchronize: src="{{ bigfiles }}/tftpboot/" dest=/var/lib/tftpboot/
   tags:
   - tftp_server
+  when: datacenter != 'iad2' 
+
+- name: fill up the tftpboot directory
+  synchronize: src="{{ bigfiles }}/tftpboot2/" dest=/var/lib/tftpboot/
+  tags:
+  - tftp_server
+  when: datacenter == 'iad2' 
 
 - name: generate custom configs
   template: src=grubhost.cfg.j2 dest="/var/lib/tftpboot/uefi/{{ hostvars[item].install_mac }}"
