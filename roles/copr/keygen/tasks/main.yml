@@ -11,7 +11,7 @@
 
 - group: name="copr-signer" state=present gid=989
 - group: name="apache" state=present gid=48
-- user: name="copr-signer" group=copr-signer groups=packager,apache uid=992
+- user: name="copr-signer" group=copr-signer groups=apache uid=992
 
 - name: install copr-keygen
   dnf: state=present name=copr-keygen
