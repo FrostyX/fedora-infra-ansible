@@ -1194,6 +1194,9 @@ os-control01.iad2.fedoraproject.org
 os-master01.phx2.fedoraproject.org
 os-master02.phx2.fedoraproject.org
 os-master03.phx2.fedoraproject.org
+os-master01.iad2.fedoraproject.org
+os-master02.iad2.fedoraproject.org
+os-master03.iad2.fedoraproject.org
 
 [os_infra_nodes]
 os-node01.phx2.fedoraproject.org
