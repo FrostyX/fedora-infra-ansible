@@ -12,7 +12,7 @@
         autoconnect: yes
         ip:
           address: 
-          - 10.3.163.11/24
+          - "{{ br0_ip }}/24"
           gateway4: 10.3.163.254
           dns: 
           - 10.3.163.33
@@ -28,7 +28,7 @@
         state: up
         type: ethernet
         master: br0
-        mac: E4:43:4B:B1:70:88
+        mac: "{{ mac1 }}"
 
       - name: br1
         state: up
@@ -42,17 +42,17 @@
         state: up
         type: ethernet
         master: br1
-        mac: E4:43:4B:B1:70:8A
+        mac: "{{ mac2 }}"
 
       - name: deployment
         state: down
         type: ethernet
-        mac: e4:43:4b:b1:70:a8
+        mac: "{{ mac3 }}"
 
       - name: unused
         state: down
         type: ethernet
-        mac: e4:43:4b:b1:70:a9
+        mac: "{{ mac4 }}"
 
   roles:
     - role: linux-system-roles.network
