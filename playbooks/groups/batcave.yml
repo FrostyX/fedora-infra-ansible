@@ -56,6 +56,15 @@
       warning: 10
       critical: 100
     when: datacenter != 'iad2'
+  - role: rabbit/queue
+    username: "mirror_pagure_ansible{{ env_suffix }}_iad2"
+    queue_name: "mirror_pagure_ansible{{ env_suffix }}_iad2"
+    routing_keys:
+      - "io.pagure.*.pagure.git.receive"
+    thresholds:
+      warning: 10
+      critical: 100
+    when: datacenter != 'iad2'
   - batcave
   - { role: nfs/client, when: inventory_hostname.startswith('batcave') and datacenter != 'iad2', mnt_dir: '/srv/web/pub',  nfs_src_dir: 'fedora_ftp/fedora.redhat.com/pub' }
   - { role: nfs/client, when: inventory_hostname.startswith('batcave01') and datacenter != 'iad2', mnt_dir: '/mnt/fedora/app',  nfs_src_dir: 'fedora_app/app' }
