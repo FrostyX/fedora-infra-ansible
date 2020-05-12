@@ -15,9 +15,6 @@ tar --exclude="*agent*" -czPf - "$PATH_TO_KEYRING_DIR" \
 # shell pattern matching provides sorted output
 previous=
 for file in "$BACKUP_DIR"/*; do
-    if test -n "$previous"; then
-        echo >&2 "removing $file"
-        rm "$file"
-    fi
+    test -z "$previous" || rm "$previous"
     previous=$file
 done
