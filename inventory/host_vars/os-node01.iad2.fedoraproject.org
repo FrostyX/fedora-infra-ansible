@@ -1,0 +1,14 @@
+---
+nm: 255.255.255.0
+gw: 10.3.163.254
+dns: 10.3.163.33
+
+ks_url: http://10.5.126.23/repo/rhel/ks/kvm-rhel-7
+ks_repo: http://10.5.126.23/repo/rhel/RHEL7-x86_64/
+
+volgroup: /dev/vg_guests
+eth0_ip: 10.3.163.65
+vmhost: vimhost-x86-05.iad2.fedoraproject.org
+datacenter: iad2
+
+baseiptables: true

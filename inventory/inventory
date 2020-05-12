@@ -1168,6 +1168,9 @@ os-control01.stg.phx2.fedoraproject.org
 os-master01.stg.phx2.fedoraproject.org
 os-master02.stg.phx2.fedoraproject.org
 os-master03.stg.phx2.fedoraproject.org
+os-master01.stg.iad2.fedoraproject.org
+os-master02.stg.iad2.fedoraproject.org
+os-master03.stg.iad2.fedoraproject.org
 
 [os_infra_nodes_stg]
 os-node01.stg.phx2.fedoraproject.org
@@ -1185,6 +1188,7 @@ os_control_stg
 
 [os_control]
 os-control01.phx2.fedoraproject.org
+os-control01.iad2.fedoraproject.org
 
 [os_masters]
 os-master01.phx2.fedoraproject.org
@@ -1195,10 +1199,15 @@ os-master03.phx2.fedoraproject.org
 os-node01.phx2.fedoraproject.org
 os-node02.phx2.fedoraproject.org
 os-node03.phx2.fedoraproject.org
+os-node01.iad2.fedoraproject.org
+os-node02.iad2.fedoraproject.org
+os-node03.iad2.fedoraproject.org
 
 [os_nodes]
 os-node04.phx2.fedoraproject.org
 os-node05.phx2.fedoraproject.org
+os-node04.iad2.fedoraproject.org
+os-node05.iad2.fedoraproject.org
 
 [os_nodes:children]
 os_infra_nodes
@@ -1293,6 +1302,15 @@ vmhost-x86-04.iad2.fedoraproject.org
 vmhost-x86-05.iad2.fedoraproject.org
 vmhost-x86-06.iad2.fedoraproject.org
 vmhost-x86-07.iad2.fedoraproject.org
+os-control01.iad2.fedoraproject.org
+os-master01.iad2.fedoraproject.org
+os-master02.iad2.fedoraproject.org
+os-master03.iad2.fedoraproject.org
+os-node01.iad2.fedoraproject.org
+os-node02.iad2.fedoraproject.org
+os-node03.iad2.fedoraproject.org 
+os-node04.iad2.fedoraproject.org
+os-node05.iad2.fedoraproject.org
 
 [iad2:vars]
 ansible_group_priority=10

@@ -518,14 +518,18 @@ openshift_master_identity_providers=[{"name": "fedoraidp", "login": "true", "cha
 {% if env == "staging" %}
 openshift_hosted_registry_storage_kind=nfs
 openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
+{% if datacenter == 'phx2' %}
 openshift_hosted_registry_storage_host=ntap-phx2-c01-fedora01-nfs.storage.phx2.redhat.com
+{% endif %}
 openshift_hosted_registry_storage_nfs_directory=/
 openshift_hosted_registry_storage_volume_name=openshift-stg-registry
 openshift_hosted_registry_storage_volume_size=10Gi
 {% else %}
 openshift_hosted_registry_storage_kind=nfs
 openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
+{% if datacenter == 'phx2' %}
 openshift_hosted_registry_storage_host=ntap-phx2-c01-fedora01-nfs.storage.phx2.redhat.com
+{% endif %}
 openshift_hosted_registry_storage_nfs_directory=/
 openshift_hosted_registry_storage_volume_name=openshift-prod-registry
 openshift_hosted_registry_storage_volume_size=10Gi
@@ -719,7 +723,9 @@ openshift_logging_es_nodeselector={"node-role.kubernetes.io/infra":"true"}
 #openshift_logging_storage_labels={'storage': 'logging'}
 openshift_logging_storage_kind=nfs
 openshift_logging_storage_access_modes=['ReadWriteOnce']
+{% if datacenter == 'phx2' %}
 openshift_logging_storage_host=ntap-phx2-c01-fedora01-nfs.storage.phx2.redhat.com
+{% endif %}
 openshift_logging_storage_nfs_directory=/
 openshift_logging_storage_volume_name=openshift-prod-logging
 openshift_logging_storage_volume_size=100Gi
