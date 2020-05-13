@@ -86,9 +86,6 @@
 - name: fix openvpn routing
   action: shell /etc/openvpn/fix-routes.sh
 
-- name: restart xinetd
-  action: service name=xinetd state=restarted
-
 - name: restart netapproute
   action: command /etc/sysconfig/network-scripts/ifup-routes eth1
 
@@ -109,9 +106,6 @@
 
 - name: restart glusterd
   service: name=glusterd state=restarted
-
-- name: restart supervisord
-  service: name=supervisord state=restarted
 
 - name: run rkhunter
   command: rkhunter --propupd
@@ -144,15 +138,6 @@
 
 - name: restart stunnel
   service: name=stunnel state=restarted
-
-- name: restart cinder api
-  service: name=openstack-cinder-api state=restarted
-
-- name: restart cinder scheduler
-  service: name=openstack-cinder-scheduler state=restarted
-
-- name: restart cinder volume
-  service: name=openstack-cinder-volume state=restarted
 
 - name: restart mirrorlist-server
   service: name=mirrorlist-server state=restarted
@@ -187,6 +172,3 @@
     name: rabbitmq-server
     state: restarted
     daemon_reload: yes
-
-- name: restart repoSpanner
-  action: service name=repoSpanner state=restarted

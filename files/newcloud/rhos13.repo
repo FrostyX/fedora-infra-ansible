@@ -1,4 +1,0 @@
-[rhel7-rhos13]
-name = rhel7 openstack $basearch
-baseurl=http://infrastructure.fedoraproject.org/repo/rhel/rhel7/$basearch/rhel-7-openstack-13-rpms
-gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release

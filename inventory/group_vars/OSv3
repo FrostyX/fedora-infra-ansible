@@ -1,3 +1,0 @@
----
-ansible_ssh_user: root
-deployment_type: origin

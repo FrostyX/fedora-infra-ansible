@@ -1,6 +1,0 @@
-#!/bin/sh
-SNAPSHOTTIME=$(date +"%m-%d-%Y")
-cd /srv/persist
-echo "Snapshot taken $SNAPSHOTTIME.\n" >> /var/www/html/artboard/artboard-backup-summary.log
-tar -zcvf "artboard-backup.tar.gz" artboard
-

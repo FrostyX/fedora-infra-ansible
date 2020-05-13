@@ -23,7 +23,6 @@
   roles:
   - base
   - hosts
-  - builder_repo
   - fas_client
   - rkhunter
   - nagios_client

@@ -27,8 +27,6 @@
     website: fedoracommunity.org
   - role: fedora-web/fudcon
     website: fudcon.fedoraproject.org
-  - role: fedora-web/magazine
-    website: fedoramagazine.org
   - role: fedora-web/getfedora
     website: getfedora.org
   - role: fedora-web/flocktofedora

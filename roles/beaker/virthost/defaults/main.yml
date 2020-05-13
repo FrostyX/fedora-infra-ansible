@@ -1,4 +1,0 @@
----
-bridge_name: br0
-eth_interface: eth0
-libvirt_group: kvm

@@ -1,16 +1,3 @@
-#[cloud_phx2]
-##
-## Hardware
-##
-#virthost-aarch64-os01.fedorainfracloud.org
-#virthost-aarch64-os02.fedorainfracloud.org
-#virthost-cloud01.fedorainfracloud.org
-#virthost-os01.fedorainfracloud.org
-#virthost-os02.fedorainfracloud.org
-#virthost-os03.fedorainfracloud.org
-#storinator01.fedorainfracloud.org
-#cloudvmhost-aarch64-01.fedorainfracloud.org
-
 ##
 ## New Community Hardware
 ##
@@ -55,11 +42,6 @@ el7-test.fedorainfracloud.org
 #aarch64-test02.fedorainfracloud.org
 # iddev
 iddev.fedorainfracloud.org
-# respins
-# exists in aws, we don't manage it.
-#respins01.fedorainfracloud.org
-# koji simple ci development - ticket 6419
-simple-koji-ci-prod.fedorainfracloud.org
 retrace-stg.aws.fedoraproject.org
 # This is not in aws, but here is good enough for now
 ppc64le-test.fedorainfracloud.org

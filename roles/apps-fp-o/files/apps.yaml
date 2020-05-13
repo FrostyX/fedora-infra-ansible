@@ -122,19 +122,6 @@ children:
             description: >
                 Maintain your own user profile page, contribute to
                 documents about features, process, and governance.
-    -   name:   Fedora Magazine
-        data:
-            icon:   magazine.png
-            url:    http://fedoramagazine.org
-            docs_url:   https://codex.wordpress.org/
-            # We don't have a SOP for the magazine yet.
-            # https://fedorahosted.org/fedora-infrastructure/ticket/5149
-            #sops:
-            #    - put the url here
-            description: >
-                Fedora Magazine is a WordPress-based site which delivers all
-                the news of the Fedora Community. (It replaces the previous
-                Fedora Weekly News.)
     -   name:   The Planet
         data:
             icon:   planet_logo.png

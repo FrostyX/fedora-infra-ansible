@@ -1071,12 +1071,6 @@ copr_keygen_dev_aws
 # virthost-aarch64-os01.fedorainfracloud.org
 # virthost-aarch64-os02.fedorainfracloud.org
 
-#[libravatar]
-#libravatar.fedorainfracloud.org
-
-#[libravatar_stg]
-#libravatar-stg.fedorainfracloud.org
-
 [pagure]
 pagure01.fedoraproject.org
 

@@ -1,8 +1,0 @@
-- name: mount up disk
-  mount: name=/mnt/data src='LABEL=libravatar-data' fstype=ext4 state=mounted
-
-- name: bind mount for postgresql
-  mount: src=/mnt/data/pgsql name=/var/lib/pgsql fstype=auto opts=bind state=mounted
-
-- name: bind mount for letsencrypt
-  mount: src=/mnt/data/letsencrypt name=/etc/letsencrypt fstype=auto opts=bind state=mounted

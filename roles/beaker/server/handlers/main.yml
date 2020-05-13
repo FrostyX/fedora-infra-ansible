@@ -1,6 +1,0 @@
-#############################################################
-# Handlers for restarting services specific to beaker servers
-#
-
-- name: restart beaker server
-  service: name=beakerd state=restarted
