@@ -45,6 +45,7 @@ iddev.fedorainfracloud.org
 retrace-stg.aws.fedoraproject.org
 # This is not in aws, but here is good enough for now
 ppc64le-test.fedorainfracloud.org
+simple-koji-ci-prod.fedorainfracloud.org
 
 [cloud:children]
 cloud_aws
