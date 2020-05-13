@@ -169,7 +169,7 @@
   package:
     name: ['fedora-messaging', 'python3-fedfind', 'python3-wikitcms', 'python3-openqa_client',
            'python3-requests', 'python3-resultsdb_api', 'python3-resultsdb_conventions-fedora',
-           'python3-setuptools', 'python3-six']
+           'python3-setuptools', 'python3-six', 'python3-pip']
     state: present
   tags:
   - packages
@@ -204,8 +204,8 @@
   register: gittools
   when: "(toolsbranch.stderr.find('Not a git repository') != -1) or (toolsbranch.stdout.find('On branch master') != -1)"
 
-- name: Check if fedora_openqa has ever been installed
-  stat: path=/usr/local/bin/fedora-openqa
+- name: Check if fedora_openqa is installed for current Python
+  command: "pip show fedora_openqa"
   register: insttools
   changed_when: "1 != 1"
   failed_when: "1 != 1"
@@ -215,7 +215,7 @@
   command: "python3 setup.py install"
   args:
     chdir: /root/fedora_openqa
-  when: "gittools is changed or not insttools.stat.exists"
+  when: "gittools is changed or insttools.rc != 0"
   notify:
   - restart openqa consumers
 

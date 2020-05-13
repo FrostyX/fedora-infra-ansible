@@ -110,7 +110,8 @@
 
 - name: Install required packages
   package:
-    name: ['fedora-messaging', 'python3-fedfind', 'python3-openqa_client', 'python3-setuptools']
+    name: ['fedora-messaging', 'python3-fedfind', 'python3-openqa_client', 'python3-setuptools',
+           'python3-pip']
     state: present
   tags:
   - packages
@@ -121,11 +122,18 @@
     dest: /root/check-compose
   register: gitcc
 
+- name: Check if check-compose is installed for current Python
+  command: "pip show check_compose"
+  register: instcc
+  changed_when: "1 != 1"
+  failed_when: "1 != 1"
+  check_mode: no
+
 - name: Install check-compose
   command: "python3 setup.py install --nodeps"
   args:
     chdir: /root/check-compose
-  when: "gitcc is changed"
+  when: "gitcc is changed or instcc.rc != 0"
   notify:
   - restart check-compose
 

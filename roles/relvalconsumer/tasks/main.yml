@@ -107,7 +107,7 @@
     # 'relval' itself is needed as we call it directly for size
     # checking
     name: ['python3-fedfind', 'python3-wikitcms', 'fedora-messaging',
-           'python3-mwclient', 'python3-setuptools', 'relval']
+           'python3-mwclient', 'python3-pip', 'python3-setuptools', 'relval']
     state: present
   tags:
   - packages
@@ -140,11 +140,18 @@
     dest: /root/relvalconsumer
   register: gitrvc
 
+- name: Check if relvalconsumer is installed for current Python
+  command: "pip show relvalconsumer"
+  register: instrvc
+  changed_when: "1 != 1"
+  failed_when: "1 != 1"
+  check_mode: no
+
 - name: Install relvalconsumer
   command: "python3 setup.py install --nodeps"
   args:
     chdir: /root/relvalconsumer
-  when: "gitrvc is changed"
+  when: "gitrvc is changed or instrvc.rc != 0"
   notify:
   - restart relvalconsumer
 
