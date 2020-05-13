@@ -99,7 +99,11 @@
   tasks:
   - name: stop nfs
     service: name=nfs state=stopped
-  - name: unmount koji filesystem
+  - name: unmount /mnt/fedora_koji/koji/ostree
+    mount: name=/mnt/fedora_koji/koji/ostree state=unmounted
+  - name: unmount /mnt/fedora_koji/koji/compose/ostree
+    mount: name=/mnt/fedora_koji/koji/compose/ostree state=unmounted
+  - name: unmount /mnt/fedora_koji
     mount: name=/mnt/fedora_koji state=unmounted
   - name: wipe fedora_koji volume
     filesystem: dev=/dev/GuestVolGroup00/fedora_koji fstype=xfs force=yes
