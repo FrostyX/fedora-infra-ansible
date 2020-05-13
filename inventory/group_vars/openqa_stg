@@ -18,6 +18,7 @@ openqa_dbname: openqa-stg
 openqa_dbhost: db-qa03.qa.fedoraproject.org
 openqa_dbuser: openqastg
 openqa_dbpassword: "{{ stg_openqa_dbpassword }}"
+openqa_assetsize: 400
 openqa_assetsize_ppc: 150
 openqa_assetsize_aarch64: 150
 

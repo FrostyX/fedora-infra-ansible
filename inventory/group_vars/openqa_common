@@ -13,7 +13,6 @@ openqa_nickname: adamwill
 openqa_fullname: Adam Williamson
 openqa_userid: http://adamwill.id.fedoraproject.org/
 
-openqa_assetsize: 500
 openqa_assetsize_updates: 100
 
 # we need this for all our fedora-messaging consumers as they are not
