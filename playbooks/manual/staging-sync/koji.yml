@@ -132,7 +132,7 @@
     service: name=kojira state=started
 
 - name: remount NFS on builders, composers, bodhi and odcs
-  hosts: builders_stg:releng-stg:bodhi-backend-stg:odcs-backend-stg:odcs-frontend-stg
+  hosts: builders_stg:releng_stg:bodhi_backend_stg:odcs_backend_stg:odcs_frontend_stg
   user: root
   vars_files:
    - /srv/web/infra/ansible/vars/global.yml
