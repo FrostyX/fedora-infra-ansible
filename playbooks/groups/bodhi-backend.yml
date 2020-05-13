@@ -68,7 +68,6 @@
     mnt_dir: '/pub/'
     nfs_src_dir: 'fedora_ftp/fedora.redhat.com/pub/'
 
-  - bodhi2/backend
   - role: keytab/service
     owner_user: apache
     owner_group: apache
@@ -81,6 +80,7 @@
     service: bodhi
     host: "bodhi.stg.fedoraproject.org"
     when: env == "staging"
+  - bodhi2/backend
   - role: push-container-registry
     cert_dest_dir: "/etc/docker/certs.d/registry{{ env_suffix }}.fedoraproject.org"
     cert_src: "{{private}}/files/docker-registry/{{env}}/pki/issued/containerstable.crt"
