@@ -380,6 +380,7 @@ memcached01.stg.phx2.fedoraproject.org
 
 [mirrorlist_proxies]
 proxy01.phx2.fedoraproject.org
+proxy01.iad2.fedoraproject.org
 proxy02.fedoraproject.org
 proxy03.fedoraproject.org
 proxy04.fedoraproject.org
@@ -561,6 +562,7 @@ loopabull01.stg.phx2.fedoraproject.org
 
 [proxies_external]
 proxy01.phx2.fedoraproject.org
+proxy01.iad2.fedoraproject.org
 proxy02.fedoraproject.org
 proxy03.fedoraproject.org
 proxy04.fedoraproject.org
