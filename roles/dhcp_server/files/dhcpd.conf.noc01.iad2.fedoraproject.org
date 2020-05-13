@@ -26,11 +26,6 @@ subnet 10.3.160.0 netmask 255.255.255.0 {
 
     range 10.3.160.160 10.3.160.180;
 
-    host temphost01 {
-        hardware ethernet 4c:d9:8f:bc:5a:ea;
-        fixed-address 10.3.160.230;
-        option host-name "temp01-mgmt";
-    }
 } 
 
 subnet 10.3.161.0 netmask 255.255.255.0 {
@@ -64,10 +59,16 @@ subnet 10.3.163.0 netmask 255.255.255.0 {
 
           if option architecture-type = 00:07 or option architecture-type = 00:09 {
                     filename "uefi/grubx64.efi";
+                    option routers 10.3.163.254;
+                    option subnet-mask 255.255.255.0;
           } else if option architecture-type = 00:0b {
                     filename "uefi/grubaa64.efi";
+                    option routers 10.3.163.254;
+                    option subnet-mask 255.255.255.0;
           } else {
                     filename "pxelinux/pxelinux.0";
+                    option routers 10.3.163.254;
+                    option subnet-mask 255.255.255.0;
           }
     }
 
@@ -84,19 +85,6 @@ subnet 10.3.164.0 netmask 255.255.255.0 {
 
     range 10.3.164.220 10.3.164.249;
 
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
-
 }
 
 subnet 10.3.165.0 netmask 255.255.255.0 {
@@ -109,19 +97,6 @@ subnet 10.3.165.0 netmask 255.255.255.0 {
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
     range 10.3.165.220 10.3.165.249;
-
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
 
 }
 
@@ -136,19 +111,6 @@ subnet 10.3.166.0 netmask 255.255.255.0 {
 
     range 10.3.166.220 10.3.166.249;
 
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
-
 }
 
 subnet 10.3.167.0 netmask 255.255.255.0 {
@@ -161,19 +123,6 @@ subnet 10.3.167.0 netmask 255.255.255.0 {
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
     range 10.3.167.220 10.3.167.249;
-
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
 
 }
 
@@ -188,19 +137,6 @@ subnet 10.3.168.0 netmask 255.255.255.0 {
 
     range 10.3.168.220 10.3.168.249;
 
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
-
 }
 
 subnet 10.3.169.0 netmask 255.255.255.0 {
@@ -213,19 +149,6 @@ subnet 10.3.169.0 netmask 255.255.255.0 {
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
     range 10.3.169.220 10.3.169.249;
-
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
 
 }
 
@@ -240,19 +163,6 @@ subnet 10.3.170.0 netmask 255.255.255.0 {
 
     range 10.3.170.220 10.3.170.249;
 
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
-
 }
 
 subnet 10.3.171.0 netmask 255.255.255.0 {
@@ -266,18 +176,6 @@ subnet 10.3.171.0 netmask 255.255.255.0 {
 
     range 10.3.171.220 10.3.171.249;
 
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
 
 }
 
@@ -292,18 +190,6 @@ subnet 10.3.172.0 netmask 255.255.255.0 {
 
     range 10.3.172.220 10.3.172.249;
 
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
 
 }
 
@@ -318,18 +204,6 @@ subnet 10.3.173.0 netmask 255.255.255.0 {
 
     range 10.3.173.220 10.3.173.249;
 
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
 
 }
 
@@ -344,19 +218,6 @@ subnet 10.3.174.0 netmask 255.255.255.0 {
 
     range 10.3.174.220 10.3.174.249;
 
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
-
 }
 
 subnet 10.3.175.0 netmask 255.255.255.0 {
@@ -369,19 +230,6 @@ subnet 10.3.175.0 netmask 255.255.255.0 {
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
     range 10.3.175.220 10.3.175.249;
-
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
 
 }
 
@@ -396,18 +244,232 @@ subnet 10.3.176.0 netmask 255.255.255.0 {
 
     range 10.3.176.220 10.3.176.249;
 
-    class "pxeclients" {
-          match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
-          next-server 10.3.163.10;
-
-          if option architecture-type = 00:07 or option architecture-type = 00:09 {
-                    filename "uefi/grubx64.efi";
-          } else if option architecture-type = 00:0b {
-                    filename "uefi/grubaa64.efi";
-          } else {
-                    filename "pxelinux/pxelinux.0";
-          }
-    }
-
 }
 
+host vmhost-x86-01 {
+     hardware ethernet E4:43:4B:B1:70:88;
+     fixed-address 10.3.163.11;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-02 {
+     hardware ethernet E4:43:4B:BA:E8:44;
+     fixed-address 10.3.163.12;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-03 {
+     hardware ethernet E4:43:4B:B1:28:CC;
+     fixed-address 10.3.163.13;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-04 {
+     hardware ethernet E4:43:4B:B1:62:A8;
+     fixed-address 10.3.163.14;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-05 {
+     hardware ethernet E4:43:4B:AE:4B:B8;
+     fixed-address 10.3.163.15;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-06 {
+     hardware ethernet E4:43:4B:B1:28:EE;
+     fixed-address 10.3.163.16;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-07 {
+     hardware ethernet E4:43:4B:22:CE:CA;
+     fixed-address 10.3.163.17;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
+
+host centos01 {
+     hardware ethernet e4:43:4b:b4:fa:18;
+     fixed-address 10.3.163.19;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
+
+host bvmhost-x86-01 {
+     hardware ethernet E4:43:4B:B1:05:54;
+     fixed-address 10.3.169.11;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-x86-02 {
+     hardware ethernet E4:43:4B:B1:69:FE;
+     fixed-address 10.3.169.12;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-x86-03 {
+     hardware ethernet E4:43:4B:B1:62:64;
+     fixed-address 10.3.169.13;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-x86-04 {
+     hardware ethernet E4:43:4B:B1:03:30;
+     fixed-address 10.3.169.14;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-x86-05 {
+     hardware ethernet E4:43:4B:AE:44:EE;
+     fixed-address 10.3.169.15;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-x86-06 {
+     hardware ethernet E4:43:4B:AC:E1:54 ;
+     fixed-address 10.3.169.16;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-x86-07 {
+     hardware ethernet EC:F4:BB:D2:85:48 ;
+     fixed-address 10.3.169.17;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-x86-08 {
+     hardware ethernet EC:F4:BB:D2:25:68 ;
+     fixed-address 10.3.169.18;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-01 {
+     hardware ethernet EC:F4:BB:D2:76:A0;
+     fixed-address 10.3.169.31;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host bkernel01 {
+     hardware ethernet D0:94:66:45:A7:E4;
+     fixed-address 10.3.169.31;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host autosign01 {
+     hardware ethernet E4:43:4B:B1:2B:52;
+     fixed-address 10.3.169.28;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host sign-vault01 {
+     hardware ethernet E4:43:4B:22:CE:CA;
+     fixed-address 10.3.169.26;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+
+host bvmhost-a64-01 {
+     hardware ethernet 50:6b:4b:6a:d3:c0 ;
+     fixed-address 10.3.170.11;
+     filename "uefi/grubaa64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.170.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-a64-02 {
+     hardware ethernet 50:6b:4b:6a:c2:c0 ;
+     fixed-address 10.3.170.12;
+     filename "uefi/grubaa64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.170.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-a64-03 {
+     hardware ethernet 50:6b:4b:6b:0a:40 ;
+     fixed-address 10.3.170.13;
+     filename "uefi/grubaa64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.170.254;
+     option subnet-mask 255.255.255.0;
+}
+
+host qvmhost-x86-01 {
+     hardware ethernet E4:43:4B:A8:C1:FE;
+     fixed-address 10.3.174.11;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.174.254;
+     option subnet-mask 255.255.255.0;
+}
+host qvmhost-x86-02 {
+     hardware ethernet E4:43:4B:A8:B3:0E;
+     fixed-address 10.3.174.11;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.174.254;
+     option subnet-mask 255.255.255.0;
+}
+
+host openqa01-x64-worker01 {
+     hardware ethernet E4:43:4B:A7:98:66 ;
+     fixed-address 10.3.174.21;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.174.254;
+     option subnet-mask 255.255.255.0;
+}
+host openqa01-a64-worker01 {
+     hardware ethernet 50:6b:4b:7f:96:30 ;
+     fixed-address 10.3.170.13;
+     filename "uefi/grubaa64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.170.254;
+     option subnet-mask 255.255.255.0;
+}
+
+host centos-mgmt01 {
+     hardware ethernet 4c:d9:8f:bc:5a:ea;
+     fixed-address 10.3.160.69;
+     option host-name "centos01-mgmt";
+}
