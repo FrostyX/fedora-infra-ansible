@@ -23,7 +23,7 @@
           - fedoraproject.org
           dhcp4: no
           auto6: no
-        autoconnect: yes
+
       - name: br0-port0
         state: up
         type: ethernet
@@ -44,12 +44,12 @@
         master: br1
         mac: "{{ mac2 }}"
 
-      - name: deployment
+      - name: eno3
         state: down
         type: ethernet
         mac: "{{ mac3 }}"
 
-      - name: unused
+      - name: eno4
         state: down
         type: ethernet
         mac: "{{ mac4 }}"
