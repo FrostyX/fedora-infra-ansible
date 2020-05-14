@@ -77,7 +77,7 @@ roles_path     = {{ ansible_base }}/ansible/roles:/usr/share/ansible/roles
 
 # enable callback plugins, they can output to stdout but cannot be 'stdout' type.
 #callback_whitelist = timer, mail
-callback_whitelist = fedora_messaging,profile_roles,profile_tasks,logdetail
+callback_whitelist = fedora_messaging_callback,profile_roles,profile_tasks,logdetail
 
 # Determine whether includes in tasks and handlers are "static" by
 # default. As of 2.0, includes are dynamic by default. Setting these
