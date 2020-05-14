@@ -17,18 +17,12 @@
 # You should have received a copy of the GNU General Public License
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 
+import logging
 import os
 import pwd
-import logging
-import traceback
-import sys
 
-try:
-    from fedora_messaging.api import Message, publish
-    from fedora_messaging.exceptions import PublishReturned, ConnectionException
-except ImportError as err:
-    print("*****", err)
-    traceback.print_exc(file=sys.stdout)
+from fedora_messaging.api import Message, publish
+from fedora_messaging.exceptions import PublishReturned, ConnectionException
 
 try:
     from ansible.plugins.callback import CallbackBase
