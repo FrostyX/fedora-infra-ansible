@@ -18,8 +18,8 @@
           - 10.3.163.33
           - 10.3.163.34
           dns_search: 
-          - iad2.fedoraproject.org
           - vpn.fedoraproject.org
+          - iad2.fedoraproject.org
           - fedoraproject.org
           dhcp4: no
           auto6: no
