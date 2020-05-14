@@ -117,5 +117,7 @@ class CallbackModule(CallbackBase):
             publish(msg)
         except PublishReturned as e:
             LOGGER.warning("Fedora Messaging broker rejected message %s: %s", msg.id, e)
+            print("Fedora Messaging broker rejected message %s: %s", msg.id, e)
         except ConnectionException as e:
             LOGGER.warning("Error sending message %s: %s", msg.id, e)
+            print("Error sending message %s: %s", msg.id, e)
