@@ -86,6 +86,9 @@
 - name: fix openvpn routing
   action: shell /etc/openvpn/fix-routes.sh
 
+- name: restart xinetd
+  action: service name=xinetd state=restarted
+
 - name: restart netapproute
   action: command /etc/sysconfig/network-scripts/ifup-routes eth1
 
