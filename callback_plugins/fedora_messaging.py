@@ -20,12 +20,15 @@
 import os
 import pwd
 import logging
+import traceback
+import sys
 
 try:
     from fedora_messaging.api import Message, publish
     from fedora_messaging.exceptions import PublishReturned, ConnectionException
 except ImportError as err:
     print("*****", err)
+    traceback.print_exc(file=sys.stdout)
 
 try:
     from ansible.plugins.callback import CallbackBase
