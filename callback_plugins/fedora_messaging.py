@@ -21,8 +21,11 @@ import os
 import pwd
 import logging
 
-from fedora_messaging.api import Message, publish
-from fedora_messaging.exceptions import PublishReturned, ConnectionException
+try:
+    from fedora_messaging.api import Message, publish
+    from fedora_messaging.exceptions import PublishReturned, ConnectionException
+except ImportError as err:
+    print("*****", err)
 
 try:
     from ansible.plugins.callback import CallbackBase
