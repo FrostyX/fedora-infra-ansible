@@ -21,7 +21,7 @@
     - rsyncd
     - sudo
     - { role: openvpn/client,
-        when: env != "staging" and 'os_control' not in group_names }
+        when: env != "staging" and 'os_control' not in group_names and datacenter != 'iad2' }
 
   tasks:
     - name: put openshift repo on os- systems
