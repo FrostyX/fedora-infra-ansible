@@ -258,7 +258,7 @@ class CallbackModule(CallbackBase):
             info = {}
             info['play'] = play.name
             info['hosts'] = play.hosts
-            info['transport'] = self.play_context.connection
+            info['transport'] = str(self.play_context.connection)
             info['number'] = self._play_count
             info['check'] = self.play_context.check_mode
             info['diff'] = self.play_context.diff
