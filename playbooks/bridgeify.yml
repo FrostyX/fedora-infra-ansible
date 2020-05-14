@@ -45,12 +45,10 @@
         mac: "{{ mac2 }}"
 
       - name: eno3
-        state: down
         type: ethernet
         mac: "{{ mac3 }}"
 
       - name: eno4
-        state: down
         type: ethernet
         mac: "{{ mac4 }}"
 
