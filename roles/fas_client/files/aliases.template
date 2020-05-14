@@ -110,6 +110,7 @@ updates:              /dev/null
 pkgdb:                /dev/null
 fudcon-cfp:           /dev/null
 download-logs:        /dev/null
+git:                  /dev/null
 
 
 # Administrative & Management Aliases
