@@ -263,7 +263,10 @@ class CallbackModule(CallbackBase):
             info['check'] = self.play_context.check_mode
             info['diff'] = self.play_context.diff
             logmech.play_info = info
-            logmech.play_log(json.dumps(info, indent=4))
+            try:
+                logmech.play_log(json.dumps(info, indent=4))
+            except TypeError:
+                print("Failed to conver to JSON:", info)
 
 
     def v2_playbook_on_stats(self, stats):
