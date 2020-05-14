@@ -12,3 +12,4 @@ vmhost: vmhost-x86-04.iad2.fedoraproject.org
 datacenter: iad2
 
 baseiptables: true
+vpn: false

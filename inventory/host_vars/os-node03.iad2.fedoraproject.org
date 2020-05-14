@@ -12,6 +12,7 @@ vmhost: vmhost-x86-07.iad2.fedoraproject.org
 datacenter: iad2
 
 baseiptables: true
+vpn: false
 
 mem_size: 24576
 max_mem_size: 24576
