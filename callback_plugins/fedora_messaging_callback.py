@@ -96,8 +96,12 @@ class CallbackModule(CallbackBase):
                     LOGGER.warning(
                         "Fedora Messaging broker rejected message %s: %s", msg.id, e
                     )
+                    print(
+                        "Fedora Messaging broker rejected message %s: %s", msg.id, e
+                    )
                 except ConnectionException as e:
                     LOGGER.warning("Error sending message %s: %s", msg.id, e)
+                    print("Error sending message %s: %s", msg.id, e)
                 self.playbook_path = path
 
     def v2_playbook_on_stats(self, stats):
