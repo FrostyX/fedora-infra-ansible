@@ -36,6 +36,12 @@
       - deploy-cronjob
   - role: openshift/object
     app: docsbuilding
+    template: cron-translated.yml
+    objectname: cron-translated.yml
+    tags:
+      - deploy-cronjob
+  - role: openshift/object
+    app: docsbuilding
     file: pvc.yml
     objectname: pvc.yml
 
@@ -48,4 +54,9 @@
     app: docsbuilding
     objecttype: cronjob
     objectname: cron
+    tags: [ never, delete ]
+  - role: openshift/object-delete
+    app: docsbuilding
+    objecttype: cronjob
+    objectname: cron-translated
     tags: [ never, delete ]
