@@ -1295,6 +1295,11 @@ retrace01.qa.fedoraproject.org
 [iad2]
 bastion01.iad2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
+bvmhost-x86-01.iad2.fedoraproject.org
+bvmhost-x86-02.iad2.fedoraproject.org
+bvmhost-x86-03.iad2.fedoraproject.org
+bvmhost-x86-04.iad2.fedoraproject.org
+bvmhost-x86-05.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org
 noc01.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
