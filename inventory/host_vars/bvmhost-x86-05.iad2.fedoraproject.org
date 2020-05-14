@@ -1,0 +1,14 @@
+---
+datacenter: iad2
+
+br0_ip: 10.3.169.15
+br0_nm: 255.255.255.0
+br0_gw: 10.3.169.254
+br0_dev: eno1
+
+dns: 10.3.163.33
+
+mac1: e4:43:4b:ae:44:ee
+mac2: e4:43:4b:ae:44:f0
+mac3: e4:43:4b:ae:45:0e
+mac4: e4:43:4b:ae:45:0f
