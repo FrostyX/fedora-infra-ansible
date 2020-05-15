@@ -121,3 +121,19 @@ define host {
 {% endif %}
 
 }
+
+#'iad2'
+define host {
+  host_name                    iad2-gw
+  alias                        iad2 cage gateway
+  use                          mincheck
+  check_command                check-host-alive4
+  address                      209.132.185.254
+{% if vars['nagios_location'] == 'internal' %}
+  parents                      phx2-gw
+{% else %}
+  parents                      ibiblio-gw
+{% endif %}
+
+}
+

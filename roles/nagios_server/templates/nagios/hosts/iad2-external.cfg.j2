@@ -1,0 +1,9 @@
+{% for host in vars["iad2_external"]|sort %}
+define host {
+  host_name               {{ host }}
+  alias                   {{ host }}
+  use                     mincheck
+  address                 {{ host }}
+  parents                 iad2-gw
+}
+{% endfor %}
