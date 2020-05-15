@@ -52,6 +52,7 @@
   - easy-rsa                  # For easy copying into ansible-private for certs.
   - dnf                       # To get dnf reposync
   - dnf-plugins-core          # To get dnf reposync
+  - fedora-messaging          # To send/receive messages on the amqp bus
   tags:
   - batcave
   - config
@@ -80,6 +81,7 @@
   - easy-rsa                  # For easy copying into ansible-private for certs.
   - dnf                       # To get dnf reposync
   - dnf-plugins-core          # To get dnf reposync
+  - fedora-messaging          # To send/receive messages on the amqp bus
   tags:
   - batcave
   - config
@@ -166,6 +168,50 @@
   tags:
   - batcave
   - config
+
+#
+# fedora-messaging configuration file for the applications sending messages from
+# batcave
+#
+
+- name: install the fedora-messaging configuration file
+  template: src=batcave-messaging.toml dest=/etc/fedora-messaging/batcave-messaging.toml
+  tags:
+  - batcave
+  - config
+  - fedora-messaging
+
+- name: create folder where we'll place the certs
+  file: path=/etc/pki/rabbitmq/ owner=root group=root mode=0755 state=directory
+  tags:
+  - batcave
+  - config
+  - fedora-messaging
+
+- name: install the rabbitmq certificates for batcave
+  copy: src={{ item.src }}
+      dest=/etc/pki/rabbitmq/{{ item.dest }}
+      owner={{ item.owner }} group={{ item.group}} mode={{ item.mode }}
+  with_items:
+  - src: "{{private}}/files/rabbitmq/{{ env }}/pki/issued/batcave{{ env_suffix }}.crt"
+    dest: batcave.crt
+    owner: root
+    group: root
+    mode: "444"
+  - src: "{{private}}/files/rabbitmq/{{ env }}/pki/private/batcave{{ env_suffix }}.key"
+    dest: batcave.key
+    owner: root
+    group: root
+    mode: "440"
+  - src: "{{private}}/files/rabbitmq/{{ env }}/pki/ca.crt"
+    dest: batcave.ca
+    owner: root
+    group: root
+    mode: "444"
+  tags:
+  - batcave
+  - config
+  - fedora-messaging
 
 #
 # Scripts

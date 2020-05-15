@@ -38,6 +38,9 @@
   - role: rabbit/user
     username: "mirror_pagure_ansible{{ env_suffix }}"
     when: datacenter != 'iad2'
+  - role: rabbit/user
+    username: "batcave{{ env_suffix }}"
+    when: datacenter != 'iad2'
   - role: rabbit/queue
     username: "mirror_pagure_ansible{{ env_suffix }}"
     queue_name: "mirror_pagure_ansible{{ env_suffix }}"
