@@ -359,6 +359,7 @@
     - other.cfg
     - rdu-cc-hosts.cfg
     - rdu-hosts.cfg
+    - iad2-external.cfg
     - aws-hosts.cfg
   when: env == "production"
   tags:
