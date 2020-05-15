@@ -1171,9 +1171,9 @@ os-control01.stg.phx2.fedoraproject.org
 os-master01.stg.phx2.fedoraproject.org
 os-master02.stg.phx2.fedoraproject.org
 os-master03.stg.phx2.fedoraproject.org
-os-master01.stg.iad2.fedoraproject.org
-os-master02.stg.iad2.fedoraproject.org
-os-master03.stg.iad2.fedoraproject.org
+#os-master01.stg.iad2.fedoraproject.org
+#os-master02.stg.iad2.fedoraproject.org
+#os-master03.stg.iad2.fedoraproject.org
 
 [os_infra_nodes_stg]
 os-node01.stg.phx2.fedoraproject.org
