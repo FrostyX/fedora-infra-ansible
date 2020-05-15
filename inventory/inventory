@@ -108,6 +108,7 @@ bvmhost-x86-02.iad2.fedoraproject.org
 bvmhost-x86-03.iad2.fedoraproject.org
 bvmhost-x86-04.iad2.fedoraproject.org
 bvmhost-x86-05.iad2.fedoraproject.org
+bvmhost-x86-06.iad2.fedoraproject.org
 
 [colo_virt]
 dedicatedsolutions01.fedoraproject.org
