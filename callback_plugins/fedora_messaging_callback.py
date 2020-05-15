@@ -21,6 +21,7 @@ import logging
 import os
 import pwd
 
+import fedora_messaging.config
 from fedora_messaging.api import Message, publish
 from fedora_messaging.exceptions import PublishReturned, ConnectionException
 
@@ -52,6 +53,8 @@ class CallbackModule(CallbackBase):
     CALLBACK_TYPE = "notification"
     CALLBACK_VERSION = 2.0
     CALLBACK_NEEDS_WHITELIST = True
+    fedora_messaging.config.conf.load_config(
+        '/etc/fedora-messaging/batcave-messaging.toml')
 
     playbook_path = None
 
@@ -60,6 +63,7 @@ class CallbackModule(CallbackBase):
         self.playbook = None
 
         super(CallbackModule, self).__init__()
+
 
     def set_play_context(self, play_context):
         self.play_context = play_context
