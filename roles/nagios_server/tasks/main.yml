@@ -379,6 +379,7 @@
   tags:
   - nagios_server
   - nagios_config
+  - nagios_hosts
   notify: restart nagios
 
 - name: Build out nagios host templates (production)
