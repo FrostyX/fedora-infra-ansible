@@ -365,6 +365,7 @@
   tags:
   - nagios_server
   - nagios_config
+  - nagios_hosts
   notify: restart nagios
 
 ## These are only available to the internal server
