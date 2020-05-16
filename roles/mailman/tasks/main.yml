@@ -7,12 +7,6 @@
 # SELinux
 # TODO: switch to the sefcontext module when we update Ansible to 2.2+
 #
-- name: install semanage
-  package: name=policycoreutils-python state=present
-  tags:
-  - mailman
-  - selinux
-
 - name: set the SELinux policy for the configuration directory
   command: semanage fcontext -a -t etc_t "{{ mailman_webui_confdir }}(/.*)?"
   tags:

@@ -3,10 +3,8 @@
   package: name={{ item }} state=present update_cache=yes
   with_items:
   - bzip2
-  - libsemanage-python 
   - mod_ssl
   - nfs-utils
-  - policycoreutils-python
   tags:
   - packages
 
