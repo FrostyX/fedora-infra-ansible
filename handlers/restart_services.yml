@@ -175,3 +175,6 @@
     name: rabbitmq-server
     state: restarted
     daemon_reload: yes
+
+- name: restart chronyd
+  service: name=chronyd state=restarted

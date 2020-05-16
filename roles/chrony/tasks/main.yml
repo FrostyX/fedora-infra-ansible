@@ -7,6 +7,8 @@
 
 - name: install chrony.conf
   template: src=chrony.conf.j2 dest=/etc/chrony.conf
+  notify:
+  - restart chronyd
   tags:
   - chrony
   - config
