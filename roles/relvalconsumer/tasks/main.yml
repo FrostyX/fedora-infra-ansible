@@ -138,6 +138,7 @@
   git:
     repo: https://pagure.io/fedora-qa/relvalconsumer.git
     dest: /root/relvalconsumer
+    version: f4f163199f428fb6e3a02e195150ec5bcf4f4289
   register: gitrvc
 
 - name: Check if relvalconsumer is installed for current Python
