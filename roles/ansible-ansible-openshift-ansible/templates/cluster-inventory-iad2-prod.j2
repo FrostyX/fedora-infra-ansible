@@ -6,21 +6,21 @@
 
 [masters]
 {% for host in groups[openshift_cluster_masters_group] %}
-{% if hostvars[host].datacenter == 'phx2' %}
+{% if hostvars[host].datacenter == 'iad2' %}
 {{ host }}
 {% endif %}
 {% endfor %}
 
 [etcd]
 {% for host in groups[openshift_cluster_masters_group] %}
-{% if hostvars[host].datacenter == 'phx2' %}
+{% if hostvars[host].datacenter == 'iad2' %}
 {{ host }}
 {% endif %}
 {% endfor %}
 
 [nodes]
 {% for host in groups[openshift_cluster_masters_group] %}
-{% if hostvars[host].datacenter == 'phx2' %}
+{% if hostvars[host].datacenter == 'iad2' %}
 {{ host }} openshift_node_group_name='node-config-master'
 {% endfor %}
 {% for host in groups[openshift_cluster_nodes_group] %}
@@ -217,8 +217,13 @@ openshift_use_crio_only={{ openshift_ansible_crio_only }}
 #openshift_docker_additional_registries=registry.example.com
 
 # If oreg_url points to a registry requiring authentication, provide the following:
+{% if datacenter != 'iad2' %}
 oreg_auth_user="{{ os_prod_registry_user }}"
 oreg_auth_password="{{ os_prod_registry_password }}"
+{% else %}
+oreg_auth_user="{{ os_prod_iad2_registry_user }}"
+oreg_auth_password="{{ os_prod_iad2_registry_password }}"
+{% endif %}
 # NOTE: oreg_url must be defined by the user for oreg_auth_* to have any affect.
 # oreg_auth_pass should be generated from running docker login.
 # To update registry auth credentials, uncomment the following:
@@ -521,6 +526,7 @@ openshift_master_identity_providers=[{"name": "fedoraidp", "login": "true", "cha
 #openshift_hosted_registry_storage_nfs_directory=/exports
 #openshift_hosted_registry_storage_volume_name=registry
 #openshift_hosted_registry_storage_volume_size=10Gi
+{% if datacenter != 'iad2' %}
 {% if env == "staging" %}
 openshift_hosted_registry_storage_kind=nfs
 openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
@@ -535,6 +541,7 @@ openshift_hosted_registry_storage_host=ntap-phx2-c01-fedora01-nfs.storage.phx2.r
 openshift_hosted_registry_storage_nfs_directory=/
 openshift_hosted_registry_storage_volume_name=openshift-prod-registry
 openshift_hosted_registry_storage_volume_size=10Gi
+{% endif %}
 {% endif %}
 #
 # Openstack
@@ -723,12 +730,14 @@ openshift_logging_es_nodeselector={"node-role.kubernetes.io/infra":"true"}
 #openshift_logging_storage_volume_name=logging
 #openshift_logging_storage_volume_size=10Gi
 #openshift_logging_storage_labels={'storage': 'logging'}
+{% if datacenter != 'iad2' %}
 openshift_logging_storage_kind=nfs
 openshift_logging_storage_access_modes=['ReadWriteOnce']
 openshift_logging_storage_host=ntap-phx2-c01-fedora01-nfs.storage.phx2.redhat.com
 openshift_logging_storage_nfs_directory=/
 openshift_logging_storage_volume_name=openshift-prod-logging
 openshift_logging_storage_volume_size=100Gi
+{% endif %}
 #
 # Option C - Dynamic -- If openshift supports dynamic volume provisioning for
 # your cloud platform use this.

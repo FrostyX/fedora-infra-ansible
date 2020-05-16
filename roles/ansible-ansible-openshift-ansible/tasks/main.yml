@@ -32,14 +32,23 @@
   - ansible-ansible-openshift-ansible-config
   when: env == 'staging' and inventory_hostname.startswith('os-')
 
-- name: generate the inventory file (production)
+- name: generate the inventory file (production) (phx2)
   template:
     src: "cluster-inventory-prod.j2"
     dest: "{{ openshift_ansible_path }}/{{ cluster_inventory_filename }}"
   tags:
   - ansible-ansible-openshift-ansible
   - ansible-ansible-openshift-ansible-config
-  when: env == 'production' and inventory_hostname.startswith('os-')
+  when: env == 'production' and inventory_hostname.startswith('os-') and datacenter == 'phx2'
+
+- name: generate the inventory file (production) (iad2)
+  template:
+    src: "cluster-inventory-iad2-prod.j2"
+    dest: "{{ openshift_ansible_path }}/{{ cluster_inventory_filename }}"
+  tags:
+  - ansible-ansible-openshift-ansible
+  - ansible-ansible-openshift-ansible-config
+  when: env == 'production' and inventory_hostname.startswith('os-') and datacenter == 'iad2'
 
 - name: generate the inventory file (osbs)
   template:
