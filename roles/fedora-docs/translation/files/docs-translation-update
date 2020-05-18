@@ -3,7 +3,7 @@ OLD=$(mktemp -d -t fedora_docs_trans_XXXX)
 cd $OLD
 
 function clean_tmp() {
-  [ -n "$OLD" ] && echo rm -Rf "$OLD"
+  [ -n "$OLD" ] && rm -Rf "$OLD"
 }
 
 trap clean_tmp exit
