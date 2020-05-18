@@ -6,7 +6,6 @@
   package: name={{ item }} state=present
   with_items:
   - collectd-rrdtool
-  - collectd-ping
   - collectd-web
   - collectd-rabbitmq-data
   notify:
@@ -27,15 +26,6 @@
   - config
   - collectd/server
   when: ansible_distribution_major_version|int == 8
-
-# install collectd ping config
-- name: install collectd ping config
-  copy: src=ping.conf dest=/etc/collectd.d/ping.conf
-  notify:
-  - restart collectd
-  tags:
-  - config
-  - collectd/server
 
 # install collectd rrd config
 - name: install collectd rrd config
