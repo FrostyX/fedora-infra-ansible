@@ -16,3 +16,9 @@ vpn: false
 
 mem_size: 24576
 max_mem_size: 24576
+
+nrpe_procs_warn: 900
+nrpe_procs_crit: 1000
+
+lvm_size: 120g
+num_cpus: 4
