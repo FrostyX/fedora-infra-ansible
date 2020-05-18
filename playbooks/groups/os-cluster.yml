@@ -20,8 +20,7 @@
     - collectd/base
     - rsyncd
     - sudo
-    - { role: openvpn/client,
-        when: env != "staging" and 'os_control' not in group_names and datacenter != 'iad2' }
+    - { role: openvpn/client, when: env != "staging" }
 
   tasks:
     - name: put openshift repo on os- systems
