@@ -129,11 +129,7 @@ class ProdConfiguration(BaseConfiguration):
     KOJI_PROFILE = 'staging'
     ARCHES = ['aarch64', 'ppc64le', 's390x', 'x86_64']
     BASE_MODULE_ARCHES = {
-        # Fedora 31 and later drop 'i686'. Keep it around for older releases.
-        # https://fedoraproject.org/wiki/Changes/Noi686Repositories
-        'platform:f28': ['aarch64', 'x86_64', 'i686'],
-        'platform:f29': ['aarch64', 'x86_64', 'i686'],
-        'platform:f30': ['aarch64', 'x86_64', 'i686'],
+        'platform:f31': ['aarch64', 'x86_64'],
     }
     KOJI_REPOSITORY_URL = 'https://kojipkgs.stg.fedoraproject.org/repos'
     MESSAGING_TOPIC_PREFIX = ['org.fedoraproject.stg']
@@ -152,9 +148,7 @@ class ProdConfiguration(BaseConfiguration):
     KOJI_PROFILE = 'production'
     ARCHES = ['aarch64', 'armv7hl', 'i686', 'ppc64le', 'x86_64', 's390x']
     BASE_MODULE_ARCHES = {
-        # Fedora 28 includes 'ppc64'.  F29 and later drops it.
-        # https://fedoraproject.org/wiki/Changes/DiscontinuePPC64
-        'platform:f28': ['aarch64', 'armv7hl', 'i686', 'ppc64', 'ppc64le', 'x86_64', 's390x'],
+        'platform:f31': ['aarch64', 'armv7hl', 'ppc64le', 'x86_64', 's390x'],
         'platform:el8' : ['aarch64', 'ppc64le', 'x86_64', 's390x']
     }
     KOJI_REPOSITORY_URL = 'https://kojipkgs.fedoraproject.org/repos'
