@@ -19,6 +19,9 @@ qa-prod01.qa.fedoraproject.org
 rabbitmq01.phx2.fedoraproject.org
 rabbitmq02.phx2.fedoraproject.org
 rabbitmq03.phx2.fedoraproject.org
+rabbitmq01.iad2.fedoraproject.org
+rabbitmq02.iad2.fedoraproject.org
+rabbitmq03.iad2.fedoraproject.org
 
 [rabbitmq_stg]
 rabbitmq01.stg.phx2.fedoraproject.org
