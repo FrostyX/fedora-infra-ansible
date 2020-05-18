@@ -22,3 +22,5 @@ nrpe_procs_crit: 1000
 
 lvm_size: 120g
 num_cpus: 4
+
+resolvconf: "resolv.conf/iad2"
