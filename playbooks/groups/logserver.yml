@@ -23,7 +23,6 @@
   - role: epylog
     when: datacenter != 'iad2'
   - role: openvpn/client
-    when: datacenter != 'iad2'
   - role: awstats
     when: datacenter != 'iad2'
   - role: keytab/service
