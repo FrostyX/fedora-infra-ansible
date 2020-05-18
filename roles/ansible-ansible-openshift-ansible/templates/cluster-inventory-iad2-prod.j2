@@ -29,6 +29,11 @@
 {{ host }} openshift_node_group_name='node-config-compute'
 {% endif %}
 {% endfor %}
+{% for host in groups['os_infra_nodes'] %}
+{% if hostvars[host].datacenter == 'iad2' %}
+{{ host }} openshift_node_group_name='node-config-infra'
+{% endif %}
+{% endfor %}
 
 #[nfs]
 #ose3-master1.test.example.com
