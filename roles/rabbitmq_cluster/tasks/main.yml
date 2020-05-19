@@ -136,7 +136,7 @@
 # This is the publicly accessible virtual host
 - name: Configure the publicly accessible vhost
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_vhost:
     name: /public_pubsub
     state: present
@@ -160,7 +160,7 @@
 
 - name: Add a policy to limit queues to 1GB and remove after a month of no use
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_policy:
     apply_to: queues
     name: pubsub_sweeper
@@ -257,7 +257,7 @@
 
 - name: Create the zmq.topic exchange in the {{ item }} vhost
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_exchange:
     name: "zmq.topic"
     exchange_type: "topic"
@@ -274,7 +274,7 @@
 # We keep them separated in /pubsub so we can bridge messages back to zmq
 - name: Forward all zmq.topic to amq.topic in the public_pubsub vhost
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_binding:
     destination_type: exchange
     name: zmq.topic
@@ -289,7 +289,7 @@
 
 - name: Configure a policy to ensure the public vhost stays swept up and tidy
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_policy:
     apply_to: queues
     name: sweeper
@@ -311,7 +311,7 @@
 #     read queues for consuming
 - name: Create a user for public access
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_user:
     user: "fedora{{ env_suffix }}"
     permissions:
@@ -331,7 +331,7 @@
 # exchange, create a queue, and bind a queue to an exchange.
 - name: Create a user for federation
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_user:
     user: pubsub_federation
     permissions:
@@ -374,29 +374,29 @@
 # choke up rabbitmq_parameters.
 - name: Configure federation upstream from pubsub to the public_pubsub vhost
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   when: "env == 'staging'"
   rabbitmq_parameter:
     component: "federation-upstream"
     name: "pubsub-to-public_pubsub"
-    value: '{"uri": "amqps://pubsub_federation:@rabbitmq01.stg.phx2.fedoraproject.org/%2Fpubsub?cacertfile=%2Fetc%2Frabbitmq%2Fca.crt&certfile=%2Fetc%2Frabbitmq%2Fpubsub_federation%2Fclient_cert.pem&keyfile=%2Fetc%2Frabbitmq%2Fpubsub_federation%2Fclient_key.pem&verify=verify_peer&fail_if_no_peer_cert=true&server_name_indication=rabbitmq.stg.fedoraproject.org&auth_mechanism=external", "ack-mode": "on-confirm"}'
+    value: '{"uri": "amqps://pubsub_federation:@rabbitmq01.stg.{{ datacenter }}.fedoraproject.org/%2Fpubsub?cacertfile=%2Fetc%2Frabbitmq%2Fca.crt&certfile=%2Fetc%2Frabbitmq%2Fpubsub_federation%2Fclient_cert.pem&keyfile=%2Fetc%2Frabbitmq%2Fpubsub_federation%2Fclient_key.pem&verify=verify_peer&fail_if_no_peer_cert=true&server_name_indication=rabbitmq.stg.fedoraproject.org&auth_mechanism=external", "ack-mode": "on-confirm"}'
     state: present
     vhost: /public_pubsub
 
 - name: Configure federation upstream from pubsub to the public_pubsub vhost
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   when: "env == 'production'"
   rabbitmq_parameter:
     component: "federation-upstream"
     name: "pubsub-to-public_pubsub"
-    value: '{"uri": "amqps://pubsub_federation:@rabbitmq01.phx2.fedoraproject.org/%2Fpubsub?cacertfile=%2Fetc%2Frabbitmq%2Fca.crt&certfile=%2Fetc%2Frabbitmq%2Fpubsub_federation%2Fclient_cert.pem&keyfile=%2Fetc%2Frabbitmq%2Fpubsub_federation%2Fclient_key.pem&verify=verify_peer&fail_if_no_peer_cert=true&server_name_indication=rabbitmq.fedoraproject.org&auth_mechanism=external", "ack-mode": "on-confirm"}'
+    value: '{"uri": "amqps://pubsub_federation:@rabbitmq01.{{ datacenter }}.fedoraproject.org/%2Fpubsub?cacertfile=%2Fetc%2Frabbitmq%2Fca.crt&certfile=%2Fetc%2Frabbitmq%2Fpubsub_federation%2Fclient_cert.pem&keyfile=%2Fetc%2Frabbitmq%2Fpubsub_federation%2Fclient_key.pem&verify=verify_peer&fail_if_no_peer_cert=true&server_name_indication=rabbitmq.fedoraproject.org&auth_mechanism=external", "ack-mode": "on-confirm"}'
     state: present
     vhost: /public_pubsub
 
 - name: Configure a policy to federate the pubsub topic exchange to public_pubsub
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_policy:
     apply_to: exchanges
     name: pubsub-to-public_pubsub
