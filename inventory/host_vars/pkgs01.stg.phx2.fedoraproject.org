@@ -15,3 +15,6 @@ ssh_hostnames:
 
 # Need a eth0/eth1 install here.
 virt_install_command: "{{ virt_install_command_two_nic }}"
+
+# temp fix to get htis box working
+baseiptables: False
