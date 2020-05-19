@@ -1,6 +1,7 @@
 ---
 lvm_size: 100000
 mem_size: 16384
+max_mem_size:  32768
 num_cpus: 4
 
 tcp_ports: [ 80, 443, 8444, 8443, 8445 ]
