@@ -386,7 +386,7 @@
 - name: Configure federation upstream from pubsub to the public_pubsub vhost (phx2)
   run_once: true
   delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
-  when: "env == 'production' and datacenter == 'phx2"
+  when: "env == 'production' and datacenter == 'phx2'"
   rabbitmq_parameter:
     component: "federation-upstream"
     name: "pubsub-to-public_pubsub"
