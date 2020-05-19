@@ -12,6 +12,20 @@
   - packages
   - pagure
   - pagure/fedmsg
+  when: ansible_distribution_major_version|int < 8 and ansible_distribution == 'RedHat'
+
+- name: install needed packages
+  package: name={{ item }} state=present
+  with_items:
+  - fedmsg
+  - python3-libsemanage
+  - python3-psutil
+  tags:
+  - packages
+  - pagure
+  - pagure/fedmsg
+  when:  ansible_distribution_major_version|int >= 8 and ansible_distribution == 'RedHat'
+
 
 # We use setgid here so that the monitoring sockets created by fedmsg services
 # are accessible to the nrpe group.
