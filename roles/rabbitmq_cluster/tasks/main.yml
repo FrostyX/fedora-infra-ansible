@@ -264,11 +264,23 @@
   rabbitmq_exchange:
     name: "zmq.topic"
     exchange_type: "topic"
-    vhost: "{{ item }}"
+    vhost: "/pubsub"
     login_user: admin
     login_password: "{{ (env == 'production')|ternary(rabbitmq_admin_password_production, rabbitmq_admin_password_staging) }}"
-  with_items:
-  - /pubsub
+  tags:
+  - rabbitmq_cluster
+  - config
+
+- name: Create the zmq.topic exchange in the {{ item }} vhost
+  run_once: true
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ item }}.fedoraproject.org"
+  with_items: "{{ datacenter }}"
+  rabbitmq_exchange:
+    name: "zmq.topic"
+    exchange_type: "topic"
+    vhost: "/public_pubsub"
+    login_user: admin
+    login_password: "{{ (env == 'production')|ternary(rabbitmq_admin_password_production, rabbitmq_admin_password_staging) }}"
   - /public_pubsub
   tags:
   - rabbitmq_cluster
