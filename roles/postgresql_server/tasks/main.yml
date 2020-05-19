@@ -30,6 +30,16 @@
   - packages
   - postgresql
 
+- name: on rhel8 hosts enable the postgresql 12 module.
+  copy:
+  dest: /etc/dnf/modules.d/postgresql.module
+  content: |
+      [postgresql]
+      name=postgresql
+      stream=12
+      profiles=
+      state=enabled
+
 - name: install postgresql server packages (dnf)
   package:
     state: present
