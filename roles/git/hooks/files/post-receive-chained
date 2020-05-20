@@ -4,7 +4,7 @@
 # You need to explicitly add your hook to the following list
 # for it to be invoked.
 pee \
-    /usr/share/git-core/post-receive-fedmsg \
+    /usr/share/git-core/post-receive-fedora-messaging \
     /usr/share/git-core/post-receive-alternativearch \
     /usr/lib/python2.7/site-packages/pagure/hooks/files/post-receive \
     "/usr/bin/grok-manifest -m /srv/git/grokmirror/manifest.js.gz -t /srv/git/repositories/ -n `pwd`"
