@@ -86,6 +86,7 @@
     etype: group
     permissions: r
     state: present
+  when: env != "staging"
 
 # Set-up Pagure
 
