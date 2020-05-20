@@ -27,7 +27,7 @@
   - mod_ssl
   - mod_auth_gssapi
   - /usr/sbin/semanage
-  - mod_auth_openidc
+    #  - mod_auth_openidc
   when: env == "staging"
   tags:
   - distgit
