@@ -173,6 +173,7 @@
 
 - name: install the DistGit related httpd config
   copy: src=git-smart-http.conf dest=/etc/httpd/conf.d/dist-git/git-smart-http.conf
+  when: env != "staging"
   notify:
   - reload httpd
   tags:
@@ -180,6 +181,7 @@
 
 - name: Symlink pkgs-git-repos-list
   copy: src=repolist.conf dest=/etc/httpd/conf.d/dist-git/repolist.conf
+  when: env != "staging"
   notify:
   - reload httpd
   tags:
