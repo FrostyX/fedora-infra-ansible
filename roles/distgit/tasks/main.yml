@@ -355,6 +355,7 @@
   - lookaside-upload.conf
   notify:
   - reload httpd
+  when: env != "staging"
   tags:
   - distgit
   - sslciphers
