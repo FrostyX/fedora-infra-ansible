@@ -60,19 +60,21 @@
   when: not inventory_hostname.startswith("ipa01")
 
 - name: create replica file
-  delegate_to: ipa01.phx2.fedoraproject.org
+  delegate_to: ipa01.{{ item }}.fedoraproject.org
   command: ipa-replica-prepare
            --password={{ipa_dm_password}}
            --ip-address={{eth0_ip}}
            {{inventory_hostname}}
            creates=/var/lib/ipa/replica-info-{{inventory_hostname}}.gpg
+  with_items: "{{ datacenter }}"
   tags:
   - ipa/server
   - config
   when: not inventory_hostname.startswith("ipa01") and not replication_status.stat.exists
 
 - name: retrieve replica file
-  delegate_to: ipa01.phx2.fedoraproject.org
+  delegate_to: ipa01.{{ item }}.fedoraproject.org
+  with_items: "{{ datacenter }}"
   fetch: src=/var/lib/ipa/replica-info-{{inventory_hostname}}.gpg
          dest=/tmp/ipa_replica_{{inventory_hostname}}.gpg
          flat=yes
