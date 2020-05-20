@@ -1,5 +1,5 @@
 ---
-lvm_size: 150000
+lvm_size: 130000
 mem_size: 16384
 max_mem_size:  32768
 num_cpus: 4
