@@ -1,5 +1,5 @@
 - name: make the app be real
-  hosts: os_masters[0]:os_masters_stg[0]
+  hosts: os_masters[0]:os_masters_stg[0]:os-master01.iad2.fedoraproject.org
   user: root
   gather_facts: False
 
@@ -10,7 +10,7 @@
     - /srv/web/infra/ansible/roles/openshift-apps/ipsilon/vars/build.yml
 
   vars:
-    ipsilon_db_host: "db-fas01{{ env_suffix }}.phx2.fedoraproject.org"
+    ipsilon_db_host: "db-fas01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
 
   pre_tasks:
   - include_vars: dir=/srv/web/infra/ansible/vars/all/ ignore_files=README
