@@ -7,8 +7,8 @@ eth0_ip: 10.3.163.42
 vmhost: vmhost-x86-01.iad2.fedoraproject.org
 datacenter: iad2
 
-ks_url: http://209.132.181.6/repo/rhel/ks/kvm-rhel-8-ext
-ks_repo: http://209.132.181.6/repo/rhel/RHEL8-x86_64/
+ks_url: http://209.132.181.6/repo/rhel/ks/kvm-rhel-7-ext
+ks_repo: http://209.132.181.6/repo/rhel/RHEL7-x86_64/
 
 # This is a generic list, monitored by collectd
 databases:

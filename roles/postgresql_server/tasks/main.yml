@@ -39,6 +39,7 @@
       stream=12
       profiles=
       state=enabled
+  when: ansible_distribution_major_version|int >= 8 and ansible_distribution == 'RedHat'
 
 - name: install postgresql server packages (dnf)
   package:
