@@ -29,7 +29,7 @@
   - pagure-webhook
   - python3-psycopg2
   - redis
-  - libsemanage-python
+  - python3-libsemanage
   - python3-fedora-flask
   - pagure-dist-git
   when: env == "staging"
