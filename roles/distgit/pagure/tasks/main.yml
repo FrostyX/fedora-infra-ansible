@@ -14,6 +14,25 @@
   - libsemanage-python
   - python-fedora-flask
   - pagure-dist-git
+  when: env != "staging"
+  tags:
+  - pagure
+  - packages
+
+- name: install needed packages
+  package: name={{ item }} state=present
+  with_items:
+  - pagure
+  - pagure-ev
+  - pagure-logcom
+  - pagure-milters
+  - pagure-webhook
+  - python3-psycopg2
+  - redis
+  - libsemanage-python
+  - python3-fedora-flask
+  - pagure-dist-git
+  when: env == "staging"
   tags:
   - pagure
   - packages
