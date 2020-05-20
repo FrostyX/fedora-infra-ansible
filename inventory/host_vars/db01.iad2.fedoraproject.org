@@ -1,0 +1,76 @@
+---
+nm: 255.255.255.0
+gw: 10.3.163.254
+dns: 10.3.163.33
+volgroup: /dev/vg_guests
+eth0_ip: 10.3.163.41
+vmhost: vmhost-x86-03.iad2.fedoraproject.org
+datacenter: iad2
+
+ks_url: http://209.132.181.6/repo/rhel/ks/kvm-rhel-8-ext
+ks_repo: http://209.132.181.6/repo/rhel/RHEL8-x86_64/
+
+# This is a generic list, monitored by collectd
+databases:
+- anitya
+- blockerbugs
+- bodhi2
+- elections
+- fedocal
+- hyperkitty
+- kerneltest
+- koschei
+- mailman
+- mbs
+- mirrormanager
+- notifications
+- nuancier_lite
+- odcs
+- pagure
+- pdc
+- tahrir
+- waiverdb
+- transtats
+
+# This is a more strict list of databases to backup every day
+dbs_to_backup:
+- anitya
+- blockerbugs
+- bodhi2
+- elections
+- fedocal
+- hyperkitty
+- kerneltest
+- koschei
+- mailman
+- mbs
+- mirrormanager
+- notifications
+- nuancier_lite
+- odcs
+- pagure
+- pdc
+- tahrir
+- waiverdb
+- transtats
+
+# These are normally group variables, but in this case db servers are often different
+lvm_size: 500000
+mem_size: 16384
+num_cpus: 10
+fas_client_groups: sysadmin-dba,sysadmin-noc,sysadmin-veteran
+
+#
+# We should narrow this down at some point
+#
+custom_rules: [ '-A INPUT -p tcp -m tcp --dport 5432 -j ACCEPT' ]
+
+#
+# db01 handles lots of apps, could have many procs if they are busy.
+# 
+nrpe_procs_warn: 800
+nrpe_procs_crit: 900
+
+db_backup_dir: ['/backups']
+shared_buffers: "4GB"
+effective_cache_size: "12GB"
