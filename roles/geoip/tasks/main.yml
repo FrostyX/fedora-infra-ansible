@@ -6,11 +6,11 @@
   - packages
   when: (ansible_distribution == 'RedHat' and ansible_distribution_major_version|int < 8) or (ansible_distribution_major_version|int < 30 and ansible_distribution == 'Fedora')
 
-- name: install python3-GeoIP
-  package: name=python3-GeoIP state=present
+- name: install python3-geoip2 (RHEL8)
+  package: name=python3-geoip2 state=present
   tags:
   - packages
-  when: (ansible_distribution == 'RedHat' and ansible_distribution_major_version|int >= 8) or (ansible_distribution_major_version|int >= 30 and ansible_distribution == 'Fedora')
+  when: (ansible_distribution == 'RedHat' and ansible_distribution_major_version|int >= 8) 
 
 - name: push over the geoip db once
   copy: src={{ item }} dest=/usr/share/GeoIP/
