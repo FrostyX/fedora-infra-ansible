@@ -1,5 +1,5 @@
 - name: make the app be real
-  hosts: os_masters[0]:os_masters_stg[0]
+  hosts: os_masters[0]:os_masters_stg[0]:os-master01.iad2.fedoraproject.org
   user: root
   gather_facts: False
 
@@ -9,7 +9,7 @@
     - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
 
   vars:
-    fas_db_host: "db-fas01{{ env_suffix }}.phx2.fedoraproject.org"
+    fas_db_host: "db-fas01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
     gen_cert: false
     wsgi_procs: 4
     wsgi_threads: 1
@@ -116,7 +116,7 @@
   - role: openshift/route
     app: fas
     routename: totpcgi
-    host: "fas-all{{ env_suffix }}.phx2.fedoraproject.org"
+    host: "fas-all{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
     serviceport: totp
     servicename: totpcgi
     termination_passthrough: true
@@ -149,8 +149,8 @@
     app: fas
     key: tls-cert-primary
     secret_name: tls-cert-primary
-    private_cert: "2fa-certs/keys/fas-all{{ env_suffix }}.phx2.fedoraproject.org.crt"
-    private_key: "2fa-certs/keys/fas-all{{ env_suffix }}.phx2.fedoraproject.org.key"
+    private_cert: "2fa-certs/keys/fas-all{{ env_suffix }}.{{ datacenter }}.fedoraproject.org.crt"
+    private_key: "2fa-certs/keys/fas-all{{ env_suffix }}.{{ datacenter }}.fedoraproject.org.key"
   - role: openshift/secret-tls
     app: fas
     key: tls-cert-vpn
