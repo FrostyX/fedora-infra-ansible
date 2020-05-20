@@ -19,7 +19,7 @@
   - collectd/base
   - sudo
   - apache
-  - gitolite/base
+  - { role: gitolite/base, when: env != "staging" }
   - gitolite/check_fedmsg_hooks
   - { role: git/make_checkout_seed, when: env != "staging" }
   - git/hooks
