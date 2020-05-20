@@ -15,6 +15,47 @@
   - git/hooks
   - packages
 
+- name: install the fedora-messaging configuration file
+  template: src=git-hooks-messaging.toml dest=/etc/fedora-messaging/git-hooks-messaging.toml
+  tags:
+  - batcave
+  - config
+  - fedora-messaging
+
+- name: create folder where we'll place the certs
+  file: path=/etc/pki/rabbitmq/ owner=root group=root mode=0755 state=directory
+  tags:
+  - git
+  - git/hooks
+  - config
+  - fedora-messaging
+
+- name: install the rabbitmq certificates for batcave
+  copy: src={{ item.src }}
+      dest=/etc/pki/rabbitmq/{{ item.dest }}
+      owner={{ item.owner }} group={{ item.group}} mode={{ item.mode }}
+  with_items:
+  - src: "{{private}}/files/rabbitmq/{{ env }}/pki/issued/batcave{{ env_suffix }}.crt"
+    dest: git-hooks.crt
+    owner: root
+    group: root
+    mode: "444"
+  - src: "{{private}}/files/rabbitmq/{{ env }}/pki/private/batcave{{ env_suffix }}.key"
+    dest: git-hooks.key
+    owner: root
+    group: root
+    mode: "440"
+  - src: "{{private}}/files/rabbitmq/{{ env }}/pki/ca.crt"
+    dest: git-hooks.ca
+    owner: root
+    group: root
+    mode: "444"
+  tags:
+  - git
+  - git/hooks
+  - config
+  - fedora-messaging
+
 - name: install the git hooks
   copy: src={{item}} dest=/usr/share/git-core/ mode=0755
   with_items:
