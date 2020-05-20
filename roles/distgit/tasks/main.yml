@@ -115,6 +115,7 @@
 
 - name: install the dist-git config
   copy: src=dist-git.conf dest=/etc/dist-git/dist-git.conf
+  when: env != "staging"
   tags:
   - config
   - distgit
