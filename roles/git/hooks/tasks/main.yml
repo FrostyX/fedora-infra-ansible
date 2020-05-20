@@ -21,7 +21,7 @@
     state: present
     name:
     - git
-    - moreutils
+    #- moreutils
     - python3-kitchen
     - python3-pygit2
     - fedora-messaging
