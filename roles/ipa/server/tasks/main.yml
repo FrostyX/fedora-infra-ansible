@@ -7,11 +7,11 @@
   - haveged
   - ipa-server
   - ipa-server-dns
-  - pynag
-  - python-ldap
   tags:
   - ipa/server
   - packages
+
+# TODO: need pynag for monitoring, not yet in rhel8.
 
 - name: enable haveged
   service: name=haveged state=started enabled=yes
