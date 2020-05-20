@@ -272,6 +272,13 @@ download03.phx2.fedoraproject.org
 download04.phx2.fedoraproject.org
 download05.phx2.fedoraproject.org
 
+[download_iad2]
+dl01.iad2.fedoraproject.org
+dl02.iad2.fedoraproject.org
+dl03.iad2.fedoraproject.org
+dl04.iad2.fedoraproject.org
+dl05.iad2.fedoraproject.org
+
 [download_ibiblio]
 download-ib01.fedoraproject.org
 
@@ -284,7 +291,6 @@ download-cc-rdu01.fedoraproject.org
 [download_tier1]
 download04.phx2.fedoraproject.org
 download05.phx2.fedoraproject.org
-#download-rdu01.fedoraproject.org
 
 [download_phx2_virtual]
 download01.phx2.fedoraproject.org
