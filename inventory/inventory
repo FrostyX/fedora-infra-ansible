@@ -292,19 +292,12 @@ download-cc-rdu01.fedoraproject.org
 download04.phx2.fedoraproject.org
 download05.phx2.fedoraproject.org
 
-[download_phx2_virtual]
-download01.phx2.fedoraproject.org
-download02.phx2.fedoraproject.org
-download03.phx2.fedoraproject.org
-download04.phx2.fedoraproject.org
-download05.phx2.fedoraproject.org
-
 [download:children]
 download_phx2
-download_phx2_virtual
 download_ibiblio
 download_rdu2
 download_cc_rdu
+download_iad2
 
 [fas]
 fas01.phx2.fedoraproject.org
@@ -780,6 +773,7 @@ tang02.phx2.fedoraproject.org
 [sundries]
 sundries01.phx2.fedoraproject.org
 sundries02.phx2.fedoraproject.org
+sundries01.iad2.fedoraproject.org
 
 [sundries_stg]
 sundries01.stg.phx2.fedoraproject.org
