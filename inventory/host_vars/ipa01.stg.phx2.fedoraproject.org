@@ -8,3 +8,4 @@ volgroup: /dev/vg_guests
 eth0_ip: 10.5.128.136
 vmhost: virthost04.stg.phx2.fedoraproject.org
 datacenter: phx2
+ipa_initial: true
