@@ -1,0 +1,12 @@
+---
+nm: 255.255.255.0
+gw: 10.3.163.254
+dns: 10.3.163.33
+
+ks_url: http://209.132.181.6/repo/rhel/ks/kvm-fedora-32-ext
+ks_repo: http://209.132.181.6/pub/fedora/linux/releases/32/Server/x86_64/os/
+
+volgroup: /dev/vg_guests
+eth0_ip: 10.3.163.47
+vmhost: vmhost-x86-07.iad2.fedoraproject.org
+datacenter: iad2

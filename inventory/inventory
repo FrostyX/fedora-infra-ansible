@@ -51,6 +51,7 @@ retrace_stg_aws
 
 [certgetter]
 certgetter01.phx2.fedoraproject.org
+certgetter01.iad2.fedoraproject.org
 
 [backup]
 backup01.phx2.fedoraproject.org
@@ -753,6 +754,7 @@ batcave01.phx2.fedoraproject.org
 bastion01.phx2.fedoraproject.org
 bastion02.phx2.fedoraproject.org
 certgetter01.phx2.fedoraproject.org
+certgetter01.iad2.fedoraproject.org
 download01.phx2.fedoraproject.org
 log01.phx2.fedoraproject.org
 kojipkgs01.phx2.fedoraproject.org
@@ -1307,6 +1309,7 @@ bvmhost-x86-02.iad2.fedoraproject.org
 bvmhost-x86-03.iad2.fedoraproject.org
 bvmhost-x86-04.iad2.fedoraproject.org
 bvmhost-x86-05.iad2.fedoraproject.org
+certgetter01.iad2.fedoraproject.org
 ipa01.iad2.fedoraproject.org
 ipa02.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org
