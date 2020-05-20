@@ -262,15 +262,15 @@
   - pagure
 
 # HOTFIX: adjust bugzilla overrides
-- name: HOTFIX - adjust bugzilla overrides
-  copy: src=fas2.py dest=/usr/lib/python2.7/site-packages/fedora/client/fas2.py
-  tags:
-  - config
-  - pagure
-  - fas
-  - hotfix
-  - hotfixfas
-
+#- name: HOTFIX - adjust bugzilla overrides
+#  copy: src=fas2.py dest=/usr/lib/python2.7/site-packages/fedora/client/fas2.py
+#  tags:
+#  - config
+#  - pagure
+#  - fas
+#  - hotfix
+#  - hotfixfas
+#
 #- name: generate pagure-sync-bugzilla.py script
 #  template:
 #      src: pagure-sync-bugzilla.py.j2
