@@ -38,7 +38,7 @@
   tags:
   - ipa/server
   - config
-  when: inventory_hostname.startswith("ipa01")
+  when: ipa_initial
 
 - name: install IPA vault
   command: ipa-kra-install
@@ -49,7 +49,7 @@
   tags:
   - ipa/server
   - config
-  when: inventory_hostname.startswith("ipa01")
+  when: ipa_initial
 
 - name: determine whether we need to set up replication
   stat: path=/etc/ipa/default.conf
@@ -57,31 +57,29 @@
   tags:
   - ipa/server
   - config
-  when: not inventory_hostname.startswith("ipa01")
+  when: not ipa_initial
 
 - name: create replica file
-  delegate_to: ipa01.{{ item }}.fedoraproject.org
+  delegate_to: ipa01.phx2.fedoraproject.org
   command: ipa-replica-prepare
            --password={{ipa_dm_password}}
            --ip-address={{eth0_ip}}
            {{inventory_hostname}}
            creates=/var/lib/ipa/replica-info-{{inventory_hostname}}.gpg
-  with_items: "{{ datacenter }}"
   tags:
   - ipa/server
   - config
-  when: not inventory_hostname.startswith("ipa01") and not replication_status.stat.exists
+  when: not ipa_initial and not replication_status.stat.exists
 
 - name: retrieve replica file
-  delegate_to: ipa01.{{ item }}.fedoraproject.org
-  with_items: "{{ datacenter }}"
+  delegate_to: ipa01.phx2.fedoraproject.org
   fetch: src=/var/lib/ipa/replica-info-{{inventory_hostname}}.gpg
          dest=/tmp/ipa_replica_{{inventory_hostname}}.gpg
          flat=yes
   tags:
   - ipa/server
   - config
-  when: not inventory_hostname.startswith("ipa01") and not replication_status.stat.exists
+  when: not ipa_initial and not replication_status.stat.exists
 
 - name: deploy replica file
   copy: src=/tmp/ipa_replica_{{inventory_hostname}}.gpg
@@ -90,7 +88,7 @@
   tags:
   - ipa/server
   - config
-  when: not inventory_hostname.startswith("ipa01") and not replication_status.stat.exists
+  when: not ipa_initial and not replication_status.stat.exists
 
 - name: destroy replica file on ansible host
   delegate_to: localhost
@@ -98,7 +96,7 @@
   tags:
   - ipa/server
   - config
-  when: not inventory_hostname.startswith("ipa01") and not replication_status.stat.exists
+  when: not ipa_initial and not replication_status.stat.exists
 
 - name: deploy replica
   command: ipa-replica-install
@@ -121,7 +119,7 @@
   tags:
   - ipa/server
   - config
-  when: not inventory_hostname.startswith("ipa01") and not replication_status.stat.exists
+  when: not ipa_initial and not replication_status.stat.exists
 
 - name: Disable rewrites
   copy: src=ipa-rewrite.conf dest=/etc/httpd/conf.d/ipa-rewrite.conf
@@ -137,14 +135,14 @@
   tags:
   - ipa/server
   - config
-  when: inventory_hostname.startswith("ipa01")
+  when: ipa_initial
 
 - name: Run configuration script
   command: /bin/bash /root/configure-ipa.sh {{ipa_admin_password}}
   tags:
   - ipa/server
   - config
-  when: inventory_hostname.startswith("ipa01") and config_deployed.changed
+  when: ipa_initial and config_deployed.changed
 
 - name: Get admin ticket
   shell: echo "{{ipa_admin_password}}" | kinit admin
@@ -153,14 +151,14 @@
   - keytab
   - config
   - krb5
-  when: inventory_hostname.startswith("ipa01")
+  when: ipa_initial
 
 - name: Create fas_sync user
   command: ipa user-add fas_sync --first=FAS --last=Sync
   tags:
   - ipa/server
   - config
-  when: inventory_hostname.startswith("ipa01")
+  when: ipa_initial
   register: create_output
   changed_when: "'already exists' not in create_output.stderr"
   failed_when: "'already exists' not in create_output.stderr and create_output.rc != 0"
@@ -170,7 +168,7 @@
   tags:
   - ipa/server
   - config
-  when: inventory_hostname.startswith("ipa01")
+  when: ipa_initial
   register: promote_output
   changed_when: "'already a member' not in promote_output.stdout"
   failed_when: "'already a member' not in promote_output.stdout and promote_output.rc != 0"
@@ -180,7 +178,7 @@
   tags:
   - ipa/server
   - config
-  when: inventory_hostname.startswith("ipa01")
+  when: ipa_initial
   register: pwpolicy_output
   changed_when: "'no modifications to be performed' not in pwpolicy_output.stderr"
   failed_when: "'no modifications to be performed' not in pwpolicy_output.stderr and pwpolicy_output.rc != 0"
@@ -192,7 +190,7 @@
   - keytab
   - config
   - krb5
-  when: inventory_hostname.startswith("ipa01")
+  when: ipa_initial
 
 - name: Create LDIF directory
   file: path=/root/ldif state=directory owner=root group=root mode=0750
@@ -216,7 +214,7 @@
   with_items:
   - grant_fas_sync
   - use_id_fp_o
-  when: inventory_hostname.startswith("ipa01")
+  when: ipa_initial
   tags:
   - ipa/server
   - config
