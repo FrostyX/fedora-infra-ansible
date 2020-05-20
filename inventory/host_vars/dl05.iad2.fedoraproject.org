@@ -6,7 +6,7 @@ eth0_ip: 10.3.163.84
 datacenter: iad2
 
 
-vmhost: virthost07.iad2.fedoraproject.org
+vmhost: vmhost-x86-07.iad2.fedoraproject.org
 volgroup: /dev/vg_guests
 virt_install_command: "{{ virt_install_command_one_nic }}"
 ks_url: http://209.132.181.6/repo/rhel/ks/kvm-rhel-8-ext
