@@ -109,6 +109,7 @@
   with_items:
   - dist-git
   - dist-git-selinux
+  when: env != "staging"
   tags:
   - distgit
 
