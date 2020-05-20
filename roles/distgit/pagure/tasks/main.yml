@@ -10,18 +10,10 @@
   - pagure-milters
   - pagure-webhook
   - python-psycopg2
-  - python2-pygments2
   - redis
   - libsemanage-python
   - python-fedora-flask
   - pagure-dist-git
-  # For the pagure-sync-bugzilla.py script
-#  - python-bugzilla
-#  - python-requests
-#  - PyYAML
-#  - python-six
-    #  - mod_ssl
-    #  - stunnel
   tags:
   - pagure
   - packages
