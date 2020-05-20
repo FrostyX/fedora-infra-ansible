@@ -114,7 +114,6 @@ refuse options = checksum
        gid = 263
        hosts allow = {% for host in vars['dl_tier1'] %}{{host}},{% endfor %}
 
-
 [fedora-epel0]
        comment = Fedora EPEL for Tier0|1 Mirrors
        path = /srv/pub/epel/
@@ -123,7 +122,6 @@ refuse options = checksum
        gid = 263
        hosts allow = {% for host in vars['dl_tier1'] %}{{host}},{% endfor %}
 
-
 [fedora-alt0]
        comment = Fedora ALT for Tier0|1 Mirrors
        path = /srv/pub/alt/
@@ -131,7 +129,6 @@ refuse options = checksum
        uid = nobody
        gid = 263
        hosts allow = {% for host in vars['dl_tier1'] %}{{host}},{% endfor %}
-
 
 [fedora-archive0]
        comment = Fedora Archive for Tier0|1 Mirrors
@@ -158,6 +155,15 @@ refuse options = checksum
        gid = nobody
        hosts allow = 10.0.0.0/8
 {% endif %}
+
+{% if datacenter == 'rdu-cc' %}
+# For RDU-CC usage
+[centos]
+       comment = CentOS Mirror
+       path = /srv/pub/centos
+       list = no
+{% endif %}
+
 
 # For distributing applications
 [log]
