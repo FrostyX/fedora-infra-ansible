@@ -12,6 +12,18 @@
       - python2-iso3166
       - python2-geoip2
     state: present
+ when: ansible_distribution_major_version|int < 8 and ansible_distribution == 'RedHat'
+
+- name: install python3-paste-deploy geolite2-city python3-iso3166 python3-geoip2
+  package:
+    name:
+      - python3-paste-deploy
+      - geolite2-city
+      - python3-iso3166
+      - python3-geoip2
+    state: present
+ when: ansible_distribution_major_version|int >= 8 and ansible_distribution == 'RedHat'
+
 
 - name: install geoip-city-wsgi.conf file
   copy: >
