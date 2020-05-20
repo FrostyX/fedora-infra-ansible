@@ -446,23 +446,7 @@
     # Talk directly to the app server, not haproxy
     proxyurl: http://log01
 
-  ### Six entries for taskotron for production
-  - role: httpd/reverseproxy
-    website: taskotron.fedoraproject.org
-    destname: taskotron
-    balancer_name: taskotron
-    balancer_members: ['taskotron01.vpn.fedoraproject.org:80']
-    http_not_https_yes_this_is_insecure_and_i_feel_bad: true
-
-  - role: httpd/reverseproxy
-    website: taskotron.fedoraproject.org
-    destname: taskotron-websockets
-    localpath: /taskmaster/ws
-    remotepath: /taskmaster/ws
-    balancer_name: taskotron
-    balancer_members: ['taskotron01.vpn.fedoraproject.org:80']
-    http_not_https_yes_this_is_insecure_and_i_feel_bad: true
-
+  ### entries for resultsdb and resultsdb_frontend
   - role: httpd/reverseproxy
     website: taskotron.fedoraproject.org
     destname: taskotron-resultsdb
@@ -481,43 +465,7 @@
     balancer_members: ['resultsdb01.vpn.fedoraproject.org:80']
     http_not_https_yes_this_is_insecure_and_i_feel_bad: true
 
-  - role: httpd/reverseproxy
-    website: taskotron.fedoraproject.org
-    destname: taskotron-execdb
-    localpath: /execdb
-    remotepath: /execdb
-    balancer_name: resultsdb
-    balancer_members: ['resultsdb01.vpn.fedoraproject.org:80']
-    http_not_https_yes_this_is_insecure_and_i_feel_bad: true
-
-  - role: httpd/reverseproxy
-    website: taskotron.fedoraproject.org
-    destname: taskotron-vault
-    localpath: /vault
-    remotepath: /vault
-    balancer_name: resultsdb
-    balancer_members: ['resultsdb01.vpn.fedoraproject.org:80']
-    http_not_https_yes_this_is_insecure_and_i_feel_bad: true
-
-  ### And four entries for taskotron for staging
-  - role: httpd/reverseproxy
-    website: taskotron.stg.fedoraproject.org
-    destname: taskotron
-    balancer_name: taskotron-stg
-    balancer_members: ['taskotron-stg01.qa.fedoraproject.org:80']
-    http_not_https_yes_this_is_insecure_and_i_feel_bad: true
-    when: env == "staging"
-
-  - role: httpd/reverseproxy
-    website: taskotron.stg.fedoraproject.org
-    destname: taskotron-websockets
-    localpath: /taskmaster/ws
-    remotepath: /taskmaster/ws
-    balancer_name: taskotron-stg
-    balancer_members: ['taskotron-stg01.qa.fedoraproject.org:80']
-    http_not_https_yes_this_is_insecure_and_i_feel_bad: true
-    when: env == "staging"
-
+  ### staging entries for resultsdb and resultsdb_frontend
   - role: httpd/reverseproxy
     website: taskotron.stg.fedoraproject.org
     destname: taskotron-resultsdb
@@ -537,63 +485,6 @@
     balancer_members: ['resultsdb-stg01.qa.fedoraproject.org:80']
     http_not_https_yes_this_is_insecure_and_i_feel_bad: true
     when: env == "staging"
-
-  - role: httpd/reverseproxy
-    website: taskotron.stg.fedoraproject.org
-    destname: taskotron-execdb
-    localpath: /execdb
-    remotepath: /execdb
-    balancer_name: resultsdb-stg
-    balancer_members: ['resultsdb-stg01.qa.fedoraproject.org:80']
-    http_not_https_yes_this_is_insecure_and_i_feel_bad: true
-    when: env == "staging"
-
-  ### Beaker production
-  - role: httpd/reverseproxy
-    website: beaker.qa.fedoraproject.org
-    destname: beaker
-    # Talk directly to the app server, not haproxy
-    proxyurl: http://beaker01.vpn.fedoraproject.org
-    when: env == "production"
-
-  ### Beaker staging
-  - role: httpd/reverseproxy
-    website: beaker.stg.fedoraproject.org
-    destname: beaker-stg
-    # Talk directly to the app server, not haproxy
-    proxyurl: http://beaker-stg01.qa.fedoraproject.org
-    when: env == "staging"
-
-  ### QA staging
-
-  - role: httpd/reverseproxy
-    website: qa.stg.fedoraproject.org
-    destname: blockerbugs
-    remotepath: /blockerbugs
-    localpath: /blockerbugs
-    proxyurl: "{{ varnish_url }}"
-    when: env == "staging"
-
-  ### QA production
-
-  - role: httpd/reverseproxy
-    website: qa.fedoraproject.org
-    destname: qa-prod
-    # Talk directly to the app server, not haproxy
-    proxyurl: http://qa-prod01.vpn.fedoraproject.org
-
-  - role: httpd/reverseproxy
-    website: phab.qa.fedoraproject.org
-    destname: qa-prod-phab
-    # Talk directly to the app server, not haproxy
-    proxyurl: http://phab.qa-prod01.vpn.fedoraproject.org
-    keephost: true
-
-  - role: httpd/reverseproxy
-    website: docs.qa.fedoraproject.org
-    destname: qa-prod-docs
-    # Talk directly to the app server, not haproxy
-    proxyurl: http://docs.qa-prod01.vpn.fedoraproject.org
 
   # This one gets its own role (instead of httpd/reverseproxy) so that it can
   # copy in some silly static resources (globe.png, index.html)

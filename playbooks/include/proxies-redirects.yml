@@ -822,3 +822,29 @@
     target: https://docs.fedoraproject.org/en-US/fedora-coreos/faq/
     tags:
     - coreos.fedoraproject.org
+
+  # redirects for Taskotron decomissioning
+  - role: httpd/redirect
+    shortname: taskotron-landing
+    website: taskotron.fedoraproject.org
+    path: /
+    target: https://fedoraproject.org/wiki/Taskotron
+
+  - role: httpd/redirect
+    shortname: taskotron-execdb
+    website: taskotron.fedoraproject.org
+    path: /execdb/
+    target: https://fedoraproject.org/wiki/Taskotron
+
+  - role: httpd/redirect
+    shortname: taskotron-buildmaster
+    website: taskotron.fedoraproject.org
+    path: /taskmaster/
+    target: https://fedoraproject.org/wiki/Taskotron
+
+# redirects for qa.fp.o
+   - role: httpd/redirect
+     shortname: qa
+     website: qa.fedoraproject.org
+     path: /
+     target: https://fedoraproject.org/wiki/QA
