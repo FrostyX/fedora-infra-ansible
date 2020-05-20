@@ -136,6 +136,17 @@
 
 - name: create the database scheme
   command: /usr/bin/python2 /usr/share/pagure/pagure_createdb.py
+  when: env != "staging"
+  changed_when: "1 != 1"
+  environment:
+      PAGURE_CONFIG: /etc/pagure/pagure.cfg
+  tags:
+  - web
+  - pagure
+
+- name: create the database scheme
+  command: /usr/bin/python3 /usr/share/pagure/pagure_createdb.py
+  when: env == "staging"
   changed_when: "1 != 1"
   environment:
       PAGURE_CONFIG: /etc/pagure/pagure.cfg
@@ -313,6 +324,7 @@
     job: /usr/bin/python2 /usr/libexec/pagure-dist-git/pagure_poc.py /srv/cache/extras
     cron_file: pagure-poc
     state: present
+  when: env != "staging"
   tags:
   - pagure
 
@@ -324,6 +336,7 @@
     job: /usr/bin/python2 /usr/libexec/pagure-dist-git/pagure_bz.py /srv/cache/extras
     cron_file: pagure-bz
     state: present
+  when: env != "staging"
   tags:
   - pagure
 
@@ -335,9 +348,46 @@
     job: /usr/bin/python2 /usr/libexec/pagure-dist-git/pagure_owner_alias.py /srv/cache/extras
     cron_file: pagure-owner-alias
     state: present
+  when: env != "staging"
   tags:
   - pagure
 
+
+- name: Configure cron job for a hourly pagure_poc
+  cron:
+    name: pagure-poc
+    user: root
+    minute: 0
+    job: /usr/bin/python3 /usr/libexec/pagure-dist-git/pagure_poc.py /srv/cache/extras
+    cron_file: pagure-poc
+    state: present
+  when: env == "staging"
+  tags:
+  - pagure
+
+- name: Configure cron job for a hourly pagure_bz
+  cron:
+    name: pagure-poc
+    user: root
+    minute: 0
+    job: /usr/bin/python3 /usr/libexec/pagure-dist-git/pagure_bz.py /srv/cache/extras
+    cron_file: pagure-bz
+    state: present
+  when: env == "staging"
+  tags:
+  - pagure
+
+- name: Configure cron job for a hourly pagure_owner_alias
+  cron:
+    name: pagure-poc
+    user: root
+    minute: 0
+    job: /usr/bin/python3 /usr/libexec/pagure-dist-git/pagure_owner_alias.py /srv/cache/extras
+    cron_file: pagure-owner-alias
+    state: present
+  when: env == "staging"
+  tags:
+  - pagure
 
 # setup fedora-messaging
 
@@ -345,6 +395,16 @@
   package: name={{ item }} state=present
   with_items:
   - python2-fedora-messaging
+  when: env != "staging"
+  tags:
+  - pagure
+  - fedora-messaging
+
+- name: install fedora-messaging as a dependency
+  package: name={{ item }} state=present
+  with_items:
+  - fedora-messaging
+  when: env == "staging"
   tags:
   - pagure
   - fedora-messaging
