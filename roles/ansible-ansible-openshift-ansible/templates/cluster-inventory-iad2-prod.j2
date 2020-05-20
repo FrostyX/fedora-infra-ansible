@@ -533,7 +533,6 @@ openshift_master_identity_providers=[{"name": "fedoraidp", "login": "true", "cha
 #openshift_hosted_registry_storage_nfs_directory=/exports
 #openshift_hosted_registry_storage_volume_name=registry
 #openshift_hosted_registry_storage_volume_size=10Gi
-{% if datacenter != 'iad2' %}
 {% if env == "staging" %}
 openshift_hosted_registry_storage_kind=nfs
 openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
@@ -544,7 +543,7 @@ openshift_hosted_registry_storage_volume_size=10Gi
 {% else %}
 openshift_hosted_registry_storage_kind=nfs
 openshift_hosted_registry_storage_access_modes=['ReadWriteMany']
-openshift_hosted_registry_storage_host=ntap-phx2-c01-fedora01-nfs.storage.phx2.redhat.com
+openshift_hosted_registry_storage_host=ntap-iad2-c02-fedora01-nfs01a.iad2.fedoraproject.org
 openshift_hosted_registry_storage_nfs_directory=/
 openshift_hosted_registry_storage_volume_name=openshift-prod-registry
 openshift_hosted_registry_storage_volume_size=10Gi
@@ -737,14 +736,12 @@ openshift_logging_es_nodeselector={"node-role.kubernetes.io/infra":"true"}
 #openshift_logging_storage_volume_name=logging
 #openshift_logging_storage_volume_size=10Gi
 #openshift_logging_storage_labels={'storage': 'logging'}
-{% if datacenter != 'iad2' %}
 openshift_logging_storage_kind=nfs
 openshift_logging_storage_access_modes=['ReadWriteOnce']
-openshift_logging_storage_host=ntap-phx2-c01-fedora01-nfs.storage.phx2.redhat.com
+openshift_logging_storage_host=ntap-iad2-c02-fedora01-nfs01a.iad2.fedoraproject.org
 openshift_logging_storage_nfs_directory=/
 openshift_logging_storage_volume_name=openshift-prod-logging
 openshift_logging_storage_volume_size=100Gi
-{% endif %}
 #
 # Option C - Dynamic -- If openshift supports dynamic volume provisioning for
 # your cloud platform use this.
