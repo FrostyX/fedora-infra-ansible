@@ -10,6 +10,22 @@
     - python-kitchen
     - python-pygit2
     - fedora-messaging
+  when: env != "staging"
+  tags:
+  - git
+  - git/hooks
+  - packages
+
+- name: install needed packages
+  package:
+    state: present
+    name:
+    - git
+    - moreutils
+    - python3-kitchen
+    - python3-pygit2
+    - fedora-messaging
+  when: env == "staging"
   tags:
   - git
   - git/hooks
