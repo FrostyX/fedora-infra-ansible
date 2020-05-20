@@ -9,8 +9,8 @@ datacenter: iad2
 vmhost: vmhost-x86-03.iad2.fedoraproject.org
 volgroup: /dev/vg_guests
 virt_install_command: "{{ virt_install_command_one_nic }}"
-ks_url: http://209.132.181.6/repo/rhel/ks/kvm-rhel-8-ext
-ks_repo: http://209.132.181.6/repo/rhel/RHEL8-x86_64/
+ks_url: http://209.132.181.6/repo/rhel/ks/kvm-rhel-7-ext
+ks_repo: http://209.132.181.6/repo/rhel/RHEL7-x86_64/
 
 # This overrides a group var and lets the playbook know that we should
 # install special cron jobs here.
