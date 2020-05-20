@@ -842,7 +842,7 @@
     path: /taskmaster/
     target: https://fedoraproject.org/wiki/Taskotron
 
-# redirects for qa.fp.o
+  # redirects for qa.fp.o
    - role: httpd/redirect
      shortname: qa
      website: qa.fedoraproject.org
