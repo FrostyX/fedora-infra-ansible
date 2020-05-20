@@ -161,7 +161,7 @@ config = {
             fmn={
                 "level": "INFO",
                 "propagate": False,
-                "handlers": ["console", "mailer"],
+                "handlers": ["console"],
             },
             moksha={
                 "level": "INFO",
@@ -181,7 +181,7 @@ config = {
         ),
         root={
             'level': 'WARNING',
-             'handlers': ['console', 'mailer'],
+             'handlers': ['console'],
         },
     ),
 }
