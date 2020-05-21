@@ -1,7 +1,0 @@
-define servicegroup {
-    servicegroup_name   freemedia
-    alias               FreeMedia
-    members             {% for host in groups['sundries']|sort %}{% if hostvars[host].nagios_Can_Connect == true %}{{host}}, http-freemedia-internal{% if not loop.last %}, {% endif %}{% endif %} {% endfor %}
-
-}
-

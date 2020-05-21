@@ -40,6 +40,7 @@ define service {
   service_description   http-mirrors.fedoraproject.org-mirrorlist
   check_command         check_website!mirrors.fedoraproject.org!/mirrorlist?repo=rawhide&arch=x86_64&country=global!development
   use                   websitetemplate
+  servicegroups		mirrorlist
 }
 
 define service {
@@ -290,6 +291,7 @@ define service {
   service_description   http-freemedia-internal
   check_command         check_website!localhost!/freemedia/FreeMedia-form.html!Media
   use                   internalwebsitetemplate
+  servicegroups         freemedia
 }
 
 

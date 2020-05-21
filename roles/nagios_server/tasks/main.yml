@@ -435,11 +435,9 @@
   template: src=nagios/servicegroups/{{item}}.j2 dest=/etc/nagios/servicegroups/{{item}} mode=0644 owner=root group=root
   with_items:
     - bodhi.cfg
-    - freemedia.cfg
     - mgmt-https.cfg
     - fas.cfg
     - fp-wiki.cfg
-    - ipa.cfg
     - mgmt-http.cfg
     - mirrorlist.cfg
   when: nagios_location == "internal"
