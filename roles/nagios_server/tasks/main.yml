@@ -434,7 +434,6 @@
 - name: Build out nagios servicegroup templates
   template: src=nagios/servicegroups/{{item}}.j2 dest=/etc/nagios/servicegroups/{{item}} mode=0644 owner=root group=root
   with_items:
-    - mgmt-https.cfg
     - mgmt-http.cfg
   when: nagios_location == "internal"
   tags:
