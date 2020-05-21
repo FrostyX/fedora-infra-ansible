@@ -103,17 +103,8 @@
   tags:
   - nagios_server
 
-## Copy over system configs
-- name: Copy specialized nrpe.cfg for nagios server
-  copy: src=nrpe/nrpe.cfg dest=/etc/nagios/nrpe.cfg mode=0644 group=root owner=root
-  notify:
-  - restart nrpe
-  tags:
-  - config
-  - nagios_server
-
 ## Copy over the nagios configs
-- name: Copy /etc/nagios/conf.d/*cfg files
+- name: Copy /etc/nagios/conf.d/cfg files
   copy: src=nagios/configs/{{ item }} dest=/etc/nagios/conf.d/{{ item }}
   with_items:
     - escalations.cfg
@@ -182,31 +173,42 @@
   notify: restart nagios
 
 ## Copy over the services
-- name: Copy /etc/nagios/services (PHX2)
-  copy: src=nagios/services/{{ item }} dest=/etc/nagios/services/{{ item }}
+- name: Copy /etc/nagios/services (PHX2 specific files)
+  copy: src=nagios/services/phx2/{{ item }} dest=/etc/nagios/services/{{ item }}
   with_items:
     - basset.cfg
+    - certgetter.cfg
     - db_backups.cfg
     - disk.cfg
-    - dns.cfg
     - fedmsg.cfg
     - file_age.cfg
     - fmn.cfg
-    - haproxy.cfg
     - koji.cfg
-    - koschei.cfg
     - locking.cfg
-    - mail_queue.cfg
     - mailman.cfg
-    - memcached.cfg
     - nagios.cfg
     - nrpe.cfg
     - osbs.cfg
+    - pgsql.cfg
+    - rabbitmq.cfg
+  tags:
+  - nagios_config
+  - nagios_server
+  - nagios_hostgroups
+  when: env == "production" and nagios_location == 'phx2_internal'
+  notify: restart nagios
+
+- name: Copy /etc/nagios/services (internal files)
+  copy: src=nagios/services/{{ item }} dest=/etc/nagios/services/{{ item }}
+  with_items:
+    - dns.cfg
+    - haproxy.cfg
+    - mail_queue.cfg
+    - memcached.cfg
+    - nagios.cfg
     - pagure_redis.cfg
     - ping.cfg
-    - pgsql.cfg
     - procs.cfg
-    - rabbitmq.cfg
     - raid.cfg
     - smtp-mm.cfg
     - ssh.cfg
@@ -215,12 +217,11 @@
     - templates.cfg
     - unbound.cfg
     - vpnclients.cfg
-    - certgetter.cfg
   tags:
   - nagios_config
   - nagios_server
   - nagios_hostgroups
-  when: env == "production" and nagios_location == "internal"
+  when: env == "production" and nagios_location == 'phx2_internal'
   notify: restart nagios
 
 ## Copy over the services
@@ -236,26 +237,28 @@
   when: env == "production" and nagios_location == "external"
   notify: restart nagios
 
-## Copy over the services
-- name: Copy /etc/nagios/services (staging)
-  copy: src=nagios/services/{{ item }} dest=/etc/nagios/services/{{ item }}
-  with_items:
-    - mail_queue.cfg
-    - ping.cfg
-    - templates.cfg
-  tags:
-  - nagios_config
-  - nagios_server
-  when: env == "staging"
-  notify: restart nagios
-
 ## Copy over the servicegroups
 - name: Copy /etc/nagios/servicegroups
   synchronize: src=nagios/servicegroups/ dest=/etc/nagios/servicegroups/
   tags:
   - nagios_config
   - nagios_server
-  when: nagios_location == "internal"
+  when: nagios_location == 'phx2_internal'
+  notify: restart nagios
+
+## Copy over the servicegroups
+- name: Copy /etc/nagios/servicegroups
+  copy: src=nagios/servicegroups/{{item}} dest=/etc/nagios/servicegroups/{{item}}
+  with_items:
+    - bodhi.cfg
+    - fas.cfg
+    - fp-wiki.cfg
+    - freemedia.cfg
+    - mirrorlist.cfg
+  tags:
+  - nagios_config
+  - nagios_server
+  when: nagios_location == "external"
   notify: restart nagios
 
 ## Copy over the plugins
@@ -283,6 +286,18 @@
 
 ## Build template files
 # This one may go to being just a regular config file if we can make remote monitoring work
+## Copy over system configs
+- name: Copy specialized nrpe.cfg for nagios server
+  template: src=nrpe/nrpe.cfg.j2 dest=/etc/nagios/nrpe.cfg 
+  notify:
+  - restart nrpe
+  tags:
+  - config
+  - nagios_server
+
+- name: Configure perms on nrpe correctly
+  file: dest=/etc/nrpe/nrpe.cfg mode=0644 group=root owner=root
+
 - name: Template out the nagios httpd conf
   template: src=httpd/{{item}}.j2 dest=/etc/httpd/conf.d/{{item}}
   with_items:
@@ -328,7 +343,7 @@
     - ipa.cfg
     - phx2-mgmt.cfg
     - mirrorlist-proxies.cfg
-  when: env == "production" and nagios_location == "internal"
+  when: env == "production" and nagios_location == 'phx2_internal'
   tags:
   - nagios_server
   - nagios_config
@@ -344,8 +359,6 @@
   - nagios_config
   - websites
   notify: restart nagios
-
-
 
 - name: Build out nagios host templates (production)
   template: src=nagios/hosts/{{item}}.j2 dest=/etc/nagios/hosts/{{item}} mode=0644 owner=root group=root
@@ -375,7 +388,7 @@
     - phx2-hosts.cfg
     - phx2-mgmt-hosts.cfg
     - staging-hosts.cfg
-  when: env == "production" and nagios_location == "internal"
+  when: env == "production" and nagios_location == 'phx2_internal'
   tags:
   - nagios_server
   - nagios_config
@@ -392,19 +405,6 @@
   - nagios_config
   notify: restart nagios
 
-- name: Build out nagios host templates (staging)
-  template: src=nagios/hosts/{{item}}.j2 dest=/etc/nagios/hosts/{{item}} mode=0644 owner=root group=root
-  with_items:
-    - phx2-hosts.cfg
-    - staging-hosts.cfg
-    - phx2-mgmt-hosts.cfg
-  when: env == "staging"
-  tags:
-  - nagios_server
-  - nagios_config
-  - nagios_hosts
-  notify: restart nagios
-
 - name: Build out nagios hostgroup templates
   template: src=nagios/hostgroups/{{item}}.j2 dest=/etc/nagios/hostgroups/{{item}} mode=0644 owner=root group=root
   with_items:
@@ -413,7 +413,7 @@
     - nomail.cfg
     - checkswap.cfg
     - checkraid.cfg
-  when: nagios_location == "internal"
+  when: nagios_location == 'phx2_internal'
   tags:
   - nagios_server
   - nagios_config
@@ -435,7 +435,7 @@
   template: src=nagios/servicegroups/{{item}}.j2 dest=/etc/nagios/servicegroups/{{item}} mode=0644 owner=root group=root
   with_items:
     - mgmt-http.cfg
-  when: nagios_location == "internal"
+  when: nagios_location == 'phx2_internal'
   tags:
   - nagios_server
   - nagios_config

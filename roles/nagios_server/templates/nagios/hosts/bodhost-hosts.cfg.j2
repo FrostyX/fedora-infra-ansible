@@ -1,7 +1,7 @@
 {% for host in groups['all']|sort %}
 {% if hostvars[host].datacenter == 'bodhost' and hostvars[host].nagios_Can_Connect == true %}
 define host {
-{% if vars['nagios_location'] == 'internal' %}
+{% if vars['nagios_location'] == 'phx2_internal' %}
    use                     defaulttemplate
 {% else %}
   use                          mincheck

@@ -144,20 +144,6 @@ define service {
   use                   websitetemplate
 }
 
-#define service {
-#  host_name             magazine2.fedorainfracloud.org
-#  service_description   http-magazine
-#  use                   websitetemplate
-#  check_command         check_website!magazine2.fedorainfracloud.org!/!Fedora Magazine
-#}
-
-#define service {
-#  host_name             communityblog.fedorainfracloud.org
-#  service_description   http-communityblog
-#  use                   websitetemplate
-#  check_command         check_website!communityblog.fedorainfracloud.org!/!Fedora Community Blog
-#}
-
 define service {
   host_name             lists.fedoraproject.org
   service_description   http-lists.fedoraproject.org
@@ -165,7 +151,7 @@ define service {
   use                   websitetemplate
 }
 
-{% if vars['nagios_location'] == 'internal' %}
+{% if vars['nagios_location'] == 'phx2_internal' %}
 ##
 ## Other Frontend Websites 
 
@@ -233,13 +219,6 @@ define service {
   check_command         check_website_ssl!koschei.fedoraproject.org!/!Package summary
   max_check_attempts    8
   use                   internalwebsitetemplate
-}
-
-define service {
-  host_name             mailman01.phx2.fedoraproject.org
-  service_description   http-mailman01.phx2.fedoraproject.org-internal
-  check_command         check_website!mailman01.phx2.fedoraproject.org!/archives/!Fedora Mailing-Lists
-  use                   websitetemplate
 }
 
 define service {
@@ -326,11 +305,23 @@ define service {
 ## Auxillary to websites but necessary to make them happen
 
 define service {
-  host_name             sundries01.phx2.fedoraproject.org
+  hostgroup_name        sundries
   service_description   websites build happened recently
   check_command         check_by_nrpe!check_websites_buildtime
   use                   websitetemplate
 }
 
+{% endif %}
+
+{% if vars['nagios_location'] == 'phx2_internal' %}
+
+define service {
+  host_name             mailman01.phx2.fedoraproject.org
+  service_description   http-mailman-internal
+  check_command         check_website!mailman01.phx2.fedoraproject.org!/archives/!Fedora Mailing-Lists
+  use                   websitetemplate
+}
 
 {% endif %}
+
+

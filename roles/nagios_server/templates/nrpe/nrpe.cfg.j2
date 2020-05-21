@@ -310,8 +310,6 @@ command[check_temp]=/usr/lib64/nagios/plugins/check_ipmi -t
 command[check_fans]=/usr/lib64/nagios/plugins/check_ipmi -f
 command[check_mirrorlist_cache]=/usr/lib64/nagios/plugins/check_file_age -w 86400 -c 129600 -f /var/lib/mirrormanager/mirrorlist_cache.proto
 command[check_mysql_backup]=/usr/lib64/nagios/plugins/check_file_age -w 86400 -c 129600 -f /backups/fpo-mediawiki.xz
-command[check_pgsql_backup]=/usr/lib64/nagios/plugins/check_file_age -w 86400 -c 129600 -f /backups/db-fas01.phx2.fedoraproject.org/fas2.db
-command[check_puppetmaster]=/usr/lib64/nagios/plugins/check_procs -c 8:8 -a '/usr/bin/ruby /usr/sbin/puppetmasterd' -u puppet
 command[check_supervisor]=/usr/lib64/nagios/plugins/check_procs -c 1:1 -a '/usr/bin/python /usr/bin/supervisord' -u root
 command[check_lock]=/usr/lib64/nagios/plugins/check_lock
 command[check_lock_file_age]=/usr/lib64/nagios/plugins/check_lock_file_age -w 1 -c 5 -f /var/lock/fedora-ca/lock
@@ -446,3 +444,9 @@ command[service_rsyslog_restart]=/usr/bin/sudo /sbin/service rsyslog restart
 #command[check_load]=/usr/lib64/nagios/plugins/check_load -w $ARG1$ -c $ARG2$
 #command[check_disk]=/usr/lib64/nagios/plugins/check_disk -w $ARG1$ -c $ARG2$ -p $ARG3$
 #command[check_procs]=/usr/lib64/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$
+
+{% if vars['nagios_location'] == 'phx2_internal' %}
+command[check_pgsql_backup]=/usr/lib64/nagios/plugins/check_file_age -w 86400 -c 129600 -f /backups/db-fas01.phx2.fedoraproject.org/fas2.db
+{% elif vars['nagios_location'] == 'iad2_internal' %}
+command[check_pgsql_backup]=/usr/lib64/nagios/plugins/check_file_age -w 86400 -c 129600 -f /backups/db-fas01.iad2.fedoraproject.org/fas2.db
+{% endif %}

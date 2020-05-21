@@ -33,4 +33,4 @@ csi_relationship: |
     - if this host is down, dhcp/bootp leases/renew will fail. pxe booting will fail as well
 
 nagios_srcdir: 'nagios'
-nagios_location: 'internal'
+nagios_location: 'phx2_internal'

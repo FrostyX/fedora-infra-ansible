@@ -24,4 +24,4 @@ custom_rules: [
 ]
 
 nagios_srcdir: 'nagios'
-nagios_location: 'internal'
+nagios_location: 'iad2_internal'
