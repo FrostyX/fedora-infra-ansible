@@ -96,6 +96,19 @@
   tags:
   - nfs/client
 
+- name: nfs mount points (iad2)
+  mount: >
+        name={{ mnt_dir }}
+        src=ntap-iad2-c02-fedora01-nfs01a:/{{ nfs_src_dir }}
+        fstype=nfs
+        opts={{nfs_mount_opts}}
+        passno=0
+        dump=0
+        state=mounted
+  when: datacenter == 'iad2' and (env != 'staging' or mount_stg is defined)
+  tags:
+  - nfs/client
+
 - name: nfs mount points (rdu)
   mount: >
         name={{ mnt_dir }}

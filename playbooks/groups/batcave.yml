@@ -69,8 +69,8 @@
       critical: 100
     when: datacenter != 'iad2'
   - batcave
-  - { role: nfs/client, when: inventory_hostname.startswith('batcave') and datacenter != 'iad2', mnt_dir: '/srv/web/pub',  nfs_src_dir: 'fedora_ftp/fedora.redhat.com/pub' }
-  - { role: nfs/client, when: inventory_hostname.startswith('batcave01') and datacenter != 'iad2', mnt_dir: '/mnt/fedora/app',  nfs_src_dir: 'fedora_app/app' }
+  - { role: nfs/client, when: inventory_hostname.startswith('batcave'), mnt_dir: '/srv/web/pub',  nfs_src_dir: 'fedora_ftp/fedora.redhat.com/pub' }
+  - { role: nfs/client, when: inventory_hostname.startswith('batcave01'), mnt_dir: '/mnt/fedora/app',  nfs_src_dir: 'fedora_app/app' }
   - { role: mirror_pagure_ansible, tags: ['mirror_pagure_ansible'] }
 
   pre_tasks:
