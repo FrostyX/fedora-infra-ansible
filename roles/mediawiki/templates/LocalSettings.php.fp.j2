@@ -312,6 +312,10 @@ wfLoadExtension( 'Interwiki' );
 wfLoadExtension( 'Cite' );
 wfLoadExtension( 'ConfirmEdit' );
 
+# enable string functions from ParserFunctions:
+# https://www.mediawiki.org/wiki/Extension:ParserFunctions
+$wgPFEnableStringFunctions = true;
+
 $wgShowExceptionDetails = true;
 
 $wgSkipSkins = array("chick", "cologneblue", "monobook", "myskin", "nostalgia", "simple", "standard");
