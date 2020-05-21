@@ -21,8 +21,10 @@ datacenter: rdu-cc
 # PostgreSQL configuration
 #
 
-shared_buffers: "32MB"
-effective_cache_size: "512MB"
+shared_buffers: "512MB"
+effective_cache_size: 0
+temp_buffers: "8MB"
+max_stack_depth: "4MB"
 
 ssh_hostnames:
 - pagure.io
