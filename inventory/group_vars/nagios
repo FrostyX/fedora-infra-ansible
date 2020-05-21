@@ -144,3 +144,4 @@ exclude_hostgroups:
   - virt_guest
   - virt_host
   - iad2
+  - download_iad2
