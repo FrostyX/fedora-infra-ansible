@@ -214,6 +214,7 @@ autosign01.stg.phx2.fedoraproject.org
 db01.phx2.fedoraproject.org
 db01.iad2.fedoraproject.org
 db03.phx2.fedoraproject.org
+db03.iad2.fedoraproject.org
 db-fas01.phx2.fedoraproject.org
 db-fas01.iad2.fedoraproject.org
 db-datanommer02.phx2.fedoraproject.org
@@ -1280,6 +1281,7 @@ bvmhost-x86-05.iad2.fedoraproject.org
 bvmhost-x86-06.iad2.fedoraproject.org
 certgetter01.iad2.fedoraproject.org
 db01.iad2.fedoraproject.org
+db03.iad2.fedoraproject.org
 dl01.iad2.fedoraproject.org
 dl02.iad2.fedoraproject.org
 dl03.iad2.fedoraproject.org
