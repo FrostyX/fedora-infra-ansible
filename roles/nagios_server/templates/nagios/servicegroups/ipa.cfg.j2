@@ -1,6 +1,4 @@
 define servicegroup {
     servicegroup_name   ipa
     alias               IPA Servers
-    members             {% for host in groups['ipa'] %}{% if hostvars[host].nagios_Can_Connect == true %}{{host}}, IPA Replication Status{% if not loop.last %}, {% endif %}{% endif%}{% endfor %}
-
 }

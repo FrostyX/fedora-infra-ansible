@@ -193,7 +193,6 @@
     - file_age.cfg
     - fmn.cfg
     - haproxy.cfg
-    - ipa.cfg
     - koji.cfg
     - koschei.cfg
     - locking.cfg
@@ -326,6 +325,7 @@
 - name: Template over services (internal)
   template: src=nagios/services/{{item}}.j2 dest=/etc/nagios/services/{{item}} mode=0644 owner=root group=root
   with_items:
+    - ipa.cfg
     - phx2-mgmt.cfg
     - mirrorlist-proxies.cfg
   when: env == "production" and nagios_location == "internal"

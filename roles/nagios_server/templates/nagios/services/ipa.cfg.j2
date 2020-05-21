@@ -1,6 +1,7 @@
 define service {
-  host_name             ipa01.phx2.fedoraproject.org,ipa02.phx2.fedoraproject.org
+  host_name             {% for host in groups['ipa'] %}{% if hostvars[host].nagios_Can_Connect == true %}{{host}},{% endif%}{% endfor %}
   service_description   IPA Replication Status
   check_command         check_by_nrpe!check_ipa_replication
   use                   lighttemplate
+  servicegroups		ipa
 }
