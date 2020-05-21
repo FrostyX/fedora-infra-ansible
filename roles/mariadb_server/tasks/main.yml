@@ -5,6 +5,20 @@
     - mariadb-server
   when: ansible_cmdline.ostree is not defined
 
+- name: ensure packages required for mariadb are installed (el7)
+  package:
+    state: present
+    name:
+    - MySQL-python
+  when: ansible_distribution_major_version|int < 8
+
+- name: ensure packages required for mariadb are installed (el8)
+  package:
+    state: present
+    name:
+    - python3-PyMySQL
+  when: ansible_distribution_major_version|int > 7
+
 - name: copy my.cnf
   copy: src={{ item }} dest=/etc/my.cnf owner=root group=root mode=0644
   with_first_found:
