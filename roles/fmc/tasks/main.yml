@@ -4,11 +4,13 @@
     url: https://pagure.io/releng/fmc/raw/master/f/fedora-minimal-compose.py
     dest: /usr/lib/python3.7/site-packages/
     mode: '0755'
+  when: inventory_hostname.startswith('odcs-backend-releng')
 
 - name: Install fedora-messaging rpm
   dnf:
     package: fedora-messaging
     state: latest
+  when: inventory_hostname.startswith('odcs-backend-releng')
 
 - name: Place fedora-minimal-compose.toml /etc/fedora-messaging/
   template:
@@ -17,9 +19,11 @@
     owner: root
     group: root
     mode: 644
+  when: inventory_hostname.startswith('odcs-backend-releng')
 
 - name: Start and enable the fmc services
   service:
-      name: fm-consumer@fedora-minimal-compose
-      state: started
-      enabled: yes
+    name: fm-consumer@fedora-minimal-compose
+    state: started
+    enabled: yes
+  when: inventory_hostname.startswith('odcs-backend-releng')
