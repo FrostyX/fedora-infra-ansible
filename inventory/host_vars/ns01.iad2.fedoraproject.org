@@ -13,17 +13,12 @@ ks_repo: http://209.132.181.6/repo/rhel/RHEL8-x86_64/
 vmhost: vmhost-x86-01.iad2.fedoraproject.org
 datacenter: iad2
 
-csi_relationship: |
- 
-    ns01 is a master dns server. 
-    It serves about every domain under fedoraproject, fedo*, as well as others, both forward and reverse. 
+nagios_Can_Connect: false
 
-    * This host relies on:
-    - The virthost it's hosted on (vmhost-x86-01.iad2.fedoraproject.org)
-    - batcave for dns git and keys
-    - connectivity to maxmind to create geoIP dns acl
-    
-    * Things that rely on this host:
-    - The Internet/Community to resolve everything related to fedora and reverse-IP for allocated subnets
-    - If this host is down, dns queries will slow down by the portion of this host to the total name servers responsible for the same domain set.
-    - secodary/slave dns servers
+nagios_Check_Services:
+  mail: false
+  nrpe: false
+  sshd: false
+  swap: false
+  ping: false
+  raid: false

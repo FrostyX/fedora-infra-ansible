@@ -1,7 +1,14 @@
 define servicegroup {
     servicegroup_name   fp-wiki
     alias               Fedora Project Wiki
-    members             {% for host in groups['proxies']|sort %}{% if hostvars[host].nagios_Can_Connect == true %}{{host}}, http-fedoraproject.org-wiki , {% endif %}{% endfor %}{% for host in groups['proxies'|sort] %}{% if hostvars[host].nagios_Can_Connect == true %}{{host}}, http-fedoraproject.org-wiki-non-cached  {% if not loop.last %} , {% endif %}{% endif %} {% endfor %}
+    members             {% for host in groups['proxies']|sort %}{% if hostvars[host].nagios_Can_Connect == true %}{{host}}, http-fedoraproject.org-wiki, {% endif %}{% endfor %}
+
+}
+
+define servicegroup {
+    servicegroup_name   fp-wiki-non-cached
+    alias               Fedora Project Wiki
+    members             {% for host in groups['proxies']|sort %}{% if hostvars[host].nagios_Can_Connect == true %}{{host}}, http-fedoraproject.org-wiki-non-cached, {% endif %}{% endfor %}
 
 }
 
