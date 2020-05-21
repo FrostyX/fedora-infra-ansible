@@ -60,5 +60,4 @@
     app: docsbuilding
     objecttype: cronjob
     objectname: cron-translated
-    when: env == "staging"
     tags: [ never, delete ]
