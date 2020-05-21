@@ -25,6 +25,7 @@ define service {
   check_command         check_website_ssl!fedoraproject.org!/wiki/Fedora_Project_Wiki!Looking for help
   max_check_attempts    10
   use                   websitetemplate
+  servicegroups		fp-wiki
 }
 
 define service {
@@ -33,6 +34,7 @@ define service {
   check_command         check_website_ssl!fedoraproject.org!/wiki/Special:Version!MediaWiki is free software
   max_check_attempts    10
   use                   websitetemplate
+  servicegroups		fp-wiki-non-cached
 }
 
 define service {
@@ -55,6 +57,7 @@ define service {
   service_description   http-accounts
   check_command         check_website_ssl!admin.fedoraproject.org!/accounts/help/get_help/user_telephone!emergency
   use                   websitetemplate
+  servicegroups		fas
 }
 
 define service {
@@ -63,6 +66,7 @@ define service {
   check_command         check_website_ssl!bodhi.fedoraproject.org!/!Fedora
   max_check_attempts    8
   use                   websitetemplate
+  servicegroups		bodhi
 }
 
 define service {
@@ -202,6 +206,7 @@ define service {
   service_description   http-accounts
   check_command         check_website!localhost!/accounts/help/get_help/user_telephone!emergency
   use                   internalwebsitetemplate
+  servicegroups		fas
 }
 
 define service {

@@ -1,7 +1,0 @@
-define servicegroup {
-    servicegroup_name   mirrorlist
-    alias               Mirrorlist
-    members             {% for host in groups['proxies']|sort %}{% if hostvars[host].nagios_Can_Connect == true %}{{host}}, http-mirrors.fedoraproject.org-mirrorlist{% if not loop.last %} , {% endif %}{% endif %} {% endfor %}
-
-}
-
