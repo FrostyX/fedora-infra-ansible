@@ -296,7 +296,10 @@
   - nagios_server
 
 - name: Configure perms on nrpe correctly
-  file: dest=/etc/nrpe/nrpe.cfg mode=0644 group=root owner=root
+  file: dest=/etc/nagios/nrpe.cfg mode=0644 group=root owner=root
+  tags:
+  - config
+  - nagios_server
 
 - name: Template out the nagios httpd conf
   template: src=httpd/{{item}}.j2 dest=/etc/httpd/conf.d/{{item}}
