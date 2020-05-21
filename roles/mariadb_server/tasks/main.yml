@@ -3,7 +3,6 @@
     state: present
     name:
     - mariadb-server
-    - MySQL-python
   when: ansible_cmdline.ostree is not defined
 
 - name: copy my.cnf
