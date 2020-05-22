@@ -55,10 +55,6 @@ buildvmhost-04.phx2.fedoraproject.org
 qa01.qa.fedoraproject.org
 qa02.qa.fedoraproject.org
 qa09.qa.fedoraproject.org
-qa10.qa.fedoraproject.org
-qa11.qa.fedoraproject.org
-qa12.qa.fedoraproject.org
-qa13.qa.fedoraproject.org
 qa14.qa.fedoraproject.org
 bkernel03.phx2.fedoraproject.org
 #bkernel04.phx2.fedoraproject.org
