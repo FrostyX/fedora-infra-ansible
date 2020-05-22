@@ -1,7 +1,6 @@
 - name: /etc/postfix/main.cf
   copy: src={{ item }} dest=/etc/postfix/main.cf
   with_first_found:
-    - "{{ postfix_maincf }}"
     - "postfix/main.cf/main.cf.{{ inventory_hostname }}"
     - "postfix/main.cf/main.cf.{{ host_group }}"
     - "postfix/main.cf/main.cf.{{ postfix_group }}"
@@ -17,7 +16,6 @@
 - name: install /etc/postfix/master.cf file
   copy: src={{ item }} dest=/etc/postfix/master.cf mode=0644
   with_first_found:
-    - "{{ postfix_mastercf }}"
     - "postfix/master.cf/master.cf.{{ inventory_hostname }}"
     - "postfix/master.cf/master.cf.{{ host_group }}"
     - "postfix/master.cf/master.cf.{{ postfix_group }}"

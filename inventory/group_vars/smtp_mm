@@ -11,7 +11,7 @@ tcp_ports: [ 25 ]
 
 fas_client_groups: sysadmin-noc,sysadmin-tools,fi-apprentice,sysadmin-veteran
 
-postfix_transport_filename: transports.mm-smtp
+postfix_transport_filename: transports.smtp-mm
 postfix_group: smtp-mm
 vpn: true
 
