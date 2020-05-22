@@ -174,7 +174,7 @@
 
 ## Copy over the services
 - name: Copy /etc/nagios/services (PHX2 specific files)
-  copy: src=nagios/services/phx2/{{ item }} dest=/etc/nagios/services/{{ item }}
+  copy: src=nagios/services/phx2_internal/{{ item }} dest=/etc/nagios/services/{{ item }}
   with_items:
     - basset.cfg
     - certgetter.cfg
