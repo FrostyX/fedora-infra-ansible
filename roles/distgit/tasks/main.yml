@@ -27,7 +27,7 @@
   - mod_ssl
   - mod_auth_gssapi
   - /usr/sbin/semanage
-    #  - mod_auth_openidc
+#  - mod_auth_openidc
   when: env == "staging"
   tags:
   - distgit
@@ -109,13 +109,11 @@
   with_items:
   - dist-git
   - dist-git-selinux
-  when: env != "staging"
   tags:
   - distgit
 
 - name: install the dist-git config
   copy: src=dist-git.conf dest=/etc/dist-git/dist-git.conf
-  when: env != "staging"
   tags:
   - config
   - distgit
@@ -173,7 +171,6 @@
 
 - name: install the DistGit related httpd config
   copy: src=git-smart-http.conf dest=/etc/httpd/conf.d/dist-git/git-smart-http.conf
-  when: env != "staging"
   notify:
   - reload httpd
   tags:
@@ -181,7 +178,6 @@
 
 - name: Symlink pkgs-git-repos-list
   copy: src=repolist.conf dest=/etc/httpd/conf.d/dist-git/repolist.conf
-  when: env != "staging"
   notify:
   - reload httpd
   tags:
@@ -355,7 +351,6 @@
   - lookaside-upload.conf
   notify:
   - reload httpd
-  when: env != "staging"
   tags:
   - distgit
   - sslciphers
