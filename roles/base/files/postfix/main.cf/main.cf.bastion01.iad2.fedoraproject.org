@@ -142,7 +142,8 @@ myorigin = fedoraproject.org
 inet_interfaces = all
 
 # Enable IPv4, and IPv6 if supported
-inet_protocols = all
+#inet_protocols = all
+inet_protocols = ipv4
 
 # The proxy_interfaces parameter specifies the network interface
 # addresses that this mail system receives mail on by way of a
@@ -786,7 +787,6 @@ tls_eecdh_ultra_curve = secp384r1
 ## Other configs from standard
 smtpd_milters           = inet:localhost:8891
 milter_default_action   = accept
-inet_protocols = ipv4
 
 # Deny email from some domains
 smtpd_sender_restrictions = regexp:/etc/postfix/sender_access
