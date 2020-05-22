@@ -186,7 +186,6 @@
     - koji.cfg
     - locking.cfg
     - mailman.cfg
-    - nagios.cfg
     - nrpe.cfg
     - osbs.cfg
     - pgsql.cfg
