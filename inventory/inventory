@@ -436,10 +436,6 @@ people02.fedoraproject.org
 
 [qahardware]
 qa05.qa.fedoraproject.org
-qa10.qa.fedoraproject.org
-qa11.qa.fedoraproject.org
-qa12.qa.fedoraproject.org
-qa13.qa.fedoraproject.org
 qa14.qa.fedoraproject.org
 
 [tang]
@@ -764,16 +760,6 @@ sundries01.iad2.fedoraproject.org
 [sundries_stg]
 sundries01.stg.phx2.fedoraproject.org
 
-[taskotron_dev_client_hosts]
-qa11.qa.fedoraproject.org
-
-[taskotron_stg_client_hosts]
-qa10.qa.fedoraproject.org
-
-[taskotron_prod_client_hosts]
-qa12.qa.fedoraproject.org
-qa13.qa.fedoraproject.org
-
 [unbound]
 unbound-ib01.fedoraproject.org
 unbound-cc-rdu01.fedoraproject.org
@@ -1089,11 +1075,6 @@ db-qa03.qa.fedoraproject.org
 resultsdb01.qa.fedoraproject.org
 resultsdb-stg01.qa.fedoraproject.org
 taskotron-dev01.qa.fedoraproject.org
-qa11.qa.fedoraproject.org
-qa12.qa.fedoraproject.org
-qa13.qa.fedoraproject.org
-taskotron-stg01.qa.fedoraproject.org
-taskotron01.qa.fedoraproject.org
 
 [osbs_control]
 osbs-control01.phx2.fedoraproject.org
