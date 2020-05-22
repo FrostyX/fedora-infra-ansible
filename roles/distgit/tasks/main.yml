@@ -19,6 +19,17 @@
   tags:
   - distgit
 
+- name: Enable the mod_auth_openidc module on rhel8
+  copy:
+    dest: /etc/dnf/modules.d/mod_auth_openidc.module
+    content: |
+      [mod_auth_openidc]
+      name=mod_auth_openidc
+      stream=2.3
+      profiles=
+      state=enabled
+  when: env == "staging"
+
 - name: install the needed packages
   package: name={{item}} state=present
   with_items:
@@ -27,7 +38,7 @@
   - mod_ssl
   - mod_auth_gssapi
   - /usr/sbin/semanage
-#  - mod_auth_openidc
+  - mod_auth_openidc
   when: env == "staging"
   tags:
   - distgit
