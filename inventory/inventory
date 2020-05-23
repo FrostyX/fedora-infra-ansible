@@ -131,6 +131,7 @@ datagrepper01.stg.phx2.fedoraproject.org
 
 [fedimg]
 fedimg01.phx2.fedoraproject.org
+fedimg01.iad2.fedoraproject.org
 
 [fedimg_stg]
 fedimg01.stg.phx2.fedoraproject.org
@@ -1269,6 +1270,7 @@ dl02.iad2.fedoraproject.org
 dl03.iad2.fedoraproject.org
 dl04.iad2.fedoraproject.org
 dl05.iad2.fedoraproject.org
+fedimg01.iad2.fedoraproject.org
 ipa01.iad2.fedoraproject.org
 ipa02.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org
