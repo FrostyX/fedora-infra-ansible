@@ -17,7 +17,7 @@
   when: inventory_hostname not in result.list_vms
 
 - name: ensure the lv for the guest is made
-  lvol: lv={{ inventory_hostname }} vg={{ volgroup }} size={{ lvm_size }} state=present
+  lvol: lv={{ inventory_hostname }} vg={{ volgroup }} size={{ lvm_size|int }} state=present
   delegate_to: "{{ vmhost }}"
   when: inventory_hostname not in result.list_vms
 
