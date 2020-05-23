@@ -6,7 +6,7 @@ dns: 10.3.163.33
 ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-7-iad2
 ks_repo: http://10.3.163.35/repo/rhel/RHEL7-x86_64/
 
-eth0_ip: 10.3.163.46
+eth0_ip: 10.3.163.45
 
 volgroup: /dev/vg_guests
 vmhost: vmhost-x86-05.iad2.fedoraproject.org
