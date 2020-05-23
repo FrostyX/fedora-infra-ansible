@@ -181,12 +181,6 @@ mbs_backend
 mbs_frontend_stg
 mbs_backend_stg
 
-[mdapi]
-mdapi01.phx2.fedoraproject.org
-
-[mdapi_stg]
-mdapi01.stg.phx2.fedoraproject.org
-
 [bodhi_backend]
 # This one handles the mashing/releng stuff
 bodhi-backend01.phx2.fedoraproject.org
@@ -673,7 +667,6 @@ mailman01.stg.phx2.fedoraproject.org
 mbs-backend01.stg.phx2.fedoraproject.org
 mbs-frontend01.stg.phx2.fedoraproject.org
 mbs-frontend02.stg.phx2.fedoraproject.org
-mdapi01.stg.phx2.fedoraproject.org
 memcached01.stg.phx2.fedoraproject.org
 mm-backend01.stg.phx2.fedoraproject.org
 mm-crawler01.stg.phx2.fedoraproject.org
@@ -909,10 +902,6 @@ moksha_hubs_stg
 [python34_fedmsg:children]
 mailman
 mailman_stg
-mdapi
-mdapi_stg
-openqa_stg
-openqa
 
 ## END fedmsg services
 
