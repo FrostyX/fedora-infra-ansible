@@ -555,6 +555,7 @@ pkgs01.stg.phx2.fedoraproject.org
 
 [loopabull]
 loopabull01.phx2.fedoraproject.org
+loopabull01.iad2.fedoraproject.org
 
 [loopabull_stg]
 loopabull01.stg.phx2.fedoraproject.org
@@ -1276,6 +1277,7 @@ github2fedmsg01.iad2.fedoraproject.org
 ipa01.iad2.fedoraproject.org
 ipa02.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org
+loopabull01.iad2.fedoraproject.org
 noc01.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
