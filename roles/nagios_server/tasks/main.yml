@@ -436,7 +436,7 @@
 - name: Build out nagios services templates
   template: src=nagios/services/{{item}}.j2 dest=/etc/nagios/services/{{item}} mode=0644 owner=root group=root
   with_items:
-    - phx2-mgmt.cfg.j2
+    - phx2-mgmt.cfg
   when: nagios_location == 'phx2_internal'
   tags:
   - nagios_server
