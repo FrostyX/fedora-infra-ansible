@@ -376,6 +376,7 @@ nuancier02.stg.phx2.fedoraproject.org
 
 [memcached]
 memcached01.phx2.fedoraproject.org
+memcached01.iad2.fedoraproject.org
 memcached02.phx2.fedoraproject.org
 
 [memcached_stg]
@@ -1278,6 +1279,7 @@ ipa01.iad2.fedoraproject.org
 ipa02.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org
 loopabull01.iad2.fedoraproject.org
+memcached01.iad2.fedoraproject.org
 noc01.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
