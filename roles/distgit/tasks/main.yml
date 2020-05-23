@@ -473,6 +473,7 @@
 
 - name: setup grokmirror for repos
   package: name=python-grokmirror state=installed
+  when: env != "staging"
   tags:
   - grokmirror
   - pkgs
@@ -495,6 +496,7 @@
 
 - name: run initial grokmirror run
   command: /usr/bin/grok-manifest -m /srv/git/grokmirror/manifest.js.gz -t /srv/git/repositories/ creates=/srv/git/grokmirror/manifest.js.gz
+  when: env != "staging"
   tags:
   - grokmirror
   - pkgs
