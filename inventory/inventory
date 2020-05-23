@@ -136,6 +136,7 @@ fedimg01.stg.phx2.fedoraproject.org
 
 [busgateway]
 busgateway01.phx2.fedoraproject.org
+busgateway01.iad2.fedoraproject.org
 
 [busgateway_stg]
 busgateway01.stg.phx2.fedoraproject.org
@@ -1248,6 +1249,7 @@ bastion01.iad2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
 blockerbugs01.iad2.fedoraproject.org
 bugzilla2fedmsg01.iad2.fedoraproject.org
+busgateway01.iad2.fedoraproject.org
 bvmhost-x86-01.iad2.fedoraproject.org
 bvmhost-x86-02.iad2.fedoraproject.org
 bvmhost-x86-03.iad2.fedoraproject.org
