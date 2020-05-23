@@ -11,3 +11,5 @@ datacenter: iad2
 
 # This is the master node in stg, so it runs the cron job
 master_blockerbugs_node: True
+
+blockerbugs_db_host_machine: db01.iad2.fedoraproject.org
