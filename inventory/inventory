@@ -84,6 +84,7 @@ blockerbugs01.stg.phx2.fedoraproject.org
 
 [bugzilla2fedmsg]
 bugzilla2fedmsg01.phx2.fedoraproject.org
+bugzilla2fedmsg01.iad2.fedoraproject.org
 
 [bugzilla2fedmsg_stg]
 bugzilla2fedmsg01.stg.phx2.fedoraproject.org
@@ -1246,6 +1247,7 @@ retrace01.qa.fedoraproject.org
 bastion01.iad2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
 blockerbugs01.iad2.fedoraproject.org
+bugzilla2fedmsg01.iad2.fedoraproject.org
 bvmhost-x86-01.iad2.fedoraproject.org
 bvmhost-x86-02.iad2.fedoraproject.org
 bvmhost-x86-03.iad2.fedoraproject.org
