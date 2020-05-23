@@ -74,6 +74,7 @@
       nfs_src_dir: 'fedora_sourcecache', nfs_mount_opts='rw,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3' }
   - { role: nfs/client,
       when: env == "staging" and inventory_hostname.startswith('pkgs01'),
+      mount_stg: true,
       mnt_dir: '/srv/cache/lookaside_prod',
       nfs_src_dir: 'fedora_sourcecache', nfs_mount_opts='ro,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3' }
   - role: distgit/pagure
