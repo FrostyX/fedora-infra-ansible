@@ -404,14 +404,18 @@ proxy110.phx2.fedoraproject.org
 
 [mm_frontend]
 mm-frontend01.phx2.fedoraproject.org
+mm-frontend01.iad2.fedoraproject.org
 mm-frontend02.phx2.fedoraproject.org
 mm-frontend-checkin01.phx2.fedoraproject.org
+mm-frontend-checkin01.iad2.fedoraproject.org
 
 [mm_backend]
 mm-backend01.phx2.fedoraproject.org
+mm-backend01.iad2.fedoraproject.org
 
 [mm_crawler]
 mm-crawler01.phx2.fedoraproject.org
+mm-crawler01.iad2.fedoraproject.org
 mm-crawler02.phx2.fedoraproject.org
 
 [mm_frontend_stg]
@@ -1280,6 +1284,10 @@ ipa02.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org
 loopabull01.iad2.fedoraproject.org
 memcached01.iad2.fedoraproject.org
+mm-frontend01.iad2.fedoraproject.org
+mm-frontend-checkin01.iad2.fedoraproject.org
+mm-backend01.iad2.fedoraproject.org
+mm-crawler01.iad2.fedoraproject.org
 noc01.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
