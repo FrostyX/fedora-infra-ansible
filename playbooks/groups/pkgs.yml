@@ -19,27 +19,6 @@
   - collectd/base
   - sudo
   - apache
-  - { role: gitolite/base, when: env != "staging" }
-  - gitolite/check_fedmsg_hooks
-  - { role: git/make_checkout_seed, when: env != "staging" }
-  - git/hooks
-  - git/checks
-  - clamav
-  - { role: nfs/client,
-      when: env != "staging",
-      mnt_dir: '/srv/cache/lookaside',
-      nfs_src_dir: 'fedora_sourcecache', nfs_mount_opts='rw,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3' }
-  - { role: nfs/client,
-      when: env == "staging" and inventory_hostname.startswith('pkgs01'),
-      mnt_dir: '/srv/cache/lookaside_prod',
-      nfs_src_dir: 'fedora_sourcecache', nfs_mount_opts='ro,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3' }
-  - role: distgit/pagure
-  - role: distgit
-    tags: distgit
-  - { role: hosts, when: env == "staging" }
-  # Set up for fedora-messaging
-  - role: rabbit/user
-    username: "pagure{{ env_suffix }}"
 
   tasks:
   - name: Copy keytab
@@ -71,7 +50,42 @@
       comment: "Pagure User"
     when: env == "staging"
       ## The above should be deleted when we rebuild pkgs02 in future.
-        
+
+- name: setup dist-git on the box
+  hosts: pkgs_stg:pkgs02.phx2.fedoraproject.org
+  user: root
+  gather_facts: True
+
+  vars_files:
+  - /srv/web/infra/ansible/vars/global.yml
+  - "/srv/private/ansible/vars.yml"
+  - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  roles:
+  - { role: gitolite/base, when: env != "staging" }
+  - gitolite/check_fedmsg_hooks
+  - { role: git/make_checkout_seed, when: env != "staging" }
+  - git/hooks
+  - git/checks
+  - clamav
+  - { role: nfs/client,
+      when: env != "staging",
+      mnt_dir: '/srv/cache/lookaside',
+      nfs_src_dir: 'fedora_sourcecache', nfs_mount_opts='rw,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3' }
+  - { role: nfs/client,
+      when: env == "staging" and inventory_hostname.startswith('pkgs01'),
+      mnt_dir: '/srv/cache/lookaside_prod',
+      nfs_src_dir: 'fedora_sourcecache', nfs_mount_opts='ro,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3' }
+  - role: distgit/pagure
+  - role: distgit
+    tags: distgit
+  - { role: hosts, when: env == "staging" }
+  # Set up for fedora-messaging
+  - role: rabbit/user
+    username: "pagure{{ env_suffix }}"
+
+  handlers:
+  - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
 - name: setup fedmsg on pkgs
   hosts: pkgs02.phx2.fedoraproject.org
