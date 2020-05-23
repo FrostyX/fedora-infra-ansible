@@ -76,6 +76,7 @@ bastion01.stg.phx2.fedoraproject.org
 
 [blockerbugs]
 blockerbugs01.phx2.fedoraproject.org
+blockerbugs01.iad2.fedoraproject.org
 blockerbugs02.phx2.fedoraproject.org
 
 [blockerbugs_stg]
@@ -1255,6 +1256,7 @@ retrace01.qa.fedoraproject.org
 [iad2]
 bastion01.iad2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
+blockerbugs01.iad2.fedoraproject.org
 bvmhost-x86-01.iad2.fedoraproject.org
 bvmhost-x86-02.iad2.fedoraproject.org
 bvmhost-x86-03.iad2.fedoraproject.org
