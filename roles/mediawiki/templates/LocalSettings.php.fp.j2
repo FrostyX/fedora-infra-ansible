@@ -449,7 +449,12 @@ $wgLogo = "https://fedoraproject.org/static/images/fedora-logo.png";
 $wgGroupPermissions['Legal']['read'] = true;
 $wgGroupPermissions['Packaging']['read'] = true;
 
+{% if datacenter == 'phx2' %}
 require_once( "$IP/extensions/Lockdown/Lockdown.php" );
+{% else %}
+wfLoadExtension( 'Lockdown' );
+wgActorTableSchemaMigrationStage = MIGRATION_OLD;
+{% endif %}
 
 $wgSpecialPageLockdown['Export'] = array('*');
 
