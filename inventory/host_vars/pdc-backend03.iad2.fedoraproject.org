@@ -1,0 +1,20 @@
+---
+nm: 255.255.255.0
+gw: 10.3.163.254
+dns: 10.3.163.33
+
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-7-iad2
+ks_repo: http://10.3.163.35/repo/rhel/RHEL7-x86_64/
+
+eth0_ip: 10.3.163.126
+
+volgroup: /dev/vg_guests
+vmhost: vmhost-x86-06.iad2.fedoraproject.org
+datacenter: iad2
+
+# These people get told when something goes wrong.
+fedmsg_error_recipients:
+- ralph@fedoraproject.org
+- mprahl@redhat.com
+- jkaluza@redhat.com
+- fvalder@redhat.com

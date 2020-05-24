@@ -929,6 +929,7 @@ mailman_stg
 
 [pdc_web]
 pdc-web01.phx2.fedoraproject.org
+pdc-web01.iad2.fedoraproject.org
 pdc-web02.phx2.fedoraproject.org
 
 [pdc_web_stg]
@@ -938,6 +939,9 @@ pdc-web01.stg.phx2.fedoraproject.org
 pdc-backend01.phx2.fedoraproject.org
 pdc-backend02.phx2.fedoraproject.org
 pdc-backend03.phx2.fedoraproject.org
+pdc-backend01.iad2.fedoraproject.org
+pdc-backend02.iad2.fedoraproject.org
+pdc-backend03.iad2.fedoraproject.org
 
 [pdc_backend_stg]
 pdc-backend01.stg.phx2.fedoraproject.org
@@ -1308,6 +1312,10 @@ os-node02.iad2.fedoraproject.org
 os-node03.iad2.fedoraproject.org
 os-node04.iad2.fedoraproject.org
 os-node05.iad2.fedoraproject.org
+pdc-web01.iad2.fedoraproject.org
+pdc-backend01.iad2.fedoraproject.org
+pdc-backend02.iad2.fedoraproject.org
+pdc-backend03.iad2.fedoraproject.org
 proxy01.iad2.fedoraproject.org
 rabbitmq01.iad2.fedoraproject.org
 rabbitmq02.iad2.fedoraproject.org
