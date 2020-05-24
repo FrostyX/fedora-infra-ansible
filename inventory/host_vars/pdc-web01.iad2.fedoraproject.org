@@ -1,10 +1,10 @@
 ---
 nm: 255.255.255.0
 gw: 10.3.163.254
-dns: 10.3.163.21
+dns: 10.3.163.33
 
-ks_url: http://infrastructure.fedoraproject.org/repo/rhel/ks/kvm-rhel-7-iad2
-ks_repo: http://infrastructure.fedoraproject.org/repo/rhel/RHEL7-x86_64/
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-7-iad2
+ks_repo: http://10.3.163.35/repo/rhel/RHEL7-x86_64/
 
 eth0_ip: 10.3.163.118
 
