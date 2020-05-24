@@ -456,6 +456,7 @@ torrent02.fedoraproject.org
 
 [secondary]
 secondary01.phx2.fedoraproject.org
+secondary01.iad2.fedoraproject.org
 
 [dns]
 ns01.iad2.fedoraproject.org
@@ -1310,6 +1311,7 @@ proxy01.iad2.fedoraproject.org
 rabbitmq01.iad2.fedoraproject.org
 rabbitmq02.iad2.fedoraproject.org
 rabbitmq03.iad2.fedoraproject.org
+secondary01.iad2.fedoraproject.org
 sundries01.iad2.fedoraproject.org
 tang01.iad2.fedoraproject.org
 tang02.iad2.fedoraproject.org
