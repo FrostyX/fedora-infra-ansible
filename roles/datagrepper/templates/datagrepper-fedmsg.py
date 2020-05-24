@@ -12,8 +12,12 @@ config = {
     'datanommer.sqlalchemy.url': 'postgresql://{{ datanommerDBUser }}:{{ datanommerDBPassword }}@db-datanommer.stg.phx2.fedoraproject.org/datanommer',
     'fedmenu_url': 'https://apps.stg.fedoraproject.org/fedmenu',
     'fedmenu_data_url': 'https://apps.stg.fedoraproject.org/js/data.js',
-    {% else %}
+    {% elif datacenter == 'phx2' %}
     'datanommer.sqlalchemy.url': 'postgresql://{{ datanommerDBUser }}:{{ datanommerDBPassword }}@db-datanommer02.phx2.fedoraproject.org/datanommer',
+    'fedmenu_url': 'https://apps.fedoraproject.org/fedmenu',
+    'fedmenu_data_url': 'https://apps.fedoraproject.org/js/data.js',
+    {% elif datacenter == 'iad2' %}
+    'datanommer.sqlalchemy.url': 'postgresql://{{ datanommerDBUser }}:{{ datanommerDBPassword }}@db-datanommer01.iad2.fedoraproject.org/datanommer',
     'fedmenu_url': 'https://apps.fedoraproject.org/fedmenu',
     'fedmenu_data_url': 'https://apps.fedoraproject.org/js/data.js',
     {% endif %}
