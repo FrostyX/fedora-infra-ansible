@@ -11,7 +11,7 @@
   tags:
   - packages
   - fedmsg/base
-  when: ansible_distribution_major_version|int < 22
+  when: ansible_distribution_major_version|int < 8
 
 - name: install python2 fedmsg package
   package: name=fedmsg state=present
