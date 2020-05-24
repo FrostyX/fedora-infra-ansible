@@ -24,7 +24,7 @@ databases:
 - koschei
 - mailman
 - mbs
-- mirrormanager
+- mirrormanager2
 - notifications
 - nuancier_lite
 - odcs
@@ -48,7 +48,7 @@ dbs_to_backup:
 - koschei
 - mailman
 - mbs
-- mirrormanager
+- mirrormanager2
 - notifications
 - nuancier_lite
 - odcs
