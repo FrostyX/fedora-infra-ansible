@@ -6,7 +6,7 @@ ks_url: http://10.3.163.35/repo/rhel/ks/kvm-fedora-32-iad2
 ks_repo: http://10.3.163.35/pub/fedora/linux/releases/32/Server/x86_64/os/
 volgroup: /dev/vg_guests
 eth0_ip: 10.3.169.119
-vmhost: bvmhost-x86-02.phx2.fedoraproject.org
+vmhost: bvmhost-x86-02.iad2.fedoraproject.org
 datacenter: iad2
 
 nrpe_procs_warn: 900
