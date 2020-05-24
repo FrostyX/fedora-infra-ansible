@@ -79,7 +79,7 @@
   copy: >
     src="{{ private }}/files/mirrormanager/"
     dest="/var/lib/mirrormanager/.ssh"
-    directory_mode=yes
+    directory_mode=0700
     owner=mirrormanager
     group=mirrormanager
     mode=0700
