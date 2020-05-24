@@ -512,8 +512,16 @@ host bvmhost-x86-06 {
      option routers 10.3.169.254;
      option subnet-mask 255.255.255.0;
 }
-host bvmhost-x86-07 {
+host autosign01 {
      hardware ethernet EC:F4:BB:D2:85:48 ;
+     fixed-address 10.3.169.28;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-x8-07 {
+     hardware ethernet E4:43:4B:B1:2B:52;
      fixed-address 10.3.169.17;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
@@ -539,14 +547,6 @@ host buildhw-x86-01 {
 host bkernel01 {
      hardware ethernet D0:94:66:45:A7:E4;
      fixed-address 10.3.169.31;
-     filename "uefi/grubx64.efi";
-     next-server 10.3.163.10;
-     option routers 10.3.169.254;
-     option subnet-mask 255.255.255.0;
-}
-host autosign01 {
-     hardware ethernet E4:43:4B:B1:2B:52;
-     fixed-address 10.3.169.28;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
      option routers 10.3.169.254;
