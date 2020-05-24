@@ -10,6 +10,6 @@ ks_repo: http://10.3.163.35/repo/rhel/RHEL7-x86_64/
 volgroup: /dev/vg_guests
 eth0_ip: 10.3.163.61
 vmhost: vmhost-x86-03.iad2.fedoraproject.org
-datacenter: phx2
+datacenter: iad2
 
 tcp_ports: [ 80, 443 ]
