@@ -775,6 +775,7 @@ unbound-osuosl01.fedoraproject.org
 
 [value]
 value01.phx2.fedoraproject.org
+value01.iad2.fedoraproject.org
 
 [value_stg]
 value01.stg.phx2.fedoraproject.org
@@ -1315,6 +1316,7 @@ secondary01.iad2.fedoraproject.org
 sundries01.iad2.fedoraproject.org
 tang01.iad2.fedoraproject.org
 tang02.iad2.fedoraproject.org
+value01.iad2.fedoraproject.org
 vmhost-x86-01.iad2.fedoraproject.org
 vmhost-x86-02.iad2.fedoraproject.org
 vmhost-x86-03.iad2.fedoraproject.org

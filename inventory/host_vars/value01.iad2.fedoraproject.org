@@ -1,0 +1,18 @@
+---
+nm: 255.255.255.0
+gw: 10.3.163.254
+dns: 10.3.163.33
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-8-iad2
+ks_repo: http://10.3.163.35/repo/rhel/RHEL8-x86_64/
+volgroup: /dev/vg_guests
+eth0_ip: 10.3.163.82
+vmhost: vmhost-x86-04.iad2.fedoraproject.org
+datacenter: iad2
+host_backup_targets: ['/srv', '/var/lib/zodbot']
+
+
+# GDPR SAR variables - meetbot
+sar_script: /usr/local/bin/meetbot_sar.py
+sar_script_user: root
+sar_output_file: meetbot.json
+
