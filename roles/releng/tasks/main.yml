@@ -166,37 +166,37 @@
 # put cron job in for branched compose
 - name: branched compose cron
   copy: src="branched" dest=/etc/cron.d/branched
-  when: inventory_hostname.startswith('branched-composer')
+  when: inventory_hostname.startswith('branched-composer.phx2')
 
 # put cron job in for rawhide compose
 - name: rawhide compose cron
   copy: src="rawhide" dest=/etc/cron.d/rawhide
-  when: inventory_hostname.startswith('rawhide-composer')
+  when: inventory_hostname.startswith('rawhide-composer.phx2')
 
 # put cron job in for cloud nightly compose
 - name: cloud updates compose cron
   copy: src="cloud-updates" dest=/etc/cron.d/cloud-updates
-  when: inventory_hostname.startswith('compose-x86-01')
+  when: inventory_hostname.startswith('compose-x86-01.phx2')
 
 # put cron job in for docker nightly compose
 - name: docker compose cron
   copy: src="container-updates" dest=/etc/cron.d/container-updates
-  when: inventory_hostname.startswith('compose-x86-01')
+  when: inventory_hostname.startswith('compose-x86-01.phx2')
 
 # put cron job in for regular ami deletion
 - name: clean-amis cron
   template: src=clean-amis.j2 dest=/etc/cron.d/clean-amis
-  when: inventory_hostname.startswith('compose-x86-01')
+  when: inventory_hostname.startswith('compose-x86-01.phx2')
 
 # put cron job in for IoT rawhide compose
 - name: IoT rawhide compose cron
   copy: src="rawhide-iot" dest=/etc/cron.d/rawhide-iot
-  when: inventory_hostname.startswith('compose-iot-01')
+  when: inventory_hostname.startswith('compose-iot-01.phx2')
 
 # put cron job in for epel8-playground compose
 - name: epel8-playground compose cron
   copy: src="epel8-playground" dest=/etc/cron.d/epel8-playground
-  when: inventory_hostname.startswith('branched-composer')
+  when: inventory_hostname.startswith('branched-composer.phx2')
 
 - name: install compose /etc/httpd/conf.d/compose.conf file
   copy: >

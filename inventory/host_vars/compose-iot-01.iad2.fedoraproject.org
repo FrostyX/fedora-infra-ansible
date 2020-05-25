@@ -1,0 +1,37 @@
+---
+volgroup: /dev/vg_guests
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-fedora-32-iad2
+ks_repo: http://10.3.163.35/pub/fedora/linux/releases/32/Everything/x86_64/os/
+mem_size: 32768
+
+vmhost: bvmhost-x86-03.iad2.fedoraproject.org
+eth0_ip: 10.3.169.122
+gw: 10.3.169.254
+main_bridge: br0
+
+fas_client_groups: sysadmin-releng,sysadmin-secondary
+
+koji_hub_nfs: "fedora_koji"
+
+sudoers: "{{ private }}/files/sudo/sysadmin-secondary-sudoers"
+
+# This VM is the compose host for IoT Edition which isn't blocking, so it doesn't freeze
+freezes: false
+
+fedmsg_certs:
+- service: releng
+  owner: root
+  group: sysadmin-releng
+  can_send:
+  # new school pungi-koji stuff (ask dgilmore)
+  - pungi.compose.phase.start
+  - pungi.compose.phase.stop
+  - pungi.compose.status.change
+  - pungi.compose.createiso.targets
+  - pungi.compose.createiso.imagefail
+  - pungi.compose.createiso.imagedone
+  - pungi.compose.ostree
+  - compose.29.complete
+  - compose.29.start
+  - compose.29.rsync.start
+  - compose.29.rsync.complete

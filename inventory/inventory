@@ -22,6 +22,9 @@ compose-x86-01.phx2.fedoraproject.org
 branched-composer.phx2.fedoraproject.org
 rawhide-composer.phx2.fedoraproject.org
 compose-iot-01.phx2.fedoraproject.org
+compose-x86-01.iad2.fedoraproject.org
+compose-rawhide01.iad2.fedoraproject.org
+compose-iot-01.iad2.fedoraproject.org
 
 [releng_stg]
 composer.stg.phx2.fedoraproject.org
@@ -1285,6 +1288,8 @@ bvmhost-x86-05.iad2.fedoraproject.org
 bvmhost-x86-06.iad2.fedoraproject.org
 bvmhost-x86-07.iad2.fedoraproject.org
 certgetter01.iad2.fedoraproject.org
+compose-x86-01.iad2.fedoraproject.org
+compose-iot-01.iad2.fedoraproject.org
 datagrepper01.iad2.fedoraproject.org
 db01.iad2.fedoraproject.org
 db03.iad2.fedoraproject.org
@@ -1336,6 +1341,7 @@ proxy110.iad2.fedoraproject.org
 rabbitmq01.iad2.fedoraproject.org
 rabbitmq02.iad2.fedoraproject.org
 rabbitmq03.iad2.fedoraproject.org
+compose-rawhide01.iad2.fedoraproject.org
 secondary01.iad2.fedoraproject.org
 sundries01.iad2.fedoraproject.org
 tang01.iad2.fedoraproject.org
