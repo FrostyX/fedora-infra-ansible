@@ -22,7 +22,7 @@ databases:
 lvm_size: 1500000
 mem_size: 65535
 num_cpus: 64
-max_cpus: 96
+max_cpu: 96
 fas_client_groups: sysadmin-dba,sysadmin-noc,sysadmin-veteran
 
 # kernel SHMMAX value
