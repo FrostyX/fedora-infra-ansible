@@ -43,7 +43,7 @@
     owner_user: apache
     host: "koji{{env_suffix}}.fedoraproject.org"
   - { role: nfs/server, when: env == "staging" }
-  - { role: keepalived, when: env == "production" and inventory_hostname.startswith('koji') }
+  - { role: keepalived, when: env == "production" and inventory_hostname.startswith('koji') and datacenter == 'phx2' }
   - role: nfs/client
     mnt_dir: '/mnt/fedora_koji'
     nfs_src_dir: 'fedora_koji'

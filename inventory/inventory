@@ -309,6 +309,8 @@ kernel03.qa.fedoraproject.org
 [koji]
 koji01.phx2.fedoraproject.org
 koji02.phx2.fedoraproject.org
+koji01.iad2.fedoraproject.org
+koji02.iad2.fedoraproject.org
 
 [koji_stg]
 koji01.stg.phx2.fedoraproject.org
@@ -316,6 +318,8 @@ koji01.stg.phx2.fedoraproject.org
 [kojipkgs]
 kojipkgs01.phx2.fedoraproject.org
 kojipkgs02.phx2.fedoraproject.org
+kojipkgs01.iad2.fedoraproject.org
+kojipkgs02.iad2.fedoraproject.org
 
 [infracore]
 batcave01.phx2.fedoraproject.org
@@ -1296,6 +1300,10 @@ fedimg01.iad2.fedoraproject.org
 github2fedmsg01.iad2.fedoraproject.org
 ipa01.iad2.fedoraproject.org
 ipa02.iad2.fedoraproject.org
+koji01.iad2.fedoraproject.org
+koji02.iad2.fedoraproject.org
+kojipkgs01.iad2.fedoraproject.org
+kojipkgs02.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org
 loopabull01.iad2.fedoraproject.org
 memcached01.iad2.fedoraproject.org

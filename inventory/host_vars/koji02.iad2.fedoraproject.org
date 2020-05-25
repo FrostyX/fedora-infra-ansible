@@ -1,0 +1,19 @@
+---
+nm: 255.255.255.0
+gw: 10.3.169.254
+dns: 10.3.163.33
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-8
+ks_repo: http://10.3.163.35/repo/rhel/RHEL8-x86_64/
+volgroup: /dev/vg_guests
+eth0_ip: 10.3.169.105
+vmhost: bvmhost-x86-03.iad2.fedoraproject.org
+datacenter: iad2
+
+nrpe_procs_warn: 900
+nrpe_procs_crit: 1000
+
+fedmsg_koji_instance: primary
+
+koji_topurl: "https://kojipkgs.fedoraproject.org/"
+koji_server_url: "https://koji.fedoraproject.org/kojihub"
+koji_weburl: "https://koji.fedoraproject.org/koji"
