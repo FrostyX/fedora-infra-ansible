@@ -96,7 +96,7 @@
   - selinux
   - koji_hub
 
-- name: install fedora-messaging as a dependency for the plugin
+- name: install fedora-messaging as a dependency for the plugin (rhel7)
   package: name={{ item }} state=present
   with_items:
   - python2-fedora-messaging
@@ -105,6 +105,17 @@
   - packages
   - koji_hub
   - fedora-messaging
+  when: ansible_distribution == "RedHat" and ansible_distribution_major_version|int == 7
+
+- name: install fedora-messaging as a dependency for the plugin (fedora)
+  package: name={{ item }} state=present
+  with_items:
+  - python3-fedora-messaging
+  tags:
+  - packages
+  - koji_hub
+  - fedora-messaging
+  when: ansible_distribution == "Fedora"
 
 - name: create the config folder for fedora-messaging
   file: path=/etc/fedora-messaging/ owner=root group=root mode=0755 state=directory
