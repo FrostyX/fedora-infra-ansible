@@ -14,7 +14,7 @@
   - libsemanage-python
   - python-fedora-flask
   - pagure-dist-git
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - pagure
   - packages
@@ -32,7 +32,7 @@
   - python3-libsemanage
   - python3-fedora-flask
   - pagure-dist-git
-  when: env == "staging"
+  when: env == "staging" or datacenter == "iad2"
   tags:
   - pagure
   - packages
@@ -86,7 +86,7 @@
     etype: group
     permissions: r
     state: present
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
 
 # Set-up Pagure
 
@@ -137,7 +137,7 @@
 
 - name: create the database scheme
   command: /usr/bin/python2 /usr/share/pagure/pagure_createdb.py
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   changed_when: "1 != 1"
   environment:
       PAGURE_CONFIG: /etc/pagure/pagure.cfg
@@ -147,7 +147,7 @@
 
 - name: create the database scheme
   command: /usr/bin/python3 /usr/share/pagure/pagure_createdb.py
-  when: env == "staging"
+  when: env == "staging" or datacenter == "iad2"
   changed_when: "1 != 1"
   environment:
       PAGURE_CONFIG: /etc/pagure/pagure.cfg
@@ -325,7 +325,7 @@
     job: /usr/bin/python2 /usr/libexec/pagure-dist-git/pagure_poc.py /srv/cache/extras
     cron_file: pagure-poc
     state: present
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - pagure
 
@@ -337,7 +337,7 @@
     job: /usr/bin/python2 /usr/libexec/pagure-dist-git/pagure_bz.py /srv/cache/extras
     cron_file: pagure-bz
     state: present
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - pagure
 
@@ -349,7 +349,7 @@
     job: /usr/bin/python2 /usr/libexec/pagure-dist-git/pagure_owner_alias.py /srv/cache/extras
     cron_file: pagure-owner-alias
     state: present
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - pagure
 
@@ -362,7 +362,7 @@
     job: /usr/bin/python3 /usr/libexec/pagure-dist-git/pagure_poc.py /srv/cache/extras
     cron_file: pagure-poc
     state: present
-  when: env == "staging"
+  when: env == "staging" or datacenter == "iad2"
   tags:
   - pagure
 
@@ -374,7 +374,7 @@
     job: /usr/bin/python3 /usr/libexec/pagure-dist-git/pagure_bz.py /srv/cache/extras
     cron_file: pagure-bz
     state: present
-  when: env == "staging"
+  when: env == "staging" or datacenter == "iad2"
   tags:
   - pagure
 
@@ -386,7 +386,7 @@
     job: /usr/bin/python3 /usr/libexec/pagure-dist-git/pagure_owner_alias.py /srv/cache/extras
     cron_file: pagure-owner-alias
     state: present
-  when: env == "staging"
+  when: env == "staging" or datacenter == "iad2"
   tags:
   - pagure
 
@@ -396,7 +396,7 @@
   package: name={{ item }} state=present
   with_items:
   - python2-fedora-messaging
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - pagure
   - fedora-messaging
@@ -405,7 +405,7 @@
   package: name={{ item }} state=present
   with_items:
   - fedora-messaging
-  when: env == "staging"
+  when: env == "staging" or datacenter == "iad2"
   tags:
   - pagure
   - fedora-messaging

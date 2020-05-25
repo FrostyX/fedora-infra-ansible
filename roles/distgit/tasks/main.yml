@@ -15,7 +15,7 @@
   - python-fedmsg-genacls
   - /usr/sbin/semanage
   - mod_auth_openidc
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - distgit
 
@@ -28,7 +28,7 @@
       stream=2.3
       profiles=
       state=enabled
-  when: env == "staging"
+  when: env == "staging" or datacenter == "iad2"
 
 - name: install the needed packages
   package: name={{item}} state=present
@@ -39,7 +39,7 @@
   - mod_auth_gssapi
   - /usr/sbin/semanage
   - mod_auth_openidc
-  when: env == "staging"
+  when: env == "staging" or datacenter == "iad2"
   tags:
   - distgit
 
@@ -226,7 +226,7 @@
 # This is the permission management for package maintainers, using Gitolite.
 - name: create the /var/log/gitolite directory
   file: path=/var/log/gitolite owner=root group=packager state=directory mode=2775
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - distgit
 
@@ -243,42 +243,42 @@
         group=gen-acls
         shell=/bin/bash
         home=/srv/git
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - distgit
 
 - name: create the /etc/gitolite/conf directory
   file: path=/etc/gitolite/conf owner=pagure group=pagure
         state=directory mode=0755
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - distgit
 
 - name: create the /etc/gitolite/logs directory
   file: path=/etc/gitolite/logs owner=pagure group=packager
         state=directory mode=0775
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - distgit
 
 - name: create the /etc/gitolite/local/VREF directory
   file: path=/etc/gitolite/local/VREF owner=pagure group=packager
         state=directory mode=0775
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - distgit
 
 - name: create /etc/gitolite/gitolite.rc
   template: src=gitolite.rc dest=/etc/gitolite/gitolite.rc
             owner=root group=root mode=0755
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - distgit
 
 - name: Create the rpms symlink (should not be needed, might still be used by some old scripts)
   command: ln -s /srv/git/repositories/ /srv/git/rpms
            creates=/srv/git/rpms
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - config
   - distgit
@@ -286,7 +286,7 @@
 - name: Create the gitolite.rc symlink
   command: ln -s /etc/gitolite/gitolite.rc /srv/git/.gitolite.rc
            creates=/srv/git/.gitolite.rc
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - config
   - distgit
@@ -294,7 +294,7 @@
 - name: Create the gitolite configuration symlink
   command: ln -s /etc/gitolite/ /srv/git/.gitolite
            creates=/srv/git/.gitolite
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - config
   - distgit
@@ -302,12 +302,12 @@
 - name: Copy in RepoAliases.header
   copy: src=RepoAliases.header dest=/etc/gitolite/RepoAliases.header
         owner=root group=root mode=0755
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
 
 - name: Create the update-block-push-origin symlink
   command: ln -s /usr/share/git-core/update-block-push-origin /etc/gitolite/local/VREF/update-block-push-origin
            creates=/etc/gitolite/local/VREF/update-block-push-origin
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - config
   - distgit
@@ -315,7 +315,7 @@
 - name: install the fedmsg configuration
   template: src=fedmsg-genacls-config.py dest=/etc/fedmsg.d/genacls.py
             owner=root group=root mode=0644
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - distgit
 
@@ -324,7 +324,7 @@
   with_items:
     - /usr/local/bin/genacls.sh
     - /etc/cron.d/genacls.cron
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - config
   - distgit
@@ -343,7 +343,7 @@
 - name: Save the list the users having a shell access
   template: src=gitolite_admins dest=/etc/gitolite/admins
             owner=gen-acls group=packager mode=660
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - config
   - distgit
@@ -353,11 +353,11 @@
   with_items:
     - {name: /etc/gitolite/hooks, mode: 770, state: directory}
     - {name: /etc/gitolite/hooks/common, mode: 770, state: directory}
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
 
 - name: Fix permissions on the Gitolite stuff (touch update if it does not exist)
   copy: content="" dest=/etc/gitolite/hooks/common/update force=no owner=root group=packager mode=0755
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - distgit
   - config
@@ -482,7 +482,7 @@
 
 - name: setup grokmirror for repos
   package: name=python-grokmirror state=installed
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - grokmirror
   - pkgs
@@ -505,7 +505,7 @@
 
 - name: run initial grokmirror run
   command: /usr/bin/grok-manifest -m /srv/git/grokmirror/manifest.js.gz -t /srv/git/repositories/ creates=/srv/git/grokmirror/manifest.js.gz
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - grokmirror
   - pkgs
