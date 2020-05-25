@@ -1,0 +1,97 @@
+#! /usr/bin/python3
+
+"""
+Cleanup all AWS VM instances which are using 'copr-builder' key, and are not
+valid.  Either they have no Name tag set (some spawning problems...) or is not
+tracked by resalloc server.
+"""
+
+import json
+import logging
+import subprocess
+import time
+import os
+
+import dateutil.parser
+
+logging.basicConfig(level=logging.INFO)
+LOG = logging.getLogger()
+
+
+def run_cmd(cmd):
+    """ check_output() and decode from utf8 """
+    return subprocess.check_output(cmd).decode("utf-8")
+
+
+def _get_instances():
+    query = (
+        "Reservations[].Instances[].{"
+        "ID:InstanceId,"
+        "Name:Tags[?Key=='Name']|[0].Value,"
+        "KeyName:KeyName,"
+        "CoprInstance:Tags[?Key=='CoprInstance']|[0].Value,"
+        "Start:LaunchTime"
+        "}"
+    )
+    aws_command = [
+        "aws", "ec2", "describe-instances",
+        "--query", query,
+        "--filters",
+        "Name=key-name,Values=copr-builder",
+        "Name=instance-state-name,Values=running",
+        #"Name=tag-key,Values=FedoraCopr,Name=tag-value,Values=copr",
+        "--output", "json",
+        "--region", "us-east-1",
+    ]
+    return json.loads(run_cmd(aws_command))
+
+
+def _terminate_instnace(instance_id):
+    cmd = ["aws", "ec2", "terminate-instances", "--instance-ids", instance_id]
+    subprocess.call(cmd)
+
+
+def _get_tracked_instances():
+    raw = run_cmd(["resalloc-maint", "resource-list"])
+    return_tracked = []
+    for resource in raw.strip().split("\n"):
+        return_tracked.append(resource.split(' ')[2])
+    return return_tracked
+
+
+def _detect_instance():
+    hostname = run_cmd("hostname").strip()
+    return "devel" if "copr-be-dev" in hostname else "production"
+
+
+def _main():
+
+    # resalloc account have nonstandard HOME variable
+    os.environ["HOME"] = "/home/resalloc"
+
+    tracked = _get_tracked_instances()
+    copr_instance = _detect_instance()
+
+    for instance in _get_instances():
+        started = dateutil.parser.parse(instance["Start"]).timestamp()
+        if time.time() - started < 1800:
+            continue
+
+        if not instance["Name"]:
+            LOG.info("shutting down unnamed instance %s", instance["ID"])
+            _terminate_instnace(instance["ID"])
+            continue
+
+        if instance["CoprInstance"] != copr_instance:
+            LOG.debug("not our instance: %s (%s)", instance["Name"], instance["CoprInstance"])
+            continue
+
+        if instance["Name"] in tracked:
+            LOG.debug("tracked %s, skipped", instance["Name"])
+            continue
+
+        _terminate_instnace(instance["ID"])
+
+
+if __name__ == "__main__":
+    _main()
