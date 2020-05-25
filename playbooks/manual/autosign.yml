@@ -73,6 +73,9 @@
     owner_user: robosignatory
     owner_group: robosignatory
 
+  - { role: clevis, when: datacenter == 'iad2'}
+  - { role: serial-console, when: datacenter == 'iad2'}
+
   pre_tasks:
   - import_tasks: "{{ tasks_path }}/yumrepos.yml"
 
