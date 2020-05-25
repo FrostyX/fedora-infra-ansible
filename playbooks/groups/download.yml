@@ -38,7 +38,8 @@
   - rsyncd
   - { role: nfs/client, when: datacenter == "phx2", mnt_dir: '/srv/pub',  nfs_src_dir: 'fedora_ftp/fedora.redhat.com/pub' }
   - { role: nfs/client, when: datacenter == "phx2", mnt_dir: '/mnt/koji/compose',  nfs_src_dir: 'fedora_koji/koji/compose' } # needed for internal sync
-  - { role: nfs/client, when: datacenter == "rdu", mnt_dir: '/srv/pub',  nfs_src_dir: 'fedora_ftp/fedora.redhat.com/pub' }
+  - { role: nfs/client, when: datacenter == "iad2" or datacenter == "rdu", mnt_dir: '/srv/pub',  nfs_src_dir: 'fedora_ftp/fedora.redhat.com/pub' }
+  - { role: nfs/client, when: datacenter == "iad2", mnt_dir: '/mnt/koji/compose',  nfs_src_dir: 'fedora_koji/koji/compose' } # needed for internal sync
   - sudo
   - { role: openvpn/client, when: vpn == True }
 
