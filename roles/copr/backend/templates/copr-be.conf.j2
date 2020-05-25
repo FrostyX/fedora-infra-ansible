@@ -34,6 +34,10 @@ frontend_auth={{ copr_backend_password_stg }}
 
 {% if devel %}
 build_groups=0
+
+builds_max_workers_arch=x86_64=18,armhfp=2,aarch64=10
+builds_max_workers_sandbox=5
+builds_max_workers_owner=15
 {% else %}
 build_groups=5
 {% endif %}
