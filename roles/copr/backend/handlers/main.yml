@@ -2,7 +2,7 @@
   file: path=/etc/lighttpd/copr-be.fedoraproject.org.pem owner=root group=root mode=0600
 
 - name: restart copr-backend
-  service: name="{{ copr_backend_target }} state=restarted
+  service: name="{{ copr_backend_target }}" state=restarted
   when: not services_disabled
 
 - name: systemctl daemon-reload
