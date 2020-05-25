@@ -1,0 +1,12 @@
+---
+nm: 255.255.255.0
+gw: 10.3.169.254
+dns: 10.3.169.34
+eno1_ip: 10.3.169.28
+
+mac1: ec:f4:bb:d2:85:48
+mac2: ec:f4:bb:d2:85:4a
+mac3: ec:f4:bb:d2:85:4c
+mac4: ec:f4:bb:d2:85:4d
+
+datacenter: iad2

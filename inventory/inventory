@@ -210,6 +210,7 @@ sign-vault01.stg.phx2.fedoraproject.org
 
 [autosign]
 autosign01.phx2.fedoraproject.org
+autosign01.iad2.fedoraproject.org
 
 [autosign_stg]
 autosign01.stg.phx2.fedoraproject.org
@@ -1276,6 +1277,7 @@ retrace01.qa.fedoraproject.org
 # os-proxy02.fedorainfracloud.org
 
 [iad2]
+autosign01.iad2.fedoraproject.org
 bastion01.iad2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
 blockerbugs01.iad2.fedoraproject.org
