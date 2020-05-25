@@ -16,10 +16,27 @@
   - mod_auth_gssapi
   - git
   - gnupg2
+  tags:
+  - packages
+  - koji_hub
+
+- name: install rhel7 koji hub server packages
+  package: name={{ item }} state=present
+  with_items:
   - python2-tag2distrepo
   tags:
   - packages
   - koji_hub
+  when: ansible_distribution == "RedHat" and ansible_distribution_major_version|int == 7
+
+- name: install fedora koji hub server packages
+  package: name={{ item }} state=present
+  with_items:
+  - python3-tag2distrepo
+  tags:
+  - packages
+  - koji_hub
+  when: ansible_distribution == "Fedora"
 
 - name: make koji pki directory
   file: state=directory path=/etc/pki/koji/ owner=root group=root
