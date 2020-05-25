@@ -3,15 +3,6 @@
 # NOTE: Chaging this template updates iptables on all releng hosts :)
 # Please check with sysadmin-main before pushing out an update here. 
 #
-*nat
-:PREROUTING ACCEPT []
-:POSTROUTING ACCEPT []
-:OUTPUT ACCEPT []
-COMMIT
-*raw
-:PREROUTING ACCEPT []
-:OUTPUT ACCEPT []
-COMMIT
 *filter
 :INPUT DROP []
 :FORWARD ACCEPT []
