@@ -25,6 +25,7 @@ items:
                 rpm-python \
                 rpmdevtools \
                 fedpkg \
+                libcurl-devel \
                 python3-bugzilla \
                 python3-dogpile-cache \
                 python3-requests \
