@@ -9,6 +9,8 @@ eth0_ip: 10.3.169.122
 gw: 10.3.169.254
 main_bridge: br0
 
+datacenter: iad2
+
 fas_client_groups: sysadmin-releng,sysadmin-secondary
 
 koji_hub_nfs: "fedora_koji"
