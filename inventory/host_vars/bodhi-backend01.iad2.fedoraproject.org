@@ -13,6 +13,8 @@ num_cpus: 30
 
 virt_install_command: "{{ virt_install_command_one_nic }}"
 
+datacenter: iad2
+
 # These set a config value in /etc/fedmsg.d/, see roles/bodhi2/base/
 bodhi_masher_enabled: True
 bodhi_updates_handler_enabled: False
