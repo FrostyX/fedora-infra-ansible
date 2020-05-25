@@ -563,6 +563,7 @@ packages04.phx2.fedoraproject.org
 packages03.stg.phx2.fedoraproject.org
 
 [pkgs]
+pkgs01.iad2.fedoraproject.org
 pkgs02.phx2.fedoraproject.org
 
 [pkgs_stg]
@@ -1334,6 +1335,7 @@ pdc-web01.iad2.fedoraproject.org
 pdc-backend01.iad2.fedoraproject.org
 pdc-backend02.iad2.fedoraproject.org
 pdc-backend03.iad2.fedoraproject.org
+pkgs01.iad2.fedoraproject.org
 proxy01.iad2.fedoraproject.org
 proxy10.iad2.fedoraproject.org
 proxy101.iad2.fedoraproject.org

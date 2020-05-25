@@ -1,5 +1,5 @@
 ---
-lvm_size: 100000
+lvm_size: 500000
 mem_size: 4096
 num_cpus: 4
 

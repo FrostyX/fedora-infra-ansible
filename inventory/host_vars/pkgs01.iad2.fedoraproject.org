@@ -1,0 +1,31 @@
+---
+eth0_ip: 10.3.169.116
+nm: 255.255.255.0
+gw: 10.3.169.254
+dns: 10.3.163.33
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-8-iad2
+ks_repo: http://10.3.163.35/repo/rhel/RHEL8-x86_64/
+volgroup: /dev/vg_guests
+vmhost: bvmhost-x86-05.iad2.fedoraproject.org
+datacenter: iad2
+
+mem_size: 16384
+num_cpus: 8
+
+host_backup_targets: ['/srv/cache/lookaside']
+nfs_mount_opts: "rw,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3"
+
+ssh_hostnames:
+- pkgs.fedoraproject.org
+
+additional_host_keytabs:
+- pkgs.fedoraproject.org
+
+nrpe_procs_warn: 500
+nrpe_procs_crit: 600
+
+# GDPR SAR variables - dist_dit
+sar_script: /usr/local/bin/pagure_sar.py
+sar_script_user: root
+sar_output_file: dist_git.json
+
