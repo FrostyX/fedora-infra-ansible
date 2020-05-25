@@ -579,6 +579,7 @@ proxy06.fedoraproject.org
 #proxy08.fedoraproject.org
 proxy09.fedoraproject.org
 proxy10.phx2.fedoraproject.org
+proxy10.iad2.fedoraproject.org
 proxy11.fedoraproject.org
 proxy12.fedoraproject.org
 proxy13.fedoraproject.org
@@ -589,6 +590,8 @@ proxy31.fedoraproject.org
 [proxies_internal]
 proxy101.phx2.fedoraproject.org
 proxy110.phx2.fedoraproject.org
+proxy101.iad2.fedoraproject.org
+proxy110.iad2.fedoraproject.org
 
 [proxies:children]
 proxies_external
@@ -1317,6 +1320,9 @@ pdc-backend01.iad2.fedoraproject.org
 pdc-backend02.iad2.fedoraproject.org
 pdc-backend03.iad2.fedoraproject.org
 proxy01.iad2.fedoraproject.org
+proxy10.iad2.fedoraproject.org
+proxy101.iad2.fedoraproject.org
+proxy110.iad2.fedoraproject.org
 rabbitmq01.iad2.fedoraproject.org
 rabbitmq02.iad2.fedoraproject.org
 rabbitmq03.iad2.fedoraproject.org
