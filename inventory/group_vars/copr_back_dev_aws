@@ -63,3 +63,6 @@ copr_hostbase: copr-be-dev
 _copr_be_conf: copr-be.conf-dev
 
 datacenter: aws
+
+# what is the main backend service name
+copr_backend_target: copr-backend.target
