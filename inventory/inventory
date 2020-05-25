@@ -47,6 +47,7 @@ certgetter01.iad2.fedoraproject.org
 
 [backup]
 backup01.phx2.fedoraproject.org
+backup01.iad2.fedoraproject.org
 
 [badges_backend]
 badges-backend01.phx2.fedoraproject.org
