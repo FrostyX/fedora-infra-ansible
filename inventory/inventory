@@ -170,6 +170,7 @@ mailman01.stg.phx2.fedoraproject.org
 
 [mbs_frontend]
 mbs-frontend01.phx2.fedoraproject.org
+mbs-frontend01.iad2.fedoraproject.org
 mbs-frontend02.phx2.fedoraproject.org
 
 [mbs_frontend_stg]
@@ -178,6 +179,7 @@ mbs-frontend02.stg.phx2.fedoraproject.org
 
 [mbs_backend]
 mbs-backend01.phx2.fedoraproject.org
+mbs-backend01.iad2.fedoraproject.org
 
 [mbs_backend_stg]
 mbs-backend01.stg.phx2.fedoraproject.org
@@ -199,6 +201,7 @@ bodhi-backend01.stg.phx2.fedoraproject.org
 
 [sign_bridge]
 sign-bridge01.phx2.fedoraproject.org
+sign-bridge01.iad2.fedoraproject.org
 sign-bridge01.stg.phx2.fedoraproject.org
 #
 # sign vault servers don't listen to ssh by default.
@@ -1314,6 +1317,8 @@ kojipkgs01.iad2.fedoraproject.org
 kojipkgs02.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org
 loopabull01.iad2.fedoraproject.org
+mbs-frontend01.iad2.fedoraproject.org
+mbs-backend01.iad2.fedoraproject.org
 memcached01.iad2.fedoraproject.org
 mm-frontend01.iad2.fedoraproject.org
 mm-frontend-checkin01.iad2.fedoraproject.org
@@ -1347,6 +1352,7 @@ rabbitmq02.iad2.fedoraproject.org
 rabbitmq03.iad2.fedoraproject.org
 compose-rawhide01.iad2.fedoraproject.org
 secondary01.iad2.fedoraproject.org
+sign-bridge01.iad2.fedoraproject.org
 sundries01.iad2.fedoraproject.org
 tang01.iad2.fedoraproject.org
 tang02.iad2.fedoraproject.org
