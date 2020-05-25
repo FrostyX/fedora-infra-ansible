@@ -126,7 +126,7 @@
 
 - name: put bodhi-automated-pushes.py in place
   copy: src=bodhi-automated-pushes.py dest=/usr/local/bin/bodhi-automated-pushes.py mode=0755
-  when: env == "production"
+  when: env == "production" and datacenter == 'phx2'
   tags:
   - config
   - bodhi
@@ -135,14 +135,14 @@
 # These next two are used by quick-fedora-mirror
 - name: put update-fullfiletimelist in place
   copy: src="{{ files }}/scripts/update-fullfiletimelist" dest=/usr/local/bin/update-fullfiletimelist mode=0755
-  when: env == "production"
+  when: env == "production" and datacenter == 'phx2'
   tags:
   - config
   - bodhi
   - cron
 - name: add create-filelist script from quick-fedora-mirror
   copy: src="{{ files }}/scripts/create-filelist" dest=/usr/local/bin/create-filelist mode=0755
-  when: env == "production"
+  when: env == "production" and datacenter == 'phx2'
   tags:
   - config
   - bodhi
@@ -150,7 +150,7 @@
 
 - name: Set the updates sync cron job
   copy: src=new-updates-sync.cron dest=/etc/cron.d/updates-sync
-  when: env == "production"
+  when: env == "production" and datacenter == 'phx2'
   tags:
   - config
   - bodhi
@@ -158,7 +158,7 @@
 
 - name: Set the bodhi-automated-pushes cron job
   template: src=bodhi-automated-pushes.cron.j2 dest=/etc/cron.d/bodhi-automated-pushes
-  when: env == "production"
+  when: env == "production" and datacenter == 'phx2'
   tags:
   - config
   - bodhi
@@ -169,7 +169,7 @@
   cron: name="directory-sizes-update" minute="30" hour="19" user="ftpsync"
         job="/usr/bin/find /pub/alt/ /pub/archive/ /pub/fedora-secondary/ /pub/fedora/ /pub/epel/ -type d  ! -path '/pub/alt/screenshots/f21/source' | grep -v snapshot | /usr/bin/xargs -n 1 /usr/bin/du --exclude=.snapshot -sh > /tmp/DIRECTORY_SIZES.txt 2> /dev/null; cp /tmp/DIRECTORY_SIZES.txt /pub/"
         cron_file=directory-sizes-update
-  when: env == "production"
+  when: env == "production" and datacenter == 'phx2'
   tags:
   - config
   - bodhi
