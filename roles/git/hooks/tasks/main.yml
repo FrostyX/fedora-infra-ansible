@@ -10,7 +10,7 @@
     - python-kitchen
     - python-pygit2
     - fedora-messaging
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
   tags:
   - git
   - git/hooks
@@ -25,7 +25,7 @@
     - python3-kitchen
     - python3-pygit2
     - fedora-messaging
-  when: env == "staging"
+  when: env == "staging" or datacenter == "iad2"
   tags:
   - git
   - git/hooks

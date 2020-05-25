@@ -62,7 +62,7 @@
   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
 
   roles:
-  - { role: gitolite/base, when:  env != "staging" and datacenter != iad2}
+  - { role: gitolite/base, when:  env != "staging" and datacenter != "iad2"}
   - gitolite/check_fedmsg_hooks
   - { role: git/make_checkout_seed, when: env != "staging" }
   - git/hooks
