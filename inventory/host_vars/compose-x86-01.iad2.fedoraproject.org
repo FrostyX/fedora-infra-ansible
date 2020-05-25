@@ -25,6 +25,8 @@ kojipkgs_url: kojipkgs.fedoraproject.org
 kojihub_url: koji.fedoraproject.org/kojihub
 kojihub_scheme: https
 
+virt_install_command: "{{ virt_install_command_one_nic }}"
+
 fedmsg_certs:
 - service: releng
   owner: root

@@ -13,6 +13,8 @@ kojihub_scheme: https
 # rawhide is never frozen, the compose box should not be so we can make needed changes
 freezes: false
 
+virt_install_command: "{{ virt_install_command_one_nic }}"
+
 fedmsg_certs:
 - service: releng
   owner: root

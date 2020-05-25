@@ -15,6 +15,8 @@ koji_hub_nfs: "fedora_koji"
 
 sudoers: "{{ private }}/files/sudo/sysadmin-secondary-sudoers"
 
+virt_install_command: "{{ virt_install_command_one_nic }}"
+
 # This VM is the compose host for IoT Edition which isn't blocking, so it doesn't freeze
 freezes: false
 
