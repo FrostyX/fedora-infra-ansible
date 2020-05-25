@@ -15,3 +15,5 @@ ks_repo: http://10.3.163.35/pub/fedora/linux/releases/32/Server/x86_64/os/
 
 nrpe_procs_warn: 900
 nrpe_procs_crit: 1000
+
+virt_install_command: "{{ virt_install_command_one_nic }}"
