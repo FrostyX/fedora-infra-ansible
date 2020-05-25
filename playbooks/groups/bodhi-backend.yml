@@ -41,12 +41,22 @@
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
     nfs_src_dir: 'fedora-ostree-content/ostree'
-    when: env != 'staging'
+    when: env != 'staging' and datacenter == 'phx2'
 
   - role: nfs/client
     mnt_dir: '/mnt/koji/compose/ostree'
     nfs_src_dir: 'fedora-ostree-content/compose/ostree'
-    when: env != 'staging'
+    when: env != 'staging' and datacenter == 'phx2'
+
+  - role: nfs/client
+    mnt_dir: '/mnt/koji/ostree'
+    nfs_src_dir: 'fedora_ostree_content/ostree'
+    when: env != 'staging' and datacenter == 'iad2'
+
+  - role: nfs/client
+    mnt_dir: '/mnt/koji/compose/ostree'
+    nfs_src_dir: 'fedora_ostree_content/compose/ostree'
+    when: env != 'staging' and datacenter == 'iad2'
 
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
