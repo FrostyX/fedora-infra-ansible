@@ -32,7 +32,11 @@ frontend_auth={{ copr_backend_password_stg }}
 #   vm_max_check_fails=2 - when machine is consequently X times marked as failed then it is terminated
 #   vm_terminating_timeout=600 - when machine was terminated and terminate PB did not finish within this number of second, we will run the PB once again.
 
+{% if devel %}
+build_groups=0
+{% else %}
 build_groups=5
+{% endif %}
 
 # new OS cloud, VMM based backend
 group0_name=PC
