@@ -1,0 +1,14 @@
+---
+nm: 255.255.255.0
+gw: 10.3.169.254
+dns: 10.3.163.33
+
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-8-iad2
+ks_repo: http://10.3.163.35/repo/rhel/RHEL8-x86_64/
+
+eth0_ip: 10.3.169.111
+
+volgroup: /dev/vg_guests
+vmhost: bvmhost-x86-04.iad2.fedoraproject.org
+
+datacenter: iad2
