@@ -21,6 +21,8 @@
   vars:
     username: centos-ci{{ env_suffix }}
     queue_name: centos-ci{{ env_suffix }}
+    # TTL: 10 days (in miliseconds)
+    message_ttl: 864000000
     routing_keys:
       # This routing key is for testing purposes only
       - "org.centos.ci.#"
