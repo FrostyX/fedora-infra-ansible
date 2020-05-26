@@ -33,3 +33,6 @@ sar_script: /usr/local/bin/pagure_sar.py
 sar_script_user: root
 sar_output_file: dist_git.json
 
+# DB used by pagure
+pagure_db_host: db01.phx2.fedoraproject.org
+

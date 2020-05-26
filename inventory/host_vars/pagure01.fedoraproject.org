@@ -33,3 +33,6 @@ ssh_hostnames:
 sar_script: /usr/local/bin/pagure_sar.py
 sar_script_user: git
 sar_output_file: pagure.json
+
+# DB used:
+pagure_db_host: 127.0.0.1

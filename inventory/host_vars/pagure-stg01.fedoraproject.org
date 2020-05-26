@@ -27,3 +27,6 @@ effective_cache_size: "6GB"
 
 ssh_hostnames:
 - stg.pagure.io
+
+# DB host:
+pagure_db_host: 127.0.0.1
