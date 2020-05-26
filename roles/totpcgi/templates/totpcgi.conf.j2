@@ -10,11 +10,11 @@ fas_url = https://admin.fedoraproject.org/accounts/
 [secret_backend]
 ; For PostgreSQL backend:
 engine = pgsql
-pg_connect_string = user={{ totpcgiDBUser }} password={{ totpcgiDBPassword }} host=db-fas01{{ env_suffix }}.phx2.fedoraproject.org dbname=totpcgi
+pg_connect_string = user={{ totpcgiDBUser }} password={{ totpcgiDBPassword }} host=db-fas01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org dbname=totpcgi
 
 [pincode_backend]
 engine = pgsql
-pg_connect_string = user={{ totpcgiDBUser }} password={{ totpcgiDBPassword }} host=db-fas01{{ env_suffix }}.phx2.fedoraproject.org dbname=totpcgi
+pg_connect_string = user={{ totpcgiDBUser }} password={{ totpcgiDBPassword }} host=db-fas01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org dbname=totpcgi
 
 ; For LDAP backend (simple bind auth):
 ;engine = ldap
@@ -28,4 +28,4 @@ pg_connect_string = user={{ totpcgiDBUser }} password={{ totpcgiDBPassword }} ho
 
 ; For PostgreSQL backend:
 engine = pgsql
-pg_connect_string = user={{ totpcgiDBUser }} password={{ totpcgiDBPassword }} host=db-fas01{{ env_suffix }}.phx2.fedoraproject.org dbname=totpcgi
+pg_connect_string = user={{ totpcgiDBUser }} password={{ totpcgiDBPassword }} host=db-fas01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org dbname=totpcgi
