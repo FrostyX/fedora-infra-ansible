@@ -1,0 +1,11 @@
+---
+nrpe_procs_warn: 1200
+nrpe_procs_crit: 1400
+
+datacenter: iad2
+
+eno0_ip: 10.3.163.40
+gw: 10.3.163.254
+
+grokmirror_topdir: /fedora_backups/grokmirror
+
