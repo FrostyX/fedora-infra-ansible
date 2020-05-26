@@ -13,7 +13,7 @@ items:
     runPolicy: Serial
     source:
       dockerfile: |-
-        FROM fedora:30
+        FROM fedora:32
         LABEL \
           name="the-new-hotness" \
           vendor="Fedora Infrastructure" \
@@ -22,7 +22,6 @@ items:
         RUN dnf install -y \
                 git \
                 koji \
-                rpm-python \
                 rpmdevtools \
                 fedpkg \
                 python3-pycurl \
