@@ -2,7 +2,7 @@
 
 # For the validation interface.
 $baseParams = array ();
-$baseParams['__YKVAL_DB_DSN__'] = "pgsql:dbname=ykval;host=db-fas01{{ env_suffix }}.phx2.fedoraproject.org";
+$baseParams['__YKVAL_DB_DSN__'] = "pgsql:dbname=ykval;host=db-fas01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org";
 $baseParams['__YKVAL_DB_USER__'] = 'ykval_verifier';
 $baseParams['__YKVAL_DB_PW__'] = '{{ ykvalDBPassword }}';
 $baseParams['__YKVAL_DB_OPTIONS__'] = array();

@@ -488,6 +488,7 @@ ns05.fedoraproject.org
 
 [odcs_frontend]
 odcs-frontend01.phx2.fedoraproject.org
+odcs-frontend01.iad2.fedoraproject.org
 
 [odcs_frontend_stg]
 odcs-frontend01.stg.phx2.fedoraproject.org
@@ -498,6 +499,7 @@ odcs_backend_releng
 
 [odcs_backend_general]
 odcs-backend01.phx2.fedoraproject.org
+odcs-backend01.iad2.fedoraproject.org
 
 [odcs_backend_releng]
 odcs-backend-releng01.phx2.fedoraproject.org
@@ -1334,6 +1336,8 @@ mm-crawler01.iad2.fedoraproject.org
 noc01.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
+odcs-frontend01.iad2.fedoraproject.org
+odcs-backend01.iad2.fedoraproject.org
 oci-registry01.iad2.fedoraproject.org
 oci-candidate-registry01.iad2.fedoraproject.org
 osbs-control01.iad2.fedoraproject.org

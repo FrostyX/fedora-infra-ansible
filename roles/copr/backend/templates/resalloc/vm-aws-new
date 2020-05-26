@@ -1,6 +1,7 @@
 #! /usr/bin/bash
 
 set -e
+set -o pipefail
 
 delete_script=$(readlink -f "$(dirname "$0")")/vm-aws-delete
 
