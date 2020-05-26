@@ -23,7 +23,7 @@ def handle(content):
     sys.stdout.flush()
     # XXX If you modify this taglist.  Please also modify the other copy in
     # bodhi2/backend/tasks/main.yml
-    taglist = 'f33 f33-container f33-modular f33-flatpak f32 f32-container f32-modular f32-flatpak f31 f31-container f31-flatpak f31-modular f30 f30-container f30-flatpak f30-modular epel8 epel8-playground epel8-modular epel7 dist-6E-epel module-package-list modular'
+    taglist = 'f33 f33-container f33-modular f33-flatpak f32 f32-container f32-modular f32-flatpak f31 f31-container f31-flatpak f31-modular epel8 epel8-playground epel8-modular epel7 dist-6E-epel module-package-list modular'
     cmd = [
         '/usr/local/bin/owner-sync-pagure',
         '--package', package,

@@ -108,48 +108,6 @@ RELEASES = {'f32': {'topic': 'fedora',
                                 'dest': os.path.join(FEDORAALTDEST, 'testing', '31', 'Modular')}
                               ]}}
                    },
-             'f30': {'topic': 'fedora',
-                    'version': '30',
-                    'modules': ['fedora', 'fedora-secondary'],
-                    'repos': {'updates': {
-                        'from': 'f30-updates',
-                        'ostrees': [{'ref': 'fedora/30/x86_64/updates/silverblue',
-                                     'dest': OSTREEDEST}],
-                        'to': [{'arches': ['x86_64', 'armhfp', 'aarch64', 'source'],
-                                'dest': os.path.join(FEDORADEST, '30', 'Everything')},
-                               {'arches': ['i386', 'ppc64le', 's390x'],
-                                'dest': os.path.join(FEDORAALTDEST, '30', 'Everything')}
-                              ]},
-                              'updates-testing': {
-                        'from': 'f30-updates-testing',
-                        'ostrees': [{'ref': 'fedora/30/x86_64/testing/silverblue',
-                                     'dest': OSTREEDEST}],
-                        'to': [{'arches': ['x86_64', 'aarch64', 'armhfp', 'source'],
-                                'dest': os.path.join(FEDORADEST, 'testing', '30', 'Everything')},
-                               {'arches': ['i386', 'ppc64le', 's390x'],
-                                'dest': os.path.join(FEDORAALTDEST, 'testing', '30', 'Everything')}
-                              ]}}
-                   },
-            'f30m': {'topic': 'fedora',
-                    'version': '30m',
-                    'modules': ['fedora', 'fedora-secondary'],
-                    'repos': {'updates': {
-                        'from': 'f30-modular-updates',
-                        'ostrees': [],
-                        'to': [{'arches': ['x86_64', 'aarch64', 'armhfp', 'source'],
-                                'dest': os.path.join(FEDORADEST, '30', 'Modular')},
-                               {'arches': ['i386', 'ppc64le', 's390x'],
-                                'dest': os.path.join(FEDORAALTDEST, '30', 'Modular')}
-                              ]},
-                              'updates-testing': {
-                        'from': 'f30-modular-updates-testing',
-                        'ostrees': [],
-                        'to': [{'arches': ['x86_64', 'aarch64', 'armhfp', 'source'],
-                                'dest': os.path.join(FEDORADEST, 'testing', '30', 'Modular')},
-                               {'arches': ['i386', 'ppc64le', 's390x'],
-                                'dest': os.path.join(FEDORAALTDEST, 'testing', '30', 'Modular')}
-                              ]}}
-                   },
             'epel8': {'topic': 'epel',
                       'version': '8',
                       'modules': ['epel'],
