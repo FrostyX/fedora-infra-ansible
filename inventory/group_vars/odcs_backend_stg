@@ -42,7 +42,7 @@ odcs_allowed_source_types: ["tag", "module"]
 odcs_target_dir_url: https://odcs.stg.fedoraproject.org/composes
 
 # Handle all Celery queues on single staging backend.
-odcs_celery_queues: ["releng_raw_pungi_composes", "releng_pungi_composes", "cleanup", "eln_raw_pungi_composes", "pungi_composes"]
+odcs_celery_queues: ["releng_raw_pungi_composes", "releng_pungi_composes", "cleanup", "eln_raw_pungi_composes", "pungi_composes", "cccc_raw_pungi_composes"]
 
 # For the MOTD
 csi_security_category: Low

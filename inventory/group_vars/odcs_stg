@@ -9,6 +9,9 @@ odcs_raw_config_urls:
   eln:
     url: https://pagure.io/pungi-fedora.git
     config_filename: eln.conf
+  cccc:
+    url: https://pagure.io/fedora-ci/cccc-merged-configs.git
+    config_filename: cccc.conf
 
 # Default queues for general ODCS backends.
 odcs_celery_queues:
@@ -24,6 +27,9 @@ odcs_celery_router_config:
       eln_raw_pungi_composes:
         source_type: 5  # "raw_config"
         source: "eln.*"
+      cccc_raw_pungi_composes:
+        source_type: 5  # "raw_config"
+        source: "cccc.*"
       releng_pungi_composes:
         source_type: [1, 2, 6, 7]  # "tag", "module", "build", "pungi_compose"
         owner: ["jkaluza", "mohanboddu", "humaton"]
@@ -39,5 +45,5 @@ odcs_allowed_clients_groups:
   sysadmin-odcs: {}
   pungi-devel: {}
   packager: {"source_types": ["module"]}
-  eln-sig: {"source_types": ["tag", "module", "build", "raw_config"], "raw_config_keys": ["eln"]}
+  eln-sig: {"source_types": ["tag", "module", "build", "raw_config"], "raw_config_keys": ["eln", "cccc"]}
 
