@@ -795,3 +795,8 @@ shlib_directory = /usr/lib64/postfix
 transport_maps = hash:/etc/postfix/transport
 local_header_rewrite_clients = static:all
 message_size_limit = 20971520
+
+# smtpd_relay_restrictions are safer to use than smtpd_recipient_restrictions
+# as outlined http://www.postfix.org/SMTPD_ACCESS_README.html
+# At least one is required to receive email
+smtpd_relay_restrictions = permit_mynetworks, reject_unauth_destination
