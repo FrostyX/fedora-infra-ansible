@@ -10,4 +10,4 @@ test -n "$RESALLOC_RESOURCE_DATA"
 # we only put IP out in spawning script, nothing else
 set -- $(echo "$RESALLOC_RESOURCE_DATA" | base64 --decode)
 IP=$1
-ssh "root@$IP" true
+ssh -o ConnectTimeout=10 "root@$IP" true
