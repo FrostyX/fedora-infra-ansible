@@ -42,6 +42,8 @@ aws_x86_64_normal:
     - arch_armhfp_emulated
     cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aws-new --arch=x86_64"
     cmd_delete: "/var/lib/resallocserver/resalloc_provision/vm-aws-delete"
+    cmd_livecheck: "/var/lib/resallocserver/resalloc_provision/vm-aws-check"
+    livecheck_period: 180
     reuse_opportunity_time: 180
     reuse_max_count: 8
     reuse_max_time: 1800
@@ -56,6 +58,8 @@ aws_aarch64_normal:
     - arch_aarch64_native
     cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aws-new --arch=aarch64"
     cmd_delete: "/var/lib/resallocserver/resalloc_provision/vm-aws-delete"
+    cmd_livecheck: "/var/lib/resallocserver/resalloc_provision/vm-aws-check"
+    livecheck_period: 180
     reuse_opportunity_time: 180
     reuse_max_count: 8
     reuse_max_time: 1800
