@@ -1105,6 +1105,7 @@ taskotron-dev01.qa.fedoraproject.org
 
 [osbs_control]
 osbs-control01.phx2.fedoraproject.org
+osbs-control01.iad2.fedoraproject.org
 
 [osbs_control_stg]
 osbs-control01.stg.phx2.fedoraproject.org
@@ -1112,9 +1113,12 @@ osbs-control01.stg.phx2.fedoraproject.org
 [osbs_nodes]
 osbs-node01.phx2.fedoraproject.org
 osbs-node02.phx2.fedoraproject.org
+osbs-node01.iad2.fedoraproject.org
+osbs-node02.iad2.fedoraproject.org
 
 [osbs_masters]
 osbs-master01.phx2.fedoraproject.org
+osbs-master01.iad2.fedoraproject.org
 
 #[osbs_aarch64_masters]
 #osbs-aarch64-master01.arm.fedoraproject.org
@@ -1332,6 +1336,10 @@ ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
 oci-registry01.iad2.fedoraproject.org
 oci-candidate-registry01.iad2.fedoraproject.org
+osbs-control01.iad2.fedoraproject.org
+osbs-master01.iad2.fedoraproject.org
+osbs-node01.iad2.fedoraproject.org
+osbs-node02.iad2.fedoraproject.org
 os-control01.iad2.fedoraproject.org
 os-master01.iad2.fedoraproject.org
 os-master02.iad2.fedoraproject.org
