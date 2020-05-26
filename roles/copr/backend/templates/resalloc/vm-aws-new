@@ -2,6 +2,8 @@
 
 set -e
 
+delete_script=$(readlink -f "$(dirname "$0")")/vm-aws-delete
+
 show_help()
 {
 cat <<EOHELP >&2
@@ -23,6 +25,8 @@ test -z "$1" || exit "$1"
 
 # handle no arguments
 test $# -eq 0 && show_help 1
+
+test -n "$RESALLOC_NAME" || show_help 1
 
 ARGS=$(getopt -o "h" -l "arch:,help" -n "getopt" -- "$@") \
     || show_help 1
@@ -53,6 +57,17 @@ case $opt_arch in
 esac
 test -n "$opt_arch" || show_help 1
 
+cleanup_vm=true
+cleanup_actions()
+{
+    if $cleanup_vm; then
+        # it is safe to ask for removal of non-existeng VM (in case the playbook
+        # below was shut-down before the VM was even created)
+        $delete_script
+    fi
+}
+trap cleanup_actions EXIT
+
 # TODO: We should call aws-cli directly here, instead of parsing output of
 # ansible playbook.  But at the time of writing this script we had the playbook
 # available, so parsing the output is the easiest way to start.
@@ -67,3 +82,6 @@ playbook=/var/lib/resallocserver/provision/builderpb-aws-"$opt_arch".yml
 
 echo "$vm_ip"
 test -n "$vm_ip"
+
+# successfuly created, disable cleanup action
+cleanup_vm=false
