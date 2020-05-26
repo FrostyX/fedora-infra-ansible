@@ -105,8 +105,10 @@ data:
         ServerName fas-all.stg.phx2.fedoraproject.org:8443
 {% elif objectname == "configmap-totpcgi-vpn.yml" %}
         ServerName fas-all.vpn.fedoraproject.org:8443
-{% else %}
+{% elif datacenter == 'phx2' %}
         ServerName fas-all.phx2.fedoraproject.org:8443
+{% elif datacenter == 'iad2' %}
+        ServerName fas-all.iad2.fedoraproject.org:8443
 {% endif %}
         SSLEngine on
 {% if objectname == "configmap-totpcgi-vpn.yml" %}

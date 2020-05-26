@@ -5,7 +5,11 @@ Listen 8443
 
 	ServerAdmin admin@fedoraproject.org
 	DocumentRoot /var/www/totpcgi
+{% if datacenter == 'phx2' %}
 	ServerName fas-all.phx2.fedoraproject.org:8443
+{% elif datacenter == 'iad2' %}
+	ServerName fas-all.iad2.fedoraproject.org:8443
+{% endif %}
 	ErrorLog /var/log/httpd/totpcgi-error.log
 	SuexecUserGroup totpcgi totpcgi
 
