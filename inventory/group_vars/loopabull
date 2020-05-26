@@ -2,7 +2,7 @@
 # Define resources for this group of hosts here.
 lvm_size: 20000
 mem_size: 2048
-num_cpus: 1
+num_cpus: 2
 
 fas_client_groups: sysadmin-loopabull
 sudoers: "{{ private }}/files/sudo/mm2-sudoers"
