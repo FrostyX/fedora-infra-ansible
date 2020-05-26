@@ -9,6 +9,7 @@
     - python-psycopg2
     - libsemanage-python
     - python-memcached
+    - python2-distro
   notify:
   - restart apache
   - restart fedmsg-hub
