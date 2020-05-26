@@ -12,3 +12,5 @@ volgroup: /dev/vg_guests
 vmhost: bvmhost-x86-04.iad2.fedoraproject.org
 
 datacenter: iad2
+
+virt_install_command: "{{ virt_install_command_one_nic }}"
