@@ -1,0 +1,11 @@
+- hosts: all
+  tasks:
+    - name: Run ansible-review on the playbooks and roles
+      shell: >
+        exitcode=0;
+        while read pbrulefile; do
+          ansible-review-filtered.sh "$pbrulefile" || exitcode=1;
+        done <<<$(find playbooks roles -name "*.yml" -o -name "*.yaml");
+        exit "$exitcode"
+      args:
+        chdir: '{{ zuul.project.src_dir }}'

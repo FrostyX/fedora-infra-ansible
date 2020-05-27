@@ -1,5 +1,19 @@
 ---
+- job:
+    name: fi-ansible--ansible-review-base
+    pre-run: ci/ansible-review-base.yaml
+
+- job:
+    name: fi-ansible--ansible-review-everything
+    parent: fi-ansible--ansible-review-base
+    run: ci/ansible-review-everything.yaml
+
+- job:
+    name: fi-ansible--ansible-review-diff
+    parent: ansible-review-base
+    run: ci/ansible-review-diff.yaml
+
 - project:
     check:
       jobs:
-        - ansible-review-diff
+        - fi-ansible--ansible-review-diff

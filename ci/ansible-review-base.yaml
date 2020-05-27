@@ -1,0 +1,14 @@
+- hosts: all
+  tasks:
+    - name: Install ansible-review
+      package:
+        name: python3-ansible-review
+        state: latest
+
+    - name: Install invocation script
+      copy:
+        src: ansible-review-filtered.sh
+        dest: /usr/local/bin/ansible-review-filtered.sh
+        owner: root
+        group: root
+        mode: '0755'

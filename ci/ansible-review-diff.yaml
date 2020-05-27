@@ -1,0 +1,8 @@
+- hosts: all
+  tasks:
+    - name: Run ansible-review on the changes in the PR
+      shell: >
+        git diff origin/{{ zuul.branch|quote }}...{{ zuul.branch|quote }}
+        | ansible-review-filtered.sh
+      args:
+        chdir: '{{ zuul.project.src_dir }}'
