@@ -25,7 +25,7 @@ LoadModule unixd_module modules/mod_unixd.so
 LoadModule mpm_event_module modules/mod_mpm_event.so
 StartServers  20
 ServerLimit   100
-MaxRequestsPerChild 2000
+MaxRequestsPerChild 100
 MaxRequestWorkers 100
 <Directory "/usr/share/doc/bodhi-docs/html/">
     AllowOverride None
@@ -61,7 +61,7 @@ Alias /static/v{{ bodhi_version.split('-')[0] }} /srv/bodhi/bodhi/server/static/
 {% else %}
 Alias /static/v{{ bodhi_version.split('-')[0] }} /usr/lib/python3.7/site-packages/bodhi/server/static/
 {% endif %}
-WSGIDaemonProcess bodhi display-name=bodhi processes=2 threads=2 maximum-requests=1000 home=/httpdir request-timeout=60
+WSGIDaemonProcess bodhi display-name=bodhi processes=2 threads=2 maximum-requests=100 home=/httpdir request-timeout=60
 WSGIApplicationGroup %{GLOBAL}
 WSGISocketPrefix run/wsgi
 WSGIRestrictStdout Off
