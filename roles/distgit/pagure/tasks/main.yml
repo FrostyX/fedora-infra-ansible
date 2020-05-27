@@ -45,6 +45,11 @@
   - pagure
   - packages
 
+- name: Set httpd_can_network_connect flag on and keep it persistent across reboots so apache can talk to redis
+  seboolean:
+    name: httpd_can_network_connect
+    state: yes
+    persistent: yes
 
 # Set-up stunnel for the event source server
 
