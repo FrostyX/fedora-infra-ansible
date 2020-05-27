@@ -482,7 +482,14 @@
 
 - name: setup grokmirror for repos
   package: name=python-grokmirror state=installed
-  when: env != "staging"
+  when: env != "staging" and datacenter != "iad2"
+  tags:
+  - grokmirror
+  - pkgs
+
+- name: setup grokmirror for repos
+  package: name=python3-grokmirror state=installed
+  when: env == "staging" or datacenter == "iad2"
   tags:
   - grokmirror
   - pkgs
