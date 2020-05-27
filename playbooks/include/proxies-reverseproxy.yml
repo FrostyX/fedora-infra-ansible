@@ -48,7 +48,7 @@
     website: nagios.fedoraproject.org
     destname: nagios
     remotepath: /
-    proxyurl: http://noc01.phx2.fedoraproject.org
+    proxyurl: http://noc01.{{ datacenter }}.fedoraproject.org
 
   - role: httpd/reverseproxy
     website: lists.fedoraproject.org
@@ -558,8 +558,8 @@
     keephost: true
     balancer_name: koji
     balancer_members:
-    - "koji01.phx2.fedoraproject.org"
-    - "koji02.phx2.fedoraproject.org"
+    - "koji01.{{ datacenter }}.fedoraproject.org"
+    - "koji02.{{ datacenter }}.fedoraproject.org"
     http_not_https_yes_this_is_insecure_and_i_feel_bad: true
     when: env == "production"
 
@@ -569,7 +569,7 @@
     keephost: true
     balancer_name: koji
     balancer_members:
-    - "koji01.stg.phx2.fedoraproject.org"
+    - "koji01.stg.{{ datacenter }}.fedoraproject.org"
     http_not_https_yes_this_is_insecure_and_i_feel_bad: true
     when: env == "staging"
 
@@ -691,4 +691,4 @@
     destname: awstats
     remotepath: /
     localpath: /
-    proxyurl: http://data-analysis01.phx2.fedoraproject.org
+    proxyurl: http://data-analysis01.{{ datacenter }}.fedoraproject.org
