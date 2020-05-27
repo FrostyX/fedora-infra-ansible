@@ -38,7 +38,6 @@
     app: docsbuilding
     template: cron-translated.yml
     objectname: cron-translated.yml
-    when: env == "staging"
     tags:
       - deploy-cronjob
   - role: openshift/object
