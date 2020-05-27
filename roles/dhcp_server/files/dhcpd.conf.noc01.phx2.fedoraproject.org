@@ -44,14 +44,6 @@ subnet 10.5.125.0 netmask 255.255.255.0 {
          filename "uefi/grubx64.efi";
     }
 
-    host sign-vault06 {
-         hardware ethernet D0:94:66:45:A1:62;
-         fixed-address 10.5.125.84;
-         option host-name "sign-vault06";
-         next-server 10.5.126.41;
-         filename "uefi/grubx64.efi";
-    }
-
     host bkernel03 {
          hardware ethernet D0:94:66:45:8C:0F;
          fixed-address 10.5.125.81;
