@@ -1,7 +1,7 @@
 #!/bin/sh                                                                                  
 
-/usr/bin/rsync -aSHPv --delete --exclude=.git/objects/ sundries01::docs/ /srv/web/docs.fedoraproject.org/
-/usr/bin/rsync -aSHPv --delete --exclude=.git/objects/ sundries01::docs-redirects/ /srv/web/docs-redirects/
+/usr/bin/rsync -aSHPv --delete --exclude=.git/objects/ --exclude=ar.building/ sundries01::docs/ /srv/web/docs.fedoraproject.org/
+/usr/bin/rsync -aSHPv --delete --exclude=.git/objects/ --exclude=ar.building/ sundries01::docs-redirects/ /srv/web/docs-redirects/
 
 # build the combined docs tree. 
 # See https://pagure.io/fedora-infrastructure/issue/7130
