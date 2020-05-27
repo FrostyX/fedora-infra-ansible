@@ -1,5 +1,11 @@
 ---
 - job:
+    name: fi-ansible--zuul-jobs-verify-namespace
+    run: ci/zuul-jobs-verify-namespace.yaml
+    files:
+      - ^\.zuul\.yaml$
+
+- job:
     name: fi-ansible--ansible-review-base
     pre-run: ci/ansible-review-base.yaml
 
@@ -16,4 +22,5 @@
 - project:
     check:
       jobs:
+        - fi-ansible--zuul-jobs-verify-namespace
         - fi-ansible--ansible-review-diff

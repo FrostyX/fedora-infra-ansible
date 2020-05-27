@@ -1,0 +1,19 @@
+- hosts: all
+  tasks:
+    - name: Install Python YAML package
+      package:
+        name: python3-pyyaml
+        state: latest
+
+    - name: Install invocation script
+      copy:
+        src: zuul-jobs-verify-namespace.py
+        dest: /usr/local/bin/zuul-jobs-verify-namespace.py
+        owner: root
+        group: root
+        mode: '0755'
+
+    - name: Verify that local Zuul jobs use our namespace
+      command: zuul-jobs-verify-namespace.py .zuul.yaml
+      args:
+        chdir: '{{ zuul.project.src_dir }}'
