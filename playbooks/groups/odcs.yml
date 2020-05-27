@@ -60,7 +60,6 @@
   - role: rabbit/user
     username: "odcs{{ env_suffix }}"
   - mod_wsgi
-  - fedmsg/base
   - role: nfs/client
     mnt_dir: '/mnt/fedora_koji'
     nfs_src_dir: 'fedora_koji'
@@ -97,8 +96,6 @@
 
   roles:
   - role: odcs/backend
-  - role: fedmsg/base
-    when: not inventory_hostname.startswith('odcs-backend-releng01')
   - role: keytab/service
     service: odcs
     owner_user: odcs
