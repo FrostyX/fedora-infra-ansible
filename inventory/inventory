@@ -1292,6 +1292,7 @@ autosign01.iad2.fedoraproject.org
 backup01.iad2.fedoraproject.org
 bastion01.iad2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
+bkernel01.iad2.fedoraproject.org
 blockerbugs01.iad2.fedoraproject.org
 bodhi-backend01.iad2.fedoraproject.org
 bugzilla2fedmsg01.iad2.fedoraproject.org
