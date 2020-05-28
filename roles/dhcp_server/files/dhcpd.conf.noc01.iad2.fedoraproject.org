@@ -589,7 +589,7 @@ host bvmhost-a64-03 {
 
 host qvmhost-x86-01 {
      hardware ethernet E4:43:4B:A8:C1:FE;
-     fixed-address 10.3.169.7;
+     fixed-address 10.3.174.11;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
      option routers 10.3.169.254;
@@ -597,7 +597,7 @@ host qvmhost-x86-01 {
 }
 host qvmhost-x86-02 {
      hardware ethernet E4:43:4B:A8:B3:0E;
-     fixed-address 10.3.174.11;
+     fixed-address 10.3.174.12;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
      option routers 10.3.174.254;
@@ -614,10 +614,10 @@ host openqa01-x64-worker01 {
 }
 host openqa01-a64-worker01 {
      hardware ethernet 50:6b:4b:7f:96:30 ;
-     fixed-address 10.3.170.13;
+     fixed-address 10.3.174.61;
      filename "uefi/grubaa64.efi";
      next-server 10.3.163.10;
-     option routers 10.3.170.254;
+     option routers 10.3.174.254;
      option subnet-mask 255.255.255.0;
 }
 
