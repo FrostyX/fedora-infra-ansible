@@ -546,7 +546,7 @@ host buildhw-x86-01 {
 }
 host bkernel01 {
      hardware ethernet D0:94:66:45:A7:E4;
-     fixed-address 10.3.169.31;
+     fixed-address 10.3.169.29;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
      option routers 10.3.169.254;
