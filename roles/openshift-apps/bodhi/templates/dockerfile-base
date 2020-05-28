@@ -44,6 +44,7 @@ RUN dnf install -y \
     python3-koji                \
     python3-librepo             \
     python3-mod_wsgi            \
+    python3-gunicorn            \
     koji && \
     dnf clean all
 
