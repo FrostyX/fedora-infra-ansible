@@ -28,7 +28,8 @@ items:
                 python3-koji \
                 python3-pycurl \
                 python3-requests \
-                python3-six && \
+                python3-six \
+                python3-pip && \
             dnf autoremove -y && \
             dnf clean all -y
         RUN git clone https://github.com/fedora-infra/the-new-hotness.git && \
