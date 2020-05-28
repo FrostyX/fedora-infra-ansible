@@ -62,8 +62,10 @@ items:
           command: ["gunicorn"]
           args: ["--paste", "/etc/bodhi/production.ini", "-b", "0.0.0.0:8080", "-w", "4"]
 {% else %}
-          command: ["bash"]
-          args: ["/etc/bodhi/start.sh"]
+          command: ["gunicorn"]
+          args: ["--paste", "/etc/bodhi/production.ini", "-b", "0.0.0.0:8080", "-w", "4"]
+#          command: ["bash"]
+#          args: ["/etc/bodhi/start.sh"]
 {% endif %}
           ports:
           - containerPort: 8080

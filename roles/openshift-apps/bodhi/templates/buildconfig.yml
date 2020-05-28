@@ -18,7 +18,7 @@ items:
         RUN curl -o /etc/yum.repos.d/infra-tags.repo https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/files/common/fedora-infra-tags.repo
         # While dnf has a --nodocs, it doesen't have a --docs...
         RUN sed -i '/nodocs/d' /etc/dnf/dnf.conf
-        RUN dnf install -y bodhi-server-{{bodhi_version}} bodhi-docs-{{bodhi_version}} python3-pyramid_sawing
+        RUN dnf install -y bodhi-server-{{bodhi_version}} bodhi-docs-{{bodhi_version}} python3-pyramid_sawing python3-gunicorn
         RUN curl -o /usr/lib/python3.8/site-packages/bodhi/server/models.py https://raw.githubusercontent.com/cverna/bodhi/fix_editing_updates/bodhi/server/models.py &&\
             curl -o /usr/lib/python3.8/site-packages/bodhi/server/tasks/__init__.py https://raw.githubusercontent.com/cverna/bodhi/fix_editing_updates/bodhi/server/tasks/__init__.py &&\
             curl -o /usr/lib/python3.8/site-packages/bodhi/server/util.py https://raw.githubusercontent.com/cverna/bodhi/fix_editing_updates/bodhi/server/util.py &&\
