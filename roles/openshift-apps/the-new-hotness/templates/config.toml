@@ -69,7 +69,6 @@ handlers = ["console"]
 
 # the-new-hotness consumer configuration
 [consumer_config]
-repo_url = "https://pagure.io/releng/fedora-scm-requests"
 {% if env == "staging" %}
 mdapi_url = "https://mdapi.stg.fedoraproject.org/"
 pdc_url = "https://pdc.stg.fedoraproject.org"
@@ -150,8 +149,6 @@ target_tag = "rawhide"
 
 [consumer_config.anitya]
 url = "https://release-monitoring.org"
-username = "{{ fedoraDummyUser }}"
-password = "{{ fedoraDummyUserPassword }}"
 
 [consumer_config.cache]
 backend = "dogpile.cache.dbm"
