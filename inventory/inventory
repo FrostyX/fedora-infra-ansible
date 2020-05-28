@@ -1289,6 +1289,7 @@ retrace01.qa.fedoraproject.org
 
 [iad2]
 autosign01.iad2.fedoraproject.org
+backup01.iad2.fedoraproject.org
 bastion01.iad2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
 blockerbugs01.iad2.fedoraproject.org
