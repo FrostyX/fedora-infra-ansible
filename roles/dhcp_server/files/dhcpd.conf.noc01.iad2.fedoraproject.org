@@ -20,7 +20,7 @@ subnet 10.3.160.0 netmask 255.255.255.0 {
 
     option domain-name "mgmt.iad2.fedoraproject.org";
     option routers 10.3.160.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -34,7 +34,7 @@ subnet 10.3.161.0 netmask 255.255.255.0 {
 
     option domain-name "mgmt.iad2.fedoraproject.org";
     option routers 10.3.161.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -47,7 +47,7 @@ subnet 10.3.163.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.163.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -73,7 +73,7 @@ subnet 10.3.164.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.164.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -98,7 +98,7 @@ subnet 10.3.165.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.165.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -123,7 +123,7 @@ subnet 10.3.166.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.166.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -148,7 +148,7 @@ subnet 10.3.167.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.167.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -173,7 +173,7 @@ subnet 10.3.168.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.168.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -198,7 +198,7 @@ subnet 10.3.169.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.169.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -223,7 +223,7 @@ subnet 10.3.170.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.170.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -248,7 +248,7 @@ subnet 10.3.171.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.171.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -274,7 +274,7 @@ subnet 10.3.172.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.172.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -300,7 +300,7 @@ subnet 10.3.173.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.173.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -326,7 +326,7 @@ subnet 10.3.174.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.174.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -352,7 +352,7 @@ subnet 10.3.175.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.175.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
@@ -378,7 +378,7 @@ subnet 10.3.176.0 netmask 255.255.255.0 {
     allow bootp;
     option domain-name "iad2.fedoraproject.org";
     option routers 10.3.176.254;
-    option domain-name-servers 8.8.8.8, 8.8.4.4;
+    option domain-name-servers 10.3.163.33, 10.3.163.34;
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
