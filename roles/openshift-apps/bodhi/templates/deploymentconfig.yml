@@ -58,10 +58,11 @@ items:
         containers:
         - name: bodhi-web
           image: bodhi-base:latest
-          command: ["bash"]
 {% if env == "staging" %}
-          args: ["gunicorn", "--paste", "/etc/bodhi/production.ini"]
+          command: ["gunicorn"]
+          args: ["--paste", "/etc/bodhi/production.ini", "-b", "0.0.0.0:8080", "-w", "4"]
 {% else %}
+          command: ["bash"]
           args: ["/etc/bodhi/start.sh"]
 {% endif %}
           ports:
