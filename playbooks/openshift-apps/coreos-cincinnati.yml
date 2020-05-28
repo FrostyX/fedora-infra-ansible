@@ -1,5 +1,5 @@
 - name: provision CoreOS Cincinnati backend
-  hosts: os_masters[0]:os_masters_stg[0]
+  hosts: os_masters[0]:os_masters_stg[0]:os-master01.iad2.fedoraproject.org
   user: root
   gather_facts: False
 
