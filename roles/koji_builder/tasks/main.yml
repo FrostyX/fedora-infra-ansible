@@ -69,7 +69,6 @@
     - koji-builder
     - koji-builder-plugins
     - python3-koji
-    - python-krbV
     - koji-containerbuild-builder
     - strace
     - mock
