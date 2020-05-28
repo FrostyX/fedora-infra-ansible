@@ -8,7 +8,13 @@ OPTIONS="layer2=1 portno=0"
 {% endif %}
 {% if item in ansible_ifcfg_infra_net_devices %}
 GATEWAY="{{gw}}"
+{%  if hostvars[inventory_hostname].datacenter == 'phx2' %}
 DOMAIN="phx2.fedoraproject.org vpn.fedoraproject.org fedoraproject.org"
+{%  if hostvars[inventory_hostname].datacenter == 'iad2' %}
+DOMAIN="iad2.fedoraproject.org vpn.fedoraproject.org fedoraproject.org"
+{% else %}
+DOMAIN="vpn.fedoraproject.org fedoraproject.org"
+{% endif %}
 DNS1="{{ dns1 }}"
 DNS2="{{ dns2 }}"
 {% endif %}

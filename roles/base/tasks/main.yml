@@ -99,7 +99,7 @@
   - apply interface-changes
   when: 
   - virthost is not defined
-  - item.startswith(('eth','br','enc','em'))
+  - item.startswith(('eth','br','enc','em','eno'))
   - hostvars[inventory_hostname]['ansible_' + item.replace('-','_')]['type'] == 'ether'
   - hostvars[inventory_hostname]['ansible_' + item.replace('-','_')]['active']
   - ansible_distribution_major_version|int >=7
