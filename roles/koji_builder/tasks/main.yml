@@ -124,15 +124,6 @@
   - koji_builder
   when: "ansible_architecture is defined and ansible_architecture == 'aarch64'"
 
-- name: Re byte compile Guest.py (if needed)
-  command: python2 -m compileall /usr/lib/python2.7/site-packages/oz/Guest.py
-  register: compileGuestpy
-  changed_when: "'Compiling ' in compileGuestpy.stdout"
-  tags:
-  - koji_builder
-  notify:
-  - restart kojid
-
 - name: enable virtlogd service
   service: name=virtlogd state=started enabled=yes
   tags:
