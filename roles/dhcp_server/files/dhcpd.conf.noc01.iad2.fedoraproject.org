@@ -563,7 +563,7 @@ host sign-vault01 {
 }
 
 host bvmhost-a64-01 {
-     hardware ethernet 50:6b:4b:6a:d3:c0 ;
+     hardware ethernet 68:05:ca:8a:f4:29 ;
      fixed-address 10.3.170.11;
      filename "uefi/grubaa64.efi";
      next-server 10.3.163.10;
