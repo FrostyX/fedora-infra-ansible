@@ -1,5 +1,9 @@
 ---
 # group variables for all hosts in iad2 datacenter
+dns1: "10.3.163.33"
+dns2: "10.3.163.34"
+
+
 
 # for now, lets not monitor any of them from phx2.
 
