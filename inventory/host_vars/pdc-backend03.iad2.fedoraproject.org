@@ -9,7 +9,7 @@ ks_repo: http://10.3.163.35/repo/rhel/RHEL7-x86_64/
 eth0_ip: 10.3.169.126
 
 volgroup: /dev/vg_guests
-vmhost: bvmhost-x86-06.iad2.fedoraproject.org
+vmhost: bvmhost-x86-02.iad2.fedoraproject.org
 datacenter: iad2
 
 # These people get told when something goes wrong.
