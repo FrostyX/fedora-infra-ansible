@@ -16,7 +16,7 @@
 
 - job:
     name: fi-ansible--ansible-review-diff
-    parent: ansible-review-base
+    parent: fi-ansible--ansible-review-base
     run: ci/ansible-review-diff.yaml
 
 - project:
