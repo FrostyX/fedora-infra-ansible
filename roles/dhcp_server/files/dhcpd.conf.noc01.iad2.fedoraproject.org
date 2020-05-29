@@ -571,7 +571,7 @@ host bvmhost-a64-01 {
      option subnet-mask 255.255.255.0;
 }
 host bvmhost-a64-02 {
-     hardware ethernet 50:6b:4b:6a:c2:c0 ;
+     hardware ethernet 68:05:ca:92:cb:12 ;
      fixed-address 10.3.170.12;
      filename "uefi/grubaa64.efi";
      next-server 10.3.163.10;
