@@ -1,0 +1,35 @@
+---
+nm: 255.255.255.0
+gw: 10.3.174.254
+dns: 10.3.163.33
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-fedora-32-iad2
+ks_repo: http://10.3.163.35/pub/fedora/linux/releases/32/Server/x86_64/os/
+volgroup: /dev/vg_guests
+eth0_ip: 10.3.174.55
+vmhost: qvmhost-x86-02.iad2.fedoraproject.org
+datacenter: iad2
+
+# This is a generic list, monitored by collectd
+databases:
+- postgres
+
+# This is a more strict list, to be made publicly available
+dbs_to_backup:
+- postgres
+
+# These are normally group variables, but in this case db servers are often different
+lvm_size: 300000
+mem_size: 16384
+max_mem_size: "{{ mem_size * 2 }}"
+num_cpus: 6
+tcp_ports: [ 5432, 443, 3306 ]
+fas_client_groups: sysadmin-qa,sysadmin-noc,sysadmin-veteran
+sudoers: "{{ private }}/files/sudo/qavirt-sudoers"
+
+# kernel SHMMAX value
+kernel_shmmax: 68719476736
+
+db_backup_dir: ['/backups']
+shared_buffers: "2GB"
+effective_cache_size: "6GB"
+host_backup_targets: ['/backups']
