@@ -1,0 +1,30 @@
+# this is to enable nested virt, which we need for disk image creation
+virt_install_command: "{{ virt_install_command_one_nic }} --cpu=host-passthrough,+vmx"
+
+external_hostname: openqa.fedoraproject.org
+
+openqa_dbname: openqa
+openqa_dbhost: db-qa03.iad2.fedoraproject.org
+openqa_dbuser: openqa
+openqa_dbpassword: "{{ prod_openqa_dbpassword }}"
+openqa_assetsize: 500
+
+openqa_key: "{{ prod_openqa_apikey }}"
+openqa_secret: "{{ prod_openqa_apisecret }}"
+
+openqa_webapi_plugins: FedoraMessaging FedoraUpdateRestart
+
+# this is because openqa staging isn't really a staging host
+# we don't want to set env_suffix to stg on it because that may
+# break some other plays, but we do need the env suffix for the
+# fedora-messaging bits, so let's make our own
+openqa_env_suffix:
+openqa_env: production
+
+wikitcms_token: "{{ private }}/files/openidc/production/wikitcms.json"
+openqa_wikitcms_hostname: fedoraproject.org
+openqa_resultsdb_url: http://resultsdb01.iad2.fedoraproject.org/resultsdb_api/api/v2.0/
+openqa_update_arches: ['x86_64']
+
+deployment_type: prod
+freezes: false
