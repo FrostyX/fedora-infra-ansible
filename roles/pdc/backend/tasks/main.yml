@@ -21,7 +21,7 @@
   tags: pdc
 
 - name: make sure /etc/pdc.d exists
-  file: dest=/dev/pdc.d state=directory user=root group=root
+  file: path=/dev/pdc.d state=directory owner=root group=root
   tags: pdc
 
 - name: copy client tool configuration
