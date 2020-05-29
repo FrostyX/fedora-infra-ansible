@@ -649,6 +649,7 @@ resultsdb-stg01.qa.fedoraproject.org
 
 [resultsdb_prod]
 resultsdb01.qa.fedoraproject.org
+resultsdb01.iad2.fedoraproject.org
 
 [smtp_mm]
 smtp-mm-ib01.fedoraproject.org
@@ -1369,6 +1370,7 @@ rabbitmq01.iad2.fedoraproject.org
 rabbitmq02.iad2.fedoraproject.org
 rabbitmq03.iad2.fedoraproject.org
 compose-rawhide01.iad2.fedoraproject.org
+resultsdb01.iad2.fedoraproject.org
 secondary01.iad2.fedoraproject.org
 sign-bridge01.iad2.fedoraproject.org
 sundries01.iad2.fedoraproject.org
