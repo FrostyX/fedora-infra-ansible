@@ -218,7 +218,13 @@ config = dict(
                 "formatter": "hefty",
                 "filters": ["context"],
                 "level": "ERROR",
+{% if datacenter == 'phx2' %}
                 "mailhost": "bastion.phx2.fedoraproject.org",
+{% elif datacenter == 'iad2' %}
+                "mailhost": "bastion.iad2.fedoraproject.org",
+{% else %}
+                "mailhost": "bastion.vpn.fedoraproject.org",
+{% endif %}
                 "fromaddr": "fedmsg@fedoraproject.org",
                 "toaddrs": [
                 {% for recipient in fedmsg_error_recipients %}

@@ -1,10 +1,24 @@
+{% if datacenter == 'phx2' %}
 {% if env == 'staging' %}
 suffix  = 'stg.phx2.fedoraproject.org'
-non_phx_suffix = 'stg.fedoraproject.org'
 {% else %}
 suffix = 'phx2.fedoraproject.org'
-non_phx_suffix = 'fedoraproject.org'
 vpn_suffix = 'vpn.fedoraproject.org'
+{% endif %}
+{% elif datacenter == 'iad2' %}
+{% if env == 'staging' %}
+suffix  = 'stg.iad2.fedoraproject.org'
+{% else %}
+suffix = 'iad2.fedoraproject.org'
+vpn_suffix = 'vpn.fedoraproject.org'
+{% endif %}
+{% else %}
+{% if env == 'staging' %}
+suffix  = 'stg.fedoraproject.org'
+{% else %}
+suffix = 'fedoraproject.org'
+vpn_suffix = 'vpn.fedoraproject.org'
+{% endif %}
 {% endif %}
 
 
