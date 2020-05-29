@@ -20,6 +20,10 @@
   notify: restart fedmsg-hub
   tags: pdc
 
+- name: make sure /etc/pdc.d exists
+  file: dest=/dev/pdc.d state=directory user=root group=root
+  tags: pdc
+
 - name: copy client tool configuration
   template: >
     src={{ item }} dest=/etc/pdc.d/{{item}}
