@@ -235,9 +235,7 @@ db-koji02.phx2.fedoraproject.org
 db-qa01.qa.fedoraproject.org
 db-qa02.qa.fedoraproject.org
 db-qa03.qa.fedoraproject.org
-#db-qa01.iad2.fedoraproject.org
-#db-qa02.iad2.fedoraproject.org
-#db-qa03.iad2.fedoraproject.org
+db-qa01.iad2.fedoraproject.org
 
 [dbserver_stg]
 db-fas01.stg.phx2.fedoraproject.org
@@ -522,12 +520,12 @@ odcs_backend
 [openqa_common]
 openqa01.qa.fedoraproject.org
 openqa-stg01.qa.fedoraproject.org
+openqa01.iad2.fedoraproject.org
+openqa-stg01.iad2.fedoraproject.org
 
 [openqa]
 openqa01.qa.fedoraproject.org
-
-[openqa_iad2]
-#openqa01.iad2.fedoraproject.org
+openqa01.iad2.fedoraproject.org
 
 [openqa_workers]
 qa02.qa.fedoraproject.org
@@ -537,6 +535,7 @@ qa14.qa.fedoraproject.org
 # openqa-stg and openqa-stg-workers are pseudo-stg, see group_vars/openqa-stg for more details
 [openqa_stg]
 openqa-stg01.qa.fedoraproject.org
+openqa-stg01.iad2.fedoraproject.org
 
 [openqa_stg_workers]
 qa01.qa.fedoraproject.org
@@ -640,6 +639,7 @@ openqa-stg01.qa.fedoraproject.org
 openqa01.qa.fedoraproject.org
 openqa-stg01.qa.fedoraproject.org
 #openqa01.iad2.fedoraproject.org
+#openqa-stg01.iad2.fedoraproject.org
 
 # This group should only ever contain *ONE* system
 [checkcompose]
@@ -648,6 +648,7 @@ openqa01.qa.fedoraproject.org
 
 [checkcompose_stg]
 openqa-stg01.qa.fedoraproject.org
+#openqa-stg01.iad2.fedoraproject.org
 
 [resultsdb:children]
 resultsdb_stg
@@ -1331,6 +1332,7 @@ db03.iad2.fedoraproject.org
 db-datanommer01.iad2.fedoraproject.org
 db-fas01.iad2.fedoraproject.org
 db-koji01.iad2.fedoraproject.org
+db-qa01.iad2.fedoraproject.org
 dl01.iad2.fedoraproject.org
 dl02.iad2.fedoraproject.org
 dl03.iad2.fedoraproject.org
@@ -1360,6 +1362,7 @@ odcs-frontend01.iad2.fedoraproject.org
 odcs-backend01.iad2.fedoraproject.org
 oci-registry01.iad2.fedoraproject.org
 oci-candidate-registry01.iad2.fedoraproject.org
+openqa01.iad2.fedoraproject.org
 osbs-control01.iad2.fedoraproject.org
 osbs-master01.iad2.fedoraproject.org
 osbs-node01.iad2.fedoraproject.org
@@ -1402,10 +1405,6 @@ vmhost-x86-05.iad2.fedoraproject.org
 vmhost-x86-06.iad2.fedoraproject.org
 vmhost-x86-07.iad2.fedoraproject.org
 wiki01.iad2.fedoraproject.org
-#openqa01.iad2.fedoraproject.org
-#db-qa01.iad2.fedoraproject.org
-#db-qa02.iad2.fedoraproject.org
-#db-qa03.iad2.fedoraproject.org
 
 [iad2:vars]
 ansible_group_priority=10

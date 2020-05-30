@@ -1,0 +1,32 @@
+---
+############################################################
+# networking
+############################################################
+
+nm: 255.255.255.0
+gw: 10.3.174.254
+dns: 10.3.163.33
+eth0_ip: 10.3.174.52
+
+############################################################
+# install
+############################################################
+
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-8-iad2
+ks_repo: http://10.3.163.35/repo/rhel/RHEL8-x86_64/
+volgroup: /dev/vg_guests
+vmhost: qvmhost-x86-02.iad2.fedoraproject.org
+datacenter: iad2
+
+############################################################
+# virtual machine
+############################################################
+
+fas_client_groups: sysadmin-qa,sysadmin-main,sysadmin-noc,fi-apprentice,sysadmin-veteran
+
+lvm_size: 500000
+mem_size: 16384
+num_cpus: 8
+
+nrpe_procs_warn: 250
+nrpe_procs_crit: 300
