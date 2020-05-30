@@ -41,6 +41,7 @@ key_aliases =
     CFC659B9    fedora-30
     3C3359C4    fedora-31
     12C944D0    fedora-32
+    9570ff31    fedora-33
     DBBDCF7C    fedora-iot-2019
     217521F6    fedora-epel
     0608B895    fedora-epel-6
@@ -67,6 +68,7 @@ unprotected_keys =
     fedora-30
     fedora-31
     fedora-32
+    fedora-33
     fedora-iot-2019
     fedora-extras
     redhat-beta
@@ -125,6 +127,7 @@ policy =
     sig fedora-30 && age < 12 weeks :: keep
     sig fedora-31 && age < 12 weeks :: keep
     sig fedora-32 && age < 12 weeks :: keep
+    sig fedora-33 && age < 12 weeks :: keep
     sig fedora-iot-2019 && age < 12 weeks :: keep
     sig fedora-epel && age < 12 weeks :: keep
     sig fedora-epel-6 && age < 12 weeks :: keep
