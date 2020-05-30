@@ -531,6 +531,7 @@ openqa01.iad2.fedoraproject.org
 qa02.qa.fedoraproject.org
 qa05.qa.fedoraproject.org
 qa14.qa.fedoraproject.org
+openqa-x86-worker01.iad2.fedoraproject.org
 
 # openqa-stg and openqa-stg-workers are pseudo-stg, see group_vars/openqa-stg for more details
 [openqa_stg]
@@ -1362,6 +1363,7 @@ oci-registry01.iad2.fedoraproject.org
 oci-candidate-registry01.iad2.fedoraproject.org
 openqa01.iad2.fedoraproject.org
 openqa-stg01.iad2.fedoraproject.org
+openqa-x86-worker01.iad2.fedoraproject.org
 osbs-control01.iad2.fedoraproject.org
 osbs-master01.iad2.fedoraproject.org
 osbs-node01.iad2.fedoraproject.org
