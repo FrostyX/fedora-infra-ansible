@@ -235,7 +235,7 @@ db-koji02.phx2.fedoraproject.org
 db-qa01.qa.fedoraproject.org
 db-qa02.qa.fedoraproject.org
 db-qa03.qa.fedoraproject.org
-db-qa01.iad2.fedoraproject.org
+db-openqa01.iad2.fedoraproject.org
 
 [dbserver_stg]
 db-fas01.stg.phx2.fedoraproject.org
@@ -1117,9 +1117,7 @@ qa14.qa.fedoraproject.org
 db-qa01.qa.fedoraproject.org
 db-qa02.qa.fedoraproject.org
 db-qa03.qa.fedoraproject.org
-#db-qa01.iad2.fedoraproject.org
-#db-qa02.iad2.fedoraproject.org
-#db-qa03.iad2.fedoraproject.org
+db-openqa01.iad2.fedoraproject.org
 resultsdb01.qa.fedoraproject.org
 resultsdb-stg01.qa.fedoraproject.org
 taskotron-dev01.qa.fedoraproject.org
@@ -1332,7 +1330,7 @@ db03.iad2.fedoraproject.org
 db-datanommer01.iad2.fedoraproject.org
 db-fas01.iad2.fedoraproject.org
 db-koji01.iad2.fedoraproject.org
-db-qa01.iad2.fedoraproject.org
+db-openqa01.iad2.fedoraproject.org
 dl01.iad2.fedoraproject.org
 dl02.iad2.fedoraproject.org
 dl03.iad2.fedoraproject.org
