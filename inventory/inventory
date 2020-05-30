@@ -1361,6 +1361,7 @@ odcs-backend01.iad2.fedoraproject.org
 oci-registry01.iad2.fedoraproject.org
 oci-candidate-registry01.iad2.fedoraproject.org
 openqa01.iad2.fedoraproject.org
+openqa-stg01.iad2.fedoraproject.org
 osbs-control01.iad2.fedoraproject.org
 osbs-master01.iad2.fedoraproject.org
 osbs-node01.iad2.fedoraproject.org
