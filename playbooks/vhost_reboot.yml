@@ -134,22 +134,30 @@
   - name: figure out which node to delegate os uncordon to
     set_fact:
       os_delegate_via: os-master01
-    when: hostvars[inventory_hostname].vmhost != hostvars['os-master01.phx2.fedoraproject.org'].vmhost
+    when: ( hostvars[inventory_hostname].vmhost != hostvars['os-master01.phx2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'phx2') or ( hostvars['os-master01.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2')
+
 
   - name: figure out which node to delegate os uncordon to
     set_fact:
       os_delegate_via: os-master02
-    when: hostvars[inventory_hostname].vmhost != hostvars['os-master02.phx2.fedoraproject.org'].vmhost
+    when: ( hostvars[inventory_hostname].vmhost != hostvars['os-master02.phx2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'phx2') or ( hostvars['os-master02.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2')
+
 
   - name: figure out which node to delegate os uncordon to
     set_fact:
       os_delegate_via: os-master03
-    when: hostvars[inventory_hostname].vmhost != hostvars['os-master03.phx2.fedoraproject.org'].vmhost
+    when: ( hostvars[inventory_hostname].vmhost != hostvars['os-master03.phx2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'phx2') or ( hostvars['os-master03.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2')
+
 
   - name: Add back to openshift
     command: oc adm uncordon {{inventory_hostname}}
     delegate_to: "{{os_delegate_via}}{{env_suffix}}.phx2.fedoraproject.org"
-    when: inventory_hostname.startswith(('os-node', 'os-master'))
+    when: inventory_hostname.startswith(('os-node', 'os-master')) and hostvars[inventory_hostname].datacenter == 'phx2'
+
+  - name: Add back to openshift
+    command: oc adm uncordon {{inventory_hostname}}
+    delegate_to: "{{os_delegate_via}}{{env_suffix}}.iad2.fedoraproject.org"
+    when: inventory_hostname.startswith(('os-node', 'os-master')) and hostvars[inventory_hostname].datacenter == 'iad2'
 
   - name: restart gssproxy if we rebooted a ipa server
     service: name=gssproxy state=restarted
