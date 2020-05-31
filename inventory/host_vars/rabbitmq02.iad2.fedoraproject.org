@@ -1,9 +1,10 @@
 ---
 volgroup: /dev/vg_guests
 vmhost: vmhost-x86-03.iad2.fedoraproject.org
-ks_url: http://209.132.181.6/repo/rhel/ks/kvm-rhel-8-ext
-ks_repo: http://209.132.181.6/repo/rhel/RHEL8-x86_64/
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-8-iad2
+ks_repo: http://10.3.163.35/repo/rhel/RHEL8-x86_64/
 eth0_ip: 10.3.163.79
 gw: 10.3.163.254
 dns: 10.3.163.33
 datacenter: iad2
+nm: 255.255.255.0
