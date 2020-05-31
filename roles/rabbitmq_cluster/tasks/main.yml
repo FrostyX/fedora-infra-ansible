@@ -6,6 +6,16 @@
   - config
   - packages
   - yumrepos
+  when: ansible_distribution_major_version|int == 7
+
+- name: Install RHOSP16 repo file
+  copy: src="{{ files }}/common/rhos16.repo" dest=/etc/yum.repos.d/rhos16.repo
+  tags:
+  - rabbitmq_cluster
+  - config
+  - packages
+  - yumrepos
+  when: ansible_distribution_major_version|int == 8
 
 - name: install needed packages
   package:
