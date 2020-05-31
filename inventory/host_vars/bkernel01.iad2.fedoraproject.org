@@ -3,3 +3,4 @@ gw: 10.3.169.254
 eth0_ip: 10.3.169.29
 
 datacenter: iad2
+resolvconf: "resolv.conf/iad2"
