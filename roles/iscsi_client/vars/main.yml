@@ -3,3 +3,7 @@ netapp_iscsi_name: iqn.1992-08.com.netapp:sn.8a2c2d9073de11e4a645123478563412:vs
 # iscsi portal for netapp iscsi volume
 netapp_iscsi_portal: 10.5.88.56
 
+# iscsi initiator for netapp iscsi volume
+netapp_iscsi_name_iad2: iqn.1992-08.com.netapp:sn.cd436d978abd11eaba39d039ea14e9fa:vs.5
+# iscsi portal for netapp iscsi volume
+netapp_iscsi_portal_iad2: 10.3.177.12
