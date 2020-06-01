@@ -1128,7 +1128,6 @@ db-qa03.qa.fedoraproject.org
 db-openqa01.iad2.fedoraproject.org
 resultsdb01.qa.fedoraproject.org
 resultsdb-stg01.qa.fedoraproject.org
-taskotron-dev01.qa.fedoraproject.org
 
 [osbs_control]
 osbs-control01.phx2.fedoraproject.org
