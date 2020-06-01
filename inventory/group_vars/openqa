@@ -4,7 +4,6 @@ virt_install_command: "{{ virt_install_command_one_nic }} --cpu=host-passthrough
 external_hostname: openqa.fedoraproject.org
 
 openqa_dbname: openqa
-openqa_dbhost: db-qa03.qa.fedoraproject.org
 openqa_dbuser: openqa
 openqa_dbpassword: "{{ prod_openqa_dbpassword }}"
 openqa_assetsize: 500

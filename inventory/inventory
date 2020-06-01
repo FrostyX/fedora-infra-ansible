@@ -522,6 +522,16 @@ openqa01.qa.fedoraproject.org
 openqa-stg01.qa.fedoraproject.org
 openqa01.iad2.fedoraproject.org
 
+# variables appropriate to hosts in the old dc (phx2) but not the new one (iad2)
+[openqa_phx]
+openqa01.qa.fedoraproject.org
+openqa-stg01.qa.fedoraproject.org
+
+# variables appropriate to hosts in the new dc (iad2) but not the old one (phx2)
+[openqa_iad]
+openqa01.iad2.fedoraproject.org
+openqa-stg01.iad2.fedoraproject.org
+
 [openqa]
 openqa01.qa.fedoraproject.org
 openqa01.iad2.fedoraproject.org
