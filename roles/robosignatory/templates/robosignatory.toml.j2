@@ -337,6 +337,25 @@ handlers = ["console"]
             key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
 
+            # openh264 signing
+
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "f33-openh264"
+            to = "f33-openh264"
+            key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
+
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "f32-openh264"
+            to = "f32-openh264"
+            key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
+
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "f31-openh264"
+            to = "f31-openh264"
+            key = "{{ (env == 'production')|ternary('fedora-31', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('3c3359c4', 'd300e724') }}"
 
     [consumer_config.ostree_refs]
         [consumer_config.ostree_refs."fedora/rawhide/x86_64/iot"]
