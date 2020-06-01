@@ -453,7 +453,7 @@ $wgGroupPermissions['Packaging']['read'] = true;
 require_once( "$IP/extensions/Lockdown/Lockdown.php" );
 {% else %}
 wfLoadExtension( 'Lockdown' );
-wgActorTableSchemaMigrationStage = MIGRATION_OLD;
+$wgActorTableSchemaMigrationStage = MIGRATION_OLD;
 {% endif %}
 
 $wgSpecialPageLockdown['Export'] = array('*');
