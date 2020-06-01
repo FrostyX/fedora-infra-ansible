@@ -103,6 +103,7 @@
       env: "production"
       env_suffix: ""
     tags: ['rabbit']
+    when: "relvalconsumer_env_suffix is defined"
     # relvalamiconsumer queue, we still use openqa auth for this as it's
     # easy that way
   - role: rabbit/queue
@@ -119,6 +120,7 @@
       env: "production"
       env_suffix: ""
     tags: ['rabbit']
+    when: "relvalconsumer_env_suffix is defined"
 
     # check-compose queue, we still use openqa auth for this as it's
     # easy that way
@@ -136,6 +138,7 @@
       env: "{{ checkcompose_env }}"
       env_suffix: "{{ checkcompose_env_suffix }}"
     tags: ['rabbit']
+    when: "checkcompose_env_suffix is defined"
 
 - name: set up openQA server data NFS mounts (staging)
   hosts: openqa_stg
@@ -199,8 +202,8 @@
   roles:
    - { role: openqa/server, tags: ['openqa_server'] }
    - { role: openqa/dispatcher, tags: ['openqa_dispatcher'] }
-   - { role: check-compose, tags: ['check-compose'] }
-   - { role: relvalconsumer, tags: ['relvalconsumer'] }
+   - { role: check-compose, tags: ['check-compose'], when: "checkcompose_env_suffix is defined" }
+   - { role: relvalconsumer, tags: ['relvalconsumer'], when: "relvalconsumer_env_suffix is defined" }
 
   handlers:
    - import_tasks: "{{ handlers_path }}/restart_services.yml"
