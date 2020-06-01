@@ -324,7 +324,7 @@ config = dict(
             ),
         ),
 
-        # Hook up the design-team with badges messages
+        # Hook up the design-team
         dict(
             network='chat.freenode.net',
             port=6667,
@@ -338,7 +338,12 @@ config = dict(
             {% endif %}
             channel='#fedora-design',
             filters=dict(
-                body=['^((?!(fedora-badges|design-team|fedoradesign)).)*$'],
+                topic=[
+                    '^((?!(mailman|pagure.(issue|pull-request).new)).)*$',
+                ],
+                body=[
+                    "^((?!(u'name': u'design')).)*$",
+                ],
             ),
         ),
 
