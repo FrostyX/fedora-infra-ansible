@@ -46,6 +46,7 @@
     packages:
     - copr-builder
     - libcurl # temporarily, for rhbz#1690971
+    - tito    # temporarily, to fix https://pagure.io/copr/copr/issue/1386
 
 - name: stat /etc/copr-rpmbuild/mock.cfg.j2.rpmnew
   stat: path=/etc/copr-rpmbuild/mock.cfg.j2.rpmnew
