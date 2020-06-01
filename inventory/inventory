@@ -663,15 +663,12 @@ openqa-stg01.qa.fedoraproject.org
 [resultsdb:children]
 resultsdb_stg
 resultsdb_prod
-resultsdb_iad_prod
 
 [resultsdb_stg]
 resultsdb-stg01.qa.fedoraproject.org
 
 [resultsdb_prod]
 resultsdb01.qa.fedoraproject.org
-
-[resultsdb_iad2_prod]
 resultsdb01.iad2.fedoraproject.org
 
 [smtp_mm]
