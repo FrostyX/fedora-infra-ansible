@@ -84,20 +84,25 @@
     service: bodhi
     host: "bodhi.fedoraproject.org"
     when: env == "production"
+
   - role: keytab/service
     owner_user: apache
     owner_group: apache
     service: bodhi
     host: "bodhi.stg.fedoraproject.org"
     when: env == "staging"
+
   - bodhi2/backend
+
   - role: push-container-registry
     cert_dest_dir: "/etc/docker/certs.d/registry{{ env_suffix }}.fedoraproject.org"
     cert_src: "{{private}}/files/docker-registry/{{env}}/pki/issued/containerstable.crt"
     key_src: "{{private}}/files/docker-registry/{{env}}/pki/private/containerstable.key"
     certs_group: apache
+
   - role: rabbit/user
     username: "bodhi{{ env_suffix }}"
+
   - role: rabbit/queue
     username: "bodhi{{ env_suffix }}"
     queue_name: "{{ bodhi_message_queue_name }}"
@@ -106,6 +111,17 @@
       warning: 10
       critical: 100
 
+  - role: rabbit/user
+    username: "koji_sync_listener{{ env_suffix }}"
+
+  - role: rabbit/queue
+    username: "koji_sync_listener{{ env_suffix }}"
+    queue_name: "koji_sync_listener{{ env_suffix }}"
+    routing_keys:
+      - "io.pagure.*.pagure.issue.edit"
+    thresholds:
+      warning: 10
+      critical: 100
 
   tasks:
   - name: create secondary volume dir for stg bodhi

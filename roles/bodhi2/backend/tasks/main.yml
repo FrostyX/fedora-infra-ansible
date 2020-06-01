@@ -18,6 +18,7 @@
       - bodhi-composer
       - python3-pyramid_sawing
       - sigul
+      - fedora-messaging
       # This next one is not strictly needed since bodhi-composer depends on bodhi-server which
       # depends on python3-celery, but since we're depoying a service file calling celery in this
       # role I think it makes sense to require it here instead of assuming a dependency chain.
@@ -83,20 +84,19 @@
 - name: put the koji sync listener script in place
   copy:
       src: koji-sync-listener.py
-      dest: /usr/local/bin/koji-sync-listener.py
-      mode: 0755
+      dest: /usr/lib/python3.8/site-packages/koji_sync_listener.py
+      mode: 0644
   when: env == "production"
   notify:
-  - restart koji-sync-listener
+  - restart fedora-messaging@koji_sync_listener
   tags:
   - bodhi
   - koji-sync
 
-- name: put the koji sync listener systemd file in place.
-  copy:
-      src: koji-sync-listener.service
-      dest: /usr/lib/systemd/system/koji-sync-listener.service
-      mode: 0755
+- name: put the koji sync listener config file in place
+  template:
+      src: koji_sync_listener.toml
+      dest: /etc/fedora-messaging/koji_sync_listener.toml
   when: env == "production"
   notify:
   - reload systemd
@@ -106,7 +106,7 @@
   - koji-sync
 
 - name: start the koji sync listener
-  service: name=koji-sync-listener enabled=yes state=started
+  service: name=fedora-messaging@koji_sync_listener enabled=yes state=started
   when: env == "production"
   tags:
   - bodhi
