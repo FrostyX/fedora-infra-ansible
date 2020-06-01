@@ -587,6 +587,14 @@ host bvmhost-a64-03 {
      option subnet-mask 255.255.255.0;
 }
 
+host bvmhost-a64-04-mgmt {
+     hardware ethernet E8:6A:64:39:19:4F ;
+     fixed-address 10.3.160.104;
+     option routers 10.3.160.254;
+     option subnet-mask 255.255.255.0;
+}
+
+
 host qvmhost-x86-01 {
      hardware ethernet E4:43:4B:A8:C1:FE;
      fixed-address 10.3.174.11;
