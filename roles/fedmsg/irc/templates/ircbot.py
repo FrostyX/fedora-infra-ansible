@@ -325,27 +325,25 @@ config = dict(
         ),
 
         # Hook up the design-team
+        {% if env == "production" %}
         dict(
             network='chat.freenode.net',
             port=6667,
             make_pretty=True,
             make_terse=True,
-
-            {% if env == 'staging' %}
-            nickname='fm-stg-design',
-            {% else %}
             nickname='fm-design',
-            {% endif %}
             channel='#fedora-design',
+
             filters=dict(
                 topic=[
-                    '^((?!(mailman|pagure.(issue|pull-request).new)).)*$',
+                    '^((?!(github\.(issue|pull_request)\.opened|mailman|nuancier|pagure\.(issue|pull-request)\.new)).)*$',
                 ],
                 body=[
-                    "^((?!(u'name': u'design')).)*$",
+                    "^((?!(u'name': u'design'|design-team|fedora-design)).)*$",
                 ],
             ),
         ),
+        {% endif %}
 
         # And #fedora-docs wants in on the action
         dict(
