@@ -311,6 +311,7 @@ fas01.phx2.fedoraproject.org
 
 [kerneltest]
 kerneltest01.phx2.fedoraproject.org
+kerneltest01.iad2.fedoraproject.org
 
 [kernel_qa]
 kernel02.qa.fedoraproject.org
@@ -1347,6 +1348,7 @@ fedimg01.iad2.fedoraproject.org
 github2fedmsg01.iad2.fedoraproject.org
 ipa01.iad2.fedoraproject.org
 ipa02.iad2.fedoraproject.org
+kerneltest01.iad2.fedoraproject.org
 koji01.iad2.fedoraproject.org
 koji02.iad2.fedoraproject.org
 kojipkgs01.iad2.fedoraproject.org
