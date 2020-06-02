@@ -124,7 +124,6 @@
   command: ipa-replica-install
            --setup-ca
            --setup-kra
-           --password={{ipa_dm_password}}
            --admin-password={{ipa_admin_password}}
            --mkhomedir
            --no-ntp
@@ -133,6 +132,8 @@
            --no-sshd
            --skip-conncheck
            --log-file=/var/log/ipainstall.log
+           --domain={{ipa_realm}}
+           --server=ipa01.phx2.fedoraproject.org
            creates=/etc/ipa/default.conf
   tags:
   - ipa/server
