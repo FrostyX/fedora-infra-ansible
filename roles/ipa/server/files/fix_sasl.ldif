@@ -1,0 +1,9 @@
+dn: cn=config
+changetype: modify
+replace: nsslapd-maxsasliosize
+nsslapd-maxsasliosize: 50000000
+
+dn: cn=config
+changetype: modify
+replace: nsslapd-sasl-max-buffer-size
+nsslapd-sasl-max-buffer-size: 50000000

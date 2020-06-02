@@ -19,6 +19,12 @@
   - ipa/server
   - config
 
+- name: Copy LDIF file for working around annoying IPA bug in initial sync
+  copy: src=fix_sasl.ldif dest=/usr/share/ipa/fix_sasl.ldif
+  tags:
+  - ipa/server
+  - config
+
 - name: install IPA
   command: ipa-server-install
            --realm={{ipa_realm}}
