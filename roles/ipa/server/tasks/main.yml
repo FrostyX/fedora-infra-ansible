@@ -39,7 +39,6 @@
            --setup-dns
            --forwarder=10.5.126.21
            --forwarder=10.5.126.22
-           --force-join
            --log-file=/var/log/ipainstall.log
            creates=/etc/ipa/default.conf
   tags:
@@ -139,6 +138,7 @@
            --no-ssh
            --no-sshd
            --skip-conncheck
+           --force-join
            --log-file=/var/log/ipainstall.log
            --domain={{ipa_realm}}
            --server=ipa01.phx2.fedoraproject.org
