@@ -182,7 +182,7 @@
   become: true
   become_user: geekotest
   when: >
-    (testsbranch.stderr.find('Not a git repository') != -1) or
+    (testsbranch.stderr.find('ot a git repository') != -1) or
     (testsbranch.stdout.find('On branch master') != -1 and
     testsbranch.stdout.find('Changes not staged') == -1)
 

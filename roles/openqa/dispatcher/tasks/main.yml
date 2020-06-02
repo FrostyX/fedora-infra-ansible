@@ -202,7 +202,8 @@
     repo: https://pagure.io/fedora-qa/fedora_openqa.git # noqa 401
     dest: /root/fedora_openqa
   register: gittools
-  when: "(toolsbranch.stderr.find('Not a git repository') != -1) or (toolsbranch.stdout.find('On branch master') != -1)"
+  # case of the 'n' seems inconstant, so intentionally omitted
+  when: "(toolsbranch.stderr.find('ot a git repository') != -1) or (toolsbranch.stdout.find('On branch master') != -1)"
 
 - name: Check if fedora_openqa is installed for current Python
   command: "pip show fedora_openqa"
