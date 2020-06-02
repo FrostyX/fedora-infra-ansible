@@ -125,6 +125,7 @@
            --setup-ca
            --setup-kra
            --admin-password={{ipa_admin_password}}
+           --no-host-dns
            --mkhomedir
            --no-ntp
            --unattended
