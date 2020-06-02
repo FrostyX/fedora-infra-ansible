@@ -139,3 +139,4 @@ exclude_hostgroups:
   - virt_host
   - iad2
   - download_iad2
+  - openqa_iad
