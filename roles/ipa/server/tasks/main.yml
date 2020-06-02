@@ -68,7 +68,7 @@
   tags:
   - ipa/server
   - config
-  when: not ipa_initial and not replication_status.stat.exists
+  when: not ipa_initial and ansible_distribution_major_version|int < 8 and not replication_status.stat.exists
 
 - name: retrieve replica file
   delegate_to: ipa01.phx2.fedoraproject.org
@@ -78,7 +78,7 @@
   tags:
   - ipa/server
   - config
-  when: not ipa_initial and not replication_status.stat.exists
+  when: not ipa_initial and ansible_distribution_major_version|int < 8 and not replication_status.stat.exists
 
 - name: deploy replica file
   copy: src=/tmp/ipa_replica_{{inventory_hostname}}.gpg
@@ -87,7 +87,7 @@
   tags:
   - ipa/server
   - config
-  when: not ipa_initial and not replication_status.stat.exists
+  when: not ipa_initial and ansible_distribution_major_version|int < 8 and not replication_status.stat.exists
 
 - name: destroy replica file on ansible host
   delegate_to: localhost
@@ -95,7 +95,7 @@
   tags:
   - ipa/server
   - config
-  when: not ipa_initial and not replication_status.stat.exists
+  when: not ipa_initial and ansible_distribution_major_version|int < 8 and not replication_status.stat.exists
 
 - name: deploy replica
   command: ipa-replica-install
@@ -118,7 +118,26 @@
   tags:
   - ipa/server
   - config
-  when: not ipa_initial and not replication_status.stat.exists
+  when: not ipa_initial and ansible_distribution_major_version|int < 8 and not replication_status.stat.exists
+
+- name: deploy replica
+  command: ipa-replica-install
+           --setup-ca
+           --setup-kra
+           --password={{ipa_dm_password}}
+           --admin-password={{ipa_admin_password}}
+           --mkhomedir
+           --no-ntp
+           --unattended
+           --no-ssh
+           --no-sshd
+           --skip-conncheck
+           --log-file=/var/log/ipainstall.log
+           creates=/etc/ipa/default.conf
+  tags:
+  - ipa/server
+  - config
+  when: not ipa_initial and ansible_distribution_major_version|int >= 8 and not replication_status.stat.exists
 
 - name: Disable rewrites
   copy: src=ipa-rewrite.conf dest=/etc/httpd/conf.d/ipa-rewrite.conf
