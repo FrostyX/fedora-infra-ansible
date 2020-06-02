@@ -5,12 +5,16 @@
     dest: /usr/lib/python3.7/site-packages/
     mode: '0755'
   when: inventory_hostname.startswith('odcs-backend-releng')
+  tags:
+  - fmc
 
 - name: Install fedora-messaging rpm
   dnf:
     package: fedora-messaging
     state: latest
   when: inventory_hostname.startswith('odcs-backend-releng')
+  tags:
+  - fmc
 
 - name: Place fedora-minimal-compose.toml /etc/fedora-messaging/
   template:
@@ -20,6 +24,8 @@
     group: root
     mode: 644
   when: inventory_hostname.startswith('odcs-backend-releng')
+  tags:
+  - fmc
 
 - name: Start and enable the fmc services
   service:
@@ -27,3 +33,45 @@
     state: started
     enabled: yes
   when: inventory_hostname.startswith('odcs-backend-releng')
+  tags:
+  - fmc
+
+- name: Create /etc/pki/fedora-messaging
+  file:
+    dest: /etc/pki/fedora-messaging
+    mode: 0775
+    owner: root
+    group: root
+    state: directory
+  tags:
+  - fmc
+
+- name: Deploy the fedora-messaging CA
+  copy:
+    src: "{{ private }}/files/rabbitmq/{{env}}/pki/ca.crt"
+    dest: /etc/pki/fedora-messaging/cacert.pem
+    mode: 0644
+    owner: root
+    group: root
+  tags:
+  - fmc
+
+- name: Deploy the fedora-messaging cert
+  copy:
+    src: "{{ private }}/files/rabbitmq/{{env}}/pki/issued/fmc{{env_suffix}}.crt"
+    dest: /etc/pki/fedora-messaging/fmc-cert.pem
+    mode: 0644
+    owner: root
+    group: root
+  tags:
+  - fmc
+
+- name: Deploy the fedora-messaging key
+  copy:
+    src: "{{ private }}/files/rabbitmq/{{env}}/pki/private/fmc{{env_suffix}}.key"
+    dest: /etc/pki/fedora-messaging/fmc-key.pem
+    mode: 0600
+    owner: root
+    group: root
+  tags:
+  - fmc
