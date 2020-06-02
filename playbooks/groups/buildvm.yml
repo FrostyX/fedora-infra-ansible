@@ -31,22 +31,22 @@
     - role: nfs/client
       mnt_dir: '/mnt/koji/ostree'
       nfs_src_dir: 'fedora-ostree-content/ostree'
-      when: env != 'staging' and 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x') and datacenter == 'phx2'
+      when: env != 'staging' and 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x')
 
     - role: nfs/client
       mnt_dir: '/mnt/koji/compose/ostree'
       nfs_src_dir: 'fedora-ostree-content/compose/ostree'
-      when: env != 'staging' and 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x') and datacenter == 'phx2'
+      when: env != 'staging' and 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x')
 
     - role: nfs/client
       mnt_dir: '/mnt/koji/ostree'
       nfs_src_dir: 'fedora_ostree_content/ostree'
-      when: env != 'staging' and 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x') and datacenter == 'iad2'
+      when: env != 'staging' and 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x')
 
     - role: nfs/client
       mnt_dir: '/mnt/koji/compose/ostree'
       nfs_src_dir: 'fedora_ostree_content/compose/ostree'
-      when: env != 'staging' and 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x') and datacenter == 'iad2'
+      when: env != 'staging' and 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x')
 
     - role: nfs/client
       mnt_dir: '/mnt/koji/ostree'
