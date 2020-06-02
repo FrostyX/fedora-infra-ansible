@@ -18,7 +18,6 @@
 - name: enable nfs-related services and run them (fedora)
   service: name={{ item }}  enabled=true state=started
   with_items:
-  - nfs-idmap
   - rpc-statd
   when: ansible_distribution == 'Fedora'
   tags:
