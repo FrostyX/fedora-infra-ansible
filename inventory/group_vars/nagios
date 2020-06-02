@@ -36,8 +36,6 @@ csi_purpose: Monitoring system
 #
 phx2_management_hosts:
   - backup01.mgmt.fedoraproject.org
-  - beaker-client01.mgmt.fedoraproject.org
-  - beaker-client02.mgmt.fedoraproject.org
   - bkernel03.mgmt.fedoraproject.org
   - bvirthost01.mgmt.fedoraproject.org
   - bvirthost04.mgmt.fedoraproject.org
