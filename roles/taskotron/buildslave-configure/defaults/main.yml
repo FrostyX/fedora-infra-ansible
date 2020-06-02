@@ -1,6 +1,0 @@
----
-taskotron_admin_email: root@localhost.localdomain
-slaves:
-  - user: ""
-    home: ""
-    dir: ""

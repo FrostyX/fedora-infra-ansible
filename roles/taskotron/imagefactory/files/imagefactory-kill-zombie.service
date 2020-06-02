@@ -1,7 +1,0 @@
-[Unit]
-Description=Kill hanging imagefactory build processes
-
-[Service]
-Type=oneshot
-ExecStart=/usr/local/bin/imagefactory-kill-zombie
-TimeoutStartSec=300
