@@ -1,7 +1,7 @@
 # A basic configuration for Fedora's message broker
 #
 # This file is in the TOML format.
-amqp_url = "amqps://fedora:@rabbitmq.fedoraproject.org/%2Fpublic_pubsub"
+amqp_url = "amqps://bodhi{{ env_suffix }}:@rabbitmq{{ env_suffix }}.fedoraproject.org/%2Fpubsub"
 callback = "fedora-minimal-compose:Consumer"
 
 [tls]
@@ -27,16 +27,16 @@ arguments = {}
 #
 # If you require a stronger guarantee about delivery, please talk to Fedora's
 # Infrastructure team.
-[queues.00000000-0000-0000-0000-000000000000]
+[queues."{{ fmc_queue_name }}"]
 durable = false
 auto_delete = true
 exclusive = true
 arguments = {}
 
 [[bindings]]
-queue = "00000000-0000-0000-0000-000000000000"
+queue = "{{ fmc_queue_name }}"
 exchange = "amq.topic"
-routing_keys = ["org.fedoraproject.prod.buildsys.rpm.sign"]
+routing_keys = ["{{ fmc_routing_keys }}"]
 
 [consumer_config]
 rawhide = {{FedoraRawhideNumber}}

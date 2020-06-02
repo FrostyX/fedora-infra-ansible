@@ -107,6 +107,15 @@
   - role: keytab/service
     service: odcs
     host: "odcs-backend-releng01.phx2.fedoraproject.org"
+  - role: rabbit/user
+    username: "fmc{{ env_suffix }}"
+  - role: rabbit/queue
+    username: "fmc{{ env_suffix }}"
+    queue_name: "{{ fmc_queue_name }}"
+    routing_keys: "{{ fmc_routing_keys }}"
+    thresholds:
+      warning: 100
+      critical: 1000
   - role: fmc
     host: "odcs-backend-releng01.phx2.fedoraproject.org"
 
