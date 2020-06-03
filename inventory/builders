@@ -257,7 +257,6 @@ buildhw-09.phx2.fedoraproject.org
 buildhw-10.phx2.fedoraproject.org
 buildhw-11.phx2.fedoraproject.org
 buildhw-12.phx2.fedoraproject.org
-# buildhw-aarch64-01.arm.fedoraproject.org
 buildhw-aarch64-02.arm.fedoraproject.org
 buildhw-aarch64-03.arm.fedoraproject.org
 buildhw-aarch64-04.arm.fedoraproject.org
@@ -267,6 +266,7 @@ buildhw-aarch64-07.arm.fedoraproject.org
 buildhw-aarch64-08.arm.fedoraproject.org
 # Machine unresponsive, likely dead
 #buildhw-aarch64-09.arm.fedoraproject.org
+buildhw-a64-01.iad2.fedoraproject.org
 
 #
 # These are primary koji builders. 
