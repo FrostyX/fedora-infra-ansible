@@ -141,3 +141,7 @@
   - 204.157.3.70 # https://pagure.io/fedora-infrastructure/issue/8096
   when:
   - prepare_base_image is not defined
+
+- name: mount cache filesystem on /var/cache/mock
+  mount: path=/var/cache/mock state=mounted src=mock_cache_tmpfs fstype=tmpfs opts="size=32G"
+  when: mock_var_cache_tmpfs is defined
