@@ -8,3 +8,4 @@ virt_install_command: "{{ virt_install_command_aarch64_one_nic_unsafe }}"
 ipa_server: ipa01.iad2.fedoraproject.org
 gw: 10.3.170.254
 dns: 10.3.163.33
+datacenter: iad2
