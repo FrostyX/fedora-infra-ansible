@@ -84,44 +84,6 @@
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
-- name: Set up odcs backend service
-  hosts: odcs_backend:odcs_backend_stg
-  user: root
-  gather_facts: True
-
-  vars_files:
-   - /srv/web/infra/ansible/vars/global.yml
-   - "/srv/private/ansible/vars.yml"
-   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
-
-  roles:
-  - role: odcs/backend
-  - role: fedmsg/base
-    when: not inventory_hostname.startswith('odcs-backend-releng01')
-  - role: keytab/service
-    service: odcs
-    owner_user: odcs
-    owner_group: odcs
-    host: "odcs{{env_suffix}}.fedoraproject.org"
-  # keytab for odcs releng backend
-  - role: keytab/service
-    service: odcs
-    host: "odcs-backend-releng01.phx2.fedoraproject.org"
-  - role: rabbit/user
-    username: "fmc{{ env_suffix }}"
-  - role: rabbit/queue
-    username: "fmc{{ env_suffix }}"
-    queue_name: "{{ fmc_queue_name }}"
-    routing_keys: "{{ fmc_routing_keys }}"
-    thresholds:
-      warning: 100
-      critical: 1000
-  - role: fmc
-    host: "odcs-backend-releng01.phx2.fedoraproject.org"
-
-  handlers:
-  - import_tasks: "{{ handlers_path }}/restart_services.yml"
-
 - name: Set up /mnt/koji on both the frontend and backend
   hosts: odcs:odcs_stg
   user: root
@@ -184,6 +146,17 @@
   # keytab for odcs releng backend
   - role: keytab/service
     service: odcs
+    host: "odcs-backend-releng01.iad2.fedoraproject.org"
+  - role: rabbit/user
+    username: "fmc{{ env_suffix }}"
+  - role: rabbit/queue
+    username: "fmc{{ env_suffix }}"
+    queue_name: "{{ fmc_queue_name }}"
+    routing_keys: "{{ fmc_routing_keys }}"
+    thresholds:
+      warning: 100
+      critical: 1000
+  - role: fmc
     host: "odcs-backend-releng01.iad2.fedoraproject.org"
 
   handlers:

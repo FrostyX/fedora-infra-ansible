@@ -1,17 +1,11 @@
 ---
-- name: Copy fedora-minimal-compose.py to python site-packages
-  get_url:
-    url: https://pagure.io/releng/fmc/raw/master/f/fedora-minimal-compose.py
-    dest: /usr/lib/python3.7/site-packages/
-    mode: '0755'
-  when: inventory_hostname.startswith('odcs-backend-releng')
-  tags:
-  - fmc
-
-- name: Install fedora-messaging rpm
-  dnf:
-    package: fedora-messaging
-    state: latest
+- name: Install fmc and fedora-messaging rpm
+  package:
+    name:
+      - fedora-messaging
+      # fmc rpm is built in infra tags
+      - fmc
+    state: present
   when: inventory_hostname.startswith('odcs-backend-releng')
   tags:
   - fmc
