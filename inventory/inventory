@@ -1330,6 +1330,9 @@ buildvm-a32-06.iad2.fedoraproject.org
 buildvm-a32-07.iad2.fedoraproject.org
 buildvm-a32-08.iad2.fedoraproject.org
 buildvm-a32-09.iad2.fedoraproject.org
+buildvm-a32-10.iad2.fedoraproject.org
+buildvm-a32-11.iad2.fedoraproject.org
+buildvm-a32-12.iad2.fedoraproject.org
 buildvm-a64-01.iad2.fedoraproject.org
 buildvm-a64-02.iad2.fedoraproject.org
 buildvm-a64-03.iad2.fedoraproject.org
@@ -1339,6 +1342,9 @@ buildvm-a64-06.iad2.fedoraproject.org
 buildvm-a64-07.iad2.fedoraproject.org
 buildvm-a64-08.iad2.fedoraproject.org
 buildvm-a64-09.iad2.fedoraproject.org
+buildvm-a64-10.iad2.fedoraproject.org
+buildvm-a64-11.iad2.fedoraproject.org
+buildvm-a64-12.iad2.fedoraproject.org
 buildvm-x86-01.iad2.fedoraproject.org
 buildvm-x86-02.iad2.fedoraproject.org
 buildvm-x86-03.iad2.fedoraproject.org
