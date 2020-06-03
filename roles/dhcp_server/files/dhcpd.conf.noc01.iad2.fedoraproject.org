@@ -649,7 +649,7 @@ host bvmhost-p09-01 {
      next-server 10.3.163.10;
      option routers 10.3.171.254;
      option subnet-mask 255.255.255.0;
-     filename "boot/grub2/powerpc-ieee1275/core.elf";
+#     filename "boot/grub2/powerpc-ieee1275/core.elf";
 }
 
 host bvmhost-p09-02 {
@@ -658,7 +658,7 @@ host bvmhost-p09-02 {
      next-server 10.3.163.10;
      option routers 10.3.171.254;
      option subnet-mask 255.255.255.0;
-     filename "boot/grub2/powerpc-ieee1275/core.elf";
+#     filename "boot/grub2/powerpc-ieee1275/core.elf";
 }
 
 host bvmhost-p08-01 {
@@ -667,5 +667,5 @@ host bvmhost-p08-01 {
      next-server 10.3.163.10;
      option routers 10.3.171.254;
      option subnet-mask 255.255.255.0;
-     filename "boot/grub2/powerpc-ieee1275/core.elf";
+#     filename "boot/grub2/powerpc-ieee1275/core.elf";
 }
