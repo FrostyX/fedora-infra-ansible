@@ -587,11 +587,16 @@ host bvmhost-a64-03 {
      option subnet-mask 255.255.255.0;
 }
 host bvmhost-a64-04 {
-     hardware ethernet 50:6B:4B:6A:B5:D0 ;
+     hardware ethernet 68:05:CA:8E:A7:9B ;
      fixed-address 10.3.170.14;
      filename "uefi/grubaa64.efi";
      next-server 10.3.163.10;
      option routers 10.3.170.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-a64-04 {
+     hardware ethernet 50:6B:4B:6A:B5:D0 ;
+     fixed-address 10.3.170.16;
      option subnet-mask 255.255.255.0;
 }
 
