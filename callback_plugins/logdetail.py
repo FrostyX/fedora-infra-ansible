@@ -168,7 +168,7 @@ class CallbackModule(CallbackBase):
     """
     logs playbook results, per host, in /var/log/ansible/hosts
     """
-    CALLBACK_NAME = 'logdetail2'
+    CALLBACK_NAME = 'logdetail'
     CALLBACK_TYPE = 'notification'
     CALLBACK_VERSION = 2.0
     CALLBACK_NEEDS_WHITELIST = True
