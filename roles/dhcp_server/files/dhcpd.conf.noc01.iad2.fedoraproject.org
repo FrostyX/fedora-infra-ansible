@@ -563,7 +563,7 @@ host sign-vault01 {
 }
 
 host bvmhost-a64-01 {
-     hardware ethernet 68:05:ca:8a:f4:29 ;
+     hardware ethernet 50:6b:4b:6a:d3:c0 ;
      fixed-address 10.3.170.11;
      filename "uefi/grubaa64.efi";
      next-server 10.3.163.10;
@@ -571,7 +571,7 @@ host bvmhost-a64-01 {
      option subnet-mask 255.255.255.0;
 }
 host bvmhost-a64-02 {
-     hardware ethernet 68:05:ca:92:cb:12 ;
+     hardware ethernet 50:6b:4b:6a:c2:c0 ;
      fixed-address 10.3.170.12;
      filename "uefi/grubaa64.efi";
      next-server 10.3.163.10;
@@ -581,6 +581,14 @@ host bvmhost-a64-02 {
 host bvmhost-a64-03 {
      hardware ethernet 50:6b:4b:6b:0a:40 ;
      fixed-address 10.3.170.13;
+     filename "uefi/grubaa64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.170.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-a64-03 {
+     hardware ethernet 50:6B:4B:6A:B5:D0 ;
+     fixed-address 10.3.170.14;
      filename "uefi/grubaa64.efi";
      next-server 10.3.163.10;
      option routers 10.3.170.254;
