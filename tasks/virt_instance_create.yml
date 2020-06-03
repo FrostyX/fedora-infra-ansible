@@ -36,7 +36,7 @@
 - name: ARMv7 copy the kernel out
   shell: "virt-builder --get-kernel {{ volgroup }}/{{ inventory_hostname }} --output /var/lib/libvirt/images/  | awk -F/ '{print $NF}' > /var/lib/libvirt/images/{{ inventory_hostname }}-details.txt"
   delegate_to: "{{ vmhost}}"
-  when: inventory_hostname.startswith(('buildvm-armv7','armv7-test')) and ( inventory_hostname not in result.list_vms or armv7kernelupdate is defined )
+  when: inventory_hostname.startswith(('buildvm-a32', 'buildvm-armv7','armv7-test')) and ( inventory_hostname not in result.list_vms or armv7kernelupdate is defined )
   tags:
     - armv7-kernel
 
@@ -44,7 +44,7 @@
   command: "head -n1 /var/lib/libvirt/images/{{ inventory_hostname }}-details.txt"
   delegate_to: "{{ vmhost}}"
   register: host_armv7kernel
-  when: inventory_hostname.startswith(('buildvm-armv7','armv7-test')) and ( inventory_hostname not in result.list_vms or armv7kernelupdate is defined )
+  when: inventory_hostname.startswith(('buildvm-a32', 'buildvm-armv7','armv7-test')) and ( inventory_hostname not in result.list_vms or armv7kernelupdate is defined )
   tags:
     - armv7-kernel
 
@@ -52,7 +52,7 @@
   command: "tail -n1 /var/lib/libvirt/images/{{ inventory_hostname }}-details.txt"
   delegate_to: "{{ vmhost}}"
   register: host_armv7initrd
-  when: inventory_hostname.startswith(('buildvm-armv7','armv7-test')) and ( inventory_hostname not in result.list_vms or armv7kernelupdate is defined )
+  when: inventory_hostname.startswith(('buildvm-a32', 'buildvm-armv7','armv7-test')) and ( inventory_hostname not in result.list_vms or armv7kernelupdate is defined )
   tags:
     - armv7-kernel
 
@@ -60,7 +60,7 @@
   shell: "virt-cat -a {{ volgroup }}/{{ inventory_hostname }} /boot/extlinux/extlinux.conf | grep -m1 append | sed -e 's/append //'"
   delegate_to: "{{ vmhost}}"
   register: host_cmdline
-  when: inventory_hostname.startswith(('buildvm-armv7','armv7-test')) and ( inventory_hostname not in result.list_vms or armv7kernelupdate is defined )
+  when: inventory_hostname.startswith(('buildvm-a32', 'buildvm-armv7','armv7-test')) and ( inventory_hostname not in result.list_vms or armv7kernelupdate is defined )
   tags:
     - armv7-kernel
 
@@ -69,7 +69,7 @@
     ansible_python_interpreter: /usr/bin/python3
   virt_boot: domain={{ inventory_hostname }} kernel=/var/lib/libvirt/images/{{ host_armv7kernel.stdout }} initrd=/var/lib/libvirt/images/{{ host_armv7initrd.stdout }} cmdline={{ host_cmdline.stdout }}
   delegate_to: "{{ vmhost }}"
-  when: inventory_hostname.startswith(('buildvm-armv7','armv7-test')) and ( inventory_hostname not in result.list_vms or armv7kernelupdate is defined )
+  when: inventory_hostname.startswith(('buildvm-a32', 'buildvm-armv7','armv7-test')) and ( inventory_hostname not in result.list_vms or armv7kernelupdate is defined )
   tags:
     - armv7-kernel
 
@@ -84,7 +84,7 @@
 
 - name: ARMv7 pause while VM updates
   pause: seconds=5
-  when: inventory_hostname.startswith(('buildvm-armv7','armv7-test')) and ( inventory_hostname not in result.list_vms or armv7kernelupdate is defined )
+  when: inventory_hostname.startswith(('buildvm-a32', 'buildvm-armv7','armv7-test')) and ( inventory_hostname not in result.list_vms or armv7kernelupdate is defined )
   tags:
     - armv7-kernel
 
