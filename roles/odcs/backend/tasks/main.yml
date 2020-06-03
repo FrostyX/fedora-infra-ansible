@@ -81,7 +81,7 @@
 
 - name: Configure the odcs virtual host
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_vhost:
     name: /odcs
     state: present
@@ -93,7 +93,7 @@
 
 - name: Configure the HA policy for the odcs queues
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_policy:
     name: HA
     apply_to: queues
@@ -111,7 +111,7 @@
 
 - name: Add a policy to limit queues to 1GB and remove after a month of no use
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_policy:
     apply_to: queues
     name: pubsub_sweeper
@@ -131,7 +131,7 @@
 
 - name: Create the odcs-admin user for the odcs vhost (prod)
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_user:
     user: odcs-admin
     password: "{{ (env == 'production')|ternary(rabbitmq_odcs_admin_password_production, rabbitmq_odcs_admin_password_staging) }}"
@@ -147,7 +147,7 @@
 
 - name: Dump the admin password in a file for administrative operations
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   copy:
     dest: /root/.odcs-rabbitmqpass
     content: "{{ (env == 'production')|ternary(rabbitmq_odcs_admin_password_production, rabbitmq_odcs_admin_password_staging) }}"
@@ -162,7 +162,7 @@
 
 - name: Grant the admin user access to the odcs vhost
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_user:
     user: admin
     vhost: /odcs
@@ -178,7 +178,7 @@
 
 - name: Grant the nagios-monitoring user access to the odcs vhost
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_user:
     user: nagios-monitoring
     vhost: /odcs
@@ -195,7 +195,7 @@
 # Create a user with:
 - name: Create a user for odcs access
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+  delegate_to: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
   rabbitmq_user:
     user: "odcs-private-queue{{ env_suffix }}"
     vhost: /odcs
