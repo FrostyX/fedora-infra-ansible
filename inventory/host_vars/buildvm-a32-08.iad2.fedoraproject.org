@@ -1,0 +1,3 @@
+---
+vmhost: bvmhost-a64-03.iad2.fedoraproject.org
+eth0_ip: 10.3.170.68

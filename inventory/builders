@@ -109,6 +109,15 @@ buildvm-aarch64-22.arm.fedoraproject.org
 buildvm-aarch64-23.arm.fedoraproject.org
 buildvm-aarch64-24.arm.fedoraproject.org
 buildvm-aarch64-25.arm.fedoraproject.org
+buildvm-a64-01.iad2.fedoraproject.org
+buildvm-a64-02.iad2.fedoraproject.org
+buildvm-a64-03.iad2.fedoraproject.org
+buildvm-a64-04.iad2.fedoraproject.org
+buildvm-a64-05.iad2.fedoraproject.org
+buildvm-a64-06.iad2.fedoraproject.org
+buildvm-a64-07.iad2.fedoraproject.org
+buildvm-a64-08.iad2.fedoraproject.org
+buildvm-a64-09.iad2.fedoraproject.org
 
 [buildvm_armv7]
 buildvm-armv7-01.arm.fedoraproject.org
@@ -135,6 +144,15 @@ buildvm-armv7-21.arm.fedoraproject.org
 buildvm-armv7-22.arm.fedoraproject.org
 buildvm-armv7-23.arm.fedoraproject.org
 buildvm-armv7-24.arm.fedoraproject.org
+buildvm-a32-01.iad2.fedoraproject.org
+buildvm-a32-02.iad2.fedoraproject.org
+buildvm-a32-03.iad2.fedoraproject.org
+buildvm-a32-04.iad2.fedoraproject.org
+buildvm-a32-05.iad2.fedoraproject.org
+buildvm-a32-06.iad2.fedoraproject.org
+buildvm-a32-07.iad2.fedoraproject.org
+buildvm-a32-08.iad2.fedoraproject.org
+buildvm-a32-09.iad2.fedoraproject.org
 
 [buildvm_s390x]
 buildvm-s390x-01.s390.fedoraproject.org
