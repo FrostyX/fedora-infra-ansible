@@ -236,6 +236,7 @@ buildvmhost-a64-osbs-01.arm.fedoraproject.org
 bvmhost-a64-01.iad2.fedoraproject.org
 bvmhost-a64-02.iad2.fedoraproject.org
 bvmhost-a64-03.iad2.fedoraproject.org
+bvmhost-a64-04.iad2.fedoraproject.org
 
 [buildhw]
 buildhw-01.phx2.fedoraproject.org

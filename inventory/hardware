@@ -140,6 +140,7 @@ openqa-aarch64-03.qa.fedoraproject.org
 bvmhost-a64-01.iad2.fedoraproject.org
 bvmhost-a64-02.iad2.fedoraproject.org
 bvmhost-a64-03.iad2.fedoraproject.org
+bvmhost-a64-04.iad2.fedoraproject.org
 
 
 [hardware:children]
