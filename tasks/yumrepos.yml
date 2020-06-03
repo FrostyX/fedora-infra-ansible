@@ -9,7 +9,7 @@
   - yumrepos
 
 - name: put rhel repos on rhel systems
-  copy: src="{{ files }}/common/rhel{{ ansible_distribution_major_version }}.repo" dest="/etc/yum.repos.d/rhel{{ ansible_distribution_major_version }}.repo"
+  copy: src="{{ files }}/common/rhel{{ ansible_distribution_major_version|int }}.repo" dest="/etc/yum.repos.d/rhel{{ ansible_distribution_major_version|int }}.repo"
   when: ansible_distribution == 'RedHat' and not inventory_hostname.startswith('ppc9') and datacenter != "aws"
   tags:
   - config
@@ -17,7 +17,7 @@
   - yumrepos
 
 - name: put rhel repos on rhel systems (power9)
-  copy: src="{{ files }}/common/rhel{{ ansible_distribution_major_version }}-power9.repo" dest="/etc/yum.repos.d/rhel{{ ansible_distribution_major_version }}.repo"
+  copy: src="{{ files }}/common/rhel{{ ansible_distribution_major_version|int }}-power9.repo" dest="/etc/yum.repos.d/rhel{{ ansible_distribution_major_version|int }}.repo"
   when: ansible_distribution == 'RedHat' and inventory_hostname.startswith('ppc9') and datacenter != "aws"
   tags:
   - config
@@ -26,7 +26,7 @@
 
 - name: put rhel rhev for power repos on rhel power systems
   copy: src="{{ files }}/common/rhel7-power-rhev.repo" dest="/etc/yum.repos.d/rhel7-power-rhev.repo"
-  when: ansible_distribution == 'RedHat' and ansible_distribution_major_version == 7 and ansible_architecture =='ppc64le' and not inventory_hostname.startswith('ppc9')
+  when: ansible_distribution == 'RedHat' and ansible_distribution_major_version|int == 7 and ansible_architecture =='ppc64le' and not inventory_hostname.startswith('ppc9')
   tags:
   - config
   - packages
@@ -34,14 +34,14 @@
 
 - name: put openshift 3.4 repo on os- systems
   copy: src="{{ files }}/openshift/openshift.repo" dest="/etc/yum.repos.d/openshift.repo"
-  when: ansible_distribution == 'RedHat' and ansible_distribution_major_version == 7 and inventory_hostname.startswith('os-') and datacenter != "aws"
+  when: ansible_distribution == 'RedHat' and ansible_distribution_major_version|int == 7 and inventory_hostname.startswith('os-') and datacenter != "aws"
   tags:
   - config
   - packages
   - yumrepos
 
 - name: put epel repos on el systems
-  copy: src="{{ files }}/common/epel{{ ansible_distribution_major_version }}.repo" dest="/etc/yum.repos.d/epel{{ ansible_distribution_major_version }}.repo"
+  copy: src="{{ files }}/common/epel{{ ansible_distribution_major_version|int }}.repo" dest="/etc/yum.repos.d/epel{{ ansible_distribution_major_version|int }}.repo"
   when: ((ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS') and use_default_epel) and datacenter != "aws"
   tags:
   - config
@@ -90,15 +90,15 @@
   - fedora-modular.repo
   - fedora-updates-modular.repo
   - fedora-updates-testing-modular.repo
-  when: ansible_distribution == 'Fedora' and ansible_distribution_major_version >= 29 and (ansible_architecture == 'ppc64le' or ansible_architecture == 's390x') and datacenter != "aws"
+  when: ansible_distribution == 'Fedora' and ansible_distribution_major_version|int >= 29 and (ansible_architecture == 'ppc64le' or ansible_architecture == 's390x') and datacenter != "aws"
   tags:
   - config
   - packages
   - yumrepos
 
 - name: add aarch64 server rpms repo
-  copy: src="{{ files }}/common/rhel-{{ ansible_distribution_major_version }}-aarch64-server-rpms.repo" dest="/etc/yum.repos.d/rhel-{{ ansible_distribution_major_version }}-aarch64-server-rpms.repo"
-  when: (ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS') and inventory_hostname.startswith('aarch64-c') and ansible_distribution_major_version >= 7 and datacenter != "aws"
+  copy: src="{{ files }}/common/rhel-{{ ansible_distribution_major_version|int }}-aarch64-server-rpms.repo" dest="/etc/yum.repos.d/rhel-{{ ansible_distribution_major_version|int }}-aarch64-server-rpms.repo"
+  when: (ansible_distribution == 'RedHat' or ansible_distribution == 'CentOS') and inventory_hostname.startswith('aarch64-c') and ansible_distribution_major_version|int >= 7 and datacenter != "aws"
   tags:
   - config
   - packages
