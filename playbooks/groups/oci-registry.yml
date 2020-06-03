@@ -85,7 +85,7 @@
         candidate_registry_osbs_username: "{{candidate_registry_osbs_stg_username}}",
         candidate_registry_osbs_password: "{{candidate_registry_osbs_stg_password}}",
       when: env == "staging",
-      delegate_to: compose-x86-01.{{ datacenter }}.fedoraproject.org
+      delegate_to: "compose-x86-01.{{ datacenter }}.fedoraproject.org"
     }
     - {
       role: login-registry,
@@ -93,5 +93,5 @@
         candidate_registry_osbs_username: "{{candidate_registry_osbs_prod_username}}",
         candidate_registry_osbs_password: "{{candidate_registry_osbs_prod_password}}",
       when: env == "production",
-      delegate_to: compose-x86-01.{{ datacenter }}.fedoraproject.org
+      delegate_to: "compose-x86-01.{{ datacenter }}.fedoraproject.org"
     }
