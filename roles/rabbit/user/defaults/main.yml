@@ -1,2 +1,2 @@
-rabbitmq_server: "rabbitmq01{{ env_suffix }}.phx2.fedoraproject.org"
+rabbitmq_server: "rabbitmq01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org"
 vhost: /pubsub
