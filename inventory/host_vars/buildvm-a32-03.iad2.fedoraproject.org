@@ -1,5 +1,5 @@
 ---
-vmhost: bvmhost-a64-01.iad2fedoraproject.org
+vmhost: bvmhost-a64-01.iad2.fedoraproject.org
 eth0_ip: 10.3.170.63
 ks_repo: http://10.3.163.35/pub/fedora/linux/releases/32/Server/armhfp/os/
 ks_url: http://10.3.163.35/repo/rhel/ks/buildvm-fedora-32-armv7-iad2
