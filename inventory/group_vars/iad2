@@ -18,3 +18,4 @@ nagios_Check_Services:
   raid: false
 
 certbot_datacenter: iad2
+nagios_server: noc01.iad2.fedoraproject.org
