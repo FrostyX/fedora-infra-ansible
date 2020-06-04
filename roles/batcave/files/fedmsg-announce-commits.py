@@ -135,7 +135,7 @@ for line in lines:
             agent=getlogin(),
         )
 
-    commits = map(_build_commit, revs)
+    commits = [_build_commit(rev) for rev in revs]
 
     print("* Publishing information for %i commits" % len(commits))
     for commit in reversed(commits):
