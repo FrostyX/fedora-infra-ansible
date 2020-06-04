@@ -644,7 +644,7 @@ host centos-mgmt01 {
 }
 
 host bvmhost-p09-01 {
-     hardware ethernet ac:1f:6b:56:e9:11;
+     hardware ethernet ac:1f:6b:59:70:ff;
      fixed-address 10.3.171.15;
      next-server 10.3.163.10;
      option routers 10.3.171.254;
@@ -653,7 +653,7 @@ host bvmhost-p09-01 {
 }
 
 host bvmhost-p09-02 {
-     hardware ethernet ac:1f:6b:59:70:ff;
+     hardware ethernet ac:1f:6b:56:e9:11;
      fixed-address 10.3.171.16;
      next-server 10.3.163.10;
      option routers 10.3.171.254;
