@@ -2,4 +2,6 @@ Host *
    IdentityFile ~/.ssh/id_rsa
    StrictHostKeyChecking  no
    UserKnownHostsFile /dev/null
-   ServerAliveInterval 60
+   ServerAliveInterval 20
+   ServerAliveCountMax 5
+   ConnectTimeout 60
