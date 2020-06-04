@@ -1,2 +1,2 @@
 # ifconfig-push actualIP PtPIP
-ifconfig-push 192.168.1.171 192.168.0.171
+ifconfig-push 192.168.20.171 192.168.0.171

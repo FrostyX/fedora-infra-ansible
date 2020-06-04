@@ -63,6 +63,7 @@
   with_items:
   - srm                       # secure rm to delete sensitive files.
   - ansible                   # This is our ansible master, needs ansible installed.
+  - ansible_utils             # Needed for rbac-playbook
   - yum-rhn-plugin            # Needed for rhn sync
   - createrepo_c              # Needed for rhn sync
   - ostree                    # Needed for rhn sync
