@@ -8,21 +8,26 @@ import sys
 from collections import defaultdict
 
 import pygit2
-import six
 
-import fedmsg
-import fedmsg.config
+import fedora_messaging.config
+import fedora_messaging.api
+import fedora_messaging.exceptions
+
+fedora_messaging.config.conf.load_config(
+    '/etc/fedora-messaging/git-hooks-messaging.toml')
+
+
+# Use $GIT_DIR to determine where this repo is.
+abspath = os.path.abspath(os.environ['GIT_DIR'])
+
+# This assumes git root dir is named "repo_name.git"
+repo_name = os.path.splitext(os.path.basename(abspath))[0]
 
 username = getpass.getuser()
 
-repo = pygit2.Repository(os.getcwd())
-repo_name = '.'.join(os.getcwd().split(os.path.sep)[-1].split('.')[:-1])
+repo = pygit2.Repository(abspath)
 
-print("Emitting a message to the fedmsg bus.")
-config = fedmsg.config.load_config([], None)
-config['active'] = True
-config['endpoints']['relay_inbound'] = config['relay_inbound']
-fedmsg.init(name='relay_inbound', cert_prefix='scm', **config)
+print("Emitting a message to the fedora-messaging message bus.")
 
 
 def revs_between(head, base):
@@ -30,7 +35,7 @@ def revs_between(head, base):
 
     # pygit2 can't do a rev-list yet, so we have to shell out.. silly.
     cmd = '/usr/bin/git rev-list %s...%s' % (head.id, base.id)
-    proc = sp.Popen(cmd.split(), stdout=sp.PIPE, stderr=sp.PIPE)
+    proc = sp.Popen(cmd.split(), stdout=sp.PIPE, stderr=sp.PIPE, cwd=abspath)
     stdout, stderr = proc.communicate()
     if proc.returncode != 0:
         raise IOError('git rev-list failed: %r, err: %r' % (stdout, stderr))
@@ -49,21 +54,20 @@ def build_stats(commit):
 
     for diff in diffs:
         for patch in diff:
-           if hasattr(patch, 'new_file_path'):
-               path = patch.new_file_path
-           else:
-               path = patch.delta.new_file.path
+            if hasattr(patch, 'new_file_path'):
+                path = patch.new_file_path
+            else:
+                path = patch.delta.new_file.path
 
-           if hasattr(patch, 'additions'):
-               files[path]['additions'] += patch.additions
-               files[path]['deletions'] += patch.deletions
-               files[path]['lines'] += patch.additions + patch.deletions
-           else:
-               files[path]['additions'] += patch.line_stats[1]
-               files[path]['deletions'] += patch.line_stats[2]
-               files[path]['lines'] += patch.line_stats[1] \
-                                       + patch.line_stats[2]
-
+            if hasattr(patch, 'additions'):
+                files[path]['additions'] += patch.additions
+                files[path]['deletions'] += patch.deletions
+                files[path]['lines'] += patch.additions + patch.deletions
+            else:
+                files[path]['additions'] += patch.line_stats[1]
+                files[path]['deletions'] += patch.line_stats[2]
+                files[path]['lines'] += patch.line_stats[1] \
+                                        + patch.line_stats[2]
 
     total = defaultdict(int)
     for name, stats in files.items():
@@ -76,6 +80,14 @@ def build_stats(commit):
 
 
 seen = []
+
+
+def getlogin():
+    try:
+        return os.getlogin()
+    except Exception:
+        return os.environ['USER']
+
 
 # Read in all the rev information git-receive-pack hands us.
 lines = [line.split() for line in sys.stdin.readlines()]
@@ -97,7 +109,7 @@ for line in lines:
         revs = [head.id]
 
     def _build_commit(rev):
-        commit = repo.revparse_single(six.text_type(rev))
+        commit = repo.revparse_single(str(rev))
 
         # Tags are a little funny, and vary between versions of pygit2, so we'll
         # just ignore them as far as fedmsg is concerned.
@@ -116,11 +128,11 @@ for line in lines:
                 files=files,
                 total=total,
             ),
-            rev=six.text_type(rev),
-            path=os.getcwd(),
+            rev=str(rev),
+            path=abspath,
             repo=repo_name,
             branch=branch,
-            agent=os.getlogin(),
+            agent=getlogin(),
         )
 
     commits = map(_build_commit, revs)
@@ -141,8 +153,19 @@ for line in lines:
             commit['seen'] = False
             seen.append(commit['rev'])
 
-        fedmsg.publish(
-            topic="receive",
-            msg=dict(commit=commit),
-            modname="infragit",
-        )
+        try:
+            msg = fedora_messaging.api.Message(
+                topic="git.receive",
+                body=dict(commit=commit)
+            )
+            fedora_messaging.api.publish(msg)
+        except fedora_messaging.exceptions.PublishReturned as exp:
+            print(
+                f"Fedora Messaging broker rejected message {msg.id}: {exp}"
+            )
+        except fedora_messaging.exceptions.ConnectionException as exp:
+            print(f"Error sending message {msg.id}: {exp}")
+        except Exception as exp:
+            print("Error sending fedora-messaging message")
+            print(exp)
+
