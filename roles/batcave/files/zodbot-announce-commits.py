@@ -10,7 +10,7 @@ import subprocess
 import shlex
 import socket
 
-ZODBOT_SERVER = "value01"
+ZODBOT_SERVER = "value01.vpn.fedoraproject.org"
 ZODBOT_PORT = 5050
 ZODBOT_ANNOUNCE = ["ansible", "dns"]
 
