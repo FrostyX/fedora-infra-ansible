@@ -1,4 +1,4 @@
-#!/bin/python
+#!/bin/python3
 from datetime import datetime
 import sys
 
@@ -8,6 +8,7 @@ if len(sys.argv[2]) != 6:
     raise Exception('Environment name must be exactly 6 characters')
 
 with open(sys.argv[1], 'wb') as tkey:
-    tkey.write('%s%s' % (sys.argv[2], datetime.utcnow().strftime('%Y%m%d%H')))
+    value = ''.join([sys.argv[2], datetime.utcnow().strftime('%Y%m%d%H')])
+    tkey.write(value.encode('utf-8'))
     with open('/dev/random', 'rb') as rand:
         tkey.write(rand.read(32))
