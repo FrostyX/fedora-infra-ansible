@@ -14,7 +14,7 @@ import fedora_messaging.api
 import fedora_messaging.exceptions
 
 fedora_messaging.config.conf.load_config(
-    '/etc/fedora-messaging/git-hooks-messaging.toml')
+    '/etc/fedora-messaging/batcave-messaging.toml')
 
 
 # Use $GIT_DIR to determine where this repo is.
