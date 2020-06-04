@@ -32,7 +32,7 @@ odcs_celery_router_config:
         source: "cccc.*"
       releng_pungi_composes:
         source_type: [1, 2, 6, 7]  # "tag", "module", "build", "pungi_compose"
-        owner: ["jkaluza", "mohanboddu", "humaton"]
+        owner: ["mohanboddu", "humaton"]
   cleanup_task: odcs.server.celery_tasks.run_cleanup
   default_queue: pungi_composes
 
