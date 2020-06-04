@@ -1,19 +1,18 @@
-#!/usr/bin/env python
+#!/usr/bin/env python3
 # encoding: utf-8
 # (c) 2012 Red Hat, Inc.
 # Authored by Ricky Elrod
 # But when it breaks, don't yell at him because that's mean.
 # update hook for FI repos -> zodbot.
 
-import os
 import sys
 import subprocess
 import shlex
 import socket
-import urllib
 
 ZODBOT_SERVER = "value01"
 ZODBOT_PORT = 5050
+ZODBOT_ANNOUNCE = ["ansible", "dns"]
 
 hook = sys.argv[0]
 repodir = sys.argv[1]
@@ -24,7 +23,7 @@ branch = sys.argv[5]
 
 # Split on /, nuke empties from the result, use the last nonempty
 # element. This lets us not care if there's a trailing slash.
-repodir = filter(None, repodir.split('/'))[-1]
+repodir = [d for d in repodir.split('/') if d][-1]
 
 
 def run_command(command):
@@ -32,7 +31,8 @@ def run_command(command):
     escaped = shlex.split(command)
     cmd = subprocess.Popen(escaped,
                            stdout=subprocess.PIPE,
-                           stderr=subprocess.PIPE)
+                           stderr=subprocess.PIPE,
+                           universal_newlines=True)
     stdout, stderr = cmd.communicate()
     return {"stdout": stdout, "stderr": stderr}
 
@@ -40,19 +40,14 @@ def run_command(command):
 def construct_url(slug):
     """ Return a space-padded url to the commit.
 
-    If and only if it is handled by cgit.  Otherwise, return an empty string.
+    If and only if it is handled by pagure.  Otherwise, return an empty string.
     """
 
     # Our long url template.
-    tmpl = "https://infrastructure.fedoraproject.org/cgit/{repo}/commit/?id={slug}"
+    tmpl = "https://pagure.io/fedora-infra/{repo}/c/{slug}"
 
-    repo = repodir + ".git"
-
-    with open('/etc/cgit-projects-batcave', 'r') as f:
-        lines = [line.strip() for line in f.readlines()]
-
-    if repo in lines and slug:
-        return " " + tmpl.format(repo=repo, slug=slug)
+    if repodir in ZODBOT_ANNOUNCE and slug:
+        return " " + tmpl.format(repo=repodir, slug=slug)
     else:
         return ""
 
@@ -63,7 +58,7 @@ def parse_commit(commit):
 
     ---
     Ricky Elrod - test-repo:a045150 ---- add some more test files...
-    
+
     A       foobar/asdf/testfile.1
     A       foobar/testfile.2
     ---
@@ -75,7 +70,7 @@ def parse_commit(commit):
     Show the first 4 and if more exist, append '...' to the list.
     Lastly, replace the "----" in the original line above with these.
     """
-    
+
     lines = commit.split("\n")
     message = lines.pop(0)
     files = []
@@ -85,7 +80,7 @@ def parse_commit(commit):
     try:
         slug = message.split(' -')[1].strip().split(':')[1]
     except IndexError:
-        print "** Couldn't parse slug from git-rev.", message
+        print("** Couldn't parse slug from git-rev.", message)
 
     # The remaining lines are files changed.
     for changed_file in filter(None, lines):
@@ -105,34 +100,37 @@ def parse_commit(commit):
     # If no files were changed don't show empty [] because it looks tacky.
     fileslist = ' '.join(files[0:4])
     if len(files):
-      fileslist = '[' + fileslist
+        fileslist = '[' + fileslist
 
-      if len(files) > 4:
-          fileslist += ' ...'
+        if len(files) > 4:
+            fileslist += ' ...'
 
-      fileslist += ']'
+        fileslist += ']'
     else:
-      fileslist = '-'
+        fileslist = '-'
 
     padded_url = construct_url(slug)
 
     # Replace the ---- with the files list...
     return message.replace('----', fileslist, 1) + padded_url
 
+
 # Get a list of commits to report.
 if branch == 'master':
-    revs = run_command("git rev-list ^%s %s" % (old, new))["stdout"].split("\n")
-    revs = filter(None, revs)
+    revs = run_command(f"git rev-list ^{old} {new}")["stdout"].split("\n")
+    revs = [r for r in revs if r]
     revs.reverse()
 
     for commit_hash in revs:
         # Get the commit in a format that we can deal with
         commit = run_command(
-            "git show --name-status " + commit_hash + " --oneline "
-            "--format='%an - " + repodir + ":%h ---- %s'")
+            f"git show --name-status {commit_hash} --oneline "
+            f"--format='%an - {repodir}:%h ---- %s'")
         parsed_commit = parse_commit(commit["stdout"])
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((ZODBOT_SERVER, ZODBOT_PORT))
-        s.sendall(channel+ " " + parsed_commit)
+        s.sendall(channel + " " + parsed_commit)
+        msg = f"{channel} {parsed_commit}"
+        s.sendall(msg.encode('utf-8'))
         s.close()
