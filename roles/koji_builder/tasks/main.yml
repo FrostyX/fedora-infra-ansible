@@ -226,7 +226,6 @@
 
 - name: mock site-defaults.cfg
   template: src=builders/site-defaults.cfg dest=/etc/mock/site-defaults.cfg mode=0644 owner=root group=mock
-  when: not inventory_hostname.startswith('bkernel')
   tags:
   - koji_builder
 
