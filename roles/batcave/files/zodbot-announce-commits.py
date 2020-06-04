@@ -130,7 +130,7 @@ if branch == 'master':
 
         s = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
         s.connect((ZODBOT_SERVER, ZODBOT_PORT))
-        s.sendall(channel + " " + parsed_commit)
+        s.sendall((channel + " " + parsed_commit).encode('utf-8'))
         msg = f"{channel} {parsed_commit}"
         s.sendall(msg.encode('utf-8'))
         s.close()
