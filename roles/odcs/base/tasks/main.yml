@@ -28,6 +28,17 @@
   tags:
   - odcs
 
+- name: Enable the mod_auth_openidc module on rhel8
+  copy:
+    dest: /etc/dnf/modules.d/mod_auth_openidc.module
+    content: |
+      [mod_auth_openidc]
+      name=mod_auth_openidc
+      stream=2.3
+      profiles=
+      state=enabled
+  when: datacenter == "iad2"
+
 # install required packages for frontend here, as we may
 # need to reload httpd in next task when host is frontend
 - name: install the packages required for ODCS frontend
