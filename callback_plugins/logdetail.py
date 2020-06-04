@@ -15,7 +15,7 @@
 # You should have received a copy of the GNU General Public License
 # along with Ansible.  If not, see <http://www.gnu.org/licenses/>.
 
-from __future__ import absolute_import
+
 
 import os
 import time
@@ -42,7 +42,7 @@ LOG_PATH = '/var/log/ansible'
 def getlogin():
     try:
         user = os.getlogin()
-    except OSError, e:
+    except OSError as e:
         user = pwd.getpwuid(os.geteuid())[0]
     return user
 
@@ -56,8 +56,8 @@ class LogMech(object):
         self.logpath = LOG_PATH
         if not os.path.exists(self.logpath):
             try:
-                os.makedirs(self.logpath, mode=0750)
-            except OSError, e:
+                os.makedirs(self.logpath, mode=0o750)
+            except OSError as e:
                 if e.errno != 17:
                     raise
 
@@ -83,7 +83,7 @@ class LogMech(object):
         if not os.path.exists(path):
             try:
                 os.makedirs(path)
-            except OSError, e:
+            except OSError as e:
                 if e.errno != 17: # if it is not dir exists then raise it up
                     raise
 
@@ -266,16 +266,16 @@ class CallbackModule(CallbackBase):
             try:
                 logmech.play_log(json.dumps(info, indent=4))
             except TypeError:
-                print("Failed to conver to JSON:", info)
+                print(("Failed to conver to JSON:", info))
 
 
     def v2_playbook_on_stats(self, stats):
         results = {}
-        for host in stats.processed.keys():
+        for host in list(stats.processed.keys()):
             results[host] = stats.summarize(host)
             logmech.log(host, 'STATS', results[host])
         logmech.play_log(json.dumps({'stats': results}, indent=4))
         logmech.play_log(json.dumps({'playbook_end': time.time()}, indent=4))
-        print('logs written to: %s' % logmech.logpath_play)
+        print(('logs written to: %s' % logmech.logpath_play))
 
 
