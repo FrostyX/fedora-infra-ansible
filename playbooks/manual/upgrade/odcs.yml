@@ -20,6 +20,7 @@
     with_items:
     - odcs
     - pungi
+    - libmodulemd
 
 - name: push packages out to backend
   hosts: odcs_backend:odcs_backend_stg
@@ -43,6 +44,7 @@
     with_items:
     - odcs
     - pungi
+    - libmodulemd
 
 - name: verify the frontend and stop it
   hosts: odcs_frontend:odcs_frontend_stg
