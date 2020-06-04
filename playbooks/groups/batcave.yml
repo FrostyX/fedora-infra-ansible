@@ -34,7 +34,6 @@
     certname: "{{wildcard_cert_name}}"
     SSLCertificateChainFile: "{{wildcard_int_file}}"
   - role: openvpn/client
-    when: datacenter != 'iad2'
   - role: rabbit/user
     username: "mirror_pagure_ansible{{ env_suffix }}"
     when: datacenter != 'iad2'
