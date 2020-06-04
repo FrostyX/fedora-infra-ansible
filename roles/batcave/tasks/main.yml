@@ -405,7 +405,6 @@
   - rbac
   - batcave
   - config
-  when: inventory_hostname.startswith('batcave01.phx2')
 
 #
 # Setup geoip scripts.
