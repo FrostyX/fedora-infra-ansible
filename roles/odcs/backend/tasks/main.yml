@@ -7,14 +7,6 @@
   - packages
   - odcs
   - odcs/backend
-- name: Make sure Python3 fedmsg-hub-3 isn't running.
-  service:
-    name: fedmsg-hub-3
-    state: stopped
-    enabled: false
-  tags:
-  - odcs
-  - odcs/backend
 - name: Make sure httpd isn't running.
   service:
     name: httpd
