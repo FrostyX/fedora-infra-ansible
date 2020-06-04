@@ -3,7 +3,11 @@ DATABASE_URI = 'postgresql+psycopg2://waiverdb@db01.stg.phx2.fedoraproject.org:5
 RESULTSDB_API_URL = 'https://taskotron.stg.fedoraproject.org/resultsdb_api/api/v2.0'
 CORS_URL = 'https://bodhi.stg.fedoraproject.org'
 {% else %}
+{% if datacenter == "iad2" %}
+DATABASE_URI = 'postgresql+psycopg2://waiverdb@db01.iad2.fedoraproject.org:5432/waiverdb'
+{% else %}
 DATABASE_URI = 'postgresql+psycopg2://waiverdb@db01.phx2.fedoraproject.org:5432/waiverdb'
+{% endif %}
 RESULTSDB_API_URL = 'https://taskotron.fedoraproject.org/resultsdb_api/api/v2.0'
 CORS_URL = 'https://bodhi.fedoraproject.org'
 {% endif %}
