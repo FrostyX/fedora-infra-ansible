@@ -2,23 +2,33 @@
 # openshift-ansible project available:
 #   https://github.com/openshift/openshift-ansible/tree/master/inventory/byo
 
+
 [masters]
 {% for host in groups[openshift_cluster_masters_group] %}
+{% if hostvars[host].datacenter == datacenter %}
 {{ host }}
+{% endif %}
 {% endfor %}
 
 [etcd]
 {% for host in groups[openshift_cluster_masters_group] %}
+{% if hostvars[host].datacenter == datacenter %}
 {{ host }}
+{% endif %}
 {% endfor %}
 
 [nodes]
 {% for host in groups[openshift_cluster_masters_group] %}
+{% if hostvars[host].datacenter == datacenter %}
 {{ host }} openshift_node_group_name='node-config-master'
+{% endif %}
 {% endfor %}
 {% for host in groups[openshift_cluster_nodes_group] %}
+{% if hostvars[host].datacenter == datacenter %}
 {{ host }} openshift_node_group_name='node-config-compute'
+{% endif %}
 {% endfor %}
+
 
 
 # Create an OSEv3 group that contains the masters and nodes groups
