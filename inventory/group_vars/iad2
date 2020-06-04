@@ -16,3 +16,5 @@ nagios_Check_Services:
   swap: false
   ping: false
   raid: false
+
+certbot_datacenter: iad2
