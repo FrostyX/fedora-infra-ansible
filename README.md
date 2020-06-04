@@ -4,7 +4,7 @@ Fedora Infrastructure
 Welcome! This is the Fedora Infrastructure Ansible Pagure project.
 
 This repository is also mirrored for production runs to
-https://infrastructure.fedoraproject.org/cgit/ansible.git/
+https://infrastructure.fedoraproject.org/infra/ansible/
 
 If you would like to help out with Fedora Infrastructure, see:
 
