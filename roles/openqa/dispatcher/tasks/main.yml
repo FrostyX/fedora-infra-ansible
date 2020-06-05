@@ -325,7 +325,7 @@
   template: src=fedora_openqa_scheduler.toml.j2 dest=/etc/fedora-messaging/fedora_openqa_scheduler.toml owner=root group=root mode=0640
   notify:
   - restart openqa scheduler consumer
-  when: "openqa_amqp_scheduler_queue is defined and openqa_amqp_scheduler_queue|bool"
+  when: "openqa_amqp_scheduler_queue is defined and openqa_amqp_scheduler_queue"
   tags:
   - config
 
@@ -333,7 +333,7 @@
   template: src=fedora_openqa_wiki_reporter.toml.j2 dest=/etc/fedora-messaging/fedora_openqa_wiki_reporter.toml owner=root group=root mode=0640
   notify:
   - restart openqa wiki consumer
-  when: "openqa_amqp_wiki_reporter_queue is defined and openqa_amqp_wiki_reporter_queue|bool"
+  when: "openqa_amqp_wiki_reporter_queue is defined and openqa_amqp_wiki_reporter_queue"
   tags:
   - config
 
@@ -341,21 +341,21 @@
   template: src=fedora_openqa_resultsdb_reporter.toml.j2 dest=/etc/fedora-messaging/fedora_openqa_resultsdb_reporter.toml owner=root group=root mode=0640
   notify:
   - restart openqa resultsdb consumer
-  when: "openqa_amqp_resultsdb_reporter_queue is defined and openqa_amqp_resultsdb_reporter_queue|bool"
+  when: "openqa_amqp_resultsdb_reporter_queue is defined and openqa_amqp_resultsdb_reporter_queue"
   tags:
   - config
 
 - name: Enable and start fedora-messaging scheduler service
   service: name=fm-consumer@fedora_openqa_scheduler enabled=yes state=started
-  when: "openqa_amqp_scheduler_queue is defined and openqa_amqp_scheduler_queue|bool"
+  when: "openqa_amqp_scheduler_queue is defined and openqa_amqp_scheduler_queue"
 
 - name: Enable and start fedora-messaging wiki reporter service
   service: name=fm-consumer@fedora_openqa_wiki_reporter enabled=yes state=started
-  when: "openqa_amqp_wiki_reporter_queue is defined and openqa_amqp_wiki_reporter_queue|bool"
+  when: "openqa_amqp_wiki_reporter_queue is defined and openqa_amqp_wiki_reporter_queue"
 
 - name: Enable and start fedora-messaging ResultsDB reporter service
   service: name=fm-consumer@fedora_openqa_resultsdb_reporter enabled=yes state=started
-  when: "openqa_amqp_resultsdb_reporter_queue is defined and openqa_amqp_resultsdb_reporter_queue|bool"
+  when: "openqa_amqp_resultsdb_reporter_queue is defined and openqa_amqp_resultsdb_reporter_queue"
 
 - name: Create directory for consumer service config drop-in
   file: path=/etc/systemd/system/fm-consumer@.service.d state=directory owner=root group=root mode=0755
