@@ -111,6 +111,22 @@
     },
     {
         "match": {
+            "subvariant": "Silverblue",
+            "type": "dvd-ostree",
+            "format": "iso",
+            "arch": "ppc64le"
+        }
+    },
+    {
+        "match": {
+            "subvariant": "IoT",
+            "type": "dvd-ostree",
+            "format": "iso",
+            "arch": "ppc64le"
+        }
+    },
+    {
+        "match": {
             "subvariant": "Server",
             "type": "boot",
             "format": "iso",
@@ -137,18 +153,10 @@
     },
     {
         "match": {
-            "subvariant": "Silverblue",
-            "type": "dvd-ostree",
-            "format": "iso",
-            "arch": "ppc64le"
-        }
-    },
-    {
-        "match": {
             "subvariant": "IoT",
             "type": "dvd-ostree",
             "format": "iso",
-            "arch": "ppc64le"
+            "arch": "aarch64"
         }
     }
 ]
