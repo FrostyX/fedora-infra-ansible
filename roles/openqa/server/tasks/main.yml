@@ -303,7 +303,7 @@
   register: templatesfif
 
 - name: Dump existing config for checking changes
-  shell: "/usr/share/openqa/script/dump_templates --json > /tmp/tmpl-old.json"
+  shell: "/usr/share/openqa/script/dump_templates --json > /tmp/tmpl-old.json || :"
   when: "(gittests is defined) and (gittests is changed)"
   changed_when: "1 != 1"
 
