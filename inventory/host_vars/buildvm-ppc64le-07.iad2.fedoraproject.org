@@ -1,0 +1,7 @@
+---
+vmhost: buildvm-p09-01.iad2.fedoraproject.org
+eth0_ip: 10.3.171.47
+main_bridge: br0
+mem_size: 12288
+max_mem_size: 12288
+num_cpus: 6
