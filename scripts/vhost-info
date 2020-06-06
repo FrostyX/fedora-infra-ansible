@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 # by skvidal
 # ported by doteast to ansible 2.0
 # gplv2+
@@ -41,7 +41,7 @@ class OutputCallback(CallbackBase):
         if result._result['invocation']['module_args']['command'] == 'info':
             mem_used = 0
             cpu_used = 0
-            for vm in result._result.keys():
+            for vm in list(result._result.keys()):
                 if vm not in ['invocation', 'changed', '_ansible_no_log']:
                     if vm and type(result._result[vm]) == dict:
                         mem_used += int(result._result[vm]['memory'])/1024
@@ -100,5 +100,5 @@ for vhostname in sorted(cb.mem_per_host):
     insecure = ''
     if vhostname in unpatched_spectre:
         insecure = ' (NOT PATCHED FOR SPECTRE)'
-    print '%s:\t%s/%s mem(unused/total)\t%s/%s cpus(unused/total) %s' % (
-        vhostname, freemem, cb.mem_per_host[vhostname], freecpu, cb.cpu_per_host[vhostname], insecure)
+    print('%s:\t%s/%s mem(unused/total)\t%s/%s cpus(unused/total) %s' % (
+        vhostname, freemem, cb.mem_per_host[vhostname], freecpu, cb.cpu_per_host[vhostname], insecure))
