@@ -40,7 +40,13 @@ def revs_between(head, base):
 
     # pygit2 can't do a rev-list yet, so we have to shell out.. silly.
     cmd = '/usr/bin/git rev-list %s...%s' % (head.id, base.id)
-    proc = sp.Popen(cmd.split(), stdout=sp.PIPE, stderr=sp.PIPE, cwd=abspath)
+    proc = sp.Popen(
+        cmd.split(),
+        stdout=sp.PIPE,
+        stderr=sp.PIPE,
+        cwd=abspath,
+        universal_newlines=True,
+    )
     stdout, stderr = proc.communicate()
     if proc.returncode != 0:
         raise IOError('git rev-list failed: %r, err: %r' % (stdout, stderr))
@@ -114,7 +120,7 @@ for line in lines:
         revs = [head.id]
 
     def _build_commit(rev):
-        commit = repo.revparse_single(unicode(rev))
+        commit = repo.revparse_single(rev)
 
         # Tags are a little funny, and vary between versions of pygit2, so we'll
         # just ignore them as far as fedmsg is concerned.
@@ -133,7 +139,7 @@ for line in lines:
                 files=files,
                 total=total,
             ),
-            rev=unicode(rev),
+            rev=rev,
             path=abspath,
             repo=repo_name,
             namespace=namespace,
@@ -141,7 +147,7 @@ for line in lines:
             agent=getlogin(),
         )
 
-    commits = map(_build_commit, revs)
+    commits = [_build_commit(rev) for rev in revs]
 
     print("* Publishing information for %i commits" % len(commits))
     for commit in reversed(commits):
