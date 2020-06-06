@@ -16,7 +16,7 @@ udp_ports: [ 514, 25826 ]
 nrpe_procs_warn: 900
 nrpe_procs_crit: 1000
 
-lvm_size: 32768
+lvm_size: 1048576
 mem_size: 16384
 num_cpus: 16
 
