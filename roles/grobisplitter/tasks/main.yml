@@ -28,4 +28,3 @@
   copy: src={{item}} dest=/etc/cron.d/ mode=0644
   with_items:
     - rhel8-split.cron
-  when: datacenter != 'iad2'
