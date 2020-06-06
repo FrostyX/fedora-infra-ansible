@@ -1,7 +1,7 @@
 ---
 # common items for the buildvm-* koji builders
 volgroup: /dev/vg_guests
-lvm_size: 145000
+lvm_size: 600000
 mem_size: 12288
 max_mem_size: 12288
 num_cpus: 6
@@ -19,7 +19,6 @@ datacenter: iad2
 # The ppc virthosts have different bridge names for the main and nfs bridges.
 #
 main_bridge: br0
-nfs_bridge: br1
 
 virt_install_command: "{{ virt_install_command_one_nic_unsafe }}"
 
