@@ -100,5 +100,5 @@ for vhostname in sorted(cb.mem_per_host):
     insecure = ''
     if vhostname in unpatched_spectre:
         insecure = ' (NOT PATCHED FOR SPECTRE)'
-    print('%s:\t%s/%s mem(unused/total)\t%s/%s cpus(unused/total) %s' % (
-        vhostname, freemem, cb.mem_per_host[vhostname], freecpu, cb.cpu_per_host[vhostname], insecure))
+    print(('%s:\t%s/%s mem(unused/total)\t%s/%s cpus(unused/total) %s' % (
+        vhostname, freemem, cb.mem_per_host[vhostname], freecpu, cb.cpu_per_host[vhostname], insecure)))
