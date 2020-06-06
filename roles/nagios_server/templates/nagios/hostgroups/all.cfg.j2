@@ -2,7 +2,7 @@
 # All Servers and associated devices
 ###############
 ## {{ env }}
-{% for key, value in groups.iteritems()|sort %}
+{% for key, value in groups.items()|sort %}
 {% if groups[key] != [] and key not in vars['exclude_hostgroups'] %}
 define hostgroup{
        hostgroup_name {{ key }}
