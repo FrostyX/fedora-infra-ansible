@@ -313,6 +313,8 @@ buildvm-ppc64le-28.ppc.fedoraproject.org
 buildvm-ppc64le-29.ppc.fedoraproject.org
 buildvm-ppc64le-30.ppc.fedoraproject.org
 buildvm-ppc64le-31.ppc.fedoraproject.org
+
+[buildvm_ppc64le_iad2]
 buildvm-ppc64le-01.iad2.fedoraproject.org
 buildvm-ppc64le-02.iad2.fedoraproject.org
 buildvm-ppc64le-03.iad2.fedoraproject.org
@@ -391,6 +393,7 @@ buildvm
 buildvm_aarch64
 buildvm_armv7
 buildvm_ppc64le
+buildvm_ppc64le_iad2
 buildvm_s390x
 bkernel
 
