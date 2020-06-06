@@ -7,4 +7,4 @@ max_mem_size: 12288
 num_cpus: 6
 ks_repo: http://10.3.163.35/pub/fedora/linux/releases/32/Server/ppc64le/os/
 ks_url: http://10.3.163.35/repo/rhel/ks/buildvm-fedora-32-ppc64le-iad2
-virt_install_command: "{{ virt_install_command_armv7_one_nic_unsafe }}"
+virt_install_command: "{{ virt_install_command_ppc64le_one_nic_unsafe }}"
