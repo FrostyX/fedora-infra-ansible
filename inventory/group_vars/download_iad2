@@ -1,0 +1,14 @@
+---
+datacenter: iad2
+tcp_ports: [80, 443, 873]
+rsyncd_conf: "rsyncd.conf.download-{{ datacenter }}"
+nrpe_procs_warn: 900
+nrpe_procs_crit: 1000
+dns: 10.3.163.33
+
+host_group: download-iad2
+
+# nfs mount options, overrides the all/default
+nfs_mount_opts: "ro,hard,bg,intr,noatime,nodev,nosuid,actimeo=600,nfsvers=3"
+
+blocked_ips: [  ]

@@ -65,11 +65,11 @@ syncHttpLogs value01.phx2.fedoraproject.org
 syncHttpLogs secondary01
 syncHttpLogs people02.vpn.fedoraproject.org
 syncHttpLogs noc01.phx2.fedoraproject.org
-syncHttpLogs download01.phx2.fedoraproject.org
-syncHttpLogs download02.phx2.fedoraproject.org
-syncHttpLogs download03.phx2.fedoraproject.org
-syncHttpLogs download04.phx2.fedoraproject.org
-syncHttpLogs download05.phx2.fedoraproject.org
+syncHttpLogs dl01.iad2.fedoraproject.org
+syncHttpLogs dl02.iad2.fedoraproject.org
+syncHttpLogs dl03.iad2.fedoraproject.org
+syncHttpLogs dl04.iad2.fedoraproject.org
+syncHttpLogs dl05.iad2.fedoraproject.org
 syncHttpLogs download-rdu01.vpn.fedoraproject.org
 syncHttpLogs download-ib01.vpn.fedoraproject.org
 syncHttpLogs download-cc-rdu01.vpn.fedoraproject.org

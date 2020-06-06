@@ -269,13 +269,6 @@ os-node02.stg.phx2.fedoraproject.org
 os-node03.stg.phx2.fedoraproject.org
 os-node04.stg.phx2.fedoraproject.org
 
-[download_phx2]
-download01.phx2.fedoraproject.org
-download02.phx2.fedoraproject.org
-download03.phx2.fedoraproject.org
-download04.phx2.fedoraproject.org
-download05.phx2.fedoraproject.org
-
 [download_iad2]
 dl01.iad2.fedoraproject.org
 dl02.iad2.fedoraproject.org
@@ -293,11 +286,10 @@ download-rdu01.fedoraproject.org
 download-cc-rdu01.fedoraproject.org
 
 [download_tier1]
-download04.phx2.fedoraproject.org
-download05.phx2.fedoraproject.org
+dl04.iad2.fedoraproject.org
+d05.iad2.fedoraproject.org
 
 [download:children]
-download_phx2
 download_ibiblio
 download_rdu2
 download_cc_rdu
@@ -786,7 +778,7 @@ bastion01.phx2.fedoraproject.org
 bastion02.phx2.fedoraproject.org
 certgetter01.phx2.fedoraproject.org
 certgetter01.iad2.fedoraproject.org
-download01.phx2.fedoraproject.org
+# download01.phx2.fedoraproject.org
 log01.phx2.fedoraproject.org
 kojipkgs01.phx2.fedoraproject.org
 kojipkgs02.phx2.fedoraproject.org
