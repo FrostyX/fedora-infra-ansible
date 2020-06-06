@@ -25,7 +25,7 @@ virt_install_command: "{{ virt_install_command_one_nic_unsafe }}"
 
 # for systems that do not match the above - specify the same parameter in
 # the host_vars/$hostname file
-host_group: kojibuilder
+host_group: kojibuilder_iad2
 fas_client_groups: sysadmin-releng
 sudoers: "{{ private }}/files/sudo/00releng-sudoers"
 
