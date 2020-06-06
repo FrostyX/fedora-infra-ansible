@@ -188,19 +188,19 @@ hash_behaviour = merge
 
 # set plugin path directories here, separate with colons
 #action_plugins     = /usr/share/ansible/plugins/action
-action_plugins     = /srv/web/infra/ansible/action_plugins:/usr/lib/python2.7/site-packages/ansible/plugins/action
-cache_plugins      = /srv/web/infra/ansible/cache_plugins:/usr/lib/python2.7/site-packages/ansible/plugins/cache
+action_plugins     = /srv/web/infra/ansible/action_plugins:/usr/lib/python3.6/site-packages/ansible/plugins/action
+cache_plugins      = /srv/web/infra/ansible/cache_plugins:/usr/lib/python3.6/site-packages/ansible/plugins/cache
 #callback_plugins   = /usr/share/ansible/plugins/callback
-callback_plugins   = /srv/web/infra/ansible/callback_plugins:/usr/lib/python2.7/site-packages/ansible/plugins/callback
+callback_plugins   = /srv/web/infra/ansible/callback_plugins:/usr/lib/python3.6/site-packages/ansible/plugins/callback
 #connection_plugins = /usr/share/ansible/plugins/connection
-connection_plugins = /srv/web/infra/ansible/connection_plugins:/usr/lib/python2.7/site-packages/ansible/plugins/connection
+connection_plugins = /srv/web/infra/ansible/connection_plugins:/usr/lib/python3.6/site-packages/ansible/plugins/connection
 #lookup_plugins     = /usr/share/ansible/plugins/lookup
-lookup_plugins     = /srv/web/infra/ansible/lookup_plugins:/usr/lib/python2.7/site-packages/ansible/plugins/lookup
+lookup_plugins     = /srv/web/infra/ansible/lookup_plugins:/usr/lib/python3.6/site-packages/ansible/plugins/lookup
 #inventory_plugins  = /usr/share/ansible/plugins/inventory
 #vars_plugins       = /usr/share/ansible/plugins/vars
-vars_plugins       = /srv/web/infra/ansible/vars_plugins:/usr/lib/python2.7/site-packages/ansible/plugins/vars
+vars_plugins       = /srv/web/infra/ansible/vars_plugins:/usr/lib/python3.6/site-packages/ansible/plugins/vars
 #filter_plugins     = /usr/share/ansible/plugins/filter
-filter_plugins     = /srv/web/infra/ansible/filter_plugins:/usr/lib/python2.7/site-packages/ansible/plugins/filter
+filter_plugins     = /srv/web/infra/ansible/filter_plugins:/usr/lib/python3.6/site-packages/ansible/plugins/filter
 #test_plugins       = /usr/share/ansible/plugins/test
 #terminal_plugins   = /usr/share/ansible/plugins/terminal
 #strategy_plugins   = /usr/share/ansible/plugins/strategy
@@ -223,7 +223,7 @@ filter_plugins     = /srv/web/infra/ansible/filter_plugins:/usr/lib/python2.7/si
 # a random stencil will be selected for each task. The selection will be filtered
 # against the `cow_whitelist` option below.
 #cow_selection = default
-#cow_selection = random
+cow_selection = random
 
 # when using the 'random' option for cowsay, stencils will be restricted to this list.
 # it should be formatted as a comma-separated list with no spaces between names.
