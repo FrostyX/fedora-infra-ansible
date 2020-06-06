@@ -407,7 +407,7 @@
   - nagios_config
   notify: restart nagios
 
-- name: Build out nagios hostgroup templates
+- name: Build out nagios hostgroup templates (phx2)
   template: src=nagios/hostgroups/{{item}}.j2 dest=/etc/nagios/hostgroups/{{item}} mode=0644 owner=root group=root
   with_items:
     - all.cfg
@@ -422,7 +422,7 @@
   - nagios_hostgroups
   notify: restart nagios
 
-- name: Build out nagios hostgroup templates
+- name: Build out nagios hostgroup templates (external)
   template: src=nagios/hostgroups/{{item}}.j2 dest=/etc/nagios/hostgroups/{{item}} mode=0644 owner=root group=root
   with_items:
     - all-external.cfg
