@@ -398,6 +398,20 @@ subnet 10.3.176.0 netmask 255.255.255.0 {
 
 }
 
+host bvmhost-a64-04-mgmt {
+     hardware ethernet E8:6A:64:39:19:4F ;
+     fixed-address 10.3.160.104;
+     option routers 10.3.160.254;
+     option subnet-mask 255.255.255.0;
+}
+
+hostbuildhw-aarch64-09-mgmt {
+     hardware ethernet aa:31:8d:3e:31:6f;
+     fixed-address 10.3.160.241;
+     option routers 10.3.160.254;
+     option subnet-mask 255.0.0.0;
+}
+
 host vmhost-x86-01 {
      hardware ethernet E4:43:4B:B1:70:88;
      fixed-address 10.3.163.11;
@@ -594,14 +608,6 @@ host bvmhost-a64-04 {
      option routers 10.3.170.254;
      option subnet-mask 255.255.255.0;
 }
-
-host bvmhost-a64-04-mgmt {
-     hardware ethernet E8:6A:64:39:19:4F ;
-     fixed-address 10.3.160.104;
-     option routers 10.3.160.254;
-     option subnet-mask 255.255.255.0;
-}
-
 
 host qvmhost-x86-01 {
      hardware ethernet E4:43:4B:A8:C1:FE;
