@@ -69,8 +69,8 @@
 -A OUTPUT -p tcp -m tcp -d 10.5.126.22 --dport 53 -j ACCEPT
 {% if host in groups['buildvm_s390x'] %}
 -A OUTPUT -p udp -m udp -d 10.3.163.33 --dport 53 -j ACCEPT
--A OUTPUT -p udp -m tcp -d 10.3.163.33 --dport 53 -j ACCEPT
--A OUTPUT -p tcp -m udp -d 10.3.163.34 --dport 53 -j ACCEPT
+-A OUTPUT -p tcp -m tcp -d 10.3.163.33 --dport 53 -j ACCEPT
+-A OUTPUT -p udp -m udp -d 10.3.163.34 --dport 53 -j ACCEPT
 -A OUTPUT -p tcp -m tcp -d 10.3.163.34 --dport 53 -j ACCEPT
 {% endif %}
 
