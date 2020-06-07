@@ -101,6 +101,7 @@
 -A INPUT -p tcp -m tcp -s 10.3.0.0/16 --dport 22 -j ACCEPT 
 # Allow SSHFS binding to koji01
 -A OUTPUT -p tcp -m tcp -d 10.5.125.61 --dport 22  -j ACCEPT
+-A OUTPUT -p tcp -m tcp -d 10.3.169.104 --dport 22  -j ACCEPT
 {% endif %}
 
 # git to pkgs
