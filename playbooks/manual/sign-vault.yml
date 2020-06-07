@@ -35,7 +35,8 @@
   roles:
   - base
   - rkhunter
-  - serial-console
+  - { role: clevis, when: datacenter == 'iad2'}
+  - { role: serial-console, when: datacenter == 'iad2'}
   - sigul/server
 
   pre_tasks:
