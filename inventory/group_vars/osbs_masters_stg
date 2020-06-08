@@ -96,7 +96,7 @@ _osbs_reactor_config_map:
         default_signing_intent: "unsigned"
 
     flatpak:
-        base_image: "registry.fedoraproject.org/fedora:latest"
+        base_image: "registry.fedoraproject.org/flatpak-build-base:latest"
         metadata: both
 
     image_labels:
