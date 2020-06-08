@@ -389,6 +389,7 @@ memcached02.phx2.fedoraproject.org
 
 [mirrorlist_proxies]
 proxy01.phx2.fedoraproject.org
+proxy01.iad2.fedoraproject.org
 proxy02.fedoraproject.org
 proxy03.fedoraproject.org
 proxy04.fedoraproject.org
@@ -398,6 +399,7 @@ proxy06.fedoraproject.org
 #proxy08.fedoraproject.org
 proxy09.fedoraproject.org
 proxy10.phx2.fedoraproject.org
+proxy10.iad2.fedoraproject.org
 proxy11.fedoraproject.org
 proxy12.fedoraproject.org
 proxy13.fedoraproject.org
@@ -405,7 +407,9 @@ proxy14.fedoraproject.org
 proxy30.fedoraproject.org
 proxy31.fedoraproject.org
 proxy101.phx2.fedoraproject.org
+proxy101.iad2.fedoraproject.org
 proxy110.phx2.fedoraproject.org
+proxy110.iad2.fedoraproject.org
 
 [mm_frontend]
 mm-frontend01.phx2.fedoraproject.org
