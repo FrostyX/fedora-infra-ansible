@@ -23,13 +23,13 @@ data:
      forwardable = true
     [realms]
      {{ ipa_realm }} = {
-      kdc = ipa01{{ env_suffix }}.phx2.fedoraproject.org
+      kdc = ipa01{{ env_suffix }}.iad2.fedoraproject.org
      }
     [domain_realm]
      .fedoraproject.org = FEDORAPROJECT.ORG
      fedoraproject.org = FEDORAPROJECT.ORG
     {% if env == "staging" %}
-     .stg.phx2.fedoraproject.org = STG.FEDORAPROJECT.ORG
+     .stg.iad2.fedoraproject.org = STG.FEDORAPROJECT.ORG
     {% endif %}
      .stg.fedoraproject.org = STG.FEDORAPROJECT.ORG
      stg.fedoraproject.org = STG.FEDORAPROJECT.ORG

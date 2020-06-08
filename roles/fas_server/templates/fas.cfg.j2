@@ -67,7 +67,7 @@ tgcaptcha2.jpeg_generator = 'vanasco_dowty'
 ipa_sync_enabled = True
 ipa_sync_keytab = '/etc/fas_sync_keytab/fas_sync_keytab'
 ipa_sync_principal = 'fas_sync@{{ ipa_realm }}'
-ipa_sync_server = 'ipa01{{env_suffix}}.phx2.fedoraproject.org'
+ipa_sync_server = 'ipa01{{env_suffix}}.iad2.fedoraproject.org'
 ipa_sync_certfile = '/etc/fas/fas_sync_cert.pem'
 
 ###
@@ -135,17 +135,17 @@ auto_approve_groups = 'packager:fedorabugs|qa:fedorabugs|security-team:fedorabug
 # Anti-spam approval check script, which injects in both registration and CLA steps
 # In Fedora, this is provided by the Basset service
 {% if env == "staging" %}
-antispam.api.url = 'http://basset01.stg.phx2.fedoraproject.org/basset'
+antispam.api.url = 'http://basset01.stg.iad2.fedoraproject.org/basset'
 antispam.api.username = '{{ basset_stg_frontend_user }}'
 antispam.api.password = '{{ basset_stg_frontend_pass }}'
 antispam.registration.autoaccept = False
 antispam.cla.autoaccept = False
 {% else %}
-antispam.api.url = 'http://basset01.phx2.fedoraproject.org/basset'
-antispam.api.username = '{{ basset_prod_frontend_user }}'
-antispam.api.password = '{{ basset_prod_frontend_pass }}'
-antispam.registration.autoaccept = False
-antispam.cla.autoaccept = False
+#antispam.api.url = 'http://basset01.iad2.fedoraproject.org/basset'
+#antispam.api.username = '{{ basset_prod_frontend_user }}'
+#antispam.api.password = '{{ basset_prod_frontend_pass }}'
+#antispam.registration.autoaccept = False
+#antispam.cla.autoaccept = False
 {% endif %}
 
 # Some server parameters that you may want to tweak
