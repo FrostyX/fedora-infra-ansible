@@ -132,7 +132,7 @@ iad2_external:
 # to add that group to this list. Other items on this list are ones
 # where it is an enormous group not needed.
 # Exclude these ansible host groups in hostgroups/all.cfg
-exclude_hostgroups:
+exclude_phx2_hostgroups:
   - nixnagios
   - dbgserver_stg
   - virt_guest
@@ -143,4 +143,17 @@ exclude_hostgroups:
   - download_tier1
   - datacenter_iad2
   - buildvm_ppc64le_iad2
+  - sign_vault
+  - bugzilla2fedmsg
+  - github2fedmsg
+  - moksha_hubs
+  - rabbitmq
+
+exclude_iad2_hostgroups:
+  - nixnagios
+  - dbgserver_stg
+  - virt_guest
+  - virt_host
+  - iad2
+  - openqa_iad
   - sign_vault
