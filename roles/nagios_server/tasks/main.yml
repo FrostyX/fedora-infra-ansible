@@ -189,12 +189,35 @@
     - nrpe.cfg
     - osbs.cfg
     - pgsql.cfg
-    - rabbitmq.cfg
   tags:
   - nagios_config
   - nagios_server
   - nagios_hostgroups
   when: env == "production" and nagios_location == 'phx2_internal'
+  notify: restart nagios
+
+- name: Copy /etc/nagios/services (PHX2 specific files)
+  copy: src=nagios/services/phx2_internal/{{ item }} dest=/etc/nagios/services/{{ item }}
+  with_items:
+    - basset.cfg
+    - certgetter.cfg
+    - db_backups.cfg
+    - disk.cfg
+    - fedmsg.cfg
+    - file_age.cfg
+    - fmn.cfg
+    - koji.cfg
+    - locking.cfg
+    - mailman.cfg
+    - nrpe.cfg
+    - osbs.cfg
+    - pgsql.cfg
+    - rabbitmq.cfg
+  tags:
+  - nagios_config
+  - nagios_server
+  - nagios_hostgroups
+  when: env == "production" and nagios_location == 'iad2_internal'
   notify: restart nagios
 
 - name: Copy /etc/nagios/services (internal files)
