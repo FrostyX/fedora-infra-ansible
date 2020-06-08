@@ -61,7 +61,10 @@ else:
  hosts = ';'.join(opts.host)
 
 # since the API is constructed for CLI it expects certain options to always be set in the context object
-context.CLIARGS = ImmutableDict(connection='ssh', module_path=['/usr/lib/python3.6/site-packages/ansible/modules/'], forks=25, become=None, become_method=None, become_user=None, check=False, diff=False)
+context.CLIARGS = ImmutableDict(connection='ssh',
+        module_path=['/usr/lib/python3.6/site-packages/ansible/modules/'],
+        forks=25, become=None, become_method=None, become_user=None,
+        check=False, diff=False, verbosity=0)
 
 # create inventory and pass to var manager
 loader = DataLoader()
