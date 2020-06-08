@@ -6,7 +6,7 @@ config = {
     'active': True,
     'cert_prefix': 'fedmsg-migration-tools',
     'certnames': {'fedmsg-migration-tools.{}'.format(socket.gethostname()): 'fedmsg-migration-tools'},
-    'relay_inbound': 'tcp://busgateway01{{ env_suffix }}.phx2.fedoraproject.org:9941',
+    'relay_inbound': 'tcp://busgateway01{{ env_suffix }}.iad2.fedoraproject.org:9941',
 {% if env == 'staging' %}
 # stg should listen to the stg bus
     'endpoints': {
