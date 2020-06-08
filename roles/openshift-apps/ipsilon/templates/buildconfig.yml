@@ -9,9 +9,9 @@ spec:
   source:
     dockerfile: |-
       FROM fedora:31
-      RUN curl -o /etc/yum.repos.d/infra-tags.repo https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/files/common/fedora-infra-tags.repo
+      RUN curl -o /etc/yum.repos.d/infra-tags.repo https://infrastructure.fedoraproject.org/infra/ansible/files/common/fedora-infra-tags.repo
 {% if env == "staging" %}
-      RUN curl -o /etc/yum.repos.d/infra-tags-stg.repo https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/files/common/fedora-infra-tags-stg.repo
+      RUN curl -o /etc/yum.repos.d/infra-tags-stg.repo https://infrastructure.fedoraproject.org/infra/ansible/files/common/fedora-infra-tags-stg.repo
       RUN curl -o /etc/yum.repos.d/fedora-updates-testing.repo https://src.fedoraproject.org/rpms/fedora-repos/raw/master/f/fedora-updates-testing.repo
 {% endif %}
       RUN dnf install -y \
@@ -35,12 +35,12 @@ spec:
           python3-mod_wsgi
 
       # Fedora specific stuff - Terrible hacky way to install, but works for testing purposes
-      RUN curl https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/roles/ipsilon/files/api.py -o /usr/lib/python3.7/site-packages/ipsilon/providers/openid/extensions/api.py && \
+      RUN curl https://infrastructure.fedoraproject.org/infra/ansible/roles/ipsilon/files/api.py -o /usr/lib/python3.7/site-packages/ipsilon/providers/openid/extensions/api.py && \
 {% for scope_file in oidc_scope_filenames %}
-          curl https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/roles/ipsilon/files/oidc_scopes/{{ scope_file }}.py -o /usr/lib/python3.7/site-packages/ipsilon/providers/openidc/plugins/{{scope_file}}.py && \
+          curl https://infrastructure.fedoraproject.org/infra/ansible/roles/ipsilon/files/oidc_scopes/{{ scope_file }}.py -o /usr/lib/python3.7/site-packages/ipsilon/providers/openidc/plugins/{{scope_file}}.py && \
 {% endfor %}
-          curl https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/roles/ipsilon/files/infofas.py -o /usr/lib/python3.7/site-packages/ipsilon/info/infofas.py && \
-          curl https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/roles/ipsilon/files/py3-openid_server.py?1 -o /usr/lib/python3.7/site-packages/openid/server/server.py
+          curl https://infrastructure.fedoraproject.org/infra/ansible/roles/ipsilon/files/infofas.py -o /usr/lib/python3.7/site-packages/ipsilon/info/infofas.py && \
+          curl https://infrastructure.fedoraproject.org/infra/ansible/roles/ipsilon/files/py3-openid_server.py?1 -o /usr/lib/python3.7/site-packages/openid/server/server.py
 
       # Set up krb5
       RUN rm -f /etc/krb5.conf && ln -sf /etc/ipsilon/krb5.conf /etc/krb5.conf

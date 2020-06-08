@@ -15,7 +15,7 @@ items:
           name="bodhi-base" \
           vendor="Fedora Infrastructure" \
           license="MIT"
-        RUN curl -o /etc/yum.repos.d/infra-tags.repo https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/files/common/fedora-infra-tags.repo
+        RUN curl -o /etc/yum.repos.d/infra-tags.repo https://infrastructure.fedoraproject.org/infra/ansible/files/common/fedora-infra-tags.repo
         # While dnf has a --nodocs, it doesen't have a --docs...
         RUN sed -i '/nodocs/d' /etc/dnf/dnf.conf
         RUN dnf install -y bodhi-server-{{bodhi_version}} bodhi-docs-{{bodhi_version}} python3-pyramid_sawing python3-gunicorn

@@ -9,12 +9,12 @@ spec:
   source:
     dockerfile: |-
       FROM registry.access.redhat.com/rhel6
-      RUN curl -o /etc/yum.repos.d/rhel6.repo https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/files/common/rhel6.repo && \
-          curl -o /etc/yum.repos.d/epel6.repo https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/files/common/epel6.repo && \
+      RUN curl -o /etc/yum.repos.d/rhel6.repo https://infrastructure.fedoraproject.org/infra/ansible/files/common/rhel6.repo && \
+          curl -o /etc/yum.repos.d/epel6.repo https://infrastructure.fedoraproject.org/infra/ansible/files/common/epel6.repo && \
 {% if env == "staging" %}
-          curl -o /etc/yum.repos.d/infra-tags-stg.repo https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/files/common/rhel-infra-tags-stg.repo && \
+          curl -o /etc/yum.repos.d/infra-tags-stg.repo https://infrastructure.fedoraproject.org/infra/ansible/files/common/rhel-infra-tags-stg.repo && \
 {% endif %}
-          curl -o /etc/yum.repos.d/infra-tags.repo https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/files/common/rhel-infra-tags.repo
+          curl -o /etc/yum.repos.d/infra-tags.repo https://infrastructure.fedoraproject.org/infra/ansible/files/common/rhel-infra-tags.repo
 
       RUN yum install -y \
           fas \
@@ -45,7 +45,7 @@ spec:
         ln -sf /usr/sbin/fas.wsgi /app/app.py
 
       RUN yum install -y patch && \
-        curl https://infrastructure.fedoraproject.org/cgit/ansible.git/plain/roles/fas_server/files/0001-bugfix.patch | patch /usr/lib/python2.6/site-packages/CherryPy-2.3.0-py2.6.egg/cherrypy/_cphttptools.py && \
+        curl https://infrastructure.fedoraproject.org/infra/ansible/roles/fas_server/files/0001-bugfix.patch | patch /usr/lib/python2.6/site-packages/CherryPy-2.3.0-py2.6.egg/cherrypy/_cphttptools.py && \
         rm -f /usr/lib/python2.6/site-packages/CherryPy-2.3.0-py2.6.egg/cherrypy/_cphttptools.py{c,o}
 
 
