@@ -162,7 +162,7 @@ def decompress_primary_db(archive, location):
             tar.extractall(path=location)
     elif archive.endswith('.bz2'):
         import bz2
-        with open(location, 'w') as out:
+        with open(location, 'wb') as out:
             bzar = bz2.BZ2File(archive)
             out.write(bzar.read())
             bzar.close()
