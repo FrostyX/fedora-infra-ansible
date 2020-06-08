@@ -181,7 +181,7 @@ def get_pkg_info(session, pkg_name):
 def main():
     ''' Main function, does the job :) '''
     working_dir = tempfile.mkdtemp(prefix='rhel2json-')
-    print 'working dir:', working_dir
+    print('working dir:', working_dir)
 
     for el in PATHS:
 
@@ -192,12 +192,12 @@ def main():
         for dbfile_xz in dbfiles:
             cur_fold = os.path.join(*dbfile_xz.rsplit(os.sep, 2)[:-2])
             channel = os.path.basename(cur_fold)
-            print '-', cur_fold
+            print('-', cur_fold)
             dbfile = os.path.join(working_dir, 'primary_db_%s.sqlite' % el)
             decompress_primary_db(dbfile_xz, dbfile)
 
             if not os.path.isfile(dbfile):
-                print '%s was incorrectly decompressed -- ignoring' % dbfile
+                print('%s was incorrectly decompressed -- ignoring' % dbfile)
                 continue
 
             db_url = 'sqlite:///%s' % dbfile
@@ -250,15 +250,15 @@ def main():
                         }
                     }
                 cnt += 1
-            print '%s packages in %s' % (cnt, cur_fold)
-            print '%s packages were new packages' % (new)
+            print('%s packages in %s' % (cnt, cur_fold))
+            print('%s packages were new packages' % (new))
 
-        print '\n%s packages retrieved in %s' % (len(output['packages']), el)
-        print '%s arches for in %s' % (len(output['arches']), el)
+        print('\n%s packages retrieved in %s' % (len(output['packages']), el))
+        print('%s arches for in %s' % (len(output['arches']), el))
         outputfile = 'pkg_%s.json' % el
         with open(outputfile, 'w') as stream:
             stream.write(json.dumps(output))
-        print 'Output File: %s\n' % outputfile
+        print('Output File: %s\n' % outputfile)
 
     # Drop the temp directory
     shutil.rmtree(working_dir)
