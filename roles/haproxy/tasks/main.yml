@@ -36,7 +36,7 @@
         owner=root group=root mode=0600
   with_items:
   - { file: "ipa.{{env}}-{{datacenter}}.pem", dest: /etc/haproxy/ipa.pem }
-  - { file: "os-master.{{env}}-{{datacenter}}.pem", dest: /etc/haproxy/os-master.pem }
+  - { file: "os-master.{{env}}-iad2.pem", dest: /etc/haproxy/os-master.pem }
   tags:
   - haproxy
 
