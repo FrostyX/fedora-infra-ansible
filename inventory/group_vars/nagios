@@ -102,30 +102,31 @@ phx2_management_slowping:
   - ppc8-03-fsp.mgmt.fedoraproject.org
 
 phx2_external:
-  - admin.stg.fedoraproject.org
   - bastion-comm01.fedoraproject.org
   - bastion01.fedoraproject.org
   - bastion02.fedoraproject.org
-  - dl01.fedoraproject.org
-  - dl02.fedoraproject.org
-  - dl03.fedoraproject.org
-  - dl04.fedoraproject.org
-  - dl05.fedoraproject.org
   - koji.fedoraproject.org
-  - koji.stg.fedoraproject.org
   - kojipkgs.fedoraproject.org
   - ns04.fedoraproject.org
   - pkgs.fedoraproject.org
-  - pkgs01.stg.fedoraproject.org
   - proxy01.fedoraproject.org
   - proxy10.fedoraproject.org
   - puppet.fedoraproject.org
   - retrace01.fedoraproject.org
   - secondary01.fedoraproject.org
-  - stg.fedoraproject.org
 
 iad2_external:
   - proxy-iad01.fedoraproject.org
+  - proxy-iad02.fedoraproject.org
+  - dl-iad01.fedoraproject.org
+  - dl-iad02.fedoraproject.org
+  - dl-iad03.fedoraproject.org
+  - dl-iad04.fedoraproject.org
+  - dl-iad05.fedoraproject.org
+  - ns-iad01.fedoraproject.org
+  - ns-iad02.fedoraproject.org
+  - bastion-iad01.fedoraproject.org
+  - bastion-iad02.fedoraproject.org
 
 # When you have a group which comes up with empty members in all.cfg, it
 # is because it contains all hosts which aren't pinganble. You may want
