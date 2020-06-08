@@ -28,6 +28,8 @@
 -A INPUT -m conntrack --ctstate NEW -m tcp -p tcp --dport 22 -s 209.132.181.0/24 -j ACCEPT
 # external ip for iad2/batcave01
 -A INPUT -m conntrack --ctstate NEW -m tcp -p tcp --dport 22 -s 38.145.60.16 -j ACCEPT
+# external ip for iad2/mm-backend to sync mm data
+-A INPUT -m conntrack --ctstate NEW -m tcp -p tcp --dport 22 -s 38.145.60.3 -j ACCEPT
 
 # for nrpe - allow it from nocs
 -A INPUT -p tcp -m tcp --dport 5666 -s 192.168.1.10 -j ACCEPT
