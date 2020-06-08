@@ -10,6 +10,8 @@ volgroup: /dev/vg_guests
 eth0_ip: 10.3.163.60
 vmhost: vmhost-x86-01.iad2.fedoraproject.org
 datacenter: iad2
+mem_size: 16384
+max_mem_size: 16384
 
 # nfs mount options, overrides the all/default
 nfs_mount_opts: "ro,hard,bg,intr,nodev,nosuid,nfsvers=3"
