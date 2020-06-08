@@ -36,10 +36,8 @@
   - role: openvpn/client
   - role: rabbit/user
     username: "mirror_pagure_ansible{{ env_suffix }}"
-    when: datacenter != 'iad2'
   - role: rabbit/user
     username: "batcave{{ env_suffix }}"
-    when: datacenter != 'iad2'
   - role: rabbit/queue
     username: "mirror_pagure_ansible{{ env_suffix }}"
     queue_name: "mirror_pagure_ansible{{ env_suffix }}"
@@ -48,7 +46,6 @@
     thresholds:
       warning: 10
       critical: 100
-    when: datacenter != 'iad2'
   - role: rabbit/queue
     username: "mirror_pagure_ansible{{ env_suffix }}"
     queue_name: "mirror_pagure_ansible{{ env_suffix }}_13"
@@ -58,15 +55,6 @@
       warning: 10
       critical: 100
     when: datacenter != 'iad2'
-  - role: rabbit/queue
-    username: "mirror_pagure_ansible{{ env_suffix }}_iad2"
-    queue_name: "mirror_pagure_ansible{{ env_suffix }}_iad2"
-    routing_keys:
-      - "io.pagure.*.pagure.git.receive"
-    thresholds:
-      warning: 10
-      critical: 100
-    when: datacenter == 'iad2'
   - batcave
   - role: grobisplitter
     when: datacenter == 'iad2'
