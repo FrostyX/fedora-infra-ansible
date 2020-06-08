@@ -46,3 +46,17 @@
      queue_name: rpminspect{{ env_suffix }}
      routing_keys:
       - "org.fedoraproject.prod.buildsys.build.state.change.#"
+
+- name: copr
+  run_once: true
+  include_role:
+    name: rabbit/user
+  vars:
+     username: copr{{ env_suffix }}
+
+- name: faf
+  run_once: true
+  include_role:
+    name: rabbit/user
+  vars:
+     username: faf{{ env_suffix }}
