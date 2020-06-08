@@ -126,7 +126,6 @@ iad2_external:
   - ns-iad01.fedoraproject.org
   - ns-iad02.fedoraproject.org
   - bastion-iad01.fedoraproject.org
-  - bastion-iad02.fedoraproject.org
 
 # When you have a group which comes up with empty members in all.cfg, it
 # is because it contains all hosts which aren't pinganble. You may want
