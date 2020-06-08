@@ -330,6 +330,14 @@
   - nagios_config
   notify: restart nagios
 
+- name: Template over plugins
+  template: src=nagios/plugins/{{item}}.j2 dest=/usr/lib64/nagios/plugins/ mode=0755 owner=root group=root
+  with_items:
+    - check_koji
+  tags:
+  - nagios_server
+
+
 - name: Template over commands
   template: src=nagios/commands/{{item}}.j2 dest=/etc/nagios/commands/{{item}} mode=0644 owner=root group=root
   with_items:

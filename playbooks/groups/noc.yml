@@ -23,8 +23,7 @@
   - collectd/base
   - { role: rsyncd, when: datacenter == 'phx2' or datacenter == 'iad2' }
   - sudo
-  - { role: openvpn/client,
-      when: env != "staging" }
+  - { role: openvpn/client, when: env != "staging" }
   - mod_wsgi
   - role: keytab/service
     owner_user: apache
@@ -63,9 +62,9 @@
   roles:
   - { role: dhcp_server, when: datacenter == 'phx2' or datacenter == 'iad2' }
   - { role: tftp_server, when: datacenter == 'phx2' or datacenter == 'iad2' }
-  - { role: nagios_server, when: datacenter == 'phx2' or datacenter == 'ibiblio'}
+  - { role: nagios_server }
   - { role: fedmsg/base, when: deployment_type == "prod" and datacenter != 'iad2'}
-  - { role: rabbit/user, when: deployment_type == "stg" }
+  - { role: rabbit/user, when: deployment_type == "stg" or datacenter == 'iad2'}
 
   tasks:
   - name: install some packages which arent in playbooks

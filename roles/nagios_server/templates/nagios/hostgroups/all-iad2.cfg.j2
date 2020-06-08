@@ -1,0 +1,46 @@
+###############
+# All Servers and associated devices
+###############
+## {{ env }}
+{% for key, value in groups.items()|sort %}
+{% if groups[key] != [] and key not in vars['exclude_hostgroups'] %}
+define hostgroup{
+       hostgroup_name {{ key }}
+       alias          {{ key }}
+       members        {% for host in groups[key]|sort %}{% if hostvars[host].nagios_Can_Connect == true %}{{host}}, {% endif %}{% endfor %}
+
+}
+{% endif %}
+{% endfor %}
+
+define hostgroup{
+       hostgroup_name no_ping
+       alias          no_ping
+       members        {% for host in groups['all']|sort %}{% if hostvars[host].nagios_Check_Services['ping'] == true or hostvars[host].nagios_Can_Connect == true %}{{host}}, {% endif %}{% endfor %}
+}
+
+## Services with minimal monitoring
+
+define hostgroup{
+       hostgroup_name cloud_aws_group
+       alias          cloud_aws_group
+       members        {% for host in groups['cloud_aws']|sort %}{{host}}, {% endfor %}
+}
+
+
+define hostgroup{
+       hostgroup_name mincheckgrp
+       alias          mincheckgrp
+       members        {% for host in groups['all']|sort %}{% if hostvars[host].nagios_Check_Services['nrpe'] != true and hostvars[host].nagios_Can_Connect == true %}{{host}}, {% endif %}{% endfor %}
+
+}
+
+define hostgroup{
+       hostgroup_name routers
+       alias          routers
+       members        phx2-gw, ibiblio-gw, dedicated-gw, host1plus-gw, internetx-gw, osuosl-gw, rdu-gw, rdu-cc-gw, iad2-gw
+}
+
+
+##
+## Management hardware
