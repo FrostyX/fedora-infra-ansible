@@ -65,23 +65,23 @@ buildvm-x86-31.iad2.fedoraproject.org
 buildvm-x86-32.iad2.fedoraproject.org
 
 [buildvm_stg]
-buildvm-01.stg.phx2.fedoraproject.org
-buildvm-02.stg.phx2.fedoraproject.org
-buildvm-03.stg.phx2.fedoraproject.org
-buildvm-04.stg.phx2.fedoraproject.org
-buildvm-05.stg.phx2.fedoraproject.org
+# buildvm-01.stg.phx2.fedoraproject.org
+# buildvm-02.stg.phx2.fedoraproject.org
+# buildvm-03.stg.phx2.fedoraproject.org
+# buildvm-04.stg.phx2.fedoraproject.org
+# buildvm-05.stg.phx2.fedoraproject.org
 
 [buildvm_aarch64_stg]
-buildvm-aarch64-01.stg.arm.fedoraproject.org
+# buildvm-aarch64-01.stg.arm.fedoraproject.org
 
 [buildvm_armv7_stg]
-buildvm-armv7-01.stg.arm.fedoraproject.org
+# buildvm-armv7-01.stg.arm.fedoraproject.org
 
 [buildvm_s390x_stg]
-buildvm-s390x-01.stg.s390.fedoraproject.org
+# buildvm-s390x-01.stg.s390.fedoraproject.org
 
 [buildvm_ppc64le_stg]
-buildvm-ppc64le-01.stg.ppc.fedoraproject.org
+# buildvm-ppc64le-01.stg.ppc.fedoraproject.org
 
 [buildvm_aarch64]
 buildvm-aarch64-01.arm.fedoraproject.org
@@ -365,24 +365,24 @@ bkernel03.phx2.fedoraproject.org
 # They should be added to their own 'compose' channel in the koji db
 # .. and they should not appear in the default channel for builds.
 [runroot]
-buildvm-01.stg.phx2.fedoraproject.org
-buildvm-02.stg.phx2.fedoraproject.org
+# buildvm-01.stg.phx2.fedoraproject.org
+# buildvm-02.stg.phx2.fedoraproject.org
 buildvm-01.phx2.fedoraproject.org
 buildvm-02.phx2.fedoraproject.org
 buildhw-01.phx2.fedoraproject.org
-buildvm-aarch64-01.stg.arm.fedoraproject.org
+# buildvm-aarch64-01.stg.arm.fedoraproject.org
 buildvm-aarch64-01.arm.fedoraproject.org
 buildvm-aarch64-02.arm.fedoraproject.org
 buildvm-aarch64-03.arm.fedoraproject.org
-buildvm-armv7-01.stg.arm.fedoraproject.org
+# buildvm-armv7-01.stg.arm.fedoraproject.org
 buildvm-armv7-01.arm.fedoraproject.org
 buildvm-armv7-02.arm.fedoraproject.org
 buildvm-armv7-03.arm.fedoraproject.org
-buildvm-ppc64le-01.stg.ppc.fedoraproject.org
+# buildvm-ppc64le-01.stg.ppc.fedoraproject.org
 buildvm-ppc64le-01.ppc.fedoraproject.org
 buildvm-ppc64le-02.ppc.fedoraproject.org
 buildvm-ppc64le-03.ppc.fedoraproject.org
-buildvm-s390x-01.stg.s390.fedoraproject.org
+# buildvm-s390x-01.stg.s390.fedoraproject.org
 buildvm-s390x-15.s390.fedoraproject.org
 buildvm-s390x-16.s390.fedoraproject.org
 buildvm-s390x-17.s390.fedoraproject.org

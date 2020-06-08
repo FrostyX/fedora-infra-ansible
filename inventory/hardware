@@ -1,18 +1,18 @@
 [dells]
 osuosl01.fedoraproject.org
 bvirthost01.phx2.fedoraproject.org
-bvirthost01.stg.phx2.fedoraproject.org
+# bvirthost01.stg.phx2.fedoraproject.org
 bvirthost04.phx2.fedoraproject.org
 bvirthost05.phx2.fedoraproject.org
 bvirthost12.phx2.fedoraproject.org
 bvirthost13.phx2.fedoraproject.org
 bvirthost14.phx2.fedoraproject.org
 bvirthost15.phx2.fedoraproject.org
-virthost01.stg.phx2.fedoraproject.org
-virthost02.stg.phx2.fedoraproject.org
-virthost03.stg.phx2.fedoraproject.org
-virthost04.stg.phx2.fedoraproject.org
-virthost05.stg.phx2.fedoraproject.org
+# virthost01.stg.phx2.fedoraproject.org
+# virthost02.stg.phx2.fedoraproject.org
+# virthost03.stg.phx2.fedoraproject.org
+# virthost04.stg.phx2.fedoraproject.org
+# virthost05.stg.phx2.fedoraproject.org
 virthost01.phx2.fedoraproject.org
 virthost02.phx2.fedoraproject.org
 #autosign02.phx2.fedoraproject.org
