@@ -37,7 +37,7 @@ config = {
     {% for cert in certs %}
         "{{ cert }}",
 {% endfor %}
-"fedmsg-migration-tools-fedmsg-migration-tools{{env_suffix}}.fedoraproject.org",
+    "fedmsg-migration-tools-fedmsg-migration-tools{{env_suffix}}.fedoraproject.org",
         ],
 {% endfor %}
     },
