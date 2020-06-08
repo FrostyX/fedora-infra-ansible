@@ -359,6 +359,7 @@ noc02.fedoraproject.org
 
 [notifs_backend]
 notifs-backend01.phx2.fedoraproject.org
+notifs-backend01.iad2.fedoraproject.org
 
 [notifs_backend_stg]
 # notifs-backend01.stg.phx2.fedoraproject.org
@@ -366,6 +367,8 @@ notifs-backend01.phx2.fedoraproject.org
 [notifs_web]
 notifs-web01.phx2.fedoraproject.org
 notifs-web02.phx2.fedoraproject.org
+notifs-web01.iad2.fedoraproject.org
+notifs-web02.iad2.fedoraproject.org
 
 [notifs_web_stg]
 # notifs-web01.stg.phx2.fedoraproject.org
@@ -1281,6 +1284,7 @@ pagure01.fedoraproject.org
 value01.phx2.fedoraproject.org
 pkgs02.phx2.fedoraproject.org
 notifs-web01.phx2.fedoraproject.org
+notifs-web01.iad2.fedoraproject.org
 wiki02.phx2.fedoraproject.org
 retrace01.qa.fedoraproject.org
 

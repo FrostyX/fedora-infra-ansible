@@ -1,0 +1,12 @@
+gw: 10.3.163.254
+dns: 10.3.163.33
+
+volgroup: /dev/vg_guests
+
+eth0_ip: 10.3.163.64
+
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-fedora-27
+ks_repo: http://10.3.163.36/pub/archives/fedora/linux/releases/27/Server/x86_64/os/
+
+vmhost: vmhost-x86-04.iad2.fedoraproject.org
+datacenter: iad2
