@@ -48,7 +48,6 @@
     - nagios-plugins-swap
     - nagios-plugins-tcp
     - nagios-plugins-users
-    - perl-Mail-IMAPClient
     - stunnel
     - mod_auth_gssapi
   tags:
