@@ -604,7 +604,7 @@ host bvmhost-a64-04-mgmt {
 
 host bhwhost-a64-02-mgmt {
      hardware ethernet AA:31:8D:3E:31:6F ;
-     fixed-address 10.3.160.104;
+     fixed-address 10.3.160.244;
      option routers 10.3.160.254;
      option subnet-mask 255.0.0.0;
 }
