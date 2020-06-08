@@ -68,6 +68,7 @@ ansible_ifcfg_infra_net_devices: [ 'eth0', 'enc900' ]
 # less than a /24.
 eth0_nm: 255.255.255.0
 eth1_nm: 255.255.255.0
+eth1_ip: 10.10.10.10
 br0_nm: 255.255.255.0
 br1_nm: 255.255.255.0
 # Default to managing the network, we want to not do this on select hosts (like cloud nodes)
