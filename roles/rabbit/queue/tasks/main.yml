@@ -127,7 +127,7 @@
   template:
     src: nagios.cfg.j2
     dest: /etc/nagios/services/rabbitmq-queue-{{ queue_name }}.cfg
-  notify: restart nagios on noc
+#  notify: restart nagios on noc
   tags:
     - fedora-messaging
     - rabbitmq_cluster
