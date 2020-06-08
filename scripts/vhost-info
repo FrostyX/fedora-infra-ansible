@@ -26,10 +26,19 @@ class OutputCallback(CallbackBase):
         self.mem_per_host = {}
         self.mem_used_in_vm = {}
         self.cpu_used_in_vm = {}
-
+# To increate debugging info
+#        self._display.verbosity = 5
 
     def v2_runner_on_unreachable(self, result):
         self.unreachable.add(result._host.get_name())
+
+# Comment this out if you need to debug further the script
+#    def v2_on_any(self, *args, **kwargs):
+#        print("OutputCallback - any")
+#        print(args)
+#        print(kwargs)
+#        result = args[0]
+#        print(result._result)
 
     def v2_runner_on_ok(self, result, *args, **kwargs):
         vhostname=result._host.get_name()
