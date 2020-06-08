@@ -402,8 +402,7 @@
 # choke up rabbitmq_parameters.
 - name: Configure federation upstream from pubsub to the public_pubsub vhost
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.{{ item }}.fedoraproject.org"
-  with_items: "{{ datacenter }}"
+  delegate_to: "rabbitmq01{{ env_suffix }}.iad2.fedoraproject.org"
   when: "env == 'staging'"
   rabbitmq_parameter:
     component: "federation-upstream"
@@ -412,22 +411,9 @@
     state: present
     vhost: /public_pubsub
 
-- name: Configure federation upstream from pubsub to the public_pubsub vhost (phx2)
-  run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.{{ item }}.fedoraproject.org"
-  with_items: "{{ datacenter }}"
-  when: "env == 'production' and datacenter == 'phx2'"
-  rabbitmq_parameter:
-    component: "federation-upstream"
-    name: "pubsub-to-public_pubsub"
-    value: '{"uri": "amqps://pubsub_federation:@rabbitmq01.phx2.fedoraproject.org/%2Fpubsub?cacertfile=%2Fetc%2Frabbitmq%2Fca.crt&certfile=%2Fetc%2Frabbitmq%2Fpubsub_federation%2Fclient_cert.pem&keyfile=%2Fetc%2Frabbitmq%2Fpubsub_federation%2Fclient_key.pem&verify=verify_peer&fail_if_no_peer_cert=true&server_name_indication=rabbitmq.fedoraproject.org&auth_mechanism=external", "ack-mode": "on-confirm"}'
-    state: present
-    vhost: /public_pubsub
-
 - name: Configure federation upstream from pubsub to the public_pubsub vhost (iad2)
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.{{ item }}.fedoraproject.org"
-  with_items: "{{ datacenter }}"
+  delegate_to: "rabbitmq01{{ env_suffix }}.iad2.fedoraproject.org"
   when: "env == 'production' and datacenter == 'iad2'"
   rabbitmq_parameter:
     component: "federation-upstream"
@@ -438,8 +424,7 @@
 
 - name: Configure a policy to federate the pubsub topic exchange to public_pubsub
   run_once: true
-  delegate_to: "rabbitmq01{{ env_suffix }}.{{ item }}.fedoraproject.org"
-  with_items: "{{ datacenter }}"
+  delegate_to: "rabbitmq01{{ env_suffix }}.iad2.fedoraproject.org"
   rabbitmq_policy:
     apply_to: exchanges
     name: pubsub-to-public_pubsub
