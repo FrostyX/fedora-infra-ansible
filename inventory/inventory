@@ -240,8 +240,8 @@ db-openqa01.iad2.fedoraproject.org
 
 [dbserver_stg]
 # db-fas01.stg.phx2.fedoraproject.org
-db01.stg.phx2.fedoraproject.org
-db03.stg.phx2.fedoraproject.org
+# db01.stg.phx2.fedoraproject.org
+# db03.stg.phx2.fedoraproject.org
 # db-koji01.stg.phx2.fedoraproject.org
 
 # postgresql bidirectional replication servers
@@ -1174,7 +1174,7 @@ osbs_aarch64_masters_stg
 osbs_aarch64_nodes_stg
 
 [os_control_stg]
-os-control01.stg.phx2.fedoraproject.org
+#os-control01.stg.phx2.fedoraproject.org
 
 [os_masters_stg]
 # os-master01.stg.phx2.fedoraproject.org
