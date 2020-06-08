@@ -195,8 +195,8 @@
   when: env == "production" and nagios_location == 'phx2_internal'
   notify: restart nagios
 
-- name: Copy /etc/nagios/services (PHX2 specific files)
-  copy: src=nagios/services/phx2_internal/{{ item }} dest=/etc/nagios/services/{{ item }}
+- name: Copy /etc/nagios/services (IAD2 specific files)
+  copy: src=nagios/services/iad2_internal/{{ item }} dest=/etc/nagios/services/{{ item }}
   with_items:
     - basset.cfg
     - certgetter.cfg
