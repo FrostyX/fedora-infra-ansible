@@ -1460,6 +1460,9 @@ mm-crawler01.iad2.fedoraproject.org
 mm-frontend-checkin01.iad2.fedoraproject.org
 mm-frontend01.iad2.fedoraproject.org
 noc01.iad2.fedoraproject.org
+notifs-backend01.iad2.fedoraproject.org
+notifs-web01.iad2.fedoraproject.org
+notifs-web02.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
 oci-candidate-registry01.iad2.fedoraproject.org
