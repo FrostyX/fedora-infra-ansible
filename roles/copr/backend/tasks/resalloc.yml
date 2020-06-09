@@ -125,6 +125,7 @@
   - pools.yaml
   tags:
   - provision_config
+  - resalloc_config
 
 - name: start/enable resalloc server
   service:
