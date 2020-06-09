@@ -6,7 +6,7 @@ sudoers: "{{ private }}/files/sudo/qavirt-sudoers"
 nrpe_procs_warn: 1400
 nrpe_procs_crit: 1600
 
-# the if connected to the infra network on this box is em3, not eth0
+# the if connected to the infra network on this box is eth0
 ansible_ifcfg_infra_net_devices: [ 'eth0' ]
 eth0_ip: 10.3.174.21
 eth0_nm: 255.255.255.0
@@ -15,17 +15,19 @@ gw: 10.3.174.254
 # openQA tap worker hosts (like this one) do stuff with ifcfg that base
 # doesn't understand. terrible, terrible stuff. seriously - it doesn't
 # handle the openvswitch config well. so let's tell it to just configure
-# the regular interfaces (which on this system is em1-4) for us,
-# disabling all but the one we want to use (em3), and leave everything
+# the regular interfaces (which on this system is eth0-3) for us,
+# disabling all but the one we want to use (eth0), and leave everything
 # else alone. We use a variable definition here so the firewall config
 # (in the openqa_tap_workers group_vars) can reuse it.
 openqa_tap_iface: eth0
-ansible_ifcfg_whitelist: ['em1', 'em2', '{{ openqa_tap_iface }}', 'em4']
-ansible_ifcfg_disabled: ['em1', 'em2', 'em4']
+ansible_ifcfg_whitelist: ['{{ openqa_tap_iface }}', 'eth1', 'eth2', 'eth3']
+ansible_ifcfg_disabled: ['eth1', 'eth2', 'eth3']
 
 # Has a hardware RNG
 openqa_rngd: True
 
+# this is an IAD box, use IAD host
+openqa_hostname: openqa01.iad2.fedoraproject.org
 # this is a powerful machine, can handle more openQA workers
 openqa_workers: 30
 # firewall ports for server->worker websockets connections
