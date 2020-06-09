@@ -5,6 +5,8 @@
 # Author: Pierre-Yves Chibon <pingou@pingoured.fr>
 # Author: Toshio Kuratomi <toshio@fedoraproject.org>
 
+from __future__ import print_function
+
 __version_info__ = ((0, 1),)
 
 import os
