@@ -1,33 +1,8 @@
-{% if env == "production" %}
-# Production configuration.  On each aarch64 host we have
-# 2 guests VMs of
-# - 10 VCPUs
-# - 80 GB SWAP
-# - 24 GB RAM
-# -  8 GB root partition (it's sparse qcow2, so thin-provisioning)
-aarch64_01_prod:
-    max: 4
-    max_starting: 2
-    max_prealloc: 4
-    cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aarch64-new --swap-vol-size 80 --cpu-count 10 --ram-size 20480"
-    cmd_delete: "/var/lib/resallocserver/resalloc_provision/vm-aarch64-delete"
-    tags:
-    - aarch64
-
-aarch64_02_prod:
-    max: 4
-    max_starting: 2
-    max_prealloc: 4
-    cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aarch64-new --swap-vol-size 80 --cpu-count 10 --ram-size 20480"
-    cmd_delete: "/var/lib/resallocserver/resalloc_provision/vm-aarch64-delete"
-    tags:
-    - aarch64
-{% elif devel %}
-
+{% macro aws_x86_64(max, max_starting, max_prealloc) %}
 aws_x86_64_normal:
-    max: 20
-    max_starting: 5
-    max_prealloc: 5
+    max: {{ max }}
+    max_starting: {{ max_starting }}
+    max_prealloc: {{ max_prealloc }}
     tags:
     - copr_builder
     - arch_x86_64
@@ -47,11 +22,13 @@ aws_x86_64_normal:
     reuse_opportunity_time: 180
     reuse_max_count: 8
     reuse_max_time: 1800
+{% endmacro %}
 
+{% macro aws_aarch64(max, max_starting, max_prealloc) %}
 aws_aarch64_normal:
-    max: 10
-    max_starting: 3
-    max_prealloc: 3
+    max: {{ max }}
+    max_starting: {{ max_starting }}
+    max_prealloc: {{ max_prealloc }}
     tags:
     - copr_builder
     - arch_aarch64
@@ -63,30 +40,44 @@ aws_aarch64_normal:
     reuse_opportunity_time: 180
     reuse_max_count: 8
     reuse_max_time: 1800
+{% endmacro %}
 
-# Development configuration.  On each aarch64 host we have
-# 2 guests vms of
+
+{% macro hw_aarch64(id, inst, max, max_starting, max_prealloc) %}
+aarch64_{{ id }}_{{ inst }}:
+    max: 0
+    max_starting: {{ max_starting }}
+    max_prealloc: {{ max_prealloc }}
+{% if inst == 'prod' %}
+# - 10 VCPUs
+# - 80 GB SWAP
+# - 24 GB RAM
+# -  8 GB root partition (it's sparse qcow2, so thin-provisioning)
+    cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aarch64-new --swap-vol-size 80 --cpu-count 10 --ram-size 20480"
+{% else %}
 # -  2 VCPUs   (default)
 # - 20 GB SWAP (default)
 # -  4 GB RAM  (default)
 # -  8 GB root partition (it's sparse qcow2, so thin-provisioning)
-aarch64_01_dev:
-    max: 0
-    max_starting: 2
-    max_prealloc: 2
     cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aarch64-new"
+{% endif %}
     cmd_delete: "/var/lib/resallocserver/resalloc_provision/vm-aarch64-delete"
     tags:
-    - aarch64
+    - copr_builder
+    - arch_aarch64
+    - arch_aarch64_native
+{% endmacro %}
 
-aarch64_02_dev:
-    max: 0
-    max_starting: 2
-    max_prealloc: 2
-    cmd_new: "/var/lib/resallocserver/resalloc_provision/vm-aarch64-new"
-    cmd_delete: "/var/lib/resallocserver/resalloc_provision/vm-aarch64-delete"
-    tags:
-    - aarch64
+{% if env == "production" %}
+{{ aws_x86_64(100, 15, 30) }}
+{{ aws_aarch64(20, 10, 20) }}
+{{ hw_aarch64("01", "prod", 4, 2, 4) }}
+{{ hw_aarch64("02", "prod", 4, 2, 4) }}
+{% elif devel %}
+{{ aws_x86_64(20, 4, 5) }}
+{{ aws_aarch64(6, 6, 6) }}
+{{ hw_aarch64("01", "dev", 2, 2, 2) }}
+{{ hw_aarch64("02", "dev", 2, 2, 2) }}
 {% else %}
 # No aarch64 hosts on staging for now.
 {% endif %}
