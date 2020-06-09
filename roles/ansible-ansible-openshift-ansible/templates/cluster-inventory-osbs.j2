@@ -96,9 +96,7 @@ openshift_image_tag={{openshift_release}}
 # Specify an exact rpm version to install or configure.
 # WARNING: This value will be used for all hosts in RPM based environments, even those that have another version installed.
 # This could potentially trigger an upgrade and downtime, so be careful with modifying this value after the cluster is set up.
-{% if openshift_arch == "aarch64" %}
 openshift_pkg_version=-3.11.1
-{% endif %}
 # Install the openshift examples
 {% if openshift_ansible_install_examples is defined %}
 openshift_install_examples={{openshift_ansible_install_examples}}
