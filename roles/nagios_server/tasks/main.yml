@@ -426,6 +426,18 @@
   - nagios_hosts
   notify: restart nagios
 
+## These are only available to the internal server
+- name: Build out nagios host templates (production)
+  template: src=nagios/hosts/{{item}}.j2 dest=/etc/nagios/hosts/{{item}} mode=0644 owner=root group=root
+  with_items:
+    - iad2-hosts.cfg
+  when: env == "production" and nagios_location == 'iad2_internal'
+  tags:
+  - nagios_server
+  - nagios_config
+  - nagios_hosts
+  notify: restart nagios
+
 - name: Build out nagios host templates (production)
   template: src=nagios/hosts/{{item}}.j2 dest=/etc/nagios/hosts/{{item}} mode=0644 owner=root group=root
   with_items:
