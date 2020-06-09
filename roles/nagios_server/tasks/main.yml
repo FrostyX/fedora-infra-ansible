@@ -264,7 +264,7 @@
   tags:
   - nagios_config
   - nagios_server
-  when: nagios_location == 'phx2_internal'
+  when: nagios_location == 'iad2_internal'
   notify: restart nagios
 
 ## Copy over the servicegroups
@@ -373,9 +373,8 @@
   template: src=nagios/services/{{item}}.j2 dest=/etc/nagios/services/{{item}} mode=0644 owner=root group=root
   with_items:
     - ipa.cfg
-    - phx2-mgmt.cfg
     - mirrorlist-proxies.cfg
-  when: env == "production" and nagios_location == 'phx2_internal'
+  when: env == "production" and nagios_location == 'iad2_internal'
   tags:
   - nagios_server
   - nagios_config
@@ -431,13 +430,14 @@
   template: src=nagios/hosts/{{item}}.j2 dest=/etc/nagios/hosts/{{item}} mode=0644 owner=root group=root
   with_items:
     - phx2-external.cfg
+    - iad2-external.cfg
   when: env == "production" and nagios_location == "external"
   tags:
   - nagios_server
   - nagios_config
   notify: restart nagios
 
-- name: Build out nagios hostgroup templates (phx2)
+- name: Build out nagios hostgroup templates (iad2)
   template: src=nagios/hostgroups/{{item}}.j2 dest=/etc/nagios/hostgroups/{{item}} mode=0644 owner=root group=root
   with_items:
     - all.cfg
@@ -445,7 +445,7 @@
     - nomail.cfg
     - checkswap.cfg
     - checkraid.cfg
-  when: nagios_location == 'phx2_internal'
+  when: nagios_location == 'iad2_internal'
   tags:
   - nagios_server
   - nagios_config
