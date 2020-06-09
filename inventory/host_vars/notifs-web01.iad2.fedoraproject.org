@@ -7,8 +7,8 @@ volgroup: /dev/vg_guests
 
 eth0_ip: 10.3.163.64
 
-ks_url: http://209.132.181.6/repo/rhel/ks/kvm-rhel-8-ext
-ks_repo: http://209.132.181.6/repo/rhel/RHEL8-x86_64/
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-7-iad2
+ks_repo: http://10.3.163.35/repo/rhel/RHEL7-x86_64
 
 vmhost: vmhost-x86-04.iad2.fedoraproject.org
 datacenter: iad2
