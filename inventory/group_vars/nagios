@@ -148,6 +148,11 @@ exclude_phx2_hostgroups:
   - github2fedmsg
   - moksha_hubs
   - rabbitmq
+  - mm
+  - mm_backend
+  - mm_frontend
+  - notifs_backend
+  - notifs_web
 
 exclude_iad2_hostgroups:
   - nixnagios
