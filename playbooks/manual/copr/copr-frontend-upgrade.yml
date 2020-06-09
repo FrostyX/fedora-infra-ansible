@@ -16,6 +16,24 @@
   - name: Generic upgrade tasks for copr servers
     import_tasks: _generic_tasks.yml
 
+  - name: Check for copr-frontend update
+    shell: dnf clean expire-cache ; dnf check-update copr-frontend
+    register: frontend_has_update
+    changed_when: "frontend_has_update.rc != 0"
+    failed_when: false
+
+  - name: Check if HTTPD is running
+    shell: systemctl status httpd
+    register: httpd_running
+    changed_when: "httpd_running.rc != 0"
+    failed_when: false
+
+  - name: Shutdown httpd to allow running DB migrations
+    shell: timeout 20 systemctl stop httpd || systemctl kill httpd
+    when:
+    - frontend_has_update.changed
+    - httpd_running.changed
+
   - name: Upgrade copr-frontend packages
     dnf:
       state: latest
@@ -24,12 +42,6 @@
       - copr-frontend-fedora
       - copr-selinux
       - python3-copr-common
-      update_cache: true
-
-  - name: cache the new package version
-    copy: content="{{ ansible_facts.packages['copr-frontend'][0].version }}"
-          dest="{{ cache_file }}"
-    register: version_file
 
   - name: upgrade db to head
     command: alembic-3 upgrade head
@@ -37,7 +49,10 @@
     become_user: copr-fe
     args:
       chdir: /usr/share/copr/coprs_frontend/
-    when: version_file.changed
+    when: frontend_has_update.changed
+
+  - name: make httpd started
+    service: name=httpd state=started
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
