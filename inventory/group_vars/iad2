@@ -11,7 +11,7 @@ ipa_server: ipa01.iad2.fedoraproject.org
 
 # for now, lets not monitor any of them from phx2.
 
-nagios_Can_Connect: false
+nagios_Can_Connect: true
 
 nagios_Check_Services:
   mail: false

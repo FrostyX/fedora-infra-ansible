@@ -16,12 +16,3 @@ ks_repo: http://209.132.181.6/repo/rhel/RHEL7-x86_64/
 # install special cron jobs here.
 master_sundries_node: True
 
-nagios_Can_Connect: false
-
-nagios_Check_Services:
-  mail: false
-  nrpe: false
-  sshd: false
-  swap: false
-  ping: false
-  raid: false

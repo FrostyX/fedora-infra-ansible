@@ -13,12 +13,3 @@ ks_repo: http://209.132.181.6/repo/rhel/RHEL8-x86_64/
 vmhost: vmhost-x86-02.iad2.fedoraproject.org
 datacenter: iad2
 
-nagios_Can_Connect: false
-
-nagios_Check_Services:
-  mail: false
-  nrpe: false
-  sshd: false
-  swap: false
-  ping: false
-  raid: false

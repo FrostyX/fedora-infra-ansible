@@ -9,12 +9,3 @@ eth0_ip: 10.3.163.54
 vmhost: vmhost-x86-02.iad2.fedoraproject.org
 datacenter: iad2
 
-nagios_Can_Connect: false
-
-nagios_Check_Services:
-  mail: false
-  nrpe: false
-  sshd: false
-  swap: false
-  ping: false
-  raid: false
