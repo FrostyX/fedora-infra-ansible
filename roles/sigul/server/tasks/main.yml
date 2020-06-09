@@ -16,7 +16,7 @@
   - openssl-pkcs11
   - gnutls-utils
   - ykpers
-  - yubico-piv-tool
+  #- yubico-piv-tool
   - pcsc-lite
   - opensc
   - tar
