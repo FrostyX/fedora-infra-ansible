@@ -13,13 +13,5 @@ ipa_server: ipa01.iad2.fedoraproject.org
 
 nagios_Can_Connect: true
 
-nagios_Check_Services:
-  mail: false
-  nrpe: false
-  sshd: false
-  swap: false
-  ping: false
-  raid: false
-
 certbot_datacenter: iad2
 nagios_server: noc01.iad2.fedoraproject.org
