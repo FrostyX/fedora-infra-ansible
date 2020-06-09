@@ -104,7 +104,7 @@
 
 - name: postgresql recover.conf template (standby only)
   template: dest=/var/lib/pgsql/data/recovery.conf src=recovery.conf
-  when: inventory_hostname.startswith('db-koji02')
+  when: inventory_hostname.startswith('db-koji01.iad2')
   notify:
   - restart postgresql
   tags:
@@ -113,19 +113,19 @@
 
 - name: Ensure postgres has a place to backup to
   file: dest=/backups state=directory owner=postgres
-  when: inventory_hostname.startswith('db-koji02')
+  when: inventory_hostname.startswith('db-koji01.iad2') or inventory_hostname.startswith('db01.iad2')
   tags:
   - postgresql
 
 - name: Copy over backup scriplet
   copy: src=backup-database dest=/usr/local/bin/backup-database mode=0755
-  when: not inventory_hostname.startswith('db-koji02')
+  when: inventory_hostname.startswith('db-koji01.iad2')
   tags:
   - postgresql
 
 - name: Copy over backup scriplet
   copy: src=backup-database.db-koji02 dest=/usr/local/bin/backup-database mode=0755
-  when: inventory_hostname.startswith('db-koji02')
+  when: inventory_hostname.startswith('db-koji01.iad2')
   tags:
   - postgresql
 
@@ -133,13 +133,13 @@
   copy: src=backup-database.anitya dest=/usr/local/bin/backup-database.anitya mode=0755
   tags:
   - postgresql
-  when: inventory_hostname.startswith('db01.phx2')
+  when: inventory_hostname.startswith('db01.phx2') or inventory_hostname.startswith('db01.iad2')
 
 - name: Copy over anitya publib backup cron
   copy: src=cron-backup-anitya-public dest=/etc/cron.d/cron-backup-anitya-public mode=0644
   tags:
   - postgresql
-  when: inventory_hostname.startswith('db01.phx2')
+  when: inventory_hostname.startswith('db01.phx2') or inventory_hostname.startswith('db01.iad2')
 
 - name: Set up some cronjobs to backup databases as configured
   template: >
