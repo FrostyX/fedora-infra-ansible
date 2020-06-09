@@ -27,6 +27,35 @@
       # This routing key is for testing purposes only
       - "org.centos.ci.#"
 
+- name: OSCI
+  run_once: true
+  include_role:
+    name: rabbit/queue
+  vars:
+    username: osci-pipelines{{ env_suffix }}
+    queue_name: "{{ item }}{{ env_suffix }}"
+    # TTL: 10 days (in miliseconds)
+    message_ttl: 864000000
+    routing_keys:
+      # This routing key is for testing purposes only
+      - "org.centos.ci.#"
+  loop:
+    - osci-pipelines-queue-0
+    - osci-pipelines-queue-1
+    - osci-pipelines-queue-2
+    - osci-pipelines-queue-3
+    - osci-pipelines-queue-4
+    - osci-pipelines-queue-5
+    - osci-pipelines-queue-6
+    - osci-pipelines-queue-7
+    - osci-pipelines-queue-9
+    - osci-pipelines-queue-10
+    - osci-pipelines-queue-11
+    - osci-pipelines-queue-12
+    - osci-pipelines-queue-13
+    - osci-pipelines-queue-14
+    - osci-pipelines-queue-15
+
 - name: Fedora Build Checks
   run_once: true
   include_role:
