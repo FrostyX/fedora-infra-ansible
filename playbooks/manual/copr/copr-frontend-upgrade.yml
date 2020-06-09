@@ -22,17 +22,10 @@
     changed_when: "frontend_has_update.rc != 0"
     failed_when: false
 
-  - name: Check if HTTPD is running
-    shell: systemctl status httpd
-    register: httpd_running
-    changed_when: "httpd_running.rc != 0"
-    failed_when: false
-
-  - name: Shutdown httpd to allow running DB migrations
-    shell: timeout 20 systemctl stop httpd || systemctl kill httpd
-    when:
-    - frontend_has_update.changed
-    - httpd_running.changed
+  - name: make httpd stopped
+    service: name=httpd state=stopped
+    register: httpd_stopped
+    when: frontend_has_update.changed
 
   - name: Upgrade copr-frontend packages
     dnf:
@@ -53,6 +46,7 @@
 
   - name: make httpd started
     service: name=httpd state=started
+    when: httpd_stopped.changed
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
