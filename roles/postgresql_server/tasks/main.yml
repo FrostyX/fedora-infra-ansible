@@ -20,6 +20,21 @@
   package:
     state: present
     name:
+      - postgresql-server
+      - postgresql-contrib
+      - postgresql-plpython
+      - postgresql
+      - python3-psycopg2
+      - pxz
+  when: ansible_distribution_major_version|int >= 8 and ansible_distribution == 'RedHat'
+  tags:
+  - packages
+  - postgresql
+
+- name: install postgresql server packages (dnf)
+  package:
+    state: present
+    name:
     - postgresql-server
     - postgresql-contrib
     - postgresql-plpython
