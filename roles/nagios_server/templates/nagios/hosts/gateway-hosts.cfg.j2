@@ -140,12 +140,10 @@ define host {
   alias                        iad2 cage gateway
   use                          mincheck
   check_command                check-host-alive4
-  address                      209.132.185.254
-{% if vars['nagios_location'] == 'phx2_internal' %}
-  parents                      phx2-gw
-{% elif vars['nagios_location'] == 'iad2_internal' %}
-  parents                      iad2-gw
+{% if vars['nagios_location'] == 'iad2_internal' %}
+  address		      10.3.163.254
 {% else %}
+  address                      209.132.185.254
   parents                      ibiblio-gw
 {% endif %}
 
