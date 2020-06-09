@@ -117,44 +117,45 @@ config = dict(
                 body=['^((?!fedora-commops).)*$'],
             ),
         ),
-        # A third one to listen for new Community Blog posts
-        dict(
-            network='chat.freenode.net',
-            port=6667,
-            make_pretty=True,
-            make_terse=True,
+        # The planet is currently no longer sending messages
+        # # A third one to listen for new Community Blog posts
+        # dict(
+            # network='chat.freenode.net',
+            # port=6667,
+            # make_pretty=True,
+            # make_terse=True,
 
-            {% if env == 'staging' %}
-            nickname='fm-commblog-s',
-            {% else %}
-            nickname='fm-commblog',
-            {% endif %}
-            channel='fedora-commops',
-            filters=dict(
-                topic=[
-                    '^((?!(planet)).)*$',
-                ],
-                body=['^((?!communityblog.fedoraproject.org).)*$'],
-            ),
-        ),
-        dict(
-            network='chat.freenode.net',
-            port=6667,
-            make_pretty=True,
-            make_terse=True,
+            # {% if env == 'staging' %}
+            # nickname='fm-commblog-s',
+            # {% else %}
+            # nickname='fm-commblog',
+            # {% endif %}
+            # channel='fedora-commops',
+            # filters=dict(
+                # topic=[
+                    # '^((?!(planet)).)*$',
+                # ],
+                # body=['^((?!communityblog.fedoraproject.org).)*$'],
+            # ),
+        # ),
+        # dict(
+            # network='chat.freenode.net',
+            # port=6667,
+            # make_pretty=True,
+            # make_terse=True,
 
-            {% if env == 'staging' %}
-            nickname='fm-planet-s',
-            {% else %}
-            nickname='fm-planet',
-            {% endif %}
-            channel='fedora-planet',
-            filters=dict(
-                topic=[
-                    '^((?!(planet)).)*$',
-                ],
-            ),
-        ),
+            # {% if env == 'staging' %}
+            # nickname='fm-planet-s',
+            # {% else %}
+            # nickname='fm-planet',
+            # {% endif %}
+            # channel='fedora-planet',
+            # filters=dict(
+                # topic=[
+                    # '^((?!(planet)).)*$',
+                # ],
+            # ),
+        # ),
 
         # For that python3 porting fad.  AMAZING!
         dict(
@@ -179,24 +180,25 @@ config = dict(
             ),
         ),
 
-        # Just for the Ask Fedora crew in #fedora-ask
-        dict(
-            network='chat.freenode.net',
-            port=6667,
-            make_pretty=True,
-            make_terse=True,
+        # We no longer run askbot
+        # # Just for the Ask Fedora crew in #fedora-ask
+        # dict(
+            # network='chat.freenode.net',
+            # port=6667,
+            # make_pretty=True,
+            # make_terse=True,
 
-            {% if env == 'staging' %}
-            nickname='fm-stg-ask',
-            {% else %}
-            nickname='fm-ask',
-            {% endif %}
-            channel='fedora-ask',
-            # Only show AskFedora messages
-            filters=dict(
-                topic=['^((?!(askbot.post.edit|askbot.flag_offensive.add)).)*$'],
-            ),
-        ),
+            # {% if env == 'staging' %}
+            # nickname='fm-stg-ask',
+            # {% else %}
+            # nickname='fm-ask',
+            # {% endif %}
+            # channel='fedora-ask',
+            # # Only show AskFedora messages
+            # filters=dict(
+                # topic=['^((?!(askbot.post.edit|askbot.flag_offensive.add)).)*$'],
+            # ),
+        # ),
 
         # Show only compose msgs to the releng crew.
         dict(
@@ -221,24 +223,25 @@ config = dict(
             ),
         ),
 
-        # The proyectofedora crew wants trac messages.
-        dict(
-            network='chat.freenode.net',
-            port=6667,
-            make_pretty=True,
-            make_terse=True,
+        # We no longer run trac
+        # # The proyectofedora crew wants trac messages.
+        # dict(
+            # network='chat.freenode.net',
+            # port=6667,
+            # make_pretty=True,
+            # make_terse=True,
 
-            {% if env == 'staging' %}
-            nickname='fm-stg-pfi',
-            {% else %}
-            nickname='fm-pfi',
-            {% endif %}
-            channel='#proyecto-fedora',
-            # If the word proyecto appears in any message, forward it.
-            filters=dict(
-                body=['^((?!proyecto).)*$'],
-            ),
-        ),
+            # {% if env == 'staging' %}
+            # nickname='fm-stg-pfi',
+            # {% else %}
+            # nickname='fm-pfi',
+            # {% endif %}
+            # channel='#proyecto-fedora',
+            # # If the word proyecto appears in any message, forward it.
+            # filters=dict(
+                # body=['^((?!proyecto).)*$'],
+            # ),
+        # ),
 
         # Similarly for #fedora-latam.
         dict(
