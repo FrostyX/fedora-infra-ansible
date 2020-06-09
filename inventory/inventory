@@ -690,7 +690,7 @@ smtp-mm-cc-rdu01.fedoraproject.org
 copr-be-dev.aws.fedoraproject.org
 copr-dist-git-dev.aws.fedoraproject.org
 copr-fe-dev.aws.fedoraproject.org
-# copr-keygen-dev.aws.fedoraproject.org
+copr-keygen-dev.aws.fedoraproject.org
 # datagrepper01.stg.phx2.fedoraproject.org
 # db-fas01.stg.phx2.fedoraproject.org
 # db-koji01.stg.phx2.fedoraproject.org
