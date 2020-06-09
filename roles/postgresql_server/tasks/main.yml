@@ -113,7 +113,6 @@
 
 - name: Ensure postgres has a place to backup to
   file: dest=/backups state=directory owner=postgres
-  when: inventory_hostname.startswith('db-koji01.iad2') or inventory_hostname.startswith('db01.iad2')
   tags:
   - postgresql
 
