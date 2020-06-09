@@ -4,11 +4,11 @@
 # Host name of the publically acessible bridge to clients
 
 {% if env == "production" %}
-bridge-hostname: sign-bridge.phx2.fedoraproject.org
+bridge-hostname: sign-bridge.{{datacenter}}.fedoraproject.org
 {% else %}
-bridge-hostname: sign-bridge01.stg.phx2.fedoraproject.org
+bridge-hostname: sign-bridge01.stg.{{datacenter}}.fedoraproject.org
 {% endif %}
-server-cert-nickname: sign-vault{{ env_suffix }}.phx2.fedoraproject.org
+server-cert-nickname: sign-vault{{ env_suffix }}.{{datacenter}}.fedoraproject.org
 
 # Port on which the bridge expects server connections
 bridge-port: 44333
