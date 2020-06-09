@@ -61,19 +61,19 @@
   when: env == "production" and nagios_location == "external"
 
 
-## Copy over the httpd SSL certs for external
-- name: Install the SSL cert so that we can use https
-  copy: >
-      src={{ private}}/files/httpd/{{ item }} dest=/etc/pki/tls/certs/{{ item }}
-      owner=root group=root mode=0600
-  when: env == "production" and nagios_location == "external"
-  with_items:
-  - noc02.fedoraproject.org.cert
-  - noc02.fedoraproject.org.key
-  - noc02.fedoraproject.org.intermediate.cert
-  tags:
-  - config
-  - httpd/certificate
+# ## Copy over the httpd SSL certs for external
+# - name: Install the SSL cert so that we can use https
+#   copy: >
+#       src={{ private}}/files/httpd/{{ item }} dest=/etc/pki/tls/certs/{{ item }}
+#       owner=root group=root mode=0600
+#   when: env == "production" and nagios_location == "external"
+#   with_items:
+#   - noc02.fedoraproject.org.cert
+#   - noc02.fedoraproject.org.key
+#   - noc02.fedoraproject.org.intermediate.cert
+#   tags:
+#   - config
+#   - httpd/certificate
 
 
 ## Setup directories for files to be copied
@@ -242,7 +242,7 @@
   - nagios_config
   - nagios_server
   - nagios_hostgroups
-  when: env == "production" and nagios_location == 'phx2_internal'
+  when: env == "production"
   notify: restart nagios
 
 ## Copy over the services
