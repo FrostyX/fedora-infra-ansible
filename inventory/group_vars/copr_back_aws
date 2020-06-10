@@ -68,4 +68,4 @@ nagios_Check_Services:
 # There is no python2 on F30
 
 # what is the main backend service name
-copr_backend_target: copr-backend.service
+copr_backend_target: copr-backend.target
