@@ -13,9 +13,9 @@ DBHost = db-koji01
 DBPass = {{ kojiPassword }}
 AuthPrincipal = host/koji{{env_suffix}}.fedoraproject.org
 {% if env == "staging" %}
-ProxyPrincipals = modularity@STG.FEDORAPROJECT.ORG,HTTP/koji.stg.fedoraproject.org@STG.FEDORAPROJECT.ORG,sigul/sign-bridge01.stg.phx2.fedoraproject.org@STG.FEDORAPROJECT.ORG
+ProxyPrincipals = modularity@STG.FEDORAPROJECT.ORG,HTTP/koji.stg.fedoraproject.org@STG.FEDORAPROJECT.ORG,sigul/sign-bridge01.stg.iad2.fedoraproject.org@STG.FEDORAPROJECT.ORG
 {% else %}
-ProxyPrincipals = HTTP/koji.fedoraproject.org@FEDORAPROJECT.ORG,sigul/sign-bridge01.phx2.fedoraproject.org@FEDORAPROJECT.ORG
+ProxyPrincipals = HTTP/koji.fedoraproject.org@FEDORAPROJECT.ORG,sigul/sign-bridge01.iad2.fedoraproject.org@FEDORAPROJECT.ORG
 {% endif %}
 KojiDir = /mnt/koji
 MemoryWarnThreshold = 10000
@@ -130,9 +130,9 @@ channel =
     source */fwupdate* && has_perm secure-boot :: use secure-boot
     source */fwupd* && has_perm secure-boot :: use secure-boot
 
-# set this package to use the 'heavybuilder' channel. Note that this is NOT good for most anything. 
-# It just happens to be for this particular package. Please check before adding anything here, you could 
-# cause it to end up building a lot slower. 
+# set this package to use the 'heavybuilder' channel. Note that this is NOT good for most anything.
+# It just happens to be for this particular package. Please check before adding anything here, you could
+# cause it to end up building a lot slower.
 #    source */chromium* :: use heavybuilder
 
     is_child_task :: parent
