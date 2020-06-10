@@ -28,7 +28,7 @@ nrpe_procs_crit: 300
 # the db_host_machine bits are so that delegation continues to work, even if
 # that db is localhost relative to resultsdb
 
-resultsdb_db_host_machine: db-qa02.iad2.fedoraproject.org
+resultsdb_db_host_machine: db01.iad2.fedoraproject.org
 resultsdb_db_host: "{{ resultsdb_db_host_machine }}"
 resultsdb_db_port: 5432
 resultsdb_endpoint: 'resultsdb_api'
@@ -52,7 +52,7 @@ resultsdb_frontend_secret_key: "{{ prod_resultsdb_frontend_secret_key }}"
 ############################################################
 # execdb details
 ############################################################
-execdb_db_host_machine: db-qa01.iad2.fedoraproject.org
+execdb_db_host_machine: db01.iad2.fedoraproject.org
 execdb_db_host: "{{ execdb_db_host_machine }}"
 execdb_db_port: 5432
 execdb_endpoint: 'execdb'
