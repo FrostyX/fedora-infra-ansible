@@ -48,7 +48,7 @@ builds_max_workers_arch=
 
 # Maximum number of concurrently running tasks per project owner.
 {% if env == 'production' %}
-builds_max_workers_owner=12
+builds_max_workers_owner=25
 {% elif devel %}
 builds_max_workers_owner=6
 {% else %}
@@ -56,7 +56,7 @@ builds_max_workers_owner=0
 {% endif %}
 
 # Maximum number of concurrently running tasks per build sandbox.
-builds_max_workers_sandbox=10
+builds_max_workers_sandbox=25
 
 # Maximum number of concurrent background processes spawned for handling
 # actions.

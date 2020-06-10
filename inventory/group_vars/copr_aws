@@ -26,6 +26,6 @@ nm_controlled_resolv: True
 builders:
     # max|max_spawn|max_prealloc
     aws:
-        x86_64: [100,20,30]
+        x86_64: [100,13,25]
         armhfp: [20,5,5]
         aarch64: [20,10,10]
