@@ -1,36 +1,4 @@
 [buildvm]
-buildvm-01.phx2.fedoraproject.org
-buildvm-02.phx2.fedoraproject.org
-buildvm-03.phx2.fedoraproject.org
-buildvm-04.phx2.fedoraproject.org
-buildvm-05.phx2.fedoraproject.org
-buildvm-06.phx2.fedoraproject.org
-buildvm-07.phx2.fedoraproject.org
-buildvm-08.phx2.fedoraproject.org
-buildvm-09.phx2.fedoraproject.org
-buildvm-10.phx2.fedoraproject.org
-buildvm-11.phx2.fedoraproject.org
-buildvm-12.phx2.fedoraproject.org
-buildvm-13.phx2.fedoraproject.org
-buildvm-14.phx2.fedoraproject.org
-buildvm-15.phx2.fedoraproject.org
-buildvm-16.phx2.fedoraproject.org
-buildvm-17.phx2.fedoraproject.org
-buildvm-18.phx2.fedoraproject.org
-buildvm-19.phx2.fedoraproject.org
-buildvm-20.phx2.fedoraproject.org
-buildvm-21.phx2.fedoraproject.org
-buildvm-22.phx2.fedoraproject.org
-buildvm-23.phx2.fedoraproject.org
-buildvm-24.phx2.fedoraproject.org
-buildvm-25.phx2.fedoraproject.org
-buildvm-26.phx2.fedoraproject.org
-buildvm-27.phx2.fedoraproject.org
-buildvm-28.phx2.fedoraproject.org
-buildvm-29.phx2.fedoraproject.org
-buildvm-30.phx2.fedoraproject.org
-buildvm-31.phx2.fedoraproject.org
-buildvm-32.phx2.fedoraproject.org
 buildvm-x86-01.iad2.fedoraproject.org
 buildvm-x86-02.iad2.fedoraproject.org
 buildvm-x86-03.iad2.fedoraproject.org
@@ -194,16 +162,6 @@ buildvm-s390x-23.s390.fedoraproject.org
 buildvm-s390x-24.s390.fedoraproject.org
 
 [buildvmhost]
-buildvmhost-01.phx2.fedoraproject.org
-buildvmhost-02.phx2.fedoraproject.org
-buildvmhost-03.phx2.fedoraproject.org
-buildvmhost-04.phx2.fedoraproject.org
-ppc8-01.ppc.fedoraproject.org
-ppc8-02.ppc.fedoraproject.org
-ppc8-03.ppc.fedoraproject.org
-ppc8-04.ppc.fedoraproject.org
-ppc9-01.ppc.fedoraproject.org
-ppc9-02.ppc.fedoraproject.org
 #aarch64-c01n1.arm.fedoraproject.org
 #aarch64-c02n1.arm.fedoraproject.org
 #aarch64-c03n1.arm.fedoraproject.org
@@ -255,25 +213,6 @@ bvmhost-p09-02.iad2.fedoraproject.org
 
 
 [buildhw]
-buildhw-01.phx2.fedoraproject.org
-buildhw-02.phx2.fedoraproject.org
-buildhw-03.phx2.fedoraproject.org
-buildhw-04.phx2.fedoraproject.org
-buildhw-05.phx2.fedoraproject.org
-buildhw-06.phx2.fedoraproject.org
-buildhw-07.phx2.fedoraproject.org
-buildhw-08.phx2.fedoraproject.org
-buildhw-09.phx2.fedoraproject.org
-buildhw-10.phx2.fedoraproject.org
-buildhw-11.phx2.fedoraproject.org
-buildhw-12.phx2.fedoraproject.org
-buildhw-aarch64-02.arm.fedoraproject.org
-buildhw-aarch64-03.arm.fedoraproject.org
-buildhw-aarch64-04.arm.fedoraproject.org
-buildhw-aarch64-05.arm.fedoraproject.org
-buildhw-aarch64-06.arm.fedoraproject.org
-buildhw-aarch64-07.arm.fedoraproject.org
-buildhw-aarch64-08.arm.fedoraproject.org
 # Machine unresponsive, likely dead
 #buildhw-aarch64-09.arm.fedoraproject.org
 buildhw-a64-01.iad2.fedoraproject.org
@@ -358,8 +297,6 @@ buildvm-ppc64le-40.iad2.fedoraproject.org
 
 [bkernel]
 bkernel01.iad2.fedoraproject.org
-bkernel03.phx2.fedoraproject.org
-#bkernel04.phx2.fedoraproject.org
 
 # These hosts get the runroot plugin installed.
 # They should be added to their own 'compose' channel in the koji db
