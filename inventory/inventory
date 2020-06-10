@@ -1181,24 +1181,21 @@ os-control01.phx2.fedoraproject.org
 os-control01.iad2.fedoraproject.org
 
 [os_masters]
-os-master01.phx2.fedoraproject.org
-os-master02.phx2.fedoraproject.org
-os-master03.phx2.fedoraproject.org
 os-master01.iad2.fedoraproject.org
 os-master02.iad2.fedoraproject.org
 os-master03.iad2.fedoraproject.org
 
 [os_infra_nodes]
-os-node01.phx2.fedoraproject.org
-os-node02.phx2.fedoraproject.org
-os-node03.phx2.fedoraproject.org
 os-node01.iad2.fedoraproject.org
 os-node02.iad2.fedoraproject.org
 os-node03.iad2.fedoraproject.org
+os-node04.iad2.fedoraproject.org
+os-node05.iad2.fedoraproject.org
 
 [os_nodes]
-os-node04.phx2.fedoraproject.org
-os-node05.phx2.fedoraproject.org
+os-node01.iad2.fedoraproject.org
+os-node02.iad2.fedoraproject.org
+os-node03.iad2.fedoraproject.org
 os-node04.iad2.fedoraproject.org
 os-node05.iad2.fedoraproject.org
 
