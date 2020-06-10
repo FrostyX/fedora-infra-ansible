@@ -28,43 +28,42 @@ function syncHttpLogs {
     done
 }
 
-syncHttpLogs proxy01.phx2.fedoraproject.org
+syncHttpLogs proxy01.iad2.fedoraproject.org
 syncHttpLogs proxy02.vpn.fedoraproject.org
 syncHttpLogs proxy03.vpn.fedoraproject.org
 syncHttpLogs proxy04.vpn.fedoraproject.org
 syncHttpLogs proxy05.vpn.fedoraproject.org
 syncHttpLogs proxy06.vpn.fedoraproject.org
-#syncHttpLogs proxy08.vpn.fedoraproject.org
+# syncHttpLogs proxy08.vpn.fedoraproject.org
 syncHttpLogs proxy09.vpn.fedoraproject.org
-syncHttpLogs proxy10.phx2.fedoraproject.org
+syncHttpLogs proxy10.iad2.fedoraproject.org
 syncHttpLogs proxy11.vpn.fedoraproject.org
 syncHttpLogs proxy12.vpn.fedoraproject.org
 syncHttpLogs proxy13.vpn.fedoraproject.org
 syncHttpLogs proxy14.vpn.fedoraproject.org
 syncHttpLogs proxy30.vpn.fedoraproject.org
 syncHttpLogs proxy31.vpn.fedoraproject.org
-syncHttpLogs proxy101.phx2.fedoraproject.org
-syncHttpLogs proxy110.phx2.fedoraproject.org
-syncHttpLogs proxy01.stg.phx2.fedoraproject.org
-syncHttpLogs fedocal01.phx2.fedoraproject.org
-syncHttpLogs fedocal02.phx2.fedoraproject.org
-syncHttpLogs fedocal01.stg.phx2.fedoraproject.org
-syncHttpLogs datagrepper01.phx2.fedoraproject.org
-syncHttpLogs datagrepper02.phx2.fedoraproject.org
-syncHttpLogs datagrepper01.stg.phx2.fedoraproject.org
-syncHttpLogs badges-web01.phx2.fedoraproject.org
-syncHttpLogs badges-web02.phx2.fedoraproject.org
-syncHttpLogs badges-web01.stg.phx2.fedoraproject.org
-syncHttpLogs packages03.phx2.fedoraproject.org
-syncHttpLogs packages04.phx2.fedoraproject.org
-syncHttpLogs packages03.stg.phx2.fedoraproject.org
-syncHttpLogs blockerbugs01.phx2.fedoraproject.org
-syncHttpLogs blockerbugs02.phx2.fedoraproject.org
-syncHttpLogs blockerbugs01.stg.phx2.fedoraproject.org
-syncHttpLogs value01.phx2.fedoraproject.org
-syncHttpLogs secondary01
+syncHttpLogs proxy101.iad2.fedoraproject.org
+syncHttpLogs proxy110.iad2.fedoraproject.org
+# syncHttpLogs proxy01.stg.iad2.fedoraproject.org
+# syncHttpLogs fedocal01.iad2.fedoraproject.org
+# syncHttpLogs fedocal02.iad2.fedoraproject.org
+# syncHttpLogs fedocal01.stg.iad2.fedoraproject.org
+syncHttpLogs datagrepper01.iad2.fedoraproject.org
+# syncHttpLogs datagrepper02.iad2.fedoraproject.org
+# syncHttpLogs datagrepper01.stg.iad2.fedoraproject.org
+# syncHttpLogs badges-web01.iad2.fedoraproject.org
+# syncHttpLogs badges-web02.iad2.fedoraproject.org
+# syncHttpLogs badges-web01.stg.iad2.fedoraproject.org
+# syncHttpLogs packages03.iad2.fedoraproject.org
+# syncHttpLogs packages04.iad2.fedoraproject.org
+# syncHttpLogs packages03.stg.iad2.fedoraproject.org
+syncHttpLogs blockerbugs01.iad2.fedoraproject.org
+# syncHttpLogs blockerbugs02.iad2.fedoraproject.org
+# syncHttpLogs blockerbugs01.stg.iad2.fedoraproject.org
+syncHttpLogs value01.iad2.fedoraproject.org
 syncHttpLogs people02.vpn.fedoraproject.org
-syncHttpLogs noc01.phx2.fedoraproject.org
+syncHttpLogs noc01.iad2.fedoraproject.org
 syncHttpLogs dl01.iad2.fedoraproject.org
 syncHttpLogs dl02.iad2.fedoraproject.org
 syncHttpLogs dl03.iad2.fedoraproject.org
@@ -73,7 +72,7 @@ syncHttpLogs dl05.iad2.fedoraproject.org
 syncHttpLogs download-rdu01.vpn.fedoraproject.org
 syncHttpLogs download-ib01.vpn.fedoraproject.org
 syncHttpLogs download-cc-rdu01.vpn.fedoraproject.org
-syncHttpLogs sundries01.phx2.fedoraproject.org
-syncHttpLogs sundries02.phx2.fedoraproject.org
-syncHttpLogs sundries01.stg.phx2.fedoraproject.org
+syncHttpLogs sundries01.iad2.fedoraproject.org
+# syncHttpLogs sundries02.iad2.fedoraproject.org
+# syncHttpLogs sundries01.stg.iad2.fedoraproject.org
 ## eof
