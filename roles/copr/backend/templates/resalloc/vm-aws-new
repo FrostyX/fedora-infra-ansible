@@ -65,6 +65,7 @@ cleanup_actions()
         # it is safe to ask for removal of non-existeng VM (in case the playbook
         # below was shut-down before the VM was even created)
         $delete_script
+        exit 1
     fi
 }
 trap cleanup_actions EXIT
