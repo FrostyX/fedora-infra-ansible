@@ -86,8 +86,8 @@ handlers = ["console"]
             [consumer_config.koji_instances.primary.options]
             # Only ssl and kerberos are supported at the moment
             authmethod = "kerberos"
-            principal = "autosign/autosign01{{ env_suffix }}.phx2.fedoraproject.org@{% if env != 'production' %}STG.{% endif %}FEDORAPROJECT.ORG"
-            keytab = "/etc/krb5.autosign_autosign01{{ env_suffix }}.phx2.fedoraproject.org.keytab"
+            principal = "autosign/autosign01{{ env_suffix }}.{{datacenter}}.fedoraproject.org@{% if env != 'production' %}STG.{% endif %}FEDORAPROJECT.ORG"
+            keytab = "/etc/krb5.autosign_autosign01{{ env_suffix }}.{{datacenter}}.fedoraproject.org.keytab"
             krb_rdns = false
 
             # Temporary tags
@@ -329,7 +329,7 @@ handlers = ["console"]
             key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
 
-            # ELN Mass Rebuild 
+            # ELN Mass Rebuild
 
             [[consumer_config.koji_instances.primary.tags]]
             from = "eln-rebuild"
