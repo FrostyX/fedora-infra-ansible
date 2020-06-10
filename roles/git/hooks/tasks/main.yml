@@ -54,17 +54,17 @@
   - src: "{{private}}/files/rabbitmq/{{ env }}/pki/issued/batcave{{ env_suffix }}.crt"
     dest: git-hooks.crt
     owner: root
-    group: root
+    group: packager
     mode: "444"
   - src: "{{private}}/files/rabbitmq/{{ env }}/pki/private/batcave{{ env_suffix }}.key"
     dest: git-hooks.key
     owner: root
-    group: root
+    group: packager
     mode: "440"
   - src: "{{private}}/files/rabbitmq/{{ env }}/pki/ca.crt"
     dest: git-hooks.ca
     owner: root
-    group: root
+    group: packager
     mode: "444"
   tags:
   - git
