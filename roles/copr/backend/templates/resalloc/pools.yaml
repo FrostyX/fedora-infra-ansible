@@ -70,11 +70,11 @@ aarch64_{{ id }}_{{ inst }}:
 
 {{ aws_x86_64(builders.aws.x86_64[0] + buidlers.aws.armhfp[0],
               builders.aws.x86_64[1] + buidlers.aws.armhfp[1],
-              builders.aws.x86_64[2] + buidlers.aws.armhfp[2]
+              builders.aws.x86_64[2] + buidlers.aws.armhfp[2])
 }}
 {{ aws_aarch64(builders.aws.aarch64[0],
                builders.aws.aarch64[1],
-               builders.aws.aarch64[2]
+               builders.aws.aarch64[2])
 }}
 
 {% if env == "production" %}
