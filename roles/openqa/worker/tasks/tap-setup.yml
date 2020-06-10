@@ -15,6 +15,7 @@
 
 - name: Enable network service (needed for openvswitch devices)
   service: name=network enabled=yes state=started
+  ignore_errors: yes
 
 - name: openvswitch bridge device config
   copy: src=ifcfg-br0 dest=/etc/sysconfig/network-scripts/ifcfg-br0 owner=root group=root mode=0644
