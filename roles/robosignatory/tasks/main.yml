@@ -192,12 +192,12 @@
   - robosignatory
 
 - name: Allow robosignatory to use systemd-ask-password
-  acl:
-    path: /run/systemd/ask-password
-    entity: robosignatory
-    etype: user
-    permissions: rwx
-    state: present
+  copy:
+    src: ask-password-robosignatory.conf
+    dest: /etc/tmpfiles.d/ask-password-robosignatory.conf
+    owner: root
+    group: root
+    mode: 0644
   tags:
   - config
   - robosignatory
