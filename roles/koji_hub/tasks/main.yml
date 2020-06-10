@@ -390,6 +390,12 @@
   - selinux
   - koji_hub
 
+- name: set sebooleans so koji can run the fedora-messaging plugin
+  seboolean: name=httpd_execmem state=true persistent=true
+  tags:
+  - selinux
+  - koji_hub
+
 - name: set sebooleans so koji can anon write
   seboolean: name=httpd_anon_write state=true persistent=true
   tags:
