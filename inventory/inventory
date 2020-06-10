@@ -152,6 +152,8 @@ github2fedmsg01.iad2.fedoraproject.org
 [mailman]
 mailman01.phx2.fedoraproject.org
 mailman02.phx2.fedoraproject.org
+mailman01.iad2.fedoraproject.org
+mailman02.iad2.fedoraproject.org
 
 [mailman_stg]
 # mailman01.stg.phx2.fedoraproject.org
