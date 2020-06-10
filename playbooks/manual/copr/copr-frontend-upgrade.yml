@@ -36,8 +36,8 @@
       - copr-selinux
       - python3-copr-common
 
-  - name: upgrade db to head
-    command: alembic-3 upgrade head
+  - name: upgrade db to head, logs in /var/log/copr-frontend/migrations.log
+    shell: alembic-3 upgrade head &> /var/log/copr-frontend/migrations.log
     become: yes
     become_user: copr-fe
     args:
