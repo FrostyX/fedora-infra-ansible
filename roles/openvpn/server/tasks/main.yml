@@ -44,7 +44,10 @@
   - openvpn
 
 - name: Install the ccd files
-  synchronize: src=ccd/ dest=/etc/openvpn/server/ccd/
+  synchronize: 
+    src: ccd/ 
+    dest: /etc/openvpn/server/ccd/
+    delete: yes
   tags:
   - openvpn
 
