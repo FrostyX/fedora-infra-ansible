@@ -12,10 +12,6 @@ rabbitmq03.iad2.fedoraproject.org
 # rabbitmq03.stg.phx2.fedoraproject.org
 
 [releng_compose]
-compose-x86-01.phx2.fedoraproject.org
-branched-composer.phx2.fedoraproject.org
-rawhide-composer.phx2.fedoraproject.org
-compose-iot-01.phx2.fedoraproject.org
 compose-x86-01.iad2.fedoraproject.org
 compose-rawhide01.iad2.fedoraproject.org
 compose-iot01.iad2.fedoraproject.org
@@ -36,7 +32,6 @@ retrace_stg_aws
 [gdpr_delete]
 
 [certgetter]
-certgetter01.phx2.fedoraproject.org
 certgetter01.iad2.fedoraproject.org
 
 [backup]
@@ -764,7 +759,6 @@ retrace-stg.aws.fedoraproject.org
 batcave01.phx2.fedoraproject.org
 bastion01.phx2.fedoraproject.org
 bastion02.phx2.fedoraproject.org
-certgetter01.phx2.fedoraproject.org
 certgetter01.iad2.fedoraproject.org
 # download01.phx2.fedoraproject.org
 log01.phx2.fedoraproject.org
@@ -1530,7 +1524,6 @@ batcave01.phx2.fedoraproject.org
 bkernel03.phx2.fedoraproject.org
 blockerbugs01.phx2.fedoraproject.org
 blockerbugs02.phx2.fedoraproject.org
-branched-composer.phx2.fedoraproject.org
 buildhw-01.phx2.fedoraproject.org
 buildhw-02.phx2.fedoraproject.org
 buildhw-03.phx2.fedoraproject.org
@@ -1550,38 +1543,6 @@ buildhw-aarch64-05.arm.fedoraproject.org
 buildhw-aarch64-06.arm.fedoraproject.org
 buildhw-aarch64-07.arm.fedoraproject.org
 buildhw-aarch64-08.arm.fedoraproject.org
-buildvm-01.phx2.fedoraproject.org
-buildvm-02.phx2.fedoraproject.org
-buildvm-03.phx2.fedoraproject.org
-buildvm-04.phx2.fedoraproject.org
-buildvm-05.phx2.fedoraproject.org
-buildvm-06.phx2.fedoraproject.org
-buildvm-07.phx2.fedoraproject.org
-buildvm-08.phx2.fedoraproject.org
-buildvm-09.phx2.fedoraproject.org
-buildvm-10.phx2.fedoraproject.org
-buildvm-11.phx2.fedoraproject.org
-buildvm-12.phx2.fedoraproject.org
-buildvm-13.phx2.fedoraproject.org
-buildvm-14.phx2.fedoraproject.org
-buildvm-15.phx2.fedoraproject.org
-buildvm-16.phx2.fedoraproject.org
-buildvm-17.phx2.fedoraproject.org
-buildvm-18.phx2.fedoraproject.org
-buildvm-19.phx2.fedoraproject.org
-buildvm-20.phx2.fedoraproject.org
-buildvm-21.phx2.fedoraproject.org
-buildvm-22.phx2.fedoraproject.org
-buildvm-23.phx2.fedoraproject.org
-buildvm-24.phx2.fedoraproject.org
-buildvm-25.phx2.fedoraproject.org
-buildvm-26.phx2.fedoraproject.org
-buildvm-27.phx2.fedoraproject.org
-buildvm-28.phx2.fedoraproject.org
-buildvm-29.phx2.fedoraproject.org
-buildvm-30.phx2.fedoraproject.org
-buildvm-31.phx2.fedoraproject.org
-buildvm-32.phx2.fedoraproject.org
 buildvm-aarch64-01.arm.fedoraproject.org
 buildvm-aarch64-02.arm.fedoraproject.org
 buildvm-aarch64-03.arm.fedoraproject.org
@@ -1686,9 +1647,6 @@ bvirthost12.phx2.fedoraproject.org
 bvirthost13.phx2.fedoraproject.org
 bvirthost14.phx2.fedoraproject.org
 bvirthost15.phx2.fedoraproject.org
-certgetter01.phx2.fedoraproject.org
-compose-iot-01.phx2.fedoraproject.org
-compose-x86-01.phx2.fedoraproject.org
 data-analysis01.phx2.fedoraproject.org
 datagrepper01.phx2.fedoraproject.org
 datagrepper02.phx2.fedoraproject.org
@@ -1780,8 +1738,6 @@ resultsdb01.qa.fedoraproject.org
 retrace01.qa.fedoraproject.org
 secondary01.phx2.fedoraproject.org
 sign-bridge01.phx2.fedoraproject.org
-sundries01.phx2.fedoraproject.org
-sundries02.phx2.fedoraproject.org
 tang01.phx2.fedoraproject.org
 tang02.phx2.fedoraproject.org
 virthost-comm01.qa.fedoraproject.org
