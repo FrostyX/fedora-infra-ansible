@@ -37,7 +37,7 @@ def serialize_datetime_in_task(task):
     for date_key in date_fields:
         if task.get(date_key) is None:
             continue
-        if isinstance(task[date_key], (float, int, long)):
+        if isinstance(task[date_key], (float, int)):
             continue
         task[date_key] = time.mktime(task[date_key].timetuple())
 
@@ -162,7 +162,7 @@ def get_message_body(topic, *args, **kws):
 
 # This callback gets run for every koji event that starts with "post"
 @callback(*[
-    c for c in callbacks.keys()
+    c for c in list(callbacks.keys())
     if c.startswith('post') and c not in [
         'postImport',  # This is kind of useless; also noisy.
         # This one is special, and is called every time, so ignore it.
@@ -220,7 +220,7 @@ def queue_message(cbtype, *args, **kws):
         if isinstance(obj, dict):
             return dict([
                 (k, scrub(v))
-                for k, v in obj.items()
+                for k, v in list(obj.items())
                 if k not in problem_fields
             ])
         return obj
