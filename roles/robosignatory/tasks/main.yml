@@ -190,3 +190,14 @@
   tags:
   - config
   - robosignatory
+
+- name: Allow robosignatory to use systemd-ask-password
+  acl:
+    path: /run/systemd/ask-password
+    entity: robosignatory
+    etype: user
+    permissions: rwx
+    state: present
+  tags:
+  - config
+  - robosignatory
