@@ -1114,7 +1114,6 @@ osbs-node01.iad2.fedoraproject.org
 osbs-node02.iad2.fedoraproject.org
 
 [osbs_masters]
-osbs-master01.phx2.fedoraproject.org
 osbs-master01.iad2.fedoraproject.org
 
 #[osbs_aarch64_masters]
