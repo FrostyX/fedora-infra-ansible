@@ -393,8 +393,8 @@ baseiptables: True
 # Most of our machines have manual resolv.conf files
 # These settings are for machines where NM is supposed to control resolv.conf.
 nm_controlled_resolv: False
-dns1: "10.5.126.21"
-dns2: "10.5.126.22"
+dns1: "10.3.163.33"
+dns2: "10.3.163.34"
 
 # This is a list of services that need to wait for VPN to be up before getting started.
 postvpnservices: []
