@@ -135,7 +135,7 @@
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
 - name: configure sshfs target on koji01
-  hosts: koji01.phx2.fedoraproject.org:koji01.stg.phx2.fedoraproject.org
+  hosts: koji01.iad2.fedoraproject.org:koji01.stg.phx2.fedoraproject.org
   tags:
     - sshfs
   user: root
