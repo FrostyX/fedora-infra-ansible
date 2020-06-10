@@ -277,7 +277,7 @@ download-cc-rdu01.fedoraproject.org
 
 [download_tier1]
 dl04.iad2.fedoraproject.org
-d05.iad2.fedoraproject.org
+dl05.iad2.fedoraproject.org
 
 [download:children]
 download_ibiblio
@@ -1412,7 +1412,6 @@ certgetter01.iad2.fedoraproject.org
 compose-iot01.iad2.fedoraproject.org
 compose-rawhide01.iad2.fedoraproject.org
 compose-x86-01.iad2.fedoraproject.org
-d05.iad2.fedoraproject.org
 datagrepper01.iad2.fedoraproject.org
 db-datanommer01.iad2.fedoraproject.org
 db-fas01.iad2.fedoraproject.org
