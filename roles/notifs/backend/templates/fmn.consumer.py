@@ -42,7 +42,7 @@ config = {
 
     # Consumer stuff
     "fmn.consumer.enabled": True,
-    "fmn.sqlalchemy.uri": "postgresql://{{notifs_db_user}}:{{notifs_db_password}}@db-notifs/notifications",
+    "fmn.sqlalchemy.uri": "postgresql://{{notifs_db_user}}:{{notifs_db_password}}@db01.iad2.fedoraproject.org/notifications",
 
     {% if env != 'staging' %}
     # Auto create accounts for new packagers.
