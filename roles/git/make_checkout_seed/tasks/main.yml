@@ -1,6 +1,12 @@
 ---
 # tasklist for setting up the Git checkout seed
 
+- name: make sure packages needed are installed
+  package: name={{ item }} state=present
+  with_items:
+  - tar
+  - python2
+
 - name: create the destination directory
   file: dest=/srv/git_seed owner=root group=root mode=0755 state=directory
   when: env != 'staging'
