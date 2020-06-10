@@ -52,11 +52,11 @@
     when: "'releng_stg' not in group_names"
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
-    nfs_src_dir: 'fedora-ostree-content/ostree'
+    nfs_src_dir: 'fedora_ostree_content/ostree'
     when: "'releng_stg' not in group_names and datacenter == 'phx2'"
   - role: nfs/client
     mnt_dir: '/mnt/koji/compose/ostree'
-    nfs_src_dir: 'fedora-ostree-content/compose/ostree'
+    nfs_src_dir: 'fedora_ostree_content/compose/ostree'
     when: "'releng_stg' not in group_names and datacenter == 'phx2'"
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
@@ -69,11 +69,11 @@
 
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
-    nfs_src_dir: 'fedora-ostree-content-stg/ostree'
+    nfs_src_dir: 'fedora_ostree_content/ostree'
     when: "'releng_stg' in group_names"
   - role: nfs/client
     mnt_dir: '/mnt/koji/compose/ostree'
-    nfs_src_dir: 'fedora-ostree-content-stg/compose/ostree'
+    nfs_src_dir: 'fedora_ostree_content/compose/ostree'
     when: "'releng_stg' in group_names"
 
   - role: nfs/client

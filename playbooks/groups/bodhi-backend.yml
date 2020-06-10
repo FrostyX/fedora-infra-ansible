@@ -40,12 +40,12 @@
 
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
-    nfs_src_dir: 'fedora-ostree-content/ostree'
+    nfs_src_dir: 'fedora_ostree_content/ostree'
     when: env != 'staging' and datacenter == 'phx2'
 
   - role: nfs/client
     mnt_dir: '/mnt/koji/compose/ostree'
-    nfs_src_dir: 'fedora-ostree-content/compose/ostree'
+    nfs_src_dir: 'fedora_ostree_content/compose/ostree'
     when: env != 'staging' and datacenter == 'phx2'
 
   - role: nfs/client
@@ -60,12 +60,12 @@
 
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
-    nfs_src_dir: 'fedora-ostree-content-stg/ostree'
+    nfs_src_dir: 'fedora_ostree_content-stg/ostree'
     when: env == 'staging'
 
   - role: nfs/client
     mnt_dir: '/mnt/koji/compose/ostree'
-    nfs_src_dir: 'fedora-ostree-content-stg/compose/ostree'
+    nfs_src_dir: 'fedora_ostree_content_stg/compose/ostree'
     when: env == 'staging'
 
     # In staging, we mount fedora_koji as read only (see nfs_mount_opts)

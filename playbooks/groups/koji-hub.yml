@@ -91,13 +91,13 @@
     when: env == 'staging' and inventory_hostname.startswith('koji')
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
-    nfs_src_dir: 'fedora-ostree-content/ostree'
+    nfs_src_dir: 'fedora_ostree_content/ostree'
     mount_stg: true
     when: env != 'staging' and datacenter == 'phx2'
   - role: nfs/client
     mnt_dir: '/mnt/koji/compose/ostree'
     mount_stg: true
-    nfs_src_dir: 'fedora-ostree-content/compose/ostree'
+    nfs_src_dir: 'fedora_ostree_content/compose/ostree'
     when: env != 'staging' and datacenter == 'phx2'
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
@@ -111,13 +111,13 @@
     when: env != 'staging' and datacenter == 'iad2'
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
-    nfs_src_dir: 'fedora-ostree-content-stg/ostree'
+    nfs_src_dir: 'fedora_ostree_content/ostree'
     mount_stg: true
     when: env == 'staging'
   - role: nfs/client
     mnt_dir: '/mnt/koji/compose/ostree'
     mount_stg: true
-    nfs_src_dir: 'fedora-ostree-content-stg/compose/ostree'
+    nfs_src_dir: 'fedora_ostree_content/compose/ostree'
     when: env == 'staging'
   - role: nfs/client
     mnt_dir: '/srv/odcs'

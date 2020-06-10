@@ -51,13 +51,13 @@
     nfs_src_dir: 'fedora_ftp/fedora.redhat.com/pub'
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
-    nfs_src_dir: 'fedora-ostree-content/ostree'
+    nfs_src_dir: 'fedora_ostree_content/ostree'
     mount_stg: true
     when: datacenter == 'phx2'
   - role: nfs/client
     mnt_dir: '/mnt/koji/compose/ostree'
     mount_stg: true
-    nfs_src_dir: 'fedora-ostree-content/compose/ostree'
+    nfs_src_dir: 'fedora_ostree_content/compose/ostree'
     when: datacenter == 'phx2'
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
