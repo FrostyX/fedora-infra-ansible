@@ -6,7 +6,7 @@
 - import_playbook: "/srv/web/infra/ansible/playbooks/include/virt-create.yml myhosts=resultsdb_dev:resultsdb_stg:resultsdb_prod"
 
 - name: make the box be real
-  hosts: resultsdb_stg:resultsdb_prod
+  hosts: resultsdb_stg:resultsdb_prod:resultsdb_iad_prod
   user: root
   gather_facts: True
 
@@ -78,7 +78,7 @@
    - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
 - name: configure resultsdb production
-  hosts: resultsdb_stg:resultsdb_prod
+  hosts: resultsdb_stg:resultsdb_prod:resultsdb_iad_prod
   user: root
   gather_facts: True
 
@@ -96,7 +96,7 @@
    - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
 - name: Install ci-resultsdb-listener
-  hosts: resultsdb_stg:resultsdb_prod
+  hosts: resultsdb_stg:resultsdb_prod:resultsdb_iad_prod
   user: root
   gather_facts: True
 
