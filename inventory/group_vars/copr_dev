@@ -22,3 +22,10 @@ ansible_ifcfg_blacklist: true
 copr_aws_region: us-east-1
 
 services_disabled: true
+
+builders:
+    # max|max_spawn|max_prealloc
+    aws:
+        x86_64: [20,5,5]
+        armhfp: [3,1,1]
+        aarch64: [5,2,2]

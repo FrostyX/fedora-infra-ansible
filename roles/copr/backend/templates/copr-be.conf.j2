@@ -16,134 +16,55 @@ frontend_auth={{ copr_backend_password_dev }}
 frontend_auth={{ copr_backend_password_stg }}
 {% endif %}
 
-# For each build group set:
-#   name - name of the group (will be shown in the worker process name)
-#   archs - architectures to build by this group
-#   spawn_playbook - path to an ansible playbook which spawns a builder
-#   terminate_playbook - path to an ansible playbook to terminate the builder
-#   max_vm_total - maximum number of VM which can run in parallel
-#   max_vm_per_user - maximum number of VM which can use one user in parallel
-#   max_builds_per_vm - maximum consequetive builds on one VM
-#   max_spawn_processes=2 - max number of spawning playbooks run in parallel
-#   vm_spawn_min_interval=30 - after you spin up one VM wait this number of seconds
-#   vm_dirty_terminating_timeout=12 - if user do not reuse VM within this number second then VM is terminated
-#   vm_health_check_period=120 - every X seconds try to check if VM is still alive
-#   vm_health_check_max_time=300 - after this number seconds is not alive it is marked as failed
-#   vm_max_check_fails=2 - when machine is consequently X times marked as failed then it is terminated
-#   vm_terminating_timeout=600 - when machine was terminated and terminate PB did not finish within this number of second, we will run the PB once again.
-
-{% if devel %}
-build_groups=0
-
-builds_max_workers_arch=x86_64=18,armhfp=2,aarch64=10
-builds_max_workers_sandbox=5
-builds_max_workers_owner=15
-{% else %}
-build_groups=5
-{% endif %}
-
-# new OS cloud, VMM based backend
-group0_name=PC
-group0_archs=i386,x86_64,i586,armhfp
-group0_spawn_playbook=/home/copr/provision/builderpb_nova.yml
-group0_terminate_playbook=/home/copr/provision/terminatepb_nova.yml
-group0_vm_spawn_min_interval=5
-{% if devel %}
-group0_max_vm_per_user=0
-group0_max_vm_total=0
-{% else %}
-group0_max_vm_per_user=0
-group0_max_vm_total=0
-group0_max_spawn_processes=0
-{% endif %}
-group0_playbook_timeout=1000
-
-group1_name=PPC64LE
-group1_archs=ppc64le
-group1_spawn_playbook=/home/copr/provision/builderpb_nova_ppc64le.yml
-group1_terminate_playbook=/home/copr/provision/terminatepb_nova.yml
-{% if devel %}
-group1_max_vm_per_user=0
-group1_max_vm_total=0
-group1_max_spawn_processes=0
-{% else %}
-group1_max_vm_per_user=0
-group1_max_vm_total=0
-group1_max_spawn_processes=0
-{% endif %}
-group1_playbook_timeout=1000
-
-group2_name=AARCH64
-group2_archs=aarch64
-group2_spawn_playbook=/home/copr/provision/builderpb_libvirt_aarch64.yml
-group2_terminate_playbook=/home/copr/provision/terminatepb_libvirt_aarch64.yml
-group2_vm_health_check_period=30
-group2_vm_health_check_max_time=80
-group2_vm_spawn_min_interval=5
-
-{% if not devel %}
-group2_max_vm_per_user=4
-group2_max_vm_total=8
-# we can not over-load hypervisors, there's max-spawn limit in resalloc config
-group2_max_spawn_processes=8
-{% else %}
-group2_max_vm_per_user=2
-group2_max_vm_total=0
-group2_max_spawn_processes=4
-{% endif %}
-
-group3_name=X86_64_AWS
-group3_archs=i386,x86_64,i586,armhfp
-group3_spawn_playbook=/home/copr/provision/builderpb-aws-x86_64.yml
-group3_terminate_playbook=/home/copr/provision/terminatepb-aws.yml
-group3_vm_health_check_period=30
-group3_vm_health_check_max_time=80
-group3_vm_spawn_min_interval=5
-{% if not devel %}
-group3_max_vm_total=50
-group3_max_vm_per_user=8
-group3_max_spawn_processes=8
-{% else %}
-group3_max_vm_total=0
-group3_max_vm_per_user=2
-group3_max_spawn_processes=2
-{% endif %}
-
-group4_name=aarch64_AWS
-group4_archs=aarch64
-group4_spawn_playbook=/home/copr/provision/builderpb-aws-aarch64.yml
-group4_terminate_playbook=/home/copr/provision/terminatepb-aws.yml
-group4_vm_health_check_period=30
-group4_vm_health_check_max_time=80
-group4_vm_spawn_min_interval=5
-{% if not devel %}
-group4_max_vm_total=10
-group4_max_vm_per_user=3
-group4_max_spawn_processes=5
-{% else %}
-group4_max_vm_total=0
-group4_max_vm_per_user=2
-group4_max_spawn_processes=2
-{% endif %}
-
 # directory where results are stored
 # should be accessible from web using 'results_baseurl' URL
 # no default
 destdir=/var/lib/copr/public_html/results
 
+# how long (in seconds) backend should wait before query frontends
+# for new tasks in queue
 # default is 10
 sleeptime=20
 
-# path to log file
-# default is /var/log/copr/backend.log
-logfile=/var/log/copr/backend.log
+# Builder machine allocation is done by resalloc server listening on
+# this address.
+#resalloc_connection=http://localhost:49100
 
-# default is /var/log/copr/workers/
-worker_logdir=/var/log/copr/workers/
+# Maximum number of concurrent background builder processes.  Note that
+# the background process doesn't have the builder machine allocated all
+# the time but only as long as really needed.  To control the number of
+# builder machines please configure resalloc server, see the
+# 'resalloc_connection' config option.
+# This option basically controls the amount of RAM allocated for
+# processing builds on copr backend, and how many resalloc tickets can
+# be taken at the same time.
+builds_max_workers={{ builders.aws.x86_64[0] + builders.aws.aarch64[0] + builders.aws.armhfp[0] }}
 
-# exit on worker failure
+# Maximum number of concurrently running tasks per architecture.
+builds_max_workers_arch=
+    x86_64={{ builders.aws.x86_64[0] }},
+    aarch64={{ builders.aws.aarch64[0]}},
+    armhfp={{ builders.aws.armhfp[0] }}
+
+# Maximum number of concurrently running tasks per project owner.
+{% if env == 'production' %}
+builds_max_workers_owner=12
+{% elif devel %}
+builds_max_workers_owner=6
+{% else %}
+builds_max_workers_owner=0
+{% endif %}
+
+# Maximum number of concurrently running tasks per build sandbox.
+builds_max_workers_sandbox=10
+
+# Maximum number of concurrent background processes spawned for handling
+# actions.
+actions_max_workers=20
+
+# publish fedmsg notifications from workers if true
 # default is false
-#exit_on_worker=false
+#fedmsg_enabled=false
 
 # enable package signing, require configured
 # signer host and correct /etc/sign.conf
@@ -156,7 +77,10 @@ keygen_host={{ keygen_host }}
 # minimum age for builds to be pruned
 prune_days=7
 
-dist_git_url=http://{{ dist_git_base_url }}/git
+# logging settings
+# log_dir=/var/log/copr-backend/
+# log_level=info
+# log_format=[%(asctime)s][%(levelname)6s][PID:%(process)d][%(name)10s][%(filename)s:%(funcName)s:%(lineno)d] %(message)s
 
 [builder]
 # default is 1800
@@ -164,8 +88,6 @@ timeout=86400
 
 # utilized by /usr/bin/check_consecutive_build_fails.py
 consecutive_failure_threshold=30
-
-builder_perl=True
 
 [ssh]
 builder_config=/home/copr/.ssh/config

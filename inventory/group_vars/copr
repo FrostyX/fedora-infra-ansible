@@ -21,3 +21,10 @@ ansible_ifcfg_blacklist: true
 copr_aws_region: us-east-1
 
 datacenter: cloud
+
+builders:
+    # max|max_spawn|max_prealloc
+    aws:
+        x86_64: [100,20,30]
+        armhfp: [20,5,5]
+        aarch64: [20,10,10]
