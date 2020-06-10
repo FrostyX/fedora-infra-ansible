@@ -2,7 +2,7 @@
 config = {
     'datanommer.enabled': True,
 {% if env == "production" %}
-    'datanommer.sqlalchemy.url': 'postgresql://{{ datanommerDBUser }}:{{ datanommerDBPassword }}@db-datanommer02/datanommer',
+    'datanommer.sqlalchemy.url': 'postgresql://{{ datanommerDBUser }}:{{ datanommerDBPassword }}@db-datanommer01.iad2.fedoraproject.org/datanommer',
 {% else %}
     'datanommer.sqlalchemy.url': 'postgresql://{{ datanommerDBUser }}:{{ datanommerDBPassword }}@db-datanommer.stg.phx2.fedoraproject.org/datanommer',
 {% endif %}
