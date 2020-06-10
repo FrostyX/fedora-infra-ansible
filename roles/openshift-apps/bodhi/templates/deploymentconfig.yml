@@ -58,15 +58,8 @@ items:
         containers:
         - name: bodhi-web
           image: bodhi-base:latest
-{% if env == "staging" %}
           command: ["gunicorn"]
-          args: ["--paste", "/etc/bodhi/production.ini", "-b", "0.0.0.0:8080", "-w", "4"]
-{% else %}
-          command: ["gunicorn"]
-          args: ["--paste", "/etc/bodhi/production.ini", "-b", "0.0.0.0:8080", "-w", "4"]
-#          command: ["bash"]
-#          args: ["/etc/bodhi/start.sh"]
-{% endif %}
+          args: ["--paste", "/etc/bodhi/production.ini", "-b", "0.0.0.0:8080", "-w", "4", "--log-level", "DEBUG", "-t", "60"]
           ports:
           - containerPort: 8080
           resources: {}
