@@ -16,10 +16,10 @@ config = {
     # Credentials to talk to PDC
     'pdcupdater.pdc': {
         {% if env == 'staging' %}
-        'server': 'http://pdc-web01.stg.phx2.fedoraproject.org/rest_api/v1/',
+        'server': 'http://pdc-web01.stg.iad2.fedoraproject.org/rest_api/v1/',
         'token': '{{pdc_updater_api_token_stg }}',
         {% else %}
-        'server': 'http://pdc-web01.phx2.fedoraproject.org/rest_api/v1/',
+        'server': 'http://pdc-web01.iad2.fedoraproject.org/rest_api/v1/',
         'token': '{{pdc_updater_api_token_prod }}',
         {% endif %}
     },
@@ -53,7 +53,7 @@ config = {
     {% if env == 'staging' %}
     'pdcupdater.koji_url': 'https://koji.stg.fedoraproject.org/kojihub',
     {% else %}
-    'pdcupdater.koji_url': 'http://koji01.phx2.fedoraproject.org/kojihub',
+    'pdcupdater.koji_url': 'http://koji01.iad2.fedoraproject.org/kojihub',
     {% endif %}
     # Use 8 threads to talk to koji in parallel.
     'pdcupdater.koji_io_threads': 8,
