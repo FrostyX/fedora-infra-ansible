@@ -1,7 +1,7 @@
 - name: Install packages
   package: state=present name={{ item }}
   with_items:
-  - python2-robosignatory
+  - python3-robosignatory
   - fedora-messaging
   - trousers
   - tpm-tools
