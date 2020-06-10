@@ -1,0 +1,70 @@
+#!/bin/sh
+
+## 
+# Setup the directories we will sync down to.
+RHEL8SYNCDIR=/srv/web/repo/rhel/rhel8
+SYNCDIR=/var/cache/reposync/
+
+## 
+# Need to download the metadata and the modular data
+DNFOPTS='--download-metadata -m --setopt=module_platform_id="platform:el8"'
+# Need to set the arches we are going to sync down
+ARCHES="aarch64 ppc64le s390x x86_64"
+
+
+##
+# Do the deeds
+cd ${RHEL8SYNCDIR}
+
+# Make the sync dir where dnf will drop stuff. This disappeared once
+# and caused the script to die so we do this explicitely now.
+mkdir -vp ${SYNCDIR}
+
+##
+## Sync Out RHEL-8 for appropriate arches
+for A in ${ARCHES}; do
+
+    # In case we have a bad sync from before, make sure the old sync
+    # data is destroyed.
+    rm -rf ${SYNCDIR}/${A}
+
+    # Configuration files for yum4 should fit this pattern.
+    CONF=yum4-batcave-rhel8-${A}.conf
+
+    # Setup the repos you are going to sync out of the config file in
+    # this pattern. This makes it easier for koji configs later
+    REPOS="rhel-8-for-${A}-appstream-rpms rhel-8-for-${A}-baseos-rpms codeready-builder-for-rhel-8-${A}-rpms"
+
+    # We do a 2 level reposync because batcave is RHEL-7 and reposync
+    # is what is default. However reposync does not pull in certain
+    # data so we have to repeat this with dnf to get the metadata
+    # needed for modularity.
+    for R in ${REPOS}; do
+        echo "Syncing ${R} for ${A}"
+        reposync -c ${RHEL8SYNCDIR}/${CONF} -r ${R} -a ${A} -p ${A} &>  /dev/null
+        # Be verbose on errors.
+        if [[ $? -ne 0 ]]; then
+            echo "Something went wrong with reposync -c ${RHEL8SYNCDIR}/${CONF} -r ${R} -a ${A} -a noarch -p ${A}"
+        fi
+        # x86_64 is 'special' because we have to tell it for i686 also.
+        if [[ ${A} == 'x86_64' ]]; then
+           dnf reposync -c ${RHEL8SYNCDIR}/${CONF} ${DNFOPTS}  --repo=${R} -a ${A} -a noarch -a i686 -p ${A} &> /dev/null
+        else
+           dnf reposync -c ${RHEL8SYNCDIR}/${CONF} ${DNFOPTS}  --repo=${R} -a ${A} -a noarch -p ${A} &> /dev/null
+        fi
+        if [[ $? -ne 0 ]]; then
+            echo "Something went wrong with dnf reposync -c ${RHEL8SYNCDIR}/${CONF} -r ${R} -a ${A} -p ${A}"
+        fi
+    done
+done
+
+### Here we put in syncs which do not fit in with the general do this
+### for all architectures. In this case we only copy down openstack
+### for x86_64 and source because we really only care about rabbitmq
+### We put this in an 'other' directory so that grobisplitter and any
+### other tools don't accidently pull it into their work.
+
+OTHERCONF=yum4-batcave-rhel8-other.conf
+
+reposync -c ${RHEL8SYNCDIR}/${OTHERCONF} -r rhel-8-x86_64-openstack-16-rpms -a x86_64 -p other &> /dev/null
+reposync -c ${RHEL8SYNCDIR}/${OTHERCONF} -r rhel-8-srpms-openstack-16-rpms --source -a x86_64 -p other &> /dev/null

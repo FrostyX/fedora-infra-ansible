@@ -1,0 +1,52 @@
+#!/bin/sh
+
+RHEL7SYNCDIR=/srv/web/repo/rhel/rhel7
+SYNCDIR=/var/cache/reposync/
+YUMDIR=/var/tmp/reposync-rhel7/
+
+## Need to download the metadata and the modular data
+ROPTS='--download-metadata -m'
+
+# s390 isnt working yet
+ARCHES="ppc64le s390x x86_64"
+#ARCHES="x86_64"
+
+mkdir -vp ${SYNCDIR} ${RHEL7SYNCDIR} ${YUMDIR}
+for A in ${ARCHES}; do
+    mkdir -vp ${YUMDIR}/${A}
+done
+
+cd $RHEL7SYNCDIR
+
+##
+## Sync out RHEL-7 for appropriate arches
+for A in ${ARCHES}; do
+    rm -rf ${SYNCDIR}/${A}
+    CONF=yum-batcave-rhel7-${A}.conf
+    REPOS="rhel-7-for-${A}-server-rpms rhel-7-ha-for-${A}-server-rpms rhel-7-extras-for-${A}-server-rpms rhel-7-optional-for-${A}-server-rpms rhel-7-devtools-for-${A}-server-rpms rhel-7-rhscl-for-${A}-server-rpms"
+#    REPOS="rhel-7-rhscl-for-${A}-server-rpms"
+    for R in ${REPOS}; do
+        rm -rf ${YUMDIR}/${R}
+        # Test to see if we have this repository in our tree
+        grep -q ${R} ${RHEL7SYNCDIR}/${CONF}
+        if [[ $? -eq 0 ]]; then 
+            echo "Syncing ${R} for ${A}"
+            reposync -c ${RHEL7SYNCDIR}/${CONF} --repoid ${R} -a ${A} -p ${A} --metadata-path ${YUMDIR}/${A}
+            if [[ $? -ne 0 ]]; then
+                echo "Something went wrong with reposync -c ${RHEL7SYNCDIR}/${CONF} --repoid ${R} -a ${A} -a noarch -p ${A} --metadata-path ${YUMDIR}/${A}"
+                continue
+            fi
+            ## Try to create repo
+            pushd ${RHEL7SYNCDIR}/${A}/${R} &> /dev/null
+            createrepo_c -q --update --workers 6 . 
+            if [[ $? -ne 0 ]]; then
+                echo "Something went wrong with createrepo ${A} ${R}"
+                continue
+            fi
+            popd &> /dev/null
+        fi
+    done
+done
+
+#ostree pull --repo=/mnt/fedora/app/fi-repo/rhel/rhel7/atomic/rhel7 --mirror redhat
+## This section is for all the trees which are not easily scriptable

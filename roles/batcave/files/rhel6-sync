@@ -1,0 +1,47 @@
+#!/bin/sh
+
+RHEL6SYNCDIR=/srv/web/repo/rhel/rhel6
+RHEL6CACHEDIR=/var/tmp/reposync-rhel6
+
+cd $RHEL6SYNCDIR
+
+
+mkdir -p ${RHEL6CACHEDIR}
+for i in i686 x86_64 ppc64; do
+mkdir -p ${RHEL6CACHEDIR}/${i}
+done
+
+reposync -c $RHEL6SYNCDIR/yum-lockbox-rhel6-i386.conf -t -n --download-metadata --repoid rhel-6-server-i386 -p i386 -a i686 --metadata-path ${RHEL6CACHEDIR}/i686
+reposync -c $RHEL6SYNCDIR/yum-lockbox-rhel6-i386.conf -t -n --download-metadata --repoid rhel-6-server-optional-i386 -p i386 -a i686 --metadata-path ${RHEL6CACHEDIR}/i686
+# 2019-09-17 RHEL does not have these anymore for i386
+#reposync -c $RHEL6SYNCDIR/yum-lockbox-rhel6-i386.conf -t -n --download-metadata --repoid rhel-6-server-ha-i386 -p i386 -a i686
+#reposync -c $RHEL6SYNCDIR/yum-lockbox-rhel6-i386.conf -t -n --download-metadata --repoid rhel-6-server-lb-i386 -p i386 -a i686
+
+reposync -c $RHEL6SYNCDIR/yum-lockbox-rhel6-x86_64.conf -t -n --download-metadata --repoid rhel-6-server-x86_64 -p x86_64  --metadata-path ${RHEL6CACHEDIR}/x86_64
+reposync -c $RHEL6SYNCDIR/yum-lockbox-rhel6-x86_64.conf -t -n --download-metadata --repoid rhel-6-server-optional-x86_64 -p x86_64  --metadata-path ${RHEL6CACHEDIR}/x86_64
+reposync -c $RHEL6SYNCDIR/yum-lockbox-rhel6-x86_64.conf -t -n --download-metadata --repoid rhel-6-server-ha-x86_64 -p x86_64  --metadata-path ${RHEL6CACHEDIR}/x86_64
+reposync -c $RHEL6SYNCDIR/yum-lockbox-rhel6-x86_64.conf -t -n --download-metadata --repoid rhel-6-server-lb-x86_64 -p x86_64  --metadata-path ${RHEL6CACHEDIR}/x86_64
+
+#
+# rhel6 didn't have lb or ha repos for ppc64
+#
+reposync -c $RHEL6SYNCDIR/yum-lockbox-rhel6-ppc64.conf -t -n --download-metadata --repoid rhel-6-server-ppc64 -p ppc64 -a ppc64  --metadata-path ${RHEL6CACHEDIR}/ppc64
+reposync -c $RHEL6SYNCDIR/yum-lockbox-rhel6-ppc64.conf -t -n --download-metadata --repoid rhel-6-server-optional-ppc64 -p ppc64 -a ppc64  --metadata-path ${RHEL6CACHEDIR}/ppc64
+
+for i in `ls -d /srv/web/repo/rhel/rhel6/i386/*`
+do
+        cd $i
+        createrepo_c -q --update --compatibility --compress-type bz2 --workers 6 . 
+done
+
+for i in `ls -d /srv/web/repo/rhel/rhel6/x86_64/*`
+do
+        cd $i
+        createrepo_c -q --update --compatibility --compress-type bz2 --workers 6 . 
+done
+
+for i in `ls -d /srv/web/repo/rhel/rhel6/ppc64/*`
+do
+        cd $i
+        createrepo_c -q --update --compatibility --compress-type bz2 --workers 6 . 
+done

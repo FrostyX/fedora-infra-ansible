@@ -326,10 +326,53 @@
   when: inventory_hostname.startswith('batcave01')
 
 #
+# Setup rhel6 sync script.
+#
+
+- name: setup rhel6 sync script
+  copy: src=rhel6-sync dest=/mnt/fedora/app/fi-repo/rhel/rhel6/rhel6-sync mode=0775
+  tags:
+  - batcave
+  - config
+  when: inventory_hostname.startswith('batcave01')
+#
+# Setup rhel7 sync script.
+#
+
+- name: setup rhel7 sync copy script
+  copy: src=rhel7-sync dest=/mnt/fedora/app/fi-repo/rhel/rhel7/rhel7-sync mode=0775
+  tags:
+  - batcave
+  - config
+  when: inventory_hostname.startswith('batcave01')
+#
+# Setup rhel8 sync script.
+#
+
+- name: setup rhel8 sync copy script
+  copy: src=rhel8-sync dest=/mnt/fedora/app/fi-repo/rhel/rhel8/rhel8-sync mode=0775
+  tags:
+  - batcave
+  - config
+  when: inventory_hostname.startswith('batcave01')
+
+#
 # sync-rhn cron job
 #
 - name: setup sync-rhn cron
   copy: src=sync-rhn dest=/etc/cron.d/sync-rhn mode=0644
+  tags:
+  - batcave
+  - config
+  when: inventory_hostname.startswith('batcave01')
+
+
+#
+# Setup centos sync script.
+#
+
+- name: setup centos sync script
+  copy: src=sync-centos dest=/mnt/fedora/app/fi-repo/centos/centos-8-sync mode=0775
   tags:
   - batcave
   - config
@@ -345,6 +388,26 @@
   - config
   when: inventory_hostname.startswith('batcave01')
 
+#
+# Setup rhel8-split script.
+#
+
+- name: setup rhel8-split script
+  copy: src=rhel8-split.sh dest=/usr/local/bin/rhel8-split.sh mode=0755
+  tags:
+  - batcave
+  - config
+  when: inventory_hostname.startswith('batcave01')
+
+#
+# Setup rhel8-split cron job
+#
+- name: setup rhel8-split cron
+  copy: src=rhel8-split.cron dest=/etc/cron.d/rhel8-split.cron mode=0644
+  tags:
+  - batcave
+  - config
+  when: inventory_hostname.startswith('batcave01')
 
 #
 # Setup web server config

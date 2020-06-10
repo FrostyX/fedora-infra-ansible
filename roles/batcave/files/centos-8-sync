@@ -1,0 +1,19 @@
+#!/bin/sh
+
+RSYNC_DESTDIR=/mnt/fedora/app/fi-repo/centos/centos-8/
+RSYNC_MOD="centos-epel/centos/8.1.1911/"
+
+REPO_FROMDIR=/mnt/fedora/app/fi-repo/centos/centos-8/
+
+mkdir -p ${RSYNC_DESTDIR}
+
+RSYNC='/usr/bin/rsync'
+RS_OPT="-avSHP  --numeric-ids"
+#RS_DEADLY="--delete --delete-excluded --delete-delay --delay-updates"
+RS_DEADLY="--delete --delete-delay --delay-updates"
+CENT_EXCLUDES="--exclude=isos --exclude=kickstart --exclude=s390x"
+
+SERVER=centos-master01.iad2.fedoraproject.org
+
+${RSYNC} ${RS_OPT} ${RS_DEADLY} ${CENT_EXCLUDES} ${SERVER}::${RSYNC_MOD} ${RSYNC_DESTDIR}
+
