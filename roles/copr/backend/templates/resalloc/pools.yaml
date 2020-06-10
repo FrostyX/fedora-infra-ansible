@@ -1,5 +1,5 @@
 {% macro aws_x86_64(max, max_starting, max_prealloc) %}
-aws_x86_64_normal_{% if devel %}dev{% else %}prod{% endif %}
+aws_x86_64_normal_{% if devel %}dev{% else %}prod{% endif %}:
     max: {{ max }}
     max_starting: {{ max_starting }}
     max_prealloc: {{ max_prealloc }}
@@ -25,7 +25,7 @@ aws_x86_64_normal_{% if devel %}dev{% else %}prod{% endif %}
 {% endmacro %}
 
 {% macro aws_aarch64(max, max_starting, max_prealloc) %}
-aws_aarch64_normal_{% if devel %}dev{% else %}prod{% endif %}
+aws_aarch64_normal_{% if devel %}dev{% else %}prod{% endif %}:
     max: {{ max }}
     max_starting: {{ max_starting }}
     max_prealloc: {{ max_prealloc }}
