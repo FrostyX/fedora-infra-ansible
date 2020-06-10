@@ -1211,10 +1211,8 @@ os_control
 
 # registries
 [oci_registry]
-oci-registry01.phx2.fedoraproject.org
 oci-registry01.iad2.fedoraproject.org
-oci-registry02.phx2.fedoraproject.org
-oci-candidate-registry01.phx2.fedoraproject.org
+oci-registry02.iad2.fedoraproject.org
 oci-candidate-registry01.iad2.fedoraproject.org
 
 [oci_registry_stg]
@@ -1223,7 +1221,7 @@ oci-candidate-registry01.iad2.fedoraproject.org
 
 ## Not the candidate just the top registry
 [moby_registry]
-oci-registry01.phx2.fedoraproject.org
+oci-registry01.iad2.fedoraproject.org
 
 ## Not the candidate just the top registry
 [moby_registry_stg]
@@ -1450,6 +1448,7 @@ ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
 oci-candidate-registry01.iad2.fedoraproject.org
 oci-registry01.iad2.fedoraproject.org
+oci-registry02.iad2.fedoraproject.org
 odcs-backend01.iad2.fedoraproject.org
 odcs-frontend01.iad2.fedoraproject.org
 openqa-a64-worker01.iad2.fedoraproject.org
@@ -1681,9 +1680,6 @@ ns03.phx2.fedoraproject.org
 ns04.phx2.fedoraproject.org
 nuancier01.phx2.fedoraproject.org
 nuancier02.phx2.fedoraproject.org
-oci-candidate-registry01.phx2.fedoraproject.org
-oci-registry01.phx2.fedoraproject.org
-oci-registry02.phx2.fedoraproject.org
 odcs-backend-releng01.phx2.fedoraproject.org
 odcs-backend01.phx2.fedoraproject.org
 odcs-frontend01.phx2.fedoraproject.org
