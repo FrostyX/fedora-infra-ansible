@@ -32,7 +32,7 @@ DAY=$(/bin/date -d "-${NUMDAYS} days" +%d)
 LOGDIR=/var/log/hosts
 NFSDIR=/mnt/fedora_stats/combined-http
 PROXYLOG=${LOGDIR}/proxy*/${YEAR}/${MONTH}/${DAY}/http/
-DL_LOG=${LOGDIR}/download*/${YEAR}/${MONTH}/${DAY}/http/
+DL_LOG=${LOGDIR}/dl*/${YEAR}/${MONTH}/${DAY}/http/
 PEOPLE=${LOGDIR}/people*/${YEAR}/${MONTH}/${DAY}/http/
 
 TARGET=${NFSDIR}/${YEAR}/${MONTH}/${DAY}
