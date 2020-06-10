@@ -1,5 +1,5 @@
-{% macro aws_x86_64(inst, max, max_starting, max_prealloc) %}
-aws_x86_64_normal_{{ inst }}:
+{% macro aws_x86_64(max, max_starting, max_prealloc) %}
+aws_x86_64_normal_{% if devel %}dev{% else %}prod{% endif %}
     max: {{ max }}
     max_starting: {{ max_starting }}
     max_prealloc: {{ max_prealloc }}
@@ -24,8 +24,8 @@ aws_x86_64_normal_{{ inst }}:
     reuse_max_time: 1800
 {% endmacro %}
 
-{% macro aws_aarch64(inst, max, max_starting, max_prealloc) %}
-aws_aarch64_normal_{{ inst }}:
+{% macro aws_aarch64(max, max_starting, max_prealloc) %}
+aws_aarch64_normal_{% if devel %}dev{% else %}prod{% endif %}
     max: {{ max }}
     max_starting: {{ max_starting }}
     max_prealloc: {{ max_prealloc }}
@@ -68,14 +68,19 @@ aarch64_{{ id }}_{{ inst }}:
     - arch_aarch64_native
 {% endmacro %}
 
+{{ aws_x86_64(builders.aws.x86_64[0] + buidlers.aws.armhfp[0],
+              builders.aws.x86_64[1] + buidlers.aws.armhfp[1],
+              builders.aws.x86_64[2] + buidlers.aws.armhfp[2]
+}}
+{{ aws_aarch64(builders.aws.aarch64[0],
+               builders.aws.aarch64[1],
+               builders.aws.aarch64[2]
+}}
+
 {% if env == "production" %}
-{{ aws_x86_64("prod", 100, 15, 20) }}
-{{ aws_aarch64("prod", 20, 10, 10) }}
 {{ hw_aarch64("01", "prod", 4, 2, 4) }}
 {{ hw_aarch64("02", "prod", 4, 2, 4) }}
 {% elif devel %}
-{{ aws_x86_64("dev", 20, 4, 4) }}
-{{ aws_aarch64("dev", 6, 2, 2) }}
 {{ hw_aarch64("01", "dev", 2, 2, 2) }}
 {{ hw_aarch64("02", "dev", 2, 2, 2) }}
 {% else %}
