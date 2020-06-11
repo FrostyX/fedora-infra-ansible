@@ -87,7 +87,7 @@
     follow: no
   with_items:
   - "{{ odcs_target_dir }}"
-  - "{{ odcs_target_dir }}/private"
+#  - "{{ odcs_target_dir }}/private"
   tags:
    - odcs
    - odcs/frontend
