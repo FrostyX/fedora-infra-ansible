@@ -38,9 +38,6 @@
 - name: restart fedmsg-relay
   command: /usr/local/bin/conditional-restart.sh fedmsg-relay
 
-- name: restart koji-sync-listener
-  action: service name=koji-sync-listener state=restarted
-
 - name: reload httpd
   command: /usr/local/bin/conditional-reload.sh httpd httpd
 
