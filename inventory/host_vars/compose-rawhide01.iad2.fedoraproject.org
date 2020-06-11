@@ -1,4 +1,6 @@
 vmhost: bvmhost-x86-03.iad2.fedoraproject.org
+gw: 10.3.169.254
+dns: 10.3.163.33
 eth0_ip: 10.3.169.123
 volgroup: /dev/vg_guests
 ks_url: http://10.3.163.35/repo/rhel/ks/kvm-fedora-32-iad2
