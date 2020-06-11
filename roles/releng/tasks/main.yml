@@ -129,6 +129,7 @@
     - python3-requests # needed by clean-amis.py script
     - make
     - nosync
+    - python3-gobject
   tags:
   - releng
 
