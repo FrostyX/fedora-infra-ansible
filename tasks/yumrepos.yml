@@ -33,7 +33,7 @@
   - yumrepos
 
 - name: put openshift 3.4 repo on os- systems
-  copy: src="{{ files }}/openshift/openshift.repo" dest="/etc/yum.repos.d/openshift.repo"
+  template: src="{{ files }}/openshift/openshift.repo" dest="/etc/yum.repos.d/openshift.repo"
   when: ansible_distribution == 'RedHat' and ansible_distribution_major_version|int == 7 and inventory_hostname.startswith('os-') and datacenter != "aws"
   tags:
   - config
