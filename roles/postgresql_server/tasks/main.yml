@@ -154,6 +154,7 @@
   copy: >
     src=koji-cleanup-sessions.cron
     dest=/etc/cron.d/koji-cleanup-sessions.cron
+    state=absent
   when: inventory_hostname.startswith('db-koji01')
   tags:
   - cron

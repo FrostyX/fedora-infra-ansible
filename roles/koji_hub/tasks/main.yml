@@ -429,7 +429,7 @@
   tags:
   - koji_hub
 
-- name: install cron jobs to be used by keepalived later
+- name: install cron jobs in /usr/local/etc/
   copy: src={{ item }} dest=/usr/local/etc/{{ item }}
   with_items:
   - koji-directory-cleanup
@@ -438,6 +438,16 @@
   tags:
   - files
   - koji_hub
+
+- name: enable crons on koji02 normally.
+  copy: src={{ item }} dest=/etc/cron.d/{{ item }}
+  with_items:
+  - koji-directory-cleanup
+  - koji-gc
+  - koji-prune-signed-copies
+  tags:
+  - files
+  when: env != 'staging' and ansible_hostname.startswith('koji02')
 
 - name: Create shadow user
   user: name=koji_shadow
