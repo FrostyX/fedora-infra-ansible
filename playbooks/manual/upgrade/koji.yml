@@ -55,7 +55,7 @@
   # Note that the hosts are used explicitly here to choose only the "primary".
   # We don't want to run upgrades on both pgbdr nodes at the same time.
   # ... is anything special needed to upgrade pgbdr nodes?
-  hosts: db-koji01.phx2.fedoraproject.org:db-koji01.stg.phx2.fedoraproject.org
+  hosts: db-koji01.iad2.fedoraproject.org:db-koji01.stg.iad2.fedoraproject.org
   user: root
   vars_files: 
    - /srv/web/infra/ansible/vars/global.yml
