@@ -103,13 +103,6 @@
   - bodhi
   - koji-sync
 
-- name: start the koji sync listener
-  service: name=fedora-messaging@koji_sync_listener enabled=yes state=started
-  when: env == "production"
-  tags:
-  - bodhi
-  - koji-sync
-
 #
 # cron job that syncs updates to master mirror
 #

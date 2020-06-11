@@ -39,7 +39,7 @@
   command: /usr/local/bin/conditional-restart.sh fedmsg-relay
 
 - name: restart fm-consumer@koji_sync_listener
-  action: service name=fm-consumer@koji_sync_listener state=restarted
+  action: service name=fm-consumer@koji_sync_listener state=restarted enabled=yes
 
 - name: reload httpd
   command: /usr/local/bin/conditional-reload.sh httpd httpd
