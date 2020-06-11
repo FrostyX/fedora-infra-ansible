@@ -111,11 +111,8 @@
       warning: 10
       critical: 100
 
-  - role: rabbit/user
-    username: "koji_sync_listener{{ env_suffix }}"
-
   - role: rabbit/queue
-    username: "koji_sync_listener{{ env_suffix }}"
+    username: "bodhi{{ env_suffix }}"
     queue_name: "koji_sync_listener{{ env_suffix }}"
     routing_keys:
       - "io.pagure.*.pagure.issue.edit"
