@@ -39,6 +39,13 @@
   - config
   - base
 
+- name: install bastion-iad opendkim key from private
+  copy: src={{ private }}/files/opendkim/bastion-iad.key dest=/etc/opendkim/keys/bastion-iad.key mode=0600 owner=opendkim group=opendkim
+  tags:
+  - opendkim
+  - config
+  - base
+
 - name: install pagure opendkim key from private
   copy: src={{ private }}/files/opendkim/pagure.key dest=/etc/opendkim/keys/pagure.key mode=0600 owner=opendkim group=opendkim
   tags:

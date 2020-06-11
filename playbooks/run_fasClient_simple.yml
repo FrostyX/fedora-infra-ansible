@@ -3,7 +3,7 @@
 #
 
 - name: run fasClient -a to make email aliases on bastion
-  hosts: bastion01.phx2.fedoraproject.org:bastion02.phx2.fedoraproject.org
+  hosts: bastion01.phx2.fedoraproject.org:bastion02.phx2.fedoraproject.org:bastion01.iad2.fedoraproject.org:bastion02.iad2.fedoraproject.org
   user: root
   gather_facts: False
 
