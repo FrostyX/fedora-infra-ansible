@@ -82,14 +82,12 @@
     state: directory
     owner: odcs-server
     group: odcs-server
-    mode: 0775
+    mode: 0770
     # recurse: yes
     follow: no
   with_items:
   - "{{ odcs_target_dir }}"
   - "{{ odcs_target_dir }}/private"
-  become: yes
-  become_user: odcs-server
   tags:
    - odcs
    - odcs/frontend
