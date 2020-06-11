@@ -498,11 +498,6 @@ odcs_backend
 openqa01.iad2.fedoraproject.org
 openqa-stg01.iad2.fedoraproject.org
 
-# variables appropriate to hosts in the new dc (iad2) but not the old one (phx2)
-[openqa_iad]
-openqa01.iad2.fedoraproject.org
-openqa-stg01.iad2.fedoraproject.org
-
 [openqa]
 openqa01.iad2.fedoraproject.org
 

@@ -1,6 +1,0 @@
-# We don't want to do result reporting in IAD yet (until we migrate data over)
-openqa_amqp_resultsdb_reporter_queue:
-openqa_amqp_wiki_reporter_queue:
-
-# Ditto validation event creation
-relvalconsumer_disabled: true
