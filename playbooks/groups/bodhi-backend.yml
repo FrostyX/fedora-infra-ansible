@@ -113,7 +113,7 @@
 
   - role: rabbit/queue
     username: "bodhi{{ env_suffix }}"
-    queue_name: "koji_sync_listener{{ env_suffix }}"
+    queue_name: "bodhi_koji_sync_listener{{ env_suffix }}"
     routing_keys:
       - "io.pagure.*.pagure.issue.edit"
     thresholds:
