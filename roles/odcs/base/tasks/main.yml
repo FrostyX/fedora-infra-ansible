@@ -88,6 +88,8 @@
   with_items:
   - "{{ odcs_target_dir }}"
   - "{{ odcs_target_dir }}/private"
+  become: yes
+  become_user: odcs-server
   tags:
    - odcs
    - odcs/frontend
