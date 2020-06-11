@@ -83,7 +83,7 @@ config = {
     "fmn.rules.utils.use_pkgdb2": False,
     'fmn.rules.utils.use_pagure_for_ownership': True,
     'fmn.rules.utils.pagure_api_url': 'https://src.fedoraproject.org/api/',
-    "fmn.rules.utils.pkgdb_url": "http://pkgdb01.phx2.fedoraproject.org/pkgdb/api",
+    "fmn.rules.utils.pkgdb_url": "http://pkgdb01.iad2.fedoraproject.org/pkgdb/api",
     {% endif %}
     "fmn.rules.cache": {
 	"backend": "dogpile.cache.redis",
@@ -115,7 +115,7 @@ config = {
     "fmn.backends": ["email", "irc"],  # android is disabled.
 
     # Email
-    "fmn.email.mailserver": "bastion01.phx2.fedoraproject.org:25",
+    "fmn.email.mailserver": "bastion01.iad2.fedoraproject.org:25",
     "fmn.email.from_address": "notifications@" + domain,
 
     # IRC

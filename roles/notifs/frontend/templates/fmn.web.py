@@ -26,7 +26,7 @@ config = {
     {% endif %}
 
     # We need to know this to call VERFY to validate new addresses.
-    "fmn.email.mailserver": "bastion01.phx2.fedoraproject.org:25",
+    "fmn.email.mailserver": "bastion01.iad2.fedoraproject.org:25",
 
     # Some configuration for the rule processors
     "fmn.rules.utils.use_pkgdb2": False,
