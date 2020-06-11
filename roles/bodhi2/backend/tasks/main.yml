@@ -103,6 +103,12 @@
   - bodhi
   - koji-sync
 
+- name: start the fm-consumer@koji_sync_listener service
+  service: name=fm-consumer@koji_sync_listener enabled=yes state=started
+  when: env == "production"
+  tags:
+    - bodhi
+    - koji-sync
 #
 # cron job that syncs updates to master mirror
 #
