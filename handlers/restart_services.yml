@@ -38,8 +38,8 @@
 - name: restart fedmsg-relay
   command: /usr/local/bin/conditional-restart.sh fedmsg-relay
 
-- name: restart fedora-messaging@koji_sync_listener
-  action: service name=fedora-messaging@koji_sync_listener state=restarted
+- name: restart fm-consumer@koji_sync_listener
+  action: service name=fm-consumer@koji_sync_listener state=restarted
 
 - name: reload httpd
   command: /usr/local/bin/conditional-reload.sh httpd httpd

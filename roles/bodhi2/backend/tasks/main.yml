@@ -98,7 +98,7 @@
   when: env == "production"
   notify:
   - reload systemd
-  - restart fedora-messaging@koji_sync_listener
+  - restart fm-consumer@koji_sync_listener
   tags:
   - bodhi
   - koji-sync
