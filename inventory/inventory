@@ -786,19 +786,6 @@ wiki01.iad2.fedoraproject.org
 
 [zanata2fedmsg]
 
-# This is a convenience group listing the hosts that live on the QA network that
-# are allowed to send inbound fedmsg messages to our production fedmsg bus.
-# See also:
-# - inventory/group_vars/proxies for the iptables custom_rules list
-# - roles/fedmsg/base/templates/relay.py.j2
-# - filter_plugins/fedmsg.py
-[fedmsg_qa_network]
-retrace01.qa.fedoraproject.org
-resultsdb01.qa.fedoraproject.org
-
-[fedmsg_qa_network_stg]
-resultsdb-stg01.qa.fedoraproject.org
-
 # assorted categories of fedmsg services, for convenience
 [fedmsg_hubs:children]
 badges_backend

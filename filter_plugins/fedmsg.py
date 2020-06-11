@@ -9,7 +9,7 @@ def invert_fedmsg_policy(groups, vars, env):
     """
 
     if env == 'staging':
-        hosts = groups['all'] + groups['staging'] + groups['fedmsg_qa_network_stg']
+        hosts = groups['all'] + groups['staging']
     else:
         hosts = [h for h in groups['all'] if h not in groups['staging']]
 
