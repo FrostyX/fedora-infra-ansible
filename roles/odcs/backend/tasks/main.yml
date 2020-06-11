@@ -208,19 +208,19 @@
     owner: odcs-server
     group: odcs-server
     mode: 0640
-  when: inventory_hostname.startswith('odcs-backend-releng')
+  when: inventory_hostname.startswith('odcs-backend01')
 
 - name: set releng odcs oidc token
   copy:
     src: "{{private}}/files/releng/{{env}}/releng-odcs-oidc-token"
     dest: /etc/releng-odcs-oidc-token
-  when: inventory_hostname.startswith('odcs-backend-releng')
+  when: inventory_hostname.startswith('odcs-backend01')
 
 - name: Set MAILTO cronvar
   cronvar:
     name: MAILTO
     value: releng-cron@lists.fedoraproject.org
-  when: inventory_hostname.startswith('odcs-backend-releng01')
+  when: inventory_hostname.startswith('odcs-backend01')
 
 
 - name: Set cronjob to execute ELN periodic compose
@@ -228,4 +228,4 @@
     name: "ELN periodic compose"
     minute: "0"
     job: "odcs --token=/etc/releng-odcs-oidc-token create-raw-config --compose-type=production --label=Alpha-0.1 eln eln"
-  when: inventory_hostname.startswith('odcs-backend-releng01')
+  when: inventory_hostname.startswith('odcs-backend01')
