@@ -1,4 +1,4 @@
-#!/bin/python2
+#!/usr/bin/python3
 import copy
 import fedmsg
 import functools
@@ -235,7 +235,7 @@ def rsync(from_path, to_path, excludes=[], link_dest=None, delete=False):
 
     results = {'num_bytes': 0,
                'num_deleted': 0}
-    for line in stdout.split('\n'):
+    for line in stdout.encode().split('\n'):
         if 'Literal data' in line:
             results['num_bytes'] = int(line.split()[2])
         elif 'deleting ' in line:
