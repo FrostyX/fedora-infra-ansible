@@ -9,7 +9,7 @@ num_cpus: 2
 tcp_ports: [ 80, 443, 8888 ]
 
 # Neeed for rsync from log01 for logs.
-custom_rules: [ '-A INPUT -p tcp -m tcp -s 10.5.126.13 --dport 873 -j ACCEPT', '-A INPUT -p tcp -m tcp -s 192.168.1.59 --dport 873 -j ACCEPT' ]
+custom_rules: [ '-A INPUT -p tcp -m tcp -s 10.3.163.39 --dport 873 -j ACCEPT', '-A INPUT -p tcp -m tcp -s 192.168.1.59 --dport 873 -j ACCEPT' ]
 
 fas_client_groups: sysadmin-noc,fi-apprentice,sysadmin-qa,sysadmin-veteran
 sudoers: "{{ private }}/files/sudo/qadevel-sudoers"
@@ -28,7 +28,7 @@ blockerbugs_koji_url: "http://koji.fedoraproject.org/"
 # blockerbugs db details
 ############################################################
 
-blockerbugs_db_host_machine: db01.phx2.fedoraproject.org
+blockerbugs_db_host_machine: db01.iad2.fedoraproject.org
 blockerbugs_db_host: "{{ blockerbugs_db_host_machine }}"
 blockerbugs_db_port: 5432
 blockerbugs_db_name: blockerbugs
