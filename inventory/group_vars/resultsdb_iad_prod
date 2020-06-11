@@ -38,8 +38,7 @@ resultsdb_db_password: "{{ prod_resultsdb_db_password }}"
 resultsdb_secret_key: "{{ prod_resultsdb_secret_key }}"
 
 allowed_hosts:
-    - 10.5.124
-    - 10.5.131
+    - 10.3.160.0/19
 
 
 ############################################################

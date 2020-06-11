@@ -33,11 +33,11 @@ buildvm-x86-31.iad2.fedoraproject.org
 buildvm-x86-32.iad2.fedoraproject.org
 
 [buildvm_stg]
-# buildvm-01.stg.phx2.fedoraproject.org
-# buildvm-02.stg.phx2.fedoraproject.org
-# buildvm-03.stg.phx2.fedoraproject.org
-# buildvm-04.stg.phx2.fedoraproject.org
-# buildvm-05.stg.phx2.fedoraproject.org
+# buildvm-01.stg.iad2.fedoraproject.org
+# buildvm-02.stg.iad2.fedoraproject.org
+# buildvm-03.stg.iad2.fedoraproject.org
+# buildvm-04.stg.iad2.fedoraproject.org
+# buildvm-05.stg.iad2.fedoraproject.org
 
 [buildvm_aarch64_stg]
 # buildvm-aarch64-01.stg.arm.fedoraproject.org
@@ -302,8 +302,8 @@ bkernel01.iad2.fedoraproject.org
 # They should be added to their own 'compose' channel in the koji db
 # .. and they should not appear in the default channel for builds.
 [runroot]
-# buildvm-01.stg.phx2.fedoraproject.org
-# buildvm-02.stg.phx2.fedoraproject.org
+# buildvm-01.stg.iad2.fedoraproject.org
+# buildvm-02.stg.iad2.fedoraproject.org
 buildvm-x86-01.iad2.fedoraproject.org
 buildvm-x86-02.iad2.fedoraproject.org
 # buildvm-aarch64-01.stg.arm.fedoraproject.org
