@@ -119,7 +119,6 @@
     - hardlink
     - pungi
     - compose-utils
-    - python-scandir
     - python3-productmd
     - ostree
     - python3-libmodulemd
@@ -130,7 +129,6 @@
     - python3-requests # needed by clean-amis.py script
     - make
     - nosync
-    - pygobject3
   tags:
   - releng
 
