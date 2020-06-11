@@ -30,8 +30,3 @@ num_cpus: 8
 
 nrpe_procs_warn: 250
 nrpe_procs_crit: 300
-
-## FIXME
-## THESE ARE ALL TEMPORARY during phx2 -> iad2 transition, should be
-## changed in openqa group_vars later
-openqa_resultsdb_url: http://resultsdb01.iad2.fedoraproject.org/resultsdb_api/api/v2.0/

@@ -3,8 +3,6 @@
 # in the plays so we can change them over time and also so the plays
 # can be used for non-infra deployments.
 
-# These boxes are F30+, so we need Python 3 ansible
-
 openqa_static_uid: 601
 
 openqa_hostname: localhost
@@ -14,6 +12,9 @@ openqa_fullname: Adam Williamson
 openqa_userid: http://adamwill.id.fedoraproject.org/
 
 openqa_assetsize_updates: 100
+
+# stg and prod use the same database server
+openqa_dbhost: db-openqa01.iad2.fedoraproject.org
 
 # we need this for all our fedora-messaging consumers as they are not
 # allowed to create queues on the infra AMQP broker, by broker config

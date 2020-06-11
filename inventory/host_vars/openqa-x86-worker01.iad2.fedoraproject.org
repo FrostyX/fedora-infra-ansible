@@ -26,8 +26,6 @@ ansible_ifcfg_disabled: ['em2', 'em3', 'em4']
 # Has a hardware RNG
 openqa_rngd: True
 
-# this is an IAD box, use IAD host
-openqa_hostname: openqa01.iad2.fedoraproject.org
 # this is a powerful machine, can handle more openQA workers
 openqa_workers: 30
 # firewall ports for server->worker websockets connections
