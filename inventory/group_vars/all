@@ -72,7 +72,7 @@ eth1_ip: 10.10.10.10
 br0_nm: 255.255.255.0
 br1_nm: 255.255.255.0
 # Default to managing the network, we want to not do this on select hosts (like cloud nodes)
-ansible_ifcfg_blacklist: false
+ansible_ifcfg_blocklist: false
 # List of interfaces to explicitly disable
 ansible_ifcfg_disabled: []
 #

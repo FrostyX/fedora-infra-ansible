@@ -6,7 +6,7 @@ datacenter: aws
 inventory_hostname: "copr-dist-git-dev.aws.fedoraproject.org"
 inventory_instance_name: copr-dist-git-dev
 nm_controlled_resolv: True
-ansible_ifcfg_blacklist: True
+ansible_ifcfg_blocklist: True
 
 swap_file_size_mb: 2048
 swap_file_path: /swap

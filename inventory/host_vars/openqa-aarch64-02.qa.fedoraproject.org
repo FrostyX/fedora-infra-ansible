@@ -15,7 +15,7 @@ sudoers: "{{ private }}/files/sudo/qavirt-sudoers"
 
 # we seem to have an eth2 plugged in that isn't configured here,
 # which breaks "copy ifcfg files - non virthost" role
-ansible_ifcfg_whitelist: ['eth0', 'eth1']
+ansible_ifcfg_allowlist: ['eth0', 'eth1']
 # we just want the eth1 (qa network) interface active
 ansible_ifcfg_disabled: ['eth0']
 

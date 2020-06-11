@@ -3,7 +3,7 @@
 #ansible_become_user: root
 #ansible_become: yes
 nm_controlled_resolv: True
-ansible_ifcfg_blacklist: True
+ansible_ifcfg_blocklist: True
 public_ip: 3.228.218.234
 datacenter: aws
 

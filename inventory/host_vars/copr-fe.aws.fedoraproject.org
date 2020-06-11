@@ -4,7 +4,7 @@ inventory_hostname: "copr-fe.aws.fedoraproject.org"
 inventory_instance_name: copr-fe
 
 nm_controlled_resolv: True
-ansible_ifcfg_blacklist: True
+ansible_ifcfg_blocklist: True
 
 swap_file_size_mb: 8192
 swap_file_path: /swap

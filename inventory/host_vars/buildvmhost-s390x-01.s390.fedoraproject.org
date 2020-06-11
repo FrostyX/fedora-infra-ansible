@@ -1,2 +1,2 @@
 ---
-ansible_ifcfg_blacklist: True
+ansible_ifcfg_blocklist: True

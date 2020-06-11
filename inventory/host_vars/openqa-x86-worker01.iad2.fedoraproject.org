@@ -20,7 +20,7 @@ gw: 10.3.174.254
 # else alone. We use a variable definition here so the firewall config
 # (in the openqa_tap_workers group_vars) can reuse it.
 openqa_tap_iface: em1
-ansible_ifcfg_whitelist: ['{{ openqa_tap_iface }}', 'em2', 'em3', 'em4']
+ansible_ifcfg_allowlist: ['{{ openqa_tap_iface }}', 'em2', 'em3', 'em4']
 ansible_ifcfg_disabled: ['em2', 'em3', 'em4']
 
 # Has a hardware RNG

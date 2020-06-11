@@ -21,7 +21,7 @@ sudoers: "{{ private }}/files/sudo/qavirt-sudoers"
 # else alone. We use a variable definition here so the firewall config
 # (in the openqa_tap_workers group_vars) can reuse it.
 openqa_tap_iface: eth1
-ansible_ifcfg_whitelist: ['eth0', '{{ openqa_tap_iface }}', 'eth2']
+ansible_ifcfg_allowlist: ['eth0', '{{ openqa_tap_iface }}', 'eth2']
 ansible_ifcfg_disabled: ['eth0', 'eth2']
 
 # this is a powerful machine, can handle more openQA workers

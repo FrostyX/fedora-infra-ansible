@@ -1,5 +1,5 @@
 ---
-ansible_ifcfg_blacklist: True
+ansible_ifcfg_blocklist: True
 createrepo: False
 host_group: kojibuilder_iad2
 fas_client_groups: sysadmin-releng

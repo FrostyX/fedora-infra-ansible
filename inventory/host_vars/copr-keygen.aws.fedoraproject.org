@@ -6,7 +6,7 @@ datacenter: aws
 inventory_hostname: "copr-keygen.aws.fedoraproject.org"
 inventory_instance_name: copr-keygen
 nm_controlled_resolv: True
-ansible_ifcfg_blacklist: True
+ansible_ifcfg_blocklist: True
 db_backup_dir: ['/backup']
 
 #instance_type: t3a.small
