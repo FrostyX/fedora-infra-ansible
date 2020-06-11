@@ -87,8 +87,6 @@
       dest: /usr/lib/python3.8/site-packages/koji_sync_listener.py
       mode: 0644
   when: env == "production"
-  notify:
-  - restart fedora-messaging@koji_sync_listener
   tags:
   - bodhi
   - koji-sync
@@ -100,6 +98,7 @@
   when: env == "production"
   notify:
   - reload systemd
+  - restart fedora-messaging@koji_sync_listener
   tags:
   - bodhi
   - koji-sync
