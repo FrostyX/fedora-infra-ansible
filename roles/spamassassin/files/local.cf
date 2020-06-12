@@ -8,7 +8,7 @@ required_hits 5
 report_safe 0
 bayes_auto_learn_threshold_nonspam -4
 
-# disable certain kinds of blacklists since their dns checks were timing out
+# disable certain kinds of blocklists since their dns checks were timing out
 score RCVD_IN_BL_SPAMCOP_NET 0
 score RCVD_IN_RP_RNBL 0
 score RCVD_IN_RP_CERTIFIED 0
@@ -55,5 +55,9 @@ score RAZOR2_CF_RANGE_E8_51_100 0
 score RAZOR2_CHECK 0
 
 
-# blacklist spam email addresses
+# blocklist spam email addresses
+# INCLUSIVE LANGUAGE NOTE:
+# https://bz.apache.org/SpamAssassin/show_bug.cgi?id=7826
+# can change this to blocklist when that is implemented and systems
+# using this role are updated
 blacklist_from *@elitetorrent1.com
