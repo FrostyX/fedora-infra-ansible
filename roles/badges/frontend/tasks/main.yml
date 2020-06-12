@@ -14,6 +14,18 @@
   - badges
   - badges/frontend
 
+- name: create tahrir user
+  user: 
+    user: tahrir
+    uid: 995
+    gid: 992
+    shell: /sbin/nologin
+    home: /usr/share/tahrir
+  tags:
+  - config
+  - badges
+  - badges/frontend
+
 - name: copy tahrir app configuration
   template: >
     src={{ item }} dest="/etc/tahrir/{{ item }}"
