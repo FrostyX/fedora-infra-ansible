@@ -17,8 +17,8 @@ openshift_ansible: /srv/web/infra/openshift-ansible/
 
 freezes: true
 # most of our systems are in phx2
-datacenter: phx2
-preferred_dc: phx2
+datacenter: iad2
+preferred_dc: iad2
 postfix_group: "none"
 
 # usually we do not want to enable nested virt, only on some virthosts
@@ -350,7 +350,7 @@ wsgi_wants_apache: true
 
 # IPA settings
 additional_host_keytabs: []
-ipa_server: ipa01.phx2.fedoraproject.org
+ipa_server: ipa01.iad2.fedoraproject.org
 ipa_realm: FEDORAPROJECT.ORG
 ipa_admin_password: "{{ ipa_prod_admin_password }}"
 
@@ -421,4 +421,4 @@ ansible_python_interpreter: auto
 #
 # datacenter with active certbot in it
 #
-certgetter_datacenter: phx2
+certgetter_datacenter: iad2
