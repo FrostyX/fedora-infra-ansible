@@ -24,8 +24,8 @@
 # FIXME - this is the global nat-ip and we need the noc01-specific ip
 -A INPUT -p tcp -m tcp -s 209.132.181.102 --dport 5666 -j ACCEPT
 -A INPUT -p tcp -m tcp -s 209.132.181.35 --dport 5666 -j ACCEPT
--A INPUT -p tcp -m tcp -s 10.5.126.41  --dport 5666 -j ACCEPT
--A INPUT -p tcp -m tcp -s 10.5.126.241  --dport 5666 -j ACCEPT
+-A INPUT -p tcp -m tcp -s 10.3.163.10  --dport 5666 -j ACCEPT
+-A INPUT -p tcp -m tcp -s 10.3.166.10  --dport 5666 -j ACCEPT
 
 # if the blocked_ips is defined - drop them
 {% if blocked_ips is defined %}
@@ -43,10 +43,8 @@
 -A INPUT -p tcp -m tcp  --dport 22 -j ACCEPT 
 
 # Allow all netapp traffic
--A INPUT -p udp -m udp -s 10.5.88.36 -j ACCEPT
--A INPUT -p tcp -m tcp -s 10.5.88.36 -j ACCEPT
--A INPUT -p udp -m udp -s 10.5.88.41 -j ACCEPT
--A INPUT -p tcp -m tcp -s 10.5.88.41 -j ACCEPT
+-A INPUT -p udp -m udp -s 10.3.162.0/24 -j ACCEPT
+
 
 # Custom Services
 

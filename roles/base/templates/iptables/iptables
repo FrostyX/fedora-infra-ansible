@@ -30,8 +30,8 @@
 # FIXME - this is the global nat-ip and we need the noc01-specific ip
 -A INPUT -p tcp -m tcp --dport 5666  -s 209.132.181.102 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 5666  -s 209.132.181.35 -j ACCEPT
--A INPUT -p tcp -m tcp --dport 5666 -s 10.5.126.41 -j ACCEPT
--A INPUT -p tcp -m tcp --dport 5666 -s 10.5.126.241 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 5666 -s 10.3.163.10 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 5666 -s 10.3.166.10 -j ACCEPT
 
 {% if env != 'staging' and datacenter == 'phx2' and inventory_hostname not in groups['staging_friendly'] %}
 #
@@ -41,7 +41,7 @@
 # production we have marked 'staging-friendly' that we do allow staging to talk to for 
 # mostly read-only data they need.
 #
--A INPUT -s 10.5.128.0/24 -j REJECT --reject-with icmp-host-prohibited
+
 {% endif %}
 
 {% if ansible_domain == 'qa.fedoraproject.org' and inventory_hostname not in groups['qa_isolated'] %}
@@ -90,7 +90,7 @@
 {% endif %}
 {% endfor %}
 # nagios
--A INPUT -p tcp -m tcp --dport {{ port }} --src  10.5.126.41 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport {{ port }} --src  10.3.163.10 -j ACCEPT
 {% endfor %}
 {% endif %}
 

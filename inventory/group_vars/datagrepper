@@ -10,7 +10,7 @@ num_cpus: 2
 tcp_ports: [ 80, 443, 6996 ]
 # Neeed for rsync from log01 for logs.
 custom_rules: [
-    '-A INPUT -p tcp -m tcp -s 10.5.126.13 --dport 873 -j ACCEPT',
+    '-A INPUT -p tcp -m tcp -s 10.3.163.39 --dport 873 -j ACCEPT',
     '-A INPUT -p tcp -m tcp -s 192.168.1.59 --dport 873 -j ACCEPT',
 ]
 
