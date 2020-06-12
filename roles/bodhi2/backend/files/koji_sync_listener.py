@@ -60,7 +60,7 @@ class KojiSyncListener(object):
             _log.info("Failed to decode JSON in the issue's initial comment")
             return False
 
-        package = content['repo']
+        package = body['repo']
         _log.info("Operating on {package}".format(package=package))
         sys.stdout.flush()
 
