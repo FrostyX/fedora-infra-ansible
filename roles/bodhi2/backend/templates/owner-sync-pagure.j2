@@ -72,12 +72,11 @@ PDC_TYPES = {
 
 RAWHIDE = '{{ FedoraRawhideNumber }}'
 EXTRA_ARCH_LIST = {
-    'kernel': ('i586', 'i686', 'noarch'),
-    'kernel-xen-2.6': ('i586', 'i686', 'noarch'),
+    'kernel': ('i686', 'noarch'),
+    'kernel-xen-2.6': ('i686', 'noarch'),
     'glibc': ('i686',),
     'openssl': ('i686',),
-    'em8300-kmod': ('i586', 'i686'),
-    'sysprof-kmod': ('i586', 'i686'),
+    'sysprof-kmod': ('i686',),
 }
 VERIFY = True
 
@@ -352,7 +351,7 @@ def set_koji_ownership(tag, packages, arches, verbose=False):
             if pkg not in koji_pkgs:
                 extra_arches = None
                 if pkg in EXTRA_ARCH_LIST:
-                    extra_arches = EXTRA_ARCH_LIST[pkg]
+                    extra_arches = " ".join(EXTRA_ARCH_LIST[pkg])
                 if verbose:
                     print('- Adding the package "{0}" to the package list for '
                           'the tag "{1}" on arch "{2}" and applicable extra '
