@@ -106,7 +106,7 @@ def get_options():
         if os.access(configFile, os.F_OK):
             f = open(configFile)
             config = configparser.ConfigParser()
-            config.readfp(f)
+            config.read_file(f)
             f.close()
             if config.has_section('koji'):
                 for name, value in config.items('koji'):
@@ -324,7 +324,7 @@ def set_koji_ownership(tag, packages, arches, verbose=False):
             )
 
         try:
-            session.krb_login(koji_login_options['principal'], koji_login_options['keytab'])
+            session.gssapi_login(koji_login_options['principal'], koji_login_options['keytab'])
         except:
             import traceback
             traceback.print_exc()
