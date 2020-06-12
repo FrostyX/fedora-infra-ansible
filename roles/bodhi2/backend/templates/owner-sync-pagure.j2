@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 """
 This script updates the packageList ownership in Koji based on repo ownership
 in Pagure.
@@ -13,12 +13,12 @@ This is heavily based on "owner-sync-pkgdb.j2" which was introduced in commit
 # /usr/local/bin/owner-sync-pkgdb dist-5E-epel 
 # /usr/local/bin/owner-sync-pkgdb dist-6E-epel
 # /usr/local/bin/owner-sync-pkgdb epel7 
-from __future__ import print_function
+
 import sys
 import os
 import argparse
-import ConfigParser
-from urlparse import urljoin
+import configparser
+from urllib.parse import urljoin
 import multiprocessing.pool
 from math import ceil
 from functools import partial
@@ -106,14 +106,14 @@ def get_options():
     for configFile in ('/etc/koji.conf', os.path.expanduser('~/.koji/config')):
         if os.access(configFile, os.F_OK):
             f = open(configFile)
-            config = ConfigParser.ConfigParser()
+            config = configparser.ConfigParser()
             config.readfp(f)
             f.close()
             if config.has_section('koji'):
                 for name, value in config.items('koji'):
-                    if opts.has_key(name):
+                    if name in opts:
                         opts[name] = value
-    for entry in opts.keys():
+    for entry in list(opts.keys()):
         if entry == 'server' or entry == 'weburl':
             pass
     return opts
@@ -276,7 +276,7 @@ def get_pagure_project_branches(namespace, package=None, verbose=False):
         get_pagure_project_names_from_page, session, namespace,
         package=package, verbose=verbose)
     project_names_sets = pool.map(partial_get_pagure_project_names_from_page,
-                                  range(1, num_pages + 1))
+                                  list(range(1, num_pages + 1)))
 
     if project_names_sets:
         # Combine all the project name sets
@@ -401,14 +401,14 @@ if __name__ == '__main__':
         namespace_to_projects[namespace] = \
             get_pagure_project_branches(namespace, package=package, verbose=verbose)
 
-    for tag, info in tag_info.items():
+    for tag, info in list(tag_info.items()):
         if verbose:
             print('Determining which projects have the namespace "{0}" and '
                   'branch "{1}"'.format(namespace, tag))
         namespaces = info['namespaces']
         pkgs = []
         for namespace in namespaces:
-            for pkg, branches in namespace_to_projects[namespace].items():
+            for pkg, branches in list(namespace_to_projects[namespace].items()):
                 if info['branch'] in branches or tag == ('f' + RAWHIDE):
                     # The tag and branch names are the same for "old-style" branches
                     pkgs.append(pkg)
