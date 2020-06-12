@@ -1,6 +1,6 @@
 #!/bin/bash
 
-RSYNC_FLAGS='-az --no-motd'
+RSYNC_FLAGS='-avSHP --no-motd'
 
 function syncHttpLogs {
 
