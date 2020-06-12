@@ -12,9 +12,7 @@
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
   - name: Create /srv/web/ for all the goodies.
-    file: >
-        dest=/srv/web state=directory
-        owner=root group=root mode=0755
+    file: dest=/srv/web state=directory owner=root group=root mode=0755
     tags:
     - httpd
     - httpd/website
