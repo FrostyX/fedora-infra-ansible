@@ -120,7 +120,7 @@ for line in lines:
         revs = [head.id]
 
     def _build_commit(rev):
-        if instance(rev, str):
+        if isinstance(rev, str):
             commit = repo.revparse_single(rev)
         else:
             commit = repo.revparse_single(rev.hex)
