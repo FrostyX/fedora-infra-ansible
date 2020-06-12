@@ -12,10 +12,10 @@ items:
     lookupPolicy:
       local: false
     tags:
-    - name: "31"
+    - name: "32"
       from:
         kind: DockerImage
-        name: registry.fedoraproject.org/fedora:31
+        name: registry.fedoraproject.org/fedora:32
       importPolicy: 
         scheduled: true
       referencePolicy:

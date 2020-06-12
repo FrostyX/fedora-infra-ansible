@@ -21,7 +21,7 @@ spec:
     dockerStrategy:
       from:
         kind: ImageStreamTag
-        name: fedora:31
+        name: fedora:32
   output:
     to:
       kind: ImageStreamTag
