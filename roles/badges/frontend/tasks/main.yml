@@ -18,7 +18,6 @@
   user: 
     user: tahrir
     uid: 995
-    gid: 992
     shell: /sbin/nologin
     home: /usr/share/tahrir
   tags:
