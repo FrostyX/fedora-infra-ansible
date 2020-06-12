@@ -39,12 +39,14 @@ backup01.phx2.fedoraproject.org
 backup01.iad2.fedoraproject.org
 
 [badges_backend]
+badges-backend01.iad2.fedoraproject.org
 badges-backend01.phx2.fedoraproject.org
 
 [badges_backend_stg]
 # badges-backend01.stg.phx2.fedoraproject.org
 
 [badges_web]
+badges-web01.iad2.fedoraproject.org
 badges-web01.phx2.fedoraproject.org
 badges-web02.phx2.fedoraproject.org
 
@@ -1191,6 +1193,9 @@ retrace01.qa.fedoraproject.org
 [iad2]
 autosign01.iad2.fedoraproject.org
 backup01.iad2.fedoraproject.org
+badges-backend01.phx2.fedoraproject.org
+badges-web01.phx2.fedoraproject.org
+badges-web02.phx2.fedoraproject.org
 bastion01.iad2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
 bkernel01.iad2.fedoraproject.org
