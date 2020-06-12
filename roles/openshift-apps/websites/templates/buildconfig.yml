@@ -10,6 +10,7 @@ spec:
       FROM fedora:latest
       RUN dnf -y install \
         git \
+        python-unversioned-command \
         python3-flask \
         python3-frozen-flask \
         python3-flask-assets \
