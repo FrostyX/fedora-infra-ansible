@@ -16,6 +16,11 @@
     - codeblock
     - ryanlerch
 
+  - role: openshift/object
+    app: websites
+    file: pvc.yml
+    objectname: pvc.yml
+
   - role: openshift/imagestream
     app: websites
     imagename: builder
