@@ -17,7 +17,6 @@
 - name: create tahrir user
   user: 
     user: tahrir
-    uid: 995
     shell: /sbin/nologin
     home: /usr/share/tahrir
   tags:
