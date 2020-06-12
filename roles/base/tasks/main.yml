@@ -466,6 +466,13 @@
   - base
   - cdc_ether
 
+# Remove old filename for above: remove this when we're pretty sure the file's
+# gone from all hosts
+- name: Remove old cdc_ether config file
+  file:
+    path: /etc/modprobe.d/blacklist-cdc_ether.conf
+    state: absent
+
 #
 # Watchdog stuff
 #
