@@ -4,7 +4,6 @@ product_versions:
   - fedora-rawhide
 decision_context: rawhide_compose_sync_to_mirrors
 subject_type: compose
-blacklist: []
 rules:
   - !PassingTestCaseRule {test_case_name: compose.cloud_autocloud, scenario: "fedora.Cloud_Base-qcow2-qcow2.x86_64.64bit"}
   - !PassingTestCaseRule {test_case_name: compose.base_system_logging, scenario: "fedora.KDE-live-iso.x86_64.64bit"}
@@ -61,7 +60,6 @@ product_versions:
   - fedora-30
   - fedora-29
 decision_context: bodhi_update_push_testing
-blacklist: []
 subject_type: koji_build
 rules:
   - !RemoteRule {}
@@ -77,7 +75,6 @@ product_versions:
   - fedora-30
   - fedora-29
 decision_context: bodhi_update_push_stable
-blacklist: []
 subject_type: koji_build
 rules:
   - !RemoteRule {}
@@ -102,7 +99,6 @@ product_versions:
   - fedora-epel-7
   - fedora-epel-6
 decision_context: bodhi_update_push_testing
-blacklist: []
 subject_type: koji_build
 rules: []
 
@@ -126,7 +122,6 @@ product_versions:
   - fedora-epel-7
   - fedora-epel-6
 decision_context: bodhi_update_push_stable
-blacklist: []
 subject_type: koji_build
 rules: []
 
@@ -141,7 +136,6 @@ product_versions:
   - fedora-30
   - fedora-29
 decision_context: bodhi_update_push_testing
-blacklist: []
 subject_type: bodhi_update
 rules:
   - !RemoteRule {}
@@ -156,7 +150,6 @@ product_versions:
   - fedora-30
   - fedora-29
 decision_context: bodhi_update_push_stable
-blacklist: []
 subject_type: bodhi_update
 rules:
   - !RemoteRule {}
