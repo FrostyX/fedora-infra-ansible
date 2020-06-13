@@ -2,7 +2,7 @@
 
 URL="https://pdc.fedoraproject.org/rest_api/v1/releases/?active=True&name=Fedora"
 PROPAGATION="/usr/bin/mm2_propagation"
-SOURCE="mm-crawler01.phx2.fedoraproject.org::propagation"
+SOURCE="mm-crawler01.iad2.fedoraproject.org::propagation"
 LOGBASE="/var/log/mirrormanager/propagation"
 
 FRONTENDS="{% for host in groups['mm_frontend'] %} {{ host }} {% endfor %}"

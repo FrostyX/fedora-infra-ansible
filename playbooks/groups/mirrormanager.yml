@@ -66,7 +66,7 @@
   - mirrormanager/crawler
   - { role: rsyncd,
       when: env != "staging" }
-  - { role: openvpn/client, when: datacenter != "phx2" }
+  - { role: openvpn/client, when: datacenter != "iad2" }
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"

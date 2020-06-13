@@ -10,7 +10,7 @@
 ## Docker ports for mirrors
 mirrorlist1="http://localhost:18081/metalink?repo=rawhide&arch=x86_64"
 mirrorlist2="http://localhost:18082/metalink?repo=rawhide&arch=x86_64"
-{% if datacenter == 'phx2' %}
+{% if datacenter == 'iad2' %}
 mirrorlist3="http://localhost:18083/metalink?repo=rawhide&arch=x86_64"
 {% endif %}
 
@@ -27,7 +27,7 @@ then
 	cp /srv/mirrorlist/data/mirrorlist1/* /srv/mirrorlist/data/mirrorlist2/
 fi
 
-{% if datacenter == 'phx2' %}
+{% if datacenter == 'iad2' %}
 # We have more mirror containers here
 if [ ! -f /srv/mirrorlist/data/mirrorlist3/global_netblocks.txt ];
 then
@@ -58,7 +58,7 @@ if [ $? != 0 ]; then
 	exit 1
 fi
 
-{% if datacenter == 'phx2' %}
+{% if datacenter == 'iad2' %}
 # check mirrorlist3 (old protbuf cache and see that it's processing ok)
 curl -q -H mirrors.fedoraproject.org ${mirrorlist3} -s -f --retry 50 --retry-delay 10 --retry-connrefused --retry-max-time 180 | grep "sha512" >/dev/null
 if [ $? != 0 ]; then
@@ -131,7 +131,7 @@ fi
 
 echo "enable server mirror-lists-backend/mirrorlist-local2" | nc -U /var/run/haproxy-admin >& /dev/null
 
-{% if datacenter == 'phx2' %}
+{% if datacenter == 'iad2' %}
 # copy new protbuf cache to mirrorlist3
 cp -a /srv/mirrorlist/data/mirrorlist1/* /srv/mirrorlist/data/mirrorlist3/
 
