@@ -700,9 +700,9 @@ vmhost-x86-07.iad2.fedoraproject.org
 qvmhost-x86-02.iad2.fedoraproject.org
 
 [virthost_comm]
-virthost-comm01.qa.fedoraproject.org
-virthost-comm03.qa.fedoraproject.org
-virthost-comm04.qa.fedoraproject.org
+#virthost-comm01.qa.fedoraproject.org
+#virthost-comm03.qa.fedoraproject.org
+#virthost-comm04.qa.fedoraproject.org
 
 #[virthost_cloud]
 #virthost-aarch64-os01.fedorainfracloud.org
