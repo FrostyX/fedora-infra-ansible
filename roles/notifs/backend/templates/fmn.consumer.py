@@ -166,17 +166,17 @@ config = {
             moksha={
                 "level": "INFO",
                 "propagate": False,
-                "handlers": ["console", "mailer"],
+                "handlers": ["console"],
             },
             celery={
                 "level": "INFO",
                 "propagate": False,
-                "handlers": ["console", "mailer"],
+                "handlers": ["console"],
             },
             twisted={
                 "level": "INFO",
                 "propagate": False,
-                "handlers": ["console", "mailer"],
+                "handlers": ["console"],
             },
         ),
         root={
