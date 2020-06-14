@@ -4,12 +4,10 @@ dns1: "10.3.163.33"
 dns2: "10.3.163.34"
 
 datacenter: iad2
-#preferred_dc: iad2
+preferred_dc: iad2
 
 
 ipa_server: ipa01.iad2.fedoraproject.org
-
-# for now, lets not monitor any of them from phx2.
 
 nagios_Can_Connect: true
 

@@ -49,7 +49,7 @@ osbs_conf_readwrite_users:
   - "system:serviceaccount:{{ osbs_namespace }}:builder"
 
 #Docker command delegated host
-composer: composer.phx2.fedoraproject.org
+composer: composer.iad2.fedoraproject.org
 
 # Nagios configuration
 nagios_Check_Services:

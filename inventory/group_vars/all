@@ -16,7 +16,7 @@ openshift_ansible: /srv/web/infra/openshift-ansible/
 #######
 
 freezes: true
-# most of our systems are in phx2
+# most of our systems are in IAD2
 datacenter: iad2
 preferred_dc: iad2
 postfix_group: "none"
@@ -63,15 +63,16 @@ lvm_size: 20000
 # and DNS1/DNS2 lines are put into ifcfg-(device).
 ansible_ifcfg_infra_net_devices: [ 'eth0', 'enc900' ]
 
-# Default netmask. Almost all our phx2 nets are /24's with the
-# exception of 10.5.124.128/25. Almost all of our non phx2 sites are
-# less than a /24.
+# Default netmask. All of our iad2 nets are /24's. Almost all of our
+# non-iad2 sites are less than a /24.
 eth0_nm: 255.255.255.0
 eth1_nm: 255.255.255.0
-eth1_ip: 10.10.10.10
+eth1_ip: 10.0.0.10
 br0_nm: 255.255.255.0
 br1_nm: 255.255.255.0
-# Default to managing the network, we want to not do this on select hosts (like cloud nodes)
+
+# Default to managing the network, we want to not do this on select
+# hosts (like cloud nodes)
 ansible_ifcfg_blocklist: false
 # List of interfaces to explicitly disable
 ansible_ifcfg_disabled: []

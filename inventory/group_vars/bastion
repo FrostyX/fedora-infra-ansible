@@ -7,12 +7,12 @@ num_cpus: 4
 #
 # allow incoming openvpn and smtp
 #
-tcp_ports: [ 25, 1194 ]
+tcp_ports: [ 22, 25, 1194 ]
 udp_ports: [ 1194 ]
 
 #
 # drop incoming traffic from less trusted vpn hosts
-# allow ntp from internal phx2 10 nets
+# allow ntp from internal RH 10 nets
 #
 custom_rules: [
     '-A INPUT -s 192.168.100/24 -j REJECT --reject-with icmp-host-prohibited',
@@ -50,11 +50,14 @@ csi_security_category: High
 csi_primary_contact: sysadmin-main admin@fedoraproject.org
 csi_purpose: SSH proxy to access infrastructure not exposed to the web
 csi_relationship: |
-  - Provides ssh access to all phx2/vpn connected servers.
+  - Provides ssh access to all iad2/vpn connected servers.
   - Bastion is the hub for all infrastructure's VPN connections.
-  - All incoming SMTP from phx2 and VPN, as well as outgoing SMTP, pass or are filtered here.
+  - All incoming SMTP from iad2 and VPN, as well as outgoing SMTP,
+    pass or are filtered here.
   - Bastion does not accept any mail outside phx2/vpn.
 
 nagios_Check_Services:
   nrpe: true
   mail: false
+
+# needed for rhel8
