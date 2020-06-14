@@ -1,3 +1,4 @@
+---
 [dells]
 osuosl01.fedoraproject.org
 ## bvirthost01.phx2.fedoraproject.org
@@ -112,7 +113,6 @@ bvmhost-a64-04.iad2.fedoraproject.org
 
 
 [hardware:children]
-moonshot
 powerpc
 dells
 ibms
