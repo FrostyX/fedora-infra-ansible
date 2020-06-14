@@ -110,7 +110,7 @@
   - relay.py
   - logging.py
   - base.py
-  when: "'persistent_cloud' not in group_names
+  when: "'persistent_cloud' not in group_names"
   tags:
   - config
   - fedmsgdconfig
@@ -131,7 +131,7 @@
     mode=0644
   with_items:
   - policy.py
-  when: "'persistent_cloud' not in group_names
+  when: "'persistent_cloud' not in group_names"
   tags:
   - config
   - fedmsgdconfig
@@ -156,7 +156,7 @@
   - relay.py
   - logging.py
   - base.py
-  when: "'persistent_cloud' in group_names
+  when: "'persistent_cloud' in group_names"
   tags:
   - config
   - fedmsgdconfig
