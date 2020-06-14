@@ -432,7 +432,7 @@ odcs_backend
 # common group for variables shared between prod and stg servers
 [openqa_common]
 openqa01.iad2.fedoraproject.org
-openqa-stg01.iad2.fedoraproject.org
+#openqa-stg01.iad2.fedoraproject.org
 
 [openqa]
 openqa01.iad2.fedoraproject.org
@@ -442,7 +442,7 @@ openqa-x86-worker01.iad2.fedoraproject.org
 
 # openqa-stg and openqa-stg-workers are pseudo-stg, see group_vars/openqa-stg for more details
 [openqa_stg]
-openqa-stg01.iad2.fedoraproject.org
+#openqa-stg01.iad2.fedoraproject.org
 
 [openqa_stg_workers]
 openqa-a64-worker01.iad2.fedoraproject.org
@@ -533,10 +533,10 @@ resultsdb_prod
 resultsdb_iad_prod
 
 [resultsdb_stg]
-resultsdb-stg01.qa.fedoraproject.org
+#resultsdb-stg01.qa.fedoraproject.org
 
 [resultsdb_prod]
-resultsdb01.qa.fedoraproject.org
+#resultsdb01.qa.fedoraproject.org
 
 [resultsdb_iad_prod]
 resultsdb01.iad2.fedoraproject.org
@@ -689,7 +689,7 @@ value01.iad2.fedoraproject.org
 # virthost03.stg.iad2.fedoraproject.org
 # virthost04.stg.iad2.fedoraproject.org
 # virthost05.stg.iad2.fedoraproject.org
-qa09.qa.fedoraproject.org
+#qa09.qa.fedoraproject.org
 vmhost-x86-01.iad2.fedoraproject.org
 vmhost-x86-02.iad2.fedoraproject.org
 vmhost-x86-03.iad2.fedoraproject.org
@@ -1273,7 +1273,7 @@ oci-registry02.iad2.fedoraproject.org
 odcs-backend01.iad2.fedoraproject.org
 odcs-frontend01.iad2.fedoraproject.org
 openqa-a64-worker01.iad2.fedoraproject.org
-openqa-stg01.iad2.fedoraproject.org
+#openqa-stg01.iad2.fedoraproject.org
 openqa-x86-worker01.iad2.fedoraproject.org
 openqa01.iad2.fedoraproject.org
 os-control01.iad2.fedoraproject.org
