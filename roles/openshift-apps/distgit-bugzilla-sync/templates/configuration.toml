@@ -32,7 +32,7 @@ Reassigning to the new maintainer of this component.
 
 [email]
     send_mails = true
-    smtp_host = "bastion.fedoraproject.org"
+    smtp_host = "bastion-iad.fedoraproject.org"
     from = "accounts@fedoraproject.org"
 {% if env == 'staging' %}
     notify_admins = [
