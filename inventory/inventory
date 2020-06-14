@@ -445,18 +445,18 @@ openqa-x86-worker01.iad2.fedoraproject.org
 #openqa-stg01.iad2.fedoraproject.org
 
 [openqa_stg_workers]
-openqa-a64-worker01.iad2.fedoraproject.org
+#openqa-a64-worker01.iad2.fedoraproject.org
 
 # the workers that can run networked jobs. each server should have *one* of these per arch
 [openqa_tap_workers]
-openqa-a64-worker01.iad2.fedoraproject.org
+#openqa-a64-worker01.iad2.fedoraproject.org
 openqa-x86-worker01.iad2.fedoraproject.org
 
 # the workers that need rw access to the factory share to run createhdds. again,
 # only one per arch per instance should be present. usually x86_64 images are created
 # on the server, images for other arches on a worker.
 [openqa_hdds_workers]
-openqa-a64-worker01.iad2.fedoraproject.org
+#openqa-a64-worker01.iad2.fedoraproject.org
 openqa-x86-worker01.iad2.fedoraproject.org
 
 [packages]
@@ -507,25 +507,25 @@ proxies_internal
 
 [relvalconsumer_common]
 openqa01.iad2.fedoraproject.org
-openqa-stg01.iad2.fedoraproject.org
+#openqa-stg01.iad2.fedoraproject.org
 
 # This group should only ever contain *ONE* system
 [relvalconsumer]
 openqa01.iad2.fedoraproject.org
 
 [relvalconsumer_test]
-openqa-stg01.iad2.fedoraproject.org
+#openqa-stg01.iad2.fedoraproject.org
 
 [checkcompose_common]
 openqa01.iad2.fedoraproject.org
-openqa-stg01.iad2.fedoraproject.org
+#openqa-stg01.iad2.fedoraproject.org
 
 # This group should only ever contain *ONE* system
 [checkcompose]
 openqa01.iad2.fedoraproject.org
 
 [checkcompose_stg]
-openqa-stg01.iad2.fedoraproject.org
+#openqa-stg01.iad2.fedoraproject.org
 
 [resultsdb:children]
 resultsdb_stg
@@ -661,7 +661,7 @@ proxy01.iad2.fedoraproject.org
 proxy10.iad2.fedoraproject.org
 proxy101.iad2.fedoraproject.org
 proxy110.iad2.fedoraproject.org
-openqa-stg01.iad2.fedoraproject.org
+#openqa-stg01.iad2.fedoraproject.org
 tang01.iad2.fedoraproject.org
 tang02.iad2.fedoraproject.org
 
@@ -1269,7 +1269,7 @@ oci-registry01.iad2.fedoraproject.org
 oci-registry02.iad2.fedoraproject.org
 odcs-backend01.iad2.fedoraproject.org
 odcs-frontend01.iad2.fedoraproject.org
-openqa-a64-worker01.iad2.fedoraproject.org
+#openqa-a64-worker01.iad2.fedoraproject.org
 #openqa-stg01.iad2.fedoraproject.org
 openqa-x86-worker01.iad2.fedoraproject.org
 openqa01.iad2.fedoraproject.org
