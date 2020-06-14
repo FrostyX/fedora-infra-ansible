@@ -1,4 +1,4 @@
-suffix = 'phx2.fedoraproject.org'
+suffix = 'iad2.fedoraproject.org'
 non_phx_suffix = 'fedoraproject.org'
 
 config = dict(

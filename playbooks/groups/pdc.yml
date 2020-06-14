@@ -42,7 +42,7 @@
 
   roles:
   - role: openvpn/client
-    when: env != "staging" and datacenter == 'phx2'
+    when: env != "staging" and datacenter == 'iad2'
   - mod_wsgi
   - { role: fedmsg/base,
       when: deployment_type == "prod" }

@@ -30,7 +30,7 @@
   - sudo
   - role: keytab/service
     service: compose
-    host: "composer.stg.phx2.fedoraproject.org"
+    host: "composer.stg.iad2.fedoraproject.org"
     when: env == "staging"
   - role: keytab/service
     service: compose
@@ -41,10 +41,10 @@
     host: "koji{{env_suffix}}.fedoraproject.org"
   - role: loopabull/target
     loopabull_role: koji
-    when: inventory_hostname == 'composer.stg.phx2.fedoraproject.org'
+    when: inventory_hostname == 'composer.stg.iad2.fedoraproject.org'
   - role: loopabull/target
     loopabull_role: ociimage
-    when: inventory_hostname == 'composer.stg.phx2.fedoraproject.org'
+    when: inventory_hostname == 'composer.stg.iad2.fedoraproject.org'
 
   - role: nfs/client
     mnt_dir: '/mnt/fedora_koji'
@@ -53,11 +53,11 @@
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
     nfs_src_dir: 'fedora_ostree_content/ostree'
-    when: "'releng_stg' not in group_names and datacenter == 'phx2'"
+    when: "'releng_stg' not in group_names and datacenter == 'iad2'"
   - role: nfs/client
     mnt_dir: '/mnt/koji/compose/ostree'
     nfs_src_dir: 'fedora_ostree_content/compose/ostree'
-    when: "'releng_stg' not in group_names and datacenter == 'phx2'"
+    when: "'releng_stg' not in group_names and datacenter == 'iad2'"
   - role: nfs/client
     mnt_dir: '/mnt/koji/ostree'
     nfs_src_dir: 'fedora_ostree_content/ostree'

@@ -47,17 +47,17 @@
   - name: figure out which node to delegate os cordon to
     set_fact:
       os_delegate_via: os-master01
-    when: ( hostvars[inventory_hostname].vmhost != hostvars['os-master01.phx2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'phx2') or ( hostvars['os-master01.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2')
+    when: hostvars['os-master01.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2'
 
   - name: figure out which node to delegate os cordon to
     set_fact:
       os_delegate_via: os-master02
-    when: ( hostvars[inventory_hostname].vmhost != hostvars['os-master02.phx2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'phx2') or ( hostvars['os-master02.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2')
+    when: hostvars['os-master02.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2'
 
   - name: figure out which node to delegate os cordon to
     set_fact:
       os_delegate_via: os-master03
-    when: ( hostvars[inventory_hostname].vmhost != hostvars['os-master03.phx2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'phx2') or ( hostvars['os-master03.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2')
+    when: hostvars['os-master03.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2'
 
   - name: drain OS node if necessary
     command: oc adm drain {{inventory_hostname }} --ignore-daemonsets --delete-local-data
@@ -71,7 +71,7 @@
 
   - name: schedule regular host downtime
     nagios: action=downtime minutes=30 service=host host={{ inventory_hostname_short }}{{ env_suffix }}
-    delegate_to: noc01.phx2.fedoraproject.org
+    delegate_to: noc01.iad2.fedoraproject.org
     ignore_errors: true
     when: nonagios is not defined or not nonagios
 
@@ -97,7 +97,7 @@
   tasks:
   - name: tell nagios to shush
     nagios: action=downtime minutes=60 service=host host={{ inventory_hostname_short }}{{ env_suffix }}
-    delegate_to: noc01.phx2.fedoraproject.org
+    delegate_to: noc01.iad2.fedoraproject.org
     ignore_errors: true
     when: nonagios is not defined or not nonagios
 
@@ -120,7 +120,7 @@
 
   - name: tell nagios to unshush
     nagios: action=unsilence service=host host={{ inventory_hostname_short }}{{ env_suffix }}
-    delegate_to: noc01.phx2.fedoraproject.org
+    delegate_to: noc01.iad2.fedoraproject.org
     ignore_errors: true
     when: nonagios is not defined or not nonagios
 
@@ -134,25 +134,19 @@
   - name: figure out which node to delegate os uncordon to
     set_fact:
       os_delegate_via: os-master01
-    when: ( hostvars[inventory_hostname].vmhost != hostvars['os-master01.phx2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'phx2') or ( hostvars['os-master01.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2')
+    when: hostvars['os-master01.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2'
 
 
   - name: figure out which node to delegate os uncordon to
     set_fact:
       os_delegate_via: os-master02
-    when: ( hostvars[inventory_hostname].vmhost != hostvars['os-master02.phx2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'phx2') or ( hostvars['os-master02.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2')
+    when: hostvars['os-master02.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2'
 
 
   - name: figure out which node to delegate os uncordon to
     set_fact:
       os_delegate_via: os-master03
-    when: ( hostvars[inventory_hostname].vmhost != hostvars['os-master03.phx2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'phx2') or ( hostvars['os-master03.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2')
-
-
-  - name: Add back to openshift
-    command: oc adm uncordon {{inventory_hostname}}
-    delegate_to: "{{os_delegate_via}}{{env_suffix}}.phx2.fedoraproject.org"
-    when: inventory_hostname.startswith(('os-node', 'os-master')) and hostvars[inventory_hostname].datacenter == 'phx2'
+    when: hostvars['os-master03.iad2.fedoraproject.org'].vmhost and hostvars[inventory_hostname].datacenter == 'iad2'
 
   - name: Add back to openshift
     command: oc adm uncordon {{inventory_hostname}}

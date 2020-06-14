@@ -21,7 +21,7 @@
   - hosts
   - fas_client
   - collectd/base
-  - { role: rsyncd, when: datacenter == 'phx2' or datacenter == 'iad2' }
+  - { role: rsyncd, when: datacenter == 'iad2' }
   - sudo
   - { role: openvpn/client, when: env != "staging" }
   - mod_wsgi
@@ -30,13 +30,13 @@
     owner_group: apache
     service: HTTP
     host: "nagios{{env_suffix}}.fedoraproject.org"
-    when: datacenter == 'phx2' or datacenter == 'iad2'
+    when: datacenter == 'iad2'
   - role: keytab/service
     owner_user: apache
     owner_group: apache
     service: HTTP
     host: "nagios-external{{env_suffix}}.fedoraproject.org"
-    when: datacenter != 'phx2' 
+    when: datacenter != 'iad2' 
   - { role: letsencrypt, site_name: 'nagios-external.fedoraproject.org', when: inventory_hostname.startswith('noc02') }
 
   tasks:
@@ -60,8 +60,8 @@
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
   roles:
-  - { role: dhcp_server, when: datacenter == 'phx2' or datacenter == 'iad2' }
-  - { role: tftp_server, when: datacenter == 'phx2' or datacenter == 'iad2' }
+  - { role: dhcp_server, when: datacenter == 'iad2' }
+  - { role: tftp_server, when: datacenter == 'iad2' }
   - { role: nagios_server }
   - { role: fedmsg/base, when: deployment_type == "prod" and datacenter != 'iad2'}
   - { role: rabbit/user, when: deployment_type == "stg" or datacenter == 'iad2'}

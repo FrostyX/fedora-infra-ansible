@@ -146,7 +146,7 @@
   # keytab for odcs releng backend
   - role: keytab/service
     service: odcs
-    host: "odcs-backend-releng01.phx2.fedoraproject.org"
+    host: "odcs-backend-releng01.iad2.fedoraproject.org"
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"

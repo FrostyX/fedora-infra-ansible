@@ -8,7 +8,7 @@
 # servers.
 
 - name: get the badges repo happening from the batcave
-  hosts: batcave01.phx2.fedoraproject.org
+  hosts: batcave01.iad2.fedoraproject.org
   user: root
   gather_facts: False
 

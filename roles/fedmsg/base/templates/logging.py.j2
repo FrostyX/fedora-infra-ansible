@@ -218,8 +218,8 @@ config = dict(
                 "formatter": "hefty",
                 "filters": ["context"],
                 "level": "ERROR",
-{% if datacenter == 'phx2' %}
-                "mailhost": "bastion.phx2.fedoraproject.org",
+{% if datacenter == 'iad2' %}
+                "mailhost": "bastion.iad2.fedoraproject.org",
 {% elif datacenter == 'iad2' %}
                 "mailhost": "bastion.iad2.fedoraproject.org",
 {% else %}

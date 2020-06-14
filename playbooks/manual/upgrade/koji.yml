@@ -45,7 +45,7 @@
 
   - name: tell nagios that everything is fine
     nagios: action=downtime minutes=30 service=host host={{ inventory_hostname_short }}{{ env_suffix }}
-    delegate_to: noc01.phx2.fedoraproject.org
+    delegate_to: noc01.iad2.fedoraproject.org
     ignore_errors: true
 
   - name: stop httpd on the koji-hubs.
@@ -91,7 +91,7 @@
     service: name="httpd" state=started
   - name: unsilence nagios
     nagios: action=unsilence service=host host={{ inventory_hostname_short }}{{ env_suffix }}
-    delegate_to: noc01.phx2.fedoraproject.org
+    delegate_to: noc01.iad2.fedoraproject.org
     ignore_errors: true
 
 - name: update and restart the koji builders, now that we're done with the hubs

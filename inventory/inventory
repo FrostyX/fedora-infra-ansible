@@ -55,10 +55,8 @@ badges-web01.iad2.fedoraproject.org
 # basset01.stg.iad2.fedoraproject.org
 
 [bastion]
-bastion01.phx2.fedoraproject.org
-bastion02.phx2.fedoraproject.org
-bastion13.fedoraproject.org
 bastion01.iad2.fedoraproject.org
+bastion13.fedoraproject.org
 
 [bastion_stg]
 # bastion01.stg.iad2.fedoraproject.org
@@ -272,14 +270,10 @@ kojipkgs01.iad2.fedoraproject.org
 kojipkgs02.iad2.fedoraproject.org
 
 [infracore]
-batcave01.phx2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
-log01.phx2.fedoraproject.org
 log01.iad2.fedoraproject.org
-noc01.phx2.fedoraproject.org
 noc01.iad2.fedoraproject.org
 noc02.fedoraproject.org
-data-analysis01.phx2.fedoraproject.org
 #cloud-noc01.fedorainfracloud.org
 
 [logging]
@@ -400,8 +394,6 @@ secondary01.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
 ns02.fedoraproject.org
-ns03.phx2.fedoraproject.org
-ns04.phx2.fedoraproject.org
 ns05.fedoraproject.org
 ns13.rdu2.fedoraproject.org
 
@@ -662,7 +654,6 @@ batcave01.iad2.fedoraproject.org
 bastion01.iad2.fedoraproject.org
 bastion02.iad2.fedoraproject.org
 certgetter01.iad2.fedoraproject.org
-# download01.phx2.fedoraproject.org
 log01.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
@@ -698,18 +689,6 @@ value01.iad2.fedoraproject.org
 # virthost03.stg.iad2.fedoraproject.org
 # virthost04.stg.iad2.fedoraproject.org
 # virthost05.stg.iad2.fedoraproject.org
-virthost01.phx2.fedoraproject.org
-virthost02.phx2.fedoraproject.org
-virthost04.phx2.fedoraproject.org
-virthost06.phx2.fedoraproject.org
-virthost12.phx2.fedoraproject.org
-virthost14.phx2.fedoraproject.org
-virthost15.phx2.fedoraproject.org
-virthost17.phx2.fedoraproject.org
-virthost18.phx2.fedoraproject.org
-virthost19.phx2.fedoraproject.org
-virthost21.phx2.fedoraproject.org
-virthost22.phx2.fedoraproject.org
 qa09.qa.fedoraproject.org
 vmhost-x86-01.iad2.fedoraproject.org
 vmhost-x86-02.iad2.fedoraproject.org
@@ -1116,9 +1095,6 @@ badges-backend01.iad2.fedoraproject.org
 bodhi-backend01.iad2.fedoraproject.org
 mailman01.iad2.fedoraproject.org
 people02.fedoraproject.org
-#db-datanommer02.phx2.fedoraproject.org
-#nuancier01.phx2.fedoraproject.org
-#fedocal02.phx2.fedoraproject.org
 pagure01.fedoraproject.org
 pkgs01.iad2.fedoraproject.org
 notifs-web01.iad2.fedoraproject.org
@@ -1371,25 +1347,3 @@ wiki01.iad2.fedoraproject.org
 [iad2:vars]
 ansible_group_priority=10
 datacenter=iad2
-
-[phx2]
-bastion01.phx2.fedoraproject.org
-bastion02.phx2.fedoraproject.org
-batcave01.phx2.fedoraproject.org
-noc01.phx2.fedoraproject.org
-ns03.phx2.fedoraproject.org
-ns04.phx2.fedoraproject.org
-tang01.phx2.fedoraproject.org
-tang02.phx2.fedoraproject.org
-virthost01.phx2.fedoraproject.org
-virthost02.phx2.fedoraproject.org
-virthost04.phx2.fedoraproject.org
-virthost06.phx2.fedoraproject.org
-virthost12.phx2.fedoraproject.org
-virthost14.phx2.fedoraproject.org
-virthost15.phx2.fedoraproject.org
-virthost17.phx2.fedoraproject.org
-virthost18.phx2.fedoraproject.org
-virthost19.phx2.fedoraproject.org
-virthost21.phx2.fedoraproject.org
-virthost22.phx2.fedoraproject.org

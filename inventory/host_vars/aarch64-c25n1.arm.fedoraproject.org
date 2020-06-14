@@ -1,3 +1,0 @@
----
-# This virthost only has stg instances, so it doesn't freeze
-freezes: false

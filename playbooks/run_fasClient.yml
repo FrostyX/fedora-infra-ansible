@@ -4,7 +4,7 @@
 #
 
 - name: run fasClient -a to make email aliases on bastion
-  hosts: bastion01.phx2.fedoraproject.org:bastion02.phx2.fedoraproject.org:bastion01.iad2.fedoraproject.org:bastion02.iad2.fedoraproject.org
+  hosts: bastion01.iad2.fedoraproject.org:bastion02.iad2.fedoraproject.org:bastion01.iad2.fedoraproject.org:bastion02.iad2.fedoraproject.org
   user: root
   gather_facts: False
 
@@ -15,7 +15,7 @@
     when: inventory_hostname_short.startswith('bastion0')
 
 - name: run fasClient on people and pkgs first as these are the ones most people want updated
-  hosts: people02.fedoraproject.org:pkgs02.phx2.fedoraproject.org
+  hosts: people02.fedoraproject.org:pkgs01.iad2.fedoraproject.org
   user: root
   gather_facts: False
 
@@ -25,7 +25,7 @@
     ignore_errors: true
 
 - name: run fasClient -i on the rest of hosts which only affects sysadmins
-  hosts: all:!builders:!*cloud*:!*composer*:!people*:!pkgs02*:!*.stg.*:!twisted*:!*.fedorainfracloud.org:!bkernel*:!autosign*:!*.app.os.fedoraproject.org:!*.app.os.stg.fedoraproject.org
+  hosts: all:!builders:!*cloud*:!*composer*:!people*:!pkgs01*:!*.stg.*:!twisted*:!*.fedorainfracloud.org:!bkernel*:!autosign*:!*.app.os.fedoraproject.org:!*.app.os.stg.fedoraproject.org
   user: root
   gather_facts: False
 

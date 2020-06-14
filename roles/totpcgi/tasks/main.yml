@@ -92,7 +92,7 @@
 
 - name: copy staging server cert file over
   copy: >
-   src={{ private }}/files/2fa-certs/keys/fas-all.stg.phx2.fedoraproject.org.crt
+   src={{ private }}/files/2fa-certs/keys/fas-all.stg.iad2.fedoraproject.org.crt
    dest=/etc/pki/tls/certs/totpcgi-server.crt
    owner=root
    group=totpcgi
@@ -104,7 +104,7 @@
 
 - name: copy staging server key file over
   copy: >
-   src={{ private }}/files/2fa-certs/keys/fas-all.stg.phx2.fedoraproject.org.key
+   src={{ private }}/files/2fa-certs/keys/fas-all.stg.iad2.fedoraproject.org.key
    dest=/etc/pki/totpcgi/totpcgi-server.key
    owner=root
    group=totpcgi
@@ -131,7 +131,7 @@
 
 - name: copy server cert file over
   copy: >
-   src={{ private }}/files/2fa-certs/keys/fas-all.phx2.fedoraproject.org.crt
+   src={{ private }}/files/2fa-certs/keys/fas-all.iad2.fedoraproject.org.crt
    dest=/etc/pki/totpcgi/totpcgi-server.crt
    owner=root
    group=totpcgi
@@ -145,7 +145,7 @@
 
 - name: copy server cert file over
   copy: >
-   src={{ private }}/files/2fa-certs/keys/fas-all.phx2.fedoraproject.org.key
+   src={{ private }}/files/2fa-certs/keys/fas-all.iad2.fedoraproject.org.key
    dest=/etc/pki/totpcgi/totpcgi-server.key
    owner=root
    group=totpcgi

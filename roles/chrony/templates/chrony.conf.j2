@@ -1,11 +1,7 @@
 # setup our servers
-{% if datacenter == 'phx2' and not ansible_hostname.startswith('bastion') %}
-server bastion01.phx2.fedoraproject.org iburst
-server bastion02.phx2.fedoraproject.org iburst
-{% elif datacenter == 'iad2' and not ansible_hostname.startswith('bastion') %}
+{% if datacenter == 'iad2' and not ansible_hostname.startswith('bastion') %}
 server bastion01.iad2.fedoraproject.org iburst
 server bastion02.iad2.fedoraproject.org iburst
-
 {% elif datacenter == 'cloud'  and not ansible_hostname.startswith('cloud-noc') %}
 server cloud-noc01.fedorainfracloud.org port 124
 {% elif datacenter == 'cloud'  and ansible_hostname.startswith('cloud-noc') %}
@@ -42,7 +38,6 @@ minsources 1
 {% if ansible_hostname.startswith('bastion') %}
 allow 10.0.0.0/8
 {% elif ansible_hostname.startswith('cloud-noc') %}
-allow 209.132.184.0/24
 allow 38.145.48.0/23
 {% endif %}
 

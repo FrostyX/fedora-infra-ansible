@@ -1,8 +1,8 @@
-{% if datacenter == 'phx2' %}
+{% if datacenter == 'iad2' %}
 {% if env == 'staging' %}
-suffix  = 'stg.phx2.fedoraproject.org'
+suffix  = 'stg.iad2.fedoraproject.org'
 {% else %}
-suffix = 'phx2.fedoraproject.org'
+suffix = 'iad2.fedoraproject.org'
 vpn_suffix = 'vpn.fedoraproject.org'
 {% endif %}
 {% elif datacenter == 'iad2' %}
@@ -40,7 +40,7 @@ config = dict(
     # php, can't maintain a single passive-bind endpoint of it's own.
     relay_inbound=[
 
-        # Primarily, scripts from inside phx2 connect here.
+        # Primarily, scripts from inside iad2 connect here.
         # Furthermore, scripts from outside (coprs, secondary arch koji) connect
         # here via haproxy.
         "tcp://busgateway01.%s:9941" % suffix,

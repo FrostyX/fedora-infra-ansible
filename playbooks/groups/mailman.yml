@@ -123,7 +123,7 @@
     - httpd
     - mailman3
     - postfix
-    when: inventory_hostname.startswith('mailman01.phx2')
+    when: inventory_hostname.startswith('mailman01.iad2')
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"

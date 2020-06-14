@@ -146,7 +146,7 @@ refuse options = checksum
        gid = 263
        hosts allow = {% for host in vars['dl_tier1'] %}{{host}},{% endfor %}
 
-{% if datacenter == 'phx2' %}
+{% if datacenter == 'iad2' %}
 [fedora-compose0]
        comment = Fedora composes
        path = /mnt/koji/compose

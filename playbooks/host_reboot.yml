@@ -9,7 +9,7 @@
   tasks:
   - name: tell nagios to shush
     nagios: action=downtime minutes=60 service=host host={{ inventory_hostname_short }}{{ env_suffix }}
-    delegate_to: noc01.phx2.fedoraproject.org
+    delegate_to: noc01.iad2.fedoraproject.org
     ignore_errors: true
 
   - name: reboot the host
@@ -23,5 +23,5 @@
 
   - name: tell nagios to unshush
     nagios: action=unsilence service=host host={{ inventory_hostname_short }}{{ env_suffix }}
-    delegate_to: noc01.phx2.fedoraproject.org
+    delegate_to: noc01.iad2.fedoraproject.org
     ignore_errors: true

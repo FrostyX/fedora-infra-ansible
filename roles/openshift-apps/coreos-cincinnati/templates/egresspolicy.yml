@@ -25,7 +25,7 @@ spec:
       dnsName: dl.fedoraproject.org
   - type: Allow
     to:
-      dnsName: dl.phx2.fedoraproject.org
+      dnsName: dl.iad2.fedoraproject.org
   - type: Allow
     to:
       cidrSelector: "0.0.0.0/0"

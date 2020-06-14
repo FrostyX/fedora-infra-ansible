@@ -1,3 +1,0 @@
----
-nrpe_procs_warn: 2000
-nrpe_procs_crit: 2100

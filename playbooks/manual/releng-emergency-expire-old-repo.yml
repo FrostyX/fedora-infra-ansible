@@ -15,7 +15,7 @@
 # Possible product: Fedora/EPEL/RHEL
 
 - name: Expire old repo files
-  hosts: mm-backend01.phx2.fedoraproject.org
+  hosts: mm-backend01.iad2.fedoraproject.org
   become_user: mirrormanager
   gather_facts: False
 

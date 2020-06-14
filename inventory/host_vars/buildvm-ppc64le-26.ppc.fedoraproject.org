@@ -1,5 +1,0 @@
----
-vmhost: ppc8-02.ppc.fedoraproject.org
-eth0_ip: 10.5.129.52
-createrepo: False
-virt_install_command: "{{ virt_install_command_one_nic_unsafe }}  --graphics none"

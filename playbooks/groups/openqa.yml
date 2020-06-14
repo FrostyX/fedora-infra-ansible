@@ -22,7 +22,7 @@
    - { role: collectd/base, tags: ['collectd_base'] }
    - { role: sudo, tags: ['sudo'] }
    - { role: openvpn/client,
-       when: deployment_type == "prod" and datacenter == 'phx2', tags: ['openvpn_client'] }
+       when: deployment_type == "prod" and datacenter == 'iad2', tags: ['openvpn_client'] }
    - apache
 
   tasks:

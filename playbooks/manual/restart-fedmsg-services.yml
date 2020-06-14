@@ -60,7 +60,7 @@
   tasks:
   - name: schedule a 25 minute downtime.  give notifs backend time to start up.
     nagios: action=downtime minutes=25 service=host host={{ inventory_hostname_short }}{{ env_suffix }}
-    delegate_to: noc01.phx2.fedoraproject.org
+    delegate_to: noc01.iad2.fedoraproject.org
     ignore_errors: true
 #  - name: bounce the fmn-digests service
 #    service: name=fmn-digests@1 state=restarted

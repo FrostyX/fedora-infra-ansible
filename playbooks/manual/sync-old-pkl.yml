@@ -1,5 +1,5 @@
 - name: Do mm-backend stuff
-  hosts: mm-backend01.phx2.fedoraproject.org
+  hosts: mm-backend01.iad2.fedoraproject.org
   user: root
 
   vars_files:
@@ -44,4 +44,4 @@
 
   - name: Stop mirrorlist3
     command: systemctl stop mirrorlist3
-    when: datacenter == 'phx2'
+    when: datacenter == 'iad2'

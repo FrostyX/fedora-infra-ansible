@@ -51,7 +51,7 @@
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
 - name: Cloud Image stats
-  hosts: log01.phx2.fedoraproject.org
+  hosts: log01.iad2.fedoraproject.org
   user: root
   gather_facts: False
 

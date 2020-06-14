@@ -26,7 +26,7 @@
       nfs_mount_opts: "rw,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3",
       nfs_src_dir: 'fedora_backups' }
   - openvpn/client
-  - { role: grokmirror_mirror, when: datacenter == "phx2"}
+  - grokmirror_mirror
 
   pre_tasks:
   - import_tasks: "{{ tasks_path }}/yumrepos.yml"

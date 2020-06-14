@@ -102,11 +102,11 @@ data:
 
     <VirtualHost *:8443>
 {% if env == "staging" %}
-        ServerName fas-all.stg.phx2.fedoraproject.org:8443
+        ServerName fas-all.stg.iad2.fedoraproject.org:8443
 {% elif objectname == "configmap-totpcgi-vpn.yml" %}
         ServerName fas-all.vpn.fedoraproject.org:8443
-{% elif datacenter == 'phx2' %}
-        ServerName fas-all.phx2.fedoraproject.org:8443
+{% elif datacenter == 'iad2' %}
+        ServerName fas-all.iad2.fedoraproject.org:8443
 {% elif datacenter == 'iad2' %}
         ServerName fas-all.iad2.fedoraproject.org:8443
 {% endif %}

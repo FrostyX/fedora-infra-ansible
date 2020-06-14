@@ -1,4 +1,0 @@
----
-vmhost: buildvmhost-aarch64-16.arm.fedoraproject.org
-eth0_ip: 10.5.129.169
-eth1_ip: 10.5.127.94

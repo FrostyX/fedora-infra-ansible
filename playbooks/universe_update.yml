@@ -12,7 +12,7 @@
 
   - name: silence nagios completely
     nagios: action=silence
-    delegate_to: noc01.phx2.fedoraproject.org
+    delegate_to: noc01.iad2.fedoraproject.org
     ignore_errors: true
     failed_when: no
     when: nonagios is not defined or not "true" in nonagios
