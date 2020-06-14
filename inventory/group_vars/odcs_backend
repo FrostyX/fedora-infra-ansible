@@ -63,4 +63,4 @@ csi_relationship: |
 nagios_Check_Services:
   odcs-celery-backend: true
 
-odcs_celery_queues: ["releng_raw_pungi_composes", "releng_pungi_composes", "cleanup", "eln_raw_pungi_composes", "cccc_raw_pungi_composes"]
+odcs_celery_queues: ["releng_raw_pungi_composes", "releng_pungi_composes", "cleanup", "eln_raw_pungi_composes", "cccc_raw_pungi_composes", "pungi_composes"]
