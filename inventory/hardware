@@ -1,31 +1,30 @@
----
 [dells]
 osuosl01.fedoraproject.org
-## bvirthost01.phx2.fedoraproject.org
+# bvirthost01.phx2.fedoraproject.org
 # bvirthost01.stg.phx2.fedoraproject.org
-## bvirthost04.phx2.fedoraproject.org
-## bvirthost05.phx2.fedoraproject.org
-## bvirthost12.phx2.fedoraproject.org
-## bvirthost13.phx2.fedoraproject.org
-## bvirthost14.phx2.fedoraproject.org
-## bvirthost15.phx2.fedoraproject.org
+# bvirthost04.phx2.fedoraproject.org
+# bvirthost05.phx2.fedoraproject.org
+# bvirthost12.phx2.fedoraproject.org
+# bvirthost13.phx2.fedoraproject.org
+# bvirthost14.phx2.fedoraproject.org
+# bvirthost15.phx2.fedoraproject.org
 # virthost01.stg.phx2.fedoraproject.org
 # virthost02.stg.phx2.fedoraproject.org
 # virthost03.stg.phx2.fedoraproject.org
 # virthost04.stg.phx2.fedoraproject.org
 # virthost05.stg.phx2.fedoraproject.org
-## virthost01.phx2.fedoraproject.org
-## virthost02.phx2.fedoraproject.org
+# virthost01.phx2.fedoraproject.org
+# virthost02.phx2.fedoraproject.org
 #autosign02.phx2.fedoraproject.org
-## virthost04.phx2.fedoraproject.org
-## virthost12.phx2.fedoraproject.org
-## virthost14.phx2.fedoraproject.org
-## virthost15.phx2.fedoraproject.org
-## virthost17.phx2.fedoraproject.org
-## virthost18.phx2.fedoraproject.org
-## virthost19.phx2.fedoraproject.org
-## virthost21.phx2.fedoraproject.org
-## virthost22.phx2.fedoraproject.org
+# virthost04.phx2.fedoraproject.org
+# virthost12.phx2.fedoraproject.org
+# virthost14.phx2.fedoraproject.org
+# virthost15.phx2.fedoraproject.org
+# virthost17.phx2.fedoraproject.org
+# virthost18.phx2.fedoraproject.org
+# virthost19.phx2.fedoraproject.org
+# virthost21.phx2.fedoraproject.org
+# virthost22.phx2.fedoraproject.org
 ibiblio01.fedoraproject.org
 #ibiblio04.fedoraproject.org
 ibiblio05.fedoraproject.org
@@ -39,73 +38,73 @@ virthost-rdu01.fedoraproject.org
 #virthost-rdu02.fedoraproject.org
 virthost-cc-rdu01.fedoraproject.org
 virthost-cc-rdu02.fedoraproject.org
-##buildhw-01.phx2.fedoraproject.org
-##buildhw-02.phx2.fedoraproject.org
-##buildhw-03.phx2.fedoraproject.org
-##buildhw-04.phx2.fedoraproject.org
-##buildhw-05.phx2.fedoraproject.org
-##buildhw-06.phx2.fedoraproject.org
-##buildhw-07.phx2.fedoraproject.org
-##buildhw-08.phx2.fedoraproject.org
-##buildhw-09.phx2.fedoraproject.org
-##buildhw-10.phx2.fedoraproject.org
-##buildvmhost-01.phx2.fedoraproject.org
-##buildvmhost-02.phx2.fedoraproject.org
-##buildvmhost-03.phx2.fedoraproject.org
-##buildvmhost-04.phx2.fedoraproject.org
-##qa01.qa.fedoraproject.org
-##qa02.qa.fedoraproject.org
-##qa09.qa.fedoraproject.org
-##qa14.qa.fedoraproject.org
-##bkernel03.phx2.fedoraproject.org
+#buildhw-01.phx2.fedoraproject.org
+#buildhw-02.phx2.fedoraproject.org
+#buildhw-03.phx2.fedoraproject.org
+#buildhw-04.phx2.fedoraproject.org
+#buildhw-05.phx2.fedoraproject.org
+#buildhw-06.phx2.fedoraproject.org
+#buildhw-07.phx2.fedoraproject.org
+#buildhw-08.phx2.fedoraproject.org
+#buildhw-09.phx2.fedoraproject.org
+#buildhw-10.phx2.fedoraproject.org
+#buildvmhost-01.phx2.fedoraproject.org
+#buildvmhost-02.phx2.fedoraproject.org
+#buildvmhost-03.phx2.fedoraproject.org
+#buildvmhost-04.phx2.fedoraproject.org
+#qa01.qa.fedoraproject.org
+#qa02.qa.fedoraproject.org
+#qa09.qa.fedoraproject.org
+#qa14.qa.fedoraproject.org
+#bkernel03.phx2.fedoraproject.org
 #bkernel04.phx2.fedoraproject.org
 
 [ibms]
 virthost-cc-rdu03.fedoraproject.org
 osuosl02.fedoraproject.org
-##data-analysis01.phx2.fedoraproject.org
+#data-analysis01.phx2.fedoraproject.org
 download-rdu01.fedoraproject.org
 
 [powerpc]
-##ppc8-01.ppc.fedoraproject.org
-##ppc8-02.ppc.fedoraproject.org
-##ppc8-03.ppc.fedoraproject.org
-##ppc8-04.ppc.fedoraproject.org
+#ppc8-01.ppc.fedoraproject.org
+#ppc8-02.ppc.fedoraproject.org
+#ppc8-03.ppc.fedoraproject.org
+#ppc8-04.ppc.fedoraproject.org
 
 [appliedmicro]
 # buildhw-aarch64-01.arm.fedoraproject.org
-##buildhw-aarch64-02.arm.fedoraproject.org
-##buildhw-aarch64-03.arm.fedoraproject.org
-##buildhw-aarch64-04.arm.fedoraproject.org
-##buildhw-aarch64-05.arm.fedoraproject.org
-##buildhw-aarch64-06.arm.fedoraproject.org
-##buildhw-aarch64-07.arm.fedoraproject.org
-##buildhw-aarch64-08.arm.fedoraproject.org
+#buildhw-aarch64-02.arm.fedoraproject.org
+#buildhw-aarch64-03.arm.fedoraproject.org
+#buildhw-aarch64-04.arm.fedoraproject.org
+#buildhw-aarch64-05.arm.fedoraproject.org
+#buildhw-aarch64-06.arm.fedoraproject.org
+#buildhw-aarch64-07.arm.fedoraproject.org
+#buildhw-aarch64-08.arm.fedoraproject.org
 
 # [storinator]
 # storinator01.fedorainfracloud.org
 
 [cavium]
 # 2 thunderx2 machines on loan for builders
-##buildvmhost-aarch64-01.arm.fedoraproject.org
-##buildvmhost-aarch64-02.arm.fedoraproject.org
+#buildvmhost-aarch64-01.arm.fedoraproject.org
+#buildvmhost-aarch64-02.arm.fedoraproject.org
 # 2 thunderx1 machines on loan for copr builders
 # virthost-aarch64-os01.fedorainfracloud.org
 # virthost-aarch64-os02.fedorainfracloud.org
 
 [emag]
-##buildvmhost-aarch64-10.arm.fedoraproject.org
-##buildvmhost-aarch64-11.arm.fedoraproject.org
-##buildvmhost-aarch64-12.arm.fedoraproject.org
-##buildvmhost-aarch64-13.arm.fedoraproject.org
-##buildvmhost-aarch64-14.arm.fedoraproject.org
-##buildvmhost-aarch64-15.arm.fedoraproject.org
-##buildvmhost-aarch64-16.arm.fedoraproject.org
-##buildvmhost-aarch64-17.arm.fedoraproject.org
-##buildvmhost-aarch64-18.arm.fedoraproject.org
-##buildvmhost-a64-osbs-01.arm.fedoraproject.org
-##openqa-aarch64-01.qa.fedoraproject.org
-##openqa-aarch64-03.qa.fedoraproject.org
+#buildvmhost-aarch64-10.arm.fedoraproject.org
+#buildvmhost-aarch64-11.arm.fedoraproject.org
+#buildvmhost-aarch64-12.arm.fedoraproject.org
+#buildvmhost-aarch64-13.arm.fedoraproject.org
+#buildvmhost-aarch64-14.arm.fedoraproject.org
+#buildvmhost-aarch64-15.arm.fedoraproject.org
+#buildvmhost-aarch64-16.arm.fedoraproject.org
+#buildvmhost-aarch64-17.arm.fedoraproject.org
+#buildvmhost-aarch64-18.arm.fedoraproject.org
+#buildvmhost-a64-osbs-01.arm.fedoraproject.org
+#openqa-aarch64-01.qa.fedoraproject.org
+#openqa-aarch64-03.qa.fedoraproject.org
 bvmhost-a64-01.iad2.fedoraproject.org
 bvmhost-a64-02.iad2.fedoraproject.org
 bvmhost-a64-03.iad2.fedoraproject.org
