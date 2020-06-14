@@ -652,12 +652,11 @@ retrace-stg.aws.fedoraproject.org
 [staging_friendly]
 batcave01.iad2.fedoraproject.org
 bastion01.iad2.fedoraproject.org
-bastion02.iad2.fedoraproject.org
 certgetter01.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
-db-qa01.iad2.fedoraproject.org
+db-openqa01.iad2.fedoraproject.org
 proxy01.iad2.fedoraproject.org
 proxy10.iad2.fedoraproject.org
 proxy101.iad2.fedoraproject.org
@@ -1060,7 +1059,7 @@ fas
 [zombie_infested]
 # anon git via systemd socket seems to get zombies from time to time
 # Ansible from time to time in large runs has zombie threads
-pkgs02.iad2.fedoraproject.org
+pkgs01.iad2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
 # bodhi-backend01 gets zombies right at the end of pushes
 bodhi-backend01.iad2.fedoraproject.org
@@ -1101,7 +1100,6 @@ autosign01.iad2.fedoraproject.org
 backup01.iad2.fedoraproject.org
 badges-backend01.iad2.fedoraproject.org
 badges-web01.iad2.fedoraproject.org
-badges-web02.iad2.fedoraproject.org
 bastion01.iad2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
 bkernel01.iad2.fedoraproject.org
@@ -1264,7 +1262,6 @@ mm-frontend01.iad2.fedoraproject.org
 noc01.iad2.fedoraproject.org
 notifs-backend01.iad2.fedoraproject.org
 notifs-web01.iad2.fedoraproject.org
-notifs-web02.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
 oci-candidate-registry01.iad2.fedoraproject.org
