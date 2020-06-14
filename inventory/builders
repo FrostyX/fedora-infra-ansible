@@ -52,31 +52,6 @@ buildvm-x86-32.iad2.fedoraproject.org
 # buildvm-ppc64le-01.stg.ppc.fedoraproject.org
 
 [buildvm_aarch64]
-buildvm-aarch64-01.arm.fedoraproject.org
-buildvm-aarch64-02.arm.fedoraproject.org
-buildvm-aarch64-03.arm.fedoraproject.org
-buildvm-aarch64-04.arm.fedoraproject.org
-buildvm-aarch64-05.arm.fedoraproject.org
-buildvm-aarch64-06.arm.fedoraproject.org
-buildvm-aarch64-07.arm.fedoraproject.org
-buildvm-aarch64-08.arm.fedoraproject.org
-buildvm-aarch64-09.arm.fedoraproject.org
-buildvm-aarch64-10.arm.fedoraproject.org
-buildvm-aarch64-11.arm.fedoraproject.org
-buildvm-aarch64-12.arm.fedoraproject.org
-buildvm-aarch64-13.arm.fedoraproject.org
-buildvm-aarch64-14.arm.fedoraproject.org
-buildvm-aarch64-15.arm.fedoraproject.org
-buildvm-aarch64-16.arm.fedoraproject.org
-buildvm-aarch64-17.arm.fedoraproject.org
-buildvm-aarch64-18.arm.fedoraproject.org
-buildvm-aarch64-19.arm.fedoraproject.org
-buildvm-aarch64-20.arm.fedoraproject.org
-buildvm-aarch64-21.arm.fedoraproject.org
-buildvm-aarch64-22.arm.fedoraproject.org
-buildvm-aarch64-23.arm.fedoraproject.org
-buildvm-aarch64-24.arm.fedoraproject.org
-buildvm-aarch64-25.arm.fedoraproject.org
 buildvm-a64-01.iad2.fedoraproject.org
 buildvm-a64-02.iad2.fedoraproject.org
 buildvm-a64-03.iad2.fedoraproject.org
@@ -94,30 +69,6 @@ buildvm-a64-14.iad2.fedoraproject.org
 buildvm-a64-15.iad2.fedoraproject.org
 
 [buildvm_armv7]
-buildvm-armv7-01.arm.fedoraproject.org
-buildvm-armv7-02.arm.fedoraproject.org
-buildvm-armv7-03.arm.fedoraproject.org
-buildvm-armv7-04.arm.fedoraproject.org
-buildvm-armv7-05.arm.fedoraproject.org
-buildvm-armv7-06.arm.fedoraproject.org
-buildvm-armv7-07.arm.fedoraproject.org
-buildvm-armv7-08.arm.fedoraproject.org
-buildvm-armv7-09.arm.fedoraproject.org
-buildvm-armv7-10.arm.fedoraproject.org
-buildvm-armv7-11.arm.fedoraproject.org
-buildvm-armv7-12.arm.fedoraproject.org
-buildvm-armv7-13.arm.fedoraproject.org
-buildvm-armv7-14.arm.fedoraproject.org
-buildvm-armv7-15.arm.fedoraproject.org
-buildvm-armv7-16.arm.fedoraproject.org
-buildvm-armv7-17.arm.fedoraproject.org
-buildvm-armv7-18.arm.fedoraproject.org
-buildvm-armv7-19.arm.fedoraproject.org
-buildvm-armv7-20.arm.fedoraproject.org
-buildvm-armv7-21.arm.fedoraproject.org
-buildvm-armv7-22.arm.fedoraproject.org
-buildvm-armv7-23.arm.fedoraproject.org
-buildvm-armv7-24.arm.fedoraproject.org
 buildvm-a32-01.iad2.fedoraproject.org
 buildvm-a32-02.iad2.fedoraproject.org
 buildvm-a32-03.iad2.fedoraproject.org
@@ -162,46 +113,20 @@ buildvm-s390x-23.s390.fedoraproject.org
 buildvm-s390x-24.s390.fedoraproject.org
 
 [buildvmhost]
-#aarch64-c01n1.arm.fedoraproject.org
-#aarch64-c02n1.arm.fedoraproject.org
-#aarch64-c03n1.arm.fedoraproject.org
-#aarch64-c04n1.arm.fedoraproject.org
-#aarch64-c05n1.arm.fedoraproject.org
-#aarch64-c06n1.arm.fedoraproject.org
-#aarch64-c07n1.arm.fedoraproject.org
-#aarch64-c08n1.arm.fedoraproject.org
-#aarch64-c09n1.arm.fedoraproject.org
-#aarch64-c10n1.arm.fedoraproject.org
-#aarch64-c11n1.arm.fedoraproject.org
-#aarch64-c12n1.arm.fedoraproject.org
-#aarch64-c13n1.arm.fedoraproject.org
-#aarch64-c14n1.arm.fedoraproject.org
-#aarch64-c15n1.arm.fedoraproject.org
-#aarch64-c16n1.arm.fedoraproject.org
-# HP cannot seem to get this cart working.
-#aarch64-c17n1.arm.fedoraproject.org
-#aarch64-c18n1.arm.fedoraproject.org
-#aarch64-c19n1.arm.fedoraproject.org
-#aarch64-c20n1.arm.fedoraproject.org
-#aarch64-c21n1.arm.fedoraproject.org
-#aarch64-c22n1.arm.fedoraproject.org
-#aarch64-c23n1.arm.fedoraproject.org
-#aarch64-c24n1.arm.fedoraproject.org
-#aarch64-c25n1.arm.fedoraproject.org
-buildvmhost-aarch64-01.arm.fedoraproject.org
-buildvmhost-aarch64-02.arm.fedoraproject.org
+#buildvmhost-aarch64-01.arm.fedoraproject.org
+#buildvmhost-aarch64-02.arm.fedoraproject.org
 buildvmhost-s390x-01.s390.fedoraproject.org
 # These are lenovo emags
-buildvmhost-aarch64-10.arm.fedoraproject.org
-buildvmhost-aarch64-11.arm.fedoraproject.org
-buildvmhost-aarch64-12.arm.fedoraproject.org
-buildvmhost-aarch64-13.arm.fedoraproject.org
-buildvmhost-aarch64-14.arm.fedoraproject.org
-buildvmhost-aarch64-15.arm.fedoraproject.org
-buildvmhost-aarch64-16.arm.fedoraproject.org
-buildvmhost-aarch64-17.arm.fedoraproject.org
-buildvmhost-aarch64-18.arm.fedoraproject.org
-buildvmhost-a64-osbs-01.arm.fedoraproject.org
+#buildvmhost-aarch64-10.arm.fedoraproject.org
+#buildvmhost-aarch64-11.arm.fedoraproject.org
+#buildvmhost-aarch64-12.arm.fedoraproject.org
+#buildvmhost-aarch64-13.arm.fedoraproject.org
+#buildvmhost-aarch64-14.arm.fedoraproject.org
+#buildvmhost-aarch64-15.arm.fedoraproject.org
+#buildvmhost-aarch64-16.arm.fedoraproject.org
+#buildvmhost-aarch64-17.arm.fedoraproject.org
+#buildvmhost-aarch64-18.arm.fedoraproject.org
+#buildvmhost-a64-osbs-01.arm.fedoraproject.org
 # These are lenovo emags in IAD2
 bvmhost-a64-01.iad2.fedoraproject.org
 bvmhost-a64-02.iad2.fedoraproject.org
@@ -211,10 +136,7 @@ bvmhost-a64-05.iad2.fedoraproject.org
 bvmhost-p09-01.iad2.fedoraproject.org
 bvmhost-p09-02.iad2.fedoraproject.org
 
-
 [buildhw]
-# Machine unresponsive, likely dead
-#buildhw-aarch64-09.arm.fedoraproject.org
 buildhw-a64-01.iad2.fedoraproject.org
 
 #
