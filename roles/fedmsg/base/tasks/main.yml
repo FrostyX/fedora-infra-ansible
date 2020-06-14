@@ -110,7 +110,7 @@
   - relay.py
   - logging.py
   - base.py
-  when: "'persistent_cloud' not in group_names and 'qa_isolated' not in group_names"
+  when: "'persistent_cloud' not in group_names
   tags:
   - config
   - fedmsgdconfig
@@ -156,7 +156,7 @@
   - relay.py
   - logging.py
   - base.py
-  when: "'persistent_cloud' in group_names or 'qa_isolated' in group_names"
+  when: "'persistent_cloud' in group_names
   tags:
   - config
   - fedmsgdconfig
