@@ -30,21 +30,21 @@
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
-- name: openvpn on the prod frontend nodes
-  hosts: odcs_frontend
-  user: root
-  gather_facts: True
-
-  vars_files:
-   - /srv/web/infra/ansible/vars/global.yml
-   - "/srv/private/ansible/vars.yml"
-   - "{{ vars_path }}/{{ ansible_distribution }}.yml"
-
-  roles:
-  - openvpn/client
-
-  handlers:
-  - import_tasks: "{{ handlers_path }}/restart_services.yml"
+#- name: openvpn on the prod frontend nodes
+#  hosts: odcs_frontend
+#  user: root
+#  gather_facts: True
+#
+#  vars_files:
+#   - /srv/web/infra/ansible/vars/global.yml
+#   - "/srv/private/ansible/vars.yml"
+#   - "{{ vars_path }}/{{ ansible_distribution }}.yml"
+#
+#  roles:
+#  - openvpn/client
+#
+#  handlers:
+#  - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
 - name: Set up odcs frontend service
   hosts: odcs_frontend:odcs_frontend_stg
