@@ -25,7 +25,7 @@
   - { role: nfs/client,
       mnt_dir: '/srv/registry',
       nfs_src_dir: "oci_registry",
-      when: "env != 'staging' or 'candidate' not in inventory_hostname" }
+      when: inventory_hostname.startswith(('oci-registry01.iad2','oci-registry02.iad2')) }
 
   pre_tasks:
   - name: Create /srv/registry on staging and candidate since it does not use NFS
