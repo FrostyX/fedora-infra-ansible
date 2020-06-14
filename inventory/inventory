@@ -1,5 +1,5 @@
 [dbgserver_stg]
-# dbgserver01.stg.phx2.fedoraproject.org
+# dbgserver01.stg.iad2.fedoraproject.org
 
 [rabbitmq]
 rabbitmq01.iad2.fedoraproject.org
@@ -7,9 +7,9 @@ rabbitmq02.iad2.fedoraproject.org
 rabbitmq03.iad2.fedoraproject.org
 
 [rabbitmq_stg]
-# rabbitmq01.stg.phx2.fedoraproject.org
-# rabbitmq02.stg.phx2.fedoraproject.org
-# rabbitmq03.stg.phx2.fedoraproject.org
+# rabbitmq01.stg.iad2.fedoraproject.org
+# rabbitmq02.stg.iad2.fedoraproject.org
+# rabbitmq03.stg.iad2.fedoraproject.org
 
 [releng_compose]
 compose-x86-01.iad2.fedoraproject.org
@@ -17,7 +17,7 @@ compose-rawhide01.iad2.fedoraproject.org
 compose-iot01.iad2.fedoraproject.org
 
 [releng_stg]
-# composer.stg.phx2.fedoraproject.org
+# composer.stg.iad2.fedoraproject.org
 
 [retrace]
 retrace01.qa.fedoraproject.org
@@ -35,62 +35,48 @@ retrace_stg_aws
 certgetter01.iad2.fedoraproject.org
 
 [backup]
-backup01.phx2.fedoraproject.org
 backup01.iad2.fedoraproject.org
 
 [badges_backend]
 badges-backend01.iad2.fedoraproject.org
-badges-backend01.phx2.fedoraproject.org
 
 [badges_backend_stg]
-# badges-backend01.stg.phx2.fedoraproject.org
+# badges-backend01.stg.iad2.fedoraproject.org
 
 [badges_web]
 badges-web01.iad2.fedoraproject.org
-badges-web01.phx2.fedoraproject.org
-badges-web02.phx2.fedoraproject.org
 
 [badges_web_stg]
-# badges-web01.stg.phx2.fedoraproject.org
+# badges-web01.stg.iad2.fedoraproject.org
 
 [basset]
 
 [basset_stg]
-# basset01.stg.phx2.fedoraproject.org
+# basset01.stg.iad2.fedoraproject.org
 
 [bastion]
 bastion01.phx2.fedoraproject.org
 bastion02.phx2.fedoraproject.org
-bastion-comm01.qa.fedoraproject.org
 bastion13.fedoraproject.org
 bastion01.iad2.fedoraproject.org
 
 [bastion_stg]
-# bastion01.stg.phx2.fedoraproject.org
+# bastion01.stg.iad2.fedoraproject.org
 
 [blockerbugs]
-blockerbugs01.phx2.fedoraproject.org
 blockerbugs01.iad2.fedoraproject.org
-blockerbugs02.phx2.fedoraproject.org
 
 [blockerbugs_stg]
-# blockerbugs01.stg.phx2.fedoraproject.org
+# blockerbugs01.stg.iad2.fedoraproject.org
 
 [bugzilla2fedmsg]
 bugzilla2fedmsg01.iad2.fedoraproject.org
 
 [bugzilla2fedmsg_stg]
-# bugzilla2fedmsg01.stg.phx2.fedoraproject.org
+# bugzilla2fedmsg01.stg.iad2.fedoraproject.org
 
 [bvirthost]
-# bvirthost01.stg.phx2.fedoraproject.org
-bvirthost01.phx2.fedoraproject.org
-bvirthost04.phx2.fedoraproject.org
-bvirthost05.phx2.fedoraproject.org
-bvirthost12.phx2.fedoraproject.org
-bvirthost13.phx2.fedoraproject.org
-bvirthost14.phx2.fedoraproject.org
-bvirthost15.phx2.fedoraproject.org
+# bvirthost01.stg.iad2.fedoraproject.org
 bvmhost-x86-01.iad2.fedoraproject.org
 bvmhost-x86-02.iad2.fedoraproject.org
 bvmhost-x86-03.iad2.fedoraproject.org
@@ -119,54 +105,50 @@ virthost-cc-rdu03.fedoraproject.org
 datagrepper01.iad2.fedoraproject.org
 
 [datagrepper_stg]
-# datagrepper01.stg.phx2.fedoraproject.org
+# datagrepper01.stg.iad2.fedoraproject.org
 
 [fedimg]
 fedimg01.iad2.fedoraproject.org
 
 [fedimg_stg]
-# fedimg01.stg.phx2.fedoraproject.org
+# fedimg01.stg.iad2.fedoraproject.org
 
 [busgateway]
-busgateway01.phx2.fedoraproject.org
 busgateway01.iad2.fedoraproject.org
 
 [busgateway_stg]
-# busgateway01.stg.phx2.fedoraproject.org
+# busgateway01.stg.iad2.fedoraproject.org
 
 [fedocal]
 
 [fedocal_stg]
-# fedocal01.stg.phx2.fedoraproject.org
+# fedocal01.stg.iad2.fedoraproject.org
 
 [github2fedmsg]
 github2fedmsg01.iad2.fedoraproject.org
 
 [github2fedmsg_stg]
-# github2fedmsg01.stg.phx2.fedoraproject.org
+# github2fedmsg01.stg.iad2.fedoraproject.org
 
 [mailman]
 mailman01.iad2.fedoraproject.org
 mailman02.iad2.fedoraproject.org
 
 [mailman_stg]
-# mailman01.stg.phx2.fedoraproject.org
+# mailman01.stg.iad2.fedoraproject.org
 
 [mbs_frontend]
-mbs-frontend01.phx2.fedoraproject.org
 mbs-frontend01.iad2.fedoraproject.org
-mbs-frontend02.phx2.fedoraproject.org
 
 [mbs_frontend_stg]
-# mbs-frontend01.stg.phx2.fedoraproject.org
-# mbs-frontend02.stg.phx2.fedoraproject.org
+# mbs-frontend01.stg.iad2.fedoraproject.org
+# mbs-frontend02.stg.iad2.fedoraproject.org
 
 [mbs_backend]
 mbs-backend01.iad2.fedoraproject.org
-mbs-backend01.phx2.fedoraproject.org
 
 [mbs_backend_stg]
-# mbs-backend01.stg.phx2.fedoraproject.org
+# mbs-backend01.stg.iad2.fedoraproject.org
 
 [mbs:children]
 mbs_frontend
@@ -178,75 +160,66 @@ mbs_backend_stg
 
 [bodhi_backend]
 # This one handles the mashing/releng stuff
-bodhi-backend01.phx2.fedoraproject.org
 bodhi-backend01.iad2.fedoraproject.org
 
 [bodhi_backend_stg]
-# bodhi-backend01.stg.phx2.fedoraproject.org
+# bodhi-backend01.stg.iad2.fedoraproject.org
 
 [sign_bridge]
 sign-bridge01.iad2.fedoraproject.org
-# sign-bridge01.stg.phx2.fedoraproject.org
+# sign-bridge01.stg.iad2.fedoraproject.org
 #
 # sign vault servers don't listen to ssh by default.
 #
 [sign_vault]
-# sign-vault01.stg.phx2.fedoraproject.org
+# sign-vault01.stg.iad2.fedoraproject.org
 sign-vault01.iad2.fedoraproject.org
-#sign-vault05.phx2.fedoraproject.org
-#sign-vault06.phx2.fedoraproject.org
 
 [autosign]
-autosign01.phx2.fedoraproject.org
 autosign01.iad2.fedoraproject.org
 
 [autosign_stg]
-# autosign01.stg.phx2.fedoraproject.org
+# autosign01.stg.iad2.fedoraproject.org
 
 [dbserver]
-db01.phx2.fedoraproject.org
 db01.iad2.fedoraproject.org
 db03.iad2.fedoraproject.org
-db-fas01.phx2.fedoraproject.org
 db-fas01.iad2.fedoraproject.org
 db-datanommer01.iad2.fedoraproject.org
 db-koji01.iad2.fedoraproject.org
-db-qa01.qa.fedoraproject.org
-db-qa02.qa.fedoraproject.org
-db-qa03.qa.fedoraproject.org
 db-openqa01.iad2.fedoraproject.org
 
 [dbserver_stg]
-# db-fas01.stg.phx2.fedoraproject.org
-# db01.stg.phx2.fedoraproject.org
-# db03.stg.phx2.fedoraproject.org
-# db-koji01.stg.phx2.fedoraproject.org
+# db-fas01.stg.iad2.fedoraproject.org
+# db01.stg.iad2.fedoraproject.org
+# db03.stg.iad2.fedoraproject.org
+# db-koji01.stg.iad2.fedoraproject.org
 
 # postgresql bidirectional replication servers
 [pgbdr]
 
 # postgresql bidirectional replication servers (stg)
 [pgbdr_stg]
-# pgbdr01.stg.phx2.fedoraproject.org
-# pgbdr02.stg.phx2.fedoraproject.org
+# pgbdr01.stg.iad2.fedoraproject.org
+# pgbdr02.stg.iad2.fedoraproject.org
 
 # clients that talk to the main postgres servers
 [postgres_clients]
 
 # clients that talk to the main postgres stg servers
 [postgres_clients_stg]
-# badges-backend01.stg.phx2.fedoraproject.org
-# badges-web01.stg.phx2.fedoraproject.org
-# blockerbugs01.stg.phx2.fedoraproject.org
-# bodhi-backend01.stg.phx2.fedoraproject.org
-# busgateway01.stg.phx2.fedoraproject.org
-# datagrepper01.stg.phx2.fedoraproject.org
-# fedocal01.stg.phx2.fedoraproject.org
-# koji01.stg.phx2.fedoraproject.org
-# os-node01.stg.phx2.fedoraproject.org
-# os-node02.stg.phx2.fedoraproject.org
-# os-node03.stg.phx2.fedoraproject.org
-# os-node04.stg.phx2.fedoraproject.org
+# badges-backend01.stg.iad2.fedoraproject.org
+# badges-web01.stg.iad2.fedoraproject.org
+# blockerbugs01.stg.iad2.fedoraproject.org
+# bodhi-backend01.stg.iad2.fedoraproject.org
+# busgateway01.stg.iad2.fedoraproject.org
+# datagrepper01.stg.iad2.fedoraproject.org
+# fedocal01.stg.iad2.fedoraproject.org
+# koji01.stg.iad2.fedoraproject.org
+# os-node01.stg.iad2.fedoraproject.org
+# os-node02.stg.iad2.fedoraproject.org
+# os-node03.stg.iad2.fedoraproject.org
+# os-node04.stg.iad2.fedoraproject.org
 
 [download_iad2]
 dl01.iad2.fedoraproject.org
@@ -275,13 +248,12 @@ download_cc_rdu
 download_iad2
 
 [fas]
-fas01.phx2.fedoraproject.org
+# fas01.phx2.fedoraproject.org
 
 [fas_stg]
-# fas01.stg.phx2.fedoraproject.org
+# fas01.stg.iad2.fedoraproject.org
 
 [kerneltest]
-kerneltest01.phx2.fedoraproject.org
 kerneltest01.iad2.fedoraproject.org
 
 [kernel_qa]
@@ -293,7 +265,7 @@ koji01.iad2.fedoraproject.org
 koji02.iad2.fedoraproject.org
 
 [koji_stg]
-# koji01.stg.phx2.fedoraproject.org
+# koji01.stg.iad2.fedoraproject.org
 
 [kojipkgs]
 kojipkgs01.iad2.fedoraproject.org
@@ -311,11 +283,9 @@ data-analysis01.phx2.fedoraproject.org
 #cloud-noc01.fedorainfracloud.org
 
 [logging]
-log01.phx2.fedoraproject.org
 log01.iad2.fedoraproject.org
 
 [batcave]
-batcave01.phx2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
 batcave13.rdu2.fedoraproject.org
 
@@ -324,13 +294,12 @@ ipa01.iad2.fedoraproject.org
 ipa02.iad2.fedoraproject.org
 
 [ipa_stg]
-# ipa01.stg.phx2.fedoraproject.org
+# ipa01.stg.iad2.fedoraproject.org
 
 [ipsilon_dev]
 iddev.fedorainfracloud.org
 
 [nagios]
-noc01.phx2.fedoraproject.org
 noc01.iad2.fedoraproject.org
 noc02.fedoraproject.org
 
@@ -338,27 +307,27 @@ noc02.fedoraproject.org
 notifs-backend01.iad2.fedoraproject.org
 
 [notifs_backend_stg]
-# notifs-backend01.stg.phx2.fedoraproject.org
+# notifs-backend01.stg.iad2.fedoraproject.org
 
 [notifs_web]
 notifs-web01.iad2.fedoraproject.org
 notifs-web02.iad2.fedoraproject.org
 
 [notifs_web_stg]
-# notifs-web01.stg.phx2.fedoraproject.org
-# notifs-web02.stg.phx2.fedoraproject.org
+# notifs-web01.stg.iad2.fedoraproject.org
+# notifs-web02.stg.iad2.fedoraproject.org
 
 [nuancier]
 
 [nuancier_stg]
-# nuancier01.stg.phx2.fedoraproject.org
-# nuancier02.stg.phx2.fedoraproject.org
+# nuancier01.stg.iad2.fedoraproject.org
+# nuancier02.stg.iad2.fedoraproject.org
 
 [memcached]
 memcached01.iad2.fedoraproject.org
 
 [memcached_stg]
-# memcached01.stg.phx2.fedoraproject.org
+# memcached01.stg.iad2.fedoraproject.org
 
 [mirrorlist_proxies]
 proxy01.iad2.fedoraproject.org
@@ -389,15 +358,16 @@ mm-backend01.iad2.fedoraproject.org
 
 [mm_crawler]
 mm-crawler01.iad2.fedoraproject.org
+mm-crawler02.iad2.fedoraproject.org
 
 [mm_frontend_stg]
-# mm-frontend01.stg.phx2.fedoraproject.org
+# mm-frontend01.stg.iad2.fedoraproject.org
 
 [mm_backend_stg]
-# mm-backend01.stg.phx2.fedoraproject.org
+# mm-backend01.stg.iad2.fedoraproject.org
 
 [mm_crawler_stg]
-# mm-crawler01.stg.phx2.fedoraproject.org
+# mm-crawler01.stg.iad2.fedoraproject.org
 
 [mm:children]
 mm_frontend
@@ -417,8 +387,6 @@ qa05.qa.fedoraproject.org
 qa14.qa.fedoraproject.org
 
 [tang]
-tang01.phx2.fedoraproject.org
-tang02.phx2.fedoraproject.org
 tang01.iad2.fedoraproject.org
 tang02.iad2.fedoraproject.org
 
@@ -438,15 +406,16 @@ ns05.fedoraproject.org
 ns13.rdu2.fedoraproject.org
 
 [dns_external]
+ns01.iad2.fedoraproject.org
+ns02.iad2.fedoraproject.org
 ns02.fedoraproject.org
-ns04.phx2.fedoraproject.org
 ns05.fedoraproject.org
 
 [odcs_frontend]
 odcs-frontend01.iad2.fedoraproject.org
 
 [odcs_frontend_stg]
-# odcs-frontend01.stg.phx2.fedoraproject.org
+# odcs-frontend01.stg.iad2.fedoraproject.org
 
 [odcs_backend:children]
 odcs_backend_general
@@ -458,7 +427,7 @@ odcs-backend01.iad2.fedoraproject.org
 [odcs_backend_releng]
 
 [odcs_backend_stg]
-# odcs-backend01.stg.phx2.fedoraproject.org
+# odcs-backend01.stg.iad2.fedoraproject.org
 
 [odcs_stg:children]
 odcs_frontend_stg
@@ -501,23 +470,21 @@ openqa-x86-worker01.iad2.fedoraproject.org
 [packages]
 
 [packages_stg]
-# packages03.stg.phx2.fedoraproject.org
+# packages03.stg.iad2.fedoraproject.org
 
 [pkgs]
 pkgs01.iad2.fedoraproject.org
 
 [pkgs_stg]
-# pkgs01.stg.phx2.fedoraproject.org
+# pkgs01.stg.iad2.fedoraproject.org
 
 [loopabull]
-loopabull01.phx2.fedoraproject.org
 loopabull01.iad2.fedoraproject.org
 
 [loopabull_stg]
-# loopabull01.stg.phx2.fedoraproject.org
+# loopabull01.stg.iad2.fedoraproject.org
 
 [proxies_external]
-proxy01.phx2.fedoraproject.org
 proxy01.iad2.fedoraproject.org
 proxy02.fedoraproject.org
 proxy03.fedoraproject.org
@@ -527,7 +494,6 @@ proxy06.fedoraproject.org
 #proxy07.fedoraproject.org
 #proxy08.fedoraproject.org
 proxy09.fedoraproject.org
-proxy10.phx2.fedoraproject.org
 proxy10.iad2.fedoraproject.org
 proxy11.fedoraproject.org
 proxy12.fedoraproject.org
@@ -537,8 +503,6 @@ proxy30.fedoraproject.org
 proxy31.fedoraproject.org
 
 [proxies_internal]
-proxy101.phx2.fedoraproject.org
-proxy110.phx2.fedoraproject.org
 proxy101.iad2.fedoraproject.org
 proxy110.iad2.fedoraproject.org
 
@@ -547,7 +511,7 @@ proxies_external
 proxies_internal
 
 [proxies_stg]
-# proxy01.stg.phx2.fedoraproject.org
+# proxy01.stg.iad2.fedoraproject.org
 
 [relvalconsumer_common]
 openqa01.iad2.fedoraproject.org
@@ -595,128 +559,127 @@ smtp-mm-cc-rdu01.fedoraproject.org
 # All staging hosts should be in this group too.
 #
 [staging]
-# autosign01.stg.phx2.fedoraproject.org
-# badges-backend01.stg.phx2.fedoraproject.org
-# badges-web01.stg.phx2.fedoraproject.org
-# basset01.stg.phx2.fedoraproject.org
-# bastion01.stg.phx2.fedoraproject.org
-# blockerbugs01.stg.phx2.fedoraproject.org
-# bodhi-backend01.stg.phx2.fedoraproject.org
-# bugzilla2fedmsg01.stg.phx2.fedoraproject.org
-# buildvm-01.stg.phx2.fedoraproject.org
-# buildvm-02.stg.phx2.fedoraproject.org
-# buildvm-03.stg.phx2.fedoraproject.org
-# buildvm-04.stg.phx2.fedoraproject.org
-# buildvm-05.stg.phx2.fedoraproject.org
+# autosign01.stg.iad2.fedoraproject.org
+# badges-backend01.stg.iad2.fedoraproject.org
+# badges-web01.stg.iad2.fedoraproject.org
+# basset01.stg.iad2.fedoraproject.org
+# bastion01.stg.iad2.fedoraproject.org
+# blockerbugs01.stg.iad2.fedoraproject.org
+# bodhi-backend01.stg.iad2.fedoraproject.org
+# bugzilla2fedmsg01.stg.iad2.fedoraproject.org
+# buildvm-01.stg.iad2.fedoraproject.org
+# buildvm-02.stg.iad2.fedoraproject.org
+# buildvm-03.stg.iad2.fedoraproject.org
+# buildvm-04.stg.iad2.fedoraproject.org
+# buildvm-05.stg.iad2.fedoraproject.org
 # buildvm-aarch64-01.stg.arm.fedoraproject.org
 # buildvm-armv7-01.stg.arm.fedoraproject.org
 # buildvm-ppc64le-01.stg.ppc.fedoraproject.org
 # buildvm-s390x-01.stg.s390.fedoraproject.org
-# busgateway01.stg.phx2.fedoraproject.org
-# composer.stg.phx2.fedoraproject.org
+# busgateway01.stg.iad2.fedoraproject.org
+# composer.stg.iad2.fedoraproject.org
 copr-be-dev.aws.fedoraproject.org
 copr-dist-git-dev.aws.fedoraproject.org
 copr-fe-dev.aws.fedoraproject.org
 copr-keygen-dev.aws.fedoraproject.org
-# datagrepper01.stg.phx2.fedoraproject.org
-# db-fas01.stg.phx2.fedoraproject.org
-# db-koji01.stg.phx2.fedoraproject.org
-# db01.stg.phx2.fedoraproject.org
-# db03.stg.phx2.fedoraproject.org
-# oci-candidate-registry01.stg.phx2.fedoraproject.org
-# oci-registry01.stg.phx2.fedoraproject.org
-# #fas01.stg.phx2.fedoraproject.org
-# fedimg01.stg.phx2.fedoraproject.org
-# fedocal01.stg.phx2.fedoraproject.org
-# github2fedmsg01.stg.phx2.fedoraproject.org
-# ipa01.stg.phx2.fedoraproject.org
-# koji01.stg.phx2.fedoraproject.org
-# loopabull01.stg.phx2.fedoraproject.org
-# mailman01.stg.phx2.fedoraproject.org
-# mbs-backend01.stg.phx2.fedoraproject.org
-# mbs-frontend01.stg.phx2.fedoraproject.org
-# mbs-frontend02.stg.phx2.fedoraproject.org
-# memcached01.stg.phx2.fedoraproject.org
-# mm-backend01.stg.phx2.fedoraproject.org
-# mm-crawler01.stg.phx2.fedoraproject.org
-# mm-frontend01.stg.phx2.fedoraproject.org
-# notifs-backend01.stg.phx2.fedoraproject.org
-# notifs-web01.stg.phx2.fedoraproject.org
-# notifs-web02.stg.phx2.fedoraproject.org
-# nuancier01.stg.phx2.fedoraproject.org
-# nuancier02.stg.phx2.fedoraproject.org
-# odcs-backend01.stg.phx2.fedoraproject.org
-# odcs-frontend01.stg.phx2.fedoraproject.org
-# os-control01.stg.phx2.fedoraproject.org
-# os-master01.stg.phx2.fedoraproject.org
-# os-master02.stg.phx2.fedoraproject.org
-# os-master03.stg.phx2.fedoraproject.org
-# os-node01.stg.phx2.fedoraproject.org
-# os-node02.stg.phx2.fedoraproject.org
-# os-node03.stg.phx2.fedoraproject.org
-# os-node04.stg.phx2.fedoraproject.org
-# osbs-control01.stg.phx2.fedoraproject.org
-# osbs-master01.stg.phx2.fedoraproject.org
-# osbs-node01.stg.phx2.fedoraproject.org
-# osbs-node02.stg.phx2.fedoraproject.org
-# osbs-aarch64-master01.stg.phx2.fedoraproject.org
-# osbs-aarch64-node01.stg.phx2.fedoraproject.org
-# osbs-aarch64-node02.stg.phx2.fedoraproject.org
-# packages03.stg.phx2.fedoraproject.org
-# pdc-backend01.stg.phx2.fedoraproject.org
-# pdc-backend02.stg.phx2.fedoraproject.org
-# pdc-backend03.stg.phx2.fedoraproject.org
-# pdc-web01.stg.phx2.fedoraproject.org
-# pgbdr01.stg.phx2.fedoraproject.org
-# pgbdr02.stg.phx2.fedoraproject.org
-# pkgs01.stg.phx2.fedoraproject.org
-# proxy01.stg.phx2.fedoraproject.org
-# rabbitmq01.stg.phx2.fedoraproject.org
-# rabbitmq02.stg.phx2.fedoraproject.org
-# rabbitmq03.stg.phx2.fedoraproject.org
+# datagrepper01.stg.iad2.fedoraproject.org
+# db-fas01.stg.iad2.fedoraproject.org
+# db-koji01.stg.iad2.fedoraproject.org
+# db01.stg.iad2.fedoraproject.org
+# db03.stg.iad2.fedoraproject.org
+# oci-candidate-registry01.stg.iad2.fedoraproject.org
+# oci-registry01.stg.iad2.fedoraproject.org
+# #fas01.stg.iad2.fedoraproject.org
+# fedimg01.stg.iad2.fedoraproject.org
+# fedocal01.stg.iad2.fedoraproject.org
+# github2fedmsg01.stg.iad2.fedoraproject.org
+# ipa01.stg.iad2.fedoraproject.org
+# koji01.stg.iad2.fedoraproject.org
+# loopabull01.stg.iad2.fedoraproject.org
+# mailman01.stg.iad2.fedoraproject.org
+# mbs-backend01.stg.iad2.fedoraproject.org
+# mbs-frontend01.stg.iad2.fedoraproject.org
+# mbs-frontend02.stg.iad2.fedoraproject.org
+# memcached01.stg.iad2.fedoraproject.org
+# mm-backend01.stg.iad2.fedoraproject.org
+# mm-crawler01.stg.iad2.fedoraproject.org
+# mm-frontend01.stg.iad2.fedoraproject.org
+# notifs-backend01.stg.iad2.fedoraproject.org
+# notifs-web01.stg.iad2.fedoraproject.org
+# notifs-web02.stg.iad2.fedoraproject.org
+# nuancier01.stg.iad2.fedoraproject.org
+# nuancier02.stg.iad2.fedoraproject.org
+# odcs-backend01.stg.iad2.fedoraproject.org
+# odcs-frontend01.stg.iad2.fedoraproject.org
+# os-control01.stg.iad2.fedoraproject.org
+# os-master01.stg.iad2.fedoraproject.org
+# os-master02.stg.iad2.fedoraproject.org
+# os-master03.stg.iad2.fedoraproject.org
+# os-node01.stg.iad2.fedoraproject.org
+# os-node02.stg.iad2.fedoraproject.org
+# os-node03.stg.iad2.fedoraproject.org
+# os-node04.stg.iad2.fedoraproject.org
+# osbs-control01.stg.iad2.fedoraproject.org
+# osbs-master01.stg.iad2.fedoraproject.org
+# osbs-node01.stg.iad2.fedoraproject.org
+# osbs-node02.stg.iad2.fedoraproject.org
+# osbs-aarch64-master01.stg.iad2.fedoraproject.org
+# osbs-aarch64-node01.stg.iad2.fedoraproject.org
+# osbs-aarch64-node02.stg.iad2.fedoraproject.org
+# packages03.stg.iad2.fedoraproject.org
+# pdc-backend01.stg.iad2.fedoraproject.org
+# pdc-backend02.stg.iad2.fedoraproject.org
+# pdc-backend03.stg.iad2.fedoraproject.org
+# pdc-web01.stg.iad2.fedoraproject.org
+# pgbdr01.stg.iad2.fedoraproject.org
+# pgbdr02.stg.iad2.fedoraproject.org
+# pkgs01.stg.iad2.fedoraproject.org
+# proxy01.stg.iad2.fedoraproject.org
+# rabbitmq01.stg.iad2.fedoraproject.org
+# rabbitmq02.stg.iad2.fedoraproject.org
+# rabbitmq03.stg.iad2.fedoraproject.org
 # resultsdb-stg01.qa.fedoraproject.org
 retrace-stg.aws.fedoraproject.org
-# sign-bridge01.stg.phx2.fedoraproject.org
-# sign-vault01.stg.phx2.fedoraproject.org
-# sundries01.stg.phx2.fedoraproject.org
-# value01.stg.phx2.fedoraproject.org
-# bvirthost01.stg.phx2.fedoraproject.org
-# virthost01.stg.phx2.fedoraproject.org
-# virthost02.stg.phx2.fedoraproject.org
-# virthost03.stg.phx2.fedoraproject.org
-# virthost04.stg.phx2.fedoraproject.org
-# virthost05.stg.phx2.fedoraproject.org
-# wiki01.stg.phx2.fedoraproject.org
-# zanata2fedmsg01.stg.phx2.fedoraproject.org
+# sign-bridge01.stg.iad2.fedoraproject.org
+# sign-vault01.stg.iad2.fedoraproject.org
+# sundries01.stg.iad2.fedoraproject.org
+# value01.stg.iad2.fedoraproject.org
+# bvirthost01.stg.iad2.fedoraproject.org
+# virthost01.stg.iad2.fedoraproject.org
+# virthost02.stg.iad2.fedoraproject.org
+# virthost03.stg.iad2.fedoraproject.org
+# virthost04.stg.iad2.fedoraproject.org
+# virthost05.stg.iad2.fedoraproject.org
+# wiki01.stg.iad2.fedoraproject.org
+# zanata2fedmsg01.stg.iad2.fedoraproject.org
 
 # This is a list of hosts that are a little "friendly" with staging.
 # They are exempted from the iptables wall between staging and prod.
 # For instance, staging needs to send collectd logs to log01 and smtp mail data
 # to bastion (both of which are prod boxen).
 [staging_friendly]
-batcave01.phx2.fedoraproject.org
-bastion01.phx2.fedoraproject.org
-bastion02.phx2.fedoraproject.org
+batcave01.iad2.fedoraproject.org
+bastion01.iad2.fedoraproject.org
+bastion02.iad2.fedoraproject.org
 certgetter01.iad2.fedoraproject.org
 # download01.phx2.fedoraproject.org
-log01.phx2.fedoraproject.org
-ns03.phx2.fedoraproject.org
-ns04.phx2.fedoraproject.org
-db-qa01.qa.fedoraproject.org
-db-qa03.qa.fedoraproject.org
-proxy01.phx2.fedoraproject.org
-proxy10.phx2.fedoraproject.org
-proxy101.phx2.fedoraproject.org
-proxy110.phx2.fedoraproject.org
-openqa-stg01.qa.fedoraproject.org
-tang01.phx2.fedoraproject.org
-tang02.phx2.fedoraproject.org
+log01.iad2.fedoraproject.org
+ns01.iad2.fedoraproject.org
+ns02.iad2.fedoraproject.org
+db-qa01.iad2.fedoraproject.org
+proxy01.iad2.fedoraproject.org
+proxy10.iad2.fedoraproject.org
+proxy101.iad2.fedoraproject.org
+proxy110.iad2.fedoraproject.org
+openqa-stg01.iad2.fedoraproject.org
+tang01.iad2.fedoraproject.org
+tang02.iad2.fedoraproject.org
 
 [sundries]
 sundries01.iad2.fedoraproject.org
 
 [sundries_stg]
-# sundries01.stg.phx2.fedoraproject.org
+# sundries01.stg.iad2.fedoraproject.org
 
 [unbound]
 unbound-ib01.fedoraproject.org
@@ -727,14 +690,14 @@ unbound-osuosl01.fedoraproject.org
 value01.iad2.fedoraproject.org
 
 [value_stg]
-# value01.stg.phx2.fedoraproject.org
+# value01.stg.iad2.fedoraproject.org
 
 [virthost]
-# virthost01.stg.phx2.fedoraproject.org
-# virthost02.stg.phx2.fedoraproject.org
-# virthost03.stg.phx2.fedoraproject.org
-# virthost04.stg.phx2.fedoraproject.org
-# virthost05.stg.phx2.fedoraproject.org
+# virthost01.stg.iad2.fedoraproject.org
+# virthost02.stg.iad2.fedoraproject.org
+# virthost03.stg.iad2.fedoraproject.org
+# virthost04.stg.iad2.fedoraproject.org
+# virthost05.stg.iad2.fedoraproject.org
 virthost01.phx2.fedoraproject.org
 virthost02.phx2.fedoraproject.org
 virthost04.phx2.fedoraproject.org
@@ -774,13 +737,13 @@ virthost-comm04.qa.fedoraproject.org
 #copr-vmhost01.fedorainfracloud.org
 
 [wiki_stg]
-# wiki01.stg.phx2.fedoraproject.org
+# wiki01.stg.iad2.fedoraproject.org
 
 [wiki]
 wiki01.iad2.fedoraproject.org
 
 [zanata2fedmsg_stg]
-# zanata2fedmsg01.stg.phx2.fedoraproject.org
+# zanata2fedmsg01.stg.iad2.fedoraproject.org
 
 [zanata2fedmsg]
 
@@ -861,7 +824,7 @@ mailman_stg
 pdc-web01.iad2.fedoraproject.org
 
 [pdc_web_stg]
-# pdc-web01.stg.phx2.fedoraproject.org
+# pdc-web01.stg.iad2.fedoraproject.org
 
 [pdc_backend]
 pdc-backend01.iad2.fedoraproject.org
@@ -869,9 +832,9 @@ pdc-backend02.iad2.fedoraproject.org
 pdc-backend03.iad2.fedoraproject.org
 
 [pdc_backend_stg]
-# pdc-backend01.stg.phx2.fedoraproject.org
-# pdc-backend02.stg.phx2.fedoraproject.org
-# pdc-backend03.stg.phx2.fedoraproject.org
+# pdc-backend01.stg.iad2.fedoraproject.org
+# pdc-backend02.stg.iad2.fedoraproject.org
+# pdc-backend03.stg.iad2.fedoraproject.org
 
 [maintainer_test]
 f30-test.fedorainfracloud.org
@@ -902,7 +865,7 @@ koji
 dbserver
 
 [groupa]
-secondary01.phx2.fedoraproject.org
+secondary01.iad2.fedoraproject.org
 
 
 [groupb:children]
@@ -1011,15 +974,12 @@ resultsdb01.qa.fedoraproject.org
 resultsdb-stg01.qa.fedoraproject.org
 
 [osbs_control]
-osbs-control01.phx2.fedoraproject.org
 osbs-control01.iad2.fedoraproject.org
 
 [osbs_control_stg]
-# osbs-control01.stg.phx2.fedoraproject.org
+# osbs-control01.stg.iad2.fedoraproject.org
 
 [osbs_nodes]
-osbs-node01.phx2.fedoraproject.org
-osbs-node02.phx2.fedoraproject.org
 osbs-node01.iad2.fedoraproject.org
 osbs-node02.iad2.fedoraproject.org
 
@@ -1040,18 +1000,18 @@ osbs_masters
 #osbs_aarch64_masters
 
 [osbs_masters_stg]
-# osbs-master01.stg.phx2.fedoraproject.org
+# osbs-master01.stg.iad2.fedoraproject.org
 
 [osbs_aarch64_masters_stg]
-# osbs-aarch64-master01.stg.phx2.fedoraproject.org
+# osbs-aarch64-master01.stg.iad2.fedoraproject.org
 
 [osbs_aarch64_nodes_stg]
-# osbs-aarch64-node01.stg.phx2.fedoraproject.org
-# osbs-aarch64-node02.stg.phx2.fedoraproject.org
+# osbs-aarch64-node01.stg.iad2.fedoraproject.org
+# osbs-aarch64-node02.stg.iad2.fedoraproject.org
 
 [osbs_nodes_stg]
-# osbs-node01.stg.phx2.fedoraproject.org
-# osbs-node02.stg.phx2.fedoraproject.org
+# osbs-node01.stg.iad2.fedoraproject.org
+# osbs-node02.stg.iad2.fedoraproject.org
 
 [osbs_stg:children]
 osbs_control_stg
@@ -1061,21 +1021,21 @@ osbs_aarch64_masters_stg
 osbs_aarch64_nodes_stg
 
 [os_control_stg]
-#os-control01.stg.phx2.fedoraproject.org
+#os-control01.stg.iad2.fedoraproject.org
 
 [os_masters_stg]
-# os-master01.stg.phx2.fedoraproject.org
-# os-master02.stg.phx2.fedoraproject.org
-# os-master03.stg.phx2.fedoraproject.org
+# os-master01.stg.iad2.fedoraproject.org
+# os-master02.stg.iad2.fedoraproject.org
+# os-master03.stg.iad2.fedoraproject.org
 #os-master01.stg.iad2.fedoraproject.org
 #os-master02.stg.iad2.fedoraproject.org
 #os-master03.stg.iad2.fedoraproject.org
 
 [os_infra_nodes_stg]
-# os-node01.stg.phx2.fedoraproject.org
-# os-node02.stg.phx2.fedoraproject.org
-# os-node03.stg.phx2.fedoraproject.org
-# os-node04.stg.phx2.fedoraproject.org
+# os-node01.stg.iad2.fedoraproject.org
+# os-node02.stg.iad2.fedoraproject.org
+# os-node03.stg.iad2.fedoraproject.org
+# os-node04.stg.iad2.fedoraproject.org
 
 [os_nodes_stg:children]
 os_infra_nodes_stg
@@ -1086,7 +1046,6 @@ os_masters_stg
 os_control_stg
 
 [os_control]
-os-control01.phx2.fedoraproject.org
 os-control01.iad2.fedoraproject.org
 
 [os_masters]
@@ -1123,8 +1082,8 @@ oci-registry02.iad2.fedoraproject.org
 oci-candidate-registry01.iad2.fedoraproject.org
 
 [oci_registry_stg]
-# oci-registry01.stg.phx2.fedoraproject.org
-# oci-candidate-registry01.stg.phx2.fedoraproject.org
+# oci-registry01.stg.iad2.fedoraproject.org
+# oci-candidate-registry01.stg.iad2.fedoraproject.org
 
 ## Not the candidate just the top registry
 [moby_registry]
@@ -1132,7 +1091,7 @@ oci-registry01.iad2.fedoraproject.org
 
 ## Not the candidate just the top registry
 [moby_registry_stg]
-# oci-registry01.stg.phx2.fedoraproject.org
+# oci-registry01.stg.iad2.fedoraproject.org
 
 [webservers:children]
 proxies
@@ -1146,26 +1105,26 @@ fas
 #
 [zombie_infested]
 # anon git via systemd socket seems to get zombies from time to time
-pkgs02.phx2.fedoraproject.org
 # Ansible from time to time in large runs has zombie threads
-batcave01.phx2.fedoraproject.org
+pkgs02.iad2.fedoraproject.org
+batcave01.iad2.fedoraproject.org
 # bodhi-backend01 gets zombies right at the end of pushes
-bodhi-backend01.phx2.fedoraproject.org
+bodhi-backend01.iad2.fedoraproject.org
 
 [sar]
-badges-backend01.phx2.fedoraproject.org
-bodhi-backend01.phx2.fedoraproject.org
-mailman01.phx2.fedoraproject.org
+badges-backend01.iad2.fedoraproject.org
+bodhi-backend01.iad2.fedoraproject.org
+mailman01.iad2.fedoraproject.org
 people02.fedoraproject.org
 #db-datanommer02.phx2.fedoraproject.org
 #nuancier01.phx2.fedoraproject.org
 #fedocal02.phx2.fedoraproject.org
 pagure01.fedoraproject.org
-pkgs02.phx2.fedoraproject.org
+pkgs01.iad2.fedoraproject.org
 notifs-web01.iad2.fedoraproject.org
 wiki01.iad2.fedoraproject.org
 value01.iad2.fedoraproject.org
-retrace01.qa.fedoraproject.org
+#retrace01.qa.fedoraproject.org
 
 # [nfs_servers]
 # storinator01.fedorainfracloud.org
@@ -1348,6 +1307,7 @@ mbs-frontend01.iad2.fedoraproject.org
 memcached01.iad2.fedoraproject.org
 mm-backend01.iad2.fedoraproject.org
 mm-crawler01.iad2.fedoraproject.org
+mm-crawler02.iad2.fedoraproject.org
 mm-frontend-checkin01.iad2.fedoraproject.org
 mm-frontend01.iad2.fedoraproject.org
 noc01.iad2.fedoraproject.org
@@ -1413,215 +1373,14 @@ ansible_group_priority=10
 datacenter=iad2
 
 [phx2]
-aarch64-c26n1-oqa.arm.fedoraproject.org
-aarch64-c27n1-oqa.arm.fedoraproject.org
-aarch64-c28n1-oqa.arm.fedoraproject.org
-aarch64-c29n1-oqa.arm.fedoraproject.org
-aarch64-c30n1-oqa.arm.fedoraproject.org
-autosign01.phx2.fedoraproject.org
-backup01.phx2.fedoraproject.org
-badges-backend01.phx2.fedoraproject.org
-badges-web01.phx2.fedoraproject.org
-badges-web02.phx2.fedoraproject.org
-bastion-comm01.qa.fedoraproject.org
 bastion01.phx2.fedoraproject.org
 bastion02.phx2.fedoraproject.org
 batcave01.phx2.fedoraproject.org
-bkernel03.phx2.fedoraproject.org
-blockerbugs01.phx2.fedoraproject.org
-blockerbugs02.phx2.fedoraproject.org
-buildhw-01.phx2.fedoraproject.org
-buildhw-02.phx2.fedoraproject.org
-buildhw-03.phx2.fedoraproject.org
-buildhw-04.phx2.fedoraproject.org
-buildhw-05.phx2.fedoraproject.org
-buildhw-06.phx2.fedoraproject.org
-buildhw-07.phx2.fedoraproject.org
-buildhw-08.phx2.fedoraproject.org
-buildhw-09.phx2.fedoraproject.org
-buildhw-10.phx2.fedoraproject.org
-buildhw-11.phx2.fedoraproject.org
-buildhw-12.phx2.fedoraproject.org
-buildhw-aarch64-02.arm.fedoraproject.org
-buildhw-aarch64-03.arm.fedoraproject.org
-buildhw-aarch64-04.arm.fedoraproject.org
-buildhw-aarch64-05.arm.fedoraproject.org
-buildhw-aarch64-06.arm.fedoraproject.org
-buildhw-aarch64-07.arm.fedoraproject.org
-buildhw-aarch64-08.arm.fedoraproject.org
-buildvm-aarch64-01.arm.fedoraproject.org
-buildvm-aarch64-02.arm.fedoraproject.org
-buildvm-aarch64-03.arm.fedoraproject.org
-buildvm-aarch64-04.arm.fedoraproject.org
-buildvm-aarch64-05.arm.fedoraproject.org
-buildvm-aarch64-06.arm.fedoraproject.org
-buildvm-aarch64-07.arm.fedoraproject.org
-buildvm-aarch64-08.arm.fedoraproject.org
-buildvm-aarch64-09.arm.fedoraproject.org
-buildvm-aarch64-10.arm.fedoraproject.org
-buildvm-aarch64-11.arm.fedoraproject.org
-buildvm-aarch64-12.arm.fedoraproject.org
-buildvm-aarch64-13.arm.fedoraproject.org
-buildvm-aarch64-14.arm.fedoraproject.org
-buildvm-aarch64-15.arm.fedoraproject.org
-buildvm-aarch64-16.arm.fedoraproject.org
-buildvm-aarch64-17.arm.fedoraproject.org
-buildvm-aarch64-18.arm.fedoraproject.org
-buildvm-aarch64-19.arm.fedoraproject.org
-buildvm-aarch64-20.arm.fedoraproject.org
-buildvm-aarch64-21.arm.fedoraproject.org
-buildvm-aarch64-22.arm.fedoraproject.org
-buildvm-aarch64-23.arm.fedoraproject.org
-buildvm-aarch64-24.arm.fedoraproject.org
-buildvm-aarch64-25.arm.fedoraproject.org
-buildvm-armv7-01.arm.fedoraproject.org
-buildvm-armv7-02.arm.fedoraproject.org
-buildvm-armv7-03.arm.fedoraproject.org
-buildvm-armv7-04.arm.fedoraproject.org
-buildvm-armv7-05.arm.fedoraproject.org
-buildvm-armv7-06.arm.fedoraproject.org
-buildvm-armv7-07.arm.fedoraproject.org
-buildvm-armv7-08.arm.fedoraproject.org
-buildvm-armv7-09.arm.fedoraproject.org
-buildvm-armv7-10.arm.fedoraproject.org
-buildvm-armv7-11.arm.fedoraproject.org
-buildvm-armv7-12.arm.fedoraproject.org
-buildvm-armv7-13.arm.fedoraproject.org
-buildvm-armv7-14.arm.fedoraproject.org
-buildvm-armv7-15.arm.fedoraproject.org
-buildvm-armv7-16.arm.fedoraproject.org
-buildvm-armv7-17.arm.fedoraproject.org
-buildvm-armv7-18.arm.fedoraproject.org
-buildvm-armv7-19.arm.fedoraproject.org
-buildvm-armv7-20.arm.fedoraproject.org
-buildvm-armv7-21.arm.fedoraproject.org
-buildvm-armv7-22.arm.fedoraproject.org
-buildvm-armv7-23.arm.fedoraproject.org
-buildvm-armv7-24.arm.fedoraproject.org
-buildvm-ppc64le-01.ppc.fedoraproject.org
-buildvm-ppc64le-02.ppc.fedoraproject.org
-buildvm-ppc64le-03.ppc.fedoraproject.org
-buildvm-ppc64le-04.ppc.fedoraproject.org
-buildvm-ppc64le-05.ppc.fedoraproject.org
-buildvm-ppc64le-06.ppc.fedoraproject.org
-buildvm-ppc64le-07.ppc.fedoraproject.org
-buildvm-ppc64le-08.ppc.fedoraproject.org
-buildvm-ppc64le-09.ppc.fedoraproject.org
-buildvm-ppc64le-10.ppc.fedoraproject.org
-buildvm-ppc64le-11.ppc.fedoraproject.org
-buildvm-ppc64le-12.ppc.fedoraproject.org
-buildvm-ppc64le-13.ppc.fedoraproject.org
-buildvm-ppc64le-14.ppc.fedoraproject.org
-buildvm-ppc64le-15.ppc.fedoraproject.org
-buildvm-ppc64le-16.ppc.fedoraproject.org
-buildvm-ppc64le-17.ppc.fedoraproject.org
-buildvm-ppc64le-18.ppc.fedoraproject.org
-buildvm-ppc64le-19.ppc.fedoraproject.org
-buildvm-ppc64le-20.ppc.fedoraproject.org
-buildvm-ppc64le-21.ppc.fedoraproject.org
-buildvm-ppc64le-22.ppc.fedoraproject.org
-buildvm-ppc64le-23.ppc.fedoraproject.org
-buildvm-ppc64le-24.ppc.fedoraproject.org
-buildvm-ppc64le-25.ppc.fedoraproject.org
-buildvm-ppc64le-26.ppc.fedoraproject.org
-buildvm-ppc64le-27.ppc.fedoraproject.org
-buildvm-ppc64le-28.ppc.fedoraproject.org
-buildvm-ppc64le-29.ppc.fedoraproject.org
-buildvm-ppc64le-30.ppc.fedoraproject.org
-buildvm-ppc64le-31.ppc.fedoraproject.org
-buildvmhost-01.phx2.fedoraproject.org
-buildvmhost-02.phx2.fedoraproject.org
-buildvmhost-03.phx2.fedoraproject.org
-buildvmhost-04.phx2.fedoraproject.org
-buildvmhost-a64-osbs-01.arm.fedoraproject.org
-buildvmhost-aarch64-01.arm.fedoraproject.org
-buildvmhost-aarch64-02.arm.fedoraproject.org
-buildvmhost-aarch64-10.arm.fedoraproject.org
-buildvmhost-aarch64-11.arm.fedoraproject.org
-buildvmhost-aarch64-12.arm.fedoraproject.org
-buildvmhost-aarch64-13.arm.fedoraproject.org
-buildvmhost-aarch64-14.arm.fedoraproject.org
-buildvmhost-aarch64-15.arm.fedoraproject.org
-buildvmhost-aarch64-16.arm.fedoraproject.org
-buildvmhost-aarch64-17.arm.fedoraproject.org
-buildvmhost-aarch64-18.arm.fedoraproject.org
-busgateway01.phx2.fedoraproject.org
-bvirthost01.phx2.fedoraproject.org
-bvirthost04.phx2.fedoraproject.org
-bvirthost05.phx2.fedoraproject.org
-bvirthost12.phx2.fedoraproject.org
-bvirthost13.phx2.fedoraproject.org
-bvirthost14.phx2.fedoraproject.org
-bvirthost15.phx2.fedoraproject.org
-data-analysis01.phx2.fedoraproject.org
-datagrepper01.phx2.fedoraproject.org
-datagrepper02.phx2.fedoraproject.org
-db-fas01.phx2.fedoraproject.org
-db-qa01.qa.fedoraproject.org
-db-qa02.qa.fedoraproject.org
-db-qa03.qa.fedoraproject.org
-fas01.phx2.fedoraproject.org
-fedimg01.phx2.fedoraproject.org
-gnome-backups01.phx2.fedoraproject.org
-kernel02.qa.fedoraproject.org
-kernel03.qa.fedoraproject.org
-kerneltest01.phx2.fedoraproject.org
-log01.phx2.fedoraproject.org
-loopabull01.phx2.fedoraproject.org
-mailman01.phx2.fedoraproject.org
-mailman02.phx2.fedoraproject.org
-mbs-backend01.phx2.fedoraproject.org
-mbs-frontend01.phx2.fedoraproject.org
-mbs-frontend02.phx2.fedoraproject.org
 noc01.phx2.fedoraproject.org
 ns03.phx2.fedoraproject.org
 ns04.phx2.fedoraproject.org
-openqa-aarch64-01.qa.fedoraproject.org
-openqa-aarch64-03.qa.fedoraproject.org
-openqa-ppc64le-01.qa.fedoraproject.org
-openqa-ppc64le-02.qa.fedoraproject.org
-openqa-ppc64le-03.qa.fedoraproject.org
-openqa-stg01.qa.fedoraproject.org
-openqa01.qa.fedoraproject.org
-os-control01.phx2.fedoraproject.org
-os-master01.phx2.fedoraproject.org
-os-master02.phx2.fedoraproject.org
-os-master03.phx2.fedoraproject.org
-os-node01.phx2.fedoraproject.org
-os-node02.phx2.fedoraproject.org
-os-node03.phx2.fedoraproject.org
-os-node04.phx2.fedoraproject.org
-os-node05.phx2.fedoraproject.org
-osbs-control01.phx2.fedoraproject.org
-osbs-master01.phx2.fedoraproject.org
-osbs-node01.phx2.fedoraproject.org
-osbs-node02.phx2.fedoraproject.org
-ppc8-01.ppc.fedoraproject.org
-ppc8-02.ppc.fedoraproject.org
-ppc8-03.ppc.fedoraproject.org
-ppc8-04.ppc.fedoraproject.org
-ppc9-01.ppc.fedoraproject.org
-ppc9-02.ppc.fedoraproject.org
-proxy01.phx2.fedoraproject.org
-proxy10.phx2.fedoraproject.org
-proxy101.phx2.fedoraproject.org
-proxy110.phx2.fedoraproject.org
-qa01.qa.fedoraproject.org
-qa02.qa.fedoraproject.org
-qa05.qa.fedoraproject.org
-qa07.qa.fedoraproject.org
-qa09.qa.fedoraproject.org
-qa14.qa.fedoraproject.org
-rawhide-composer.phx2.fedoraproject.org
-resultsdb-stg01.qa.fedoraproject.org
-resultsdb01.qa.fedoraproject.org
-retrace01.qa.fedoraproject.org
-secondary01.phx2.fedoraproject.org
 tang01.phx2.fedoraproject.org
 tang02.phx2.fedoraproject.org
-virthost-comm01.qa.fedoraproject.org
-virthost-comm03.qa.fedoraproject.org
-virthost-comm04.qa.fedoraproject.org
 virthost01.phx2.fedoraproject.org
 virthost02.phx2.fedoraproject.org
 virthost04.phx2.fedoraproject.org
@@ -1634,4 +1393,3 @@ virthost18.phx2.fedoraproject.org
 virthost19.phx2.fedoraproject.org
 virthost21.phx2.fedoraproject.org
 virthost22.phx2.fedoraproject.org
-db01.phx2.fedoraproject.org
