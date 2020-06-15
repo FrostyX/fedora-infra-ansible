@@ -20,8 +20,13 @@
     name: _update_docs_trans
     generate_ssh_key: yes
     ssh_key_file: .ssh/id_rsa_docs_trans
+  register: user_result
   tags:
   - fedora-docs-translation
+
+- name: Display the public key to add it to pagure
+  debug:
+    var: user_result.ssh_public_key
 
 - copy:
     src: ssh_config
