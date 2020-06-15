@@ -23,7 +23,7 @@
   - rsyncd
   - sudo
   - { role: openvpn/client,
-      when: datacenter != "phx2" and datacenter != "rdu" and datacenter != 'iad2' }
+      when: datacenter != "rdu" and datacenter != 'iad2' }
   - dns
 
   pre_tasks:
