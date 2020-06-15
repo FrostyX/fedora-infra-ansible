@@ -32,14 +32,3 @@
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
-- name: configure bastion-qa
-  hosts: bastion-comm01.qa.fedoraproject.org
-  user: root
-  gather_facts: True
-
-  tasks:
-  - name: install needed packages
-    package:
-      state: present
-      name:
-        - ipmitool
