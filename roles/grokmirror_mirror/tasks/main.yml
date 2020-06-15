@@ -4,7 +4,7 @@
 #
 
 - name: install grokmirror
-  package: name=python-grokmirror state=installed
+  package: name=python3-grokmirror state=installed
   tags:
   - grokmirror-mirror
 
