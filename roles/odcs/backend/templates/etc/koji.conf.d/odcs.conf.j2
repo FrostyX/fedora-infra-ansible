@@ -5,7 +5,7 @@ topurl = https://kojipkgs.fedoraproject.org/
 authtype = kerberos
 krb_rdns = false
 
-{% if inventory_hostname.startswith('odcs-backend-releng') %}
+{% if inventory_hostname.startswith('odcs-backend01') %}
 principal = releng@FEDORAPROJECT.ORG
 keytab = /etc/krb5.releng.keytab
 {% endif  %}
