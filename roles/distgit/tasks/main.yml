@@ -138,13 +138,29 @@
   - config
   - distgit
 
-- name: Make sure apache can access the fedora-messasing keys
+- name: Make sure apache can access the fedora-messasing ca
   acl:
-    path: {{ item }}
-    with_items:
-    - /etc/pki/rabbitmq/git-hooks.ca
-    - /etc/pki/rabbitmq/git-hooks.crt
-    - /etc/pki/rabbitmq/git-hooks.key
+    path: /etc/pki/rabbitmq/git-hooks.ca
+    entity: apache
+    etype: group
+    permissions: r
+    state: present
+  tags:
+  - distgit
+
+- name: Make sure apache can access the fedora-messasing crt
+  acl:
+    path: /etc/pki/rabbitmq/git-hooks.crt
+    entity: apache
+    etype: group
+    permissions: r
+    state: present
+  tags:
+  - distgit
+
+- name: Make sure apache can access the fedora-messasing key
+  acl:
+    path: /etc/pki/rabbitmq/git-hooks.key
     entity: apache
     etype: group
     permissions: r
