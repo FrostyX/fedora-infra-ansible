@@ -193,14 +193,6 @@ db-openqa01.iad2.fedoraproject.org
 # db03.stg.iad2.fedoraproject.org
 # db-koji01.stg.iad2.fedoraproject.org
 
-# postgresql bidirectional replication servers
-[pgbdr]
-
-# postgresql bidirectional replication servers (stg)
-[pgbdr_stg]
-# pgbdr01.stg.iad2.fedoraproject.org
-# pgbdr02.stg.iad2.fedoraproject.org
-
 # clients that talk to the main postgres servers
 [postgres_clients]
 
@@ -621,8 +613,6 @@ copr-keygen-dev.aws.fedoraproject.org
 # pdc-backend02.stg.iad2.fedoraproject.org
 # pdc-backend03.stg.iad2.fedoraproject.org
 # pdc-web01.stg.iad2.fedoraproject.org
-# pgbdr01.stg.iad2.fedoraproject.org
-# pgbdr02.stg.iad2.fedoraproject.org
 # pkgs01.stg.iad2.fedoraproject.org
 # proxy01.stg.iad2.fedoraproject.org
 # rabbitmq01.stg.iad2.fedoraproject.org
