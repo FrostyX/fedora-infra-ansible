@@ -209,7 +209,7 @@
   - koji_builder
 
 - name: make a mnt/koji link
-  file: state=link src=/mnt/fedora_koji/koji dest=/mnt/koji
+  file: state=link src=/mnt/fedora_koji/koji dest=/mnt/koji force=yes
   when: inventory_hostname.startswith(('buildvm-s390x-15', 'buildvm-s390x-16', 'buildvm-s390x-17'))
   tags:
   - koji_builder
