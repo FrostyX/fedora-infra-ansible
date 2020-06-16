@@ -1,5 +1,5 @@
 - name: Set up those proxy websites.  My, my..
-  hosts: proxies_stg:proxies
+  hosts: proxies_stg:proxies:proxies_internal
   user: root
   gather_facts: True
 
