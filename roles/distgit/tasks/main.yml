@@ -149,6 +149,8 @@
     etype: group
     permissions: r
     state: present
+  tags:
+  - distgit
 
 - name: create the distgit root directory (/srv/git)
   file: dest=/srv/git state=directory mode=0755
