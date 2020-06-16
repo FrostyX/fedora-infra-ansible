@@ -69,7 +69,6 @@
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/pdc.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/people.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/pkgs.yml
-- import_playbook: /srv/web/infra/ansible/playbooks/groups/postgresql-server-bdr.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/postgresql-server.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/proxies.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/resultsdb.yml
