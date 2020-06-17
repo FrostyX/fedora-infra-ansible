@@ -11,7 +11,7 @@ vmhost: vmhost-x86-05.iad2.fedoraproject.org
 volgroup: /dev/vg_guests
 
 eth0_ip: 10.3.163.75
-eth0_secondary_ip: 10.3.163.87
+# eth0_secondary_ip: 10.3.163.87
 
 # This is consumed by the roles/fedora-web/main role
 sponsor: redhat

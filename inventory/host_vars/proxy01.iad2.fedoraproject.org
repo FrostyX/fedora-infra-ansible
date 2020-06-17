@@ -4,14 +4,14 @@ gw: 10.3.163.254
 dns: 10.3.163.33
 num_cpus: 8
 
-ks_url: http://209.132.181.6/repo/rhel/ks/kvm-fedora-31-ext
-ks_repo: http://209.132.181.6/pub/fedora/linux/releases/31/Server/x86_64/os/
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-fedora-32-iad2
+ks_repo: http://10.3.163.35/pub/fedora/linux/releases/32/Server/x86_64/os/
 
 vmhost: vmhost-x86-02.iad2.fedoraproject.org
 volgroup: /dev/vg_guests
 
 eth0_ip: 10.3.163.74
-eth0_secondary_ip: 10.3.163.30
+# eth0_secondary_ip: 10.3.163.30
 
 # This is consumed by the roles/fedora-web/main role
 sponsor: redhat
