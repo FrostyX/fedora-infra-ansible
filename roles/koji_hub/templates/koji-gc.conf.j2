@@ -143,6 +143,9 @@ policy =
     tag *-infra && order >= 2 :: untag
     tag *-infra-stg && order >= 2 && age > 4 weeks :: untag
 
+    #stuff for eln tags
+    tag eln* && order >= 2 :: untag
+
     #default: keep the last 3
     order > 2 :: untag
 
