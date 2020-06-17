@@ -82,8 +82,6 @@
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/smtp-mm.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/sundries.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/tang.yml
-- import_playbook: /srv/web/infra/ansible/playbooks/groups/taskotron-client-hosts.yml
-- import_playbook: /srv/web/infra/ansible/playbooks/groups/taskotron.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/torrent.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/unbound.yml
 - import_playbook: /srv/web/infra/ansible/playbooks/groups/value.yml
