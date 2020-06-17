@@ -20,17 +20,15 @@
   - collectd/base
   - collectd/server
   - sudo
-  - role: epylog
-    when: datacenter != 'iad2'
-  - role: openvpn/client
-  - role: awstats
-    when: datacenter != 'iad2'
+  - openvpn/client
+  - awstats
+  - web-data-analysis
   - role: keytab/service
     owner_user: apache
     owner_group: apache
     service: HTTP
     host: "admin.fedoraproject.org"
-    when: env == "production" and datacenter != 'iad2'
+    when: env == "production"
 
   pre_tasks:
   - import_tasks: "{{ tasks_path }}/yumrepos.yml"
@@ -62,10 +60,41 @@
 
   roles:
   - cloudstats
-#  - role: nfs/client
-#    mnt_dir: '/mnt/fedora_stats'
-#    nfs_mount_opts: "rw,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3"
-#    nfs_src_dir: 'fedora_stats'
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
+
+- name: dole out the service-specific config
+  hosts: log01.iad2.fedoraproject.org
+  user: root
+  gather_facts: True
+  vars_files:
+   - /srv/web/infra/ansible/vars/global.yml
+   - "/srv/private/ansible/vars.yml"
+   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+  handlers:
+  - import_tasks: "{{ handlers_path }}/restart_services.yml"
+
+  roles:
+   - role: nfs/client
+     mnt_dir: '/mnt/fedora_stats'
+     nfs_mount_opts: "rw,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3"
+     nfs_src_dir: 'fedora_stats'
+   - geoip
+
+  tasks:
+   - name: install needed packages
+     package: name={{ item }} state=present
+     with_items:
+       - httpd
+       - httpd-tools
+       - mod_ssl
+       - rsync
+       - emacs-nox
+       - emacs-git
+       - git
+       - bc
+       - gnuplot
+       - htmldoc
+       - mod_auth_gssapi
+
