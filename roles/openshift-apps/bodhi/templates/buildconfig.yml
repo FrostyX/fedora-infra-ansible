@@ -25,6 +25,7 @@ items:
             curl -o /usr/lib/python3.8/site-packages/bodhi/server/tasks/updates.py https://raw.githubusercontent.com/cverna/bodhi/fix_editing_updates/bodhi/server/tasks/updates.py &&\
             curl -o /usr/lib/python3.8/site-packages/bodhi/server/tasks/tag_update_builds.py https://raw.githubusercontent.com/cverna/bodhi/fix_editing_updates/bodhi/server/tasks/tag_update_builds.py &&\
             curl -o /usr/lib/python3.8/site-packages/bodhi/server/tasks/handle_side_and_related_tags.py https://raw.githubusercontent.com/cverna/bodhi/fix_editing_updates/bodhi/server/tasks/handle_side_and_related_tags.py &&\
+            curl -o /usr/lib/python3.8/site-packages/bodhi/server/tasks/approve_testing.py https://raw.githubusercontent.com/cverna/bodhi/fix_editing_updates/bodhi/server/tasks/approve_testing.py &&\
             curl -o /usr/lib/python3.8/site-packages/bodhi/server/services/updates.py https://raw.githubusercontent.com/cverna/bodhi/fix_editing_updates/bodhi/server/services/updates.py
 
         # Set up krb5
