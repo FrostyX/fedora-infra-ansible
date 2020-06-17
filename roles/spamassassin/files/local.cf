@@ -14,19 +14,19 @@ score RCVD_IN_RP_RNBL 0
 score RCVD_IN_RP_CERTIFIED 0
 score RCVD_IN_RP_SAFE 0
 
-# Red Hat's private PSBL zone mirror
-header   RCVD_IN_PSBL  eval:check_rbl('psbl-lastexternal', 'psbl.redhat.com.')
+# # Red Hat's private PSBL zone mirror
+# header   RCVD_IN_PSBL  eval:check_rbl('psbl-lastexternal', 'psbl.redhat.com.')
 
-# Red Hat's private spamhaus mirror
-header __RCVD_IN_ZEN            eval:check_rbl('zen', 'sh-zen.redhat.com.')
-header RCVD_IN_XBL              eval:check_rbl('zen-lastexternal', 'sh-zen.redhat.com.', '127.0.0.[45678]')
-header RCVD_IN_PBL              eval:check_rbl('zen-lastexternal', 'sh-zen.redhat.com.', '127.0.0.1[01]')
-header RCVD_IN_CSS              eval:check_rbl_sub('zen', 'sh-zen.redhat.com.', '127.0.0.3')
-uridnsbl        URIBL_SBL       sh-sbl.redhat.com.       TXT
+# # Red Hat's private spamhaus mirror
+# header __RCVD_IN_ZEN            eval:check_rbl('zen', 'sh-zen.redhat.com.')
+# header RCVD_IN_XBL              eval:check_rbl('zen-lastexternal', 'sh-zen.redhat.com.', '127.0.0.[45678]')
+# header RCVD_IN_PBL              eval:check_rbl('zen-lastexternal', 'sh-zen.redhat.com.', '127.0.0.1[01]')
+# header RCVD_IN_CSS              eval:check_rbl_sub('zen', 'sh-zen.redhat.com.', '127.0.0.3')
+# uridnsbl        URIBL_SBL       sh-sbl.redhat.com.       TXT
 
-# Red Hat's private anubis mirror
-header __RCVD_IN_ANBREP eval:check_rbl('anubisrep-lastexternal', 'anb-rep.redhat.com.')
-tflags __RCVD_IN_ANBREP          net
+# # Red Hat's private anubis mirror
+# header __RCVD_IN_ANBREP eval:check_rbl('anubisrep-lastexternal', 'anb-rep.redhat.com.')
+# tflags __RCVD_IN_ANBREP          net
 
 header RCVD_IN_ANBREP_Z     eval:check_rbl_sub('anubisrep-lastexternal', '^127.0.0.2$')
 describe RCVD_IN_ANBREP_Z   Spam wave participant
