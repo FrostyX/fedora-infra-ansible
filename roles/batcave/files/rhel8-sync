@@ -41,19 +41,18 @@ for A in ${ARCHES}; do
     # needed for modularity.
     for R in ${REPOS}; do
         echo "Syncing ${R} for ${A}"
-        reposync -c ${RHEL8SYNCDIR}/${CONF} -r ${R} -a ${A} -p ${A} &>  /dev/null
         # Be verbose on errors.
         if [[ $? -ne 0 ]]; then
-            echo "Something went wrong with reposync -c ${RHEL8SYNCDIR}/${CONF} -r ${R} -a ${A} -a noarch -p ${A}"
+            echo "Something went wrong with reposync -c ${RHEL8SYNCDIR}/${CONF} --repoid ${R} -a ${A} -a noarch -p ${A}"
         fi
         # x86_64 is 'special' because we have to tell it for i686 also.
         if [[ ${A} == 'x86_64' ]]; then
-           dnf reposync -c ${RHEL8SYNCDIR}/${CONF} ${DNFOPTS}  --repo=${R} -a ${A} -a noarch -a i686 -p ${A} &> /dev/null
+           dnf reposync -c ${RHEL8SYNCDIR}/${CONF} ${DNFOPTS}  --repoid=${R} -a ${A} -a noarch -a i686 -p ${A} &> /dev/null
         else
-           dnf reposync -c ${RHEL8SYNCDIR}/${CONF} ${DNFOPTS}  --repo=${R} -a ${A} -a noarch -p ${A} &> /dev/null
+           dnf reposync -c ${RHEL8SYNCDIR}/${CONF} ${DNFOPTS}  --repoid=${R} -a ${A} -a noarch -p ${A} &> /dev/null
         fi
         if [[ $? -ne 0 ]]; then
-            echo "Something went wrong with dnf reposync -c ${RHEL8SYNCDIR}/${CONF} -r ${R} -a ${A} -p ${A}"
+            echo "Something went wrong with dnf reposync -c ${RHEL8SYNCDIR}/${CONF} --repoid ${R} -a ${A} -p ${A}"
         fi
     done
 done
@@ -66,5 +65,5 @@ done
 
 OTHERCONF=yum4-batcave-rhel8-other.conf
 
-reposync -c ${RHEL8SYNCDIR}/${OTHERCONF} -r rhel-8-x86_64-openstack-16-rpms -a x86_64 -p other &> /dev/null
-reposync -c ${RHEL8SYNCDIR}/${OTHERCONF} -r rhel-8-srpms-openstack-16-rpms --source -a x86_64 -p other &> /dev/null
+dnf reposync -c ${RHEL8SYNCDIR}/${OTHERCONF}  ${DNFOPTS} --repoid rhel-8-x86_64-openstack-16-rpms -a x86_64 -p other &> /dev/null
+dnf reposync -c ${RHEL8SYNCDIR}/${OTHERCONF}  ${DNFOPTS} --repoid rhel-8-srpms-openstack-16-rpms --source -a x86_64 -p other &> /dev/null

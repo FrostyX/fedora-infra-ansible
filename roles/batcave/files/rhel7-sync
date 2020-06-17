@@ -5,7 +5,7 @@ SYNCDIR=/var/cache/reposync/
 YUMDIR=/var/tmp/reposync-rhel7/
 
 ## Need to download the metadata and the modular data
-ROPTS='--download-metadata -m'
+DNFOPTS='--download-metadata -m --setopt=module_platform_id="platform:el7"'
 
 # s390 isnt working yet
 ARCHES="ppc64le s390x x86_64"
@@ -31,9 +31,9 @@ for A in ${ARCHES}; do
         grep -q ${R} ${RHEL7SYNCDIR}/${CONF}
         if [[ $? -eq 0 ]]; then 
             echo "Syncing ${R} for ${A}"
-            reposync -c ${RHEL7SYNCDIR}/${CONF} --repoid ${R} -a ${A} -p ${A} --metadata-path ${YUMDIR}/${A}
+            dnf reposync -c ${RHEL7SYNCDIR}/${CONF} ${DNFOPTS} --repoid ${R} -a ${A} -p ${A} --metadata-path ${YUMDIR}/${A}
             if [[ $? -ne 0 ]]; then
-                echo "Something went wrong with reposync -c ${RHEL7SYNCDIR}/${CONF} --repoid ${R} -a ${A} -a noarch -p ${A} --metadata-path ${YUMDIR}/${A}"
+                echo "Something went wrong with reposync -c ${RHEL7SYNCDIR}/${CONF} ${DNFOPTS} --repoid ${R} -a ${A} -a noarch -p ${A} --metadata-path ${YUMDIR}/${A}"
                 continue
             fi
             ## Try to create repo
