@@ -100,7 +100,10 @@ tag =
     # as the coreos-release tag. https://pagure.io/releng/issue/8294
     operation tag && tag coreos-pool f*-coreos-signing-pending coreos-release && has_perm coreos-continuous :: allow
     operation untag && fromtag coreos-pool f*-coreos-signing-pending coreos-release && has_perm coreos-continuous :: allow
-    # deny tagging secureboot packages that are not related to coreos-continuous
+    # eln and eln-rebuild builds, https://pagure.io/releng/issue/9538
+    operation tag && tag eln eln-rebuild && has_perm eln :: allow
+    operation untag && fromtag eln eln-rebuild && has_perm eln :: allow
+    # deny tagging secureboot packages that are not related to coreos-continuous and eln
     package kernel shim grub2 pesign :: deny
 # Allow people to tag stuff into infra-candidate if they're infra
     tag *-infra-candidate && has_perm infra :: allow
