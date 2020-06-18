@@ -233,7 +233,7 @@
 
 - name: Deploy the fedora-messaging key
   copy:
-    src: "{{ private }}/files/rabbitmq/{{env}}/pki/private/bodhi{{env_suffix}}.key"
+    src: "{{ private }}/files/rabbitmq/{{env}}/pki/private/pungi{{env_suffix}}.key"
     dest: /etc/pki/fedora-messaging/rabbitmq-pungi.key
     mode: 0600
     owner: apache
