@@ -147,7 +147,7 @@ _osbs_reactor_config_map:
 
     worker_token_secrets:
     - x86-64-orchestrator
-    - aarch64-orchestrator
+#    - aarch64-orchestrator
     - client-config-secret
 
     skip_koji_check_for_base_image: True
