@@ -1,12 +1,17 @@
 #!/usr/bin/python3
+
+import argparse
 import copy
-import fedmsg
 import functools
 import logging
 import subprocess
 import os
 import sys
 import stat
+
+import fedora_messaging.api
+import fedora_messaging.config
+import fedora_messaging.exceptions
 
 
 logging.basicConfig(level=logging.ERROR)
@@ -169,7 +174,6 @@ RELEASES = {'f32': {'topic': 'fedora',
 
 
 # Beneath this is code, no config needed here
-FEDMSG_INITED = False
 
 def run_command(cmd):
     logger.info('Running %s', cmd)
@@ -319,13 +323,18 @@ def sync_single_repo(release, repo):
                   'raw_bytes': str(stats['num_bytes']),
                   'deleted': str(stats['num_deleted'])}
 
-    if not FEDMSG_INITED:
-        fedmsg.init(active=True, name='relay_inbound', cert_prefix='ftpsync')
-        FEDMSG_INITED = True
-
-    fedmsg.publish(topic='updates.%s.sync' % RELEASES[release]['topic'],
-                   modname='bodhi',
-                   msg=fedmsg_msg)
+    try:
+        msg = fedora_messaging.api.Message(
+            topic="bodhi.updates.{}.sync".format(RELEASES[release]['topic']),
+            body=fedmsg_msg
+        )
+        fedora_messaging.api.publish(msg)
+    except fedora_messaging.exceptions.PublishReturned as e:
+        print("Fedora Messaging broker rejected message %s: %s" % (msg.id, e))
+    except fedora_messaging.exceptions.ConnectionException as e:
+        print("Error sending message %s: %s" % (msg.id, e))
+    except Exception as e:
+        print("Error sending fedora-messaging message: %s" % (e))
 
 
 def determine_last_link(release, repo):
@@ -401,9 +410,23 @@ def sync_single_release(release):
 
 
 def main():
+    parser = argparse.ArgumentParser()
+    parser.add_argument("releases", nargs="*", default=RELEASES)
+    parser.add_argument(
+        "--config",
+        dest="config",
+        help="fedora-messaging configuration file to use. "
+        "This allows overriding the default "
+        "/etc/fedora-messaging/config.toml.",
+    )
+    args = parser.parse_args()
+
+    if args.config:
+        fedora_messaging.config.conf.load_config(args.config)
+
     to_update = []
 
-    for release in sys.argv[1:] or RELEASES:
+    for release in args.releases:
         if sync_single_release(release):
             to_update.extend(RELEASES[release]['modules'])
 
