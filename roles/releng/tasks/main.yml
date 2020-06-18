@@ -205,7 +205,8 @@
     owner: apache
     group: apache
   tags:
-  - bodhi
+  - config
+  - releng
 
 - name: Deploy the fedora-messaging cert
   copy:
@@ -215,7 +216,8 @@
     owner: apache
     group: apache
   tags:
-  - bodhi
+  - config
+  - releng
 
 - name: Deploy the fedora-messaging key
   copy:
@@ -225,6 +227,8 @@
     owner: apache
     group: apache
   tags:
+  - config
+  - releng
 
 - name: Install fedora-messaging config
   template:
