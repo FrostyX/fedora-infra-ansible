@@ -130,6 +130,7 @@
     - make
     - nosync
     - python3-gobject
+    - fedora-messaging # needed by pungi to emit fedora-messages.
   tags:
   - releng
 
