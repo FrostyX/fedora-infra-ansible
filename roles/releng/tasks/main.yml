@@ -197,6 +197,46 @@
   copy: src="epel8-playground" dest=/etc/cron.d/epel8-playground
   when: inventory_hostname.startswith('branched-composer.iad2')
 
+- name: Deploy the fedora-messaging CA
+  copy:
+    src: "{{ private }}/files/rabbitmq/{{env}}/pki/ca.crt"
+    dest: /etc/pki/fedora-messaging/rabbitmq-ca.crt
+    mode: 0644
+    owner: apache
+    group: apache
+  tags:
+  - bodhi
+
+- name: Deploy the fedora-messaging cert
+  copy:
+    src: "{{ private }}/files/rabbitmq/{{env}}/pki/issued/pungi{{env_suffix}}.crt"
+    dest: /etc/pki/fedora-messaging/rabbitmq-pungi.crt
+    mode: 0644
+    owner: apache
+    group: apache
+  tags:
+  - bodhi
+
+- name: Deploy the fedora-messaging key
+  copy:
+    src: "{{ private }}/files/rabbitmq/{{env}}/pki/private/bodhi{{env_suffix}}.key"
+    dest: /etc/pki/fedora-messaging/rabbitmq-pungi.key
+    mode: 0600
+    owner: apache
+    group: apache
+  tags:
+
+- name: Install fedora-messaging config
+  template:
+    src: fedora-messaging.toml.j2
+    dest: /etc/fedora-messaging/config.toml
+    owner: apache
+    group: apache
+    mode: 0600
+  tags:
+  - config
+  - releng
+
 - name: install compose /etc/httpd/conf.d/compose.conf file
   copy: >
     src="compose.conf"
