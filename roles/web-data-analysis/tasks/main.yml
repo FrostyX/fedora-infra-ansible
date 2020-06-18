@@ -1,6 +1,6 @@
 ---
-- name: install python-pandas package
-  package: state=present name=python-pandas
+- name: install python3-pandas package
+  package: state=present name=python3-pandas
   tags:
     - packages
     - web-data
