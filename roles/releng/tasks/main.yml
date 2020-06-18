@@ -198,6 +198,17 @@
   copy: src="epel8-playground" dest=/etc/cron.d/epel8-playground
   when: inventory_hostname.startswith('branched-composer.iad2')
 
+- name: Create /etc/pki/fedora-messaging
+  file:
+    dest: /etc/pki/fedora-messaging
+    mode: 0775
+    owner: root
+    group: root
+    state: directory
+  tags:
+  - config
+  - releng
+
 - name: Deploy the fedora-messaging CA
   copy:
     src: "{{ private }}/files/rabbitmq/{{env}}/pki/ca.crt"
