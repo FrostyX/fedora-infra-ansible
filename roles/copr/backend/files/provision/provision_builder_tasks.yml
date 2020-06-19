@@ -75,13 +75,13 @@
 - name: run /bin/copr-update-builder from copr-builder package
   shell: /usr/bin/copr-update-builder
 
-- name: install the latest mock and mock-core-configs from updates-testing
-  package: state=latest name={{ packages }}
-  register: mock_updated
-  vars:
-    packages:
-    - https://kojipkgs.fedoraproject.org/packages/mock/2.2/1.fc31/noarch/mock-2.2-1.fc31.noarch.rpm
-    - https://kojipkgs.fedoraproject.org/packages/mock-core-configs/32.6/1.fc31/noarch/mock-core-configs-32.6-1.fc31.noarch.rpm
+#- name: install the latest mock and mock-core-configs from updates-testing
+#  package: state=latest name={{ packages }}
+#  register: mock_updated
+#  vars:
+#    packages:
+#    - https://kojipkgs.fedoraproject.org/packages/mock/2.2/1.fc31/noarch/mock-2.2-1.fc31.noarch.rpm
+#    - https://kojipkgs.fedoraproject.org/packages/mock-core-configs/32.6/1.fc31/noarch/mock-core-configs-32.6-1.fc31.noarch.rpm
 
 - name: re-run copr-update builder when mock/mock-core-configs are updated
   shell: /usr/bin/copr-update-builder
