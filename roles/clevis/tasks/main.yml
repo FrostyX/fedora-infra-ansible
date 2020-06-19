@@ -15,9 +15,26 @@
   tags:
    - clevis
 
-- name: enable the systemd unit to wipe dracut networking
+- name: enable the systemd unit to wipe dracut networking (br0)
   systemd:
    name: flush-dracut-network@{{ br0_dev }}
    enabled: true
+  when: br0_dev is defined
+  tags:
+   - clevis
+
+- name: enable the systemd unit to wipe dracut networking (eno1)
+  systemd:
+   name: flush-dracut-network@eno1
+   enabled: true
+  when: eno1_ip is defined
+  tags:
+   - clevis
+
+- name: enable the systemd unit to wipe dracut networking (eth0)
+  systemd:
+   name: flush-dracut-network@eth0
+   enabled: true
+  when: eth0_ip is defined
   tags:
    - clevis
