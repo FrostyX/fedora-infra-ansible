@@ -21,6 +21,7 @@ iddev.fedorainfracloud.org
 testdays.fedorainfracloud.org
 proxy30.fedoraproject.org
 proxy31.fedoraproject.org
+proxy32.fedoraproject.org
 copr-be.aws.fedoraproject.org
 copr-be-dev.aws.fedoraproject.org
 copr-dist-git.aws.fedoraproject.org
