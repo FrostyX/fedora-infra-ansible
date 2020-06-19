@@ -19,8 +19,16 @@
     parent: fi-ansible--ansible-review-base
     run: ci/ansible-review-diff.yaml
 
+- job:
+    name: fi-ansible--yamllint-diff
+    run: ci/yamllint-diff.yaml
+    files:
+      - \.yml$
+      - \.yaml$
+
 - project:
     check:
       jobs:
         - fi-ansible--zuul-jobs-verify-namespace
         - fi-ansible--ansible-review-diff
+        - fi-ansible--yamllint-diff
