@@ -82,10 +82,10 @@
 #    packages:
 #    - https://kojipkgs.fedoraproject.org/packages/mock/2.2/1.fc31/noarch/mock-2.2-1.fc31.noarch.rpm
 #    - https://kojipkgs.fedoraproject.org/packages/mock-core-configs/32.6/1.fc31/noarch/mock-core-configs-32.6-1.fc31.noarch.rpm
-
-- name: re-run copr-update builder when mock/mock-core-configs are updated
-  shell: /usr/bin/copr-update-builder
-  when: mock_updated.changed
+#
+# - name: re-run copr-update builder when mock/mock-core-configs are updated
+#   shell: /usr/bin/copr-update-builder
+#   when: mock_updated.changed
 
 - name: put copr-rpmbuild configuration file in the right place
   copy: src=files/main.ini dest=/etc/copr-rpmbuild/main.ini
