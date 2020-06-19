@@ -118,6 +118,7 @@
 
 - name: Copy over backup scriplet
   copy: src=backup-database dest=/usr/local/bin/backup-database mode=0755
+  when: not inventory_hostname.startswith('db-koji01.iad2')
   tags:
   - postgresql
 
