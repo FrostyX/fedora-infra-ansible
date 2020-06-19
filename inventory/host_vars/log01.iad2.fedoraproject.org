@@ -20,6 +20,6 @@ lvm_size: 1048576
 mem_size: 16384
 num_cpus: 16
 
-fas_client_groups: fi-apprentice,sysadmin-veteran,sysadmin-logs,sysadmin-noc,sysadmin-atomic
+fas_client_groups: fi-apprentice,sysadmin-veteran,sysadmin-logs,sysadmin-noc,sysadmin-atomic,sysadmin-analysis
 
 #host_backup_targets: ['/var/log']
