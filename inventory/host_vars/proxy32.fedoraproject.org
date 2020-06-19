@@ -14,3 +14,5 @@ nagios_Check_Services:
   swap: false
 
 public_ip: 18.185.136.17
+remote_user: fedora
+become: yes
