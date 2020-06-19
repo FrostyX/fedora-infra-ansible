@@ -24,6 +24,8 @@ EOHELP
 test -z "$1" || exit "$1"
 }
 
+set -x
+
 # handle no arguments
 test $# -eq 0 && show_help 1
 
@@ -64,7 +66,7 @@ cleanup_actions()
     if $cleanup_vm; then
         # it is safe to ask for removal of non-existeng VM (in case the playbook
         # below was shut-down before the VM was even created)
-        $delete_script
+        $delete_script || :
         exit 1
     fi
 }
