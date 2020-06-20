@@ -4,5 +4,6 @@ define hostgroup {
         hostgroup_name  vpnclients
         alias           vpnclients
         members         {% for host in groups['all']|sort %}{% if ( hostvars[host].vpn == true ) and ( hostvars[host].nagios_Can_Connect == true ) %}{{host}},{% endif %} {% endfor %}
-# TODO: Add bastion02.iad2.fedoraproject.org above when it exists.
 }
+
+# TODO: Add bastion02.iad2.fedoraproject.org above when it exists.
