@@ -1,5 +1,2 @@
 127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4
 ::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
-192.168.1.93 oci-candidate-registry01
-192.168.1.168 oci-registry01
-192.168.1.169 oci-registry02
