@@ -119,6 +119,10 @@
     when: "'releng_stg' in group_names"
 
   - fedmsg/base
+
+  - role: rabbit/user
+    username: "pungi{{ env_suffix }}"
+
   - role: releng
     tags:
     - releng
