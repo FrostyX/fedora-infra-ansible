@@ -754,6 +754,18 @@ host dell-fx02-fc08-mgmt {
      option host-name "dell-fx02-08";
 }
 
+host cavium01-mgmt {
+     hardware ethernet e0:d5:5e:ae:59:8d;
+     fixed-address 10.3.160.29;
+     option host-name "cavium01";
+}
+host cavium02-mgmt {
+     hardware ethernet e0:d5:5e:ae:53:e1;
+     fixed-address 10.3.160.30;
+     option host-name "cavium02";
+}
+
+
 host bvmhost-p08-03-mgmt {
      hardware ethernet 40:F2:E9:A5:47:60;
      fixed-address 10.3.160.121;
