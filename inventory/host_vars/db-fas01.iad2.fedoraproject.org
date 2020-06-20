@@ -46,13 +46,3 @@ shared_buffers: "2GB"
 effective_cache_size: "6GB"
 temp_buffers: "8MB"
 max_stack_depth: "4MB"
-
-nagios_Can_Connect: false
-
-nagios_Check_Services:
-  mail: false
-  nrpe: false
-  sshd: false
-  swap: false
-  ping: false
-  raid: false
