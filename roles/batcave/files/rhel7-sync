@@ -5,7 +5,7 @@ SYNCDIR=/var/cache/reposync/
 YUMDIR=/var/tmp/reposync-rhel7/
 
 ## Need to download the metadata and the modular data
-DNFOPTS='--download-metadata -m --setopt=module_platform_id="platform:el7"'
+DNFOPTS='--download-metadata -m '
 
 # s390 isnt working yet
 ARCHES="ppc64le s390x x86_64"
