@@ -849,3 +849,19 @@ host centos-mgmt01 {
      fixed-address 10.3.160.69;
      option host-name "centos01-mgmt";
 }
+
+host svault02-mgmt {
+     hardware ethernet D0:94:66:45:87:C5;
+     fixed-address 10.3.160.133;
+     option host-name "sign-vault02";
+}
+host dell-630-01-mgmt {
+     hardware ethernet 58:8A:5A:F3:9C:56;
+     fixed-address 10.3.160.31;
+     option host-name "bvirthost14";
+}
+host bkernel02-mgmt {
+     hardware ethernet D0:94:66:45:8C:13;
+     fixed-address 10.3.160.156;
+     option host-name "bkernel02";
+}
