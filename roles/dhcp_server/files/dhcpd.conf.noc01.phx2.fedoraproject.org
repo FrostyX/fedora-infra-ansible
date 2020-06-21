@@ -856,16 +856,6 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
     option log-servers 10.5.126.29;
     range 10.5.130.10 10.5.130.19;
 
-    host opengear01 {
-        hardware ethernet 00:13:C6:01:00:85;
-        fixed-address 10.5.130.20;
-        option host-name "opengear01-mgmt";
-    }
-    host opengear02 {
-        hardware ethernet 00:13:C6:01:5C:FF;
-        fixed-address 10.5.130.21;
-        option host-name "opengear02-mgmt";
-    }
 
     host vmhost-iad-09-mgmt {
         hardware ethernet B8:2A:72:FC:ED:22;
@@ -927,73 +917,7 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
         fixed-address 10.5.130.37;
         option host-name "kvm";
     }
-    host vmhost02-stg-mgmt {
-        hardware ethernet 64:00:6A:C4:8A:BE;
-        fixed-address 10.5.130.39;
-        option host-name "vmhost02-stg-mgmt";
-    }
-    host bvmhost01-stg-mgmt {
-        hardware ethernet 64:00:6A:C1:DC:82;
-        fixed-address 10.5.130.40;
-        option host-name "bvmhost01-stg-mgmt";
-    }
-    host bvmhost01-mgmt {
-        hardware ethernet 64:00:6A:C1:EF:F0;
-        fixed-address 10.5.130.41;
-        option host-name "bvmhost01-mgmt";
-    }
 
-
-    host dell-fxqa01-mgmt {
-        hardware ethernet F4:8E:38:C6:3D:8C;
-        fixed-address 10.5.130.64;
-        option host-name "dell-fxqa01";
-    }
-    host dell-fxqa01-01-mgmt {
-        hardware ethernet 48:4D:7E:05:4E:F0;
-        fixed-address 10.5.130.65;
-        option host-name "dell-fxqa01-01";
-    }
-    host dell-fxqa01-02-mgmt {
-        hardware ethernet 48:4D:7E:05:4F:C0;
-        fixed-address 10.5.130.66;
-        option host-name "dell-fxqa01-02";
-    }
-    host dell-fxqa01-03-mgmt {
-        hardware ethernet 48:4D:7E:05:55:79;
-        fixed-address 10.5.130.67;
-        option host-name "dell-fxqa01-03";
-    }
-    host vmhost01-stg-mgmt {
-        hardware ethernet 58:8A:5A:EE:F2:0E;
-        fixed-address 10.5.130.68;
-        option host-name "vmhost01-stg-mgmt";
-    }
-    host vmhost-cloud-01 {
-        hardware ethernet B8:2A:72:FC:76:02;
-        fixed-address 10.5.130.100;
-        option host-name "vmhost-cloud01-mgmt";
-    }
-    host vmhost-04 {
-        hardware ethernet 4c:d9:8f:04:64:5e;
-        fixed-address 10.5.130.101;
-        option host-name "vmhost01-mgmt";
-    }
-    host vmhost-05 {
-        hardware ethernet 4c:d9:8f:04:65:0c;
-        fixed-address 10.5.130.102;
-        option host-name "vmhost02-mgmt";
-    }
-    host cavium01-mgmt {
-        hardware ethernet e0:d5:5e:ae:59:8d;
-        fixed-address 10.5.130.103;
-        option host-name "cavium01";
-    }
-    host cavium02-mgmt {
-        hardware ethernet e0:d5:5e:ae:53:e1;
-        fixed-address 10.5.130.104;
-        option host-name "cavium02";
-    }
 
     host kernel03-mgmt {
         hardware ethernet d0:94:66:7c:b2:dd;
@@ -1020,21 +944,6 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
         fixed-address 10.5.130.120;
         option host-name "sign-vault06";
     }
-    host bvh12-mgmt {
-        hardware ethernet 58:8A:5A:EE:F0:02;
-        fixed-address 10.5.130.121;
-        option host-name "bvirthost12";
-    }
-    host bvh13-mgmt {
-        hardware ethernet 58:8A:5A:EE:F0:72;
-        fixed-address 10.5.130.122;
-        option host-name "bvirthost13";
-    }
-    host bvh15-mgmt {
-        hardware ethernet 58:8A:5A:F3:A1:CE;
-        fixed-address 10.5.130.124;
-        option host-name "bvirthost15";
-    }
     host copr-vmhost01-mgmt {
         hardware ethernet f4:02:70:d3:11:90;
         fixed-address 10.5.130.125;
@@ -1054,11 +963,6 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
         hardware ethernet f4:02:70:d3:12:86;
         fixed-address 10.5.130.128;
         option host-name "copr-vmhost02-mgmt";
-    }
-    host retrace03-mgmt {
-        hardware ethernet f4:02:70:fa:79:7e;
-        fixed-address 10.5.130.129;
-        option host-name "retrace03-mgmt";
     }
     host buildvmhost-a64-10-mgmt {
         hardware ethernet E8:6A:64:39:18:C3;
@@ -1115,76 +1019,11 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
         fixed-address 10.5.130.148;
         option host-name "buildvmhost-a64-21";
     }
-    host cloudvmhost-a64-01-mgmt {
-        hardware ethernet E8:6A:64:39:19:62;
-        fixed-address 10.5.130.149;
-        option host-name "cloudvmhost-a64-01";
-    }
-    host cloudfx01-mgmt {
-        hardware ethernet F4:8E:38:C7:54:DC;
-        fixed-address 10.5.130.150;
-        option host-name "cloudfx01";
-    }
-    host cloudfx01-01-mgmt {
-        hardware ethernet 40:5C:FD:A5:7F:C0;
-        fixed-address 10.5.130.151;
-        option host-name "cloudfx01-01";
-    }
-    host cloudfx01-02-mgmt {
-        hardware ethernet 40:5C:FD:A5:80:90;
-        fixed-address 10.5.130.152;
-        option host-name "cloudfx01-02";
-    }
-    host cloudfx01-03-mgmt {
-        hardware ethernet 40:5C:FD:A5:86:49;
-        fixed-address 10.5.130.153;
-        option host-name "cloudfx01-03";
-    }
-    host cloudfx01-04-mgmt {
-        hardware ethernet 40:5C:FD:A5:86:4A;
-        fixed-address 10.5.130.154;
-        option host-name "cloudfx01-04";
-    }
-    host cloudfx01-05-mgmt {
-        hardware ethernet 40:5C:FD:A5:7F:DA;
-        fixed-address 10.5.130.155;
-        option host-name "cloudfx01-05";
-    }
-    host cloudfx01-06-mgmt {
-        hardware ethernet 40:5C:FD:A5:81:FE;
-        fixed-address 10.5.130.156;
-        option host-name "cloudfx01-06";
-    }
-    host cloudfx01-07-mgmt {
-        hardware ethernet 40:5c:fd:a5:87:b7;
-        fixed-address 10.5.130.157;
-        option host-name "cloudfx01-07";
-    }
-    host cloudfx01-08-mgmt {
-        hardware ethernet 40:5C:FD:A5:87:B8;
-        fixed-address 10.5.130.158;
-        option host-name "cloudfx01-08";
-    }
-    host vmhost-os03-mgmt {
-        hardware ethernet  f0:1f:af:e2:6d:1f;
-        fixed-address 10.5.130.159;
-        option host-name "vmhost-os03";
-    }
         
     host qa-vmhost01-mgmt {
         hardware ethernet f4:02:70:cf:c2:ca;
         fixed-address 10.5.130.175;
         option host-name "qa-vmhost01-mgmt";
-    }
-    host qa01-mgmt {
-        hardware ethernet 4c:d9:8f:03:95:28;
-        fixed-address 10.5.130.185;
-        option host-name "qa01-mgmt";
-    }
-    host qa02-mgmt {
-        hardware ethernet 4c:d9:8f:04:3d:1c;
-        fixed-address 10.5.130.186;
-        option host-name "qa02-mgmt";
     }
     host qa03-mgmt {
         hardware ethernet 00:21:5e:ca:c7:65;
@@ -1212,67 +1051,6 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
         fixed-address 10.5.130.192;
         option host-name "qa08-mgmt";
     }
-    host virthost06-mgmt {
-        hardware ethernet 84:7b:eb:f3:62:32;
-        fixed-address 10.5.130.195;
-        option host-name "virthost06";
-    }
-    host bvirthost04-mgmt {
-        hardware ethernet 84:7B:EB:F3:BC:7A;
-        fixed-address 10.5.130.199;
-        option host-name "bvirthost04";
-    }
-   host bvirthost05-mgmt {
-        hardware ethernet 10:7D:1A:FF:5A:B6;
-        fixed-address 10.5.130.202;
-        option host-name "bvirthost05";
-     }
-    host bkernel04-mgmt {
-        hardware ethernet D0:94:66:45:A7:E8;
-        fixed-address 10.5.130.203;
-        option host-name "bkernel04";
-    } 
-    host virthost01-mgmt {
-        hardware ethernet D0:94:66:44:CE:44;
-        fixed-address 10.5.130.204;
-        option host-name "vmhost01";
-    } 
-    host virthost14-mgmt {
-        hardware ethernet 58:8A:5A:F3:9E:BC ;
-        fixed-address 10.5.130.213;
-        option host-name "virthost14";
-    } 
-    host virthost12-mgmt {
-        hardware ethernet 58:8A:5A:EE:EF:F0;
-        fixed-address 10.5.130.228;
-        option host-name "virthost12";
-    } 
-    host virthost19-mgmt {
-        hardware ethernet 74:E6:E2:FD:78:54 ;
-        fixed-address 10.5.130.238;
-        option host-name "virthost19";
-    } 
-    host virthost20-mgmt {
-        hardware ethernet 74:E6:E2:FD:6A:5A;
-        fixed-address 10.5.130.239;
-        option host-name "virthost20";
-    } 
-    host virthost21-mgmt {
-        hardware ethernet 74:E6:E2:FD:76:DE;
-        fixed-address 10.5.130.240;
-        option host-name "virthost21";
-    }
-    host virthost22-mgmt {
-        hardware ethernet 74:e6:e2:fd:76:ba;
-	fixed-address 10.5.130.241;
-        option host-name "virthost22";
-    }
-    host virthost-comm01-mgmt {
-        hardware ethernet 5c:f3:fc:53:db:fd;
-        fixed-address 10.5.130.207;
-        option host-name "virthost-comm01-mgmt";
-    }
-
     host temp02-mgmt {
         hardware ethernet a4:93:4c:aa:e2:37;
         fixed-address 10.5.130.211;
