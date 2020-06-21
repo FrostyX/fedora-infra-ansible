@@ -860,9 +860,14 @@ host dell-630-01-mgmt {
      fixed-address 10.3.160.31;
      option host-name "bvirthost14";
 }
-host bkernel02-mgmt {
+host bkernel01-mgmt {
      hardware ethernet D0:94:66:45:8C:13;
      fixed-address 10.3.160.156;
+     option host-name "bkernel01";
+}
+host bkernel02-mgmt {
+     hardware ethernet D0:94:66:45:8C:0F;
+     fixed-address 10.3.160.157;
      option host-name "bkernel02";
 }
 host opengear01 {
