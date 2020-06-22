@@ -28,7 +28,7 @@
     - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
   tasks:
     - name: enable nrpe for monitoring (noc01)
-      iptables: action=insert chain=INPUT destination_port=5666 protocol=tcp source=10.5.126.41 state=present jump=ACCEPT
+      iptables: action=insert chain=INPUT destination_port=5666 protocol=tcp source=10.3.163.10 state=present jump=ACCEPT
       tags:
       - iptables
 
@@ -68,7 +68,7 @@
 
   tasks:
     - name: enable nrpe for monitoring (noc01)
-      iptables: action=insert chain=INPUT destination_port=5666 protocol=tcp source=10.5.126.41 state=present jump=ACCEPT
+      iptables: action=insert chain=INPUT destination_port=5666 protocol=tcp source=10.3.163.10 state=present jump=ACCEPT
       tags:
       - iptables
 
@@ -192,4 +192,4 @@
       changed_when: "'Downloaded newer image' in docker_pull_fedora.stdout"
 
     - name: enable nrpe for monitoring (noc01)
-      iptables: action=insert chain=INPUT destination_port=5666 protocol=tcp source=10.5.126.41 state=present jump=ACCEPT
+      iptables: action=insert chain=INPUT destination_port=5666 protocol=tcp source=10.3.163.10 state=present jump=ACCEPT
