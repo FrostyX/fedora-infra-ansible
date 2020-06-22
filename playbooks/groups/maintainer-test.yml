@@ -49,6 +49,7 @@
     tags:
      - maintainer-test
     when: inventory_hostname.startswith(('f31-test','f30-test','el7-test'))
+    ignore_errors: true
 
   - name: mount cache filesystem on /var/cache/mock
     mount: path=/var/cache/mock state=mounted src=/dev/nvme1n1p1 fstype=ext4
