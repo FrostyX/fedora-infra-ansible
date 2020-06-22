@@ -16,22 +16,3 @@ certfile = "/etc/pki/fedora-messaging/rabbitmq-pungi.crt"
 
 [client_properties]
 app = "pungi"
-
-[qos]
-prefetch_size = 0
-prefetch_count = 25
-
-[log_config]
-version = 1
-disable_existing_loggers = true
-[log_config.formatters.simple]
-format = "%(asctime)s [%(name)s %(levelname)s] %(message)s"
-datefmt = "%Y-%m-%d %H:%M:%S"
-[log_config.handlers.console]
-class = "logging.StreamHandler"
-formatter = "simple"
-stream = "ext://sys.stdout"
-[log_config.loggers.fedora_messaging]
-level = "INFO"
-propagate = false
-handlers = ["console"]

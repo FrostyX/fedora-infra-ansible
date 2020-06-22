@@ -504,7 +504,11 @@ handlers = ["console"]
 
     [consumer_config.coreos]
     bucket = "fcos-builds"
-    key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
+    {% if env == "staging" %}
+    # Set key to 'testkey' because in staging we only have one key and
+    # detecting which key to use based on FCOS version numbers won't work.
+    key = "testkey"
+    {% endif %}
 
         [consumer_config.coreos.aws]
         access_key = "{{ fcos_builds_releng_aws_access_id }}"

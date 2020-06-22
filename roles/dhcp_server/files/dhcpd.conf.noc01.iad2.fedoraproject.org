@@ -595,19 +595,6 @@ host bvmhost-a64-04 {
      option subnet-mask 255.255.255.0;
 }
 
-host bvmhost-a64-04-mgmt {
-     hardware ethernet E8:6A:64:39:19:4F ;
-     fixed-address 10.3.160.104;
-     option routers 10.3.160.254;
-     option subnet-mask 255.255.255.0;
-}
-
-host bhwhost-a64-02-mgmt {
-     hardware ethernet AA:31:8D:3E:31:6F ;
-     fixed-address 10.3.160.244;
-     option routers 10.3.160.254;
-     option subnet-mask 255.0.0.0;
-}
 
 
 host qvmhost-x86-01 {
@@ -644,12 +631,6 @@ host openqa01-a64-worker01 {
      option subnet-mask 255.255.255.0;
 }
 
-host centos-mgmt01 {
-     hardware ethernet 4c:d9:8f:bc:5a:ea;
-     fixed-address 10.3.160.69;
-     option host-name "centos01-mgmt";
-}
-
 host bvmhost-p09-01 {
      hardware ethernet ac:1f:6b:59:70:ff;
      fixed-address 10.3.171.15;
@@ -676,3 +657,332 @@ host bvmhost-p08-01 {
      option subnet-mask 255.255.255.0;
 #     filename "boot/grub2/powerpc-ieee1275/core.elf";
 }
+
+
+#
+# All MGMT hosts go below here
+#
+    # Dell FX
+host dell-fx01-mgmt {
+     hardware ethernet f4:8e:38:c1:3f:b6;
+     fixed-address 10.3.160.11;
+     option host-name "dell-fx01";
+}
+host dell-fx01-fc01-mgmt {
+     hardware ethernet 14:9E:CF:61:9E:60;
+     fixed-address 10.3.160.12;
+     option host-name "dell-fx01-fc01";
+}
+host dell-fx01-fc02-mgmt {
+     hardware ethernet 14:9E:CF:61:9F:30;
+     fixed-address 10.3.160.13;
+     option host-name "dell-fx01-fc02";
+}
+host dell-fx01-fc03-mgmt {
+     hardware ethernet 14:9E:CF:61:A4:E9;
+     fixed-address 10.3.160.14;
+     option host-name "dell-fx01-fc03";
+}
+host dell-fx01-fc04-mgmt {
+     hardware ethernet 14:9E:CF:61:A4:EA;
+     fixed-address 10.3.160.15;
+     option host-name "dell-fx01-fc04";
+}
+host dell-fx01-fc05-mgmt {
+     hardware ethernet 14:9E:CF:61:9E:7A;
+     fixed-address 10.3.160.16;
+     option host-name "dell-fx01-fc05";
+}
+host dell-fx01-fc06-mgmt {
+     hardware ethernet 14:9E:CF:61:A0:9E;
+     fixed-address 10.3.160.17;
+     option host-name "dell-fx01-fc06";
+}
+host dell-fx01-fc07-mgmt {
+     hardware ethernet 14:9E:CF:61:A6:57;
+     fixed-address 10.3.160.18;
+     option host-name "dell-fx01-fc07";
+}
+host dell-fx01-fc08-mgmt {
+     hardware ethernet 14:9E:CF:61:A6:58;
+     fixed-address 10.3.160.19;
+     option host-name "dell-fx01-08";
+}
+host dell-fx02-mgmt {
+     hardware ethernet f4:8e:38:c1:48:c6;
+     fixed-address 10.3.160.20;
+     option host-name "dell-fx02";
+}
+host dell-fx02-fc01-mgmt {
+     hardware ethernet F8:CA:B8:F7:26:E0;
+     fixed-address 10.3.160.21;
+     option host-name "dell-fx02-fc01";
+}
+host dell-fx02-fc02-mgmt {
+     hardware ethernet F8:CA:B8:F7:27:B0;
+     fixed-address 10.3.160.22;
+     option host-name "dell-fx02-fc02";
+}
+host dell-fx02-fc03-mgmt {
+     hardware ethernet F8:CA:B8:F7:2D:69;
+     fixed-address 10.3.160.23;
+     option host-name "dell-fx02-fc03";
+}
+host dell-fx02-fc04-mgmt {
+     hardware ethernet F8:CA:B8:F7:2D:6A;
+     fixed-address 10.3.160.24;
+     option host-name "dell-fx02-fc04";
+}
+host dell-fx02-fc05-mgmt {
+     hardware ethernet F8:CA:B8:F7:26:FA;
+     fixed-address 10.3.160.25;
+     option host-name "dell-fx02-fc05";
+}
+host dell-fx02-fc06-mgmt {
+     hardware ethernet F8:CA:B8:F7:29:1E;
+     fixed-address 10.3.160.26;
+     option host-name "dell-fx02-fc06";
+}
+host dell-fx02-fc07-mgmt {
+     hardware ethernet F8:CA:B8:F7:2E:D7;
+     fixed-address 10.3.160.27;
+     option host-name "dell-fx02-fc07";
+}
+host dell-fx02-fc08-mgmt {
+     hardware ethernet F8:CA:B8:F7:2E:D8;
+     fixed-address 10.3.160.28;
+     option host-name "dell-fx02-08";
+}
+
+host cavium01-mgmt {
+     hardware ethernet e0:d5:5e:ae:59:8d;
+     fixed-address 10.3.160.29;
+     option host-name "cavium01";
+}
+host cavium02-mgmt {
+     hardware ethernet e0:d5:5e:ae:53:e1;
+     fixed-address 10.3.160.30;
+     option host-name "cavium02";
+}
+
+
+host bvmhost-p08-03-mgmt {
+     hardware ethernet 40:F2:E9:A5:47:60;
+     fixed-address 10.3.160.121;
+     option host-name "bvmhost-p08-03";
+}
+
+host bvmhost-p08-04-mgmt {
+     hardware ethernet 98:BE:94:4B:96:10;
+     fixed-address 10.3.160.122;
+     option host-name "bvmhost-p08-04";
+}
+
+host bvmhost-p08-05-mgmt {
+     hardware ethernet 98:BE:94:4B:94:C4;
+     fixed-address 10.3.160.123;
+     option host-name "bvmhost-p08-05";
+}
+
+host bvmhost-p09-03-mgmt {
+     hardware ethernet ac:1f:6b:5c:03:9d;
+     fixed-address 10.3.160.128;
+     option host-name "bvmhost-p09-03";
+}
+host bvmhost-p09-04-mgmt {
+     hardware ethernet ac:1f:6b:5c:03:94;
+     fixed-address 10.3.160.129;
+     option host-name "bvmhost-p09-04";
+}
+
+host bvmhost-a64-04-mgmt {
+     hardware ethernet E8:6A:64:39:19:4F ;
+     fixed-address 10.3.160.104;
+     option routers 10.3.160.254;
+}
+
+host bvmhost-a64-05-mgmt {
+     hardware ethernet E8:6A:64:39:19:68;
+     fixed-address 10.3.160.105;
+     option host-name "bvmhost-aarch64-05";
+}
+
+host bvmhost-a64-06-mgmt {
+     hardware ethernet E8:6A:64:39:18:60;
+     fixed-address 10.3.160.106;
+     option host-name "bvmhost-aarch64-06";
+}
+host bvmhost-a64-07-mgmt {
+     hardware ethernet E8:6A:64:39:19:35;
+     fixed-address 10.3.160.107;
+     option host-name "bvmhost-aarch64-07";
+}
+host openqa-a64-02-mgmt {
+     hardware ethernet E8:6A:64:97:6B:41;
+     fixed-address 10.3.160.142;
+     option host-name "openqa-aarch64-01";
+}
+host openqa-a64-03-mgmt {
+     hardware ethernet E8:6A:64:97:6B:7A;
+     fixed-address 10.3.160.143;
+     option host-name "openqa-aarch64-03";
+}
+
+
+
+host buildvmhost-a64-osbs01-mgmt {
+     hardware ethernet E8:6A:64:39:18:B3;
+     fixed-address 10.3.160.120;
+     option host-name "bvmhost-a64-osbs01-01";
+}
+
+
+host bhwhost-a64-02-mgmt {
+     hardware ethernet AA:31:8D:3E:31:6F ;
+     fixed-address 10.3.160.244;
+     option routers 10.3.160.254;
+     option subnet-mask 255.255.255.0;
+}
+
+host centos-mgmt01 {
+     hardware ethernet 4c:d9:8f:bc:5a:ea;
+     fixed-address 10.3.160.69;
+     option host-name "centos01-mgmt";
+}
+
+host svault02-mgmt {
+     hardware ethernet D0:94:66:45:87:C5;
+     fixed-address 10.3.160.133;
+     option host-name "sign-vault02";
+}
+host dell-630-01-mgmt {
+     hardware ethernet 58:8A:5A:F3:9C:56;
+     fixed-address 10.3.160.31;
+     option host-name "bvirthost14";
+}
+host bkernel01-mgmt {
+     hardware ethernet D0:94:66:45:8C:13;
+     fixed-address 10.3.160.156;
+     option host-name "bkernel01";
+}
+host bkernel02-mgmt {
+     hardware ethernet D0:94:66:45:8C:0F;
+     fixed-address 10.3.160.157;
+     option host-name "bkernel02";
+}
+host opengear01 {
+     hardware ethernet 00:13:C6:01:00:85;
+     fixed-address 10.3.160.31;
+     option host-name "opengear01-mgmt";
+}
+host opengear02 {
+     hardware ethernet 00:13:C6:01:5C:FF;
+     fixed-address 10.3.160.32;
+     option host-name "opengear02-mgmt";
+}
+host dell-r6x0-01-mgmt {
+     hardware ethernet 64:00:6A:C4:8A:BE;
+     fixed-address 10.3.160.33;
+     option host-name "vmhost02-stg-mgmt";
+}
+host dell-r6x0-02-mgmt {
+     hardware ethernet 64:00:6A:C1:DC:82;
+     fixed-address 10.3.160.34;
+     option host-name "bvmhost01-stg-mgmt";
+}
+host dell-r6x0-03-mgmt {
+     hardware ethernet 64:00:6A:C1:EF:F0;
+     fixed-address 10.3.160.35;
+     option host-name "bvmhost01-mgmt";
+}
+host dell-r6x0-04-mgmt {
+     hardware ethernet 84:7b:eb:f3:62:32;
+     fixed-address 10.3.160.36;
+     option host-name "virthost06";
+}
+host dell-r6x0-05-mgmt {
+     hardware ethernet 84:7B:EB:F3:BC:7A;
+     fixed-address 10.3.160.37;
+     option host-name "bvirthost04";
+}
+host dell-r6x0-06-mgmt {
+     hardware ethernet 10:7D:1A:FF:5A:B6;
+     fixed-address 10.3.160.38;
+     option host-name "bvirthost05";
+}
+host dell-r6x0-07-mgmt {
+     hardware ethernet D0:94:66:44:CE:44;
+     fixed-address 10.3.160.39;
+     option host-name "vmhost01";
+} 
+host dell-r6x0-08-mgmt {
+     hardware ethernet 58:8A:5A:F3:9E:BC ;
+     fixed-address 10.3.160.40;
+     option host-name "virthost14";
+} 
+host dell-r6x0-09-mgmt {
+     hardware ethernet 58:8A:5A:EE:EF:F0;
+     fixed-address 10.3.160.41;
+     option host-name "virthost12";
+} 
+host dell-r6x0-10-mgmt {
+     hardware ethernet 74:E6:E2:FD:78:54 ;
+     fixed-address 10.3.160.42;
+     option host-name "virthost19";
+} 
+host dell-r6x0-11-mgmt {
+     hardware ethernet 74:E6:E2:FD:6A:5A;
+     fixed-address 10.3.160.43;
+     option host-name "virthost20";
+} 
+host dell-r6x0-12-mgmt {
+     hardware ethernet 74:E6:E2:FD:76:DE;
+     fixed-address 10.3.160.44;
+     option host-name "virthost21";
+}
+host dell-r6x0-13-mgmt {
+     hardware ethernet 74:e6:e2:fd:76:ba;
+     fixed-address 10.3.160.45;
+     option host-name "virthost22";
+}
+host dell-r6x0-14-mgmt {
+     hardware ethernet 5c:f3:fc:53:db:fd;
+     fixed-address 10.3.160.46;
+     option host-name "virthost-comm01-mgmt";
+}
+host dell-r6x0-15-mgmt {
+     hardware ethernet 4c:d9:8f:04:64:5e;
+     fixed-address 10.3.160.47;
+     option host-name "vmhost01-mgmt";
+}
+host dell-r6x0-16-mgmt {
+     hardware ethernet 58:8A:5A:EE:F2:0E;
+     fixed-address 10.3.160.48;
+     option host-name "vmhost01-stg-mgmt";
+}
+host dell-r6x0-17-mgmt {
+     hardware ethernet 58:8A:5A:EE:F0:02;
+     fixed-address 10.3.160.49;
+     option host-name "bvirthost12";
+}
+host dell-r6x0-18-mgmt {
+     hardware ethernet 58:8A:5A:EE:F0:72;
+     fixed-address 10.3.160.50;
+     option host-name "bvirthost13";
+}
+host dell-r6x0-19-mgmt {
+     hardware ethernet 58:8A:5A:F3:A1:CE;
+     fixed-address 10.3.160.51;
+     option host-name "bvirthost15";
+}
+host dell-r6x0-20-mgmt {
+     hardware ethernet 4c:d9:8f:03:95:28;
+     fixed-address 10.3.160.52;
+     option host-name "qa01-mgmt";
+}
+host dell-r6x0-21 {
+     hardware ethernet 4c:d9:8f:04:3d:1c;
+     fixed-address 10.3.160.53;
+     option host-name "qa02-mgmt";
+}
+

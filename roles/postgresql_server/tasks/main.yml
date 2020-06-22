@@ -102,15 +102,6 @@
   - config
   - postgresql
 
-- name: postgresql recover.conf template (standby only)
-  template: dest=/var/lib/pgsql/data/recovery.conf src=recovery.conf
-  when: inventory_hostname.startswith('db-koji01.iad2')
-  notify:
-  - restart postgresql
-  tags:
-  - config
-  - postgresql
-
 - name: Ensure postgres has a place to backup to
   file: dest=/backups state=directory owner=postgres
   tags:
@@ -203,7 +194,7 @@
   copy: >
     src=datagrepper_sar.py
     dest=/usr/local/bin/datagrepper_sar.py mode=0700
-  when: inventory_hostname.startswith(('db-datanommer02', 'pgbdr01.stg'))
+  when: inventory_hostname.startswith('db-datanommer01')
   tags:
   - postgresql
   - SAR

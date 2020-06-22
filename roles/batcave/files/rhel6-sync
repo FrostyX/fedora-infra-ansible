@@ -5,7 +5,7 @@ RHEL6CACHEDIR=/var/tmp/reposync-rhel6
 
 cd $RHEL6SYNCDIR
 
-DNFOPTS='--download-metadata -m --setopt=module_platform_id="platform:el6" -n'
+DNFOPTS='--download-metadata -m -n'
 
 
 mkdir -p ${RHEL6CACHEDIR}

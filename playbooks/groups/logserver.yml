@@ -91,10 +91,8 @@
        - mod_ssl
        - rsync
        - emacs-nox
-       - emacs-git
        - git
        - bc
        - gnuplot
-       - htmldoc
        - mod_auth_gssapi
 

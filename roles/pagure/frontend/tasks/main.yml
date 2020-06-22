@@ -596,3 +596,32 @@
   tags:
   - pagure
   - letsencrypt
+
+- name: Hotfix missing JS lib -- find out where the file should be
+  shell:
+    cmd: rpm -ql pagure | grep 'pagure/static/vendor$' | head -n 1
+    warn: no  # package, dnf, yum can't do this
+  register: pagure_hotfix_vendorlibpath
+  changed_when: False
+  failed_when: pagure_hotfix_vendorlibpath.rc != 0
+  tags:
+    - pagure
+    - hotfix
+
+- name: Hotfix missing JS lib -- ensure directory exists
+  file:
+    path: "{{ pagure_hotfix_vendorlibpath.stdout }}/d3"
+    state: directory
+    mode: u+rwx,g+rx,o+rx-w
+  tags:
+    - pagure
+    - hotfix
+
+- name: Hotfix missing JS lib -- ensure file exists
+  copy:
+    force: no  # don't overwrite packaged files
+    src: hotfix/d3/d3.v3.min.js
+    dest: "{{ pagure_hotfix_vendorlibpath.stdout }}/d3/d3.v3.min.js"
+  tags:
+    - pagure
+    - hotfix
