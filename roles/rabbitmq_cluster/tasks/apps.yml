@@ -32,8 +32,9 @@
   include_role:
     name: rabbit/queue
   vars:
+    loop_var: osci_pipeline_queue
     username: osci-pipelines{{ env_suffix }}
-    queue_name: "{{ item }}{{ env_suffix }}"
+    queue_name: "{{ osci)pipeline_queue }}{{ env_suffix }}"
     # TTL: 10 days (in miliseconds)
     message_ttl: 864000000
     routing_keys:
