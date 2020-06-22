@@ -1,7 +1,7 @@
 - name: install collectd-rabbitmq
   package:
     state: present
-    name: python2-collectd-rabbitmq
+    name: python3-collectd-rabbitmq-monitoring
   tags:
   - packages
   - collectd
