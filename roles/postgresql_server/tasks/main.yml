@@ -93,9 +93,18 @@
   - config
   - postgresql
 
-- name: postgresql config template
+- name: postgresql config template (el7 / postgresql 9.2)
   template: dest=/var/lib/pgsql/data/postgresql.conf src=postgresql.conf
   when: (ansible_distribution_major_version|int < 8 and ansible_distribution == 'RedHat') or ansible_distribution != 'RedHat'
+  notify:
+  - restart postgresql
+  tags:
+  - config
+  - postgresql
+
+- name: postgresql config template (el8 / postgresql 12)
+  template: dest=/var/lib/pgsql/data/postgresql.conf src=postgresql.conf-12
+  when: ansible_distribution_major_version|int > 7 and ansible_distribution == 'RedHat'
   notify:
   - restart postgresql
   tags:
