@@ -776,19 +776,30 @@ host cavium02-mgmt {
      option host-name "cavium02";
 }
 
+host bvmhost-p08-01-mgmt {
+     hardware ethernet a0:42:3f:32:b2:fb;
+     fixed-address 10.3.160.121;
+     option host-name "bvmhost-p08-01";
+}
+host bvmhost-p08-02-mgmt {
+     hardware ethernet 98:BE:94:4B:9C:D2;
+     fixed-address 10.3.160.122;
+     option host-name "bvmhost-p08-02";
+}
+
 host bvmhost-p08-03-mgmt {
      hardware ethernet 40:F2:E9:A5:47:60;
-     fixed-address 10.3.160.121;
+     fixed-address 10.3.160.123;
      option host-name "bvmhost-p08-03";
 }
 host bvmhost-p08-04-mgmt {
      hardware ethernet 98:BE:94:4B:96:10;
-     fixed-address 10.3.160.122;
+     fixed-address 10.3.160.124;
      option host-name "bvmhost-p08-04";
 }
 host bvmhost-p08-05-mgmt {
      hardware ethernet 98:BE:94:4B:94:C4;
-     fixed-address 10.3.160.123;
+     fixed-address 10.3.160.125;
      option host-name "bvmhost-p08-05";
 }
 host bvmhost-p09-03-mgmt {
@@ -1075,11 +1086,6 @@ host ppc9-04-mgmt {
      hardware ethernet ac:1f:6b:5c:03:69;
      fixed-address 10.3.160.61;
      option host-name "ppc9-04";
-}
-host p8-cloud02-mgmt {
-     hardware ethernet 98:BE:94:4B:A4:80;
-     fixed-address 10.3.160.62;
-     option host-name "p8-cloud02";
 }
 host svault06-mgmt {
      hardware ethernet D0:94:66:45:A1:66;
