@@ -857,60 +857,15 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
     range 10.5.130.10 10.5.130.19;
 
 
-    host vmhost-iad-09-mgmt {
-        hardware ethernet B8:2A:72:FC:ED:22;
-        fixed-address 10.5.130.22;
-        option host-name "vmhost-iad-09-mgmt";
-    }
-    host vmhost-iad-10-mgmt {
-        hardware ethernet B8:2A:72:FC:F2:2E;
-        fixed-address 10.5.130.23;
-        option host-name "vmhost-iad-10-mgmt";
-    }
-    host vmhost-iad-11-mgmt {
-        hardware ethernet b8:2a:72:fc:f2:44;
-        fixed-address 10.5.130.25;
-        option host-name "vmhost-iad-11-mgmt";
-    }
-    host vmhost-qa-04-mgmt {
-        hardware ethernet 74:E6:E2:F9:FF:7E;
-        fixed-address 10.5.130.26;
-        option host-name "vmhost-qa-04-mgmt";
-    }
-    host vmhost-02-mgmt {
-        hardware ethernet B8:2A:72:FC:ED:64;
-        fixed-address 10.5.130.27;
-        option host-name "vmhost-02-mgmt";
-    }
-    host vmhost-11-mgmt {
-        hardware ethernet B8:2A:72:FC:EE:68;
-        fixed-address 10.5.130.28;
-        option host-name "vmhost-11-mgmt";
-    }
-    host vmhost-qa-01-mgmt {
-        hardware ethernet 58:8A:5A:F3:9C:02;
-        fixed-address 10.5.130.30;
-        option host-name "vmhost-qa-01-mgmt";
-    }
     host storinator-mgmt {
         hardware ethernet ac:1f:6b:b6:32:27;
         fixed-address 10.5.130.31;
         option host-name "storinator-mgmt";
     }
-    host openqa-ppc-01-mgmt {
-        hardware ethernet A0:42:3F:31:C2:7E;
-        fixed-address 10.5.130.32;
-        option host-name "openqa-ppc-01-mgmt";
-    }
     host vger-mgmt {
         hardware ethernet 58:8A:5A:E5:2B:3E;
         fixed-address 10.5.130.33;
         option host-name "vger";
-    }
-    host backup-mgmt {
-        hardware ethernet 74:E6:E2:FB:4D:FC;
-        fixed-address 10.5.130.36;
-        option host-name "backup01";
     }
     host kvm-mgmt {
         hardware ethernet 00:0e:c5:01:19:82;
@@ -919,31 +874,6 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
     }
 
 
-    host kernel03-mgmt {
-        hardware ethernet d0:94:66:7c:b2:dd;
-        fixed-address 10.5.130.107;
-        option host-name "kernel-03";
-    }
-    host ppc9-03-mgmt {
-        hardware ethernet ac:1f:6b:5c:03:f9;
-        fixed-address 10.5.130.108;
-        option host-name "ppc9-03";
-    }
-    host ppc9-04-mgmt {
-        hardware ethernet ac:1f:6b:5c:03:69;
-        fixed-address 10.5.130.109;
-        option host-name "ppc9-04";
-    }
-    host p8-cloud02-mgmt {
-        hardware ethernet 98:BE:94:4B:A4:80;
-        fixed-address 10.5.130.110;
-        option host-name "p8-cloud02";
-    }
-    host svault06-mgmt {
-        hardware ethernet D0:94:66:45:A1:66;
-        fixed-address 10.5.130.120;
-        option host-name "sign-vault06";
-    }
     host copr-vmhost01-mgmt {
         hardware ethernet f4:02:70:d3:11:90;
         fixed-address 10.5.130.125;
@@ -963,98 +893,6 @@ subnet 10.5.130.0 netmask 255.255.255.0 {
         hardware ethernet f4:02:70:d3:12:86;
         fixed-address 10.5.130.128;
         option host-name "copr-vmhost02-mgmt";
-    }
-    host buildvmhost-a64-10-mgmt {
-        hardware ethernet E8:6A:64:39:18:C3;
-        fixed-address 10.5.130.130;
-        option host-name "buildvmhost-aarch64-10";
-    }
-    host buildvmhost-a64-11-mgmt {
-        hardware ethernet E8:6A:64:39:18:B2;
-        fixed-address 10.5.130.131;
-        option host-name "buildvmhost-aarch64-11";
-    }
-    host buildvmhost-a64-13-mgmt {
-        hardware ethernet E8:6A:64:39:18:95;
-        fixed-address 10.5.130.133;
-        option host-name "buildvmhost-aarch64-13";
-    }
-    host buildvmhost-a64-15-mgmt {
-        hardware ethernet E8:6A:64:39:19:69;
-        fixed-address 10.5.130.135;
-        option host-name "buildvmhost-aarch64-15";
-    }
-    host buildvmhost-a64-16-mgmt {
-        hardware ethernet E8:6A:64:39:18:CB;
-        fixed-address 10.5.130.136;
-        option host-name "buildvmhost-aarch64-16";
-    }
-    host buildvmhost-a64-17-mgmt {
-        hardware ethernet E8:6A:64:39:18:63;
-        fixed-address 10.5.130.138;
-        option host-name "buildvmhost-aarch64-17";
-    }
-    host buildvmhost-a64-19-mgmt {
-        hardware ethernet E8:6A:64:97:6B:E0;
-        fixed-address 10.5.130.140;
-        option host-name "buildvmhost-aarch64-19";
-    }
-    host openqa-a64-02-mgmt {
-        hardware ethernet E8:6A:64:97:6B:49;
-        fixed-address 10.5.130.143;
-        option host-name "openqa-aarch64-02";
-    }
-    host spare-aarc64-22-mgmt {
-        hardware ethernet e8:6a:64:39:18:99;
-        fixed-address 10.5.130.144;
-        option host-name "spare-aarch64-02";
-    }
-    host buildvmhost-a64-20-mgmt {
-        hardware ethernet E8:6A:64:39:18:67;
-        fixed-address 10.5.130.147;
-        option host-name "buildvmhost-a64-20";
-    }
-    host buildvmhost-a64-21-mgmt {
-        hardware ethernet E8:6A:64:39:18:85;
-        fixed-address 10.5.130.148;
-        option host-name "buildvmhost-a64-21";
-    }
-        
-    host qa-vmhost01-mgmt {
-        hardware ethernet f4:02:70:cf:c2:ca;
-        fixed-address 10.5.130.175;
-        option host-name "qa-vmhost01-mgmt";
-    }
-    host qa03-mgmt {
-        hardware ethernet 00:21:5e:ca:c7:65;
-        fixed-address 10.5.130.187;
-        option host-name "qa03-mgmt";
-    }
-    host qa04-mgmt {
-        hardware ethernet 00:21:5e:cb:28:15;
-        fixed-address 10.5.130.188;
-        option host-name "qa04-mgmt";
-    }
-    host qa05-mgmt {
-        hardware ethernet 00:21:5e:cb:61:b9;
-        fixed-address 10.5.130.189;
-        option host-name "qa05-mgmt";
-        option routers 10.5.130.254;
-    }
-    host qa07-mgmt {
-        hardware ethernet e4:1f:13:e7:40:01;
-        fixed-address 10.5.130.191;
-        option host-name "qa07-mgmt";
-    }
-    host qa08-mgmt {
-        hardware ethernet e4:1f:13:e7:35:95;
-        fixed-address 10.5.130.192;
-        option host-name "qa08-mgmt";
-    }
-    host temp02-mgmt {
-        hardware ethernet a4:93:4c:aa:e2:37;
-        fixed-address 10.5.130.211;
-        option host-name "temp02-mgmt.phx2.fedoraproject.org";
     }
 
 

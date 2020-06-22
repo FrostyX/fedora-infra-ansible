@@ -663,6 +663,17 @@ host bvmhost-p08-01 {
 # All MGMT hosts go below here
 #
     # Dell FX
+host centos-mgmt01 {
+     hardware ethernet 4C:D9:8F:BC:5A:EA;
+     fixed-address 10.3.160.69;
+     option host-name "centos01-mgmt";
+}
+host centos-mgmt02 {
+     hardware ethernet 4C:D9:8F:BC:8A:06;
+     fixed-address 10.3.160.70;
+     option host-name "centos02-mgmt";
+}
+
 host dell-fx01-mgmt {
      hardware ethernet f4:8e:38:c1:3f:b6;
      fixed-address 10.3.160.11;
@@ -765,25 +776,21 @@ host cavium02-mgmt {
      option host-name "cavium02";
 }
 
-
 host bvmhost-p08-03-mgmt {
      hardware ethernet 40:F2:E9:A5:47:60;
      fixed-address 10.3.160.121;
      option host-name "bvmhost-p08-03";
 }
-
 host bvmhost-p08-04-mgmt {
      hardware ethernet 98:BE:94:4B:96:10;
      fixed-address 10.3.160.122;
      option host-name "bvmhost-p08-04";
 }
-
 host bvmhost-p08-05-mgmt {
      hardware ethernet 98:BE:94:4B:94:C4;
      fixed-address 10.3.160.123;
      option host-name "bvmhost-p08-05";
 }
-
 host bvmhost-p09-03-mgmt {
      hardware ethernet ac:1f:6b:5c:03:9d;
      fixed-address 10.3.160.128;
@@ -795,18 +802,31 @@ host bvmhost-p09-04-mgmt {
      option host-name "bvmhost-p09-04";
 }
 
+host bvmhost-a64-01-mgmt {
+     hardware ethernet E8:6A:64:39:18:67;
+     fixed-address 10.3.160.101;
+     option host-name "bvmhost-a64-01";
+}
+host bvmhost-a64-02-mgmt {
+     hardware ethernet E8:6A:64:97:6B:E0;
+     fixed-address 10.3.160.102;
+     option host-name "bvmhost-a64-02";
+}
+host bvmhost-a64-03-mgmt {
+     hardware ethernet E8:6A:64:39:18:85;
+     fixed-address 10.3.160.103;
+     option host-name "bvmhost-a64-03";
+}
 host bvmhost-a64-04-mgmt {
      hardware ethernet E8:6A:64:39:19:4F ;
      fixed-address 10.3.160.104;
      option routers 10.3.160.254;
 }
-
 host bvmhost-a64-05-mgmt {
      hardware ethernet E8:6A:64:39:19:68;
      fixed-address 10.3.160.105;
      option host-name "bvmhost-aarch64-05";
 }
-
 host bvmhost-a64-06-mgmt {
      hardware ethernet E8:6A:64:39:18:60;
      fixed-address 10.3.160.106;
@@ -817,26 +837,62 @@ host bvmhost-a64-07-mgmt {
      fixed-address 10.3.160.107;
      option host-name "bvmhost-aarch64-07";
 }
-host openqa-a64-02-mgmt {
-     hardware ethernet E8:6A:64:97:6B:41;
-     fixed-address 10.3.160.142;
-     option host-name "openqa-aarch64-01";
+host bvmhost-a64-08-mgmt {
+     hardware ethernet E8:6A:64:39:18:C3;
+     fixed-address 10.3.160.108;
+     option host-name "buildvmhost-aarch64-10";
 }
-host openqa-a64-03-mgmt {
-     hardware ethernet E8:6A:64:97:6B:7A;
-     fixed-address 10.3.160.143;
-     option host-name "openqa-aarch64-03";
+host bvmhost-a64-09-mgmt {
+     hardware ethernet E8:6A:64:39:18:B2;
+     fixed-address 10.3.160.109;
+     option host-name "buildvmhost-aarch64-11";
 }
-
-
-
-host buildvmhost-a64-osbs01-mgmt {
+host bvmhost-a64-10-mgmt {
+     hardware ethernet E8:6A:64:39:18:95;
+     fixed-address 10.3.160.110;
+     option host-name "buildvmhost-aarch64-13";
+}
+host bvmhost-a64-11-mgmt {
+     hardware ethernet E8:6A:64:39:19:69;
+     fixed-address 10.3.160.111;
+     option host-name "buildvmhost-aarch64-15";
+}
+host bvmhost-a64-12-mgmt {
+     hardware ethernet E8:6A:64:39:18:CB;
+     fixed-address 10.3.160.112;
+     option host-name "buildvmhost-aarch64-16";
+}
+host bvmhost-a64-13-mgmt {
+     hardware ethernet E8:6A:64:39:18:63;
+     fixed-address 10.3.160.113;
+     option host-name "buildvmhost-aarch64-17";
+}
+host bvmhost-a64-14-mgmt {
+     hardware ethernet E8:6A:64:39:18:99;
+     fixed-address 10.3.160.114;
+     option host-name "bvmhost-a64-14";
+}
+host bvmhost-a64-osbs01-mgmt {
      hardware ethernet E8:6A:64:39:18:B3;
      fixed-address 10.3.160.120;
      option host-name "bvmhost-a64-osbs01-01";
 }
 
-
+host openqa-a64-01-mgmt {
+     hardware ethernet E8:6A:64:97:6B:49;
+     fixed-address 10.3.160.141;
+     option host-name "openqa-a64-01";
+}
+host openqa-a64-02-mgmt {
+     hardware ethernet E8:6A:64:97:6B:41;
+     fixed-address 10.3.160.142;
+     option host-name "openqa-a64-02";
+}
+host openqa-a64-03-mgmt {
+     hardware ethernet E8:6A:64:97:6B:7A;
+     fixed-address 10.3.160.143;
+     option host-name "openqa-a64-03";
+}
 host bhwhost-a64-02-mgmt {
      hardware ethernet AA:31:8D:3E:31:6F ;
      fixed-address 10.3.160.244;
@@ -844,17 +900,12 @@ host bhwhost-a64-02-mgmt {
      option subnet-mask 255.255.255.0;
 }
 
-host centos-mgmt01 {
-     hardware ethernet 4c:d9:8f:bc:5a:ea;
-     fixed-address 10.3.160.69;
-     option host-name "centos01-mgmt";
-}
-
 host svault02-mgmt {
      hardware ethernet D0:94:66:45:87:C5;
      fixed-address 10.3.160.133;
      option host-name "sign-vault02";
 }
+
 host dell-630-01-mgmt {
      hardware ethernet 58:8A:5A:F3:9C:56;
      fixed-address 10.3.160.31;
@@ -985,4 +1036,78 @@ host dell-r6x0-21 {
      fixed-address 10.3.160.53;
      option host-name "qa02-mgmt";
 }
-
+host system-22 {
+     hardware ethernet B8:2A:72:FC:ED:22;
+     fixed-address 10.3.160.54;
+     option host-name "vmhost-iad-09-mgmt";
+}
+host system-23 {
+     hardware ethernet B8:2A:72:FC:F2:2E;
+     fixed-address 10.3.160.55;
+     option host-name "vmhost-iad-10-mgmt";
+}
+host vmhost-iad-11-mgmt {
+     hardware ethernet b8:2a:72:fc:f2:44;
+     fixed-address 10.3.160.56;
+     option host-name "vmhost-iad-11-mgmt";
+}
+host vmhost-qa-04-mgmt {
+     hardware ethernet 74:E6:E2:F9:FF:7E;
+     fixed-address 10.3.160.57;
+     option host-name "vmhost-qa-04-mgmt";
+}
+host vmhost-02-mgmt {
+     hardware ethernet B8:2A:72:FC:ED:64;
+     fixed-address 10.3.160.58;
+     option host-name "vmhost-02-mgmt";
+}
+host backup-mgmt {
+     hardware ethernet 74:E6:E2:FB:4D:FC;
+     fixed-address 10.3.160.59;
+     option host-name "backup01";
+}
+host ppc9-03-mgmt {
+     hardware ethernet ac:1f:6b:5c:03:f9;
+     fixed-address 10.3.160.60;
+     option host-name "ppc9-03";
+}
+host ppc9-04-mgmt {
+     hardware ethernet ac:1f:6b:5c:03:69;
+     fixed-address 10.3.160.61;
+     option host-name "ppc9-04";
+}
+host p8-cloud02-mgmt {
+     hardware ethernet 98:BE:94:4B:A4:80;
+     fixed-address 10.3.160.62;
+     option host-name "p8-cloud02";
+}
+host svault06-mgmt {
+     hardware ethernet D0:94:66:45:A1:66;
+     fixed-address 10.3.160.63;
+     option host-name "sign-vault06";
+}
+host qa-vmhost01-mgmt {
+     hardware ethernet f4:02:70:cf:c2:ca;
+     fixed-address 10.3.160.64;
+     option host-name "qa-vmhost01-mgmt";
+}
+host kernel03-mgmt {
+     hardware ethernet d0:94:66:7c:b2:dd;
+     fixed-address 10.3.160.65;
+     option host-name "kernel-03";
+}
+host openqa-ppc-01-mgmt {
+     hardware ethernet A0:42:3F:31:C2:7E;
+     fixed-address 10.3.160.66;
+     option host-name "openqa-ppc-01-mgmt";
+}
+host vmhost-qa-01-mgmt {
+     hardware ethernet 58:8A:5A:F3:9C:02;
+     fixed-address 10.3.160.68;
+     option host-name "vmhost-qa-01-mgmt";
+}
+host system-vmhost-mgmt {
+     hardware ethernet B8:2A:72:FC:EE:68;
+     fixed-address 10.3.160.199;
+     option host-name "vmhost-11-mgmt";
+}
