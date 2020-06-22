@@ -32,7 +32,6 @@
   include_role:
     name: rabbit/queue
   vars:
-    loop_var: osci_pipeline_queue
     username: osci-pipelines{{ env_suffix }}
     queue_name: "{{ osci_pipeline_queue }}{{ env_suffix }}"
     # TTL: 10 days (in miliseconds)
@@ -56,6 +55,8 @@
     - osci-pipelines-queue-13
     - osci-pipelines-queue-14
     - osci-pipelines-queue-15
+  loop_control:
+    loop_var: osci_pipeline_queue
 
 - name: Fedora Build Checks
   run_once: true
