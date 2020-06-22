@@ -12,3 +12,8 @@ nagios_Check_Services:
   swap: false
   ping: false
   raid: false
+
+ansible_ssh_user: centos
+ansible_become: true
+ansible_become_user: root
+ansible_become_method: sudo
