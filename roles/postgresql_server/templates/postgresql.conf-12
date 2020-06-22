@@ -124,14 +124,14 @@ max_connections = 750                    # (change requires restart)
 
 # - Memory -
 
-{% if shared_buffers %}
+{% if shared_buffers is defined %}
 shared_buffers = {{ shared_buffers }}   # min 128kB
 {% else %}
 shared_buffers = 128MB                  # min 800kB                        
 {% endif %}
                                         # (change requires restart)        
 #temp_buffers = 8MB			# min 800kB
-{% if temp_buffers %}
+{% if temp_buffers is defined %}
 temp_buffers = {{ temp_buffers }}       # min 800kB
 {% else %}
 temp_buffers = 8MB                      # min 800kB                        
@@ -147,7 +147,7 @@ work_mem = 32MB
 maintenance_work_mem = 2GB              # min 1MB
 {% endif %}
 
-{% if max_stack_depth %}
+{% if max_stack_depth is defined %}
 max_stack_depth = {{ max_stack_depth }} # min 100kB
 {% else %}
 #max_stack_depth = 2MB                  # min 100kB                       
