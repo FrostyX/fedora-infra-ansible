@@ -6,6 +6,14 @@
   - packages
   - collectd
 
+- name: install collectd-python
+  package:
+    state: present
+    name: collectd-python
+  tags:
+  - packages
+  - collectd
+
 - name: install collectd rabbitmq config
   template:
     src: "rabbitmq.collectd.conf.j2"
