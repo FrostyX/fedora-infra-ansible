@@ -14,9 +14,3 @@ nagios_Check_Services:
   swap: false
 
 public_ip: 18.185.136.17
-
-ansible_ssh_user: fedora
-ansible_become: true
-ansible_become_user: root
-ansible_become_method: sudo
-
