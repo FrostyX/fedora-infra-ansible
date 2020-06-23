@@ -834,7 +834,7 @@ host bvmhost-a64-04-mgmt {
      option routers 10.3.160.254;
 }
 host bvmhost-a64-05-mgmt {
-     hardware ethernet E8:6A:64:39:19:68;
+     hardware ethernet e8:6a:64:39:18:99;
      fixed-address 10.3.160.105;
      option host-name "bvmhost-aarch64-05";
 }
@@ -849,9 +849,9 @@ host bvmhost-a64-07-mgmt {
      option host-name "bvmhost-aarch64-07";
 }
 host bvmhost-a64-08-mgmt {
-     hardware ethernet E8:6A:64:39:18:C3;
+     hardware ethernet E8:6A:64:39:19:68;
      fixed-address 10.3.160.108;
-     option host-name "buildvmhost-aarch64-10";
+     option host-name "bvmhost-aarch64-08";
 }
 host bvmhost-a64-09-mgmt {
      hardware ethernet E8:6A:64:39:18:B2;
@@ -882,6 +882,11 @@ host bvmhost-a64-14-mgmt {
      hardware ethernet E8:6A:64:39:18:99;
      fixed-address 10.3.160.114;
      option host-name "bvmhost-a64-14";
+}
+host bvmhost-a64-15-mgmt {
+     hardware ethernet E8:6A:64:39:18:C3;
+     fixed-address 10.3.160.115;
+     option host-name "bvmhost-a64-15";
 }
 host bvmhost-a64-osbs01-mgmt {
      hardware ethernet E8:6A:64:39:18:B3;
