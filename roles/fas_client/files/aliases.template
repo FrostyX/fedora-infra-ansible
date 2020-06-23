@@ -213,6 +213,7 @@ fedora-status: kevin,codeblock
 fedora-mag-admin: kevin,duffy,chrisroberts,mitzie,jzb,nb
 endoflife: triage@lists.fedoraproject.org
 fas: admin@fedoraproject.org
+grokmirror: kevin
 
 # Fedora server working group. ticket 4093
 server-wg: sgallagh,jperrin,davidstrauss,tuanta,duffy,mitr,simo,johannbg
