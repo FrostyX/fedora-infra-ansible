@@ -919,7 +919,7 @@ host svault02-mgmt {
 
 host dell-630-01-mgmt {
      hardware ethernet 58:8A:5A:F3:9C:56;
-     fixed-address 10.3.160.31;
+     fixed-address 10.3.160.191;
      option host-name "bvirthost14";
 }
 host bkernel01-mgmt {
