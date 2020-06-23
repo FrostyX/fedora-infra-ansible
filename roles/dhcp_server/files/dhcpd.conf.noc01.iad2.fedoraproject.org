@@ -1077,16 +1077,6 @@ host backup-mgmt {
      fixed-address 10.3.160.59;
      option host-name "backup01";
 }
-host ppc9-03-mgmt {
-     hardware ethernet ac:1f:6b:5c:03:f9;
-     fixed-address 10.3.160.60;
-     option host-name "ppc9-03";
-}
-host ppc9-04-mgmt {
-     hardware ethernet ac:1f:6b:5c:03:69;
-     fixed-address 10.3.160.61;
-     option host-name "ppc9-04";
-}
 host svault06-mgmt {
      hardware ethernet D0:94:66:45:A1:66;
      fixed-address 10.3.160.63;
@@ -1102,10 +1092,20 @@ host kernel03-mgmt {
      fixed-address 10.3.160.65;
      option host-name "kernel-03";
 }
-host openqa-ppc-01-mgmt {
+host openqa-p08-01-mgmt {
      hardware ethernet A0:42:3F:31:C2:7E;
      fixed-address 10.3.160.66;
      option host-name "openqa-ppc-01-mgmt";
+}
+host openqa-p09-01-mgmt {
+     hardware ethernet ac:1f:6b:5c:03:69;
+     fixed-address 10.3.160.61;
+     option host-name "openqa-p09-01";
+}
+host openqa-p09-02-mgmt {
+     hardware ethernet ac:1f:6b:5c:03:f9;
+     fixed-address 10.3.160.60;
+     option host-name "ppc9-03";
 }
 host vmhost-qa-01-mgmt {
      hardware ethernet 58:8A:5A:F3:9C:02;
