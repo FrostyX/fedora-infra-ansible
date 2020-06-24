@@ -49,15 +49,15 @@ blocked_toddlers = ["debug"]
 
 [consumer_config.flag_ci_pr]
 # flag_ci_pr
-pagure_token_seed = "{{ }}"
-pagure_token = "{{ }}"
-pagure_url = "https://src.fedoraproject.org"
+pagure_token_seed = "{{ toddlers_flag_ci_seed }}"
+pagure_token = "{{ toddlers_flag_ci_token }}"
+pagure_url = "https://src{{ env_suffix }}.fedoraproject.org"
 
 [consumer_config.flag_commit_build]
 # flag_commit_build
-pagure_token = "{{ }}"
-pagure_url = "https://src.fedoraproject.org"
-koji_url = "https://koji.fedoraproject.org"
+pagure_token = "{{ toddlers_flag_commit_build_token }}"
+pagure_url = "https://src{{ env_suffix }}.fedoraproject.org"
+koji_url = "https://koji{{ env_suffix }}.fedoraproject.org"
 
 [qos]
 prefetch_size = 0
