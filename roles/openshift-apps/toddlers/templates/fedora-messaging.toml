@@ -33,7 +33,14 @@ arguments = {}
 [[bindings]]
 queue = "toddlers{{ env_suffix }}"
 exchange = "amq.topic"
-routing_keys = ["#"]  # This is dynamically generated in the code
+#routing_keys = ["#"]  # This is dynamically generated in the code
+routing_keys = [
+    "org.centos.#.ci.dist-git-pr.test.error",
+    "org.centos.#.ci.dist-git-pr.test.complete",
+    "org.centos.#.ci.dist-git-pr.test.running",
+    "org.fedoraproject.#.buildsys.build.state.change",
+]
+
 
 [consumer_config]
 # Comment out or remove this line if you want to enable the debug toddler.
