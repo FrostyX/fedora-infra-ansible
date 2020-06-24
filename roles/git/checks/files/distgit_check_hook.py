@@ -10,10 +10,22 @@ import os
 import sys
 from pathlib import Path
 
+import pagure
+
+
+pagure_hookrunner = Path(pagure.__file__).parent / "hooks" / "files" / "hookrunner"
 
 _base_path = Path('/srv/git/repositories/')
-_target_link = Path('/usr/share/git-core/post-receive-chained')
-_target_link_forks = Path('/usr/share/git-core/post-receive-chained-forks')
+
+# hook name: link target (project), link target (fork, if different)
+hook_defs = {
+    "post-receive": (
+        "/usr/share/git-core/post-receive-chained",
+        "/usr/share/git-core/post-receive-chained-forks",
+    ),
+    "pre-receive": (pagure_hookrunner,),
+    "update": (pagure_hookrunner,),
+}
 
 namespaces = ['rpms', 'container', 'forks', 'modules', 'tests']
 
@@ -58,11 +70,24 @@ def is_valid_hook(hook: Path, target_link: Path) -> bool:
     return output
 
 
+def test_and_fix_repo_hooks(repo_path, is_fork=False, check=False):
+    hook_base = Path(repo_path) / "hooks"
+
+    for hook, hook_def in hook_defs.items():
+        if is_fork:
+            link_target = Path(hook_def[-1])
+        else:
+            link_target = Path(hook_def[0])
+
+        hook_path = hook_base / hook
+
+        if not is_valid_hook(hook_path, link_target) and not check:
+            fix_link(hook_path, link_target)
+
+
 def process_namespace(namespace, check, walk=False):
     """ Process all the git repo in a specified namespace. """
-    target_link = _target_link
-    if namespace == 'forks':
-        target_link = _target_link_forks
+    is_fork = namespace == "forks"
 
     print('Processing: %s' % namespace)
     path = _base_path / namespace
@@ -80,17 +105,13 @@ def process_namespace(namespace, check, walk=False):
                 if repo_path.suffix != '.git':
                     continue
 
-                hook = repo_path / "hooks" / "post-receive"
-                if not is_valid_hook(hook, target_link) and not check:
-                    fix_link(hook, target_link)
+                test_and_fix_repo_hooks(repo_path, is_fork=is_fork, check=check)
     else:
         for repo_path in path.iterdir():
             if repo_path.suffix != '.git':
                 continue
 
-            hook = repo_path / "hooks" / "post-receive"
-            if not is_valid_hook(hook, target_link) and not check:
-                fix_link(hook, target_link)
+            test_and_fix_repo_hooks(repo_path, is_fork=is_fork, check=check)
 
 
 def main():
@@ -106,20 +127,19 @@ def main():
         # Update on repo
         print('Processing: %s' % path)
 
-        target_link = _target_link
-        if 'forks' in path.parts:
-            target_link = _target_link_forks
+        is_fork = "forks" in path.parts
 
-        path = _base_path / path
+        # Don't prefix absolute paths with _base_path
+        if not path.is_absolute():
+            path = _base_path / path
+
         if path.suffix != ".git":
             path = path.with_name(path.name + ".git")
 
         if not path.is_dir():
             print('Git repo: %s not found on disk' % path)
 
-        hook = path / "hooks" / "post-receive"
-        if not is_valid_hook(hook, target_link) and not args.check:
-            fix_link(hook, target_link)
+        test_and_fix_repo_hooks(path, is_fork=is_fork, check=args.check)
 
     elif args.namespace:
         walk = False
