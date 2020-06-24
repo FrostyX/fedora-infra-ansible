@@ -26,7 +26,7 @@ def parse_args():
         'target', nargs='?', help='git repo to check')
     parser.add_argument(
         '--namespace', default=None,
-        help='Only check the git hooks, do not fix them')
+        help="Only operate on a certain namespace, not all of them.")
     parser.add_argument(
         '--check', default=False, action="store_true",
         help='Only check the git hooks, do not fix them')
