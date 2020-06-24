@@ -24,20 +24,14 @@ certfile = "/etc/pki/rabbitmq/cert/toddlers.crt"
 app = "toddlers"
 app_url = "https://pagure.io/fedora-infra/toddlers"
 
-[exchanges."amq.topic"]
-type = "topic"
-durable = true
-auto_delete = false
-arguments = {}
-
-[queues.toddlers]
+[queues.toddlers{{ env_suffix }}]
 durable = true
 auto_delete = false
 exclusive = false
 arguments = {}
 
 [[bindings]]
-queue = "toddlers"
+queue = "toddlers{{ env_suffix }}"
 exchange = "amq.topic"
 routing_keys = ["#"]  # This is dynamically generated in the code
 
