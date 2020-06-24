@@ -8,11 +8,12 @@ git hook so they are always as expected.
 import argparse
 import os
 import sys
+from pathlib import Path
 
 
-_base_path = '/srv/git/repositories/'
-_target_link = '/usr/share/git-core/post-receive-chained'
-_target_link_forks = '/usr/share/git-core/post-receive-chained-forks'
+_base_path = Path('/srv/git/repositories/')
+_target_link = Path('/usr/share/git-core/post-receive-chained')
+_target_link_forks = Path('/usr/share/git-core/post-receive-chained-forks')
 
 namespaces = ['rpms', 'container', 'forks', 'modules', 'tests']
 
@@ -33,23 +34,23 @@ def parse_args():
     return parser.parse_args()
 
 
-def fix_link(hook, target_link):
+def fix_link(hook: Path, target_link: Path):
     """ Remove the existing hook and replace it with a symlink to the desired
     one.
     """
-    if os.path.exists(hook):
-        os.unlink(hook)
-    os.symlink(target_link, hook)
+    if hook.exists():
+        hook.unlink()
+    hook.symlink_to(target_link)
 
 
-def is_valid_hook(hook, target_link):
+def is_valid_hook(hook: Path, target_link: Path) -> bool:
     """ Simple utility function checking if the specified hook is valid. """
     output = True
-    if not os.path.islink(hook):
+    if not hook.is_symlink():
         print('%s is not a symlink' % hook)
         output = False
     else:
-        target = os.readlink(hook)
+        target = Path(os.readlink(hook))
         if target != target_link:
             print('%s is not pointing to the expected target: %s' % (
                 hook, target_link))
@@ -64,31 +65,30 @@ def process_namespace(namespace, check, walk=False):
         target_link = _target_link_forks
 
     print('Processing: %s' % namespace)
-    path = os.path.join(_base_path, namespace)
-    if not os.path.isdir(path):
+    path = _base_path / namespace
+    if not path.is_dir():
         return
 
     if walk:
         for dirpath, dirnames, filenames in os.walk(path):
             # Don't go down the .git repos
-            if '.git' in dirpath:
+            if dirpath.endswith(".git"):
                 continue
 
             for repo in dirnames:
-                repo_path = os.path.join(dirpath, repo)
-                if not repo_path.endswith('.git'):
+                repo_path = Path(dirpath, repo)
+                if repo_path.suffix != '.git':
                     continue
 
-                hook = os.path.join(repo_path, 'hooks', 'post-receive')
+                hook = repo_path / "hooks" / "post-receive"
                 if not is_valid_hook(hook, target_link) and not check:
                     fix_link(hook, target_link)
     else:
-        for repo in os.listdir(path):
-            repo_path = os.path.join(path, repo)
-            if not repo_path.endswith('.git'):
+        for repo_path in path.iterdir():
+            if repo_path.suffix != '.git':
                 continue
 
-            hook = os.path.join(repo_path, 'hooks', 'post-receive')
+            hook = repo_path / "hooks" / "post-receive"
             if not is_valid_hook(hook, target_link) and not check:
                 fix_link(hook, target_link)
 
@@ -102,21 +102,22 @@ def main():
 
     args = parse_args()
     if args.target:
+        path = Path(args.target)
         # Update on repo
-        print('Processing: %s' % args.target)
+        print('Processing: %s' % path)
 
         target_link = _target_link
-        if 'forks' in args.target:
+        if 'forks' in path.parts:
             target_link = _target_link_forks
 
-        path = os.path.join(_base_path, args.target)
-        if not path.endswith('.git'):
-            path += '.git'
+        path = _base_path / path
+        if path.suffix != ".git":
+            path = path.with_name(path.name + ".git")
 
-        if not os.path.isdir(path):
+        if not path.is_dir():
             print('Git repo: %s not found on disk' % path)
 
-        hook = os.path.join(path, 'hooks', 'post-receive')
+        hook = path / "hooks" / "post-receive"
         if not is_valid_hook(hook, target_link) and not args.check:
             fix_link(hook, target_link)
 
