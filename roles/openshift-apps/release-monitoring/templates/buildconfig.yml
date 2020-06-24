@@ -10,7 +10,7 @@ items:
     runPolicy: Serial
     source:
       dockerfile: |-
-        FROM fedora:30
+        FROM fedora:32
         LABEL \
           name="release-monitoring-web" \
           vendor="Fedora Infrastructure" \
@@ -19,32 +19,31 @@ items:
                 git \
                 httpd \
                 graphviz \
-                python3-alembic \
-                python3-blinker \
-                python3-dateutil \
-                python3-fedmsg \
                 fedora-messaging \
-                python3-fedora-messaging \
-                python3-flask \
-                python3-flask-wtf \
+                python3-alembic \
+                python3-arrow \
+                python3-dateutil \
+                python3-defusedxml \
                 python3-flask-login \
                 python3-flask-restful \
-                python3-flask-openid \
-                python3-openid \
+                python3-flask-wtf \
+                python3-jinja2 \
+                python3-mod_wsgi \
+                python3-ordered-set \
                 python3-pip \
                 python3-psycopg2 \
-                python3-setuptools \
-                python3-sphinxcontrib-httpdomain \
-                python3-social-auth-app-flask-sqlalchemy \
-                python3-straight-plugin \
-                python3-sqlalchemy \
                 python3-pytoml \
-                python3-wtforms \
-                python3-ordered-set \
-                python3-mod_wsgi && \
+                python3-semver \
+                python3-social-auth-app-flask \
+                python3-social-auth-app-flask-sqlalchemy \
+                python3-sphinxcontrib-httpdomain \
+                python3-sqlalchemy \
+                python3-sqlalchemy_schemadisplay \
+                python3-sseclient \
+                python3-straight-plugin \
+                python3-wtforms && \
             dnf autoremove -y && \
             dnf clean all -y
-        RUN pip-3 install sqlalchemy_schemadisplay
         RUN git clone https://github.com/fedora-infra/anitya.git && \
                 pushd anitya && \
 {% if env == 'staging' %}
@@ -67,12 +66,8 @@ items:
                 popd && \
                 popd && \
                 rm -rf anitya
-        RUN rm /etc/fedmsg.d/*py
         RUN mkdir /httpdir
         RUN chmod 777 /httpdir
-        RUN mkdir -p /etc/pki/fedmsg/
-        RUN ln -sf /etc/pki/fedmsg/key/fedmsg-release-monitoring.key /etc/pki/fedmsg/release-monitoring.key
-        RUN ln -sf /etc/pki/fedmsg/crt/fedmsg-release-monitoring.crt /etc/pki/fedmsg/release-monitoring.crt
         EXPOSE 8080
         EXPOSE 9940
       type: Dockerfile
