@@ -1,0 +1,62 @@
+---
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: toddlers
+    service: toddlers
+  name: toddlers
+spec:
+  replicas: 1
+  selector:
+    app: toddlers
+    deploymentconfig: toddlers
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: toddlers
+        deploymentconfig: toddlers
+    spec:
+      containers:
+      - name: toddlers
+        image: toddlers:latest
+        resources: {}
+        volumeMounts:
+        - name: toddlers-secret-volume
+          mountPath: /etc/fedora-messaging
+          readOnly: true
+        - name: fedora-messaging-ca-volume
+          mountPath: /etc/pki/rabbitmq/ca
+          readOnly: true
+        - name: fedora-messaging-key-volume
+          mountPath: /etc/pki/rabbitmq/key
+          readOnly: true
+        - name: fedora-messaging-cert-volume
+          mountPath: /etc/pki/rabbitmq/cert
+          readOnly: true
+      volumes:
+      - name: toddlers-secret-volume
+        secret:
+          secretName: toddlers-secret
+      - name: fedora-messaging-ca-volume
+        secret:
+          secretName: toddlers-fedora-messaging-ca
+      - name: fedora-messaging-key-volume
+        secret:
+         secretName: toddlers-fedora-messaging-key
+      - name: fedora-messaging-cert-volume
+        secret:
+          secretName: toddlers-fedora-messaging-crt
+
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange
+    imageChangeParams:
+      automatic: true
+      containerNames:
+      - toddlers
+      from:
+        kind: ImageStreamTag
+        name: toddlers:latest

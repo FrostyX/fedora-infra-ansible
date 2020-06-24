@@ -1,0 +1,25 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  name: toddlers-build
+  labels:
+    environment: "toddlers"
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: toddlers:latest
+  source:
+    type: Git
+    git:
+      uri: https://pagure.io/fedora-infra/toddlers.git
+{% if env == 'staging' %}
+      ref: "staging"
+{% else %}
+      ref: "production"
+{% endif %}
+  strategy:
+    type: Docker
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange

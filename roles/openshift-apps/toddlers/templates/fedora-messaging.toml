@@ -1,0 +1,101 @@
+# A sample configuration for fedora-messaging. This file is in the TOML format.
+# For complete details on all configuration options, see the documentation.
+# https://fedora-messaging.readthedocs.io/en/stable/configuration.html
+
+# Broker address
+amqp_url = "amqps://toddlers{{ env_suffix }}:@rabbitmq{{ env_suffix }}.fedoraproject.org/%2Fpubsub"
+callback = "toddlers.runner:RunningToddler"
+
+
+# The topic_prefix configuration value will add a prefix to the topics of every sent message.
+# This is used for migrating from fedmsg, and should not be used afterwards.
+{% if env == "staging" %}
+topic_prefix = "org.fedoraproject.stg"
+{% else %}
+topic_prefix = "org.fedoraproject.prod"
+{% endif %}
+
+[tls]
+ca_cert = "/etc/pki/rabbitmq/ca/toddlers.ca"
+keyfile = "/etc/pki/rabbitmq/key/toddlers.key"
+certfile = "/etc/pki/rabbitmq/cert/toddlers.crt"
+
+[client_properties]
+app = "toddlers"
+app_url = "https://pagure.io/fedora-infra/toddlers"
+
+[exchanges."amq.topic"]
+type = "topic"
+durable = true
+auto_delete = false
+arguments = {}
+
+[queues.toddlers]
+durable = true
+auto_delete = false
+exclusive = false
+arguments = {}
+
+[[bindings]]
+queue = "toddlers"
+exchange = "amq.topic"
+routing_keys = ["#"]  # This is dynamically generated in the code
+
+[consumer_config]
+# Comment out or remove this line if you want to enable the debug toddler.
+# Or add more toddlers to the list (using their name) if you want to disable
+# more of them.
+blocked_toddlers = ["debug"]
+
+[consumer_config.flag_ci_pr]
+# flag_ci_pr
+pagure_token_seed = "{{ }}"
+pagure_token = "{{ }}"
+pagure_url = "https://src.fedoraproject.org"
+
+[consumer_config.flag_commit_build]
+# flag_commit_build
+pagure_token = "{{ }}"
+pagure_url = "https://src.fedoraproject.org"
+koji_url = "https://koji.fedoraproject.org"
+
+[qos]
+prefetch_size = 0
+prefetch_count = 1
+
+[log_config]
+version = 1
+disable_existing_loggers = true
+
+[log_config.formatters.simple]
+format = "[%(levelname)s %(name)s] %(message)s"
+
+[log_config.handlers.console]
+class = "logging.StreamHandler"
+formatter = "simple"
+stream = "ext://sys.stdout"
+
+[log_config.loggers.fedora_messaging]
+level = "INFO"
+propagate = false
+handlers = ["console"]
+
+[log_config.loggers.twisted]
+level = "INFO"
+propagate = false
+handlers = ["console"]
+
+[log_config.loggers.pika]
+level = "WARNING"
+propagate = false
+handlers = ["console"]
+
+# Toddlers logger, feel free to bump the level to DEBUG if you need to
+[log_config.loggers.toddlers]
+level = "INFO"
+propagate = false
+handlers = ["console"]
+
+[log_config.root]
+level = "ERROR"
+handlers = ["console"]

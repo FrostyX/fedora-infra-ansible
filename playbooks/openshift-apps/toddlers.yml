@@ -1,0 +1,75 @@
+- name: make the app be real
+  hosts: os_masters_stg[0]:os_masters[0]
+  user: root
+  gather_facts: False
+
+  vars_files:
+    - /srv/web/infra/ansible/vars/global.yml
+    - "/srv/private/ansible/vars.yml"
+    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  roles:
+  - role: openshift/project
+    app: toddlers
+    description: Small fedora-messaging toddlers that keep running around
+    appowners:
+    - pingou
+    - abompard
+
+  - role: rabbit/user
+    username: "toddlers{{ env_suffix }}"
+
+  - role: rabbit/queue
+    username: toddlers{{ env_suffix }}
+    queue_name: toddlers{{ env_suffix }}
+    routing_keys:
+      - "org.centos.#.ci.dist-git-pr.test.error"
+      - "org.centos.#.ci.dist-git-pr.test.complete"
+      - "org.centos.#.ci.dist-git-pr.test.running"
+      - "org.fedoraproject.#.buildsys.build.state.change"
+    thresholds:
+      warning: 10
+      critical: 100
+
+  - role: openshift/object
+    app: toddlers
+    template: buildconfig.yml
+    objectname: buildconfig.yml
+
+  - role: openshift/secret-file
+    app: toddlers
+    secret_name: toddlers-fedora-messaging-key
+    key: toddlers.key
+    privatefile: "rabbitmq/{{env}}/pki/private/toddlers{{env_suffix}}.key"
+
+  - role: openshift/secret-file
+    app: toddlers
+    secret_name: toddlers-fedora-messaging-crt
+    key: toddlers.crt
+    privatefile: "rabbitmq/{{env}}/pki/issued/toddlers{{env_suffix}}.crt"
+
+  - role: openshift/secret-file
+    app: toddlers
+    secret_name: toddlers-fedora-messaging-ca
+    key: toddlers.ca
+    privatefile: "rabbitmq/{{env}}/pki/ca.crt"
+
+  - role: openshift/object
+    app: toddlers
+    template: deploymentconfig.yml
+    objectname: deploymentconfig.yml
+
+  - role: openshift/object
+    app: toddlers
+    template: secret.yml
+    objectname: secret.yml
+
+  - role: openshift/object
+    app: toddlers
+    template: imagestream.yml
+    objectname: imagestream.yml
+
+  - role: openshift/start-build
+    app: toddlers
+    buildname: toddlers-build
+    objectname: toddlers-build
