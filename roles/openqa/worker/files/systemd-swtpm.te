@@ -1,0 +1,12 @@
+
+module systemd-swtpm 1.0;
+
+require {
+	type init_t;
+	type swtpm_exec_t;
+	class file { execute execute_no_trans map open read };
+}
+
+#============= init_t ==============
+
+allow init_t swtpm_exec_t:file { execute execute_no_trans map open read };

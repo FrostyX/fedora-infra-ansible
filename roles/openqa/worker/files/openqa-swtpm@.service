@@ -1,0 +1,12 @@
+[Unit]
+Description=openQA swtpm service
+
+[Service]
+User=_openqa-worker
+ExecStartPre=-/usr/bin/rm -rf /tmp/mytpm%I
+ExecStartPre=/usr/bin/mkdir -p /tmp/mytpm%I
+ExecStart=/usr/bin/swtpm socket --tpm2 --tpmstate dir=/tmp/mytpm%I --ctrl type=unixio,path=/tmp/mytpm%I/swtpm-sock --log level=20
+ExecReload=/bin/true
+
+[Install]
+WantedBy=multi-user.target

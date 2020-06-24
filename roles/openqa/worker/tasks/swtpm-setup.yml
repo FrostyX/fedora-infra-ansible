@@ -1,0 +1,28 @@
+- name: Install packages
+  package:
+    name: ['swtpm', 'swtpm-tools']
+    state: latest
+    enablerepo: "{{ openqa_repo }}"
+  tags:
+  - packages
+
+- name: Install openqa-swtpm service file
+  copy: src=openqa-swtpm@.service dest=/etc/systemd/system/openqa-swtpm@.service owner=root group=root mode=0644
+
+- name: Create somewhere to stick our custom SELinux module
+  file:
+    path: /usr/local/share/selinux
+    state: directory
+    mode: '0755'
+
+- name: Copy over custom SELinux module allowing systemd to run swtpm
+  copy: src=systemd-swtpm.pp dest=/usr/local/share/selinux/systemd-swtpm.pp owner=root group=root mode=0644
+  register: selinux_module
+
+- name: Load our custom SELinux module
+  command: semodule -i /usr/local/share/selinux/systemd-swtpm.pp
+  when: selinux_module is changed
+
+- name: Enable and start swtpm services
+  service: name=openqa-swtpm@{{ item }} enabled=yes state=started
+  loop: "{{ range(1, openqa_workers + 1)|list }}"

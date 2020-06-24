@@ -13,7 +13,7 @@
 
 # Optional vars
 # - openqa_tap
-##      bool - whether this is the tap-enabled host or not
+##      bool - whether this is the tap- and swtpm-enabled host or not
 ##             each deployment should have *one* tap-capable worker host
 # - openqa_rngd
 ##      string - if set to any value, rng-tools package will be
@@ -132,6 +132,15 @@
   when: openqa_hostname is defined and openqa_hostname != "localhost"
 
 - import_tasks: tap-setup.yml
+  when: openqa_tap is defined and openqa_tap
+
+# this is kinda lazy - we could have a separate openqa_swtpm var so we
+# we could potentially separate tap worker hosts from swtpm ones - but
+# it makes workers.ini templating annoyingly awkward (we need way more
+# conditionals to account for four possibilities rather than two) and
+# for now it's fine to just assume the tap host(s) is/are also the
+# swtpm host(s)
+- import_tasks: swtpm-setup.yml
   when: openqa_tap is defined and openqa_tap
 
 - name: openQA client config
