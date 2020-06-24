@@ -23,10 +23,10 @@
     username: toddlers{{ env_suffix }}
     queue_name: toddlers{{ env_suffix }}
     routing_keys:
-      - "org.centos.#.ci.dist-git-pr.test.error"
-      - "org.centos.#.ci.dist-git-pr.test.complete"
-      - "org.centos.#.ci.dist-git-pr.test.running"
-      - "org.fedoraproject.#.buildsys.build.state.change"
+      - "org.centos.*.ci.dist-git-pr.test.error"
+      - "org.centos.*.ci.dist-git-pr.test.complete"
+      - "org.centos.*.ci.dist-git-pr.test.running"
+      - "org.fedoraproject.*.buildsys.build.state.change"
     thresholds:
       warning: 10
       critical: 100
