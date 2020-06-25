@@ -6,6 +6,9 @@
 amqp_url = "amqps://toddlers{{ env_suffix }}:@rabbitmq{{ env_suffix }}.fedoraproject.org/%2Fpubsub"
 callback = "toddlers.runner:RunningToddler"
 
+# Just check if the queue exist, don't try to create it as you won't be allowed
+# to (this is done in the ansible playbook)
+passive_declares = true
 
 # The topic_prefix configuration value will add a prefix to the topics of every sent message.
 # This is used for migrating from fedmsg, and should not be used afterwards.
