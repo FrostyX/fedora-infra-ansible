@@ -58,13 +58,13 @@ if args.site == None:
     args.site = 'https://admin.fedoraproject.org/accounts/'
 
 if args.verbose:
-    print 'Using site: %(site)s' % {'site': args.site}
+    print('Using site: %(site)s' % {'site': args.site})
 
 if args.verbose:
     if args.gpg_home == None:
-        print 'Using default gpg_home'
+        print('Using default gpg_home')
     else:
-        print 'Using gpg_home: %(gpghome)s' % {'gpghome': args.gpg_home}
+        print('Using gpg_home: %(gpghome)s' % {'gpghome': args.gpg_home})
 
 if args.gpg_home != None:
     os.putenv('GNUPGHOME', args.gpg_home)
@@ -72,37 +72,37 @@ if args.gpg_home != None:
 fas = AccountSystem(args.site, username=args.admin_user, password=args.admin_pass, insecure=args.insecure)
 
 if args.verbose:
-    print 'Getting user details...'
+    print('Getting user details...')
 try:
     details = fas.person_by_username(args.target_user)
 except AuthError:
-    print 'Failed to login to FAS. Please check admin_user and admin_pass!'
+    print('Failed to login to FAS. Please check admin_user and admin_pass!')
     sys.exit(2)
 except ServerError:
-    print 'Failed to retrieve user details: the server reported an error!'
+    print('Failed to retrieve user details: the server reported an error!')
     sys.exit(3)
 
-if not 'username' in details.keys():
-    print 'Error: user %(username)s is not known on this FAS site!' % {'username': args.target_user}
+if not 'username' in list(details.keys()):
+    print('Error: user %(username)s is not known on this FAS site!' % {'username': args.target_user})
     sys.exit(4)
 
-if not 'security_question' in details.keys():
-    print 'Error: security_question was not retrieved by FAS! Are you sure you are using FAS >= 0.8.14, and that admin_user has the privileges to retrieve security_question?'
+if not 'security_question' in list(details.keys()):
+    print('Error: security_question was not retrieved by FAS! Are you sure you are using FAS >= 0.8.14, and that admin_user has the privileges to retrieve security_question?')
     sys.exit(5)
 
 if details.security_question == None or details.security_answer == None:
-    print 'Error: unable to retrieve security_question or security_answer. Are you sure you have privileges to return this information?'
+    print('Error: unable to retrieve security_question or security_answer. Are you sure you have privileges to return this information?')
     sys.exit(6)
 
 if not args.no_answer:
     if args.verbose:
-        print 'Decrypting answer...'
+        print('Decrypting answer...')
     cipher = BytesIO(details.security_answer.encode('utf-8'))
     plain = BytesIO()
     ctx = gpgme.Context()
     ctx.decrypt(cipher, plain)
     details.security_answer = plain.getvalue()
 
-print 'Security question: %(question)s' % {'question': details.security_question}
+print('Security question: %(question)s' % {'question': details.security_question})
 if not args.no_answer:
-    print 'Security answer: %(answer)s' % {'answer': details.security_answer}
+    print('Security answer: %(answer)s' % {'answer': details.security_answer})
