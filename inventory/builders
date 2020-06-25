@@ -157,6 +157,8 @@ bvmhost-a64-osbs-01.arm.fedoraproject.org
 # ppc
 bvmhost-p09-01.iad2.fedoraproject.org
 bvmhost-p09-02.iad2.fedoraproject.org
+bvmhost-p09-03.iad2.fedoraproject.org
+bvmhost-p09-04.iad2.fedoraproject.org
 bvmhost-p08-03.iad2.fedoraproject.org
 bvmhost-p08-04.iad2.fedoraproject.org
 
