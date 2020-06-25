@@ -645,7 +645,8 @@ host bvmhost-p09-02 {
      option subnet-mask 255.255.255.0;
 }
 
-host bvmhost-p64-04 {
+host bvmhost-p09-04 {
+     hardware ethernet 40:a6:b7:18:86:c8;
      fixed-address 10.3.171.18;
      next-server 10.3.163.10;
      option routers 10.3.171.254;
