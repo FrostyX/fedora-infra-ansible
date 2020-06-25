@@ -50,7 +50,7 @@ def fix_link(hook: Path, target_link: Path):
     """ Remove the existing hook and replace it with a symlink to the desired
     one.
     """
-    if hook.exists():
+    if hook.is_symlink() or hook.exists():
         hook.unlink()
     hook.symlink_to(target_link)
 
