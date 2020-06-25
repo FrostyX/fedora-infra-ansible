@@ -4,7 +4,7 @@ volgroup: /dev/vg_guests
 lvm_size: 600000
 mem_size: 12288
 max_mem_size: 12288
-num_cpus: 6
+num_cpus: 5
 
 ks_repo: http://10.3.163.35/pub/fedora-secondary/releases/32/Server/ppc64le/os/
 ks_url: http://10.3.163.35/repo/rhel/ks/buildvm-fedora-32-ppc64le-iad2
