@@ -8,11 +8,7 @@ OPTIONS="layer2=1 portno=0"
 {% endif %}
 {% if item in ansible_ifcfg_infra_net_devices %}
 DEFROUTE=yes
-{% if hostvars[inventory_hostname][item +'ipv4_gw'] is defined %}
-GATEWAY="{{ hostvars[inventory_hostname][item + 'ipv4_gw'] }}"
-{% else %}
 GATEWAY="{{ gw }}"
-{% endif %}
 {% endif %}
 {% if hostvars[inventory_hostname].datacenter == 'iad2' %}
 DOMAIN="iad2.fedoraproject.org vpn.fedoraproject.org fedoraproject.org"
