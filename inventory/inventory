@@ -1102,6 +1102,14 @@ buildhw-x86-05.iad2.fedoraproject.org
 buildhw-x86-06.iad2.fedoraproject.org
 buildhw-x86-07.iad2.fedoraproject.org
 buildhw-x86-08.iad2.fedoraproject.org
+buildhw-x86-09.iad2.fedoraproject.org
+buildhw-x86-10.iad2.fedoraproject.org
+buildhw-x86-11.iad2.fedoraproject.org
+buildhw-x86-12.iad2.fedoraproject.org
+buildhw-x86-13.iad2.fedoraproject.org
+buildhw-x86-14.iad2.fedoraproject.org
+buildhw-x86-15.iad2.fedoraproject.org
+buildhw-x86-16.iad2.fedoraproject.org
 buildvm-a32-01.iad2.fedoraproject.org
 buildvm-a32-02.iad2.fedoraproject.org
 buildvm-a32-03.iad2.fedoraproject.org
