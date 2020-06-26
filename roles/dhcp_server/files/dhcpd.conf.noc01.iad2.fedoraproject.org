@@ -555,6 +555,15 @@ host buildhw-x86-02 {
      option subnet-mask 255.255.255.0;
 }
 
+host buildhw-x86-03 {
+     hardware ethernet 14:9E:CF:61:9E:C9;
+     fixed-address 10.3.169.33;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+
 host bkernel01 {
      hardware ethernet D0:94:66:45:A7:E4;
      fixed-address 10.3.169.29;
