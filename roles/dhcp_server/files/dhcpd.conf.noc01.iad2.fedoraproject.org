@@ -612,7 +612,7 @@ host buildhw-x86-09 {
 }
 host buildhw-x86-10 {
      hardware ethernet f8:ca:b8:f7:27:cf;
-     fixed-address 10.3.169.40
+     fixed-address 10.3.169.40;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
      option routers 10.3.169.254;
