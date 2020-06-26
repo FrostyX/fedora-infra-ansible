@@ -38,7 +38,7 @@ virthost-rdu01.fedoraproject.org
 #virthost-rdu02.fedoraproject.org
 virthost-cc-rdu01.fedoraproject.org
 virthost-cc-rdu02.fedoraproject.org
-#buildhw-01.phx2.fedoraproject.org
+buildhw-x86-01.iad2.fedoraproject.org
 #buildhw-02.phx2.fedoraproject.org
 #buildhw-03.phx2.fedoraproject.org
 #buildhw-04.phx2.fedoraproject.org
@@ -62,7 +62,6 @@ virthost-cc-rdu02.fedoraproject.org
 [ibms]
 virthost-cc-rdu03.fedoraproject.org
 osuosl02.fedoraproject.org
-#data-analysis01.phx2.fedoraproject.org
 download-rdu01.fedoraproject.org
 
 [powerpc]

@@ -164,6 +164,7 @@ bvmhost-p08-04.iad2.fedoraproject.org
 
 [buildhw]
 buildhw-a64-01.iad2.fedoraproject.org
+buildhw-x86-01.iad2.fedoraproject.org
 
 #
 # These are primary koji builders. 
