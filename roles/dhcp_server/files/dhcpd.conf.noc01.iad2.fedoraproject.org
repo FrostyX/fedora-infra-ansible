@@ -24,6 +24,7 @@ subnet 10.3.160.0 netmask 255.255.255.0 {
     option log-servers 10.3.163.39;
     option ntp-servers 10.3.163.31, 10.3.163.32;
 
+    range 10.3.160.160 10.3.160.189;
     range 10.3.160.200 10.3.160.249;
 
 } 
@@ -545,7 +546,6 @@ host buildhw-x86-01 {
      option routers 10.3.169.254;
      option subnet-mask 255.255.255.0;
 }
-
 host buildhw-x86-02 {
      hardware ethernet 14:9E:CF:61:9F:4F;
      fixed-address 10.3.169.32;
@@ -554,10 +554,113 @@ host buildhw-x86-02 {
      option routers 10.3.169.254;
      option subnet-mask 255.255.255.0;
 }
-
 host buildhw-x86-03 {
      hardware ethernet 14:9E:CF:61:9E:C9;
      fixed-address 10.3.169.33;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-04 {
+     hardware ethernet 14:9e:cf:61:a5:07;
+     fixed-address 10.3.169.34;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-05 {
+     hardware ethernet 14:9e:cf:61:9e:7b;
+     fixed-address 10.3.169.35;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-06 {
+     hardware ethernet 14:9e:cf:61:a0:bd;
+     fixed-address 10.3.169.36;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-07 {
+     hardware ethernet 14:9e:cf:61:9e:e3;
+     fixed-address 10.3.169.37;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-08 {
+     hardware ethernet 14:9e:cf:61:a6:75;
+     fixed-address 10.3.169.38;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-09 {
+     hardware ethernet f8:ca:b8:f7:26:e1;
+     fixed-address 10.3.169.39;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-10 {
+     hardware ethernet f8:ca:b8:f7:27:cf;
+     fixed-address 10.3.169.40
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-11 {
+     hardware ethernet f8:ca:b8:f7:27:63;
+     fixed-address 10.3.169.41;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-12 {
+     hardware ethernet f8:ca:b8:f7:2e:f5;
+     fixed-address 10.3.169.42;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-13 {
+     hardware ethernet f8:ca:b8:f7:27:49;
+     fixed-address 10.3.169.43;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-14 {
+     hardware ethernet f8:ca:b8:f7:2d:87;
+     fixed-address 10.3.169.44;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-15 {
+     hardware ethernet f8:ca:b8:f7:26:fb;
+     fixed-address 10.3.169.45;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.169.254;
+     option subnet-mask 255.255.255.0;
+}
+host buildhw-x86-16 {
+     hardware ethernet f8:ca:b8:f7:29:3d;
+     fixed-address 10.3.169.46;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
      option routers 10.3.169.254;
