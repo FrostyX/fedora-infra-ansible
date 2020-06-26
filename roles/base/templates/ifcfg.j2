@@ -28,7 +28,7 @@ NETMASK="{{ hostvars[inventory_hostname][item + '_nm'] }}"
 ONBOOT="no"
 {% else %}
 ONBOOT="yes"
-{% fi %}
+{% endif %}
 {% endif %}
 TYPE="Ethernet"
 DEVICE="{{item}}"
