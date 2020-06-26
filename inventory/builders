@@ -167,6 +167,7 @@ buildhw-a64-01.iad2.fedoraproject.org
 buildhw-x86-01.iad2.fedoraproject.org
 buildhw-x86-02.iad2.fedoraproject.org
 buildhw-x86-03.iad2.fedoraproject.org
+buildhw-x86-04.iad2.fedoraproject.org
 
 #
 # These are primary koji builders. 
