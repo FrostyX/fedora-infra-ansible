@@ -39,25 +39,8 @@ virthost-rdu01.fedoraproject.org
 virthost-cc-rdu01.fedoraproject.org
 virthost-cc-rdu02.fedoraproject.org
 buildhw-x86-01.iad2.fedoraproject.org
-#buildhw-02.phx2.fedoraproject.org
-#buildhw-03.phx2.fedoraproject.org
-#buildhw-04.phx2.fedoraproject.org
-#buildhw-05.phx2.fedoraproject.org
-#buildhw-06.phx2.fedoraproject.org
-#buildhw-07.phx2.fedoraproject.org
-#buildhw-08.phx2.fedoraproject.org
-#buildhw-09.phx2.fedoraproject.org
-#buildhw-10.phx2.fedoraproject.org
-#buildvmhost-01.phx2.fedoraproject.org
-#buildvmhost-02.phx2.fedoraproject.org
-#buildvmhost-03.phx2.fedoraproject.org
-#buildvmhost-04.phx2.fedoraproject.org
-#qa01.qa.fedoraproject.org
-#qa02.qa.fedoraproject.org
-#qa09.qa.fedoraproject.org
-#qa14.qa.fedoraproject.org
-#bkernel03.phx2.fedoraproject.org
-#bkernel04.phx2.fedoraproject.org
+buildhw-x86-02.iad2.fedoraproject.org
+buildhw-x86-03.iad2.fedoraproject.org
 
 [ibms]
 virthost-cc-rdu03.fedoraproject.org
@@ -65,6 +48,10 @@ osuosl02.fedoraproject.org
 download-rdu01.fedoraproject.org
 
 [powerpc]
+bvmhost-p09-01.iad2.fedoraproject.org
+bvmhost-p09-02.iad2.fedoraproject.org
+bvmhost-p09-03.iad2.fedoraproject.org
+bvmhost-p09-04.iad2.fedoraproject.org
 #ppc8-01.ppc.fedoraproject.org
 #ppc8-02.ppc.fedoraproject.org
 #ppc8-03.ppc.fedoraproject.org

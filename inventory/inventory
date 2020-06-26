@@ -1096,6 +1096,7 @@ bugzilla2fedmsg01.iad2.fedoraproject.org
 buildhw-a64-01.iad2.fedoraproject.org
 buildhw-x86-01.iad2.fedoraproject.org
 buildhw-x86-02.iad2.fedoraproject.org
+buildhw-x86-03.iad2.fedoraproject.org
 buildvm-a32-01.iad2.fedoraproject.org
 buildvm-a32-02.iad2.fedoraproject.org
 buildvm-a32-03.iad2.fedoraproject.org
