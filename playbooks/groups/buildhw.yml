@@ -59,7 +59,7 @@
 
   - koji_builder
   - { role: bkernel, when: inventory_hostname.startswith('bkernel') }
-  - { role: clevis, when: inventory_hostname.startswith('bkernel') }
+  - { role: clevis, when: inventory_hostname.startswith(('bkernel', 'buildhw-x86')) }
   - { role: serial-console, when: inventory_hostname.startswith('bkernel') }
   - hosts
   - { role: fas_client, when: not inventory_hostname.startswith('bkernel') }
