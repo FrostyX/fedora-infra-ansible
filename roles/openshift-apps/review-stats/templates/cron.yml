@@ -1,8 +1,10 @@
 apiVersion: batch/v1beta1
 kind: CronJob
 metadata:
-  name: cron
+  name: review-stats-make-html-pages
 spec:
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
   schedule: "0 * * * *"
   jobTemplate:
@@ -19,6 +21,8 @@ spec:
           containers:
           - name: build
             image: docker-registry.default.svc:5000/review-stats/builder:latest
+            command: ["review-stats", "-c", "/etc/review-stats/config.cfg", "-D",
+                      "make-pages", "-d", "/review-stats/"]
             env:
             - name: HOME
               value: "/tmp"
@@ -37,4 +41,49 @@ spec:
               name: review-stats-configmap
           - name: build-output
             persistentVolumeClaim:
-              claimName: openshift-{{env_short}}-reviewstats
+              claimName: openshift-{{ env_short }}-reviewstats
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: review-stats-work-on-bugs
+spec:
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 1
+  concurrencyPolicy: Forbid
+  schedule: "45 0 * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            parent: "cronjobbuild"
+        spec:
+          hostAliases:
+          - hostnames:
+            - partner-bugzilla.redhat.com
+            ip: 209.132.183.72
+          containers:
+          - name: build
+            image: docker-registry.default.svc:5000/review-stats/builder:latest
+            command: ["review-stats", "-c", "/etc/review-stats/config.cfg", "-D",
+                      "work-on-bugs", "-d"]
+            env:
+            - name: HOME
+              value: "/tmp"
+            volumeMounts:
+            - name: review-stats-config
+              mountPath: /etc/review-stats
+              readOnly: true
+            - name: build-output
+              mountPath: /review-stats
+              readOnly: false
+          restartPolicy: Never
+          startingDeadlineSeconds: 600
+          volumes:
+          - name: review-stats-config
+            configMap:
+              name: review-stats-configmap
+          - name: build-output
+            persistentVolumeClaim:
+              claimName: openshift-{{ env_short }}-reviewstats
