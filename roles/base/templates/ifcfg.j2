@@ -7,10 +7,10 @@ NETTYPE="qeth"
 OPTIONS="layer2=1 portno=0"
 {% endif %}
 {% if item in ansible_ifcfg_infra_net_devices %}
-GATEWAY="{{gw}}"
-{% if hostvars[inventory_hostname].datacenter == 'phx2' %}
-DOMAIN="phx2.fedoraproject.org vpn.fedoraproject.org fedoraproject.org"
-{% elif hostvars[inventory_hostname].datacenter == 'iad2' %}
+DEFROUTE=yes
+GATEWAY="{{ hostvars[inventory_hostname][item + '_ipv4_gw'] }}"
+{% endif %}
+{% if hostvars[inventory_hostname].datacenter == 'iad2' %}
 DOMAIN="iad2.fedoraproject.org vpn.fedoraproject.org fedoraproject.org"
 {% else %}
 DOMAIN="vpn.fedoraproject.org fedoraproject.org"
@@ -18,7 +18,6 @@ DOMAIN="vpn.fedoraproject.org fedoraproject.org"
 # Should be dc set
 DNS1="{{ dns1 }}"
 DNS2="{{ dns2 }}"
-{% endif %}
 HWADDR="{{ hostvars[inventory_hostname]['ansible_' + item]['macaddress']|upper }}"
 {% if item in ansible_ifcfg_disabled %}
 ONBOOT="no"
