@@ -42,6 +42,10 @@ buildhw-x86-01.iad2.fedoraproject.org
 buildhw-x86-02.iad2.fedoraproject.org
 buildhw-x86-03.iad2.fedoraproject.org
 buildhw-x86-04.iad2.fedoraproject.org
+buildhw-x86-05.iad2.fedoraproject.org
+buildhw-x86-06.iad2.fedoraproject.org
+buildhw-x86-07.iad2.fedoraproject.org
+buildhw-x86-08.iad2.fedoraproject.org
 
 [ibms]
 virthost-cc-rdu03.fedoraproject.org
