@@ -2,4 +2,5 @@
 eth0_ip: 10.3.169.31
 eth0_ipv4_gw: 10.3.169.254
 datacenter: iad2
+eth1_off: true
 

@@ -8,7 +8,7 @@ OPTIONS="layer2=1 portno=0"
 {% endif %}
 {% if item in ansible_ifcfg_infra_net_devices %}
 DEFROUTE=yes
-GATEWAY="{{ hostvars[inventory_hostname][item + '_ipv4_gw'] }}"
+GATEWAY="{{ gw }}"
 {% endif %}
 {% if hostvars[inventory_hostname].datacenter == 'iad2' %}
 DOMAIN="iad2.fedoraproject.org vpn.fedoraproject.org fedoraproject.org"
@@ -24,7 +24,11 @@ ONBOOT="no"
 {% else %}
 IPADDR="{{ hostvars[inventory_hostname][item + '_ip'] }}"
 NETMASK="{{ hostvars[inventory_hostname][item + '_nm'] }}"
+{% if hostvars[inventory_hostname][item +'_off'] is defined %}
+ONBOOT="no"
+{% else %}
 ONBOOT="yes"
+{% fi %}
 {% endif %}
 TYPE="Ethernet"
 DEVICE="{{item}}"
