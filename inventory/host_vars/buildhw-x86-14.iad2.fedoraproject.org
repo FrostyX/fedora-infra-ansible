@@ -3,3 +3,4 @@ eth0_ip: 10.3.169.44
 gw: 10.3.169.254
 datacenter: iad2
 eth1_off: true
+nm: 255.255.255.0
