@@ -8,8 +8,8 @@ OPTIONS="layer2=1 portno=0"
 {% endif %}
 {% if item in ansible_ifcfg_infra_net_devices %}
 DEFROUTE=yes
-{% if hostvars[inventory_hostname][item +'_gw'] is defined %}
-GATEWAY="{{ hostvars[inventory_hostname][item + '_gw'] }}"
+{% if hostvars[inventory_hostname][item +'ipv4_gw'] is defined %}
+GATEWAY="{{ hostvars[inventory_hostname][item + 'ipv4_gw'] }}"
 {% else %}
 GATEWAY="{{ gw }}"
 {% endif %}
