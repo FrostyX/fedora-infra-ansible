@@ -5,8 +5,8 @@ dns: 8.8.8.8
 dns1: 8.8.8.8
 dns2: 8.8.4.4
 
-ks_url: http://209.132.181.6/repo/rhel/ks/kvm-fedora-31-ext
-ks_repo: http://209.132.181.6/pub/fedora/linux/releases/31/Server/x86_64/os/
+ks_url: http://38.145.60.16/repo/rhel/ks/kvm-fedora-32-ext
+ks_repo: http://38.145.60.16/pub/fedora/linux/releases/32/Server/x86_64/os/
 
 vmhost: virthost-rdu01.fedoraproject.org
 volgroup: /dev/vg_guests
