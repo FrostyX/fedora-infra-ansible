@@ -36,6 +36,9 @@ repo_tasks_limit=15
 krb_rdns=false
 serverca = /etc/pki/ca-trust/extracted/pem/tls-ca-bundle.pem
 
+;how soon (in seconds) to clean up expired repositories. 1 week default
+deleted_repo_lifetime = 604800
+
 ;how soon (in seconds) to clean up dist repositories.
 ;we want this super long so we don't delete latest repos
 ;just set this to 6 months for now.
@@ -53,4 +56,4 @@ check_external_repos = True
 ; every cycle. File would contain information about how long these
 ; tags are expired and what is the computed score for them. This can
 ; be used to debug and check in realtime the actual performance.
-;queue_file = /var/tmp/kojira-queue
+queue_file = /var/tmp/kojira-queue
