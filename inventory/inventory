@@ -118,6 +118,8 @@ busgateway01.iad2.fedoraproject.org
 # busgateway01.stg.iad2.fedoraproject.org
 
 [fedocal]
+fedocal01.iad2.fedoraproject.org
+fedocal02.iad2.fedoraproject.org
 
 [fedocal_stg]
 # fedocal01.stg.iad2.fedoraproject.org
@@ -304,6 +306,8 @@ notifs-web01.iad2.fedoraproject.org
 # notifs-web02.stg.iad2.fedoraproject.org
 
 [nuancier]
+nuancier01.iad2.fedoraproject.org
+nuancier02.iad2.fedoraproject.org
 
 [nuancier_stg]
 # nuancier01.stg.iad2.fedoraproject.org
@@ -1253,6 +1257,8 @@ dl03.iad2.fedoraproject.org
 dl04.iad2.fedoraproject.org
 dl05.iad2.fedoraproject.org
 fedimg01.iad2.fedoraproject.org
+fedocal01.iad2.fedoraproject.org
+fedocal02.iad2.fedoraproject.org
 github2fedmsg01.iad2.fedoraproject.org
 ipa01.iad2.fedoraproject.org
 ipa02.iad2.fedoraproject.org
@@ -1276,6 +1282,8 @@ notifs-backend01.iad2.fedoraproject.org
 notifs-web01.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
+nuancier01.iad2.fedoraproject.org
+nuancier02.iad2.fedoraproject.org
 oci-candidate-registry01.iad2.fedoraproject.org
 oci-registry01.iad2.fedoraproject.org
 oci-registry02.iad2.fedoraproject.org
