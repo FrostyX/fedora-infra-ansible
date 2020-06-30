@@ -44,7 +44,7 @@ COMMIT
 # FIXME - this is the global nat-ip and we need the noc01-specific ip
 -A INPUT -p tcp -m tcp --dport 5666  -s 38.145.60.16 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 5666  -s 38.145.60.15 -j ACCEPT
--A INPUT -p tcp -m tcp --dport 5666 -s 10.5.126.41 -j ACCEPT
+-A INPUT -p tcp -m tcp --dport 5666 -s 10.3.163.10 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 5666 -s 10.5.126.241 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 5666 -s 10.5.128.38 -j ACCEPT
 
