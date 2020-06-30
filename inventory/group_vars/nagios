@@ -142,7 +142,6 @@ exclude_phx2_hostgroups:
   - openqa_iad
   - download_tier1
   - datacenter_iad2
-  - buildvm_ppc64le_iad2
   - sign_vault
   - bugzilla2fedmsg
   - github2fedmsg
