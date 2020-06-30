@@ -753,7 +753,7 @@ host openqa01-a64-worker01 {
 }
 
 host bvmhost-p09-01 {
-     hardware ethernet ac:1f:6b:59:70:ff;
+     hardware ethernet 40:a6:b7:18:8a:38;
      fixed-address 10.3.171.15;
      next-server 10.3.163.10;
      option routers 10.3.171.254;
@@ -761,7 +761,7 @@ host bvmhost-p09-01 {
 }
 
 host bvmhost-p09-02 {
-     hardware ethernet ac:1f:6b:56:e9:11;
+     hardware ethernet 40:a6:b7:18:86:b4;
      fixed-address 10.3.171.16;
      next-server 10.3.163.10;
      option routers 10.3.171.254;
