@@ -178,6 +178,8 @@ bvmhost-p08-04.iad2.fedoraproject.org
 
 [buildhw]
 buildhw-a64-01.iad2.fedoraproject.org
+buildhw-a64-19.iad2.fedoraproject.org
+buildhw-a64-20.iad2.fedoraproject.org
 buildhw-x86-01.iad2.fedoraproject.org
 buildhw-x86-02.iad2.fedoraproject.org
 buildhw-x86-03.iad2.fedoraproject.org
