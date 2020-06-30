@@ -57,7 +57,7 @@ define service {
   service_description   http-accounts
   check_command         check_website_ssl!admin.fedoraproject.org!/accounts/help/get_help/user_telephone!emergency
   use                   websitetemplate
-  servicegroups		fas
+#  servicegroups		fas
 }
 
 define service {
@@ -187,13 +187,13 @@ define service {
   use                   internalwebsitetemplate
 }
 
-define service {
-  hostgroup_name        fas
-  service_description   http-accounts
-  check_command         check_website!localhost!/accounts/help/get_help/user_telephone!emergency
-  use                   internalwebsitetemplate
-  servicegroups		fas
-}
+#define service {
+#  hostgroup_name        fas
+#  service_description   http-accounts
+#  check_command         check_website!localhost!/accounts/help/get_help/user_telephone!emergency
+#  use                   internalwebsitetemplate
+#  servicegroups		fas
+#}
 
 define service {
   hostgroup_name        github2fedmsg
@@ -243,24 +243,24 @@ define service {
   use                   websitetemplate
 }
 
-define service {
-  hostgroup_name	packages
-  service_description	http-packages-internal
-  check_command		check_website!localhost!/packages/!Packages
-  max_check_attempts	8
-  use			internalwebsitetemplate
-  event_handler         restart_httpd
-}
-
-define service {
-  hostgroup_name        packages
-  service_description   http-packages-internal-bugstab
-  check_command         check_website!localhost!/packages/fcomm_connector/bugzilla/query/query_bugs/%7B%22filters%22:%7B%22package%22:%22nethack%22,%22version%22:%22%22%7D,%22rows_per_page%22:10,%22start_row%22:0%7D!total_rows
-  max_check_attempts    8
-  use                   internalwebsitetemplate
-  # When this thing dies, you usually just need to nuke /var/cache/fedoracommunity/bugzillacookies
-  #event_handler         nuke_bugzillacookies_handler
-}
+#define service {
+#  hostgroup_name	packages
+#  service_description	http-packages-internal
+#  check_command		check_website!localhost!/packages/!Packages
+#  max_check_attempts	8
+#  use			internalwebsitetemplate
+#  event_handler         restart_httpd
+#}
+#
+#define service {
+#  hostgroup_name        packages
+#  service_description   http-packages-internal-bugstab
+#  check_command         check_website!localhost!/packages/fcomm_connector/bugzilla/query/query_bugs/%7B%22filters%22:%7B%22package%22:%22nethack%22,%22version%22:%22%22%7D,%22rows_per_page%22:10,%22start_row%22:0%7D!total_rows
+#  max_check_attempts    8
+#  use                   internalwebsitetemplate
+#  # When this thing dies, you usually just need to nuke /var/cache/fedoracommunity/bugzillacookies
+#  #event_handler         nuke_bugzillacookies_handler
+#}
 
 
 define service {
