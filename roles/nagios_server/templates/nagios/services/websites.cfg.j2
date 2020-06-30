@@ -151,7 +151,7 @@ define service {
   use                   websitetemplate
 }
 
-{% if vars['nagios_location'] == 'phx2_internal' %}
+{% if vars['nagios_location'] == 'iad2_internal' %}
 ##
 ## Other Frontend Websites 
 
@@ -313,7 +313,7 @@ define service {
 
 {% endif %}
 
-{% if vars['nagios_location'] == 'phx2_internal' %}
+{% if vars['nagios_location'] == 'iad2_internal' %}
 
 define service {
   host_name             mailman01.phx2.fedoraproject.org

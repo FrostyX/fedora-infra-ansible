@@ -3,7 +3,7 @@ define host {
   alias                        status.fedoraproject.org
   use                          mincheck
   address                      d6tcqd4og8l21.cloudfront.net
-{% if vars['nagios_location'] == 'phx2_internal' %}
+{% if vars['nagios_location'] == 'iad2_internal' %}
   parents                      phx2-gw
 {% elif vars['nagios_location'] == 'iad2_internal' %}
   parents                      iad2-gw
@@ -17,7 +17,7 @@ define host {
   alias                        cdn.registry.fedoraproject.org
   use                          mincheck
   address                      cdn.registry.fedoraproject.org
-{% if vars['nagios_location'] == 'phx2_internal' %}
+{% if vars['nagios_location'] == 'iad2_internal' %}
   parents                      phx2-gw
 {% elif vars['nagios_location'] == 'iad2_internal' %}
   parents                      iad2-gw
@@ -31,7 +31,7 @@ define host {
   alias                        lists.fedoraproject.org
   use                          mincheck
   address                      lists.fedoraproject.org
-{% if vars['nagios_location'] == 'phx2_internal' %}
+{% if vars['nagios_location'] == 'iad2_internal' %}
   parents                      phx2-gw
 {% elif vars['nagios_location'] == 'iad2_internal' %}
   parents                      iad2-gw

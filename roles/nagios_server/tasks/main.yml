@@ -173,7 +173,7 @@
 
 ## Copy over the services
 - name: Copy /etc/nagios/services (PHX2 specific files)
-  copy: src=nagios/services/phx2_internal/{{ item }} dest=/etc/nagios/services/{{ item }}
+  copy: src=nagios/services/iad2_internal/{{ item }} dest=/etc/nagios/services/{{ item }}
   with_items:
     - basset.cfg
     - certgetter.cfg
@@ -192,7 +192,7 @@
   - nagios_config
   - nagios_server
   - nagios_hostgroups
-  when: env == "production" and nagios_location == 'phx2_internal'
+  when: env == "production" and nagios_location == 'iad2_internal'
   notify: restart nagios
 
 - name: Copy /etc/nagios/services (IAD2 specific files)
@@ -419,7 +419,7 @@
     - phx2-hosts.cfg
     - phx2-mgmt-hosts.cfg
     - staging-hosts.cfg
-  when: env == "production" and nagios_location == 'phx2_internal'
+  when: env == "production" and nagios_location == 'iad2_internal'
   tags:
   - nagios_server
   - nagios_config
@@ -479,7 +479,7 @@
   template: src=nagios/services/{{item}}.j2 dest=/etc/nagios/services/{{item}} mode=0644 owner=root group=root
   with_items:
     - phx2-mgmt.cfg
-  when: nagios_location == 'phx2_internal'
+  when: nagios_location == 'iad2_internal'
   tags:
   - nagios_server
   - nagios_config
