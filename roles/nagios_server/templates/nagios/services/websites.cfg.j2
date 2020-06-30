@@ -316,9 +316,9 @@ define service {
 {% if vars['nagios_location'] == 'iad2_internal' %}
 
 define service {
-  host_name             mailman01.phx2.fedoraproject.org
+  host_name             mailman01.iad2.fedoraproject.org
   service_description   http-mailman-internal
-  check_command         check_website!mailman01.phx2.fedoraproject.org!/archives/!Fedora Mailing-Lists
+  check_command         check_website!mailman01.iad2.fedoraproject.org!/archives/!Fedora Mailing-Lists
   use                   websitetemplate
 }
 
