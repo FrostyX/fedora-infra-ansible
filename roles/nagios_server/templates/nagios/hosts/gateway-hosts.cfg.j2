@@ -121,7 +121,9 @@ define host {
   alias                        iad2 cage gateway
   use                          mincheck
   check_command                check-host-alive4
-{% if vars['nagios_location'] == 'external' %}
+{% if vars['nagios_location'] == 'iad2_internal' %}
+  address                      10.3.163.254
+{% elif vars['nagios_location'] == 'external' %}
   address                      66.187.228.248
   parents                      ibiblio-gw
 {% endif %}
