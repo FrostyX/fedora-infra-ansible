@@ -3,7 +3,7 @@
 ###############
 ## {{ env }}
 {% for key, value in groups.items()|sort %}
-{% if groups[key] != [] and key not in vars['exclude_phx2_hostgroups'] %}
+{% if groups[key] != [] and key not in vars['exclude_iad2_hostgroups'] %}
 define hostgroup{
        hostgroup_name {{ key }}
        alias          {{ key }}
@@ -38,17 +38,17 @@ define hostgroup{
 define hostgroup{
        hostgroup_name routers
        alias          routers
-       members        phx2-gw, ibiblio-gw, dedicated-gw, host1plus-gw, internetx-gw, osuosl-gw, rdu-gw, rdu-cc-gw, iad2-gw
+       members        ibiblio-gw, dedicated-gw, host1plus-gw, internetx-gw, osuosl-gw, rdu-gw, rdu-cc-gw, iad2-gw
 }
 
 
-##
-## Management hardware
-#define hostgroup {
-#        hostgroup_name  phx2_mgmt_systems
-#        alias           phx2_mgmt_systems
-#        members         {% for host in vars['phx2_management_hosts']|sort %}{{host}}{% if not loop.last %},{% endif %} {% endfor %} 
 #
-#}
+# Management hardware
+#
+define hostgroup {
+        hostgroup_name  iad2_mgmt_systems
+        alias           iad2_mgmt_systems
+        members         {% for host in vars['iad2_management_hosts']|sort %}{{host}}{% if not loop.last %},{% endif %} {% endfor %} 
 
-# TODO: Add iad2 mgmt here
+}
+

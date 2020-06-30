@@ -4,8 +4,6 @@ define host {
   use                          mincheck
   address                      d6tcqd4og8l21.cloudfront.net
 {% if vars['nagios_location'] == 'iad2_internal' %}
-  parents                      phx2-gw
-{% elif vars['nagios_location'] == 'iad2_internal' %}
   parents                      iad2-gw
 {% else %}
   parents                      ibiblio-gw
@@ -18,8 +16,6 @@ define host {
   use                          mincheck
   address                      cdn.registry.fedoraproject.org
 {% if vars['nagios_location'] == 'iad2_internal' %}
-  parents                      phx2-gw
-{% elif vars['nagios_location'] == 'iad2_internal' %}
   parents                      iad2-gw
 {% else %}
   parents                      ibiblio-gw
@@ -32,8 +28,6 @@ define host {
   use                          mincheck
   address                      lists.fedoraproject.org
 {% if vars['nagios_location'] == 'iad2_internal' %}
-  parents                      phx2-gw
-{% elif vars['nagios_location'] == 'iad2_internal' %}
   parents                      iad2-gw
 {% else %}
   parents                      ibiblio-gw

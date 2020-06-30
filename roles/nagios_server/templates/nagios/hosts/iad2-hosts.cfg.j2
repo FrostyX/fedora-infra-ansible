@@ -24,7 +24,7 @@ define host {
 {% if hostvars[host]['vmhost'] is defined %}
    parents                 {{ hostvars[host]['vmhost'] }}
 {% elif hostvars[host].datacenter is defined %}
-   parents                 phx2-gw
+   parents                 iad2-gw
 {% endif %}
 }
 

@@ -445,8 +445,4 @@ command[service_rsyslog_restart]=/usr/bin/sudo /sbin/service rsyslog restart
 #command[check_disk]=/usr/lib64/nagios/plugins/check_disk -w $ARG1$ -c $ARG2$ -p $ARG3$
 #command[check_procs]=/usr/lib64/nagios/plugins/check_procs -w $ARG1$ -c $ARG2$ -s $ARG3$
 
-{% if vars['nagios_location'] == 'iad2_internal' %}
-command[check_pgsql_backup]=/usr/lib64/nagios/plugins/check_file_age -w 86400 -c 129600 -f /backups/db-fas01.phx2.fedoraproject.org/fas2.db
-{% elif vars['nagios_location'] == 'iad2_internal' %}
 command[check_pgsql_backup]=/usr/lib64/nagios/plugins/check_file_age -w 86400 -c 129600 -f /backups/db-fas01.iad2.fedoraproject.org/fas2.db
-{% endif %}
