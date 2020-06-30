@@ -96,3 +96,5 @@
        - gnuplot
        - mod_auth_gssapi
 
+   - name: set domain_can_mmap_files so collectd works
+     seboolean: name=domain_can_mmap_files state=yes persistent=yes
