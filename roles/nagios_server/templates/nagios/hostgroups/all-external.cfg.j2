@@ -23,4 +23,5 @@ define hostgroup {
         hostgroup_name unbound
         alias          External DNS
         members        {% for host in groups["unbound"]|sort %}{{ host }}{% if not loop.last %}, {% endif %} {% endfor %}
+
 }
