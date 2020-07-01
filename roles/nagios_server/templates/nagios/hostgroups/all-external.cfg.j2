@@ -18,3 +18,9 @@ define hostgroup {
         members         {% for host in groups["proxies_external"]|sort %} {{ hostvars[host]["inventory_hostname_short"] }}.fedoraproject.org {% if not loop.last %}, {% endif %} {% endfor %}
 
 }
+
+define hostgroup {
+        hostgroup_name unbound
+        alias          External DNS
+        members        {% for host in groups["unbound"]|sort %}{{ host }}{% if not loop.last %}, {% endif %} {% endfor %}
+}
