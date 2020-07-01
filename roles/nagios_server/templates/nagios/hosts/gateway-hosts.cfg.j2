@@ -13,7 +13,6 @@ define host {
   parents                      iad2-gw
 {% elif vars['nagios_location'] == 'external' %}
   address                      66.187.228.248
-  parents                      ibiblio-gw
 {% endif %}
 
 }
