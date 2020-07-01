@@ -1,4 +1,4 @@
-#!/usr/bin/env python
+#!/usr/bin/python3
 """ Reads a string from stdin and prints it to stdout with irc colors
 
 :license: LGPLv2+
@@ -56,4 +56,4 @@ def colorize(word):
 if __name__ == '__main__':
     lines = sys.stdin.readlines()
     for line in lines:
-        print " ".join([colorize(word) for word in line.strip().split()])
+        print(" ".join([colorize(word) for word in line.strip().split()]))
