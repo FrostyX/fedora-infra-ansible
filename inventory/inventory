@@ -392,12 +392,6 @@ ns02.fedoraproject.org
 ns05.fedoraproject.org
 ns13.rdu2.fedoraproject.org
 
-[dns_external]
-ns-iad01.iad2.fedoraproject.org
-ns-iad02.iad2.fedoraproject.org
-ns02.fedoraproject.org
-ns05.fedoraproject.org
-
 [odcs_frontend]
 odcs-frontend01.iad2.fedoraproject.org
 

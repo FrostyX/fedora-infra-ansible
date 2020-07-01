@@ -1,7 +1,7 @@
 define hostgroup {
         hostgroup_name  dns
         alias           DNS Servers
-        members         {% for host in groups["dns_external"]|sort %} {{ hostvars[host]["inventory_hostname_short"] }}.fedoraproject.org {% if not loop.last %}, {% endif %} {% endfor %}
+        members         {% for host in vars['dns_external']|sort %}{{ host }}{% if not loop.last %}, {% endif %} {% endfor %}
 
 }
 

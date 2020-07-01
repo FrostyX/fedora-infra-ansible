@@ -105,6 +105,13 @@ iad2_external:
   - retrace01.fedoraproject.org
   - secondary01.fedoraproject.org
 
+dns_external:
+  - ns-iad01.fedoraproject.org
+  - ns-iad02.fedoraproject.org
+  - ns02.fedoraproject.org
+  - ns05.fedoraproject.org
+
+
 # When you have a group which comes up with empty members in all.cfg, it
 # is because it contains all hosts which aren't pinganble. You may want
 # to add that group to this list. Other items on this list are ones
