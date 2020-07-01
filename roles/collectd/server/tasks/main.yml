@@ -20,6 +20,7 @@
   with_items:
   - collectd-rrdtool
   - collectd-web
+  - collectd-rabbitmq-data
   notify:
   - restart collectd
   tags:
