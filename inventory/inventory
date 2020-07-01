@@ -1087,7 +1087,7 @@ value01.iad2.fedoraproject.org
 [iad2]
 #openqa-a64-worker01.iad2.fedoraproject.org
 #openqa-stg01.iad2.fedoraproject.org
-autosign01.iad2.fedoraproject.org
+#autosign01.iad2.fedoraproject.org
 backup01.iad2.fedoraproject.org
 badges-backend01.iad2.fedoraproject.org
 badges-web01.iad2.fedoraproject.org

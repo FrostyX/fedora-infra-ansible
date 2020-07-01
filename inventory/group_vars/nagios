@@ -87,7 +87,6 @@ iad2_management_limited:
 #  - ppc8-03-fsp.mgmt.fedoraproject.org
 
 iad2_external:
-  - bastion-comm01.fedoraproject.org
   - bastion01.fedoraproject.org
   - bastion02.fedoraproject.org
   - dl-iad01.fedoraproject.org
