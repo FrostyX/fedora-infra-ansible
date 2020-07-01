@@ -242,7 +242,7 @@
   - nagios_config
   - nagios_server
   - nagios_hostgroups
-  when: env == "production"
+  when: env == "production" and nagios_location == 'iad2_internal'
   notify: restart nagios
 
 ## Copy over the services
@@ -251,6 +251,7 @@
   with_items:
     - dns.cfg
     - smtp-mm.cfg
+    - unbound.cfg
     - templates.cfg
   tags:
   - nagios_config
