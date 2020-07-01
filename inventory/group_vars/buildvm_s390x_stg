@@ -1,7 +1,7 @@
 ---
 ansible_ifcfg_blocklist: True
 createrepo: False
-host_group: kojibuilder_iad2
+host_group: kojibuilder
 fas_client_groups: sysadmin-releng
 sudoers: "{{ private }}/files/sudo/00releng-sudoers"
 ks_url: http://10.5.126.23/repo/rhel/ks/buildvm-fedora-31-s390x
