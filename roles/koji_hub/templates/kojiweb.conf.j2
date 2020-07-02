@@ -101,4 +101,10 @@ Alias /repos-dist "/mnt/koji/repos-dist/"
     Options Indexes FollowSymLinks
     Require all granted
 </Directory>
+
+Alias /kojira "/mnt/koji/kojira/"
+<Directory "/mnt/koji/kojira/">
+    Options Indexes FollowSymLinks
+    Require all granted
+</Directory>
 {% endif %}
