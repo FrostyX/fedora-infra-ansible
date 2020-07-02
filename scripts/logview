@@ -12,7 +12,7 @@ search_terms=['CHANGED','FAILED']
 
 def date_cheat(datestr):
     dc = subprocess.Popen(['date', '-d', datestr, '+%Y/%m/%d'], stdout=subprocess.PIPE, stderr=subprocess.PIPE).communicate()[0]
-    dc = dc.strip()
+    dc = dc.strip().decode()
     return dc
     
 
@@ -95,9 +95,9 @@ def search_logs(opts, logfiles):
    
 def main(args):
     opts,args = parse_args(args)
-    for pb in glob.glob(logpath + '/' + opts.playbook):
+    for pb in glob.glob(os.path.join(logpath,opts.playbook)):
         pb_name = os.path.basename(pb)
-        for pb_logdir in glob.glob(pb + '/' + opts.datestr):
+        for pb_logdir in glob.glob(os.path.join(pb, opts.datestr)):
             if opts.list_pb:
                 print(pb_name)
                 continue
