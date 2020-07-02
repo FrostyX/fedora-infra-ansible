@@ -77,3 +77,5 @@ dl_tier1:
   - 147.75.101.1                       # ams.edge.kernel.org
   - 130.225.254.116                    # dotsrc.org
   - 2001:878:346::116                  # dotsrc.org
+  - 166.78.229.128                     # rackspace new infra
+  - 72.4.120.222                       # rackspace old infra
