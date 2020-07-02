@@ -66,8 +66,13 @@ spec:
           containers:
           - name: build
             image: docker-registry.default.svc:5000/review-stats/builder:latest
+{% if env == 'staging' %}
             command: ["review-stats", "-c", "/etc/review-stats/config.cfg", "-D",
                       "work-on-bugs", "-d"]
+{% else %}
+            command: ["review-stats", "-c", "/etc/review-stats/config.cfg", "-D",
+                      "work-on-bugs"]
+{% endif %}
             env:
             - name: HOME
               value: "/tmp"
