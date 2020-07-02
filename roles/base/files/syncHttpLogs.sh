@@ -23,7 +23,9 @@ function syncHttpLogs {
         for f in $(/usr/bin/rsync $RSYNC_FLAGS --list-only $HOST::log/httpd/*$YESTERDAY* | awk '{ print $5 }')
         do
             DEST=$(echo $f | /bin/sed s/-$YESTERDAY//)
-            /usr/bin/rsync $RSYNC_FLAGS $HOST::log/httpd/$f ./$DEST
+            /usr/bin/rsync $RSYNC_FLAGS $HOST::log/httpd/$f ./$DEST &> /dev/null
+	    if [[ $? -ne 0 ]]; then
+		echo "rsync from $HOST for file $f failed"
         done
     done
 }
@@ -43,11 +45,12 @@ syncHttpLogs proxy13.vpn.fedoraproject.org
 syncHttpLogs proxy14.vpn.fedoraproject.org
 syncHttpLogs proxy30.vpn.fedoraproject.org
 syncHttpLogs proxy31.vpn.fedoraproject.org
+syncHttpLogs proxy32.vpn.fedoraproject.org
 syncHttpLogs proxy101.iad2.fedoraproject.org
 syncHttpLogs proxy110.iad2.fedoraproject.org
 # syncHttpLogs proxy01.stg.iad2.fedoraproject.org
-# syncHttpLogs fedocal01.iad2.fedoraproject.org
-# syncHttpLogs fedocal02.iad2.fedoraproject.org
+ syncHttpLogs fedocal01.iad2.fedoraproject.org
+ syncHttpLogs fedocal02.iad2.fedoraproject.org
 # syncHttpLogs fedocal01.stg.iad2.fedoraproject.org
 syncHttpLogs datagrepper01.iad2.fedoraproject.org
 # syncHttpLogs datagrepper02.iad2.fedoraproject.org
