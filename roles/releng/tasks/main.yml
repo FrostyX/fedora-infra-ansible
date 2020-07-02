@@ -166,7 +166,7 @@
 # put cron job in for branched compose
 - name: branched compose cron
   copy: src="branched" dest=/etc/cron.d/branched
-  when: inventory_hostname.startswith('branched-composer.iad2')
+  when: inventory_hostname.startswith('branched-composer01.iad2')
 
 # put cron job in for rawhide compose
 - name: rawhide compose cron
@@ -196,7 +196,7 @@
 # put cron job in for epel8-playground compose
 - name: epel8-playground compose cron
   copy: src="epel8-playground" dest=/etc/cron.d/epel8-playground
-  when: inventory_hostname.startswith('branched-composer.iad2')
+  when: inventory_hostname.startswith('branched-composer01.iad2')
 
 - name: Create /etc/pki/fedora-messaging
   file:
