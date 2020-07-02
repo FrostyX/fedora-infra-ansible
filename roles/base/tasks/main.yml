@@ -226,6 +226,7 @@
   - service
   - config
   - base
+  when: ansible_distribution_major_version|int > 31 and ansible_distribution == 'Fedora' or ansible_distribution == 'RedHat'
 
 - name: iptables
   template: src={{ item }} dest=/etc/sysconfig/iptables mode=0600 validate="/sbin/iptables-restore --test %s"
