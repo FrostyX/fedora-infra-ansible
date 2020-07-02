@@ -5,6 +5,7 @@ Welcome! This is the Fedora Infrastructure Ansible Pagure project.
 
 This repository is also mirrored for production runs to
 https://infrastructure.fedoraproject.org/infra/ansible/
+but this is the working repository where changes are made.
 
 If you would like to help out with Fedora Infrastructure, see:
 
@@ -54,15 +55,18 @@ master.yml - This is the master playbook, consisting of all
 Paths
 -----
 
-The public path for everything is `/srv/web/infra/ansible`
+The public path on batcave01 (our control host) for everything is `/srv/web/infra/ansible`
 
-The private path (which is sysadmin-main accessible only) is `/srv/private/ansible`
+The private path on batcave01 (our control host) (which is sysadmin-main accessible only)
+is `/srv/private/ansible`
 
 In general to run any ansible playbook you will want to run:
 
 ```
 sudo -i ansible-playbook /path/to/playbook.yml
 ```
+
+(On batcave01, our control host)
 
 Scheduled check-diff
 --------------------
