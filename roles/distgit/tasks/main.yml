@@ -5,20 +5,6 @@
 
 # -- Common ----------------------------------------------
 # This is very basic stuff that is needed by multiple of the next sections.
-- name: install the needed packages
-  package: name={{item}} state=present
-  with_items:
-  - git
-  - httpd
-  - mod_ssl
-  - mod_auth_gssapi
-  - python-fedmsg-genacls
-  - /usr/sbin/semanage
-  - mod_auth_openidc
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - distgit
-
 - name: Enable the mod_auth_openidc module on rhel8
   copy:
     dest: /etc/dnf/modules.d/mod_auth_openidc.module
@@ -28,7 +14,6 @@
       stream=2.3
       profiles=
       state=enabled
-  when: env == "staging" or datacenter == "iad2"
 
 - name: install the needed packages
   package: name={{item}} state=present
@@ -39,7 +24,6 @@
   - mod_auth_gssapi
   - /usr/sbin/semanage
   - mod_auth_openidc
-  when: env == "staging" or datacenter == "iad2"
   tags:
   - distgit
 
@@ -252,146 +236,6 @@
   - distgit
   - mass-branching
 
-# -- Gitolite --------------------------------------------
-# This is the permission management for package maintainers, using Gitolite.
-- name: create the /var/log/gitolite directory
-  file: path=/var/log/gitolite owner=root group=packager state=directory mode=2775
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - distgit
-
-- name: create the gen-acls group
-  group: name=gen-acls gid=417 state=present
-  tags:
-  - distgit
-
-- name: create the gen-acls user
-  user: >
-        name=gen-acls
-        comment="dummy system account for the gen-acls fedmsg job"
-        uid=417
-        group=gen-acls
-        shell=/bin/bash
-        home=/srv/git
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - distgit
-
-- name: create the /etc/gitolite/conf directory
-  file: path=/etc/gitolite/conf owner=pagure group=pagure
-        state=directory mode=0755
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - distgit
-
-- name: create the /etc/gitolite/logs directory
-  file: path=/etc/gitolite/logs owner=pagure group=packager
-        state=directory mode=0775
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - distgit
-
-- name: create the /etc/gitolite/local/VREF directory
-  file: path=/etc/gitolite/local/VREF owner=pagure group=packager
-        state=directory mode=0775
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - distgit
-
-- name: create /etc/gitolite/gitolite.rc
-  template: src=gitolite.rc dest=/etc/gitolite/gitolite.rc
-            owner=root group=root mode=0755
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - distgit
-
-- name: Create the rpms symlink (should not be needed, might still be used by some old scripts)
-  command: ln -s /srv/git/repositories/ /srv/git/rpms
-           creates=/srv/git/rpms
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - config
-  - distgit
-
-- name: Create the gitolite.rc symlink
-  command: ln -s /etc/gitolite/gitolite.rc /srv/git/.gitolite.rc
-           creates=/srv/git/.gitolite.rc
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - config
-  - distgit
-
-- name: Create the gitolite configuration symlink
-  command: ln -s /etc/gitolite/ /srv/git/.gitolite
-           creates=/srv/git/.gitolite
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - config
-  - distgit
-
-- name: Copy in RepoAliases.header
-  copy: src=RepoAliases.header dest=/etc/gitolite/RepoAliases.header
-        owner=root group=root mode=0755
-  when: env != "staging" and datacenter != "iad2"
-
-- name: Create the update-block-push-origin symlink
-  command: ln -s /usr/share/git-core/update-block-push-origin /etc/gitolite/local/VREF/update-block-push-origin
-           creates=/etc/gitolite/local/VREF/update-block-push-origin
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - config
-  - distgit
-
-- name: install the fedmsg configuration
-  template: src=fedmsg-genacls-config.py dest=/etc/fedmsg.d/genacls.py
-            owner=root group=root mode=0644
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - distgit
-
-- name: remove file pre-dating pagure over dist-git
-  file: path={{ item }} state=absent
-  with_items:
-    - /usr/local/bin/genacls.sh
-    - /etc/cron.d/genacls.cron
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - config
-  - distgit
-
-- name: Get admin users
-  command: "/srv/web/infra/ansible/scripts/users-from-fas @sysadmin-main {{ admin_groups }}"
-  register: admin_user_list
-  check_mode: no
-  changed_when: "1 != 1"
-  run_once: True
-  delegate_to: localhost
-  tags:
-  - config
-  - distgit
-
-- name: Save the list the users having a shell access
-  template: src=gitolite_admins dest=/etc/gitolite/admins
-            owner=gen-acls group=packager mode=660
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - config
-  - distgit
-
-- name: Fix permissions on the Gitolite stuff
-  file: dest={{ item.name }} group=packager mode={{ item.mode }} state={{ item.state }}
-  with_items:
-    - {name: /etc/gitolite/hooks, mode: 770, state: directory}
-    - {name: /etc/gitolite/hooks/common, mode: 770, state: directory}
-  when: env != "staging" and datacenter != "iad2"
-
-- name: Fix permissions on the Gitolite stuff (touch update if it does not exist)
-  copy: content="" dest=/etc/gitolite/hooks/common/update force=no owner=root group=packager mode=0755
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - distgit
-  - config
-
 # -- Lookaside Cache -------------------------------------
 # This is the annex to Dist Git, where we host source tarballs.
 - name: install the Lookaside Cache httpd configs
@@ -511,15 +355,7 @@
   tags: selinux
 
 - name: setup grokmirror for repos
-  package: name=python-grokmirror state=installed
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - grokmirror
-  - pkgs
-
-- name: setup grokmirror for repos
   package: name=python3-grokmirror state=installed
-  when: env == "staging" or datacenter == "iad2"
   tags:
   - grokmirror
   - pkgs
