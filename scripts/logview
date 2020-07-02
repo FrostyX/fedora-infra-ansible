@@ -1,4 +1,4 @@
-#!/usr/bin/python -tt
+#!/usr/bin/python3
 import sys
 import json
 import time
@@ -99,14 +99,14 @@ def main(args):
         pb_name = os.path.basename(pb)
         for pb_logdir in glob.glob(pb + '/' + opts.datestr):
             if opts.list_pb:
-                print pb_name
+                print(pb_name)
                 continue
                 
             logfiles = glob.glob(pb_logdir + '/*/*.log')
             msg = search_logs(opts, logfiles)
             if msg:
-                print pb_name
-                print msg
+                print(pb_name)
+                print(msg)
                 
           
 
