@@ -99,9 +99,10 @@ done
 gnuplot ${LSHARE}/${PROJECT}-data.gp
 
 # Make the seven day moving average file
-/usr/local/bin/mirrors-moving_avg.py > ${WEBDIR}/${PROJECT}data-all-7day-ma.csv
+## TODO: 2020-07-02 rewrite as python3 with newer pandas and numpy
+#/usr/local/bin/mirrors-moving_avg.py > ${WEBDIR}/${PROJECT}data-all-7day-ma.csv
 
-gnuplot  ${LSHARE}/${PROJECT}-moving.gp
+# gnuplot  ${LSHARE}/${PROJECT}-moving.gp
 
 # cleanup the temp data
 rm -rf ${TEMPDIR}
