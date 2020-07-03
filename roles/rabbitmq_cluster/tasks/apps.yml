@@ -3,15 +3,12 @@
 #
 
 
-- name: CoreOS queue
+- name: CoreOS user
   run_once: true
   include_role:
-    name: rabbit/queue
+    name: rabbit/user
   vars:
     username: coreos{{ env_suffix }}
-    queue_name: coreos{{ env_suffix }}
-    routing_keys:
-      - "org.fedoraproject.*.coreos.build.request.*"
 
 
 - name: CentOS CI
