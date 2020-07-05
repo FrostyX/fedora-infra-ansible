@@ -34,6 +34,7 @@ kernel_shmmax: 68719476736
 custom_rules: [ 
 '-A INPUT -p tcp -m tcp -s 10.3.169.104 --dport 5432 -j ACCEPT', 
 '-A INPUT -p tcp -m tcp -s 10.3.169.105 --dport 5432 -j ACCEPT', 
+'-A INPUT -p tcp -m tcp -s 10.3.169.10 --dport 5432 -j ACCEPT', 
 ]
 
 #

@@ -34,6 +34,8 @@ custom_rules: [
     '-A INPUT -p tcp -m tcp -s 10.3.163.71   --dport 5432 -j ACCEPT',
     '-A INPUT -p tcp -m tcp -s 10.3.163.72   --dport 5432 -j ACCEPT',
     '-A INPUT -p tcp -m tcp -s 10.3.163.73   --dport 5432 -j ACCEPT',
+    # noc01 needs to connect to check the db
+    '-A INPUT -p tcp -m tcp -s 10.3.163.10   --dport 5432 -j ACCEPT',
 ]
 #
 # Large updates pushes cause lots of db threads doing the tag moves, so up this from default. 
