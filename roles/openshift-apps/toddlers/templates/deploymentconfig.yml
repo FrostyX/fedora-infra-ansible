@@ -22,6 +22,10 @@ spec:
       containers:
       - name: toddlers
         image: toddlers:latest
+        command: ["fedora-messaging", "consume"]
+        env:
+          - name: PYTHONPATH
+            value: "/code"
         resources: {}
         volumeMounts:
         - name: toddlers-secret-volume
