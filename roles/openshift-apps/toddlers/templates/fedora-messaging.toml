@@ -44,17 +44,56 @@ routing_keys = ["#"]  # This is dynamically generated in the code
 # more of them.
 blocked_toddlers = ["debug"]
 
+
 [consumer_config.flag_ci_pr]
 # flag_ci_pr
 pagure_token_seed = "{{ toddlers_flag_ci_seed }}"
 pagure_token = "{{ toddlers_flag_ci_token }}"
 pagure_url = "https://src{{ env_suffix }}.fedoraproject.org"
 
+
 [consumer_config.flag_commit_build]
 # flag_commit_build
 pagure_token = "{{ toddlers_flag_commit_build_token }}"
 pagure_url = "https://src{{ env_suffix }}.fedoraproject.org"
 koji_url = "https://koji{{ env_suffix }}.fedoraproject.org"
+
+
+[consumer_config.packager_bugzilla_sync]
+#  Configuration file storing all the email overrides in the form of:
+# "foo@bar.com" = "bar@foo.org"
+# This is the same format as used by the distgit_bugzilla_sync cron/app
+email_overrides_file = "/etc/fedora-messaging/email_overrides.toml"
+
+# Base url of dist-git
+dist_git_url = "https://src.fedoraproject.org"
+
+# List of accounts we do not want to report about
+ignorable_accounts = ["packagerbot", "zuul"]
+
+# Configuration used when sending notifications:
+mail_server = "bastion.fedoraproject.org"
+admin_email = "admin@fedoraproject.org"
+
+# Account to use to connect to FAS
+fas_url = "https://admin.fedoraproject.org/accounts"
+fas_username = "{{ fedoraDummyUser }}"
+fas_password = "{{ fedoraDummyUserPassword }}"
+
+# Account to use to connect to bugzilla
+bugzilla_url = "https://bugzilla.redhat.com"
+bugzilla_username = "{{ bugzilla_user }}"
+bugzilla_password = "{{ bugzilla_password }}"
+bugzilla_group = "fedora_contrib"
+
+
+[consumer_config.pdc_retired_packages]
+file_check_url = "https://src.fedoraproject.org/%(namespace)s/%(repo)s/blob/%(branch)s/f/%(file)s"
+# Credentials to talk to PDC
+[consumer_config.pdc_retired_packages.pdc_config]
+server = "https://pdc.fedoraproject.org/rest_api/v1/"
+ssl_verify = false  # Enable if using a self-signed cert
+token = "{{ pdc_updater_api_token_prod }}"
 
 [qos]
 prefetch_size = 0
