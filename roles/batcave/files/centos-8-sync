@@ -1,7 +1,7 @@
 #!/bin/sh
 
 RSYNC_DESTDIR=/mnt/fedora/app/fi-repo/centos/centos-8/
-RSYNC_MOD="centos-epel/centos/8.1.1911/"
+RSYNC_MOD="CentOS-community-cage/centos/8/"
 
 REPO_FROMDIR=/mnt/fedora/app/fi-repo/centos/centos-8/
 
