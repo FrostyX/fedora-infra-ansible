@@ -15,6 +15,7 @@
     appowners:
     - pingou
     - abompard
+    - mohanboddu
 
   - role: rabbit/user
     username: "toddlers{{ env_suffix }}"
