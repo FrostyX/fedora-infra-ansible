@@ -220,8 +220,6 @@ config = dict(
                 "level": "ERROR",
 {% if datacenter == 'iad2' %}
                 "mailhost": "bastion.iad2.fedoraproject.org",
-{% elif datacenter == 'iad2' %}
-                "mailhost": "bastion.iad2.fedoraproject.org",
 {% else %}
                 "mailhost": "bastion.vpn.fedoraproject.org",
 {% endif %}

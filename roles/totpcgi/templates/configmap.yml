@@ -107,8 +107,6 @@ data:
         ServerName fas-all.vpn.fedoraproject.org:8443
 {% elif datacenter == 'iad2' %}
         ServerName fas-all.iad2.fedoraproject.org:8443
-{% elif datacenter == 'iad2' %}
-        ServerName fas-all.iad2.fedoraproject.org:8443
 {% endif %}
         SSLEngine on
 {% if objectname == "configmap-totpcgi-vpn.yml" %}

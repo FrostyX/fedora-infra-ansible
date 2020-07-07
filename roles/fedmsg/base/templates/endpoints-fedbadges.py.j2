@@ -5,13 +5,6 @@ suffix  = 'stg.iad2.fedoraproject.org'
 suffix = 'iad2.fedoraproject.org'
 vpn_suffix = 'vpn.fedoraproject.org'
 {% endif %}
-{% elif datacenter == 'iad2' %}
-{% if env == 'staging' %}
-suffix  = 'stg.iad2.fedoraproject.org'
-{% else %}
-suffix = 'iad2.fedoraproject.org'
-vpn_suffix = 'vpn.fedoraproject.org'
-{% endif %}
 {% else %}
 {% if env == 'staging' %}
 suffix  = 'stg.fedoraproject.org'
