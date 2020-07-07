@@ -27,6 +27,9 @@
       - "org.centos.*.ci.dist-git-pr.test.complete"
       - "org.centos.*.ci.dist-git-pr.test.running"
       - "org.fedoraproject.*.buildsys.build.state.change"
+      - "org.fedoraproject.*.toddlers.trigger.pdc_retired_packages"
+      - "org.fedoraproject.*.git.receive"
+      - "org.fedoraproject.*.toddlers.trigger.packager_bugzilla_sync"
     thresholds:
       warning: 10
       critical: 100
