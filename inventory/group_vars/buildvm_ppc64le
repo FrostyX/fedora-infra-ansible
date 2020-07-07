@@ -2,7 +2,7 @@
 # common items for the buildvm-* koji builders
 volgroup: /dev/vg_guests
 lvm_size: 600000
-mem_size: 12288
+mem_size: 20480
 max_mem_size: 20480
 num_cpus: 8
 
