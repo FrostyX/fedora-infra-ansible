@@ -971,10 +971,10 @@ host dell-r6x0-13-mgmt {
      fixed-address 10.3.160.45;
      option host-name "virthost22";
 }
-host dell-r6x0-15-mgmt {
+host bvmhost-x86-08-mgmt {
      hardware ethernet 4c:d9:8f:04:64:5e;
-     fixed-address 10.3.160.47;
-     option host-name "vmhost01-mgmt";
+     fixed-address 10.3.160.98;
+     option host-name "bvmhost-x86-08-mgmt";
 }
 host dell-r6x0-17-mgmt {
      hardware ethernet 58:8A:5A:EE:F0:02;
