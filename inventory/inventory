@@ -1094,6 +1094,7 @@ blockerbugs01.iad2.fedoraproject.org
 bodhi-backend01.iad2.fedoraproject.org
 bugzilla2fedmsg01.iad2.fedoraproject.org
 buildhw-a64-01.iad2.fedoraproject.org
+buildhw-a64-04.iad2.fedoraproject.org
 buildhw-a64-19.iad2.fedoraproject.org
 buildhw-a64-20.iad2.fedoraproject.org
 buildhw-x86-01.iad2.fedoraproject.org
