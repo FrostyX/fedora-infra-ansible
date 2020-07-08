@@ -36,17 +36,17 @@ spec:
              - name: fedora-messaging-cert-volume
                mountPath: /etc/pki/rabbitmq/cert
                readOnly: true
-         volumes:
-         - name: toddlers-secret-volume
-           secret:
-             secretName: toddlers-secret
-         - name: fedora-messaging-ca-volume
-           secret:
-             secretName: toddlers-fedora-messaging-ca
-         - name: fedora-messaging-key-volume
-           secret:
-            secretName: toddlers-fedora-messaging-key
-         - name: fedora-messaging-cert-volume
-           secret:
-             secretName: toddlers-fedora-messaging-crt
+          volumes:
+          - name: toddlers-secret-volume
+            secret:
+              secretName: toddlers-secret
+          - name: fedora-messaging-ca-volume
+            secret:
+              secretName: toddlers-fedora-messaging-ca
+          - name: fedora-messaging-key-volume
+            secret:
+             secretName: toddlers-fedora-messaging-key
+          - name: fedora-messaging-cert-volume
+            secret:
+              secretName: toddlers-fedora-messaging-crt
 ---
