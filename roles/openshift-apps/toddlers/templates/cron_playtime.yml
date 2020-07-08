@@ -6,7 +6,7 @@ spec:
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 3
   concurrencyPolicy: Forbid
-  schedule: "12 17 * * *"
+  schedule: "14 17 * * *"
   startingDeadlineSeconds: 500
   jobTemplate:
     spec:
@@ -19,8 +19,7 @@ spec:
           containers:
           - name: toddlers
             image: docker-registry.default.svc:5000/toddlers/toddlers:latest
-#            command: ["/usr/bin/python3", "/code/toddlers/toddlers/playtime.py", "packager_bugzilla_sync"]
-            command: ["ls", "-l", "/", "/code", "/code/toddlers", "/code/toddlers/toddlers"]
+            command: ["/usr/bin/python3", "/code/toddlers/playtime.py", "packager_bugzilla_sync"]
             env:
               - name: PYTHONPATH
                 value: "/code"
