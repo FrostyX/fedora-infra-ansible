@@ -58,7 +58,7 @@
     key: toddlers.ca
     privatefile: "rabbitmq/{{env}}/pki/ca.crt"
 
-  - role: playtime cron jobs
+  - role: openshift/object
     app: toddlers
     template: cron_playtime.yml
     objectname: cron_playtime.yml
