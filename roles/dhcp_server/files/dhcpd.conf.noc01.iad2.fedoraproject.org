@@ -1238,3 +1238,8 @@ host vmhost-iad-11-mgmt {
      fixed-address 10.3.160.56;
      option host-name "vmhost-iad-11-mgmt";
 }
+host buildhw-a64-04 {
+     hardware ethernet 2c:59:e5:36:9a:53;
+     fixed-address 10.3.170.124;
+     option host-name "buildhw-a64-04";
+}
