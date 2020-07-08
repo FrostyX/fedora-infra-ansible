@@ -15,8 +15,8 @@ spec:
           labels:
             parent: "cron_playtime_toddlers"
         spec:
-          containers:
           restartPolicy: Never
+          containers:
           - name: toddlers
             image: docker-registry.default.svc:5000/toddlers/toddlers:latest
             command: ["/code/toddlers/playtime", "packager_bugzilla_sync"]
