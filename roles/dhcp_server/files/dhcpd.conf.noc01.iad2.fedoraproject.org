@@ -530,7 +530,7 @@ host bvmhost-x8-07 {
      option subnet-mask 255.255.255.0;
 }
 host bvmhost-x86-08 {
-     hardware ethernet EC:F4:BB:D2:25:68 ;
+     hardware ethernet E4:43:4B:24:19:76 ;
      fixed-address 10.3.169.18;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
