@@ -191,6 +191,8 @@ buildhw-a64-06.iad2.fedoraproject.org
 buildhw-a64-07.iad2.fedoraproject.org
 buildhw-a64-08.iad2.fedoraproject.org
 buildhw-a64-09.iad2.fedoraproject.org
+#buildhw-a64-10.iad2.fedoraproject.org
+buildhw-a64-11.iad2.fedoraproject.org
 buildhw-a64-19.iad2.fedoraproject.org
 buildhw-a64-20.iad2.fedoraproject.org
 buildhw-x86-01.iad2.fedoraproject.org
