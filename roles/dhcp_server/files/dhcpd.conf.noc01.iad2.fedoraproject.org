@@ -1243,3 +1243,8 @@ host buildhw-a64-04 {
      fixed-address 10.3.170.124;
      option host-name "buildhw-a64-04";
 }
+host buildhw-a64-05 {
+     hardware ethernet 00:01:73:02:09:c3;
+     fixed-address 10.3.170.125;
+     option host-name "buildhw-a64-05";
+}
