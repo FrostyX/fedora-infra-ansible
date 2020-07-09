@@ -461,12 +461,6 @@ pkgs01.iad2.fedoraproject.org
 [pkgs_stg]
 # pkgs01.stg.iad2.fedoraproject.org
 
-[loopabull]
-loopabull01.iad2.fedoraproject.org
-
-[loopabull_stg]
-# loopabull01.stg.iad2.fedoraproject.org
-
 [proxies_external]
 proxy01.iad2.fedoraproject.org
 proxy02.fedoraproject.org
@@ -579,7 +573,6 @@ copr-keygen-dev.aws.fedoraproject.org
 # github2fedmsg01.stg.iad2.fedoraproject.org
 # ipa01.stg.iad2.fedoraproject.org
 # koji01.stg.iad2.fedoraproject.org
-# loopabull01.stg.iad2.fedoraproject.org
 # mailman01.stg.iad2.fedoraproject.org
 # mbs-backend01.stg.iad2.fedoraproject.org
 # mbs-frontend01.stg.iad2.fedoraproject.org
@@ -1313,7 +1306,6 @@ koji02.iad2.fedoraproject.org
 kojipkgs01.iad2.fedoraproject.org
 kojipkgs02.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org
-loopabull01.iad2.fedoraproject.org
 mbs-backend01.iad2.fedoraproject.org
 mbs-frontend01.iad2.fedoraproject.org
 memcached01.iad2.fedoraproject.org

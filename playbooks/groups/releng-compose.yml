@@ -39,12 +39,6 @@
   - role: keytab/service
     service: mash
     host: "koji{{env_suffix}}.fedoraproject.org"
-  - role: loopabull/target
-    loopabull_role: koji
-    when: inventory_hostname == 'composer.stg.iad2.fedoraproject.org'
-  - role: loopabull/target
-    loopabull_role: ociimage
-    when: inventory_hostname == 'composer.stg.iad2.fedoraproject.org'
 
   - role: nfs/client
     mnt_dir: '/mnt/fedora_koji'
