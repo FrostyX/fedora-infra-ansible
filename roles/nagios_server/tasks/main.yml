@@ -354,7 +354,7 @@
   notify: restart nagios
 
 - name: Template over plugins
-  template: src=nagios/plugins/{{item}}.j2 dest=/usr/lib64/nagios/plugins/ mode=0755 owner=root group=root
+  template: src=nagios/plugins/{{item}}.j2 dest=/usr/lib64/nagios/plugins/{{item}} mode=0755 owner=root group=root
   with_items:
     - check_koji
   tags:
