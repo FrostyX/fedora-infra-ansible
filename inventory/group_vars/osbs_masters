@@ -10,7 +10,7 @@ fas_client_groups: sysadmin-releng,fi-apprentice,sysadmin-noc,sysadmin-veteran,s
 sudoers: "{{ private }}/files/sudo/osbs-sudoers"
 
 docker_cert_dir: "/etc/docker/certs.d/candidate-registry.fedoraproject.org"
-source_registry: "registry.fedoraproject.org"
+source_registry: "registry-no-cdn.fedoraproject.org"
 docker_registry: "candidate-registry.fedoraproject.org"
 
 osbs_url: "osbs.fedoraproject.org"
