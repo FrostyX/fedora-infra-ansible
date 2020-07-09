@@ -1033,7 +1033,7 @@ host openqa-p09-01-mgmt {
 }
 host svault06-mgmt {
      hardware ethernet D0:94:66:45:A1:66;
-     fixed-address 10.3.160.63;
+     fixed-address 10.3.160.132;
      option host-name "sign-vault06";
 }
 host qa-vmhost01-mgmt {
@@ -1218,14 +1218,9 @@ host system-vmhost-mgmt {
      option host-name "vmhost-11-mgmt";
 }
 
-host dell-r6x0-14-mgmt {
-     hardware ethernet 5c:f3:fc:53:db:fd;
-     fixed-address 10.3.160.46;
-     option host-name "virthost-comm01-mgmt";
-}
 host dell-r6x0-16-mgmt {
      hardware ethernet 58:8A:5A:EE:F2:0E;
-     fixed-address 10.3.160.48;
+     fixed-address 10.3.160.193;
      option host-name "vmhost01-stg-mgmt";
 }
 host system-23 {
