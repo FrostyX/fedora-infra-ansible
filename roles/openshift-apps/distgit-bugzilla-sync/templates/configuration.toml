@@ -22,7 +22,7 @@ Reassigning to the new maintainer of this component.
         namespace = "modules"
         versions = []
     [products."Fedora EPEL"]
-        branch_regex = '^epel\d+$'
+        branch_regex = '^(ep)?el\d+$'
         versions = ["epel8", "epel7", "el6"]
 
 [pdc_types]
