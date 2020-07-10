@@ -57,6 +57,7 @@ badges-web01.iad2.fedoraproject.org
 
 [bastion]
 bastion01.iad2.fedoraproject.org
+bastion02.iad2.fedoraproject.org
 bastion13.fedoraproject.org
 
 [bastion_stg]
@@ -635,6 +636,7 @@ retrace-stg.aws.fedoraproject.org
 [staging_friendly]
 batcave01.iad2.fedoraproject.org
 bastion01.iad2.fedoraproject.org
+bastion02.iad2.fedoraproject.org
 certgetter01.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
@@ -1081,6 +1083,7 @@ backup01.iad2.fedoraproject.org
 badges-backend01.iad2.fedoraproject.org
 badges-web01.iad2.fedoraproject.org
 bastion01.iad2.fedoraproject.org
+bastion02.iad2.fedoraproject.org
 batcave01.iad2.fedoraproject.org
 bkernel01.iad2.fedoraproject.org
 blockerbugs01.iad2.fedoraproject.org
