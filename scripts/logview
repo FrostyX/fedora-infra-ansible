@@ -23,17 +23,17 @@ def date_cheat(datestr):
 def parse_args(args):
     usage = """
           logview [options] [-d datestr] [-p playbook]
-          
+
           examples:
           logview -d yesterday -l # lists playbooks run on that date
-          
+
           logview -s OK -s FAILED -d yesterday # list events from yesterday that failed or were ok
-          
+
           logview -s CHANGED -d yesterday -p mirrorlist # list events that changed from the mirrorlist playbook
-          
+
           logview -s ANY -d yesterday -p mirrorlist # list all events from the mirrorlist playbook
-          
-          
+
+
           """
     parser = OptionParser(usage=usage)
     parser.add_option("-d", default='today', dest='datestr', help="time string of when you want logs")
@@ -49,10 +49,11 @@ def parse_args(args):
         opts.search_terms = search_terms
     return opts, args
 
+
 def search_logs(opts, logfiles):
     msg = ''
     for fn in sorted(logfiles):
-        hostname=os.path.basename(fn).replace('.log', '')
+        hostname = os.path.basename(fn).replace('.log', '')
         timestamp = os.path.basename(os.path.dirname(fn))
         for line in open(fn):
             things = line.split('\t')
@@ -61,7 +62,7 @@ def search_logs(opts, logfiles):
                 continue
 
             # See callback_plugins/logdetail.py for how these lines get created.
-            #MSG_FORMAT="%(now)s\t%(count)s\t%(category)s\t%(name)s\t%(data)s\n"
+            # MSG_FORMAT="%(now)s\t%(count)s\t%(category)s\t%(name)s\t%(data)s\n"
             task_ts, count, category, name, data = things
 
             if category in opts.search_terms or 'ANY' in opts.search_terms:
@@ -73,8 +74,8 @@ def search_logs(opts, logfiles):
                         dur = '%.2f' % (float(end) - float(st))
                     else:
                         dur = None
-                    
-                msg += '%s\t%s\t%s\t%s\t%s\t%s'  % (
+
+                msg += '%s\t%s\t%s\t%s\t%s\t%s' % (
                     timestamp, hostname, task_ts, count, category, name)
 
                 if not opts.verbose:
@@ -84,7 +85,7 @@ def search_logs(opts, logfiles):
                                 msg += '\t%s:%s' % (term, slurp.get(term, None))
                     if opts.profile and dur:
                         msg += '\t%s:%s' % ('dur', dur)
-                        
+
                     msg += '\n'
                 else:
                     if opts.profile and dur:
@@ -92,28 +93,25 @@ def search_logs(opts, logfiles):
                     msg += '\n'
                     msg += json.dumps(slurp, indent=4)
                     msg += '\n'
-                        
 
     return msg
 
-   
+
 def main(args):
-    opts,args = parse_args(args)
-    for pb in glob.glob(os.path.join(logpath,opts.playbook)):
+    opts, args = parse_args(args)
+    for pb in glob.glob(os.path.join(logpath, opts.playbook)):
         pb_name = os.path.basename(pb)
         for pb_logdir in glob.glob(os.path.join(pb, opts.datestr)):
             if opts.list_pb:
                 print(pb_name)
                 continue
-                
+
             logfiles = glob.glob(pb_logdir + '/*/*.log')
             msg = search_logs(opts, logfiles)
             if msg:
                 print(pb_name)
                 print(msg)
-                
-          
+
 
 if __name__ == "__main__":
     sys.exit(main(sys.argv[1:]))
-    
