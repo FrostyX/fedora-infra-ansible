@@ -20,8 +20,8 @@ dbs_to_backup:
 
 # These are normally group variables, but in this case db servers are often different
 lvm_size: 1500000
-mem_size: 65535
-num_cpus: 64
+mem_size: 131070
+num_cpus: 72
 max_cpu: 96
 fas_client_groups: sysadmin-dba,sysadmin-noc,sysadmin-veteran
 
