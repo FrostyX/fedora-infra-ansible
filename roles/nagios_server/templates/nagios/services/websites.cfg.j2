@@ -54,6 +54,13 @@ define service {
 
 define service {
   hostgroup_name        proxies
+  service_description   http-docs.fedoraproject.org
+  check_command         check_website_ssl!docs.fedoraproject.org!/en-US/docs/index.html!Antora
+  use                   websitetemplate
+}
+
+define service {
+  hostgroup_name        proxies
   service_description   http-accounts
   check_command         check_website_ssl!admin.fedoraproject.org!/accounts/help/get_help/user_telephone!emergency
   use                   websitetemplate
