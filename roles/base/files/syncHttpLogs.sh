@@ -26,6 +26,7 @@ function syncHttpLogs {
             /usr/bin/rsync $RSYNC_FLAGS $HOST::log/httpd/$f ./$DEST &> /dev/null
 	    if [[ $? -ne 0 ]]; then
 		echo "rsync from $HOST for file $f failed"
+	    fi
         done
     done
 }

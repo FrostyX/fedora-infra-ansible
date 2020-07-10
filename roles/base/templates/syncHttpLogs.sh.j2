@@ -23,7 +23,10 @@ function syncHttpLogs {
         for f in $(/usr/bin/rsync $RSYNC_FLAGS --list-only $HOST::log/httpd/*$YESTERDAY* | awk '{ print $5 }')
         do
             DEST=$(echo $f | /bin/sed s/-$YESTERDAY//)
-            /usr/bin/rsync $RSYNC_FLAGS $HOST::log/httpd/$f ./$DEST
+            /usr/bin/rsync $RSYNC_FLAGS $HOST::log/httpd/$f ./$DEST &> /dev/null
+	    if [[ $? -ne 0 ]]; then
+		echo "rsync from $HOST for file $f failed"
+	    fi
         done
     done
 }
