@@ -1,6 +1,7 @@
 #!/bin/bash
 
 RSYNC_FLAGS='-avSHP --no-motd'
+DEBUG=0
 
 function syncHttpLogs {
 
@@ -20,9 +21,15 @@ function syncHttpLogs {
         /bin/mkdir -p /var/log/hosts/$HOST/$YEAR/$MONTH/$DAY/http
         cd /var/log/hosts/$HOST/$YEAR/$MONTH/$DAY/http/
 
-        for f in $(/usr/bin/rsync $RSYNC_FLAGS --list-only $HOST::log/httpd/*$YESTERDAY* | awk '{ print $5 }')
-        do
+	RSYNC_OUTPUT=$(/usr/bin/rsync $RSYNC_FLAGS --list-only $HOST::log/httpd/*$YESTERDAY* | awk '{ print $5 }' | grep log )
+	if [[ ${DEBUG} -eq 1 ]]; then
+	    echo ${RSYNC_OUTPUT}
+	fi
+        for f in ${RSYNC_OUTPUT}; do
             DEST=$(echo $f | /bin/sed s/-$YESTERDAY//)
+	    if [[ ${DEBUG -eq 1 ]]; then
+		echo ${DEST}
+	    fi
             /usr/bin/rsync $RSYNC_FLAGS $HOST::log/httpd/$f ./$DEST &> /dev/null
 	    if [[ $? -ne 0 ]]; then
 		echo "rsync from $HOST for file $f failed"
