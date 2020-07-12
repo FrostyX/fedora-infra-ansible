@@ -157,6 +157,10 @@ require ip 8.43.85.87
 require ip 13.250.126.156
 require ip 13.125.120.8
 require ip 18.185.136.17
+require ip 52.38.92.7
+require ip 54.244.110.185
+require ip 54.201.22.74
+require ip 34.220.107.234
 
 #
 # We put this at the end because it fails for hosts with no reverse dns
