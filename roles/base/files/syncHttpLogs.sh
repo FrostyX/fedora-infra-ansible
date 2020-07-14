@@ -1,13 +1,12 @@
 #!/bin/bash
 
 RSYNC_FLAGS='-avSHP --no-motd'
-DEBUG=0
+DEBUG=1
 
 function syncHttpLogs {
 
     # in case we missed a run or two.. try to catch up the last 3 days.
-    for d in 1 2 3
-    do
+    for d in 1 2 3; do
         HOST=$1
 	# some machines store stuff in old format. some new.
         if [ "$2" = "old" ]; then
@@ -21,14 +20,11 @@ function syncHttpLogs {
         /bin/mkdir -p /var/log/hosts/$HOST/$YEAR/$MONTH/$DAY/http
         cd /var/log/hosts/$HOST/$YEAR/$MONTH/$DAY/http/
 
-	RSYNC_OUTPUT=$(/usr/bin/rsync $RSYNC_FLAGS --list-only $HOST::log/httpd/*$YESTERDAY* | awk '{ print $5 }' | grep log )
-	if [[ ${DEBUG} -eq 1 ]]; then
-	    echo ${RSYNC_OUTPUT}
-	fi
+	RSYNC_OUTPUT=$(/usr/bin/rsync $RSYNC_FLAGS --list-only $HOST::log/httpd/*$YESTERDAY* | grep xz$ | awk '{ print $5 }' )
         for f in ${RSYNC_OUTPUT}; do
             DEST=$(echo $f | /bin/sed s/-$YESTERDAY//)
-	    if [[ ${DEBUG -eq 1 ]]; then
-		echo ${DEST}
+	    if [[ ${DEBUG} -eq 1 ]]; then
+		echo "${HOST}: Getting ${RSYNC_OUTPUT} and saving to ${DEST}"
 	    fi
             /usr/bin/rsync $RSYNC_FLAGS $HOST::log/httpd/$f ./$DEST &> /dev/null
 	    if [[ $? -ne 0 ]]; then
