@@ -14,3 +14,16 @@ nagios_Check_Services:
 #
 bodhi_version: 5.4.1
 bodhi_openshift_pods: 2
+
+# GDPR SAR related dictionary
+sar_openshift:
+  # Name of the app
+  release-monitoring:
+    # Location of the script
+    sar_script: /usr/local/bin/sar.py
+    # Output file on local machine
+    sar_output_file: anitya.json
+    # Openshift namespace where the app runs
+    openshift_namespace: release-monitoring
+    # Name of openshift pod - will be used for label search
+    openshift_pod: release-monitoring-web

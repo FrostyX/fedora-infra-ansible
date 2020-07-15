@@ -1,0 +1,15 @@
+# Retrieve GDPR data from single openshift app.
+# Get the correct pod
+- name: Retrieve the id of the running container/pod
+  shell: "oc get -n {{ item.value.openshift_namespace }} -o name -l app={{ item.value.openshift_pod }} pods | cut -f 2 -d '/'"
+  register: pod_id
+# Run the SAR script
+- name: Run oc exec in container to extract the data
+  command: "oc -n {{ item.value.openshift_namespace }} rsh {{ pod_id.stdout }} bash -c 'SAR_USERNAME={{ sar_fas_user }} SAR_EMAIL={{ sar_email }} {{ item.value.sar_script }}'"
+  register: sar_data
+# Store the result on disk
+- name: Copy the output data locally
+  copy:
+    content: "{{ sar_data['stdout'] }}"
+    dest: "{{ hostvars['localhost']['sar_tmp_dir'] }}/{{ item.value.sar_output_file }}"
+  delegate_to: localhost

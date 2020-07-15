@@ -44,6 +44,12 @@
       delegate_to: localhost
       when: "sar_huge is defined and sar_huge"
 
+- name: Gather SAR data - openshift apps
+  hosts: os_masters[0]
+  tasks:
+    - include_tasks: sar_openshift.yml
+      loop: "{{ lookup('dict', sar_openshift, wantlist=True) }}"
+
 - name: Create the archive
   hosts: localhost
   tasks:
