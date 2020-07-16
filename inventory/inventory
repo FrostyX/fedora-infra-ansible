@@ -432,6 +432,7 @@ openqa01.iad2.fedoraproject.org
 
 [openqa_workers]
 openqa-x86-worker01.iad2.fedoraproject.org
+openqa-x86-worker02.iad2.fedoraproject.org
 
 # openqa-stg and openqa-stg-workers are pseudo-stg, see group_vars/openqa-stg for more details
 [openqa_stg]
@@ -1339,6 +1340,7 @@ odcs-backend01.iad2.fedoraproject.org
 odcs-backend-releng01.iad2.fedoraproject.org
 odcs-frontend01.iad2.fedoraproject.org
 openqa-x86-worker01.iad2.fedoraproject.org
+openqa-x86-worker02.iad2.fedoraproject.org
 openqa01.iad2.fedoraproject.org
 os-control01.iad2.fedoraproject.org
 os-master01.iad2.fedoraproject.org
