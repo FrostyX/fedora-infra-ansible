@@ -482,6 +482,14 @@ host oshift4-x86-fe-01 {
      option routers 10.3.163.254;
      option subnet-mask 255.255.255.0;
 }
+host oshift4-x86-fe-02 {
+     hardware ethernet EC:F4:BB:E1:C2:D8;
+     fixed-address 10.3.163.21;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
 host oshift4-x86-be-01 {
      hardware ethernet 24:6e:96:b0:e0:78;
      fixed-address 10.3.163.23;
