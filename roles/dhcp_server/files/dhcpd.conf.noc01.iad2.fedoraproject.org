@@ -467,7 +467,7 @@ host centos01 {
 
 # Stag network
 host vmhost-x86-01-stg {
-     hardware ethernet ec:f4:bb:d2:85:e8;
+     hardware ethernet ec:f4:bb:d2:85:ea;
      fixed-address 10.3.166.11;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
