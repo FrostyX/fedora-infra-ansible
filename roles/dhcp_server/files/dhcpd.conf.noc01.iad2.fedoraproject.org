@@ -1284,8 +1284,8 @@ host buildhw-a64-11 {
      fixed-address 10.3.170.131;
      option host-name "buildhw-a64-11";
 }
-host kernel01 {
+host bkernel02 {
      hardware ethernet d0:94:66:45:8c:0f;
-     fixed-address 10.3.174.129;
+     fixed-address 10.3.169.30;
      option host-name "kernel01";
 }
