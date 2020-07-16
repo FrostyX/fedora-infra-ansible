@@ -480,6 +480,14 @@ host oshift4-x86-be-01 {
      option routers 10.3.163.254;
      option subnet-mask 255.255.255.0;
 }
+host oshift4-x86-be-01 {
+     hardware ethernet 24:6e:96:b1:5e:b0;
+     fixed-address 10.3.163.24;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
 
 
 host centos01 {
