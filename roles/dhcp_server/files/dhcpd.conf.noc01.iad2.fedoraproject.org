@@ -208,7 +208,7 @@ subnet 10.3.169.0 netmask 255.255.255.0 {
     class "pxeclients" {
           match if substring (option vendor-class-identifier, 0, 9) = "PXEClient";
           next-server 10.3.163.10;
-
+          option routers 10.3.169.254;
           if option architecture-type = 00:07 or option architecture-type = 00:09 {
                     filename "uefi/grubx64.efi";
           } else if option architecture-type = 00:0b {
@@ -761,12 +761,70 @@ host openqa-x86-worker02 {
      option subnet-mask 255.255.255.0;
 }
 
-host openqa-x86-worker02-mgmt {
-     hardware ethernet 4c:d9:8f:03:95:28;
-     fixed-address 10.3.160.138;
-     option host-name "oqa-x86-worker02";
+host kernel01 {
+     hardware ethernet E4:43:4B:23:E8:CC ;
+     fixed-address 10.3.174.129;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.174.254;
+     option subnet-mask 255.255.255.0;
 }
 
+
+host buildhw-a64-04 {
+     hardware ethernet 2c:59:e5:36:9a:53;
+     fixed-address 10.3.170.124;
+     option routers 10.3.170.254;
+     option host-name "buildhw-a64-04";
+}
+host buildhw-a64-05 {
+     hardware ethernet 00:01:73:02:09:c3;
+     fixed-address 10.3.170.125;
+     option routers 10.3.170.254;
+     option host-name "buildhw-a64-05";
+}
+host buildhw-a64-06 {
+     hardware ethernet 2c:59:e5:36:9a:51;
+     fixed-address 10.3.170.126;
+     option routers 10.3.170.254;
+     option host-name "buildhw-a64-06";
+}
+host buildhw-a64-07 {
+     hardware ethernet 2c:59:e5:36:9a:4e;
+     fixed-address 10.3.170.127;
+     option routers 10.3.170.254;
+     option host-name "buildhw-a64-07";
+}
+host buildhw-a64-08 {
+     hardware ethernet 2c:59:e5:36:9a:4f;
+     fixed-address 10.3.170.128;
+     option routers 10.3.170.254;
+     option host-name "buildhw-a64-08";
+}
+host buildhw-a64-09 {
+     hardware ethernet 2c:59:e5:36:9a:4f;
+     fixed-address 10.3.170.129;
+     option routers 10.3.170.254;
+     option host-name "buildhw-a64-09";
+}
+host buildhw-a64-10 {
+     hardware ethernet 00:01:73:02:0C:FB;
+     fixed-address 10.3.170.130;
+     option routers 10.3.170.254;
+     option host-name "buildhw-a64-10";
+}
+host buildhw-a64-11 {
+     hardware ethernet 00:01:73:02:08:ff;
+     fixed-address 10.3.170.131;
+     option routers 10.3.170.254;
+     option host-name "buildhw-a64-11";
+}
+host bkernel02 {
+     hardware ethernet d0:94:66:45:8c:0f;
+     option routers 10.3.169.254;
+     fixed-address 10.3.169.30;
+     option host-name "bkernel02";
+}
 
 host bvmhost-p09-01 {
      hardware ethernet 40:a6:b7:18:8a:38;
@@ -806,6 +864,13 @@ host bvmhost-p08-01 {
 # All MGMT hosts go below here
 #
     # Dell FX
+
+host openqa-x86-worker02-mgmt {
+     hardware ethernet 4c:d9:8f:03:95:28;
+     fixed-address 10.3.160.138;
+     option host-name "oqa-x86-worker02";
+}
+
 host centos-mgmt01 {
      hardware ethernet 4C:D9:8F:BC:5A:EA;
      fixed-address 10.3.160.69;
@@ -1193,18 +1258,11 @@ host openqa-a64-03-mgmt {
      fixed-address 10.3.160.143;
      option host-name "openqa-a64-03";
 }
-host bkernel01-mgmt {
+host bkernel02-mgmt {
      hardware ethernet D0:94:66:45:8C:13;
      fixed-address 10.3.160.156;
-     option host-name "bkernel01";
-}
-host bkernel02-mgmt {
-     hardware ethernet D0:94:66:45:8C:0F;
-     fixed-address 10.3.160.157;
      option host-name "bkernel02";
 }
-
-
 
 host bhwhost-a64-02-mgmt {
      hardware ethernet AA:31:8D:3E:31:6F ;
@@ -1244,49 +1302,5 @@ host vmhost-iad-11-mgmt {
      fixed-address 10.3.160.56;
      option host-name "vmhost-iad-11-mgmt";
 }
-host buildhw-a64-04 {
-     hardware ethernet 2c:59:e5:36:9a:53;
-     fixed-address 10.3.170.124;
-     option host-name "buildhw-a64-04";
-}
-host buildhw-a64-05 {
-     hardware ethernet 00:01:73:02:09:c3;
-     fixed-address 10.3.170.125;
-     option host-name "buildhw-a64-05";
-}
-host buildhw-a64-06 {
-     hardware ethernet 2c:59:e5:36:9a:51;
-     fixed-address 10.3.170.126;
-     option host-name "buildhw-a64-06";
-}
-host buildhw-a64-07 {
-     hardware ethernet 2c:59:e5:36:9a:4e;
-     fixed-address 10.3.170.127;
-     option host-name "buildhw-a64-07";
-}
-host buildhw-a64-08 {
-     hardware ethernet 2c:59:e5:36:9a:4f;
-     fixed-address 10.3.170.128;
-     option host-name "buildhw-a64-08";
-}
-host buildhw-a64-09 {
-     hardware ethernet 2c:59:e5:36:9a:4f;
-     fixed-address 10.3.170.129;
-     option host-name "buildhw-a64-09";
-}
-host buildhw-a64-10 {
-     hardware ethernet 00:01:73:02:0C:FB;
-     fixed-address 10.3.170.130;
-     option host-name "buildhw-a64-10";
-}
-host buildhw-a64-11 {
-     hardware ethernet 00:01:73:02:08:ff;
-     fixed-address 10.3.170.131;
-     option host-name "buildhw-a64-11";
-}
-host bkernel02 {
-     hardware ethernet d0:94:66:45:8c:0f;
-     option routers 10.3.169.254;
-     fixed-address 10.3.169.30;
-     option host-name "bkernel02";
-}
+;;
+
