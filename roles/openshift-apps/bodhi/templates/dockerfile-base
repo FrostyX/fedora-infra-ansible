@@ -3,8 +3,6 @@ LABEL \
   name="bodhi-base" \
   vendor="Fedora Infrastructure" \
   license="MIT"
-# While dnf has a --nodocs, it doesen't have a --docs...
-RUN sed -i '/nodocs/d' /etc/dnf/dnf.conf
 
 RUN dnf install -y \
     git                         \
@@ -48,7 +46,7 @@ RUN dnf install -y \
     koji && \
     dnf clean all
 
-RUN git clone -b staging https://github.com/fedora-infra/bodhi.git /srv/bodhi && \
+RUN git clone -b {{bodhi_version}} https://github.com/fedora-infra/bodhi.git /srv/bodhi && \
     cd /srv/bodhi && \
     python3 -m pip install . --no-use-pep517 && \
     mkdir -p /usr/share/bodhi && \

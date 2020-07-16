@@ -95,12 +95,6 @@
     app: bodhi
     template: buildconfig.yml
     objectname: buildconfig.yml
-    when: env == "production"
-  - role: openshift/object
-    app: bodhi
-    template: buildconfig-stg.yml
-    objectname: buildconfig.yml
-    when: env == "staging"
   - role: openshift/start-build
     app: bodhi
     buildname: bodhi-base
