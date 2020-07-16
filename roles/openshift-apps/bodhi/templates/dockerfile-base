@@ -43,8 +43,8 @@ RUN dnf install -y \
     python3-librepo             \
     python3-mod_wsgi            \
     python3-gunicorn            \
-    koji && \
-    dnf clean all
+    && pip install koji \
+    && dnf clean all
 
 RUN git clone -b {{bodhi_version}} https://github.com/fedora-infra/bodhi.git /srv/bodhi && \
     cd /srv/bodhi && \
