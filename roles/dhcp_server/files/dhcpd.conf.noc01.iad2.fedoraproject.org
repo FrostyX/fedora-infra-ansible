@@ -1301,6 +1301,7 @@ host vmhost-iad-11-mgmt {
      hardware ethernet b8:2a:72:fc:f2:44;
      fixed-address 10.3.160.56;
      option host-name "vmhost-iad-11-mgmt";
-}
-;;
+};
+
+## End of file
 
