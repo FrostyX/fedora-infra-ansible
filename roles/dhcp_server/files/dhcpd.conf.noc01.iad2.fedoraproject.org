@@ -458,7 +458,7 @@ host vmhost-x86-07 {
 }
 host vmhost-x86-08 {
      hardware ethernet 24:6e:96:b1:61:f8;
-     fixed-address 10.3.163.18;
+     fixed-address 10.3.163.28;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
      option routers 10.3.163.254;
@@ -466,7 +466,7 @@ host vmhost-x86-08 {
 }
 host vmhost-x86-09 {
      hardware ethernet 24:6E:96:B1:61:C0;
-     fixed-address 10.3.163.19;
+     fixed-address 10.3.163.29;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
      option routers 10.3.163.254;
