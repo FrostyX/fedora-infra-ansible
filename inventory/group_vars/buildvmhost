@@ -1,6 +1,6 @@
 ---
-nrpe_procs_warn: 1400
-nrpe_procs_crit: 1500
+nrpe_procs_warn: 1500
+nrpe_procs_crit: 1600
 virthost: true
 nested: True
 
