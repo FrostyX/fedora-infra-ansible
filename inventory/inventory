@@ -253,7 +253,7 @@ download_iad2
 kerneltest01.iad2.fedoraproject.org
 
 [kernel_qa]
-kernel01.iad2.fedoraproject.org
+#kernel01.iad2.fedoraproject.org
 
 [koji]
 koji01.iad2.fedoraproject.org
