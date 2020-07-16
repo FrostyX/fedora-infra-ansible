@@ -514,6 +514,30 @@ host oshift4-x86-be-02 {
      option routers 10.3.163.254;
      option subnet-mask 255.255.255.0;
 }
+host oshift4-x86-be-02 {
+     hardware ethernet 24:6e:96:b1:5e:b0;
+     fixed-address 10.3.163.25;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
+host oshift4-x86-be-04 {
+     hardware ethernet 24:6E:96:B1:C8:00;
+     fixed-address 10.3.163.26;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
+host oshift4-x86-be-05 {
+     hardware ethernet 24:6E:96:B1:4C:70;
+     fixed-address 10.3.163.27;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.163.254;
+     option subnet-mask 255.255.255.0;
+}
 
 
 host centos01 {
@@ -525,7 +549,7 @@ host centos01 {
      option subnet-mask 255.255.255.0;
 }
 
-# Stag network
+# Staging network
 host vmhost-x86-01-stg {
      hardware ethernet ec:f4:bb:d2:85:e8;
      fixed-address 10.3.166.11;
@@ -534,6 +558,113 @@ host vmhost-x86-01-stg {
      option routers 10.3.166.254;
      option subnet-mask 255.255.255.0;
 }
+host vmhost-x86-02-stg {
+     hardware ethernet 24:6e:96:13:ed:d8;
+     fixed-address 10.3.166.12;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.166.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-03-stg {
+     hardware ethernet 24:6E:96:05:D9:F8;
+     fixed-address 10.3.166.13;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.166.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-04-stg {
+     hardware ethernet 24:6E:96:05:D7:80;
+     fixed-address 10.3.166.14;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.166.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-05-stg {
+     hardware ethernet A0:36:9F:DE:88:28;
+     fixed-address 10.3.166.15;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.166.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-06-stg {
+     hardware ethernet A0:36:9F:DE:85:BC;
+     fixed-address 10.3.166.16;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.166.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-07-stg {
+     hardware ethernet A0:36:9F:F1:83:E0;
+     fixed-address 10.3.166.17;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.166.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-08-stg {
+     hardware ethernet 24:6E:96:C1:6E:B8;
+     fixed-address 10.3.166.18;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.166.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-09-stg {
+     hardware ethernet EC:F4:BB:E1:C8:F0;
+     fixed-address 10.3.166.19;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.166.254;
+     option subnet-mask 255.255.255.0;
+}
+host vmhost-x86-10-stg {
+     hardware ethernet EC:F4:BB:E1:CB:88;
+     fixed-address 10.3.166.20;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.166.254;
+     option subnet-mask 255.255.255.0;
+}
+
+
+host bvmhost-x86-01-stg {
+     hardware ethernet 24:6E:96:B1:56:20;
+     fixed-address 10.3.167.11;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.167.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-x86-02-stg {
+     hardware ethernet EC:F4:BB:D9:56:10;
+     fixed-address 10.3.167.12;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.167.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-x86-03-stg {
+     hardware ethernet 24:6E:96:B1:C7:F0;
+     fixed-address 10.3.167.13;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.167.254;
+     option subnet-mask 255.255.255.0;
+}
+host bvmhost-x86-04-stg {
+     hardware ethernet EC:F4:BB:D2:8F:00;
+     fixed-address 10.3.167.14;
+     filename "uefi/grubx64.efi";
+     next-server 10.3.163.10;
+     option routers 10.3.167.254;
+     option subnet-mask 255.255.255.0;
+}
+
 
 
 # Build network
@@ -823,7 +954,7 @@ host openqa-x86-worker02 {
      option routers 10.3.174.254;
      option subnet-mask 255.255.255.0;
 }
-host openqa01-x64-worker04 {
+host openqa-x64-worker04 {
      hardware ethernet E4:43:4B:24:10:AA ;
      fixed-address 10.3.174.24;
      filename "uefi/grubx64.efi";
@@ -831,7 +962,7 @@ host openqa01-x64-worker04 {
      option routers 10.3.174.254;
      option subnet-mask 255.255.255.0;
 }
-host openqa01-a64-worker01 {
+host openqa-a64-worker01 {
      hardware ethernet 50:6b:4b:7f:96:30 ;
      fixed-address 10.3.174.61;
      filename "uefi/grubaa64.efi";
