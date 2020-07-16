@@ -261,6 +261,7 @@ buildvm-ppc64le-40.iad2.fedoraproject.org
 
 [bkernel]
 bkernel01.iad2.fedoraproject.org
+bkernel02.iad2.fedoraproject.org
 
 # These hosts get the runroot plugin installed.
 # They should be added to their own 'compose' channel in the koji db
