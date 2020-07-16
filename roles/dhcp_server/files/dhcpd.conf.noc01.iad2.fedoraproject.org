@@ -762,7 +762,7 @@ host openqa-x86-worker02 {
 }
 
 host kernel01 {
-     hardware ethernet E4:43:4B:23:E8:CC ;
+     hardware ethernet d0:94:66:7c:b2:e3 ;
      fixed-address 10.3.174.129;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
@@ -1301,7 +1301,7 @@ host vmhost-iad-11-mgmt {
      hardware ethernet b8:2a:72:fc:f2:44;
      fixed-address 10.3.160.56;
      option host-name "vmhost-iad-11-mgmt";
-};
+}
 
 ## End of file
 
