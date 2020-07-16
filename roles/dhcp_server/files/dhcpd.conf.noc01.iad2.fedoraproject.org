@@ -1286,6 +1286,7 @@ host buildhw-a64-11 {
 }
 host bkernel02 {
      hardware ethernet d0:94:66:45:8c:0f;
+     option routers 10.3.169.254;
      fixed-address 10.3.169.30;
-     option host-name "kernel01";
+     option host-name "bkernel02";
 }
