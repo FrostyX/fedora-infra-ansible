@@ -39,11 +39,27 @@ spec:
             - containerPort: 8081
             - containerPort: 9081
           volumeMounts:
-            - name: "config"
+            - name: "stub-config"
               mountPath: "/etc/cincinnati/"
               readOnly: true
+        - name: "fcos-graph-builder"
+          image: "fedora-coreos-cincinnati:dumnati-{{fcos_cincinnati_deploy_git_sha}}"
+          args: [
+            "/usr/local/bin/fcos-graph-builder"
+          ]
+          ports:
+            - containerPort: 5050
+            - containerPort: 6060
+        - name: "fcos-policy-engine"
+          image: "fedora-coreos-cincinnati:dumnati-{{fcos_cincinnati_deploy_git_sha}}"
+          args: [
+            "/usr/local/bin/fcos-policy-engine"
+          ]
+          ports:
+            - containerPort: 5051
+            - containerPort: 6061
       volumes:
-        - name: "config"
+        - name: "stub-config"
           configMap:
             name: "coreos-cincinnati-config-stub"
   triggers:
