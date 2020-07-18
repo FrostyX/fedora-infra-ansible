@@ -671,11 +671,13 @@ value01.iad2.fedoraproject.org
 # value01.stg.iad2.fedoraproject.org
 
 [virthost]
-# virthost01.stg.iad2.fedoraproject.org
-# virthost02.stg.iad2.fedoraproject.org
-# virthost03.stg.iad2.fedoraproject.org
-# virthost04.stg.iad2.fedoraproject.org
-# virthost05.stg.iad2.fedoraproject.org
+vmhost-x86-01.stg.iad2.fedoraproject.org
+vmhost-x86-02.stg.iad2.fedoraproject.org
+#doesn't want to pxe boot
+#vmhost-x86-03.stg.iad2.fedoraproject.org
+vmhost-x86-04.stg.iad2.fedoraproject.org
+#doesn't want to pxe boot
+#vmhost-x86-05.stg.iad2.fedoraproject.org
 vmhost-x86-01.iad2.fedoraproject.org
 vmhost-x86-02.iad2.fedoraproject.org
 vmhost-x86-03.iad2.fedoraproject.org
@@ -1378,6 +1380,13 @@ sundries02.iad2.fedoraproject.org
 tang01.iad2.fedoraproject.org
 tang02.iad2.fedoraproject.org
 value01.iad2.fedoraproject.org
+vmhost-x86-01.stg.iad2.fedoraproject.org
+vmhost-x86-02.stg.iad2.fedoraproject.org
+#doesn't want to pxe boot
+#vmhost-x86-03.stg.iad2.fedoraproject.org
+vmhost-x86-04.stg.iad2.fedoraproject.org
+#doesn't want to pxe boot
+#vmhost-x86-05.stg.iad2.fedoraproject.org
 vmhost-x86-01.iad2.fedoraproject.org
 vmhost-x86-02.iad2.fedoraproject.org
 vmhost-x86-03.iad2.fedoraproject.org
