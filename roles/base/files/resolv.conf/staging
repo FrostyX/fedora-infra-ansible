@@ -1,4 +1,4 @@
-search stg.phx2.fedoraproject.org phx2.fedoraproject.org fedoraproject.org
-nameserver 10.5.126.21
-nameserver 10.5.126.22
+search stg.iad2.fedoraproject.org iad2.fedoraproject.org fedoraproject.org
+nameserver 10.3.163.33
+nameserver 10.3.163.34
 options rotate timeout:1
