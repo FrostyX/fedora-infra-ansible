@@ -626,7 +626,7 @@ retrace-stg.aws.fedoraproject.org
 vmhost-x86-01.stg.iad2.fedoraproject.org
 vmhost-x86-02.stg.iad2.fedoraproject.org
 # virthost03.stg.iad2.fedoraproject.org
-vmhost-x86-03.stg.iad2.fedoraproject.org
+vmhost-x86-04.stg.iad2.fedoraproject.org
 # virthost05.stg.iad2.fedoraproject.org
 # wiki01.stg.iad2.fedoraproject.org
 # zanata2fedmsg01.stg.iad2.fedoraproject.org
