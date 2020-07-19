@@ -9,11 +9,11 @@ from datetime import datetime
 
 parser = argparse.ArgumentParser()
 parser.add_argument('domain', help="Required. Domain to check")
-parser.add_argument('-c', '--critical', dest='critical', default=50,
+parser.add_argument('-c', '--critical', dest='critical', type=int, default=50,
                     help="Critical threshold")
-parser.add_argument('-w', '--warning', dest='warning', default=20,
+parser.add_argument('-w', '--warning', dest='warning', type=int, default=20,
                     help="Warning threshold")
-parser.add_argument('-i', '--ignore', dest='ignore', default=5,
+parser.add_argument('-i', '--ignore', dest='ignore', type=int, default=5,
                     help="Ignore queues from the last X minutes (default: 5)")
 args = parser.parse_args()
 
