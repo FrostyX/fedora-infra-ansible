@@ -33,7 +33,6 @@ copr-keygen-dev.aws.fedoraproject.org
 #copr-be-dev.cloud.fedoraproject.org
 copr-dist-git-dev.fedorainfracloud.org
 iddev.fedorainfracloud.org
-f30-test.fedorainfracloud.org
 f31-test.fedorainfracloud.org
 f32-test.fedorainfracloud.org
 rawhide-test.fedorainfracloud.org
