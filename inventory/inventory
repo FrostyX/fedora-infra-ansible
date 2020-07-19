@@ -1312,7 +1312,7 @@ fedocal02.iad2.fedoraproject.org
 github2fedmsg01.iad2.fedoraproject.org
 ipa01.iad2.fedoraproject.org
 ipa02.iad2.fedoraproject.org
-kernel01.iad2.fedoraproject.org
+#kernel01.iad2.fedoraproject.org
 kerneltest01.iad2.fedoraproject.org
 koji01.iad2.fedoraproject.org
 koji02.iad2.fedoraproject.org
