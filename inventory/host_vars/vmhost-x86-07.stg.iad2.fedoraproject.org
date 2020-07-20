@@ -1,0 +1,17 @@
+---
+# This virthost only has stg instances, so it doesn't freeze
+freezes: false
+nested: true
+dns: 10.3.163.33
+gw: 10.3.166.254
+br0_ip: 10.3.166.17
+br0_nm: 255.255.255.0
+
+mac1: 80:18:44:de:4d:fc
+mac2: 80:18:44:de:4d:fd
+mac3: 80:18:44:de:4d:fe
+mac4: a0:36:9f:f1:83:e0
+mac5: 80:18:44:de:4d:ff
+mac6: a0:36:9f:f1:83:e2
+
+br0_port0_mac: "{{ mac4 }}"

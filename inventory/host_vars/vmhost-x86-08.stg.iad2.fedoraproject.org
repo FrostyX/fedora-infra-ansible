@@ -4,12 +4,12 @@ freezes: false
 nested: true
 dns: 10.3.163.33
 gw: 10.3.166.254
-br0_ip: 10.3.166.12
+br0_ip: 10.3.166.18
 br0_nm: 255.255.255.0
 
-mac1: 24:6e:96:13:ed:dc
-mac2: 24:6e:96:13:ed:dd
-mac3: 24:6e:96:13:ed:d8
-mac4: 24:6e:96:13:ed:da
+mac1: 24:6e:96:c1:6e:bc
+mac2: 24:6e:96:c1:6e:bd
+mac3: 24:6e:96:c1:6e:b8
+mac4: 24:6e:96:c1:6e:ba
 
 br0_port0_mac: "{{ mac3 }}"
