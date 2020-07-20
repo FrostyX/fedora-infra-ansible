@@ -37,8 +37,8 @@
            --no-ssh
            --no-sshd
            --setup-dns
-           --forwarder=10.5.126.21
-           --forwarder=10.5.126.22
+           --forwarder=10.3.163.33
+           --forwarder=10.3.163.34
            --log-file=/var/log/ipainstall.log
            creates=/etc/ipa/default.conf
   tags:
@@ -115,8 +115,8 @@
            --no-ssh
            --no-sshd
            --setup-dns
-           --forwarder=10.5.126.21
-           --forwarder=10.5.126.22
+           --forwarder=10.3.163.33
+           --forwarder=10.3.163.34
            --skip-conncheck
            --log-file=/var/log/ipainstall.log
            /root/ipa_replica_{{inventory_hostname}}.gpg
