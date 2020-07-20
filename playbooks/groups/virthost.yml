@@ -23,7 +23,7 @@
   - rkhunter
   - nagios_client
   - hosts
-  - fas_client
+  - { role: fas_client, when: env != 'staging' }
   - collectd/base
   - { role: iscsi_client, when: "inventory_hostname.startswith(('bvirthost', 'buildvmhost-0'))" }
   - { role: iscsi_client, when: "inventory_hostname.startswith(('bvmhost-x86-06', 'bvmhost-x86-07')) and datacenter == 'iad2'" }
