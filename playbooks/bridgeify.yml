@@ -13,7 +13,7 @@
         ip:
           address: 
           - "{{ br0_ip }}/24"
-          gateway4: "{{ br0_gw }}"
+          gateway4: "{{ gw }}"
           dns: 
           - 10.3.163.33
           - 10.3.163.34
