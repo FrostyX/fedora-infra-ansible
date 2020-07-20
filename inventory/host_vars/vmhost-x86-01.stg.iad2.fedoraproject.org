@@ -3,9 +3,10 @@
 freezes: false
 nested: true
 dns: 10.3.163.33
-gw: 10.3.166.254
+br0_gw: 10.3.166.254
 br0_ip: 10.3.166.11
 br0_nm: 255.255.255.0
+br0_dev: eth2
 
 install_noc: noc01.iad2.fedoraproject.org
 install_mac: 24-6E-96-B1-C7-F4

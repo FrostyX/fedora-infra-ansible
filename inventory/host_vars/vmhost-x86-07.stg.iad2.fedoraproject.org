@@ -3,9 +3,10 @@
 freezes: false
 nested: true
 dns: 10.3.163.33
-gw: 10.3.166.254
+br0_gw: 10.3.166.254
 br0_ip: 10.3.166.17
 br0_nm: 255.255.255.0
+br0_dev: eth4
 
 mac1: 80:18:44:de:4d:fc
 mac2: 80:18:44:de:4d:fd
