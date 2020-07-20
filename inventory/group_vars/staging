@@ -23,6 +23,6 @@ fedmsg_env: stg
 deployment_type: stg
 
 # IPA details
-ipa_server: ipa01.stg.phx2.fedoraproject.org
+ipa_server: ipa01.stg.iad2.fedoraproject.org
 ipa_realm: STG.FEDORAPROJECT.ORG
 ipa_admin_password: "{{ ipa_stg_admin_password }}"
