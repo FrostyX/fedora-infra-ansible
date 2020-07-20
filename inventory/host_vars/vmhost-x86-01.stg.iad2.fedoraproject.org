@@ -18,3 +18,5 @@ mac1: ec:f4:bb:d2:85:ec
 mac2: ec:f4:bb:d2:85:ed
 mac3: ec:f4:bb:d2:85:e8
 mac4: ec:f4:bb:d2:85:ea
+
+br0_port0_mac: "{{ mac3 }}"

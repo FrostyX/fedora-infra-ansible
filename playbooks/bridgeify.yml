@@ -28,29 +28,7 @@
         state: up
         type: ethernet
         master: br0
-        mac: "{{ mac1 }}"
-
-      - name: br1
-        state: up
-        type: bridge
-        autoconnect: yes
-        ip:
-          dhcp4: no
-          auto6: no
-
-      - name: br1-port0
-        state: up
-        type: ethernet
-        master: br1
-        mac: "{{ mac2 }}"
-
-      - name: eno3
-        type: ethernet
-        mac: "{{ mac3 }}"
-
-      - name: eno4
-        type: ethernet
-        mac: "{{ mac4 }}"
+        mac: "{{ br0_port0_mac }}"
 
   roles:
     - role: linux-system-roles.network
