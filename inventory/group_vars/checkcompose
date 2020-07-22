@@ -13,4 +13,4 @@ checkcompose_subvariant_emails:
     error: ["dusty@dustymabe.com", "walters@verbum.org", "atomic@lists.fedoraproject.org"]
 checkcompose_smtp: bastion.phx2.fedoraproject.org
 checkcompose_url: "https://{{ external_hostname }}"
-checkcompose_greenwaveurl: https://greenwave-web-greenwave.app.os.fedoraproject.org
+checkcompose_greenwaveurl: https://greenwave.fedoraproject.org
