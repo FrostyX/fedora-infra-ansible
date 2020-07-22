@@ -412,7 +412,11 @@ min_wal_size = 80MB
 
 #min_parallel_table_scan_size = 8MB
 #min_parallel_index_scan_size = 512kB
+{% if effective_cache_size is defined %}
+effective_cache_size = {{ effective_cache_size }}
+{% else %}
 #effective_cache_size = 4GB
+{% endif %}
 
 # - Genetic Query Optimizer -
 
