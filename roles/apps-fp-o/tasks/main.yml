@@ -3,14 +3,14 @@
 #  tags:
 #  - apps-fp-o
 
-#- name: Copy in the proxy config
-#  copy: >
-#    src=apps.fp.o.conf dest=/etc/httpd/conf.d/{{website}}/apps.fp.o.conf
-#    owner=root group=root mode=0644
-#  notify:
-#  - reload proxyhttpd
-#  tags:
-#  - apps-fp-o
+- name: Copy in the proxy config
+  copy: >
+    src=apps.fp.o.conf dest=/etc/httpd/conf.d/{{website}}/apps.fp.o.conf
+    owner=root group=root mode=0644
+  notify:
+  - reload proxyhttpd
+  tags:
+  - apps-fp-o
 
 - name: Copy in some global assets used around our apps
   synchronize: src=global/ dest=/srv/web/apps-fp-o/global/
