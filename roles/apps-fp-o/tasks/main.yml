@@ -1,16 +1,16 @@
-- name: Install that apps-fp-o rpm package
-  package: name=apps-fp-o state=present
-  tags:
-  - apps-fp-o
+#- name: Install that apps-fp-o rpm package
+#  package: name=apps-fp-o state=present
+#  tags:
+#  - apps-fp-o
 
-- name: Copy in the proxy config
-  copy: >
-    src=apps.fp.o.conf dest=/etc/httpd/conf.d/{{website}}/apps.fp.o.conf
-    owner=root group=root mode=0644
-  notify:
-  - reload proxyhttpd
-  tags:
-  - apps-fp-o
+#- name: Copy in the proxy config
+#  copy: >
+#    src=apps.fp.o.conf dest=/etc/httpd/conf.d/{{website}}/apps.fp.o.conf
+#    owner=root group=root mode=0644
+#  notify:
+#  - reload proxyhttpd
+#  tags:
+#  - apps-fp-o
 
 - name: Copy in some global assets used around our apps
   synchronize: src=global/ dest=/srv/web/apps-fp-o/global/
@@ -29,15 +29,15 @@
   tags:
   - apps-fp-o
 
-- name: Copy in our app data yaml
-  copy: >
-    src=apps.yaml dest=/usr/share/apps-fp-o/apps.yaml
-    owner=root group=root mode=0644
-  notify:
-  - rebuild apps-fp-o html
-  - rebuild apps-fp-o json
-  tags:
-  - apps-fp-o
+#- name: Copy in our app data yaml
+#  copy: >
+#    src=apps.yaml dest=/usr/share/apps-fp-o/apps.yaml
+#    owner=root group=root mode=0644
+#  notify:
+#  - rebuild apps-fp-o html
+#  - rebuild apps-fp-o json
+#  tags:
+#  - apps-fp-o
 
 - name: Copy over any extra icons we carry
   synchronize: src=img/icons/ dest=/srv/web/apps-fp-o/img/icons/
