@@ -24,13 +24,20 @@
     username: toddlers{{ env_suffix }}
     queue_name: toddlers{{ env_suffix }}
     routing_keys:
+      # flag_ci_pr
       - "org.centos.*.ci.dist-git-pr.test.error"
       - "org.centos.*.ci.dist-git-pr.test.complete"
       - "org.centos.*.ci.dist-git-pr.test.running"
+      # flag_commit_build
       - "org.fedoraproject.*.buildsys.build.state.change"
+      # pdc_retired_packages
       - "org.fedoraproject.*.toddlers.trigger.pdc_retired_packages"
       - "org.fedoraproject.*.git.receive"
+      # packager_bugzilla_sync
       - "org.fedoraproject.*.toddlers.trigger.packager_bugzilla_sync"
+      # pdc_import_compose
+      - "org.fedoraproject.*.toddlers.trigger.pdc_import_compose"
+      - "org.fedoraproject.*.pungi.compose.status.change"
     thresholds:
       warning: 10
       critical: 100
