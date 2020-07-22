@@ -65,7 +65,7 @@ github_access_token = "{{ github_prod_release_monitoring }}"
 {% endif %}
 
 # Error threshold
-check_error_threshold = 100
+check_error_threshold = 100000
 
 # The logging configuration, in dictConfig format.
 [anitya_log_config]
