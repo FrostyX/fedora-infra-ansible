@@ -48,7 +48,7 @@ config = dict(
     {% if env == 'staging' %}
     environment='stg',
     relay_inbound=["tcp://busgateway01.stg.iad2.fedoraproject.org:9941"],
-    greenwave_api_url='https://greenwave-web-greenwave.app.os.stg.fedoraproject.org/api/v1.0',
+    greenwave_api_url='https://greenwave.stg.fedoraproject.org/api/v1.0',
     # STG greenwave should listen to the STG bus.
     endpoints=dict(
         staging_gateway=[
@@ -58,6 +58,6 @@ config = dict(
     {% else %}
     environment='prod',
     relay_inbound=["tcp://busgateway01.iad2.fedoraproject.org:9941"],
-    greenwave_api_url='https://greenwave-web-greenwave.app.os.fedoraproject.org/api/v1.0'
+    greenwave_api_url='https://greenwave.fedoraproject.org/api/v1.0'
     {% endif %}
 )
