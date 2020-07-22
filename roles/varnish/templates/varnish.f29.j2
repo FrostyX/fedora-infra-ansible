@@ -1,4 +1,4 @@
-{% if "proxy" in inventory_hostname %}
+{% if varnish_group == 'proxies' %}
 {% set VARNISH_LISTEN_PORT=6081 %}
 {% else %}
 {% set VARNISH_LISTEN_PORT=80 %}
@@ -8,8 +8,10 @@
 {% set VARNISH_STORAGE="malloc,48GB" %}
 {% elif varnish_group == 's390kojipkgs' %}
 {% set VARNISH_STORAGE="file,/var/lib/varnish/varnish_storage.bin,20G" %}
+{% elif varnish_group == 'proxies' %}
+{% set VARNISH_STORAGE="malloc,1GB -s Transient=malloc,2G" %}
 {% else %}
-{% set VARNISH_STORAGE="malloc,256M" %}
+{% set VARNISH_STORAGE="malloc,1GB" %}
 {% endif %}
 
 [Unit]
