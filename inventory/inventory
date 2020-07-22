@@ -551,6 +551,8 @@ smtp-mm-cc-rdu01.fedoraproject.org
 # blockerbugs01.stg.iad2.fedoraproject.org
 # bodhi-backend01.stg.iad2.fedoraproject.org
 # bugzilla2fedmsg01.stg.iad2.fedoraproject.org
+bvmhost-x86-02.stg.iad2.fedoraproject.org
+bvmhost-x86-03.stg.iad2.fedoraproject.org
 # buildvm-01.stg.iad2.fedoraproject.org
 # buildvm-02.stg.iad2.fedoraproject.org
 # buildvm-03.stg.iad2.fedoraproject.org
