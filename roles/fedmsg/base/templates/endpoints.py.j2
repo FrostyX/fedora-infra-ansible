@@ -29,31 +29,6 @@ config = dict(
             "tcp://value01.%s:3000" % suffix,
         ],
 
-        # Askbot runs as 12 processes with 1 thread each.
-        "askbot.ask01": [
-            "tcp://ask01.%s:30%02i" % (suffix, i)
-            for i in range(12)
-        ],
-
-{% if env != 'staging' %}
-        "askbot.ask02": [
-            "tcp://ask02.%s:30%02i" % (suffix, i)
-            for i in range(12)
-        ],
-{% endif %}
-
-        # The mirrormanager2 frontend runs as 2 processes with 1 thread each.
-        "mirrormanager2.mm-frontend01": [
-            "tcp://mm-frontend01.%s:30%02i" % (suffix, i)
-            for i in range(2)
-        ],
-{% if env != 'staging' %}
-        "mirrormanager2.mm-frontend02": [
-            "tcp://mm-frontend02.%s:30%02i" % (suffix, i)
-            for i in range(2)
-        ],
-{% endif %}
-
         # koji is not listed here since it publishes to the fedmsg-relay
 
 
