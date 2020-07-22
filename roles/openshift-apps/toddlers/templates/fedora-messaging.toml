@@ -44,32 +44,17 @@ routing_keys = ["#"]  # This is dynamically generated in the code
 # more of them.
 blocked_toddlers = ["debug"]
 
+[consumer_config.default]
+# Configuration common to all toddlers.
+#
+# You can override any of these in the section of a particular toddler, e.g.:
+#
+# [consumer_config.default]
+# somekey = "somevalue"
+# ...
+# [consumer_config.sometoddler]
+# somekey = "someothervalue"
 
-[consumer_config.flag_ci_pr]
-# flag_ci_pr
-pagure_token_seed = "{{ toddlers_flag_ci_seed }}"
-pagure_token = "{{ toddlers_flag_ci_token }}"
-pagure_url = "https://src{{ env_suffix }}.fedoraproject.org"
-
-
-[consumer_config.flag_commit_build]
-# flag_commit_build
-pagure_token = "{{ toddlers_flag_commit_build_token }}"
-pagure_url = "https://src{{ env_suffix }}.fedoraproject.org"
-koji_url = "https://koji{{ env_suffix }}.fedoraproject.org"
-
-
-[consumer_config.packager_bugzilla_sync]
-#  Configuration file storing all the email overrides in the form of:
-# "foo@bar.com" = "bar@foo.org"
-# This is the same format as used by the distgit_bugzilla_sync cron/app
-email_overrides_file = "/etc/fedora-messaging/email_overrides.toml"
-
-# Base url of dist-git
-dist_git_url = "https://src.fedoraproject.org"
-
-# List of accounts we do not want to report about
-ignorable_accounts = ["packagerbot", "zuul"]
 
 # Configuration used when sending notifications:
 mail_server = "bastion.fedoraproject.org"
@@ -86,15 +71,44 @@ bugzilla_username = "{{ bugzilla_user }}"
 bugzilla_password = "{{ bugzilla_password }}"
 bugzilla_group = "fedora_contrib"
 
+# Base URL for the Koji build system
+koji_url = "https://koji{{ env_suffix }}.fedoraproject.org"
+
+# Account to use to connect to Pagure-as-dist-git
+dist_git_url = "https://src{{ env_suffix }}.fedoraproject.org"
+dist_git_token_seed = "private random string to change"
+dist_git_token = "private random string to change"
+
+[consumer_config.default.pdc_config]
+# Configuration to talk to PDC, as understood by pdc-client.
+server = "https://pdc.fedoraproject.org/rest_api/v1/"
+ssl_verify = false  # Enable if using a self-signed cert
+token = "{{ pdc_updater_api_token_prod }}"
+
+[consumer_config.flag_ci_pr]
+# flag_ci_pr
+dist_git_token_seed = "{{ toddlers_flag_ci_seed }}"
+dist_git_token = "{{ toddlers_flag_ci_token }}"
+
+[consumer_config.flag_commit_build]
+# flag_commit_build
+dist_git_token = "{{ toddlers_flag_commit_build_token }}"
+
+[consumer_config.packager_bugzilla_sync]
+#  Configuration file storing all the email overrides in the form of:
+# "foo@bar.com" = "bar@foo.org"
+# This is the same format as used by the distgit_bugzilla_sync cron/app
+email_overrides_file = "/etc/fedora-messaging/email_overrides.toml"
+
+# List of accounts we do not want to report about
+ignorable_accounts = ["packagerbot", "zuul"]
 
 [consumer_config.pdc_retired_packages]
 file_check_url = "https://src.fedoraproject.org/%(namespace)s/%(repo)s/blob/%(branch)s/f/%(file)s"
 
-# Credentials to talk to PDC
-[consumer_config.pdc_retired_packages.pdc_config]
-server = "https://pdc.fedoraproject.org/rest_api/v1/"
-ssl_verify = false  # Enable if using a self-signed cert
-token = "{{ pdc_updater_api_token_prod }}"
+[consumer_config.pdc_import_compose]
+old_composes_url = "https://kojipkgs.fedoraproject.org/compose/"
+
 
 [qos]
 prefetch_size = 0
