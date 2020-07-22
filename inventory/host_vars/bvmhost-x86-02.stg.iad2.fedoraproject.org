@@ -1,0 +1,16 @@
+---
+datacenter: iad2
+
+br0_ip: 10.3.167.12
+br0_nm: 255.255.255.0
+br0_gw: 10.3.167.254
+br0_dev: eno1
+
+dns: 10.3.163.33
+
+mac1: ec:f4:bb:d9:56:10
+mac2: ec:f4:bb:d9:56:12
+mac3: ec:f4:bb:d9:56:14
+mac4: ec:f4:bb:d9:56:15
+
+br0_port0_mac: "{{ mac1 }}"
