@@ -639,7 +639,6 @@ vmhost-x86-08.stg.iad2.fedoraproject.org
 vmhost-x86-09.stg.iad2.fedoraproject.org
 vmhost-x86-10.stg.iad2.fedoraproject.org
 # wiki01.stg.iad2.fedoraproject.org
-# zanata2fedmsg01.stg.iad2.fedoraproject.org
 
 # This is a list of hosts that are a little "friendly" with staging.
 # They are exempted from the iptables wall between staging and prod.
@@ -719,11 +718,6 @@ qvmhost-x86-02.iad2.fedoraproject.org
 [wiki]
 wiki01.iad2.fedoraproject.org
 wiki02.iad2.fedoraproject.org
-
-[zanata2fedmsg_stg]
-# zanata2fedmsg01.stg.iad2.fedoraproject.org
-
-[zanata2fedmsg]
 
 # assorted categories of fedmsg services, for convenience
 [fedmsg_hubs:children]
