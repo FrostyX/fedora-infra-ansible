@@ -51,20 +51,13 @@ custom_rules: [
 
     # also allow varnish from internal for purge requests
     '-A INPUT -p tcp -m tcp -s 192.168.1.0/24 --dport 6081 -j ACCEPT',
-    '-A INPUT -p tcp -m tcp -s 10.5.126.0/24 --dport 6081 -j ACCEPT',
+    '-A INPUT -p tcp -m tcp -s 10.3.163.0/24 --dport 6081 -j ACCEPT',
 
     # Allow happinesspackets.fedorainfracloud.org to talk to inbound fedmsg relay.
     '-A INPUT -p tcp -m tcp --dport 9941 -s 209.132.184.58 -j ACCEPT',
 
-    # Allow retrace/faf to talk to the inbound fedmsg relay.
-    # retrace01.qa.fedoraproject.org
-    '-A INPUT -p tcp -m tcp --dport 9941 -s 10.5.124.171 -j ACCEPT',
-    # retrace02.qa.fedoraproject.org
-    '-A INPUT -p tcp -m tcp --dport 9941 -s 10.5.124.172 -j ACCEPT',
-    # Allow resultsdb talk to the inbound fedmsg relay.
-    '-A INPUT -p tcp -m tcp --dport 9941 -s 10.5.124.207 -j ACCEPT',
-    # Allow openqa01 to talk to the inbound fedmsg relay.
-    '-A INPUT -p tcp -m tcp --dport 9941 -s 10.5.131.71 -j ACCEPT',
+     # Allow openqa01 to talk to the inbound fedmsg relay.
+    '-A INPUT -p tcp -m tcp --dport 9941 -s 10.3.174.0/24 -j ACCEPT',
 
     # For Zanata
     # See files/httpd/website_id_fp_o_zanata.conf for info
