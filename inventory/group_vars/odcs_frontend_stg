@@ -6,14 +6,6 @@ num_cpus: 2
 # Set this to True for the F28 release and onwards.
 freezes: false
 
-# Definining these vars has a number of effects
-# 1) mod_wsgi is configured to use the vars for its own setup
-# 2) iptables opens enough ports for all threads for fedmsg
-# 3) roles/fedmsg/base/ declares enough fedmsg endpoints for all threads
-wsgi_fedmsg_service: odcs
-wsgi_procs: 2
-wsgi_threads: 2
-
 tcp_ports: [
     80,
     # These ports all required for gluster
