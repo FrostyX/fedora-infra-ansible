@@ -334,47 +334,9 @@
     name: pagure-poc
     user: root
     minute: 0
-    job: /usr/bin/python2 /usr/libexec/pagure-dist-git/pagure_poc.py /srv/cache/extras
-    cron_file: pagure-poc
-    state: present
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - pagure
-
-- name: Configure cron job for a hourly pagure_bz
-  cron:
-    name: pagure-poc
-    user: root
-    minute: 0
-    job: /usr/bin/python2 /usr/libexec/pagure-dist-git/pagure_bz.py /srv/cache/extras
-    cron_file: pagure-bz
-    state: present
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - pagure
-
-- name: Configure cron job for a hourly pagure_owner_alias
-  cron:
-    name: pagure-poc
-    user: root
-    minute: 0
-    job: /usr/bin/python2 /usr/libexec/pagure-dist-git/pagure_owner_alias.py /srv/cache/extras
-    cron_file: pagure-owner-alias
-    state: present
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - pagure
-
-
-- name: Configure cron job for a hourly pagure_poc
-  cron:
-    name: pagure-poc
-    user: root
-    minute: 0
     job: /usr/bin/python3 /usr/libexec/pagure-dist-git/pagure_poc.py /srv/cache/extras
     cron_file: pagure-poc
     state: present
-  when: env == "staging" or datacenter == "iad2"
   tags:
   - pagure
 
@@ -386,7 +348,6 @@
     job: /usr/bin/python3 /usr/libexec/pagure-dist-git/pagure_bz.py /srv/cache/extras
     cron_file: pagure-bz
     state: present
-  when: env == "staging" or datacenter == "iad2"
   tags:
   - pagure
 
@@ -398,7 +359,6 @@
     job: /usr/bin/python3 /usr/libexec/pagure-dist-git/pagure_owner_alias.py /srv/cache/extras
     cron_file: pagure-owner-alias
     state: present
-  when: env == "staging" or datacenter == "iad2"
   tags:
   - pagure
 
