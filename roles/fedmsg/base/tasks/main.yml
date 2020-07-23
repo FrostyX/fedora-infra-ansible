@@ -66,13 +66,15 @@
 - name: remove any old static endpoints files
   file: dest="/etc/fedmsg.d/{{item}}" state=absent
   with_items:
-  - endpoints-nuancier.py
-  - endpoints-kerneltest.py
-  - endpoints-github2fedmsg.py
+  - endpoints-bodhi.py
   - endpoints-elections.py
-  - endpoints-fmn-web.py
-  - pkgdb.py
   - endpoints-external-composer.py
+  - endpoints-fmn-web.py
+  - endpoints-github2fedmsg.py
+  - endpoints-kerneltest.py
+  - endpoints-nuancier.py
+  - endpoints-odcs-backend.py
+  - pkgdb.py
   tags:
   - config
   - fedmsgdconfig
@@ -155,27 +157,6 @@
   - logging.py
   - base.py
   when: "'persistent_cloud' in group_names"
-  tags:
-  - config
-  - fedmsgdconfig
-  - fedmsg/base
-  notify:
-  - reload httpd
-  - restart fedmsg-gateway
-  - restart fedmsg-hub
-  - restart fedmsg-irc
-  - restart fedmsg-relay
-
-- name: setup external facing bus loop for composer.stg.phx2.fp.o
-  template: >
-    src="{{ item }}.j2"
-    dest="/etc/fedmsg.d/{{ item }}"
-    owner=root
-    group=root
-    mode=0644
-  with_items:
-  - endpoints-external-composer.py
-  when: "'releng_stg' in group_names"
   tags:
   - config
   - fedmsgdconfig
