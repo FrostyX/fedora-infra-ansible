@@ -54,6 +54,8 @@
     - osci-pipelines-queue-15
   loop_control:
     loop_var: osci_pipeline_queue
+  tags:
+    - osci-pipelines
 
 - name: Fedora Build Checks
   run_once: true
