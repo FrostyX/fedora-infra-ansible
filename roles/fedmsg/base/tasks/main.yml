@@ -105,7 +105,6 @@
   - endpoints-mailman.py
   - endpoints-fedimg.py
   - endpoints-bugzilla2fedmsg.py
-  - endpoints-odcs-backend.py
   - relay.py
   - logging.py
   - base.py
