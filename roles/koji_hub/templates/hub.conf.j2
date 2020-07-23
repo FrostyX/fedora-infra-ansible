@@ -57,6 +57,12 @@ DisableNotifications = True
 ## subclasses of koji.GenericError).
 # KojiDebug = On
 
+## If MissingPolicyOk is on, and given policy is not set up,
+## policy test will pass as ok. If 'deny' result is desired, set it
+## to off
+# MissingPolicyOk = True
+MissingPolicyOk = False
+
 ## Determines how much detail about exceptions is reported to the client (via faults)
 ## Meaningful values:
 ##   normal - a basic traceback (format_exception)
