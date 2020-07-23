@@ -7,7 +7,7 @@ num_cpus: 2
 # for systems that do not match the above - specify the same parameter in
 # the host_vars/$hostname file
 
-wsgi_fedmsg_service: fmn
+#wsgi_fedmsg_service: fmn
 wsgi_procs: 2
 wsgi_threads: 2
 
