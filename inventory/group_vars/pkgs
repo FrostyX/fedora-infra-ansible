@@ -9,11 +9,7 @@ tcp_ports: [ 80, 443 ]
 # To make things easy on the listening side (so avoid contention of binding ports), let's set the pkgs boxes to active fedmsg.
 fedmsg_active: True
 
-# Definining these vars has a number of effects
-# 1) mod_wsgi is configured to use the vars for its own setup
-# 2) iptables opens enough ports for all threads for fedmsg
-# 3) roles/fedmsg/base/ declares enough fedmsg endpoints for all threads
-wsgi_fedmsg_service: pagure
+# There vars are used to configure mod_wsgi
 wsgi_procs: 6
 wsgi_threads: 6
 
