@@ -17,6 +17,8 @@
     - abompard
     - mohanboddu
     - zlopez
+    tags:
+      - appowners
 
   - role: rabbit/user
     username: "toddlers{{ env_suffix }}"
