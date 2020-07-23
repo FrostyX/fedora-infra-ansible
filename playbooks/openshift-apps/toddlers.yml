@@ -16,6 +16,7 @@
     - pingou
     - abompard
     - mohanboddu
+    - zlopez
 
   - role: rabbit/user
     username: "toddlers{{ env_suffix }}"
