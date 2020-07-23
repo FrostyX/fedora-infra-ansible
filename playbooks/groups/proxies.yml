@@ -18,7 +18,7 @@
 
   roles:
   - base
-  - fas_client
+  - { role: fas_client, when: env != "staging" }
   - rkhunter
   - nagios_client
   - { role: ec2_proxy,
