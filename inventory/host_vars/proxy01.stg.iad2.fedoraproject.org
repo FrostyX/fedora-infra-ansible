@@ -6,7 +6,7 @@ dns: 10.3.163.33
 ks_url: http://10.3.163.35/repo/rhel/ks/kvm-fedora-32-iad2
 ks_repo: http://10.3.163.35/pub/fedora/linux/releases/32/Server/x86_64/os/
 
-vmhost: vmhost-x86-02.stg.phx2.fedoraproject.org
+vmhost: vmhost-x86-02.stg.iad22.fedoraproject.org
 volgroup: /dev/vg_guests
 
 eth0_ip: 10.3.166.74
