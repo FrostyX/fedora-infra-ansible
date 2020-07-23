@@ -495,7 +495,7 @@ proxies_external
 proxies_internal
 
 [proxies_stg]
-# proxy01.stg.iad2.fedoraproject.org
+proxy01.stg.iad2.fedoraproject.org
 
 [relvalconsumer_common]
 openqa01.iad2.fedoraproject.org
@@ -617,7 +617,7 @@ ipa01.stg.iad2.fedoraproject.org
 # pdc-backend03.stg.iad2.fedoraproject.org
 # pdc-web01.stg.iad2.fedoraproject.org
 # pkgs01.stg.iad2.fedoraproject.org
-# proxy01.stg.iad2.fedoraproject.org
+proxy01.stg.iad2.fedoraproject.org
 # rabbitmq01.stg.iad2.fedoraproject.org
 # rabbitmq02.stg.iad2.fedoraproject.org
 # rabbitmq03.stg.iad2.fedoraproject.org
