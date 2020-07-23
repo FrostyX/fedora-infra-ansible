@@ -105,6 +105,13 @@
   tags:
   - pagure
 
+- name: create the /var/log/pagure folder where to store the logs
+  file: state=directory
+               path=/var/log/pagure
+               owner=pagure group=packager mode=0775
+  tags:
+  - pagure
+
 - name: create the /srv/tmp folder where to clone repos
   file: state=directory
                path=/srv/tmp
