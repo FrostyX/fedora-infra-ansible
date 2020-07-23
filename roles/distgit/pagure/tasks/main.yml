@@ -407,17 +407,7 @@
 - name: install fedora-messaging as a dependency
   package: name={{ item }} state=present
   with_items:
-  - python2-fedora-messaging
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - pagure
   - fedora-messaging
-
-- name: install fedora-messaging as a dependency
-  package: name={{ item }} state=present
-  with_items:
-  - fedora-messaging
-  when: env == "staging" or datacenter == "iad2"
   tags:
   - pagure
   - fedora-messaging
