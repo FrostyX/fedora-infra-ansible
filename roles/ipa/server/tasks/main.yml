@@ -235,24 +235,14 @@
   - ipa/server
   - config
 
-- name: Apply LDIF files
-  command: ldapmodify -Y EXTERNAL -H {{ ipa_ldap_socket }}
-           -f /root/ldif/{{item}}.ldif
-  with_items:
-  - grant_fas_sync
-  - use_id_fp_o
-  when: ipa_initial
-  tags:
-  - ipa/server
-  - config
-  register: apply_output
-  changed_when: "'Type or value exists' not in apply_output.stderr"
-  failed_when: "'Type or value exists' not in apply_output.stderr and 'modifying entry' not in apply_output.stdout"
-
 # This is a special one, in that it needs to apply on each master since it's non-replicated.
 - name: Grant access to replication status
   command: ldapmodify -Y EXTERNAL -H {{ ipa_ldap_socket }}
-           -f /root/ldif/grant_anonymous_replication_view.ldif
+           -f /root/ldif/{{item}}
+  with_items:
+  - grant_anonymous_replication_view.ldif
+  - grant_fas_sync
+  - use_id_fp_o
   tags:
   - ipa/server
   - config
