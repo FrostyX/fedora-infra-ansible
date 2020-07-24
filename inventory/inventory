@@ -566,6 +566,7 @@ bvmhost-x86-03.stg.iad2.fedoraproject.org
 # buildvm-ppc64le-01.stg.ppc.fedoraproject.org
 # buildvm-s390x-01.stg.s390.fedoraproject.org
 # busgateway01.stg.iad2.fedoraproject.org
+certgetter01.stg.iad2.fedoraproject.org
 # composer.stg.iad2.fedoraproject.org
 copr-be-dev.aws.fedoraproject.org
 copr-dist-git-dev.aws.fedoraproject.org
