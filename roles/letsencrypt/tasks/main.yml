@@ -1,5 +1,5 @@
 - name: Generate (or renew) the certificate
-  delegate_to: "certgetter01.{{ certgetter_datacenter }}.fedoraproject.org"
+  delegate_to: "certgetter01{{ env_suffix }}.iad2.fedoraproject.org"
   command: certbot certonly --expand --keep -n --webroot --webroot-path /var/www/html/ -d {{','.join([site_name] + server_aliases)}}
   run_once: true
   register: certbot_output
@@ -10,7 +10,7 @@
 
 # Find the directory to use
 - name: Get the directory to use
-  delegate_to: "certgetter01.{{ certgetter_datacenter }}.fedoraproject.org"
+  delegate_to: "certgetter01{{ env_suffix }}.iad2.fedoraproject.org"
   # Sometimes we get directories like site-0001, site-0002, etc. We want the latest
   shell: "file /etc/letsencrypt/live/{{site_name}}* | tail -1 | sed -e 's/: directory//' | tr -d '\n'"
   register: certbot_dir
@@ -21,7 +21,7 @@
 
 # And once we do that, we need to copy some things.
 - name: Obtain the certificate
-  delegate_to: "certgetter01.{{ certgetter_datacenter }}.fedoraproject.org"
+  delegate_to: "certgetter01{{ env_suffix }}.iad2.fedoraproject.org"
   command: "cat {{certbot_dir.stdout}}/cert.pem"
   register: certbot_certificate
   changed_when: 'false'
@@ -30,7 +30,7 @@
   - letsencrypt
 
 - name: Obtain the intermediate certificate
-  delegate_to: "certgetter01.{{ certgetter_datacenter }}.fedoraproject.org"
+  delegate_to: "certgetter01{{ env_suffix }}.iad2.fedoraproject.org"
   command: cat {{certbot_dir.stdout}}/chain.pem
   register: certbot_chain
   changed_when: 'false'
@@ -39,7 +39,7 @@
   - letsencrypt
 
 - name: Obtain the key
-  delegate_to: "certgetter01.{{ certgetter_datacenter }}.fedoraproject.org"
+  delegate_to: "certgetter01{{ env_suffix }}.iad2.fedoraproject.org"
   command: cat {{certbot_dir.stdout}}/privkey.pem
   register: certbot_key
   changed_when: 'false'
