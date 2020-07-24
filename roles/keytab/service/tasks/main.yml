@@ -22,7 +22,7 @@
 
 - name: Create host entry
   delegate_to: "{{ ipa_server }}"
-  command: ipa host-add {{host}}
+  command: ipa host-add --force {{host}}
   register: host_add_result
   check_mode: no
   changed_when: "'Added host' in host_add_result.stdout"
