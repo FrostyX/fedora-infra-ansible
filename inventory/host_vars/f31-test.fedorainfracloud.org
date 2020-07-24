@@ -1,0 +1,5 @@
+ansible_ssh_user: fedora
+ansible_become_user: root
+ansible_become: yes
+datacenter: aws
+inventory_hostname: "f31-test.fedorainfracloud.org"
