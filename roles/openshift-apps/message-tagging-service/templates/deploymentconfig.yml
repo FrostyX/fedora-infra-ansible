@@ -25,7 +25,7 @@ spec:
         # This is a workaround to trigger Openshift automatically to create a
         # new pod.
         - name: MTS_CONFIG_VERSION
-          value: 1
+          value: "1"
         ports:
         - containerPort: 8080
         volumeMounts:
