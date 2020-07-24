@@ -35,7 +35,7 @@
 
 - name: Create service entry
   delegate_to: "{{ ipa_server }}"
-  command: ipa service-add {{service}}/{{host}}
+  command: ipa service-add --force {{service}}/{{host}}
   register: service_add_result
   check_mode: no
   changed_when: "'Added service' in service_add_result.stdout"
