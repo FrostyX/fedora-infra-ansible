@@ -241,8 +241,8 @@
            -f /root/ldif/{{item}}
   with_items:
   - grant_anonymous_replication_view.ldif
-  - grant_fas_sync
-  - use_id_fp_o
+  - grant_fas_sync.ldif
+  - use_id_fp_o.ldif
   tags:
   - ipa/server
   - config
