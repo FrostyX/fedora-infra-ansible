@@ -35,5 +35,8 @@
   tags:
   - config
 
+- name: Install openvswitch sysconfig file
+  copy: src=os-autoinst-openvswitch.sysconfig dest=/etc/sysconfig/os-autoinst-openvswitch owner=root group=root mode=0644
+
 - name: Enable and start os-autoinst openvswitch service
   service: name=os-autoinst-openvswitch enabled=yes state=started
