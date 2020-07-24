@@ -128,10 +128,10 @@
   service: name=rngd enabled=yes state=started
   when: "openqa_rngd is defined and openqa_rngd"
 
-- import_tasks: nfs-client.yml
+- include_tasks: nfs-client.yml
   when: openqa_hostname is defined and openqa_hostname != "localhost"
 
-- import_tasks: tap-setup.yml
+- include_tasks: tap-setup.yml
   when: openqa_tap is defined and openqa_tap
 
 # this is kinda lazy - we could have a separate openqa_swtpm var so we
@@ -140,7 +140,7 @@
 # conditionals to account for four possibilities rather than two) and
 # for now it's fine to just assume the tap host(s) is/are also the
 # swtpm host(s)
-- import_tasks: swtpm-setup.yml
+- include_tasks: swtpm-setup.yml
   when: openqa_tap is defined and openqa_tap
 
 - name: openQA client config
@@ -155,7 +155,7 @@
   tags:
   - config
 
-- import_tasks: createhdds.yml
+- include_tasks: createhdds.yml
   when: "inventory_hostname in groups['openqa_hdds_workers']"
 
 - name: Enable and start worker services
