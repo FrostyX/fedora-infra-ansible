@@ -179,7 +179,7 @@ package_list =
     # CoreOS coreos-pool and coreos-release tags, https://pagure.io/releng/issue/8294
     tag coreos-pool coreos-release && has_perm coreos-continuous && match action add unblock block :: allow
     # Allow people to manage their side tags, https://pagure.io/releng/issue/9229
-    is_sidetag_owner && match action add unblock block :: allow
+    is_sidetag_owner && match action add update remove unblock block :: allow
     # Catch-all rule.
     all :: deny
 
