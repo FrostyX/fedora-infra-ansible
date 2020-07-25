@@ -272,13 +272,13 @@
     server_aliases: [bodhi.stg.fedoraproject.org]
     cert_name: "{{wildcard_cert_name}}"
 
-  - role: httpd/website
-    site_name: "coreos{{ env_suffix }}.fedoraproject.org"
-    sslonly: true
-    certbot: true
-    tags:
-    - coreos.fedoraproject.org
-    when: env == "staging"
+#  - role: httpd/website
+#    site_name: "coreos{{ env_suffix }}.fedoraproject.org"
+#    sslonly: true
+#    certbot: true
+#    tags:
+#    - coreos.fedoraproject.org
+#    when: env == "staging"
 
   - role: httpd/website
     site_name: "updates.coreos{{ env_suffix }}.fedoraproject.org"
@@ -286,6 +286,7 @@
     certbot: true
     tags:
     - updates.coreos.fedoraproject.org
+    when: env == "production"
 
   - role: httpd/website
     site_name: "status.updates.coreos{{ env_suffix }}.fedoraproject.org"
@@ -293,6 +294,7 @@
     certbot: true
     tags:
     - status.updates.coreos.fedoraproject.org
+    when: env == "production"
 
   - role: httpd/website
     site_name: "raw-updates.coreos{{ env_suffix }}.fedoraproject.org"
@@ -300,6 +302,7 @@
     certbot: true
     tags:
     - raw-updates.coreos.fedoraproject.org
+    when: env == "production"
 
   - role: httpd/website
     site_name: "status.raw-updates.coreos{{ env_suffix }}.fedoraproject.org"
@@ -307,6 +310,7 @@
     certbot: true
     tags:
     - status.raw-updates.coreos.fedoraproject.org
+    when: env == "production"
 
   - role: httpd/website
     site_name: caiapi.fedoraproject.org
@@ -330,6 +334,7 @@
     ssl: true
     sslonly: true
     certbot: true
+    when: env == "production"
 
   - role: httpd/website
     site_name: flocktofedora.net
@@ -378,6 +383,7 @@
     ssl: true
     certbot: true
     tags: fedoracommunity
+    when: env == "production"
 
   - role: httpd/website
     site_name: get.fedoraproject.org
@@ -482,6 +488,7 @@
     certbot: true
     tags:
     - whatcanidoforfedora.org
+    when: env == "production"
 
   - role: httpd/website
     site_name: k12linux.org
@@ -550,6 +557,7 @@
     - www.fpaste.org
     tags:
     - fpaste.org
+    when: env == "production"
 
   - role: httpd/website
     site_name: koji.fedoraproject.org
@@ -716,6 +724,7 @@
     sslonly: true
     certbot: true
     tags: fedorahosted
+    when: env == "production"
 
   - role: httpd/website
     site_name: "id{{ env_suffix }}.fedoraproject.org"
@@ -799,6 +808,7 @@
     site_name: jenkins.fedorainfracloud.org
     cert_name: jenkins.fedorainfracloud.org
     certbot: true
+    when: env == "production"
 
   - role: httpd/website
     site_name: data-analysis.fedoraproject.org
@@ -865,6 +875,7 @@
     server_aliases: [stg.release-monitoring.org]
     tags:
     - release-monitoring.org
+    when: env == "production"
 
   - role: httpd/website
     site_name: lists.pagure.io
@@ -872,6 +883,7 @@
     certbot: true
     tags:
     - lists.pagure.io
+    when: env == "production"
 
   - role: httpd/website
     site_name: fpdc.fedoraproject.org
@@ -934,6 +946,7 @@
       - svn.fedorahosted.org
     certbot: true
     tags: fedorahosted
+    when: env == "production"
 
 # planet.fedoraproject.org is not to be used, it's fedoraplanet.org
 # We only have it here so we can redirect it with the correct cert
@@ -964,15 +977,15 @@
     - pkgs.fedoraproject.org
     when: env == "production" and "iad2" in inventory_hostname
 
-  - role: httpd/website
-    site_name: pkgs.stg.fedoraproject.org
-    ssl: true
-    sslonly: true
-    certbot: true
-    certbot_addhost: pkgs01.stg.phx2.fedoraproject.org
-    tags:
-    - pkgs.fedoraproject.org
-    when: env == "staging" and "phx2" in inventory_hostname
+#  - role: httpd/website
+#    site_name: pkgs.stg.fedoraproject.org
+#    ssl: true
+#    sslonly: true
+#    certbot: true
+#    certbot_addhost: pkgs01.stg.phx2.fedoraproject.org
+#    tags:
+#    - pkgs.fedoraproject.org
+#    when: env == "staging" and "phx2" in inventory_hostname
 
 # Askbeta -> ask redirects
   - role: httpd/website
