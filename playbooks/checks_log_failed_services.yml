@@ -1,0 +1,22 @@
+#
+# This playbook lets you safely display systemd logs for failed services
+
+- hosts: mirrorlist_proxies
+  gather_facts: false
+
+  tasks:
+    - name: listing failed units
+      shell: systemctl list-units --state failed --no-legend | awk  '{ print $1 }'
+      register: listing_failed
+
+    - name: check log with journalctl
+      shell: journalctl -lru {{ item }} -n 50
+      register: display_log
+      with_items: "{{ listing_failed.stdout_lines[0:] }}"
+
+    - debug: var=listing_failed.stdout_lines[0:]
+
+    - name: display log
+      debug: var=display_log.stdout_lines
+      ignore_errors: true
+      when: display_log is defined
