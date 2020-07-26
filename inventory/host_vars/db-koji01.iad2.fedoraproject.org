@@ -46,5 +46,5 @@ nrpe_procs_crit: 700
 # we backup the backup on db-koji01 until we can replace now
 db_backup_dir: ['/backups']
 shared_buffers: "32GB"
-effective_cache_size: "4GB"
+effective_cache_size: "100GB"
 max_stack_depth: "6MB"
