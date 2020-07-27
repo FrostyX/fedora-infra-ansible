@@ -185,7 +185,7 @@ sign-bridge01.iad2.fedoraproject.org
 sign-vault01.iad2.fedoraproject.org
 
 [autosign]
-#autosign01.iad2.fedoraproject.org
+autosign01.iad2.fedoraproject.org
 
 [autosign_stg]
 # autosign01.stg.iad2.fedoraproject.org
