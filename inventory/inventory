@@ -555,6 +555,7 @@ smtp-mm-cc-rdu01.fedoraproject.org
 # blockerbugs01.stg.iad2.fedoraproject.org
 # bodhi-backend01.stg.iad2.fedoraproject.org
 # bugzilla2fedmsg01.stg.iad2.fedoraproject.org
+bvmhost-x86-01.stg.iad2.fedoraproject.org
 bvmhost-x86-02.stg.iad2.fedoraproject.org
 bvmhost-x86-03.stg.iad2.fedoraproject.org
 # buildvm-01.stg.iad2.fedoraproject.org
@@ -636,7 +637,7 @@ retrace-stg.aws.fedoraproject.org
 # bvirthost01.stg.iad2.fedoraproject.org
 vmhost-x86-01.stg.iad2.fedoraproject.org
 vmhost-x86-02.stg.iad2.fedoraproject.org
-# virthost03.stg.iad2.fedoraproject.org
+vmhost-x86-03.stg.iad2.fedoraproject.org
 vmhost-x86-04.stg.iad2.fedoraproject.org
 vmhost-x86-05.stg.iad2.fedoraproject.org
 vmhost-x86-06.stg.iad2.fedoraproject.org
