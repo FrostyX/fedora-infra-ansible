@@ -357,6 +357,13 @@ handlers = ["console"]
             key = "{{ (env == 'production')|ternary('fedora-31', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('3c3359c4', 'd300e724') }}"
 
+            # f33-rebuild
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "f33-rebuild"
+            to = "f33-rebuild"
+            key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
+
     [consumer_config.ostree_refs]
         [consumer_config.ostree_refs."fedora/rawhide/x86_64/iot"]
         directory = "/mnt/fedora_koji/koji/compose/iot/repo/"
