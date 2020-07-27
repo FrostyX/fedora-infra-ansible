@@ -4,7 +4,6 @@ freezes: false
 nested: true
 dns: 10.3.163.33
 br0_gw: 10.3.166.254
-gw: 10.3.166.254
 br0_ip: 10.3.166.13
 br0_nm: 255.255.255.0
 br0_dev: eth2
