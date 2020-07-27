@@ -108,7 +108,7 @@
 - name: create the /var/log/pagure folder where to store the logs
   file: state=directory
                path=/var/log/pagure
-               owner=pagure group=packager mode=1775
+               owner=pagure group=packager mode=u+rwx,g+rwxs,o+rx
   tags:
   - pagure
 
