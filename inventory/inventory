@@ -600,14 +600,15 @@ ipa01.stg.iad2.fedoraproject.org
 # nuancier02.stg.iad2.fedoraproject.org
 # odcs-backend01.stg.iad2.fedoraproject.org
 # odcs-frontend01.stg.iad2.fedoraproject.org
-# os-control01.stg.iad2.fedoraproject.org
-# os-master01.stg.iad2.fedoraproject.org
-# os-master02.stg.iad2.fedoraproject.org
-# os-master03.stg.iad2.fedoraproject.org
-# os-node01.stg.iad2.fedoraproject.org
-# os-node02.stg.iad2.fedoraproject.org
-# os-node03.stg.iad2.fedoraproject.org
-# os-node04.stg.iad2.fedoraproject.org
+os-control01.stg.iad2.fedoraproject.org
+os-master01.stg.iad2.fedoraproject.org
+os-master02.stg.iad2.fedoraproject.org
+os-master03.stg.iad2.fedoraproject.org
+os-node01.stg.iad2.fedoraproject.org
+os-node02.stg.iad2.fedoraproject.org
+os-node03.stg.iad2.fedoraproject.org
+os-node04.stg.iad2.fedoraproject.org
+os-node05.stg.iad2.fedoraproject.org
 # osbs-control01.stg.iad2.fedoraproject.org
 # osbs-master01.stg.iad2.fedoraproject.org
 # osbs-node01.stg.iad2.fedoraproject.org
@@ -972,21 +973,19 @@ osbs_aarch64_masters_stg
 osbs_aarch64_nodes_stg
 
 [os_control_stg]
-#os-control01.stg.iad2.fedoraproject.org
+os-control01.stg.iad2.fedoraproject.org
 
 [os_masters_stg]
-# os-master01.stg.iad2.fedoraproject.org
-# os-master02.stg.iad2.fedoraproject.org
-# os-master03.stg.iad2.fedoraproject.org
-#os-master01.stg.iad2.fedoraproject.org
-#os-master02.stg.iad2.fedoraproject.org
-#os-master03.stg.iad2.fedoraproject.org
+os-master01.stg.iad2.fedoraproject.org
+os-master02.stg.iad2.fedoraproject.org
+os-master03.stg.iad2.fedoraproject.org
 
 [os_infra_nodes_stg]
-# os-node01.stg.iad2.fedoraproject.org
-# os-node02.stg.iad2.fedoraproject.org
-# os-node03.stg.iad2.fedoraproject.org
-# os-node04.stg.iad2.fedoraproject.org
+os-node01.stg.iad2.fedoraproject.org
+os-node02.stg.iad2.fedoraproject.org
+os-node03.stg.iad2.fedoraproject.org
+os-node04.stg.iad2.fedoraproject.org
+os-node05.stg.iad2.fedoraproject.org
 
 [os_nodes_stg:children]
 os_infra_nodes_stg
