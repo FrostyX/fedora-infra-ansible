@@ -9,30 +9,11 @@
   - pagure-logcom
   - pagure-milters
   - pagure-webhook
-  - python-psycopg2
-  - redis
-  - libsemanage-python
-  - python-fedora-flask
-  - pagure-dist-git
-  when: env != "staging" and datacenter != "iad2"
-  tags:
-  - pagure
-  - packages
-
-- name: install needed packages
-  package: name={{ item }} state=present
-  with_items:
-  - pagure
-  - pagure-ev
-  - pagure-logcom
-  - pagure-milters
-  - pagure-webhook
   - python3-psycopg2
   - redis
   - python3-libsemanage
   - python3-fedora-flask
   - pagure-dist-git
-  when: env == "staging" or datacenter == "iad2"
   tags:
   - pagure
   - packages
@@ -82,16 +63,6 @@
   #  - pagure
   #  - stunnel
   #  - config
-
-
-- name: Make sure mere mortals can access the fedmsg key
-  acl:
-    path: /etc/pki/fedmsg/shell-{{ inventory_hostname }}.key
-    entity: packager
-    etype: group
-    permissions: r
-    state: present
-  when: env != "staging" and datacenter != "iad2"
 
 # Set-up Pagure
 
@@ -148,18 +119,7 @@
   - restart apache
 
 - name: create the database scheme
-  command: /usr/bin/python2 /usr/share/pagure/pagure_createdb.py
-  when: env != "staging" and datacenter != "iad2"
-  changed_when: "1 != 1"
-  environment:
-      PAGURE_CONFIG: /etc/pagure/pagure.cfg
-  tags:
-  - web
-  - pagure
-
-- name: create the database scheme
   command: /usr/bin/python3 /usr/share/pagure/pagure_createdb.py
-  when: env == "staging" or datacenter == "iad2"
   changed_when: "1 != 1"
   environment:
       PAGURE_CONFIG: /etc/pagure/pagure.cfg
