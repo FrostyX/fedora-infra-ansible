@@ -11,4 +11,4 @@ eth0_ip: 10.3.169.129
 volgroup: /dev/vg_guests
 vmhost: bvmhost-x86-04.iad2.fedoraproject.org
 datacenter: iad2
-mem_size: 16384
+mem_size: 32768
