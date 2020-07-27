@@ -19,7 +19,7 @@
 
 - name: Create host entry
   delegate_to: "{{ ipa_server }}"
-  command: ipa host-add {{inventory_hostname}}
+  command: ipa host-add --force {{inventory_hostname}}
   register: host_add_result
   changed_when: "'Added host' in host_add_result.stdout"
   failed_when: "not ('Added host' in host_add_result.stdout or 'already exists' in host_add_result.stderr)"
@@ -31,7 +31,7 @@
 
 - name: Create additional host entries
   delegate_to: "{{ ipa_server }}"
-  command: ipa host-add {{item}}
+  command: ipa host-add --force {{item}}
   with_items: "{{ additional_host_keytabs }}"
   register: hosts_add_result
   changed_when: "'Added host' in hosts_add_result.stdout"
