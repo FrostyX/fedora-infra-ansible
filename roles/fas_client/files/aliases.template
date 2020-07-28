@@ -141,7 +141,7 @@ legal-cla-archive: fedora-lit@redhat.com
 vendors: distribution-members
 
 # Fedora Council
-legal: spot@redhat.com
+legal: mattdm@redhat.com
 fpl: chair
 board: council-private@lists.fedoraproject.org
 chairman: chair
