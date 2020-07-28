@@ -1,0 +1,50 @@
+- name: make the app be real
+  hosts: os_masters[0]:os_masters_stg[0]
+  user: root
+  gather_facts: False
+
+  vars_files:
+    - /srv/web/infra/ansible/vars/global.yml
+    - "/srv/private/ansible/vars.yml"
+    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  roles:
+  - role: openshift/project
+    app: docstranslation
+    description: Documentation translation
+    appowners:
+    - asamalik
+    - jibecfed
+    - misc
+    tags:
+      - apply-appowners
+
+  - role: openshift/imagestream
+    app: docstranslation
+    imagename: builder
+
+  - role: openshift/object
+    app: docstranslation
+    objectname: buildconfig.yml
+    file: buildconfig.yml
+
+  - role: openshift/start-build
+    app: docstranslation
+    buildname: docstranslation-build
+
+  - role: openshift/object
+    app: docstranslation
+    template: cron.yml
+    objectname: cron.yml
+    tags:
+      - deploy-cronjob
+
+###############################################
+# actions to delete the project from OpenShift
+###############################################
+# to run: sudo rbac-playbook -l os_masters_stg[0] -t delete openshift-apps/docstranslation.yml
+  - role: openshift/object-delete
+    app: docstranslation
+    objecttype: cronjob
+    objectname: cron
+    tags: [ never, delete ]

@@ -1,0 +1,37 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: cron
+spec:
+  concurrencyPolicy: Forbid
+  schedule: "0 21 * * *"
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            parent: "cronjobtranslate"
+        spec:
+          containers:
+          - name: translate
+            image: docker-registry.default.svc:5000/docstranslation/builder:latest
+            command: 
+            - /workspace/build.py
+            - "--clone_sources"
+            - "true"
+            - "--commit_l10n"
+            - "true"
+            - "--commit_tsources"
+            - "true"
+            - "--clone-po4a"
+            env: []
+            volumeMounts: 
+            - name: ssh-config-volume
+              mountPath: /workspace/.ssh
+              readOnly: true
+          restartPolicy: Never
+          startingDeadlineSeconds: 600
+          volumes: 
+          - name: ssh-config-volume
+            secret:
+              secretName: ssh-config

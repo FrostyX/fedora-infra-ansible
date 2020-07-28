@@ -1,0 +1,21 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  labels:
+    build: docstranslation-build
+  name: docstranslation-build
+spec:
+  successfulBuildsHistoryLimit: 2
+  failedBuildsHistoryLimit: 1
+  runPolicy: Serial
+  source:
+    git:
+      uri: "https://pagure.io/fedora-docs/translations-scripts.git"
+      ref: master
+  strategy:
+    type: Docker
+  output:
+    to:
+      kind: ImageStreamTag
+      name: builder:latest
+
