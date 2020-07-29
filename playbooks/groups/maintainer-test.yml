@@ -30,7 +30,7 @@
     parted: device=/dev/nvme1n1 number=1 state=present
     tags:
      - maintainer-test
-    when: inventory_hostname.startswith(('rawhide-test','f32-test'))
+    when: inventory_hostname.startswith(('rawhide-test'))
 
   - name: make a partition on first disk
     parted: device=/dev/nvme0n1 number=1 state=present
@@ -42,7 +42,7 @@
     filesystem: dev=/dev/nvme1n1p1 fstype=ext4
     tags:
      - maintainer-test
-    when: inventory_hostname.startswith(('rawhide-test','f32-test'))
+    when: inventory_hostname.startswith(('rawhide-test'))
 
   - name: format the partition if it's not already
     filesystem: dev=/dev/nvme0n1p1 fstype=ext4
@@ -55,7 +55,7 @@
     mount: path=/var/cache/mock state=mounted src=/dev/nvme1n1p1 fstype=ext4
     tags:
      - maintainer-test
-    when: inventory_hostname.startswith(('rawhide-test','f32-test'))
+    when: inventory_hostname.startswith(('rawhide-test'))
 
   - name: mount cache filesystem on /var/cache/mock
     mount: path=/var/cache/mock state=mounted src=/dev/nvme0n1p1 fstype=ext4
@@ -67,7 +67,7 @@
     mount: path=/var/lib/mock state=mounted src=/var/cache/mock fstype=none opts=bind
     tags:
      - maintainer-test
-    when: inventory_hostname.startswith(('rawhide-test','f32-test','f30-test'))
+    when: inventory_hostname.startswith(('rawhide-test','f30-test'))
 
 - name: Setup maintainer test hosts
   hosts: maintainer_test:aarch64_test:armv7_test
