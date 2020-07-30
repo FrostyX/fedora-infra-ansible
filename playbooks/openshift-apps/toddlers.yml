@@ -41,6 +41,8 @@
       # pdc_import_compose
       - "org.fedoraproject.*.toddlers.trigger.pdc_import_compose"
       - "org.fedoraproject.*.pungi.compose.status.change"
+      # pdc_modules
+      - "org.fedoraproject.*.mbs.module.state.change"
     thresholds:
       warning: 10
       critical: 100
