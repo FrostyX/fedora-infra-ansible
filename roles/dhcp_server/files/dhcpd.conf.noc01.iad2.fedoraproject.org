@@ -926,7 +926,7 @@ host qvmhost-x86-01 {
      fixed-address 10.3.174.11;
      filename "uefi/grubx64.efi";
      next-server 10.3.163.10;
-     option routers 10.3.169.254;
+     option routers 10.3.174.254;
      option subnet-mask 255.255.255.0;
 }
 host qvmhost-x86-02 {
