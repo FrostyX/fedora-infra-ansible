@@ -1,0 +1,2 @@
+datacenter: aws
+inventory_hostname: "rawhide-test.fedorainfracloud.org"
