@@ -438,6 +438,7 @@
     remotepath: /collectd
     # Talk directly to the app server, not haproxy
     proxyurl: http://log01
+    tags: data-analysis
 
   - role: httpd/reverseproxy
     website: data-analysis.fedoraproject.org
@@ -445,6 +446,7 @@
     remotepath: /
     localpath: /
     proxyurl: http://log01
+    tags: data-analysis
 
   ### entries for resultsdb and resultsdb_frontend
   - role: httpd/reverseproxy
