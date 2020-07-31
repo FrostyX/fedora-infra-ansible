@@ -341,7 +341,7 @@ plot ["2007-05-17":"2020-12-31"] \
      '/var/www/html/csv-reports/mirrors/mirrorsdata-all.csv' using 1:($33+$68+$67+$66) title 'fed31' w filledcurves x1 lc rgb "#000040", \
      '/var/www/html/csv-reports/mirrors/mirrorsdata-all.csv' using 1:($33+$68+$67) title 'fed32' w filledcurves x1 lc rgb "#004040", \
      '/var/www/html/csv-reports/mirrors/mirrorsdata-all.csv' using 1:($33+$68) title 'fed33' w filledcurves x1 lc rgb "#404040", \
-     '/var/www/html/csv-reports/mirrors/mirrorsdata-all.csv' using 1:($33) title 'rawhide' w filledcurves x1 lc rgb "#FF0000", \
+     '/var/www/html/csv-reports/mirrors/mirrorsdata-all.csv' using 1:($33) title 'rawhide' w filledcurves x1 lc rgb "#FF0000"
 unset output
 
 set output "/var/www/html/csv-reports/images/fedora-rev-latest-stacked.png"
