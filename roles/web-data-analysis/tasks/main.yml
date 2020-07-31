@@ -34,17 +34,7 @@
 
 - name: css files
   copy: src={{item}} dest=/var/www/html/css/ mode=0644
-  with_items: [ html/css/awstats-reports.css,  html/css/normalize.css ]
-  tags:
-    - web-data
-
-- name: make an awstats directory
-  file: path=/var/www/html/awstats-reports/  state=directory mode=0755
-  tags:
-    - web-data
-
-- name: copy over its index
-  copy: src=html/awstats-index.html  dest=/var/www/html/awstats-reports/index.html mode=0644
+  with_items: [ html/css/data-reports.css,  html/css/normalize.css ]
   tags:
     - web-data
 
@@ -95,7 +85,3 @@
     - web-data
     - cron
 
-- name: copy over the httpd config to lock kerberos
-  copy: src=httpd_config.conf dest=/etc/httpd/conf.d/krb_config.conf mode=0644
-  tags:
-    - web-data

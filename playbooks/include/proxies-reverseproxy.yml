@@ -439,6 +439,13 @@
     # Talk directly to the app server, not haproxy
     proxyurl: http://log01
 
+  - role: httpd/reverseproxy
+    website: data-analysis.fedoraproject.org
+    destname: data-analysis
+    remotepath: /
+    localpath: /
+    proxyurl: http://log01
+
   ### entries for resultsdb and resultsdb_frontend
   - role: httpd/reverseproxy
     website: taskotron.fedoraproject.org
@@ -679,9 +686,3 @@
     keephost: true
     tags: fpdc
 
-  - role: httpd/reverseproxy
-    website: data-analysis.fedoraproject.org
-    destname: awstats
-    remotepath: /
-    localpath: /
-    proxyurl: http://data-analysis01.{{ datacenter }}.fedoraproject.org
