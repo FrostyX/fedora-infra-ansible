@@ -371,7 +371,7 @@ plot ["2007-05-17":"2020-12-31"] \
      '/var/www/html/csv-reports/mirrors/mirrorsdata-all.csv' using 1:($6+$7+$8+$9+$10+$11+$12+$13+$14+$15+$16+$17+$18+$19+$20+$21+$22+$23)  title 'fedora 16-20' w filledcurves x1, \
      '/var/www/html/csv-reports/mirrors/mirrorsdata-all.csv' using 1:($6+$7+$8+$9+$10+$11+$12+$13+$14+$15+$16+$17+$18)  title 'fedora 11-15' w filledcurves x1, \
      '/var/www/html/csv-reports/mirrors/mirrorsdata-all.csv' using 1:($6+$7+$8+$9+$10+$11+$12+$13)  title 'fedora 06-10' w filledcurves x1, \
-     '/var/www/html/csv-reports/mirrors/mirrorsdata-all.csv' using 1:($6+$7+$8)  title 'fedora 03-05' w filledcurves x1, \
+     '/var/www/html/csv-reports/mirrors/mirrorsdata-all.csv' using 1:($6+$7+$8)  title 'fedora 03-05' w filledcurves x1
 unset output
 
 
