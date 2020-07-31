@@ -54,6 +54,6 @@
     mode: 0644
   tags:
   - fedora-docs-translation
-  when: env == "production"
+  when: env == "production" and inventory_hostname.startswith('sundries01')
 
 
