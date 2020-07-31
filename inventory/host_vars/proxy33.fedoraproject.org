@@ -15,7 +15,3 @@ nagios_Check_Services:
 
 public_ip: 13.244.141.152
 
-ansible_ssh_user: fedora
-ansible_become_user: root
-ansible_become: yes
-
