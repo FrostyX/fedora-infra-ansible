@@ -148,12 +148,22 @@ chairman: chair
 directors: board
 
 ## Fedora Project Leader (FPL)
-## https://docs.fedoraproject.org/fedora-project/council/fpl.html
+## https://docs.fedoraproject.org/en-US/council/fpl/
 chair: mattdm
 
 ## Fedora Community Action and Impact Coordinator
-## https://docs.fedoraproject.org/fedora-project/council/fcaic.html
+## https://docs.fedoraproject.org/en-US/council/fcaic/
 fcaic: riecatnor
+
+## Fedora Program Manager
+## https://docs.fedoraproject.org/en-US/council/fpgm/
+fpgm: bcotton
+program-manager: fpgm
+
+## Fedora Diversity Advisor
+## https://docs.fedoraproject.org/en-US/council/diversity-advisor/
+diversity: fpl,fcaic,jflory7
+diversity-inclusion: diversity
 
 # FESCo
 fesco-chair: kevin
@@ -170,10 +180,10 @@ rave-review: mentors@lists.fedoraproject.org
 fudcon-register: flock-admin
 fudcon-paper:    flock-admin
 
-# Fudcon regional aliases - point to point person before that fudcon 
+# Fudcon regional aliases - point to point person before that fudcon
 fudcon-emea: flock-admin
-# fudcon-apac: 
-# fudcon-na: 
+# fudcon-apac:
+# fudcon-na:
 fudcon-latam: flock-admin
 
 # flock
