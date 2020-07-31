@@ -43,6 +43,7 @@
     when: not testing
     with_items:
     - odcs
+    - odcs-client
     - pungi
     - libmodulemd
 
