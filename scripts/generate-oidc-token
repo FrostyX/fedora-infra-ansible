@@ -1,4 +1,4 @@
-#!/usr/bin/python2
+#!/usr/bin/python3
 # Copyright (c) 2018 Red Hat, Inc.
 #
 # This program is free software; you can redistribute it and/or
@@ -26,7 +26,7 @@ import uuid
 import click
 
 
-secret = base64.urlsafe_b64encode(os.urandom(64))[:64]
+secret = base64.urlsafe_b64encode(os.urandom(64))[:64].decode()
 
 
 template = """
@@ -87,10 +87,10 @@ def generate_token(service_name, expiration, scope, no_openid):
         scope.insert(0, 'openid')
     scope = json.dumps(scope)
 
-    print template.format(uuid=identifier, service_name=service_name, secret=secret,
-                          expiration=expiration, scope=scope, now=now)
+    print(template.format(uuid=identifier, service_name=service_name, secret=secret,
+                          expiration=expiration, scope=scope, now=now))
 
-    print "Token: {}_{}\n".format(identifier, secret)
+    print("Token: {}_{}\n".format(identifier, secret))
 
 
 if __name__ == '__main__':
