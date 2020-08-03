@@ -69,14 +69,14 @@
     app: coreos-cincinnati
     routename: coreos-updates-raw
     host: "raw-updates.coreos{{ env_suffix }}.fedoraproject.org"
-    serviceport: coreos-cincinnati-gb
+    serviceport: coreos-cincinnati-raw-updates
     servicename: coreos-cincinnati
 
   - role: openshift/route
     app: coreos-cincinnati
     routename: coreos-updates-raw-status
     host: "status.raw-updates.coreos{{ env_suffix }}.fedoraproject.org"
-    serviceport: coreos-cincinnati-gb-status
+    serviceport: coreos-cincinnati-raw-updates-status
     servicename: coreos-cincinnati
 
 ###############################################
