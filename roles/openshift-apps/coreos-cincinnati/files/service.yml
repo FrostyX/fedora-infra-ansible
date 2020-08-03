@@ -20,13 +20,7 @@ spec:
       port: 9081
       targetPort: 9081
     # Here below are temporary ports, in order to ease
-    # swapping in the new services.
-    - name: coreos-cincinnati-gb
-      port: 5050
-      targetPort: 5050
-    - name: coreos-cincinnati-gb-status
-      port: 6060
-      targetPort: 6060
+    # swapping-in the new services.
     - name: coreos-cincinnati-pe
       port: 5051
       targetPort: 5051
