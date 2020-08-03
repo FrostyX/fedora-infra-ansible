@@ -30,6 +30,7 @@
 # kojipkgs
 {% if host in groups['buildvm_s390x'] %}
 -A OUTPUT -p tcp -m tcp -d 10.16.0.17 --dport 80 -j ACCEPT
+-A OUTPUT -p tcp -m tcp -d 10.16.0.35 --dport 80 -j ACCEPT
 -A OUTPUT -p tcp -m tcp -d 10.3.169.106 --dport 80 -j ACCEPT
 -A OUTPUT -p tcp -m tcp -d 10.3.169.107 --dport 80 -j ACCEPT
 {% endif %}
