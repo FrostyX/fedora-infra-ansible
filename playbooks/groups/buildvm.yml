@@ -197,7 +197,7 @@
     - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
 - name: configure varnish cache
-  hosts: buildvm-s390x-07.s390.fedoraproject.org:buildvm-s390x-01.stg.s390.fedoraproject.org
+  hosts: buildvm-s390x-24.s390.fedoraproject.org:buildvm-s390x-01.stg.s390.fedoraproject.org
   tags:
     - varnish
   user: root
@@ -214,7 +214,7 @@
   handlers:
     - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
-- name: configure sshfs on buildvm-s390x-01
+- name: configure sshfs on buildvm-s390x
   hosts: buildvm-s390x-01.stg.s390.fedoraproject.org:buildvm-s390x-15.s390.fedoraproject.org:buildvm-s390x-16.s390.fedoraproject.org:buildvm-s390x-17.s390.fedoraproject.org
   tags:
     - sshfs
