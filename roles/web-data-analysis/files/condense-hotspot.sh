@@ -80,7 +80,7 @@ find ${WORKDIR} -type f | grep raw- | xargs cat  | sort -u | awk 'BEGIN{x=0; y=0
 awk -f ${LSHARE}/${PROJECT}-data.awk ${WORKDIR}/worked-all | grep -v "1970-01-01,0,0,0" | sort -u > ${WEBDIR}/${PROJECT}data-all.csv
 
 # Make the seven day moving average file
-/usr/local/bin/hotspot-moving_avg.py > ${WEBDIR}/${PROJECT}data-all-7day-ma.csv
+#/usr/local/bin/hotspot-moving_avg.py > ${WEBDIR}/${PROJECT}data-all-7day-ma.csv
 
 gnuplot  ${LSHARE}/${PROJECT}.gp
 
