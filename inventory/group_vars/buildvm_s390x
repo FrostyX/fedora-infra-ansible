@@ -2,7 +2,7 @@
 lvm_size: 102400
 mem_size: 10240
 max_mem_size: "{{ mem_size }}"
-num_cpus: 4
+num_cpus: 3
 varnish_group: s390kojipkgs
 vmhost: buildvmhost-s390x-01.s390.fedoraproject.org
 gw: 10.16.0.254
