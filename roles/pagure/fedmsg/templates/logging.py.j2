@@ -39,6 +39,8 @@ class ContextInjector(logging.Filter):
         current_hostname = socket.gethostname()
 
         record.host = current_hostname
+        if "notifs-backend" in current_hostname:
+            return False
         record.proc = current_process
         record.pid = current_process.pid
         record.proc_name = current_process.name
