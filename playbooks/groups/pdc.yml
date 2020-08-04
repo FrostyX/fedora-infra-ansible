@@ -1,9 +1,9 @@
 # PDC servers (both frontend and backend)
 
-- import_playbook: "/srv/web/infra/ansible/playbooks/include/virt-create.yml myhosts=pdc_web:pdc_web_stg:pdc_backend:pdc_backend_stg"
+- import_playbook: "/srv/web/infra/ansible/playbooks/include/virt-create.yml myhosts=pdc_web:pdc_web_stg"
 
 - name: dole out the generic configuration
-  hosts: pdc_web:pdc_web_stg:pdc_backend:pdc_backend_stg
+  hosts: pdc_web:pdc_web_stg
   user: root
   gather_facts: True
   vars_files:
@@ -52,21 +52,3 @@
     username: "pdc{{ env_suffix }}"
     when: inventory_hostname.startswith(('pdc-web01','pdc-web01.stg'))
   - pdc/frontend
-
-- name: stuff just for the backend nodes
-  hosts: pdc_backend:pdc_backend_stg
-  user: root
-  gather_facts: True
-  vars_files:
-   - /srv/web/infra/ansible/vars/global.yml
-   - "/srv/private/ansible/vars.yml"
-   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
-  handlers:
-  - import_tasks: "{{ handlers_path }}/restart_services.yml"
-
-  roles:
-  - fedmsg/base
-  - fedmsg/hub
-  - pdc/backend
-  - role: collectd/fedmsg-service
-    process: fedmsg-hub

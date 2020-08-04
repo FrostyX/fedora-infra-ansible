@@ -391,7 +391,6 @@ command[check_fedmsg_cp_bugzilla2fedmsg]=/usr/lib64/nagios/plugins/check_fedmsg_
 command[check_fedmsg_cp_fedimg_backend]=/usr/lib64/nagios/plugins/check_fedmsg_producers_consumers.py fedmsg-hub FedimgConsumer MonitoringProducer
 command[check_fedmsg_cp_hotness_backend]=/usr/lib64/nagios/plugins/check_fedmsg_producers_consumers.py fedmsg-hub BugzillaTicketFiler MonitoringProducer
 command[check_fedmsg_cp_packages_backend]=/usr/lib64/nagios/plugins/check_fedmsg_producers_consumers.py fedmsg-hub CacheInvalidator MonitoringProducer
-command[check_fedmsg_cp_pdc_backend]=/usr/lib64/nagios/plugins/check_fedmsg_producers_consumers.py fedmsg-hub PDCUpdater MonitoringProducer
 command[check_fedmsg_cp_mbs_backend]=/usr/lib64/nagios/plugins/check_fedmsg_producers_consumers.py fedmsg-hub MBSConsumer MBSProducer MonitoringProducer
 
 command[check_fedmsg_cexceptions_busgateway_hub]=/usr/lib64/nagios/plugins/check_fedmsg_consumer_exceptions.py fedmsg-hub Nommer 1 10
@@ -405,7 +404,6 @@ command[check_fedmsg_cexceptions_bugzilla2fedmsg]=/usr/lib64/nagios/plugins/chec
 command[check_fedmsg_cexceptions_fedimg_backend]=/usr/lib64/nagios/plugins/check_fedmsg_consumer_exceptions.py fedmsg-hub FedimgConsumer 1 10
 command[check_fedmsg_cexceptions_hotness_backend]=/usr/lib64/nagios/plugins/check_fedmsg_consumer_exceptions.py fedmsg-hub BugzillaTicketFiler 1 10
 command[check_fedmsg_cexceptions_packages_backend]=/usr/lib64/nagios/plugins/check_fedmsg_consumer_exceptions.py fedmsg-hub CacheInvalidator 1 10
-command[check_fedmsg_cexceptions_pdc_backend]=/usr/lib64/nagios/plugins/check_fedmsg_consumer_exceptions.py fedmsg-hub PDCUpdater 1 10
 command[check_fedmsg_cexceptions_mbs_backend]=/usr/lib64/nagios/plugins/check_fedmsg_consumer_exceptions.py fedmsg-hub MBSConsumer 1 10
 
 command[check_fedmsg_cbacklog_busgateway_hub]=/usr/lib64/nagios/plugins/check_fedmsg_consumer_backlog.py fedmsg-hub Nommer 500 1000
@@ -419,7 +417,6 @@ command[check_fedmsg_cbacklog_bugzilla2fedmsg]=/usr/lib64/nagios/plugins/check_f
 command[check_fedmsg_cbacklog_fedimg_backend]=/usr/lib64/nagios/plugins/check_fedmsg_consumer_backlog.py fedmsg-hub FedimgConsumer 2000 5000
 command[check_fedmsg_cbacklog_hotness_backend]=/usr/lib64/nagios/plugins/check_fedmsg_consumer_backlog.py fedmsg-hub BugzillaTicketFiler 100 500
 command[check_fedmsg_cbacklog_packages_backend_hub]=/usr/lib64/nagios/plugins/check_fedmsg_consumer_backlog.py fedmsg-hub CacheInvalidator 30000 40000
-command[check_fedmsg_cbacklog_pdc_backend_hub]=/usr/lib64/nagios/plugins/check_fedmsg_consumer_backlog.py fedmsg-hub PDCUpdater 10000 20000
 command[check_fedmsg_cbacklog_mbs_backend_hub]=/usr/lib64/nagios/plugins/check_fedmsg_consumer_backlog.py fedmsg-hub MBSConsumer 1000 2000
 
 command[check_fedmsg_fmn_digest_last_ran]=/usr/lib64/nagios/plugins/check_fedmsg_producer_last_ran.py fedmsg-hub DigestProducer 90 600

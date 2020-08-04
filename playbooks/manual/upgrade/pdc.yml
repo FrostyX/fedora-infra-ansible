@@ -1,33 +1,3 @@
-- name: verify the backend, and stop it
-  hosts: pdc_backend:pdc_backend_stg
-  user: root
-  vars_files: 
-   - /srv/web/infra/ansible/vars/global.yml
-   - "/srv/private/ansible/vars.yml"
-   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
-  handlers:
-  - import_tasks: "{{ handlers_path }}/restart_services.yml"
-
-  pre_tasks:
-  - name: clean all metadata
-    command: yum clean all
-    check_mode: no
-  - name: update PDC packages
-    package:
-        name: ["pdc-client", "pdc-updater", "libmodulemd", "python2-productmd"]
-        state: latest
-
-  roles:
-  - pdc/backend
-
-  post_tasks:
-  - name: tell nagios to shush w.r.t. the backend
-    nagios: action=downtime minutes=15 service=host host={{ inventory_hostname_short }}{{ env_suffix }}
-    delegate_to: noc01.iad2.fedoraproject.org
-    ignore_errors: true
-  - name: Stop the pdc-updater backend
-    service: name="fedmsg-hub" state=stopped
-
 - name: verify the frontend, stop it, upgrade the db, and restart it
   hosts: pdc_web:pdc_web_stg
   user: root
@@ -64,24 +34,6 @@
     when: inventory_hostname_short == 'pdc-web01'
   - service: name="httpd" state=started
   - name: tell nagios to unshush w.r.t. the frontend
-    nagios: action=unsilence service=host host={{ inventory_hostname_short }}{{ env_suffix }}
-    delegate_to: noc01.iad2.fedoraproject.org
-    ignore_errors: true
-
-- name: restart the backend
-  hosts: pdc_backend:pdc_backend_stg
-  user: root
-  vars_files: 
-   - /srv/web/infra/ansible/vars/global.yml
-   - "/srv/private/ansible/vars.yml"
-   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
-  handlers:
-  - import_tasks: "{{ handlers_path }}/restart_services.yml"
-
-  tasks:
-  - name: And... start the backend again
-    service: name="fedmsg-hub" state=started
-  - name: tell nagios to unshush w.r.t. the backend
     nagios: action=unsilence service=host host={{ inventory_hostname_short }}{{ env_suffix }}
     delegate_to: noc01.iad2.fedoraproject.org
     ignore_errors: true

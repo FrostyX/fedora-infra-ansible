@@ -12,17 +12,6 @@
   tasks:
   - service: name=httpd state=stopped
 
-- name: bring staging services down (fedmsg-hub)
-  hosts: pdc-backend-stg
-  user: root
-  vars_files:
-   - /srv/web/infra/ansible/vars/global.yml
-   - "/srv/private/ansible/vars.yml"
-   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
-
-  tasks:
-  - service: name=fedmsg-hub state=stopped
-
 # Here's the meaty part in the middle
 - name: drop and re-create the staging db entirely
   hosts: db01.stg.phx2.fedoraproject.org
@@ -59,14 +48,3 @@
 
   tasks:
   - service: name=httpd state=started
-
-- name: bring staging services up (fedmsg-hub)
-  hosts: pdc-backend-stg
-  user: root
-  vars_files:
-   - /srv/web/infra/ansible/vars/global.yml
-   - "/srv/private/ansible/vars.yml"
-   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
-
-  tasks:
-  - service: name=fedmsg-hub state=started
