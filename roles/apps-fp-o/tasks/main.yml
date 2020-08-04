@@ -12,6 +12,14 @@
   tags:
   - apps-fp-o
 
+- name: Ensure directory exixts
+  file:
+    path: /srv/web/apps-fp-o/global/
+    state: directory
+    mode: '1775'
+  tags:
+  - apps-fp-o
+
 - name: Copy in some global assets used around our apps
   synchronize: src=global/ dest=/srv/web/apps-fp-o/global/
   tags:
