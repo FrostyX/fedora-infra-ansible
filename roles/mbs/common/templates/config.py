@@ -86,7 +86,7 @@ class ProdConfiguration(BaseConfiguration):
     # These groups are allowed to cancel the builds of other users.
     ADMIN_GROUPS = [
         'factory2',
-        'releng',
+        'releng-team',
     ]
 
     REBUILD_STRATEGY = 'only-changed'
