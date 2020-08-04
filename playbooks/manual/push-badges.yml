@@ -20,6 +20,7 @@
   vars:
    upstream: "https://pagure.io/fedora-badges.git"
    workingdir: /srv/web/infra/badges/
+   local_repo: /srv/git/badges
 
   tasks:
   - name: Make a tmp directory
@@ -34,7 +35,7 @@
   - name: clone the local bare repo
     git:
       dest: "{{tempdir}}"
-      repo: /srv/git/badges
+      repo: "{{local_repo}}"
       remote: origin
       update: yes
 
@@ -58,6 +59,11 @@
       dest: "{{tempdir}}" 
       state: absent
 
+  - name: fix the working dir repo to use the right location
+    command: git remote set-url origin {{local_repo}}
+    args:
+      chdir: "{{workingdir}}"
+ 
   - name: and pull those commits from the bare repo to the working dir
     command: git pull origin master
     args:
