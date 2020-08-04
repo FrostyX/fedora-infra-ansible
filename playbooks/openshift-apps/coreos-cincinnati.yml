@@ -55,14 +55,14 @@
     app: coreos-cincinnati
     routename: coreos-updates
     host: "updates.coreos{{ env_suffix }}.fedoraproject.org"
-    serviceport: coreos-cincinnati-updates
+    serviceport: coreos-cincinnati-pe
     servicename: coreos-cincinnati
 
   - role: openshift/route
     app: coreos-cincinnati
     routename: coreos-updates-status
     host: "status.updates.coreos{{ env_suffix }}.fedoraproject.org"
-    serviceport: coreos-cincinnati-updates-status
+    serviceport: coreos-cincinnati-pe-status
     servicename: coreos-cincinnati
 
   - role: openshift/route
