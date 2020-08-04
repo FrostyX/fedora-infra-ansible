@@ -15,13 +15,6 @@ config = {
     "endpoints": {
         "loopback-from-production": [
             "tcp://hub.fedoraproject.org:9940",
-            "tcp://fedmsg-relay.ci.centos.org:9940",
-        ],
-    },
-    {% else %}
-    "endpoints": {
-        "centos_ci_relay": [
-            "tcp://fedmsg-relay.ci.centos.org:9940",
         ],
     },
     {% endif %}
