@@ -32,22 +32,36 @@
       tempdir: "{{tmp.path}}"
 
   - name: clone the local bare repo
-    git: dest={{tempdir}} repo=/git/badges remote=origin update=yes
+    git:
+      dest: "{{tempdir}}"
+      repo: /git/badges
+      remote: origin
+      update: yes
 
   - name: add pagure as a second remote
-    command: git remote add pagure {{upstream}} chdir={{tempdir}}
+    command: git remote add pagure {{upstream}}
+    args:
+      chdir: "{{tempdir}}"
 
   - name: pull down changes from pagure
-    command: git pull pagure master chdir={{tempdir}}
+    command: git pull pagure master 
+    args: 
+      chdir: "{{tempdir}}"
 
   - name: push pagure changes back to the lockbox bare repo
-    command: git push origin master chdir={{tempdir}}
+    command: git push origin master 
+    args:
+      chdir: "{{tempdir}}"
 
   - name: clean up that temporary {{tempdir}} dir
-    file: dest={{tempdir}} state=absent
+    file: 
+      dest: "{{tempdir}}" 
+      state: absent
 
   - name: and pull those commits from the bare repo to the working dir
-    command: git pull origin master chdir={{workingdir}}
+    command: git pull origin master
+    args:
+      chdir: "{{workingdir}}"
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
