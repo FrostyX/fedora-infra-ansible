@@ -12,11 +12,14 @@
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
   tasks:
-  - name: Ensure directory exists
+  - name: Ensure directories exists
     file:
-      path: /etc/httpd/conf.d/fedorahosted.org
+      path: "{{ item }}"
       state: directory
       mode: '0755'
+    loop:
+      - '/etc/httpd/conf.d/fedorahosted.org'
+      - '/etc/httpd/conf.d/git.fedorahosted.org'
 
   - name: install special fedorahosted-redirects.conf with fedorahosted redirects
     copy: src={{ files }}/httpd/fedorahosted-redirects.conf dest=/etc/httpd/conf.d/fedorahosted.org/fedorahosted-redirects.conf
