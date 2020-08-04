@@ -34,7 +34,7 @@
   - name: clone the local bare repo
     git:
       dest: "{{tempdir}}"
-      repo: /git/badges
+      repo: /srv/git/badges
       remote: origin
       update: yes
 
