@@ -43,8 +43,12 @@ custom_rules: [
 nrpe_procs_warn: 600
 nrpe_procs_crit: 700
 
-# we backup the backup on db-koji01 until we can replace now
 db_backup_dir: ['/backups']
 shared_buffers: "32GB"
 effective_cache_size: "100GB"
 max_stack_depth: "6MB"
+
+max_worker_processes: 64
+max_parallel_workers_per_gather: 32
+max_parallel_maintenance_workers: 8
+max_parallel_workers: 64

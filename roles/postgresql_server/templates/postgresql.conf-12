@@ -207,6 +207,18 @@ dynamic_shared_memory_type = posix	# the default is the first option
 #parallel_leader_participation = on
 #max_parallel_workers = 8		# maximum number of max_worker_processes that
 					# can be used in parallel operations
+{% if max_worker_processes is defined %}
+max_worker_processes = {{ max_worker_processes }}
+{% endif %}
+{% if max_parallel_workers_per_gather is defined %}
+max_parallel_workers_per_gather = {{ max_parallel_workers_per_gather }}
+{% endif %}
+{% if max_parallel_maintenance_workers is defined %}
+max_parallel_maintenance_workers = {{ max_parallel_maintenance_workers }}
+{% endif %}
+{% if max_parallel_workers is defined %}
+max_parallel_workers = {{ max_parallel_workers }}
+{% endif %}
 #old_snapshot_threshold = -1		# 1min-60d; -1 disables; 0 is immediate
 					# (change requires restart)
 #backend_flush_after = 0		# measured in pages, 0 disables
