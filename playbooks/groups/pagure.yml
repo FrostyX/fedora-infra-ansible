@@ -41,23 +41,8 @@
    - "/srv/private/ansible/vars.yml"
    - "{{ vars_path }}/{{ ansible_distribution }}.yml"
 
-  pre_tasks:
-  - name: install fedmsg-relay
-    package: name=fedmsg-relay state=present
-    when: env != 'pagure-staging'
-    tags:
-    - pagure
-    - pagure/fedmsg
-  - name: and start it
-    service: name=fedmsg-relay state=started
-    when: env != 'pagure-staging'
-    tags:
-    - pagure
-    - pagure/fedmsg
-
   roles:
   - pagure/frontend
-  - {role: pagure/fedmsg, when: env != 'pagure-staging'}
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
