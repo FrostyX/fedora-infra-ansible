@@ -156,10 +156,8 @@
     #thresholds:
       #warning: 100
       #critical: 1000
-# Disable the "fmc" role for now, because there is no "fmc" RPM available yet,
-# or I do not know where to find it...
-#  - role: fmc
-#    host: "odcs-backend-releng01.iad2.fedoraproject.org"
+  - role: fmc
+    host: "odcs-backend-releng01.iad2.fedoraproject.org"
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"

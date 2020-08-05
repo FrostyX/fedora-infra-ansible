@@ -2,7 +2,7 @@
 #
 # This file is in the TOML format.
 amqp_url = "amqps://bodhi{{ env_suffix }}:@rabbitmq{{ env_suffix }}.fedoraproject.org/%2Fpubsub"
-callback = "fedora-minimal-compose:Consumer"
+callback = "fedora_minimal_compose:Consumer"
 passive_declares = true
 
 [tls]
