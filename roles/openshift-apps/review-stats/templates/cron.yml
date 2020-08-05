@@ -6,6 +6,7 @@ spec:
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
+  activeDeadlineSeconds: 900
   schedule: "0 * * * *"
   jobTemplate:
     spec:
@@ -51,6 +52,7 @@ spec:
   successfulJobsHistoryLimit: 3
   failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
+  activeDeadlineSeconds: 900
   schedule: "45 0 * * *"
   jobTemplate:
     spec:
