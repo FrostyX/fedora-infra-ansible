@@ -221,16 +221,6 @@
   - odcs
   - odcs/backend
 
-- name: enable ODCS backend (odcs-celery-backend)
-  systemd:
-    name: odcs-celery-backend
-    enabled: yes
-    daemon_reload: yes
-  when: inventory_hostname.startswith('odcs-backend')
-  tags:
-  - odcs
-  - odcs/backend
-
 - name: copy the odcs-celery-beat.service file.
   template:
     src: "etc/systemd/system/odcs-celery-beat.service.j2"
@@ -245,7 +235,33 @@
   - odcs
   - odcs/frontend
 
-- name: copy the odcs-celery-beat.service file.
+- name: Reload systemd daemon
+  systemd:
+    daemon_reload: yes
+  tags:
+  - odcs
+  - odcs/backend
+  - odcs/frontend
+
+- name: enable ODCS backend (odcs-celery-backend)
+  systemd:
+    name: odcs-celery-backend
+    enabled: yes
+  when: inventory_hostname.startswith('odcs-backend')
+  tags:
+  - odcs
+  - odcs/backend
+
+- name: enable ODCS beat (odcs-celery-beat)
+  systemd:
+    name: odcs-celery-beat
+    enabled: yes
+  when: inventory_hostname.startswith('odcs-frontend')
+  tags:
+  - odcs
+  - odcs/frontend
+
+- name: copy the fedora-messaging.toml.j2 file.
   template:
     src: "fedora-messaging.toml.j2"
     dest: /etc/fedora-messaging/config.toml
@@ -256,16 +272,6 @@
   - odcs
   - odcs/frontend
   - odcs/backend
-
-- name: enable ODCS beat (odcs-celery-beat)
-  systemd:
-    name: odcs-celery-beat
-    enabled: yes
-    daemon_reload: yes
-  when: inventory_hostname.startswith('odcs-frontend')
-  tags:
-  - odcs
-  - odcs/frontend
 
 - name: copy the odcs-backend.conf tmpfiles.d file.
   copy:
