@@ -71,13 +71,13 @@
 # Jeremy Katz:
 "jeremy@katzbox.net" = "katzj@fedoraproject.org"
 # Dominic Hopf:
-"dmaphy@gmail.com" = "dmaphy@fedoraproject.org"
+"dmaphy@googlemail.com" = "dmaphy@fedoraproject.org"
 # Christoph Wickert:
-"christoph.wickert@googlemail.com" = "cwickert@fedoraproject.org"
+"christoph.wickert@gmail.com" = "cwickert@fedoraproject.org"
 # Elliott Baron:
 "elliottbaron@gmail.com" = "ebaron@fedoraproject.org"
 # Thomas Spura:
-"spurath@students.uni-mainz.de" = "tomspur@fedoraproject.org"
+"thomas.spura@googlemail.com" = "tomspur@fedoraproject.org"
 # Adam Miller:
 "maxamillion@gmail.com" = "admiller@redhat.com"
 # Garrett Holmstrom:
@@ -105,7 +105,7 @@
 # Nikos Roussos:
 "nikos@roussos.cc" = "comzeradd@fedoraproject.org"
 # Benedikt Schäfer:
-"benedikt@schaefer-flieden.de" = "ib54003@fedoraproject.org"
+"b.schaefer@flieden.org" = "ib54003@fedoraproject.org"
 # Ricky Elrod:
 "codeblock@elrod.me" = "relrod@redhat.com"
 # David Xie:
@@ -115,7 +115,7 @@
 # Martin Holec:
 "martix@martix.names" = "mholec@redhat.com"
 # John Dulaney:
-"j_dulaney@live.com" = "jdulaney@fedoraproject.org"
+"jdulaney@gnu.org" = "jdulaney@fedoraproject.org"
 # Niels de Vos:
 "niels@nixpanic.net" = "ndevos@redhat.com"
 # Shawn Wells:
@@ -123,9 +123,9 @@
 # Christopher Tubbs:
 "ctubbsii+fedora@gmail.com" = "ctubbsii@fedoraproject.org"
 # Björn Esser:
-"bjoern.esser@gmail.com" = "besser82@fedoraproject.org"
+"besser82.fpo@gmail.com" = "besser82@fedoraproject.org"
 # Amit Shah:
-"amit@amitshah.net" = "amitshah@fedoraproject.org"
+"amitshah@gmx.net" = "amitshah@fedoraproject.org"
 # Mark Wielard:
 "fedora@wildebeest.org" = "mjw@fedoraproject.org"
 # Benjamin Lefoul:
