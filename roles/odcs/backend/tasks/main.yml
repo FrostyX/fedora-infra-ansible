@@ -11,7 +11,6 @@
   service:
     name: httpd
     state: stopped
-    enabled: false
   tags:
   - odcs
   - odcs/backend
@@ -19,7 +18,6 @@
   service:
     name: odcs-celery-backend
     state: stopped
-    enabled: false
   tags:
   - odcs
   - odcs/backend
