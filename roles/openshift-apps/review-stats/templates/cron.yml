@@ -7,6 +7,7 @@ spec:
   failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
   activeDeadlineSeconds: 900
+  startingDeadlineSeconds: 180
   schedule: "0 * * * *"
   jobTemplate:
     spec:
@@ -53,6 +54,7 @@ spec:
   failedJobsHistoryLimit: 1
   concurrencyPolicy: Forbid
   activeDeadlineSeconds: 900
+  startingDeadlineSeconds: 180
   schedule: "45 0 * * *"
   jobTemplate:
     spec:
