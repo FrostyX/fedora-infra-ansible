@@ -238,6 +238,7 @@
     - templates.cfg
     - unbound.cfg
     - vpnclients.cfg
+    - vpn_server.cfg
   tags:
   - nagios_config
   - nagios_server

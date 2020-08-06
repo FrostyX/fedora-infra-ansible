@@ -1,0 +1,4 @@
+# Alert if CRL expires soon.
+# Usage is: /path/to/crl.pem <warn days> <crit days>
+# So here we warn at 7 days, crit at 2
+command[check_crl_next_update]={{ libdir }}/nagios/plugins/check_crl_next_update /etc/openvpn/server/crl.pem 7 2

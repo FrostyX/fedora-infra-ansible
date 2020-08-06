@@ -49,6 +49,7 @@
   - check_ipa_replication
   - check_redis_queue.sh
   - check_timestamp_from_file
+  - check_crl_next_update
   when: not inventory_hostname.startswith('noc')
   tags:
   - nagios_client
@@ -238,6 +239,22 @@
   - restart nrpe
   tags:
   - nagios_client
+
+- name: install CRL check for bastions
+  when: inventory_hostname.startswith('bastion')
+  tags:
+  - nagios_client
+  block:
+  - name: Install the nrpe template
+    template: src=check_crl_next_update.cfg.j2 dest=/etc/nrpe.d/check_crl_next_update.cfg owner=root group=root mode=0644
+    notify:
+    - restart nrpe
+
+  - name: Set facls so nrpe can check the crl (dir)
+    acl: default=no etype=user entity=nrpe permissions="rx" name=/etc/openvpn/server state=present
+
+  - name: Set facls so nrpe can check the crl (file)
+    acl: default=no etype=user entity=nrpe permissions="r" name=/etc/openvpn/server/crl.pem state=present
 
 - name: install nrpe config for the RabbitMQ checks
   template:
