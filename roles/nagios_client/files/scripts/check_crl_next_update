@@ -1,0 +1,52 @@
+#!/usr/bin/env python
+# Nagios check for CRL expiry
+# Takes a path to a crl.pem, a number of days to warn on, and a number of days
+# to crit on.
+#
+# Rick Elrod <relrod@redhat.com>
+# MIT
+
+import datetime
+import subprocess
+import sys
+
+def crl_next_update(path):
+    try:
+        args = ['openssl', 'crl', '-in', path, '-nextupdate', '-noout']
+        out = subprocess.check_output(args).decode('utf-8')
+    except Exception:
+        print('openssl call failed, unable to check CRL nextUpdate')
+        sys.exit(1)
+
+    timestamp = out.split('=')[1]
+    timestamp = timestamp.strip()
+    dt = datetime.datetime.strptime(timestamp, '%b %d %X %Y GMT')
+    return dt
+
+def main():
+    if len(sys.argv) != 4:
+        print('Usage: check_crl.py /path/to/crl.pem warning_days crit_days')
+        sys.exit(3)  # UNKNOWN
+
+    path = sys.argv[1]
+    wdays = int(sys.argv[2])
+    cdays = int(sys.argv[3])
+
+    expiry = crl_next_update(path)
+    now = datetime.datetime.now()
+    delta = expiry - now
+
+    code = 0
+    state = 'OK'
+    if delta.days <= cdays:
+        code = 2
+        state = 'CRITICAL'
+    elif delta.days <= wdays:
+        code = 1
+        state = 'WARNING'
+
+    print('%s: CRL nextUpdate is in %d days' % (state, delta.days))
+    sys.exit(code)
+
+if __name__ == '__main__':
+    main()
