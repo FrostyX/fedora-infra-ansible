@@ -14,113 +14,113 @@
 # Matt Domsch"s rebuild script -- bz email goes to /dev/null
 # 103590: "ftbfs@fedoraproject.org"
 
-# Konstantin Ryabitsev
+# icon - Konstantin Ryabitsev
 "mricon@gmail.com" = "icon@fedoraproject.org"
-# Sean Reifschneider
+# jafo - Sean Reifschneider
 "jafo@tummy.com" = "jafo-redhat@tummy.com"
-# Karen Pease
+# meme - Karen Pease
 "karen-pease@uiowa.edu" = "meme@daughtersoftiresias.org"
-# Robert Scheck
+# robert - Robert Scheck
 "redhat@linuxnetz.de" = "redhat-bugzilla@linuxnetz.de"
-# Colin Charles:
+# byte - Colin Charles:
 "byte@aeon.com.my" = "byte@fedoraproject.org"
-# W. Michael Petullo:
+# mikep - W. Michael Petullo:
 "mike@flyn.org" = "redhat@flyn.org"
-# Elliot Lee:
+# sopwith - Elliot Lee:
 "sopwith+fedora@gmail.com" = "sopwith@redhat.com"
-# Máirín Duffy
+# duffy - Máirín Duffy
 "fedora@linuxgrrl.com" = "duffy@redhat.com"
-# Muray McAllister:
+# mdious - Muray McAllister:
 "murray.mcallister@gmail.com" = "mmcallis@redhat.com"
-# Sindre Pedersen Bjørdal:
+# sindrepb - Sindre Pedersen Bjørdal:
 "foolish@fedoraforum.org" = "sindrepb@fedoraproject.org"
-# Jesus M. Rodriguez:
+# jmrodri - Jesus M. Rodriguez:
 "jmrodri@gmail.com" = "jesusr@redhat.com"
-# Michael DeHaan:
+# mdehaan - Michael DeHaan:
 "michael.dehaan@gmail.com" = "mdehaan@redhat.com"
-# Sebastian Gosenheimer:
+# sebastian - Sebastian Gosenheimer:
 "sgosenheimer@googlemail.com" = "sebastian.gosenheimer@proio.com"
-# William Jon McCann:
+# jmccann - William Jon McCann:
 "william.jon.mccann@gmail.com" = "jmccann@redhat.com"
-# Davide Cescato:
+# ceski - Davide Cescato:
 "davide.cescato@iaeste.ch" = "ceski@fedoraproject.org"
-# Nick Bebout:
+# nb - Nick Bebout:
 "nick@bebout.net" = "nb@fedoraproject.org"
-# Niels Haase:
+# arxs - Niels Haase:
 "haase.niels@gmail.com" = "arxs@fedoraproject.org"
-# Thomas Janssen:
+# thomasj - Thomas Janssen:
 "th.p.janssen@googlemail.com" = "thomasj@fedoraproject.org"
-# Michael J Gruber:
+# mjg - Michael J Gruber:
 "michaeljgruber+fedoraproject@gmail.com" = "mjg@fedoraproject.org"
-# Juan Manuel Rodriguez Moreno:
+# nushio - Juan Manuel Rodriguez Moreno:
 "nushio@gmail.com" = "nushio@fedoraproject.org"
-# Andrew Cagney:
+# cagney - Andrew Cagney:
 "andrew.cagney@gmail.com" = "cagney@fedoraproject.org"
-# Jeremy Katz:
+# katzj - Jeremy Katz:
 "jeremy@katzbox.net" = "katzj@fedoraproject.org"
-# Dominic Hopf:
+# dmaphy - Dominic Hopf:
 "dmaphy@googlemail.com" = "dmaphy@fedoraproject.org"
-# Christoph Wickert:
+# cwickert - Christoph Wickert:
 "christoph.wickert@gmail.com" = "cwickert@fedoraproject.org"
-# Thomas Spura:
+# tomspur - Thomas Spura:
 "thomas.spura@googlemail.com" = "tomspur@fedoraproject.org"
-# Adam Miller:
+# maxamillion - Adam Miller:
 "maxamillion@gmail.com" = "admiller@redhat.com"
-# Garrett Holmstrom:
+# gholms - Garrett Holmstrom:
 "garrett.holmstrom@gmail.com" = "gholms@fedoraproject.org"
-# Tareq Al Jurf:
+# taljurf - Tareq Al Jurf:
 "taljurf.fedora@gmail.com" = "taljurf@fedoraproject.org"
-# Josh Kayse:
+# jokajak - Josh Kayse:
 "jokajak@gmail.com" = "jokajak@fedoraproject.org"
-# Behdad Esfahbod:
+# behdad - Behdad Esfahbod:
 "fedora@behdad.org" = "behdad@fedoraproject.org"
-# Daniel Bruno:
+# dbruno - Daniel Bruno:
 "danielbrunos@gmail.com" = "dbruno@fedoraproject.org"
-# Beth Lynn Eicher:
+# bethlynn - Beth Lynn Eicher:
 "bethlynneicher@gmail.com" = "bethlynn@fedoraproject.org"
-# Jeff Sheltren:
+# sheltren - Jeff Sheltren:
 "jeff@tag1consulting.com" = "sheltren@fedoraproject.org"
-# Josh Boyer:
+# jwboyer - Josh Boyer:
 "jwboyer@gmail.com" = "jwboyer@redhat.com"
-# Matthew Miller:
+# mattdm - Matthew Miller:
 "mattdm@mattdm.org" = "mattdm@redhat.com"
-# Jamie Nguyen:
+# jamielinux - Jamie Nguyen:
 "j@jamielinux.com" = "jamielinux@fedoraproject.org"
-# Nikos Roussos:
+# comzeradd - Nikos Roussos:
 "nikos@roussos.cc" = "comzeradd@fedoraproject.org"
-# Benedikt Schäfer:
+# ib54003- Benedikt Schäfer:
 "b.schaefer@flieden.org" = "ib54003@fedoraproject.org"
-# Ricky Elrod:
+# codeblock - Ricky Elrod:
 "codeblock@elrod.me" = "relrod@redhat.com"
-# Felix Schwarz:
+# fschwarz - Felix Schwarz:
 "felix.schwarz@oss.schwarz.eu" = "fschwarz@fedoraproject.org"
-# John Dulaney:
+# jdulaney - John Dulaney:
 "jdulaney@gnu.org" = "jdulaney@fedoraproject.org"
-# Niels de Vos:
+# devos - Niels de Vos:
 "niels@nixpanic.net" = "ndevos@redhat.com"
-# Shawn Wells:
+# shawndwells - Shawn Wells:
 "shawn@redhat.com" = "swells@redhat.com"
-# Christopher Tubbs:
+# ctubbsii - Christopher Tubbs:
 "ctubbsii+fedora@gmail.com" = "ctubbsii@fedoraproject.org"
-# Björn Esser:
+# besser82 - Björn Esser:
 "besser82.fpo@gmail.com" = "besser82@fedoraproject.org"
-# Mark Wielard:
+# mjw - Mark Wielard:
 "fedora@wildebeest.org" = "mjw@fedoraproject.org"
-# Benjamin Lefoul:
+# lef - Benjamin Lefoul:
 "benjamin.lefoul@uu.se" = "lef@fedoraproject.org"
-# Mike Ruckman:
+# roshi - Mike Ruckman:
 "roshi@mykolab.com" = "roshi@fedoraproject.org"
-# Dusty Mabe:
+# dustymabe - Dusty Mabe:
 "dusty@dustymabe.com" = "dustymabe@redhat.com"
-# Ben Williams:
+# jbwillia - Ben Williams:
 "vaioof@gmail.com" = "jbwillia@math.vt.edu"
-# David Dykstra:
+# dwd - David Dykstra:
 "dwd@fnal.gov" = "dwd@fedoraproject.org"
-# Till Hofmann:
+# thofmann - Till Hofmann:
 "till.hofmann@posteo.de" = "thofmann@fedoraproject.org"
-# Philip Kovacs:
+# pkfed - Philip Kovacs:
 "phil@mxbits.io" = "pkfed@fedoraproject.org"
-# Marc Deop i Argemí:
+# marcdeop - Marc Deop i Argemí:
 "fedora@marcdeop.com" = "marcdeop@fedoraproject.org"
 # etingof
 "etingof@gmail.com" = "ietingof@redhat.com"
