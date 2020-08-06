@@ -244,7 +244,7 @@
   - odcs/frontend
 
 - name: enable ODCS backend (odcs-celery-backend)
-  systemd:
+  service:
     name: odcs-celery-backend
     enabled: yes
   when: inventory_hostname.startswith('odcs-backend')
@@ -253,7 +253,7 @@
   - odcs/backend
 
 - name: enable ODCS beat (odcs-celery-beat)
-  systemd:
+  service:
     name: odcs-celery-beat
     enabled: yes
   when: inventory_hostname.startswith('odcs-frontend')
