@@ -332,11 +332,12 @@ $wgSquidServersNoPurge = array(
     "::1",
 {% if env == "staging" %}
     # proxy01.stg
-    "10.5.128.177",
+    "38.145.60.32",
+    # proxy10.stg
+    "38.145.60.34",
 {% else %}
     # proxy01
-    "10.5.126.52",
-    "192.168.1.11",
+    "10.3.163.74",
 
     # proxy02
     "85.236.55.6",
@@ -367,7 +368,7 @@ $wgSquidServersNoPurge = array(
     "192.168.1.15",
 
     # proxy10
-    "10.5.126.51",
+    "10.3.163.75",
     "192.168.1.17",
 
     # proxy11
@@ -408,10 +409,12 @@ $wgSquidServersNoPurge = array(
 $wgSquidServers = array(
 {% if env == "staging" %}
     # proxy01.stg
-    "10.5.128.177:6081",
+    "10.3.166.74:6081",
+    # proxy10.stg
+    "10.3.166.74:6081",
 {% else %}
     # proxy01
-    "10.5.126.52:6081",
+    "10.3.163.74:6081",
     # proxy02
     "192.168.1.12:6081",
     # proxy03
@@ -423,7 +426,7 @@ $wgSquidServers = array(
     # proxy06
     "192.168.1.63:6081",
     # proxy10
-    "10.5.126.51:6081",
+    "10.3.163.75:6081",
     # proxy11
     "192.168.1.37:6081",
     # proxy12
