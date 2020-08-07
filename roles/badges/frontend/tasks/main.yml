@@ -102,21 +102,38 @@
   - badges
   - badges/frontend
 
-- name: copy over all our badge images
-  synchronize:
-    src: /srv/web/infra/badges/pngs/
-    dest: /usr/share/badges/pngs/
-    delete: yes
+- name: create checkout dir
+  file:
+    name: /srv/badges_checkout
+    state: directory
   tags:
-  - assets
+  - badges
+  - badges/frontend
 
-- name: copy over all our badge stls
-  synchronize:
-    src: /srv/web/infra/badges/stls/
-    dest: /usr/share/badges/stls/
-    delete: yes
+- name: clone directory
+  git:
+    repo:
+    dest: /srv/badges_checkout
   tags:
-  - assets
+  - badges
+  - badges/frontend
+
+- name: add script
+  copy:
+    dest: /usr/local/bin/update_checkout.sh
+    src: update_checkout.sh
+    mode: 0755
+  tags:
+  - badges
+  - badges/frontend
+
+- name: add cron for update
+  cron:
+    job: /usr/local/bin/update_checkout.sh
+    minute: "*/15"
+  tags:
+  - badges
+  - badges/frontend
 
 - name: ensure selinux lets httpd talk to postgres, memcached, and fedmsg
   seboolean:

@@ -57,19 +57,38 @@
   - badges
   - badges/backend
 
-- name: copy over all our badge definitions
-  copy:
-    src: /srv/web/infra/badges/rules/
-    dest: /usr/share/badges/rules/
-    owner: fedmsg
-    group: fedmsg
-    mode: 0644
+- name: create checkout dir
+  file:
+    name: /srv/badges_checkout
+    state: directory
   tags:
-  - config
   - badges
   - badges/backend
-  notify:
-  - restart fedmsg-hub
+
+- name: clone directory
+  git:
+    repo:
+    dest: /srv/badges_checkout
+  tags:
+  - badges
+  - badges/backend
+
+- name: add script
+  copy:
+    dest: /usr/local/bin/update_checkout.sh
+    src: update_checkout.sh
+    mode: 0755
+  tags:
+  - badges
+  - badges/backend
+
+- name: add cron for update
+  cron:
+    job: /usr/local/bin/update_checkout.sh
+    minute: "*/15"
+  tags:
+  - badges
+  - badges/backend
 
 - name: ensure the fedmsg user has a homedir for cron to work
   file:
