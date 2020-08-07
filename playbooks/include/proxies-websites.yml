@@ -550,14 +550,14 @@
 #
 # Make a website here so we can redirect it to paste.fedoraproject.org
 #
-  - role: httpd/website
-    site_name: fpaste.org
-    certbot: true
-    server_aliases:
-    - www.fpaste.org
-    tags:
-    - fpaste.org
-    when: env == "production"
+#  - role: httpd/website
+#    site_name: fpaste.org
+#    certbot: true
+#    server_aliases:
+#    - www.fpaste.org
+#    tags:
+#    - fpaste.org
+#    when: env == "production"
 
   - role: httpd/website
     site_name: koji.fedoraproject.org
