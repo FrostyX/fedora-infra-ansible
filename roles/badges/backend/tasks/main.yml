@@ -2,7 +2,9 @@
 # Configuration for the fedbadges consumer
 
 - name: install needed packages
-  package: name={{ item }} state=present
+  package:
+    name: "{{ item }}"
+    state: present
   with_items:
   - python-fedbadges
   - python-psycopg2
@@ -15,9 +17,12 @@
   - badges/backend
 
 - name: copy database configuration
-  template: >
-    src={{ item }} dest="/etc/fedmsg.d/{{ item }}"
-    owner=fedmsg group=fedmsg mode=0600
+  template:
+    src: "{{ item }}"
+    dest: "/etc/fedmsg.d/{{ item }}"
+    owner: fedmsg
+    group: fedmsg
+    mode: 0600
   with_items:
   - datanommer.py
   - badges-awarder.py
@@ -29,29 +34,36 @@
   - restart fedmsg-hub
 
 - name: copy alembic configuration
-  template: >
-    src=alembic.ini dest=/usr/share/tahrir_api/alembic.ini
-    owner=fedmsg group=fedmsg mode=0600
+  template:
+    src: alembic.ini
+    dest: /usr/share/tahrir_api/alembic.ini
+    owner: fedmsg
+    group: fedmsg
+    mode: 0600
   tags:
   - config
   - badges
   - badges/backend
 
 - name: make badge definition directory
-  file: >
-    path=/usr/share/badges/rules
-    state=directory
-    owner=fedmsg group=fedmsg mode=0755
+  file:
+    path: /usr/share/badges/rules
+    state: directory
+    owner: fedmsg
+    group: fedmsg
+    mode: 0755
   tags:
   - config
   - badges
   - badges/backend
 
 - name: copy over all our badge definitions
-  copy: >
-    src=/srv/web/infra/badges/rules/
-    dest=/usr/share/badges/rules/
-    owner=fedmsg group=fedmsg mode=0644
+  copy:
+    src: /srv/web/infra/badges/rules/
+    dest: /usr/share/badges/rules/
+    owner: fedmsg
+    group: fedmsg
+    mode: 0644
   tags:
   - config
   - badges
@@ -60,12 +72,12 @@
   - restart fedmsg-hub
 
 - name: ensure the fedmsg user has a homedir for cron to work
-  file: >
-    state=directory
-    path=/usr/share/fedmsg
-    mode=700
-    owner=fedmsg
-    group=fedmsg
+  file:
+    state: directory
+    path: /usr/share/fedmsg
+    mode: 0700
+    owner: fedmsg
+    group: fedmsg
   when: env != "staging"
   tags:
   - config
@@ -74,11 +86,11 @@
   - badges/backend
 
 - name: ensure badges cron directories exist
-  file: >
-    state=directory
-    path={{ item }}
-    mode=755
-    owner=root
+  file:
+    state: directory
+    path: "{{ item }}"
+    mode: 0755
+    owner: root
   when: env != "staging"
   with_items:
   - /usr/share/badges/cronjobs/
@@ -90,11 +102,11 @@
   - badges/backend
 
 - name: oldschool badge award scripts
-  copy: >
-    src="cron/{{ item }}"
-    dest="/usr/share/badges/cronjobs/{{ item }}"
-    owner=fedmsg
-    mode=744
+  copy:
+    src: "cron/{{ item }}"
+    dest: "/usr/share/badges/cronjobs/{{ item }}"
+    owner: fedmsg
+    mode: 0744
   when: env != "staging"
   with_items:
   - award-oldschool-badges
@@ -110,11 +122,11 @@
   - badges/backend
 
 - name: oldschool badge award cronjobs
-  copy: >
-    src="cron/{{ item }}.cron"
-    dest="/etc/cron.d/{{ item }}"
-    owner=root
-    mode=644
+  copy: 
+    src: "cron/{{ item }}.cron"
+    dest: "/etc/cron.d/{{ item }}"
+    owner: root
+    mode: 0644
   when: env != "staging"
   with_items:
   - award-oldschool-badges
@@ -130,10 +142,12 @@
   - badges/backend
 
 - name: copy creds for the flock paparazzi cronjob
-  template: >
-    src=flock-paparazzi.ini
-    dest=/etc/flock-paparazzi.ini
-    owner=fedmsg group=fedmsg mode=0600
+  template:
+    src: flock-paparazzi.ini
+    dest: /etc/flock-paparazzi.ini
+    owner: fedmsg
+    group: fedmsg
+    mode: 0600
   tags:
   - config
   - cron
@@ -141,9 +155,9 @@
   - badges/backend
 
 - name: remove old logrotate file we used to put in place.
-  file: >
-    dest=/etc/logrotate.d/cron-badges-logrotate
-    state=absent
+  file:
+    dest: /etc/logrotate.d/cron-badges-logrotate
+    state: absent
   tags:
   - config
   - cron
@@ -151,12 +165,12 @@
   - badges/backend
 
 - name: copy over the badge-admin one-off scripts
-  copy: >
-    src={{ item }}
-    dest="/usr/local/bin/{{ item }}"
-    owner=root
-    group=sysadmin-badges
-    mode=750
+  copy:
+    src: "{{ item }}"
+    dest: "/usr/local/bin/{{ item }}"
+    owner: root
+    group: sysadmin-badges
+    mode: 0750
   with_items:
   - edit-badge
   - award-badge
@@ -171,12 +185,12 @@
   - badges/backend
 
 - name: copy get-sar-person-details
-  copy: >
-    src=get-sar-person-details
-    dest=/usr/local/bin/get-sar-person-details
-    owner=fedmsg
-    group=fedmsg
-    mode=700
+  copy:
+    src: get-sar-person-details
+    dest: /usr/local/bin/get-sar-person-details
+    owner: fedmsg
+    group: fedmsg
+    mode: 0700
   tags:
   - scripts
   - badges

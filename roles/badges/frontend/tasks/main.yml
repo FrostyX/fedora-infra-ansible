@@ -2,7 +2,9 @@
 # Configuration for the tahrir webapp
 
 - name: install needed packages
-  package: name={{ item }} state=present
+  package:
+    name: "{{ item }}"
+    state: present
   with_items:
   - python-tahrir
   - python-psycopg2
@@ -25,9 +27,12 @@
   - badges/frontend
 
 - name: copy tahrir app configuration
-  template: >
-    src={{ item }} dest="/etc/tahrir/{{ item }}"
-    owner=tahrir group=tahrir mode=0600
+  template:
+    src: "{{ item }}" 
+    dest: "/etc/tahrir/{{ item }}"
+    owner: tahrir
+    group: tahrir
+    mode: 0600
   with_items:
   - tahrir.ini
   tags:
@@ -38,9 +43,12 @@
   - restart apache
 
 - name: copy tahrir wsgi script
-  copy: >
-    src={{ item }} dest="/usr/share/tahrir/{{ item }}"
-    owner=apache group=apache mode=0644
+  copy:
+    src: "{{ item }}"
+    dest: "/usr/share/tahrir/{{ item }}"
+    owner: apache
+    group: apache
+    mode: 0644
   with_items:
   - tahrir.wsgi
   tags:
@@ -51,9 +59,12 @@
   - restart apache
 
 - name: copy tahrir httpd config
-  template: >
-    src={{ item }} dest="/etc/httpd/conf.d/{{ item }}"
-    owner=apache group=apache mode=0644
+  template:
+    src: "{{ item }}"
+    dest: "/etc/httpd/conf.d/{{ item }}"
+    owner: apache
+    group: apache
+    mode: 0644
   with_items:
   - tahrir.conf
   tags:
@@ -64,10 +75,12 @@
   - restart apache
 
 - name: make badge rst directory
-  file: >
-    path=/usr/share/badges/sitedocs
-    state=directory
-    owner=root group=root mode=0755
+  file:
+    path: /usr/share/badges/sitedocs
+    state: directory
+    owner: root
+    group: root
+    mode: 0755
   tags:
   - config
   - assets
@@ -75,10 +88,12 @@
   - badges/frontend
 
 - name: copy over all our .rst site docs
-  copy: >
-    src={{ item }}
-    dest=/usr/share/badges/sitedocs
-    owner=root group=root mode=0644
+  copy:
+    src: "{{ item }}"
+    dest: /usr/share/badges/sitedocs
+    owner: root
+    group: root
+    mode: 0644
   with_fileglob:
   - fedora-sitedocs/*.rst
   tags:
@@ -88,23 +103,26 @@
   - badges/frontend
 
 - name: copy over all our badge images
-  synchronize: >
-    src=/srv/web/infra/badges/pngs/
-    dest=/usr/share/badges/pngs/
-    delete=yes
+  synchronize:
+    src: /srv/web/infra/badges/pngs/
+    dest: /usr/share/badges/pngs/
+    delete: yes
   tags:
   - assets
 
 - name: copy over all our badge stls
-  synchronize: >
-    src=/srv/web/infra/badges/stls/
-    dest=/usr/share/badges/stls/
-    delete=yes
+  synchronize:
+    src: /srv/web/infra/badges/stls/
+    dest: /usr/share/badges/stls/
+    delete: yes
   tags:
   - assets
 
 - name: ensure selinux lets httpd talk to postgres, memcached, and fedmsg
-  seboolean: name={{item}} persistent=yes state=yes
+  seboolean:
+    name: "{{item}}"
+    persistent: yes
+    state: yes
   with_items:
   - httpd_can_network_connect_db
   - httpd_can_network_memcache
