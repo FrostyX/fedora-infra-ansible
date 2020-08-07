@@ -465,11 +465,10 @@
   - koji_hub
 
 # for now we have a patched version of kojira
-# Based on the 1.21.1 version
+# Based on the 1.22.0 version
 # With: 
 # https://pagure.io/koji/pull-request/2140.patch
-# https://pagure.io/koji/pull-request/2340.patch
-# Hopefully all merged in 1.22.
+# Hopefully all merged in 1.23.
 #
 - name: copy in patched kojira
   copy: src=kojira dest=/usr/sbin/kojira
