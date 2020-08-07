@@ -873,7 +873,7 @@
     site_name: release-monitoring.org
     sslonly: true
     certbot: true
-    server_aliases: [stg.release-monitoring.org]
+#    server_aliases: [stg.release-monitoring.org]
     tags:
     - release-monitoring.org
     when: env == "production"
