@@ -92,7 +92,6 @@
   when: ansible_distribution_major_version|int >= 29 and ansible_distribution == 'Fedora' and ansible_cmdline.ostree is not defined
   tags:
   - packages
-  when: not inventory_hostname.startswith(('f31-test'))
 
 - name: update all
   command: dnf -y
