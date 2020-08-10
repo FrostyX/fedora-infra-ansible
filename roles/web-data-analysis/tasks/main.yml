@@ -85,3 +85,57 @@
     - web-data
     - cron
 
+- name: install package deps for mirrors-countme
+  package:
+    # tqdm is optional but it gives nice progress meters for interactive use
+    name: ['python3-pip', 'python3-setuptools', 'python3-tqdm']
+    state: present
+  tags:
+    - packages
+    - web-data
+
+- name: make countme user
+  user:
+    name: countme
+    group: countme
+    shell: /sbin/nologin
+    home: /srv/countme
+    comment: "DNF countme counter"
+  tags:
+    - web-data
+
+- name: checkout mirrors-countme from git
+  git:
+    repo: https://pagure.io/mirrors-countme
+    dest: /srv/countme/mirrors-countme
+    version: prod
+  register: gitcountme
+  tags:
+    - web-data
+
+- name: install mirrors-countme from git checkout
+  command: "pip install --no-index --no-deps /srv/countme/mirrors-countme"
+  when: "gitcountme is changed"
+  tags:
+    - web-data
+
+- name: make countme web subdir
+  file: path=/var/www/html/csv-reports/countme state=directory mode=0775 owner=countme group=countme
+  tags:
+    - web-data
+
+- name: make countme local data dir
+  file: path=/var/lib/countme state=directory mode=0775 owner=countme group=countme
+  tags:
+    - web-data
+
+- name: install countme script to parse new logs & update totals
+  copy: src=countme-update.sh dest=/usr/local/bin/ mode=0755
+  tags:
+    - web-data
+
+- name: install cron file to run countme-update.sh daily
+  copy: src=countme-update.cron dest=/etc/cron.d/ mode=0644
+  tags:
+    - web-data
+    - cron
