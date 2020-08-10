@@ -19,11 +19,3 @@ spec:
     - name: coreos-cincinnati-updates-status
       port: 9081
       targetPort: 9081
-    # Here below are temporary ports, in order to ease
-    # swapping-in the new services.
-    - name: coreos-cincinnati-pe
-      port: 5051
-      targetPort: 5051
-    - name: coreos-cincinnati-pe-status
-      port: 6061
-      targetPort: 6061
