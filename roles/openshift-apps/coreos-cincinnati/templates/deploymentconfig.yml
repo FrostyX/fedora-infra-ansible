@@ -33,11 +33,6 @@ spec:
             "/usr/local/bin/dumnati",
             "-c", "/etc/cincinnati/graph-builder.toml",
           ]
-          ports:
-            - containerPort: 8080
-            - containerPort: 9080
-            - containerPort: 8081
-            - containerPort: 9081
           volumeMounts:
             - name: "stub-config"
               mountPath: "/etc/cincinnati/"
@@ -46,6 +41,7 @@ spec:
           image: "docker-registry.default.svc:5000/coreos-cincinnati/fedora-coreos-cincinnati:dumnati-{{fcos_cincinnati_deploy_git_sha}}"
           args: [
             "/usr/local/bin/fcos-graph-builder",
+            "-v",
             "-c", "/etc/cincinnati/graph-builder.toml",
           ]
           volumeMounts:
@@ -56,15 +52,13 @@ spec:
           image: "docker-registry.default.svc:5000/coreos-cincinnati/fedora-coreos-cincinnati:dumnati-{{fcos_cincinnati_deploy_git_sha}}"
           args: [
             "/usr/local/bin/fcos-policy-engine",
+            "-v",
             "-c", "/etc/cincinnati/policy-engine.toml",
           ]
           volumeMounts:
             - name: "stub-config"
               mountPath: "/etc/cincinnati/"
               readOnly: true
-          ports:
-            - containerPort: 5051
-            - containerPort: 6061
       volumes:
         - name: "stub-config"
           configMap:
