@@ -237,6 +237,7 @@
   template: src="fedora-messaging.conf.j2"
             dest=/etc/copr/msgbuses/fedora-messaging.conf
             owner=copr group=copr mode=0600
+  when: not devel
   notify:
   - restart copr-backend
   tags:
