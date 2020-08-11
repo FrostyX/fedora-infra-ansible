@@ -43,7 +43,7 @@ RUN dnf install -y \
     python3-librepo             \
     python3-mod_wsgi            \
     python3-gunicorn            \
-    && pip install koji \
+    && pip install koji graphene graphene-sqlalchemy WebOb-GraphQL \
     && dnf clean all
 
 RUN git clone -b {{bodhi_version}} https://github.com/fedora-infra/bodhi.git /srv/bodhi && \
