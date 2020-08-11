@@ -36,6 +36,10 @@ arguments = {}
 # XXX If you modify this taglist.  Please also modify the other copy in
 # bodhi2/backend/tasks/main.yml
 taglist = [
+    "f34",
+    "f34-container",
+    "f34-modular",
+    "f34-flatpak",
     "f33",
     "f33-container",
     "f33-modular",

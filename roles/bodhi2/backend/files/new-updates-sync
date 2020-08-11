@@ -25,7 +25,51 @@ FEDORAALTDEST = '/pub/fedora-secondary/updates/'
 EPELDEST = '/pub/epel/'
 OSTREESOURCE = '/mnt/koji/compose/ostree/repo/'
 OSTREEDEST = '/mnt/koji/ostree/repo/'
-RELEASES = {'f32': {'topic': 'fedora',
+RELEASES = {'f33': {'topic': 'fedora',
+                    'version': '33',
+                    'modules': ['fedora', 'fedora-secondary'],
+                    'repos': {'updates': {
+                        'from': 'f33-updates',
+                        'ostrees': [{'ref': 'fedora/33/%(arch)s/updates/silverblue',
+                                     'dest': OSTREEDEST,
+                                     'arches': ['x86_64', 'ppc64le', 'aarch64']}],
+                        'to': [{'arches': ['x86_64', 'armhfp', 'aarch64', 'source'],
+                                'dest': os.path.join(FEDORADEST, '33', 'Everything')},
+                               {'arches': ['ppc64le', 's390x'],
+                                'dest': os.path.join(FEDORAALTDEST, '33', 'Everything')}
+                              ]},
+                              'updates-testing': {
+                        'from': 'f33-updates-testing',
+                        'ostrees': [{'ref': 'fedora/33/%(arch)s/testing/silverblue',
+                                     'dest': OSTREEDEST,
+                                     'arches': ['x86_64', 'ppc64le', 'aarch64']}],
+                        'to': [{'arches': ['x86_64', 'aarch64', 'armhfp', 'source'],
+                                'dest': os.path.join(FEDORADEST, 'testing', '33', 'Everything')},
+                               {'arches': ['ppc64le', 's390x'],
+                                'dest': os.path.join(FEDORAALTDEST, 'testing', '33', 'Everything')}
+                              ]}}
+                   },
+            'f33m': {'topic': 'fedora',
+                    'version': '33m',
+                    'modules': ['fedora', 'fedora-secondary'],
+                    'repos': {'updates': {
+                        'from': 'f33-modular-updates',
+                        'ostrees': [],
+                        'to': [{'arches': ['x86_64', 'aarch64', 'armhfp', 'source'],
+                                'dest': os.path.join(FEDORADEST, '33', 'Modular')},
+                               {'arches': ['ppc64le', 's390x'],
+                                'dest': os.path.join(FEDORAALTDEST, '33', 'Modular')}
+                              ]},
+                              'updates-testing': {
+                        'from': 'f33-modular-updates-testing',
+                        'ostrees': [],
+                        'to': [{'arches': ['x86_64', 'aarch64', 'armhfp', 'source'],
+                                'dest': os.path.join(FEDORADEST, 'testing', '33', 'Modular')},
+                               {'arches': ['ppc64le', 's390x'],
+                                'dest': os.path.join(FEDORAALTDEST, 'testing', '33', 'Modular')}
+                              ]}}
+                   },
+            'f32': {'topic': 'fedora',
                     'version': '32',
                     'modules': ['fedora', 'fedora-secondary'],
                     'repos': {'updates': {

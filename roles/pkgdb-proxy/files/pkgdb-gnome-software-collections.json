@@ -13,6 +13,17 @@
     },
     {
       "allow_retire": false,
+      "branchname": "f33",
+      "date_created": "2014-08-11 12:36:15",
+      "date_updated": "2020-08-11 17:07:23",
+      "dist_tag": ".fc33",
+      "koji_name": "f33",
+      "name": "Fedora",
+      "status": "Under Development",
+      "version": "33"
+    },
+    {
+      "allow_retire": false,
       "branchname": "f32",
       "date_created": "2014-05-14 12:36:15",
       "date_updated": "2020-02-11 17:07:23",
