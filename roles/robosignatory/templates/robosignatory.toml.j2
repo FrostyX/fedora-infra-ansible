@@ -164,7 +164,7 @@ handlers = ["console"]
             from = "f34-infra-candidate"
             to = "f34-infra-stg"
             key = "{{ (env == 'production')|ternary('fedora-infra', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('45719A39', 'd300e724') }}"
+            keyid = "{{ (env == 'production')|ternary('45719a39', 'd300e724') }}"
 
 
             # Gated coreos-pool tag
@@ -197,7 +197,7 @@ handlers = ["console"]
             from = "f34-coreos-signing-pending"
             to = "coreos-pool"
             key = "{{ (env == 'production')|ternary('fedora-34', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('45719A39', 'd300e724') }}"
+            keyid = "{{ (env == 'production')|ternary('45719a39', 'd300e724') }}"
 
             # Gated rawhide and branched
 
@@ -205,7 +205,7 @@ handlers = ["console"]
             from = "f34-signing-pending"
             to = "f34-updates-testing-pending"
             key = "{{ (env == 'production')|ternary('fedora-34', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('45719A39', 'd300e724') }}"
+            keyid = "{{ (env == 'production')|ternary('45719a39', 'd300e724') }}"
 
             [consumer_config.koji_instances.primary.tags.sidetags]
             pattern = 'f34-build-side-<seq_id>'
@@ -217,20 +217,20 @@ handlers = ["console"]
             from = "f34-pending"
             to = "f34"
             key = "{{ (env == 'production')|ternary('fedora-34', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('45719A39', 'd300e724') }}"
+            keyid = "{{ (env == 'production')|ternary('45719a39', 'd300e724') }}"
 
             [[consumer_config.koji_instances.primary.tags]]
             from = "f34-modular-pending"
             to = "f34-modular"
             key = "{{ (env == 'production')|ternary('fedora-34', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('45719A39', 'd300e724') }}"
+            keyid = "{{ (env == 'production')|ternary('45719a39', 'd300e724') }}"
             type = "modular"
 
             [[consumer_config.koji_instances.primary.tags]]
             from = "f34-modular-updates-candidate"
             to = "f34-modular"
             key = "{{ (env == 'production')|ternary('fedora-34', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('45719A39', 'd300e724') }}"
+            keyid = "{{ (env == 'production')|ternary('45719a39', 'd300e724') }}"
             type = "modular"
 
         #    [[consumer_config.koji_instances.primary.tags]]
