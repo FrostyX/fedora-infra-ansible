@@ -55,3 +55,4 @@
   - copr/backend
   - nagios_client
   - role: messaging/base
+    when: copr_messaging

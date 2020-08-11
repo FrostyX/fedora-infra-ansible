@@ -2,6 +2,8 @@
 devel: false
 datacenter: aws
 
+copr_messaging: true
+
 _forward_src: "forward"
 
 # don't forget to update ip in ./copr-keygen, due to custom firewall rules

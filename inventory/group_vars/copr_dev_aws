@@ -1,6 +1,8 @@
 ---
 devel: true
 
+copr_messaging: false
+
 datacenter: aws
 
 _forward_src: "forward_dev"
