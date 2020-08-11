@@ -25,6 +25,7 @@ RUN dnf install -y \
     python3-jinja2              \
     python3-markdown            \
     python3-psycopg2            \
+    python3-prometheus_client \
     python3-py3dns              \
     python3-pyasn1-modules      \
     python3-pylibravatar        \
