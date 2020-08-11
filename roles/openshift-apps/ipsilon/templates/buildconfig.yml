@@ -26,7 +26,7 @@ spec:
           ipsilon-infofas \
           ipsilon-authgssapi \
           ipsilon-openidc \
-          fedora-ipsilontheme \
+          ipsilon-theme-Fedora \
           mod_auth_openidc \
           python-psycopg2 \
           python-setuptools \
