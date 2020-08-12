@@ -5,9 +5,8 @@ SYNCDIR=/var/cache/reposync/
 YUMDIR=/var/tmp/reposync-rhel7/
 
 ## Need to download the metadata and the modular data
-DNFOPTS='--download-metadata -m '
+DNFOPTS='--download-metadata --remote-time --delete'
 
-# s390 isnt working yet
 ARCHES="ppc64le s390x x86_64"
 #ARCHES="x86_64"
 
@@ -21,19 +20,23 @@ cd $RHEL7SYNCDIR
 ##
 ## Sync out RHEL-7 for appropriate arches
 for A in ${ARCHES}; do
+    if [[ ${A} == 'x86_64' ]]; then
+	DNF_ARCH='-p ${A} -a ${A} -a noarch -a i686'
+    else
+	DNF_ARCH='-p ${A} -a ${A} -a noarch'
+    fi
     rm -rf ${SYNCDIR}/${A}
     CONF=yum-batcave-rhel7-${A}.conf
     REPOS="rhel-7-for-${A}-server-rpms rhel-7-ha-for-${A}-server-rpms rhel-7-extras-for-${A}-server-rpms rhel-7-optional-for-${A}-server-rpms rhel-7-devtools-for-${A}-server-rpms rhel-7-rhscl-for-${A}-server-rpms"
-#    REPOS="rhel-7-rhscl-for-${A}-server-rpms"
     for R in ${REPOS}; do
         rm -rf ${YUMDIR}/${R}
         # Test to see if we have this repository in our tree
         grep -q ${R} ${RHEL7SYNCDIR}/${CONF}
         if [[ $? -eq 0 ]]; then 
             echo "Syncing ${R} for ${A}"
-            dnf reposync -c ${RHEL7SYNCDIR}/${CONF} ${DNFOPTS} --repoid ${R} -a ${A} -p ${A} --metadata-path ${YUMDIR}/${A}
+            dnf reposync -c ${RHEL7SYNCDIR}/${CONF} ${DNFOPTS} --repoid ${R} ${DNF_ARCH} --metadata-path ${YUMDIR}/${A}
             if [[ $? -ne 0 ]]; then
-                echo "Something went wrong with reposync -c ${RHEL7SYNCDIR}/${CONF} ${DNFOPTS} --repoid ${R} -a ${A} -a noarch -p ${A} --metadata-path ${YUMDIR}/${A}"
+                echo "Something went wrong with reposync -c ${RHEL7SYNCDIR}/${CONF} ${DNFOPTS} --repoid ${R} ${DNF_ARCH} --metadata-path ${YUMDIR}/${A}"
                 continue
             fi
             ## Try to create repo
