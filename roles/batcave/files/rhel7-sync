@@ -21,9 +21,9 @@ cd $RHEL7SYNCDIR
 ## Sync out RHEL-7 for appropriate arches
 for A in ${ARCHES}; do
     if [[ ${A} == 'x86_64' ]]; then
-	DNF_ARCH='-p ${A} -a ${A} -a noarch -a i686'
+	DNF_ARCH="-p ${A} -a ${A} -a noarch -a i686"
     else
-	DNF_ARCH='-p ${A} -a ${A} -a noarch'
+	DNF_ARCH="-p ${A} -a ${A} -a noarch"
     fi
     rm -rf ${SYNCDIR}/${A}
     CONF=yum-batcave-rhel7-${A}.conf
