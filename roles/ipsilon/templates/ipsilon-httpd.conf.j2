@@ -15,7 +15,7 @@ RewriteRule ^([a-z0-9-]+)\.id\.fedoraproject\.org/.* /openid/id/$1/ [PT]
 {% endif %}
 
 
-Alias /ui /usr/share/ipsilon/ui
+#Alias /ui /usr/share/ipsilon/ui
 WSGIScriptAlias / /usr/libexec/ipsilon
 WSGIPassAuthorization On
 WSGIDaemonProcess ipsilon home=/var/lib/ipsilon processes=2 threads=2 maximum-requests=1000
@@ -52,6 +52,7 @@ WSGIRestrictSignal Off
 <Directory /etc/ipsilon/wellknown>
     Require all granted
 </Directory>
+
 <Location /.well-known/browserid>
     ForceType application/json
 </Location>
