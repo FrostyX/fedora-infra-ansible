@@ -65,5 +65,5 @@ done
 
 OTHERCONF=yum4-batcave-rhel8-other.conf
 
-dnf reposync -c ${RHEL8SYNCDIR}/${OTHERCONF}  ${DNFOPTS} --repoid rhel-8-x86_64-openstack-16-rpms -a x86_64 -p other &> /dev/null
-dnf reposync -c ${RHEL8SYNCDIR}/${OTHERCONF}  ${DNFOPTS} --repoid rhel-8-srpms-openstack-16-rpms --source -a x86_64 -p other &> /dev/null
+dnf reposync -c ${RHEL8SYNCDIR}/${OTHERCONF}  ${DNFOPTS} --repoid rhel-8-x86_64-openstack-16-rpms -a x86_64 -a noarch -a i686 -p other &> /dev/null
+dnf reposync -c ${RHEL8SYNCDIR}/${OTHERCONF}  ${DNFOPTS} --repoid rhel-8-srpms-openstack-16-rpms --source -a x86_64 -a noarch -a i686 -p other &> /dev/null
