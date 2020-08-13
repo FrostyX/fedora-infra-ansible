@@ -3,3 +3,26 @@ gw: 10.3.170.254
 eth1_ip: 10.3.170.121
 eth1_ipv4_gw: 10.3.170.254
 datacenter: iad2
+
+network_connections:
+  - name: eth0
+    state: down
+    type: ethernet
+  - name: eth1
+    state: up
+    type: ethernet
+    autoconnect: yes
+    ip:
+      address: 10.3.170.121/24
+      gateway4: 10.3.170.254
+      dns:
+      - 10.3.163.33
+      - 10.3.163.34
+      dns_search:
+      - iad2.fedoraproject.org
+      - fedoraproject.org
+      dhcp4: no
+      auto6: no
+  - name: eth2
+    state: down
+    type: ethernet
