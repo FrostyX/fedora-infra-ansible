@@ -139,8 +139,13 @@ myorigin = fedoraproject.org
 #inet_interfaces = all
 #inet_interfaces = $myhostname
 #inet_interfaces = $myhostname, localhost
-
 inet_interfaces = all
+
+# Enable IPv4, and IPv6 if supported
+#inet_protocols = all
+inet_protocols = ipv4
+smtp_address_preference = ipv4
+
 
 # The proxy_interfaces parameter specifies the network interface
 # addresses that this mail system receives mail on by way of a
@@ -276,7 +281,6 @@ unknown_local_recipient_reject_code = 550
 #mynetworks_style = subnet
 #mynetworks_style = host
 
-
 # Alternatively, you can specify the mynetworks list by hand, in
 # which case Postfix ignores the mynetworks_style setting.
 #
@@ -292,7 +296,7 @@ unknown_local_recipient_reject_code = 550
 #mynetworks = $config_directory/mynetworks
 #mynetworks = hash:/etc/postfix/network_table
 
-mynetworks = localhost.localdomain, localhost, 127.0.0.1, 10.3.160.0/19, 192.168.0.0/16
+mynetworks = localhost.localdomain, localhost, 127.0.0.1, 10.3.160.0/19, 192.168.0.0/16, 35.153.70.58,  3.81.0.123
 
 # The relay_domains parameter restricts what destinations this system will
 # relay mail to.  See the smtpd_recipient_restrictions description in
@@ -324,7 +328,7 @@ mynetworks = localhost.localdomain, localhost, 127.0.0.1, 10.3.160.0/19, 192.168
 #
 #relay_domains = $mydestination
 
-relay_domains = $mydestination fedora.phx.redhat.com
+relay_domains = $mydestination
 
 # INTERNET OR INTRANET
 
@@ -346,7 +350,6 @@ relay_domains = $mydestination fedora.phx.redhat.com
 #relayhost = [mailserver.isp.tld]
 #relayhost = uucphost
 #relayhost = [an.ip.add.ress]
-
 
 # REJECTING UNKNOWN RELAY USERS
 #
@@ -522,9 +525,6 @@ recipient_delimiter = +
 # Cyrus IMAP via command line. Uncomment the "cyrus...pipe" and
 # subsequent line in master.cf.
 #mailbox_transport = cyrus
-
-
-#mailbox_transport = lmtp:10.5.126.73:2003
 
 # The fallback_transport specifies the optional transport in master.cf
 # to use for recipients that are not found in the UNIX passwd database.
@@ -713,43 +713,62 @@ sample_directory = /usr/share/doc/postfix/samples
 # readme_directory: The location of the Postfix README files.
 #
 readme_directory = /usr/share/doc/postfix/README_FILES
-# Enable IPv4, and IPv6 if supported
-#inet_protocols = ipv4
 
-# mapping so we know where to go for .redhat.com mail
+# TLS CONFIGURATION
+#
+# Basic Postfix TLS configuration by default with self-signed certificate
+# for inbound SMTP and also opportunistic TLS for outbound SMTP.
 
-transport_maps = hash:/etc/postfix/transport
-local_header_rewrite_clients = static:all
+# The full pathname of a file with the Postfix SMTP server RSA certificate
+# in PEM format. Intermediate certificates should be included in general,
+# the server certificate first, then the issuing CA(s) (bottom-up order).
+#
+smtpd_tls_cert_file = /etc/pki/tls/certs/gateway.crt
 
+# The full pathname of a file with the Postfix SMTP server RSA private key
+# in PEM format. The private key must be accessible without a pass-phrase,
+# i.e. it must not be encrypted.
+#
+smtpd_tls_key_file = /etc/pki/tls/private/gateway.key
 
-message_size_limit = 20971520
+# Announce STARTTLS support to remote SMTP clients, but do not require that
+# clients use TLS encryption (opportunistic TLS inbound).
+#
+smtpd_tls_security_level = may
 
+# Directory with PEM format Certification Authority certificates that the
+# Postfix SMTP client uses to verify a remote SMTP server certificate.
+#
+smtp_tls_CApath = /etc/pki/tls/certs
+
+# The full pathname of a file containing CA certificates of root CAs
+# trusted to sign either remote SMTP server certificates or intermediate CA
+# certificates.
+#
+smtp_tls_CAfile = /etc/pki/tls/certs/ca-bundle.crt
+
+# Use TLS if this is supported by the remote SMTP server, otherwise use
+# plaintext (opportunistic TLS outbound).
+#
+smtp_tls_security_level = may
 
 ## TLS
 # enable opportunistic TLS support in the SMTP server
 smtpd_use_tls = yes
-smtpd_tls_security_level = may
 smtpd_tls_auth_only = yes
 smtpd_tls_mandatory_protocols = !SSLv2, !SSLv3
 smtpd_tls_mandatory_ciphers = high
 smtpd_tls_mandatory_exclude_ciphers = aNULL, MD5, RC4
-#tls_ssl_options = no_ticket, no_compression
-
 smtpd_tls_loglevel = 1
-smtpd_tls_cert_file = /etc/pki/tls/certs/gateway.crt
-smtpd_tls_key_file =  /etc/pki/tls/private/gateway.key
 smtpd_tls_CAfile  =   /etc/pki/tls/certs/ca-bundle.crt
 smtpd_tls_session_cache_timeout = 3600s
 smtpd_tls_session_cache_database        = btree:${queue_directory}/smtpd_scache
 smtpd_tls_received_header               = yes
 smtpd_tls_ask_ccert                     = yes
 smtpd_tls_received_header = yes
-tls_random_source                       = dev:/dev/urandom
 smtpd_tls_eecdh_grade = ultra
-tls_eecdh_strong_curve = prime256v1
-tls_eecdh_ultra_curve = secp384r1
-# TLS end
-#TLS Client
+# smtpd TLS end
+# smtp TLS Client
 smtp_tls_fingerprint_digest=sha1
 smtp_tls_note_starttls_offer = yes
 smtp_tls_policy_maps = hash:/etc/postfix/tls_policy
@@ -761,13 +780,23 @@ smtp_tls_loglevel = 1
 smtp_tls_cert_file = /etc/pki/tls/certs/gateway.crt
 smtp_tls_key_file = /etc/pki/tls/private/gateway.key
 smtp_tls_CAfile  = /etc/pki/tls/certs/ca-bundle.crt
+## End smtp_tls
+## General TLS
+tls_random_source                       = dev:/dev/urandom
+tls_eecdh_strong_curve = prime256v1
+tls_eecdh_ultra_curve = secp384r1
 
+## Other configs from standard
 smtpd_milters           = inet:localhost:8891
 milter_default_action   = accept
-inet_protocols = ipv4
 
 # Deny email from some domains
 smtpd_sender_restrictions = regexp:/etc/postfix/sender_access
+meta_directory = /etc/postfix
+shlib_directory = /usr/lib64/postfix
+transport_maps = hash:/etc/postfix/transport
+local_header_rewrite_clients = static:all
+message_size_limit = 20971520
 
 # smtpd_relay_restrictions are safer to use than smtpd_recipient_restrictions
 # as outlined http://www.postfix.org/SMTPD_ACCESS_README.html
