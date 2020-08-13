@@ -313,7 +313,8 @@ unknown_local_recipient_reject_code = 550
 #relayhost = [mailserver.isp.tld]
 #relayhost = uucphost
 #relayhost = [an.ip.add.ress]
-#relayhost = mx1.redhat.com
+relayhost = bastion.fedoraproject.org
+
 
 
 # REJECTING UNKNOWN RELAY USERS
