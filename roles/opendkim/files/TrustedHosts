@@ -5,10 +5,7 @@
 # The localhost IP (127.0.0.1) should always be the first entry in this file.
 127.0.0.1
 ::1
-10.5.124.128/25
-10.5.125.0/24
-10.5.126.0/24
-10.5.129.0/24
+10.3.160.0/19
 192.168.0.0/16
 #host.example.com
 #192.168.1.0/24
