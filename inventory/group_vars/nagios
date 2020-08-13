@@ -78,7 +78,6 @@ iad2_management_hosts:
 #
 iad2_management_limited:
   - opengear01.mgmt.iad2.fedoraproject.org
-  - opengear02.mgmt.iad2.fedoraproject.org
   - sign-vault01.mgmt.iad2.fedoraproject.org
 
 #iad2_management_slowping:
