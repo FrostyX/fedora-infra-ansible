@@ -15,7 +15,7 @@
 *@fedoraproject.org bastion-iad._domainkey.fedoraproject.org
 *@lists.fedoraproject.org bastion-iad._domainkey.fedoraproject.org
 *@stg.fedoraproject.org bastion-iad._domainkey.fedoraproject.org
-pagure@pagure.io bastion-iad._domainkey.pagure.io
+pagure@pagure.io bastion._domainkey.pagure.io
 
 # NON-WILDCARD EXAMPLE
 # If "file:" (instead of "refile:") is specified in /etc/opendkim.conf, then
