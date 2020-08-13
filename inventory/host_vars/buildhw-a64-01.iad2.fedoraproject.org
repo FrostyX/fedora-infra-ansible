@@ -8,9 +8,11 @@ network_connections:
   - name: eth0
     state: down
     type: ethernet
+    mac: 68:05:ca:8e:ab:e6
   - name: eth1
     state: up
     type: ethernet
+    mac: 50:6b:4b:6b:08:50
     autoconnect: yes
     ip:
       address: 10.3.170.121/24
@@ -24,5 +26,6 @@ network_connections:
       dhcp4: no
       auto6: no
   - name: eth2
+    mac: 50:6b:4b:6b:08:51
     state: down
     type: ethernet
