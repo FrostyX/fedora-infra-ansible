@@ -233,23 +233,23 @@ handlers = ["console"]
             keyid = "{{ (env == 'production')|ternary('45719a39', 'd300e724') }}"
             type = "modular"
 
-        #    [[consumer_config.koji_instances.primary.tags]]
-        #    from = "f33-signing-pending"
-        #    to = "f33-updates-testing-pending"
-        #    key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
-        #    keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "f33-signing-pending"
+            to = "f33-updates-testing-pending"
+            key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
 
-        #    [consumer_config.koji_instances.primary.tags.sidetags]
-        #    pattern = 'f33-build-side-<seq_id>'
-        #    from = '<sidetag>-signing-pending'
-        #    to = '<sidetag>-testing-pending'
-        #    trusted_taggers = ['bodhi']
+            [consumer_config.koji_instances.primary.tags.sidetags]
+            pattern = 'f33-build-side-<seq_id>'
+            from = '<sidetag>-signing-pending'
+            to = '<sidetag>-testing-pending'
+            trusted_taggers = ['bodhi']
 
-        #    [[consumer_config.koji_instances.primary.tags]]
-        #    from = "f33-pending"
-        #    to = "f33"
-        #    key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
-        #    keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "f33-pending"
+            to = "f33"
+            key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
 
             [[consumer_config.koji_instances.primary.tags]]
             from = "f33-modular-pending"
@@ -383,6 +383,12 @@ handlers = ["console"]
             keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
 
             # openh264 signing
+
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "f34-openh264"
+            to = "f34-openh264"
+            key = "{{ (env == 'production')|ternary('fedora-34', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('45719a39', 'd300e724') }}"
 
             [[consumer_config.koji_instances.primary.tags]]
             from = "f33-openh264"
