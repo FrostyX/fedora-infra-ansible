@@ -6,8 +6,8 @@ datacenter: iad2
 
 network_connections:
   - name: eth0
-    state: down
     type: ethernet
+    autoconnect: no
     mac: 68:05:ca:8e:ab:e6
   - name: eth1
     state: up
@@ -27,5 +27,5 @@ network_connections:
       auto6: no
   - name: eth2
     mac: 50:6b:4b:6b:08:51
-    state: down
     type: ethernet
+    autoconnect: no
