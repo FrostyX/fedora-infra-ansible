@@ -1,2 +1,6 @@
-#options are: prebeta, postbeta, current
-FedoraBranchedBodhi: prebeta 
+# options are: preenable, prebeta, postbeta, current
+# preenable: After branching and before bodhi enablement/beta freeze
+# prebeta: After bodhi enablement/beta freeze and before beta release
+# postbeta: After beta release and before final release
+# current: After final release
+FedoraBranchedBodhi: preenable

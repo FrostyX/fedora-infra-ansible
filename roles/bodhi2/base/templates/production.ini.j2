@@ -576,7 +576,10 @@ fedora_modular.mandatory_days_in_testing = 7
 # critpath number of admin approvals, and the critpath minimum karma. For example, if we want to set
 # Fedora 28 as a pre-beta, and we want it to have different rules in pre-beta and post-beta, we
 # could do something like this:
-{% if FedoraBranchedBodhi is defined and FedoraBranchedBodhi == 'prebeta' %}
+{% if FedoraBranchedBodhi is defined and FedoraBranchedBodhi == 'preenable' %}
+f{{ FedoraBranchedNumber }}.status = preenable
+f{{ FedoraBranchedNumber }}.pre_beta.mandatory_days_in_testing = 0
+{% elif FedoraBranchedBodhi is defined and FedoraBranchedBodhi == 'prebeta' %}
 f{{ FedoraBranchedNumber }}.status = pre_beta
 f{{ FedoraBranchedNumber }}.pre_beta.mandatory_days_in_testing = 3
 f{{ FedoraBranchedNumber }}.pre_beta.critpath.min_karma = 1
