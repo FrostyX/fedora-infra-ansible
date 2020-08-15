@@ -13,8 +13,10 @@ parser.add_argument('-c', '--critical', dest='critical', type=int, default=50,
                     help="Critical threshold")
 parser.add_argument('-w', '--warning', dest='warning', type=int, default=20,
                     help="Warning threshold")
-parser.add_argument('-i', '--ignore', dest='ignore', type=int, default=5,
-                    help="Ignore queues from the last X minutes (default: 5)")
+parser.add_argument('-L', '--lower', dest='lower', type=int, default=5,
+                    help="ignore queues ages lower than x minutes (default: 5)")
+parser.add_argument('-H', '--higher', dest='higher', type=int, default=1440,
+                    help="ignore queues ages higher than x minutes (default: 1440)")
 args = parser.parse_args()
 
 
@@ -28,38 +30,38 @@ mail_queue = 0
 
 
 if args.domain == 'all':
-  mail_queue = len(output)
+    mail_queue = len(output)
 else:
+    for line in output:
+        j = json.loads(line)
+        if j["queue_name"] == 'active':
+            # Ignore Active queue
+            continue
 
-  for line in output:
-      j = json.loads(line)
-      if j["queue_name"] == 'active':
-          # Ignore Active queue
-          continue
+        queue_old = now - datetime.fromtimestamp(j["arrival_time"])
+        if (queue_old.total_seconds() / 60 < args.lower
+                or queue_old.total_seconds() / 60 > args.higher):
+            # Not old enough
+            continue
 
-      queue_old = now - datetime.fromtimestamp(j["arrival_time"])
-      if queue_old.total_seconds() / 60 < args.ignore:
-          # Not old enough
-          continue
-          
-      for recipient in j['recipients']:
-          if recipient['address'].endswith(args.domain):
-              mail_queue += 1
-              break
+        for recipient in j['recipients']:
+            if recipient['address'].endswith(args.domain):
+                mail_queue += 1
+                break
 
 
 ret_val = 0
 msg = ("OK: Queue length for %s destination < %s (%s)"
-      % (args.domain, args.warning, mail_queue))
+       % (args.domain, args.warning, mail_queue))
 
 if mail_queue > args.warning:
     msg = ("WARNING: Queue length for %s destination > %s (%s)"
-          % (args.domain, args.warning, mail_queue))
+           % (args.domain, args.warning, mail_queue))
     ret_val = 1
 
 if mail_queue > args.critical:
     msg = ("CRITICAL: Queue length for %s destination > %s (%s)"
-          % (args.domain, args.critical, mail_queue))
+           % (args.domain, args.critical, mail_queue))
     ret_val = 2
 
 
