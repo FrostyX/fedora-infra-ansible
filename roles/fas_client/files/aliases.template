@@ -136,7 +136,12 @@ cvs-sysadmin: fedora-sysadmin-list@redhat.com
 
 
 # GDK is the human who suggested this redirection
-legal-cla-archive: fedora-lit@redhat.com
+#legal-cla-archive: fedora-lit@redhat.com
+
+# this email address no longer exists internally (2020-06?) and is
+# causing large amounts of bouncebacks and weighing email down from
+# our servers in the RH scanners. 
+legal-cla-archive: /dev/null
 
 vendors: distribution-members
 
