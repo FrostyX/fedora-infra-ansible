@@ -112,6 +112,9 @@ old_composes_url = "https://kojipkgs.fedoraproject.org/compose/"
 [consumer_config.pdc_modules]
 mbs_url = "https://mbs.fedoraproject.org/module-build-service/2/module-builds/"
 
+[consumer_config.check_email_overrides]
+email_overrides_url = "https://pagure.io/fedora-infra/ansible/raw/master/f/roles/openshift-apps/distgit-bugzilla-sync/templates/email_overrides.toml"
+
 
 [qos]
 prefetch_size = 0
