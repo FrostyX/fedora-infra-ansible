@@ -26,3 +26,15 @@ SESSION_COOKIE_SECURE = True
 # enable fedmenu
 FEDMENU_URL = 'https://apps.fedoraproject.org/fedmenu/'
 FEDMENU_DATA_URL = 'https://apps.fedoraproject.org/js/data.js'
+
+{% if env == "staging" %}
+PAGURE_URL = "https://stg.pagure.io/"
+PAGURE_API = "https://stg.pagure.io/api/0/"
+{% else %}
+PAGURE_URL = "https://pagure.io/"
+PAGURE_API = "https://pagure.io/api/0/"
+{% endif %}
+PAGURE_REPO = "fedora-qa/blocker-review"
+PAGURE_REPO_TOKEN = "{{ blockerbugs_pagure_repo_token }}"
+PAGURE_REPO_WEBHOOK_KEY = "{{ blockerbugs_pagure_repo_webhook_key }}"
+PAGURE_BOT_USERNAME = 'blockerbot'

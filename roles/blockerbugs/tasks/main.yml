@@ -1,23 +1,10 @@
 ---
 - name: install needed packages for blockerbugs
-  package: state=present name={{ item }} enablerepo=epel-testing
+  package: state=present name={{ item }}
   with_items:
-  - libsemanage-python
-  - python-psycopg2
-  - python-kitchen
-  - python-alembic
-  - python-flask-wtf
-  - python-flask
-  - python-sqlalchemy
-  - python-fedora-flask
-  - python-wtforms
-  - python-fedora
-  - pytest
-  - python-lxml
-  - python-flask-sqlalchemy
-  - python-bugzilla
+  - libselinux-python3
+  - python3-mod_wsgi
   - blockerbugs
-  - python-bunch
   # this is for chronic which helps get rid of excess cron emails
   - moreutils
   tags:
