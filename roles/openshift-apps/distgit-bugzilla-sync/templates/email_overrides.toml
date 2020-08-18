@@ -14,6 +14,13 @@
 # Matt Domsch"s rebuild script -- bz email goes to /dev/null
 # 103590: "ftbfs@fedoraproject.org"
 
+
+# /!\ WARNING: do not use templating instructions in this file
+#     while being in a template folder it is loaded/processed as
+#     a plain file by toddlers. Adding templating instructions here
+#     will break toddlers!
+
+
 # icon - Konstantin Ryabitsev
 "mricon@gmail.com" = "icon@fedoraproject.org"
 # jafo - Sean Reifschneider
