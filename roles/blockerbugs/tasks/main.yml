@@ -41,6 +41,12 @@
   - httpd
   - blockerbugs
 
+- name: allow httpd to connect to network, enabling openid
+  seboolean: name=httpd_can_network_connect state=true persistent=true
+  tags:
+  - config
+  - blockerbugs
+
 - name: set sebooleans so blockerbugs can talk to the db
   seboolean: name=httpd_can_network_connect_db state=true persistent=true
   tags:
