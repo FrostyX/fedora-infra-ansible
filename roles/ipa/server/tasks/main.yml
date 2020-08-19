@@ -7,6 +7,7 @@
   - haveged
   - ipa-server
   - ipa-server-dns
+  - ipa-fas
   tags:
   - ipa/server
   - packages
@@ -180,6 +181,16 @@
   - krb5
   when: ipa_initial
 
+- name: Configure password policy
+  command: ipa pwpolicy-mod global_policy --maxlife=0 --minlife=0 --history=0 --minclasses=0 --minlength=0 --maxfail=0
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+  register: pwpolicy_output
+  changed_when: "'no modifications to be performed' not in pwpolicy_output.stderr"
+  failed_when: "'no modifications to be performed' not in pwpolicy_output.stderr and pwpolicy_output.rc != 0"
+
 - name: Create fas_sync user
   command: ipa user-add fas_sync --first=FAS --last=Sync
   tags:
@@ -200,15 +211,80 @@
   changed_when: "'already a member' not in promote_output.stdout"
   failed_when: "'already a member' not in promote_output.stdout and promote_output.rc != 0"
 
-- name: Configure password policy
-  command: ipa pwpolicy-mod global_policy --maxlife=0 --minlife=0 --history=0 --minclasses=0 --minlength=0 --maxfail=0
+# Noggin user setup
+
+- name: Register the proper noggin admin password
+  set_fact:
+    noggin_password: "{{ (env == 'production')|ternary(noggin_admin_password, noggin_stg_admin_password) }}"
+
+- name: Create noggin user
+  # Expiration date will be a Friday 13th in 30 years. I'm sure we'll remember that.
+  # (if unset, IPA will assume the password is expired because it hasn't been set by the user themselves)
+  shell: echo -e "{{ noggin_password }}\n{{ noggin_password }}" | ipa user-add noggin --first=Noggin --last=User --password --password-expiration 20500513000000Z
   tags:
   - ipa/server
   - config
   when: ipa_initial
-  register: pwpolicy_output
-  changed_when: "'no modifications to be performed' not in pwpolicy_output.stderr"
-  failed_when: "'no modifications to be performed' not in pwpolicy_output.stderr and pwpolicy_output.rc != 0"
+  register: create_output
+  changed_when: "'already exists' not in create_output.stderr"
+  failed_when: "'already exists' not in create_output.stderr and create_output.rc != 0"
+
+- name: Create the noggin privilege
+  command: ipa privilege-add "Self-service Portal Administrators"
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+  register: output
+  changed_when: "'already exists' not in output.stdout"
+  failed_when: "'already exists' not in output.stdout and output.rc != 0"
+
+- name: Setup the noggin privilege
+  command: ipa privilege-add-permission
+           "Self-service Portal Administrators"
+           --permissions="System: Modify Users"
+           --permissions="System: Change User password"
+           --permissions="System: Add Stage User"
+           --permissions="System: Read Stage Users"
+           --permissions="System: Modify Stage User"
+           --permissions="System: Modify User RDN"
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+  register: output
+  changed_when: "'Number of permissions added 0' not in output.stdout"
+  failed_when: "'Number of permissions added 0' not in output.stdout and output.rc != 0"
+
+- name: Create the noggin role
+  command: ipa role-add "Self-service Portal Administrator"
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+  register: output
+  changed_when: "'already exists' not in output.stdout"
+  failed_when: "'already exists' not in output.stdout and output.rc != 0"
+
+- name: Setup the noggin role
+  command: ipa role-add-privilege "Self-service Portal Administrator" --privileges="Self-service Portal Administrators"
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+  register: output
+  changed_when: "'Number of privileges added 0' not in output.stdout"
+  failed_when: "'Number of privileges added 0' not in output.stdout and output.rc != 0"
+
+- name: Give noggin the appropriate role
+  command: ipa role-add-member "Self-service Portal Administrator" --user=noggin
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+  register: output
+  changed_when: "'Number of members added 0' not in output.stdout"
+  failed_when: "'Number of members added 0' not in output.stdout and output.rc != 0"
 
 - name: Destroy admin ticket
   command: kdestroy -A
@@ -218,6 +294,7 @@
   - config
   - krb5
   when: ipa_initial
+
 
 - name: Create LDIF directory
   file: path=/root/ldif state=directory owner=root group=root mode=0750

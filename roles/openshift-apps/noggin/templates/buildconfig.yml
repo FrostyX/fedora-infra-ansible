@@ -1,0 +1,42 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: noggin
+  namespace: aaa
+  labels:
+    app: noggin
+    build: noggin
+spec:
+  runPolicy: Serial
+  source:
+    type: Git
+    git:
+      uri: https://github.com/fedora-infra/noggin.git
+{% if env == "staging" %}
+      ref: staging
+{% else %}
+      ref: stable
+{% endif %}
+    contextDir: /
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: python:3.6
+        namespace: openshift
+  output:
+    to:
+      kind: ImageStreamTag
+      name: noggin:latest
+  triggers:
+  - type: ImageChange
+  - type: GitHub
+{% if noggin_stg_github_secret is defined and env == 'staging' %}
+    github:
+      secret: "{{ noggin_stg_github_secret }}"
+{% elif noggin_github_secret is defined and env == 'production' %}
+  - type: GitHub
+    github:
+      secret: "{{ noggin_github_secret }}"
+{% endif %}

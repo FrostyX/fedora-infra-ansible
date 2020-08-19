@@ -1,0 +1,70 @@
+{% macro load_file(filename) %}{% include filename %}{%- endmacro -%}
+---
+apiVersion: v1
+kind: List
+metadata: {}
+items:
+
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: noggin-config
+    namespace: aaa
+    labels:
+      app: noggin
+  data:
+    noggin.cfg: |-
+      {{ load_file('noggin.cfg.py') | indent(6) }}
+    gunicorn.conf.py: |-
+      {{ load_file('gunicorn.conf.py') | indent(6) }}
+
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: wsgi-script
+    namespace: aaa
+    labels:
+      app: noggin
+  data:
+    wsgi.py: |-
+      {{ load_file('wsgi.py') | indent(6) }}
+  __init__.py: ""
+
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: fedora-messaging-config
+    namespace: aaa
+    labels:
+      app: noggin
+  data:
+    config.toml: |-
+      {{ load_file('fedora-messaging.toml') | indent(6) }}
+
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: fedora-messaging-tls
+    namespace: aaa
+    labels:
+      app: noggin
+  data:
+    cacert.pem: |-
+      {{ load_file('fedora-messaging-ca.pem') | indent(6) }}
+    noggin-cert.pem: |-
+      {{ load_file('fedora-messaging-cert.pem') | indent(6) }}
+    noggin-key.pem: |-
+      {{ load_file('fedora-messaging-key.pem') | indent(6) }}
+
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: ipa-config
+    namespace: aaa
+  data:
+    ldap.conf: |-
+        {{ load_file('ipa-ldap.conf') | indent(6) }}
+    default.conf: |-
+        {{ load_file('ipa-default.conf') | indent(6) }}
+    ca.crt: |-
+        {{ ipa_ca_cert | indent(6) }}

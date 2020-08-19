@@ -1,0 +1,122 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: noggin
+  namespace: aaa
+  labels:
+    app: noggin
+spec:
+  replicas: 1
+  selector:
+    app: noggin
+    deploymentconfig: noggin
+  strategy:
+    type: Rolling
+    activeDeadlineSeconds: 21600
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: noggin
+        deploymentconfig: noggin
+    spec:
+      containers:
+      - name: noggin
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+          #protocol: TCP
+        #resources: {}
+        #terminationMessagePath: /dev/termination-log
+        #terminationMessagePolicy: File
+        volumeMounts:
+        - name: noggin-config-volume
+          mountPath: "/etc/noggin"
+          readOnly: true
+        - name: noggin-secrets-volume
+          mountPath: "/etc/noggin-secrets"
+          readOnly: true
+        - name: wsgi-script-volume
+          mountPath: "/opt/app-root/src/deploy"
+          readOnly: true
+        - name: fedora-messaging-config-volume
+          mountPath: "/etc/fedora-messaging"
+          readOnly: true
+        - name: fedora-messaging-ca-volume
+          mountPath: /etc/pki/fedora-messaging/cacert.pem
+          subPath: cacert.pem
+          readOnly: true
+        - name: fedora-messaging-crt-volume
+          mountPath: /etc/pki/fedora-messaging/noggin-cert.pem
+          subPath: noggin-cert.pem
+          readOnly: true
+        - name: fedora-messaging-key-volume
+          mountPath: /etc/pki/fedora-messaging/noggin-key.pem
+          subPath: noggin-key.pem
+          readOnly: true
+        - name: ipa-config-volume
+          mountPath: "/etc/ipa"
+          readOnly: true
+        env:
+        - name: NOGGIN_CONFIG_PATH
+          value: "/etc/noggin/noggin.cfg"
+        - name: APP_MODULE
+          value: "deploy.wsgi"
+        - name: APP_CONFIG
+          value: "/etc/noggin/gunicorn.conf.py"
+        readinessProbe:
+          timeoutSeconds: 10
+          initialDelaySeconds: 5
+          periodSeconds: 60
+          httpGet:
+            path: /healthz/ready
+            port: 8080
+        livenessProbe:
+          timeoutSeconds: 10
+          initialDelaySeconds: 10
+          periodSeconds: 60
+          httpGet:
+            path: /healthz/live
+            port: 8080
+      volumes:
+      - name: noggin-config-volume
+        configMap:
+          name: noggin-config
+      - name: noggin-secrets-volume
+        secret:
+          secretName: noggin-secrets
+      - name: wsgi-script-volume
+        configMap:
+          name: wsgi-script
+      - name: fedora-messaging-config-volume
+        configMap:
+          name: fedora-messaging-config
+      - name: fedora-messaging-ca-volume
+        secret:
+          secretName: fedora-messaging-ca
+      - name: fedora-messaging-crt-volume
+        secret:
+          secretName: fedora-messaging-crt
+      - name: fedora-messaging-key-volume
+        secret:
+          secretName: fedora-messaging-key
+      - name: ipa-config-volume
+        configMap:
+          name: ipa-config
+  triggers:
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - noggin
+      from:
+        kind: ImageStreamTag
+        name: noggin:latest
+        namespace: aaa
+    type: ImageChange
+  - type: ConfigChange
