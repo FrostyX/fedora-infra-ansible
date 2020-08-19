@@ -41,20 +41,6 @@ items:
 - apiVersion: v1
   kind: ConfigMap
   metadata:
-    name: fedora-messaging-tls
-    labels:
-      app: noggin
-  data:
-    cacert.pem: |-
-      {{ load_file('fedora-messaging-ca.pem') | indent(6) }}
-    noggin-cert.pem: |-
-      {{ load_file('fedora-messaging-cert.pem') | indent(6) }}
-    noggin-key.pem: |-
-      {{ load_file('fedora-messaging-key.pem') | indent(6) }}
-
-- apiVersion: v1
-  kind: ConfigMap
-  metadata:
     name: ipa-config
   data:
     ldap.conf: |-
