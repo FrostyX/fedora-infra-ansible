@@ -80,15 +80,15 @@
     objectname: route.yml
   - role: openshift/object
     app: noggin
-    file: secrets.yml
+    template: secrets.yml
     objectname: secrets.yml
   - role: openshift/object
     app: noggin
-    file: secret-webhook.yml
+    template: secret-webhook.yml
     objectname: secret-webhook.yml
   - role: openshift/object
     app: noggin
-    file: deploymentconfig.yml
+    template: deploymentconfig.yml
     objectname: deploymentconfig.yml
 
   - role: openshift/start-build
