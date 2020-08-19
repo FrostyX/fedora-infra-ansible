@@ -235,6 +235,7 @@
       - ipa
       - privilege-add
       - Self-service Portal Administrators
+      - --desc=Noggin admin users
   tags:
   - ipa/server
   - config
@@ -249,12 +250,12 @@
       - ipa
       - privilege-add-permission
       - Self-service Portal Administrators
-      - --permissions=System: Modify Users
-      - --permissions=System: Change User password
-      - --permissions=System: Add Stage User
-      - --permissions=System: Read Stage Users
-      - --permissions=System: Modify Stage User
-      - --permissions=System: Modify User RDN
+      - "--permissions=System: Modify Users"
+      - "--permissions=System: Change User password"
+      - "--permissions=System: Add Stage User"
+      - "--permissions=System: Read Stage Users"
+      - "--permissions=System: Modify Stage User"
+      - "--permissions=System: Modify User RDN"
   tags:
   - ipa/server
   - config
@@ -269,6 +270,7 @@
       - ipa
       - role-add
       - Self-service Portal Administrator
+      - --desc=Noggin admin user
   tags:
   - ipa/server
   - config
