@@ -40,8 +40,8 @@ items:
     name: ipa-config
   data:
     ldap.conf: |-
-        {{ load_file('ipa-ldap.conf') | indent(6) }}
+      {{ load_file('ipa-ldap.conf') | indent(6) }}
     default.conf: |-
-        {{ load_file('ipa-default.conf') | indent(6) }}
+      {{ load_file('ipa-default.conf') | indent(6) }}
     ca.crt: |-
-        {{ ipa_ca_cert | indent(6) }}
+      {{ ipa_ca_cert | indent(6) }}
