@@ -230,7 +230,11 @@
   failed_when: "'already exists' not in create_output.stderr and create_output.rc != 0"
 
 - name: Create the noggin privilege
-  command: ipa privilege-add "Self-service Portal Administrators"
+  command:
+    argv:
+      - ipa
+      - privilege-add
+      - Self-service Portal Administrators
   tags:
   - ipa/server
   - config
@@ -240,14 +244,17 @@
   failed_when: "'already exists' not in output.stdout and output.rc != 0"
 
 - name: Setup the noggin privilege
-  command: ipa privilege-add-permission
-           "Self-service Portal Administrators"
-           --permissions="System: Modify Users"
-           --permissions="System: Change User password"
-           --permissions="System: Add Stage User"
-           --permissions="System: Read Stage Users"
-           --permissions="System: Modify Stage User"
-           --permissions="System: Modify User RDN"
+  command:
+    argv:
+      - ipa
+      - privilege-add-permission
+      - Self-service Portal Administrators
+      - --permissions=System: Modify Users
+      - --permissions=System: Change User password
+      - --permissions=System: Add Stage User
+      - --permissions=System: Read Stage Users
+      - --permissions=System: Modify Stage User
+      - --permissions=System: Modify User RDN
   tags:
   - ipa/server
   - config
@@ -257,7 +264,11 @@
   failed_when: "'Number of permissions added 0' not in output.stdout and output.rc != 0"
 
 - name: Create the noggin role
-  command: ipa role-add "Self-service Portal Administrator"
+  command:
+    argv:
+      - ipa
+      - role-add
+      - Self-service Portal Administrator
   tags:
   - ipa/server
   - config
@@ -267,7 +278,12 @@
   failed_when: "'already exists' not in output.stdout and output.rc != 0"
 
 - name: Setup the noggin role
-  command: ipa role-add-privilege "Self-service Portal Administrator" --privileges="Self-service Portal Administrators"
+  command:
+    argv:
+      - ipa
+      - role-add-privilege
+      - Self-service Portal Administrator
+      - --privileges=Self-service Portal Administrators
   tags:
   - ipa/server
   - config
@@ -277,7 +293,12 @@
   failed_when: "'Number of privileges added 0' not in output.stdout and output.rc != 0"
 
 - name: Give noggin the appropriate role
-  command: ipa role-add-member "Self-service Portal Administrator" --user=noggin
+  command:
+    argv:
+      - ipa
+      - role-add-member
+      - Self-service Portal Administrator
+      - --user=noggin
   tags:
   - ipa/server
   - config
