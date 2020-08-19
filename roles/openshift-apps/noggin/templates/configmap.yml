@@ -9,7 +9,6 @@ items:
   kind: ConfigMap
   metadata:
     name: noggin-config
-    namespace: aaa
     labels:
       app: noggin
   data:
@@ -22,7 +21,6 @@ items:
   kind: ConfigMap
   metadata:
     name: wsgi-script
-    namespace: aaa
     labels:
       app: noggin
   data:
@@ -34,7 +32,6 @@ items:
   kind: ConfigMap
   metadata:
     name: fedora-messaging-config
-    namespace: aaa
     labels:
       app: noggin
   data:
@@ -45,7 +42,6 @@ items:
   kind: ConfigMap
   metadata:
     name: fedora-messaging-tls
-    namespace: aaa
     labels:
       app: noggin
   data:
@@ -60,7 +56,6 @@ items:
   kind: ConfigMap
   metadata:
     name: ipa-config
-    namespace: aaa
   data:
     ldap.conf: |-
         {{ load_file('ipa-ldap.conf') | indent(6) }}

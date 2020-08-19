@@ -2,7 +2,6 @@ apiVersion: apps.openshift.io/v1
 kind: DeploymentConfig
 metadata:
   name: noggin
-  namespace: aaa
   labels:
     app: noggin
 spec:
@@ -117,6 +116,5 @@ spec:
       from:
         kind: ImageStreamTag
         name: noggin:latest
-        namespace: aaa
     type: ImageChange
   - type: ConfigChange

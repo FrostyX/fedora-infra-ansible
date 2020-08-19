@@ -2,7 +2,6 @@ apiVersion: build.openshift.io/v1
 kind: BuildConfig
 metadata:
   name: noggin
-  namespace: aaa
   labels:
     app: noggin
     build: noggin
