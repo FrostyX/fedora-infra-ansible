@@ -36,14 +36,20 @@ for feed in map(feedparser.parse, FedMag):
     <div class="row">
 """
     cnt = 0
-    # Getting at least 4 items in case of some python exceptions.
+    # Getting at least 6 items in case of some python exceptions.
     for item in feed["items"][:6]:
         if int(cnt) % 2 == 0:
             HTML += u"""
     <div class="col-sm-6 blog-headlines">
     """
         item.title = item.title.replace("&", "&#38;")
-        author, title = item.title.split(':', 1)
+        # If a blog post doesn't have a title for some reason, it breaks the way
+        # we try to parse out the author and title. Let's say it's untitled in
+        # order for it to appear on the page without breaking the script.
+        if ":" in item.title:
+            author, title = item.title.split(':', 1)
+        else:
+            author, title = item.title, "(untitled post)"
         link = item.links[0]['href']
         # Remove image tag from beginning
         try:
