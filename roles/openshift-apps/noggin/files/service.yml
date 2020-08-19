@@ -6,7 +6,7 @@ metadata:
     app: noggin
 spec:
   ports:
-    - name: noggin-web
+    - name: web
       port: 8080
       targetPort: 8080
   selector:
