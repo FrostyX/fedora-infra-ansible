@@ -189,7 +189,7 @@ def main(root, link_hashtype, perform=False):
                     segments = new_path.split('/')
 
                     for i in range(1, len(segments) + 1):
-                        os.chown('/'.join(segments[:i], ownerid, groupid))
+                        os.chown('/'.join(segments[:i]), ownerid, groupid)
 
 
 if __name__ == '__main__':
