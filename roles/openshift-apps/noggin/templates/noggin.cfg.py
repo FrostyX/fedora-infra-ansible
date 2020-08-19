@@ -34,4 +34,4 @@ THEME = "fas"
 FREEIPA_ADMIN_PASSWORD = from_file('/etc/noggin-secrets/ipa-admin')
 FERNET_SECRET = from_file('/etc/noggin-secrets/fernet').encode('utf-8')
 SECRET_KEY = from_file('/etc/noggin-secrets/session').encode('utf-8')
-MAIL_PASSWORD = from_file('/etc/noggin-secrets/smtp')
+#MAIL_PASSWORD = from_file('/etc/noggin-secrets/smtp')
