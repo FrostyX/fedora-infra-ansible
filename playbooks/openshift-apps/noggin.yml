@@ -18,8 +18,9 @@
     register: ipa_ca_cert
 
   roles:
-  - role: rabbit/user
-    username: "noggin{{ env_suffix }}"
+  # RabbitMQ is not redeployed in staging yet
+  # - role: rabbit/user
+  #   username: "noggin{{ env_suffix }}"
 
   - role: openshift/project
     app: noggin
