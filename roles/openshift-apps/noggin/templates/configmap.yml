@@ -48,4 +48,4 @@ items:
     default.conf: |-
         {{ load_file('ipa-default.conf') | indent(6) }}
     ca.crt: |-
-        {{ ipa_ca_cert | indent(6) }}
+        {{ ipa_ca_cert['content'] | indent(6) }}
