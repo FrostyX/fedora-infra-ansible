@@ -18,7 +18,7 @@
     register: ipa_ca_cert_var
   - name: Register the IPA CA cert in a fact
     set_fact:
-      ipa_ca_cert: {{ ipa_ca_cert_var.content }}
+      ipa_ca_cert: "{{ ipa_ca_cert_var.content }}"
 
   roles:
   # RabbitMQ is not redeployed in staging yet
