@@ -142,7 +142,7 @@ for line in lines:
                 files=files,
                 total=total,
             ),
-            rev=rev,
+            rev=str(rev),
             path=abspath,
             repo=repo_name,
             namespace=namespace,
