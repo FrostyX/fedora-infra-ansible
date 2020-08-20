@@ -17,7 +17,7 @@
 
   - role: openshift/project
     app: noggin
-    description: noggin
+    description: "Self-service account portal"
     appowners:
     - abompard
     - pingou
@@ -26,7 +26,7 @@
     when: env == "production"
   - role: openshift/project
     app: noggin
-    description: noggin
+    description: "Self-service account portal"
     appowners:
     - abompard
     - pingou
