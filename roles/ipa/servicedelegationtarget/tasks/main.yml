@@ -27,7 +27,7 @@
   register: add_member_result
   check_mode: no
   changed_when: "'Number of members added 1' in add_member_result.stdout"
-  failed_when: "not ('Number of members added 1' in add_member_result.stdout or 'Number of members added 0' in add_member_result.stderr)"
+  failed_when: "not ('Number of members added 1' in add_member_result.stdout or 'Number of members added 0' in add_member_result.stdout)"
   tags:
   - config
   - krb5
