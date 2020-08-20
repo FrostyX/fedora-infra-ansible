@@ -41,7 +41,7 @@
   - role: ipa/servicedelegationtarget
     name: ipa-http
     members:
-      - host: {{ ipa_server }}
+      - host: "{{ ipa_server }}"
         service: HTTP
   - role: ipa/servicedelegationrule
     name: fasjson
