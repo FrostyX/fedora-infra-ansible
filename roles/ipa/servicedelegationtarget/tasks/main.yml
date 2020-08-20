@@ -11,7 +11,7 @@
 
 - name: Create servicedelegationtarget entry
   delegate_to: "{{ ipa_server }}"
-  command: ipa servicedelegationtarget-add {{name}}-delegation-targets
+  command: ipa servicedelegationtarget-add {{targetname}}-delegation-targets
   register: add_result
   check_mode: no
   changed_when: "'Added service delegation target' in add_result.stdout"
@@ -22,7 +22,7 @@
 
 - name: Add servicedelegationtarget members
   delegate_to: "{{ ipa_server }}"
-  command: ipa servicedelegationtarget-add-member {{name}}-delegation-targets --principals={{item.service}}/{{item.host}}@{{ipa_realm}}
+  command: ipa servicedelegationtarget-add-member {{targetname}}-delegation-targets --principals={{item.service}}/{{item.host}}@{{ipa_realm}}
   loop: "{{ members }}"
   register: add_member_result
   check_mode: no

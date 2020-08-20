@@ -39,11 +39,11 @@
 
   # Setup kerberos delegation
   - role: ipa/servicedelegationtarget
-    name: ipa-http
+    targetname: ipa-http
     members:
     - { host: "{{ ipa_server }}", service: "HTTP" }
   - role: ipa/servicedelegationrule
-    name: fasjson
+    rulename: fasjson
     members:
     - { host: "fasjson{{ env_suffix }}.fedoraproject.org", service: "HTTP" }
     targets:

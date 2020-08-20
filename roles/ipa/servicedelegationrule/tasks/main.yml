@@ -11,7 +11,7 @@
 
 - name: Create servicedelegationrule entry
   delegate_to: "{{ ipa_server }}"
-  command: ipa servicedelegationrule-add {{name}}-delegation
+  command: ipa servicedelegationrule-add {{rulename}}-delegation
   register: add_result
   check_mode: no
   changed_when: "'Added service delegation rule' in add_result.stdout"
@@ -22,7 +22,7 @@
 
 - name: Add servicedelegationrule members
   delegate_to: "{{ ipa_server }}"
-  command: ipa servicedelegationrule-add-member {{name}}-delegation --principals={{item.service}}/{{item.host}}@{{ipa_realm}}
+  command: ipa servicedelegationrule-add-member {{rulename}}-delegation --principals={{item.service}}/{{item.host}}@{{ipa_realm}}
   loop: "{{ members }}"
   register: add_member_result
   check_mode: no
@@ -34,7 +34,7 @@
 
 - name: Add servicedelegationrule targets
   delegate_to: "{{ ipa_server }}"
-  command: ipa servicedelegationrule-add-target {{name}}-delegation --servicedelegationtargets={{item}}-delegation-targets
+  command: ipa servicedelegationrule-add-target {{rulename}}-delegation --servicedelegationtargets={{item}}-delegation-targets
   loop: "{{ targets }}"
   register: add_target_result
   check_mode: no
