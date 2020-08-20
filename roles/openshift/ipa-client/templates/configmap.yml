@@ -6,8 +6,8 @@ metadata:
   name: ipa-client-config
 data:
   ldap.conf: |-
-    {{ load_file('ldap.conf') | indent(6) }}
+    {{ load_file('ldap.conf') | indent(4) }}
   default.conf: |-
-    {{ load_file('default.conf') | indent(6) }}
+    {{ load_file('default.conf') | indent(4) }}
   ca.crt: |-
-    {{ ipa_ca_cert | indent(6) }}
+    {{ ipa_ca_cert | indent(4) }}
