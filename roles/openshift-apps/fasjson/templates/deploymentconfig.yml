@@ -68,10 +68,10 @@ spec:
       - name: fasjson-config-volume
         configMap:
           name: fasjson-config
-      # - name: keytab-volume-host
+      # - name: keytab-host-volume
       #   secret:
       #     secretName: fasjson-keytab-host
-      - name: keytab-volume-http
+      - name: keytab-http-volume
         secret:
           secretName: fasjson-keytab-http
       - name: krb-config-volume
