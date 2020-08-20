@@ -1,0 +1,19 @@
+- name: Get the IPA CA cert
+  slurp:
+    src: /etc/ipa/ca.crt
+  delegate_to: "{{ ipa_server }}"
+  register: ipa_ca_cert_var
+
+- name: Register the IPA CA cert in a fact
+  set_fact:
+    ipa_ca_cert: "{{ ipa_ca_cert_var.content | b64decode }}"
+
+- name: Copy ipa config template to temporary file
+  template:
+    src: "{{roles_path}}/openshift/ipa-client/templates/configmap.yml"
+    dest: "/etc/openshift_apps/{{app}}/configmap-ipa-client.yml"
+  register: object_template
+
+- name: Call `oc apply` on the copied file
+  shell: oc -n {{app}} apply -f /etc/openshift_apps/{{app}}/configmap-ipa-client.yml
+  when: object_template.changed or object_template_fullpath.changed or object_file.changed

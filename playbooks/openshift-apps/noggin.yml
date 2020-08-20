@@ -10,16 +10,6 @@
 
   vars:
 
-  pre_tasks:
-  - name: Get the IPA CA cert
-    slurp:
-      src: /etc/ipa/ca.crt
-    delegate_to: "{{ ipa_server }}"
-    register: ipa_ca_cert_var
-  - name: Register the IPA CA cert in a fact
-    set_fact:
-      ipa_ca_cert: "{{ ipa_ca_cert_var.content | b64decode }}"
-
   roles:
   # RabbitMQ is not redeployed in staging yet
   # - role: rabbit/user
@@ -65,30 +55,40 @@
   - role: openshift/imagestream
     app: noggin
     imagename: noggin
+
   - role: openshift/object
     app: noggin
     template: buildconfig.yml
     objectname: buildconfig.yml
+
   - role: openshift/object
     app: noggin
     template: configmap.yml
     objectname: configmap.yml
+
+  - role: openshift/ipa-client
+    app: noggin
+
   - role: openshift/object
     app: noggin
     file: service.yml
     objectname: service.yml
+
   - role: openshift/object
     app: noggin
     template: route.yml
     objectname: route.yml
+
   - role: openshift/object
     app: noggin
     template: secrets.yml
     objectname: secrets.yml
+
   - role: openshift/object
     app: noggin
     template: secret-webhook.yml
     objectname: secret-webhook.yml
+
   - role: openshift/object
     app: noggin
     template: deploymentconfig.yml

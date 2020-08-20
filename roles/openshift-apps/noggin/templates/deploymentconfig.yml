@@ -107,7 +107,7 @@ spec:
           secretName: fedora-messaging-key
       - name: ipa-config-volume
         configMap:
-          name: ipa-config
+          name: ipa-client-config
   triggers:
   - imageChangeParams:
       automatic: true
