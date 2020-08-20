@@ -31,10 +31,10 @@ spec:
         ports:
         - containerPort: 8080
         volumeMounts:
-        - name: keytab-host-volume
-          mountPath: /etc/keytabs/host
-          subPath: host
-          readOnly: true
+        #- name: keytab-host-volume
+        #  mountPath: /etc/keytabs/host
+        #  subPath: host
+        #  readOnly: true
         - name: keytab-http-volume
           mountPath: /etc/keytabs/http
           subPath: http
@@ -68,9 +68,9 @@ spec:
       - name: fasjson-config-volume
         configMap:
           name: fasjson-config
-      - name: keytab-volume-host
-        secret:
-          secretName: fasjson-keytab-host
+      # - name: keytab-volume-host
+      #   secret:
+      #     secretName: fasjson-keytab-host
       - name: keytab-volume-http
         secret:
           secretName: fasjson-keytab-http
