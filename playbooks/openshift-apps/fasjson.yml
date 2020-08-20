@@ -41,16 +41,14 @@
   - role: ipa/servicedelegationtarget
     name: ipa-http
     members:
-      - host: "{{ ipa_server }}"
-        service: HTTP
+    - { host: "{{ ipa_server }}", service: "HTTP" }
   - role: ipa/servicedelegationrule
     name: fasjson
     members:
-      - host: "fasjson{{ env_suffix }}.fedoraproject.org"
-        service: HTTP
+    - { host: "fasjson{{ env_suffix }}.fedoraproject.org", service: "HTTP" }
     targets:
-      - ipa-http
-      - ipa-ldap
+    - ipa-http
+    - ipa-ldap
     # The ipa-ldap delegation target is declared during IPA installation
 
   # Keytabs
