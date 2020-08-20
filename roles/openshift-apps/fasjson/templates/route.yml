@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: fasjson-web
+  labels:
+    app: fasjson
+spec:
+  host: fasjson{{ env_suffix }}.fedoraproject.org
+  port:
+    targetPort: web
+  to:
+    kind: Service
+    name: fasjson-web
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

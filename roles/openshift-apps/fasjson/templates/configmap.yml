@@ -1,0 +1,26 @@
+{% macro load_file(filename) %}{% include filename %}{%- endmacro -%}
+---
+apiVersion: v1
+kind: List
+metadata: {}
+items:
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: fasjson-config
+    labels:
+      app: fasjson
+  data:
+    start.sh: |-
+      {{ load_file('start.sh') | indent(6) }}
+    httpd.conf: |-
+      {{ load_file('httpd.conf') | indent(6) }}
+- apiVersion: v1
+  kind: ConfigMap
+  metadata:
+    name: krb5-config
+    labels:
+      app: fasjson
+  data:
+    krb5.conf: |-
+      {{ load_file('krb5.conf') | indent(6) }}

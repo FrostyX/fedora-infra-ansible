@@ -1,0 +1,94 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: fasjson
+  labels:
+    app: fasjson
+spec:
+  replicas: 1
+  selector:
+    app: fasjson
+    deploymentconfig: fasjson
+  strategy:
+    type: Rolling
+    activeDeadlineSeconds: 21600
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: fasjson
+        deploymentconfig: fasjson
+    spec:
+      containers:
+      - name: fasjson
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080
+        volumeMounts:
+        - name: keytab-host-volume
+          mountPath: /etc/keytabs/host
+          subPath: host
+          readOnly: true
+        - name: keytab-http-volume
+          mountPath: /etc/keytabs/http
+          subPath: http
+          readOnly: true
+        - name: krb-config-volume
+          mountPath: /etc/krb5
+          readOnly: true
+        - name: fasjson-config-volume
+          mountPath: /etc/fasjson
+          readOnly: true
+        - name: ipa-config-volume
+          mountPath: /etc/ipa
+          readOnly: true
+        - name: httpdir
+          mountPath: /httpdir
+        livenessProbe:
+          timeoutSeconds: 10
+          initialDelaySeconds: 10
+          periodSeconds: 60
+          httpGet:
+            path: /healthz/live
+            port: 8080
+        readinessProbe:
+          timeoutSeconds: 10
+          initialDelaySeconds: 5
+          periodSeconds: 60
+          httpGet:
+            path: /healthz/ready
+            port: 8080
+      volumes:
+      - name: fasjson-config-volume
+        configMap:
+          name: fasjson-config
+      - name: keytab-volume-host
+        secret:
+          secretName: fasjson-keytab-host
+      - name: keytab-volume-http
+        secret:
+          secretName: fasjson-keytab-http
+      - name: krb-config-volume
+        configMap:
+          name: krb5-config
+      - name: ipa-config-volume
+        configMap:
+          name: ipa-config
+      - name: httpdir
+        emptyDir: {}
+  triggers:
+  - imageChangeParams:
+      automatic: true
+      containerNames:
+      - fasjson
+      from:
+        kind: ImageStreamTag
+        name: fasjson:latest
+    type: ImageChange
+  - type: ConfigChange

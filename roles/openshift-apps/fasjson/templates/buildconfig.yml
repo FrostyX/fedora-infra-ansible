@@ -1,0 +1,30 @@
+{% macro load_file(filename) %}{% include filename %}{%- endmacro -%}
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: fasjson
+  labels:
+    app: fasjson
+    build: fasjson
+spec:
+  runPolicy: Serial
+  source:
+    type: Dockerfile
+    dockerfile: |-
+      {{ load_file('Dockerfile') | indent(6) }}
+  strategy:
+    type: Docker
+  output:
+    to:
+      kind: ImageStreamTag
+      name: fasjson:latest
+  triggers:
+  - type: ImageChange
+  - type: GitHub
+{% if fasjson_stg_github_secret is defined and env == 'staging' %}
+    github:
+      secret: "{{ fasjson_stg_github_secret }}"
+{% elif fasjson_github_secret is defined and env == 'production' %}
+    github:
+      secret: "{{ fasjson_github_secret }}"
+{% endif %}

@@ -1,0 +1,109 @@
+- name: make the app be real
+  hosts: os_masters[0]:os_masters_stg[0]
+  user: root
+  gather_facts: False
+
+  vars_files:
+    - /srv/web/infra/ansible/vars/global.yml
+    - "/srv/private/ansible/vars.yml"
+    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  vars:
+
+  roles:
+  - role: openshift/project
+    app: fasjson
+    description: "Accounts API"
+    appowners:
+    - abompard
+    - pingou
+    tags:
+      - apply-appowners
+    when: env == "production"
+  - role: openshift/project
+    app: fasjson
+    description: "Accounts API"
+    appowners:
+    - abompard
+    - pingou
+    - nils
+    - ryanlerch
+    tags:
+      - apply-appowners
+    when: env == "staging"
+
+  # Declare the service in IPA
+  - role: ipa/service
+    host: "fasjson{{ env_suffix }}.fedoraproject.org"
+    service: HTTP
+
+  # Setup kerberos delegation
+  - role: ipa/servicedelegationtarget
+    name: ipa-http
+    members:
+      - host: {{ ipa_server }}
+        service: HTTP
+  - role: ipa/servicedelegationrule
+    name: fasjson
+    members:
+      - host: "fasjson{{ env_suffix }}.fedoraproject.org"
+        service: HTTP
+    targets:
+      - ipa-http
+      - ipa-ldap
+    # The ipa-ldap delegation target is declared during IPA installation
+
+  # Keytabs
+  - role: openshift/keytab
+    app: fasjson
+    key: host
+    secret_name: fasjson-keytab-host
+    service: host
+    host: "fasjson{{ env_suffix }}.fedoraproject.org"
+  - role: openshift/keytab
+    app: fasjson
+    key: http
+    secret_name: fasjson-keytab-http
+    service: HTTP
+    host: "fasjson{{ env_suffix }}.fedoraproject.org"
+
+  - role: openshift/imagestream
+    app: fasjson
+    imagename: fasjson
+
+  - role: openshift/object
+    app: fasjson
+    template: buildconfig.yml
+    objectname: buildconfig.yml
+
+  - role: openshift/object
+    app: fasjson
+    template: configmap.yml
+    objectname: configmap.yml
+
+  - role: openshift/ipa-client
+    app: fasjson
+
+  - role: openshift/object
+    app: fasjson
+    file: service.yml
+    objectname: service.yml
+
+  - role: openshift/object
+    app: fasjson
+    template: route.yml
+    objectname: route.yml
+
+  - role: openshift/object
+    app: fasjson
+    template: secret-webhook.yml
+    objectname: secret-webhook.yml
+
+  - role: openshift/object
+    app: fasjson
+    template: deploymentconfig.yml
+    objectname: deploymentconfig.yml
+
+  - role: openshift/start-build
+    app: fasjson
+    buildname: fasjson

@@ -1,0 +1,14 @@
+apiVersion: v1
+kind: Service
+metadata:
+  name: fasjson-web
+  labels:
+    app: fasjson
+spec:
+  ports:
+    - name: web
+      port: 8080
+      targetPort: 8080
+  selector:
+    app: fasjson
+    deploymentconfig: fasjson
