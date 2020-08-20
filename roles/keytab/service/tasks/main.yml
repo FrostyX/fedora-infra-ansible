@@ -9,6 +9,24 @@
   - config
   - krb5
 
+- name: Create host entry
+  include_role:
+    name: ipa/host
+  tags:
+  - keytab
+  - config
+  - krb5
+  when: not keytab_status.stat.exists and service == "host"
+
+- name: Create service entry
+  include_role:
+    name: ipa/service
+  tags:
+  - keytab
+  - config
+  - krb5
+  when: not keytab_status.stat.exists and service != "host"
+
 - name: Get admin ticket
   delegate_to: "{{ ipa_server }}"
   shell: echo "{{ipa_admin_password}}" | kinit admin
@@ -19,32 +37,6 @@
   - config
   - krb5
   when: not keytab_status.stat.exists
-
-- name: Create host entry
-  delegate_to: "{{ ipa_server }}"
-  command: ipa host-add --force {{host}}
-  register: host_add_result
-  check_mode: no
-  changed_when: "'Added host' in host_add_result.stdout"
-  failed_when: "not ('Added host' in host_add_result.stdout or 'already exists' in host_add_result.stderr)"
-  tags:
-  - keytab
-  - config
-  - krb5
-  when: not keytab_status.stat.exists
-
-- name: Create service entry
-  delegate_to: "{{ ipa_server }}"
-  command: ipa service-add --force {{service}}/{{host}}
-  register: service_add_result
-  check_mode: no
-  changed_when: "'Added service' in service_add_result.stdout"
-  failed_when: "not ('Added service' in service_add_result.stdout or 'already exists' in service_add_result.stderr)"
-  tags:
-  - keytab
-  - config
-  - krb5
-  when: not keytab_status.stat.exists and service != "host"
 
 - name: Grant host access to keytab
   delegate_to: "{{ ipa_server }}"

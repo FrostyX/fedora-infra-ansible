@@ -1,0 +1,27 @@
+---
+- name: Get admin ticket
+  delegate_to: "{{ ipa_server }}"
+  shell: echo "{{ipa_admin_password}}" | kinit admin
+  check_mode: no
+  changed_when: "1 != 1"
+  tags:
+  - config
+  - krb5
+
+- name: Create host entry
+  delegate_to: "{{ ipa_server }}"
+  command: ipa host-add --force {{host}}
+  register: host_add_result
+  check_mode: no
+  changed_when: "'Added host' in host_add_result.stdout"
+  failed_when: "not ('Added host' in host_add_result.stdout or 'already exists' in host_add_result.stderr)"
+  tags:
+  - config
+  - krb5
+
+- name: Destroy admin ticket
+  delegate_to: "{{ ipa_server }}"
+  command: kdestroy -A
+  tags:
+  - config
+  - krb5
