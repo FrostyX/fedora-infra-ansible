@@ -43,6 +43,10 @@
       - "org.fedoraproject.*.pungi.compose.status.change"
       # pdc_modules
       - "org.fedoraproject.*.mbs.module.state.change"
+      # check_email_overrides
+      - "org.fedoraproject.*.toddlers.trigger.check_email_overrides"
+      # clean_retired_packages
+      - "org.fedoraproject.*.toddlers.trigger.clean_retired_packages"
     thresholds:
       warning: 10
       critical: 100
