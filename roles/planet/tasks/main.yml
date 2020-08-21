@@ -17,10 +17,11 @@
   tags:
     - planet_server
 
-- name: install the planet packages
+- name: install the planet packages (and fedora-messaging)
   package:  pkg={{item}} state=present
   with_items:
     - venus
+    - fedora-messaging
   tags:
     - planet_server
 
