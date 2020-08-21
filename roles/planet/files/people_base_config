@@ -11,6 +11,7 @@ log_level = ERROR
 date_format = %B %d, %Y %I:%M %p
 spider_threads = 20
 fedmsg_enabled = 1
+fedora_messaging_enabled = 1
 
 #
 #     [DEFAULT]
