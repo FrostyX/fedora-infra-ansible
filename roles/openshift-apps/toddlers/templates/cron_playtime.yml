@@ -103,3 +103,57 @@ spec:
           - name: fedora-messaging-cert-volume
             secret:
               secretName: toddlers-fedora-messaging-crt
+
+---
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: playtime-clean-retired-packages
+spec:
+  successfulJobsHistoryLimit: 3
+  failedJobsHistoryLimit: 3
+  concurrencyPolicy: Forbid
+  schedule: "0 8 1 * *"
+  startingDeadlineSeconds: 500
+  jobTemplate:
+    spec:
+      template:
+        metadata:
+          labels:
+            parent: "cron_playtime_toddlers"
+        spec:
+          restartPolicy: Never
+          containers:
+          - name: toddlers
+            image: docker-registry.default.svc:5000/toddlers/toddlers:latest
+            command: ["/usr/bin/python3", "/code/toddlers/playtime.py", "clean_retired_packages"]
+            env:
+              - name: PYTHONPATH
+                value: "/code"
+            volumeMounts:
+             - name: toddlers-secret-volume
+               mountPath: /etc/fedora-messaging
+               readOnly: true
+             - name: fedora-messaging-ca-volume
+               mountPath: /etc/pki/rabbitmq/ca
+               readOnly: true
+             - name: fedora-messaging-key-volume
+               mountPath: /etc/pki/rabbitmq/key
+               readOnly: true
+             - name: fedora-messaging-cert-volume
+               mountPath: /etc/pki/rabbitmq/cert
+               readOnly: true
+          volumes:
+          - name: toddlers-secret-volume
+            secret:
+              secretName: toddlers-secret
+          - name: fedora-messaging-ca-volume
+            secret:
+              secretName: toddlers-fedora-messaging-ca
+          - name: fedora-messaging-key-volume
+            secret:
+             secretName: toddlers-fedora-messaging-key
+          - name: fedora-messaging-cert-volume
+            secret:
+              secretName: toddlers-fedora-messaging-crt
+
