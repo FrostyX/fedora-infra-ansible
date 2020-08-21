@@ -14,10 +14,9 @@ Reassigning to the new maintainer of this component.
     [products.Fedora]
         namespace = "rpms"
         versions = ["rawhide", "33", "32", "31"]
-    [products."Fedora Container"]
+    [products."Fedora Container Images"]
         namespace = "container"
         versions = ["rawhide", "33", "32", "31"]
-        bz_product_name = "Fedora Container Images"
     [products."Fedora Modules"]
         namespace = "modules"
         versions = []
