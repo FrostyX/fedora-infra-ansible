@@ -124,7 +124,7 @@ sysadmin-main: sysadmin-main-members
 # For vendors to email us
 vendor-support: vendor-support-members
 
-cpe-managers: pfrields@redhat.com,lgriffin@redhat.com,jperrin@redhat.com
+cpe-managers: pfrields@redhat.com,lgriffin@redhat.com,ancarrol@redhat.com,smattejiet@redhat.com
 
 
 ## Cruft aliases because we used cvs
