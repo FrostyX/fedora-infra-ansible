@@ -627,9 +627,6 @@ os-node05.stg.iad2.fedoraproject.org
 # osbs-aarch64-node01.stg.iad2.fedoraproject.org
 # osbs-aarch64-node02.stg.iad2.fedoraproject.org
 # packages03.stg.iad2.fedoraproject.org
-# pdc-backend01.stg.iad2.fedoraproject.org
-# pdc-backend02.stg.iad2.fedoraproject.org
-# pdc-backend03.stg.iad2.fedoraproject.org
 # pdc-web01.stg.iad2.fedoraproject.org
 # pkgs01.stg.iad2.fedoraproject.org
 proxy01.stg.iad2.fedoraproject.org
@@ -813,16 +810,6 @@ pdc-web02.iad2.fedoraproject.org
 
 [pdc_web_stg]
 # pdc-web01.stg.iad2.fedoraproject.org
-
-[pdc_backend]
-pdc-backend01.iad2.fedoraproject.org
-pdc-backend02.iad2.fedoraproject.org
-pdc-backend03.iad2.fedoraproject.org
-
-[pdc_backend_stg]
-# pdc-backend01.stg.iad2.fedoraproject.org
-# pdc-backend02.stg.iad2.fedoraproject.org
-# pdc-backend03.stg.iad2.fedoraproject.org
 
 [maintainer_test]
 f31-test.fedorainfracloud.org
@@ -1383,9 +1370,6 @@ osbs-control01.iad2.fedoraproject.org
 osbs-master01.iad2.fedoraproject.org
 osbs-node01.iad2.fedoraproject.org
 osbs-node02.iad2.fedoraproject.org
-pdc-backend01.iad2.fedoraproject.org
-pdc-backend02.iad2.fedoraproject.org
-pdc-backend03.iad2.fedoraproject.org
 pdc-web01.iad2.fedoraproject.org
 pdc-web02.iad2.fedoraproject.org
 pkgs01.iad2.fedoraproject.org
