@@ -1,6 +1,3 @@
-[dbgserver_stg]
-# dbgserver01.stg.iad2.fedoraproject.org
-
 [rabbitmq]
 rabbitmq01.iad2.fedoraproject.org
 rabbitmq02.iad2.fedoraproject.org
@@ -10,6 +7,9 @@ rabbitmq03.iad2.fedoraproject.org
 # rabbitmq01.stg.iad2.fedoraproject.org
 # rabbitmq02.stg.iad2.fedoraproject.org
 # rabbitmq03.stg.iad2.fedoraproject.org
+
+[dbgserver_stg]
+# dbgserver01.stg.iad2.fedoraproject.org
 
 [releng_compose]
 compose-x86-01.iad2.fedoraproject.org
@@ -738,7 +738,6 @@ busgateway
 fedimg
 mbs_backend
 notifs_backend
-pdc_backend
 pkgs
 
 [fedmsg_hubs_stg:children]
@@ -747,7 +746,6 @@ busgateway_stg
 fedimg_stg
 mbs_backend_stg
 notifs_backend_stg
-pdc_backend_stg
 pkgs_stg
 
 [fedmsg_ircs:children]
