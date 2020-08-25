@@ -65,6 +65,7 @@
     - import_role: name=fas_client
     - import_role: name=rkhunter
     - import_role: name=nagios_client
+    - import_role: name=openvpn/client
     - import_role: name=sudo
 
     - import_tasks: "{{ tasks_path }}/2fa_client.yml"
