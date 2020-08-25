@@ -1,5 +1,9 @@
 - debug: msg="vm_name={{ vm_name }}"
 
+- name: random subnet to overcome datacenter failures
+  set_fact: subnet_id={{ item }}
+  with_random_choice: "{{ aws_arch_subnets[arch] }}"
+
 - name: Launch instance
   ec2:
     key_name: "{{ keypair }}"
@@ -9,7 +13,7 @@
     wait: true
     region: "{{ aws_region }}"
     # both x86_64 and aarch64 arches can be allocated in us-east-1c
-    vpc_subnet_id: subnet-0995f6a466849f4c3
+    vpc_subnet_id: "{{ subnet_id }}"
     assign_public_ip: yes
     instance_tags:
       FedoraGroup: copr
