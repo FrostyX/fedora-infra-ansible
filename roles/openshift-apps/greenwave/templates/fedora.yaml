@@ -84,6 +84,9 @@ rules:
 --- !Policy
 id: "no_requirements_testing"
 product_versions:
+  - fedora-33-modular
+  - fedora-33-containers
+  - fedora-33-flatpaks
   - fedora-32-modular
   - fedora-32-containers
   - fedora-32-flatpaks
@@ -107,6 +110,9 @@ rules: []
 --- !Policy
 id: "no_requirements_for_stable"
 product_versions:
+  - fedora-33-modular
+  - fedora-33-containers
+  - fedora-33-flatpaks
   - fedora-32-modular
   - fedora-32-containers
   - fedora-32-flatpaks
@@ -133,6 +139,7 @@ id: "openqa_release_critical_tasks_for_testing"
 product_versions:
   - fedora-rawhide
   - fedora-eln
+  - fedora-33
   - fedora-32
   - fedora-31
   - fedora-30
@@ -147,6 +154,7 @@ id: "openqa_release_critical_tasks_for_stable"
 product_versions:
   - fedora-rawhide
   - fedora-eln
+  - fedora-33
   - fedora-32
   - fedora-31
   - fedora-30
