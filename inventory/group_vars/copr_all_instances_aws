@@ -1,17 +1,1 @@
-# Your requested instance type (a1.xlarge) is not supported in your requested Availability Zone (us-east-1a).
-# Your requested instance type (a1.xlarge) is not supported in your requested Availability Zone (us-east-1d).
-# Your requested instance type (a1.xlarge) is not supported in your requested Availability Zone (us-east-1f).
-
-aws_arch_subnets:
-  x86_64:
-    - subnet-0995f6a466849f4c3
-    - subnet-08cadf5a14b530ac4
-    - subnet-07b0b3168a353e3ee
-    - subnet-09c74a3e6420a206b
-    - subnet-01d4e967ab5e78005
-    - subnet-05437ac82d63b6ef5
-
-  aarch64:
-    - subnet-0995f6a466849f4c3
-    - subnet-08cadf5a14b530ac4
-    - subnet-07b0b3168a353e3ee
+# Put here configuration for all copr instances (production, devel, ...)
