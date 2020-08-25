@@ -27,16 +27,6 @@ spec:
         app: coreos-cincinnati
     spec:
       containers:
-        - name: "dumnati"
-          image: "docker-registry.default.svc:5000/coreos-cincinnati/fedora-coreos-cincinnati:dumnati-{{fcos_cincinnati_deploy_git_sha}}"
-          args: [
-            "/usr/local/bin/dumnati",
-            "-c", "/etc/cincinnati/graph-builder.toml",
-          ]
-          volumeMounts:
-            - name: "stub-config"
-              mountPath: "/etc/cincinnati/"
-              readOnly: true
         - name: "fcos-graph-builder"
           image: "docker-registry.default.svc:5000/coreos-cincinnati/fedora-coreos-cincinnati:dumnati-{{fcos_cincinnati_deploy_git_sha}}"
           args: [
