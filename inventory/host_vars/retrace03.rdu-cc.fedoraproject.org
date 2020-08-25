@@ -1,4 +1,5 @@
 ---
+datacenter: rdu-cc
 faf_server_name: retrace.fedoraproject.org/faf
 rs_use_faf_packages: true
 
