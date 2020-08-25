@@ -6,7 +6,6 @@
 
 ## COPR
 #copr-vmhost01.fedorainfracloud.org
-#retrace03.fedorainfracloud.org
 
 #[cloud_phx2_guests]
 #cloud-noc01.fedorainfracloud.org

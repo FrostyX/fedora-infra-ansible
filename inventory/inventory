@@ -21,8 +21,7 @@ compose-iot01.iad2.fedoraproject.org
 # composer.stg.iad2.fedoraproject.org
 
 [retrace]
-#retrace01.qa.fedoraproject.org
-#retrace03.fedorainfracloud.org
+retrace03.rdu-cc.fedoraproject.org
 
 [retrace_stg_aws]
 retrace-stg.aws.fedoraproject.org
