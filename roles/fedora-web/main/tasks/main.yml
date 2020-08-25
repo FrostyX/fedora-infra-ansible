@@ -38,7 +38,7 @@
     src={{item}} dest=/etc/httpd/conf.d/{{website}}/{{item}}
     owner=root group=root mode=0644
   with_items:
-  - sponsor.conf
+  - 'sponsor.conf'
   notify:
   - reload proxyhttpd
   tags:
