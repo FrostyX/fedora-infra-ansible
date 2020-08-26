@@ -151,16 +151,6 @@
   - cron
   - postgresql
 
-- name: Set up a cron job to clean long koji sessions on koji database server only
-  copy: >
-    src=koji-cleanup-sessions.cron
-    dest=/etc/cron.d/koji-cleanup-sessions.cron
-    state=absent
-  when: inventory_hostname.startswith('db-koji01')
-  tags:
-  - cron
-  - postgresql
-
 - name: install script to kill long running pgsql jobs
   copy: >
     src=kill_idle_xact_92.sh
