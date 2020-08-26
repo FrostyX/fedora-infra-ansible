@@ -5,7 +5,7 @@ dns: 10.3.163.33
 volgroup: /dev/vg_guests
 eth0_ip: 10.3.167.65
 #mac_address: 52:54:00:71:a6:eb
-vmhost: bvirthost01.stg.iad2.fedoraproject.org
+vmhost: bvmhost-x86-01.stg.iad2.fedoraproject.org
 datacenter: iad2
 
 ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-8-iad2
