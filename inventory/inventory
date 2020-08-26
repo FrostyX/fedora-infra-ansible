@@ -202,7 +202,7 @@ db-openqa01.iad2.fedoraproject.org
 # db-fas01.stg.iad2.fedoraproject.org
 # db01.stg.iad2.fedoraproject.org
 # db03.stg.iad2.fedoraproject.org
-# db-koji01.stg.iad2.fedoraproject.org
+db-koji01.stg.iad2.fedoraproject.org
 
 # clients that talk to the main postgres servers
 [postgres_clients]
@@ -216,11 +216,12 @@ db-openqa01.iad2.fedoraproject.org
 # busgateway01.stg.iad2.fedoraproject.org
 # datagrepper01.stg.iad2.fedoraproject.org
 # fedocal01.stg.iad2.fedoraproject.org
-# koji01.stg.iad2.fedoraproject.org
-# os-node01.stg.iad2.fedoraproject.org
-# os-node02.stg.iad2.fedoraproject.org
-# os-node03.stg.iad2.fedoraproject.org
-# os-node04.stg.iad2.fedoraproject.org
+koji01.stg.iad2.fedoraproject.org
+os-node01.stg.iad2.fedoraproject.org
+os-node02.stg.iad2.fedoraproject.org
+os-node03.stg.iad2.fedoraproject.org
+os-node04.stg.iad2.fedoraproject.org
+os-node05.stg.iad2.fedoraproject.org
 
 [download_iad2]
 dl01.iad2.fedoraproject.org
@@ -265,7 +266,7 @@ koji01.iad2.fedoraproject.org
 koji02.iad2.fedoraproject.org
 
 [koji_stg]
-# koji01.stg.iad2.fedoraproject.org
+koji01.stg.iad2.fedoraproject.org
 
 [kojipkgs]
 kojipkgs01.iad2.fedoraproject.org
@@ -583,7 +584,7 @@ copr-fe-dev.aws.fedoraproject.org
 copr-keygen-dev.aws.fedoraproject.org
 # datagrepper01.stg.iad2.fedoraproject.org
 # db-fas01.stg.iad2.fedoraproject.org
-# db-koji01.stg.iad2.fedoraproject.org
+db-koji01.stg.iad2.fedoraproject.org
 # db01.stg.iad2.fedoraproject.org
 # db03.stg.iad2.fedoraproject.org
 # oci-candidate-registry01.stg.iad2.fedoraproject.org
@@ -593,7 +594,7 @@ copr-keygen-dev.aws.fedoraproject.org
 # fedocal01.stg.iad2.fedoraproject.org
 # github2fedmsg01.stg.iad2.fedoraproject.org
 ipa01.stg.iad2.fedoraproject.org
-# koji01.stg.iad2.fedoraproject.org
+koji01.stg.iad2.fedoraproject.org
 # mailman01.stg.iad2.fedoraproject.org
 # mbs-backend01.stg.iad2.fedoraproject.org
 # mbs-frontend01.stg.iad2.fedoraproject.org
