@@ -6,6 +6,13 @@
 # role only into the {{website}}/ folder for each site.
 
 # This is the only real work we do.
+
+- name: Ensure directory exists for redirect
+  file:
+    path: /etc/httpd/conf.d/{{website}}
+    state: directory
+    mode: '0744'
+
 - name: Copy over httpd redirectmatch file for {{shortname}}
   template: >
     src=redirectmatch.conf
