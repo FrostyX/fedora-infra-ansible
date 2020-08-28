@@ -1,4 +1,4 @@
-$MaxOpenFiles 16384
+$MaxOpenFiles 131072
 
 [Service]
-LimitNOFILE=16384
+LimitNOFILE=131072
