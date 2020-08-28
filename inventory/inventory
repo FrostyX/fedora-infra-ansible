@@ -511,6 +511,7 @@ proxies_internal
 
 [proxies_stg]
 proxy01.stg.iad2.fedoraproject.org
+proxy02.stg.iad2.fedoraproject.org
 
 [relvalconsumer_common]
 openqa01.iad2.fedoraproject.org
