@@ -72,8 +72,9 @@
   - clamav
   - planet
   - { role: letsencrypt, site_name: 'fedoraplanet.org' }
-  - fedmsg/base
   - git/server
+  - role: rabbit/user
+    username: "planet{{ env_suffix }}"
 
   - role: apache
 
