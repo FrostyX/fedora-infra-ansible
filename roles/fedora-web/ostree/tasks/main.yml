@@ -17,6 +17,20 @@
   tags:
   - fedora-web
   - ostree
+  when: env != 'staging'
+
+- name: make ostree dir
+  file: state=directory
+        path=/srv/web/ostree
+        owner=apache
+        group=apache
+        mode=2775
+        setype=httpd_sys_content_t
+        seuser=system_u
+  tags:
+  - fedora-web
+  - ostree
+  when: env == 'staging'
 
 - name: Copy over the static files
   copy: src={{item}} dest=/srv/web/ostree/{{item}} mode=0644
@@ -38,6 +52,20 @@
   tags:
   - fedora-web
   - ostree
+  when: env != 'staging'
+
+- name: make IoT ostree dir
+  file: state=directory
+        path=/srv/web/ostree/iot
+        owner=apache
+        group=apache
+        mode=2775
+        setype=httpd_sys_content_t
+        seuser=system_u
+  tags:
+  - fedora-web
+  - ostree
+  when: env == 'staging'
 
 - name: Copy over the static IoT files
   copy: src=iot_{{item}} dest=/srv/web/ostree/iot/{{item}} mode=0644

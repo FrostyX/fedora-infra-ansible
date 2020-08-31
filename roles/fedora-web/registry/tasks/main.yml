@@ -2,11 +2,25 @@
   file: state=directory path=/srv/web/registry-signatures owner=apache group=sysadmin-releng mode=2775 setype=httpd_sys_content_t seuser=system_u
   tags:
   - fedora-web
+  when: env != 'staging'
+
+- name: make registry-signatures dir
+  file: state=directory path=/srv/web/registry-signatures owner=apache group=apache mode=2775 setype=httpd_sys_content_t seuser=system_u
+  tags:
+  - fedora-web
+  when: env == 'staging'
 
 - name: make registry-index dir
   file: state=directory path=/srv/web/registry-index owner=apache group=sysadmin-releng mode=755 setype=httpd_sys_content_t seuser=system_u
   tags:
   - fedora-web
+  when: env != 'staging'
+
+- name: make registry-index dir
+  file: state=directory path=/srv/web/registry-index owner=apache group=apache mode=755 setype=httpd_sys_content_t seuser=system_u
+  tags:
+  - fedora-web
+  when: env == 'staging'
 
 - name: Copy over the Fedora Server CA cert
   copy: src="{{ private }}/files/fedora-ca.cert" dest=/etc/pki/httpd/fedora-server-ca.cert

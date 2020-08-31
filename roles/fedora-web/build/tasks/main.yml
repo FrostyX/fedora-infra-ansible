@@ -52,6 +52,13 @@
   file: state=directory path=/srv/web/fmw owner=apache group=sysadmin-releng mode=2775 setype=httpd_sys_content_t seuser=system_u
   tags:
   - fedora-web
+  when: env != 'staging'
+
+- name: make fmw dir
+  file: state=directory path=/srv/web/fmw owner=apache group=apache mode=2775 setype=httpd_sys_content_t seuser=system_u
+  tags:
+  - fedora-web
+  when: env == 'staging'
 
 - name: Copy syncStatic script (stg)
   when: env == "staging"
