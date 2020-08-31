@@ -76,14 +76,14 @@ spec:
           initialDelaySeconds: 5
           periodSeconds: 60
           httpGet:
-            path: /healthz/ready
+            path: /accounts/healthz/ready
             port: 8080
         livenessProbe:
           timeoutSeconds: 10
           initialDelaySeconds: 10
           periodSeconds: 60
           httpGet:
-            path: /healthz/live
+            path: /accounts/healthz/live
             port: 8080
       volumes:
       - name: noggin-config-volume
