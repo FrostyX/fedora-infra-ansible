@@ -5,11 +5,15 @@
 def from_file(path):
     return open(path, 'r').read().strip()
 
+# Deployed to a subpath
+APPLICATION_ROOT = '/accounts/'
+
 # IPA settings
 FREEIPA_SERVERS = ['{{ ipa_server }}']
 FREEIPA_CACERT = '/etc/ipa/ca.crt'
 
 # Cookies
+SESSION_COOKIE_NAME = 'noggin'
 SESSION_COOKIE_HTTPONLY = True
 SESSION_COOKIE_SECURE = True
 
