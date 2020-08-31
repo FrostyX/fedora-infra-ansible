@@ -256,6 +256,9 @@
       - "--permissions=System: Read Stage Users"
       - "--permissions=System: Modify Stage User"
       - "--permissions=System: Modify User RDN"
+      - "--permissions=System: Remove Stage User"
+      - "--permissions=System: Add Users"
+      - "--permissions=System: Add User to default group"
   tags:
   - ipa/server
   - config
