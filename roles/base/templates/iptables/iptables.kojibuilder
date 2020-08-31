@@ -78,10 +78,12 @@
 -A OUTPUT -p tcp -m tcp -d 10.3.163.76 --dport 443 -j ACCEPT
 -A OUTPUT -p tcp -m tcp -d 10.3.163.77 --dport 80 -j ACCEPT
 -A OUTPUT -p tcp -m tcp -d 10.3.163.77 --dport 443 -j ACCEPT
-# for 2 facter auth
--A OUTPUT -p tcp -m tcp -d 10.3.163.69 --dport 8443 -j ACCEPT
--A OUTPUT -p tcp -m tcp -d 10.3.163.70 --dport 8443 -j ACCEPT
--A OUTPUT -p tcp -m tcp -d 10.3.163.71 --dport 8443 -j ACCEPT
+# for 2 facter auth (fas-all)
+-A OUTPUT -p tcp -m tcp -d 10.3.163.74 --dport 8443 -j ACCEPT
+-A OUTPUT -p tcp -m tcp -d 10.3.163.75 --dport 8443 -j ACCEPT
+-A OUTPUT -p tcp -m tcp -d 10.3.163.76 --dport 8443 -j ACCEPT
+-A OUTPUT -p tcp -m tcp -d 10.3.163.77 --dport 8443 -j ACCEPT
+
 
 #nfs to vtap-fedora-nfs01.storage.phx2.redhat.com - a little to wide-open - but 
 # kinda necessary
