@@ -79,7 +79,7 @@
     routename: noggin
     host: "admin{{ env_suffix }}.fedoraproject.org"
     path: "/accounts"
-    serviceport: dynamic
+    serviceport: web
     servicename: noggin-web
     annotations:
       haproxy.router.openshift.io/timeout: 5m
