@@ -74,10 +74,15 @@
     file: service.yml
     objectname: service.yml
 
-  - role: openshift/object
+  - role: openshift/route
     app: noggin
-    template: route.yml
-    objectname: route.yml
+    routename: noggin
+    host: "admin{{ env_suffix }}.fedoraproject.org"
+    path: "/accounts"
+    serviceport: dynamic
+    servicename: noggin-web
+    annotations:
+      haproxy.router.openshift.io/timeout: 5m
 
   - role: openshift/object
     app: noggin
@@ -94,6 +99,10 @@
     template: deploymentconfig.yml
     objectname: deploymentconfig.yml
 
-  - role: openshift/start-build
-    app: noggin
-    buildname: noggin
+  # - role: openshift/start-build
+  #   app: noggin
+  #   buildname: noggin
+
+  # - role: openshift/rollout
+  #   app: noggin
+  #   dcname: noggin
