@@ -1,0 +1,4 @@
+---
+volgroup: /dev/vg_guests
+eth0_ip: 10.3.166.79
+vmhost: vmhost-x86-04.stg.iad2.fedoraproject.org

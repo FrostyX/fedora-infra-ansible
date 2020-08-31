@@ -4,9 +4,9 @@ rabbitmq02.iad2.fedoraproject.org
 rabbitmq03.iad2.fedoraproject.org
 
 [rabbitmq_stg]
-# rabbitmq01.stg.iad2.fedoraproject.org
-# rabbitmq02.stg.iad2.fedoraproject.org
-# rabbitmq03.stg.iad2.fedoraproject.org
+rabbitmq01.stg.iad2.fedoraproject.org
+rabbitmq02.stg.iad2.fedoraproject.org
+rabbitmq03.stg.iad2.fedoraproject.org
 
 [dbgserver_stg]
 # dbgserver01.stg.iad2.fedoraproject.org
@@ -635,9 +635,9 @@ os-node05.stg.iad2.fedoraproject.org
 # pkgs01.stg.iad2.fedoraproject.org
 proxy01.stg.iad2.fedoraproject.org
 proxy02.stg.iad2.fedoraproject.org
-# rabbitmq01.stg.iad2.fedoraproject.org
-# rabbitmq02.stg.iad2.fedoraproject.org
-# rabbitmq03.stg.iad2.fedoraproject.org
+rabbitmq01.stg.iad2.fedoraproject.org
+rabbitmq02.stg.iad2.fedoraproject.org
+rabbitmq03.stg.iad2.fedoraproject.org
 # resultsdb-stg01.qa.fedoraproject.org
 retrace-stg.aws.fedoraproject.org
 # sign-bridge01.stg.iad2.fedoraproject.org
