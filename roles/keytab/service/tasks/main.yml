@@ -38,41 +38,31 @@
   - krb5
   when: not keytab_status.stat.exists
 
-- name: Grant host access to keytab
+- name: Grant host and admin access to keytab
   delegate_to: "{{ ipa_server }}"
-  command:
-    argv:
-    - ipa
-    - "{{ (service == 'host')|ternary('host', 'service') }}-allow-retrieve-keytab"
-    - "{{service}}/{{host}}"
-    - --hosts={{inventory_hostname}}
+  command: ipa host-allow-retrieve-keytab {{host}} --hosts={{inventory_hostname}} --users=admin
   register: perm_add_result
   check_mode: no
-  changed_when: "'members added 1' in perm_add_result.stdout"
+  changed_when: "'members added 1' in perm_add_result.stdout or 'members added 2' in perm_add_result.stdout"
   failed_when: "not ('members added' in perm_add_result.stdout)"
   tags:
   - keytab
   - config
   - krb5
-  when: not keytab_status.stat.exists
+  when: not keytab_status.stat.exists and service == "host"
 
-- name: Grant admin access to keytab
+- name: Grant host and admin access to keytab
   delegate_to: "{{ ipa_server }}"
-  command:
-    argv:
-    - ipa
-    - "{{ (service == 'host')|ternary('host', 'service') }}-allow-retrieve-keytab"
-    - "{{service}}/{{host}}"
-    - --users=admin
+  command: ipa service-allow-retrieve-keytab {{service}}/{{host}} --hosts={{inventory_hostname}} --users=admin
   register: perm_add_result
   check_mode: no
-  changed_when: "'members added 1' in perm_add_result.stdout"
+  changed_when: "'members added 1' in perm_add_result.stdout or 'members added 2' in perm_add_result.stdout"
   failed_when: "not ('members added' in perm_add_result.stdout)"
   tags:
   - keytab
   - config
   - krb5
-  when: not keytab_status.stat.exists
+  when: not keytab_status.stat.exists and service != "host"
 
 - name: Retrieve keytab
   delegate_to: "{{ ipa_server }}"
