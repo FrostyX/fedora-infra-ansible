@@ -14,6 +14,8 @@ MAILTO=root
 10,40 * * * * mirrormanager /usr/local/bin/umdl-required fedora /var/log/mirrormanager/umdl-required.log
 # check if category Fedora Secondary Arches needs updating every 30 minutes
 20,50 * * * * mirrormanager /usr/local/bin/umdl-required fedora-secondary /var/log/mirrormanager/umdl-required.log
+# check if category Fedora Codecs needs updating once a day 
+15 20 * * * mirrormanager /usr/local/bin/umdl-required codecs /var/log/mirrormanager/umdl-required.log
 # the remaining categories are updated every two hours
 15 */2 * * * mirrormanager /usr/local/bin/umdl-required archive /var/log/mirrormanager/umdl-required.log
 45 */2  * * * mirrormanager /usr/local/bin/umdl-required alt /var/log/mirrormanager/umdl-required.log

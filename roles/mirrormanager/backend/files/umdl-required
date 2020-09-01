@@ -21,6 +21,8 @@ elif [ "${1}" ==  "fedora-secondary" ]; then
 	CATEGORY="Secondary Arches"
 elif [ "${1}" ==  "archive" ]; then
 	CATEGORY="Archive"
+elif [ "${1}" ==  "codecs" ]; then
+	CATEGORY="Codecs"
 fi
 
 if [ -e /var/run/mirrormanager/umdl-${1} ]; then
@@ -31,8 +33,12 @@ else
 fi
 
 # FULLFILETIMELIST -> FFTL
-FFTL="/srv/pub/${1}/fullfiletimelist-${1}"
-
+if [ "${1}" ==  "codecs" ]; then
+    /usr/local/bin/lock-wrapper umdl-${1} "/usr/bin/mm2_update-master-directory-list --category \"Fedora ${CATEGORY}\""
+    exit 0
+else
+    FFTL="/srv/pub/${1}/fullfiletimelist-${1}"
+fi
 FILEDATE=`stat -c %Z ${FFTL} 2> /dev/null`
 
 if [ "$?" -eq "1" ]; then
