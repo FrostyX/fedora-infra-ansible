@@ -165,6 +165,8 @@ require ip 13.244.141.152
 require ip 18.230.149.104
 require ip 18.130.159.183
 require ip 18.159.254.57
+require ip 13.233.183.170
+require ip 3.25.161.75
 
 #
 # We put this at the end because it fails for hosts with no reverse dns
