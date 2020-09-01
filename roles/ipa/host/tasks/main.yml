@@ -1,7 +1,7 @@
 ---
 - name: Create host entry
   delegate_to: localhost
-  ipa_user:
+  ipa_host:
     name: "{{ host }}"
     force: yes
     ipa_host: "{{ ipa_server }}"
