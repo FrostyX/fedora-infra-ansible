@@ -1,5 +1,6 @@
 ---
 # Configuration for IPA
+# TODO: consider switching to https://github.com/freeipa/ansible-freeipa
 
 - name: install needed packages
   package: name={{ item }} state=present
@@ -157,21 +158,6 @@
   - ipa/server
   - config
 
-- name: Deploy configuration script
-  copy: src=configure-ipa.sh dest=/root/configure-ipa.sh mode=0700 owner=root group=root
-  register: config_deployed
-  tags:
-  - ipa/server
-  - config
-  when: ipa_initial
-
-- name: Run configuration script
-  command: /bin/bash /root/configure-ipa.sh {{ipa_admin_password}}
-  tags:
-  - ipa/server
-  - config
-  when: ipa_initial and config_deployed.changed
-
 - name: Get admin ticket
   shell: echo "{{ipa_admin_password}}" | kinit admin
   tags:
@@ -180,6 +166,40 @@
   - config
   - krb5
   when: ipa_initial
+
+- name: Disable default permissions so we don't break our privacy policy
+  command:
+    argv:
+      - ipa
+      - permission-mod
+      - System: Read User Addressbook Attributes
+      - --bindtype=permission
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+  register: output
+  changed_when: "'Modified permission' in output.stdout"
+  failed_when: "'no modifications to be performed' not in output.stderr and output.rc != 0"
+
+# Because of the previous task, we must explicitely allow users to read their own data
+- name: Allow users to read their own data
+  command:
+    argv:
+      - ipa
+      - selfservice-add
+      - "Users can read their own addressbook attributes"
+      - --permissions=read
+      - --attrs=mail
+      - --attrs=userCertificate
+      - --attrs=ipaCertmapData
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+  register: output
+  changed_when: "'Added selfservice' in output.stdout"
+  failed_when: "'already exists' not in output.stderr and output.rc != 0"
 
 - name: Configure password policy
   command: ipa pwpolicy-mod global_policy --maxlife=0 --minlife=0 --history=0 --minclasses=0 --minlength=0 --maxfail=0
@@ -192,24 +212,17 @@
   failed_when: "'no modifications to be performed' not in pwpolicy_output.stderr and pwpolicy_output.rc != 0"
 
 - name: Create fas_sync user
-  command: ipa user-add fas_sync --first=FAS --last=Sync
+  ipa_user:
+    name: fas_sync
+    givenname: FAS
+    sn: Sync
+    ipa_host: localhost
+    ipa_user: admin
+    ipa_pass: "{{ipa_admin_password}}"
   tags:
   - ipa/server
   - config
   when: ipa_initial
-  register: create_output
-  changed_when: "'already exists' not in create_output.stderr"
-  failed_when: "'already exists' not in create_output.stderr and create_output.rc != 0"
-
-- name: Promote fas_sync user
-  command: ipa group-add-member admins --users=fas_sync
-  tags:
-  - ipa/server
-  - config
-  when: ipa_initial
-  register: promote_output
-  changed_when: "'already a member' not in promote_output.stdout"
-  failed_when: "'already a member' not in promote_output.stdout and promote_output.rc != 0"
 
 # Noggin user setup
 
@@ -218,16 +231,21 @@
     noggin_password: "{{ (env == 'production')|ternary(noggin_admin_password, noggin_stg_admin_password) }}"
 
 - name: Create noggin user
-  # Expiration date will be a Friday 13th in 30 years. I'm sure we'll remember that.
-  # (if unset, IPA will assume the password is expired because it hasn't been set by the user themselves)
-  shell: echo -e "{{ noggin_password }}\n{{ noggin_password }}" | ipa user-add noggin --first=Noggin --last=User --password --password-expiration 20500513000000Z
+  ipa_user:
+    name: noggin
+    givenname: Noggin
+    sn: User
+    password: "{{ (env == 'production')|ternary(noggin_admin_password, noggin_stg_admin_password) }}"
+    # Password expiration date will be a Friday 13th in 30 years. I'm sure we'll remember that.
+    # (if unset, IPA will assume the password is expired because it hasn't been set by the user themselves)
+    krbpasswordexpiration: 20500513000000
+    ipa_host: localhost
+    ipa_user: admin
+    ipa_pass: "{{ipa_admin_password}}"
   tags:
   - ipa/server
   - config
   when: ipa_initial
-  register: create_output
-  changed_when: "'already exists' not in create_output.stderr"
-  failed_when: "'already exists' not in create_output.stderr and create_output.rc != 0"
 
 - name: Create the noggin privilege
   command:
@@ -268,49 +286,20 @@
   failed_when: "'Number of permissions added 0' not in output.stdout and output.rc != 0"
 
 - name: Create the noggin role
-  command:
-    argv:
-      - ipa
-      - role-add
-      - Self-service Portal Administrator
-      - --desc=Noggin admin user
+  ipa_role:
+    name: "Self-service Portal Administrator"
+    description: "Noggin admin user"
+    privilege:
+    - "Self-service Portal Administrators"
+    user:
+    - noggin
+    ipa_host: localhost
+    ipa_user: admin
+    ipa_pass: "{{ipa_admin_password}}"
   tags:
   - ipa/server
   - config
   when: ipa_initial
-  register: output
-  changed_when: "'already exists' not in output.stdout"
-  failed_when: "'already exists' not in output.stdout and output.rc != 0"
-
-- name: Setup the noggin role
-  command:
-    argv:
-      - ipa
-      - role-add-privilege
-      - Self-service Portal Administrator
-      - --privileges=Self-service Portal Administrators
-  tags:
-  - ipa/server
-  - config
-  when: ipa_initial
-  register: output
-  changed_when: "'Number of privileges added 0' not in output.stdout"
-  failed_when: "'Number of privileges added 0' not in output.stdout and output.rc != 0"
-
-- name: Give noggin the appropriate role
-  command:
-    argv:
-      - ipa
-      - role-add-member
-      - Self-service Portal Administrator
-      - --user=noggin
-  tags:
-  - ipa/server
-  - config
-  when: ipa_initial
-  register: output
-  changed_when: "'Number of members added 0' not in output.stdout"
-  failed_when: "'Number of members added 0' not in output.stdout and output.rc != 0"
 
 - name: Destroy admin ticket
   command: kdestroy -A
@@ -319,6 +308,21 @@
   - keytab
   - config
   - krb5
+  when: ipa_initial
+
+
+- name: Set the members of the admin group
+  ipa_group:
+    name: admins
+    user:
+    - admin
+    - fas_sync
+    ipa_host: localhost
+    ipa_user: admin
+    ipa_pass: "{{ipa_admin_password}}"
+  tags:
+  - ipa/server
+  - config
   when: ipa_initial
 
 

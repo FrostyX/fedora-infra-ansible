@@ -1,38 +1,24 @@
 ---
-- name: Get admin ticket
-  delegate_to: "{{ ipa_server }}"
-  shell: echo "{{ipa_admin_password}}" | kinit admin
-  check_mode: no
-  changed_when: "1 != 1"
-  tags:
-  - config
-  - krb5
-
 - name: Create host entry
-  delegate_to: "{{ ipa_server }}"
-  command: ipa host-add --force {{host}}
-  register: host_add_result
-  check_mode: no
-  changed_when: "'Added host' in host_add_result.stdout"
-  failed_when: "not ('Added host' in host_add_result.stdout or 'already exists' in host_add_result.stderr)"
+  delegate_to: localhost
+  ipa_user:
+    name: "{{ host }}"
+    force: yes
+    ipa_host: "{{ ipa_server }}"
+    ipa_user: admin
+    ipa_pass: "{{ipa_admin_password}}"
   tags:
   - config
   - krb5
 
 - name: Create service entry
-  delegate_to: "{{ ipa_server }}"
-  command: ipa service-add --force {{service}}/{{host}}
-  register: service_add_result
-  check_mode: no
-  changed_when: "'Added service' in service_add_result.stdout"
-  failed_when: "not ('Added service' in service_add_result.stdout or 'already exists' in service_add_result.stderr)"
-  tags:
-  - config
-  - krb5
-
-- name: Destroy admin ticket
-  delegate_to: "{{ ipa_server }}"
-  command: kdestroy -A
+  delegate_to: localhost
+  ipa_user:
+    name: "{{ service }}/{{ host }}"
+    force: yes
+    ipa_host: "{{ ipa_server }}"
+    ipa_user: admin
+    ipa_pass: "{{ipa_admin_password}}"
   tags:
   - config
   - krb5
