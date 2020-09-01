@@ -328,12 +328,12 @@
 # end coreos
 #
   - role: httpd/reverseproxy
-    website: caiapi.fedoraproject.org
-    destname: caiapi
+    website: fasjson.fedoraproject.org
+    destname: fasjson
     balancer_name: app-os
     targettype: openshift
     keephost: true
-    tags: caiapi
+    tags: fasjson
     when: env == "staging"
 
   - role: httpd/reverseproxy
