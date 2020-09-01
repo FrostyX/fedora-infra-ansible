@@ -219,6 +219,7 @@
     ipa_host: localhost
     ipa_user: admin
     ipa_pass: "{{ipa_admin_password}}"
+    validate_certs: no
   tags:
   - ipa/server
   - config
@@ -242,6 +243,7 @@
     ipa_host: localhost
     ipa_user: admin
     ipa_pass: "{{ipa_admin_password}}"
+    validate_certs: no
   tags:
   - ipa/server
   - config
@@ -296,6 +298,7 @@
     ipa_host: localhost
     ipa_user: admin
     ipa_pass: "{{ipa_admin_password}}"
+    validate_certs: no
   tags:
   - ipa/server
   - config
@@ -320,6 +323,7 @@
     ipa_host: localhost
     ipa_user: admin
     ipa_pass: "{{ipa_admin_password}}"
+    validate_certs: no
   tags:
   - ipa/server
   - config
