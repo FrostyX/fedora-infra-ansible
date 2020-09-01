@@ -87,10 +87,14 @@
     file: service.yml
     objectname: service.yml
 
-  - role: openshift/object
+  - role: openshift/route
     app: fasjson
-    template: route.yml
-    objectname: route.yml
+    routename: fasjson
+    host: "fasjson{{ env_suffix }}.fedoraproject.org"
+    serviceport: web
+    servicename: fasjson-web
+    annotations:
+      haproxy.router.openshift.io/timeout: 5m
 
   - role: openshift/object
     app: fasjson
@@ -102,6 +106,10 @@
     template: deploymentconfig.yml
     objectname: deploymentconfig.yml
 
-  - role: openshift/start-build
-    app: fasjson
-    buildname: fasjson
+  # - role: openshift/start-build
+  #   app: fasjson
+  #   buildname: fasjson
+
+  # - role: openshift/rollout
+  #   app: noggin
+  #   dcname: noggin

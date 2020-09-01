@@ -161,6 +161,13 @@
     keephost: true
 
   - role: httpd/reverseproxy
+    website: "fasjson{{ env_suffix }}.fedoraproject.org"
+    destname: fasjson
+    balancer_name: app-os
+    targettype: openshift
+    keephost: true
+
+  - role: httpd/reverseproxy
     website: "id{{ env_suffix }}.fedoraproject.org"
     destname: id
     balancer_name: app-os
