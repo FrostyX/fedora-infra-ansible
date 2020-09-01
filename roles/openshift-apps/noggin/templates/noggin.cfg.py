@@ -40,6 +40,3 @@ SECRET_KEY = from_file('/etc/noggin-secrets/session').encode('utf-8')
 
 # Spam checking
 # BASSET_URL = None
-
-# Disable Fedora Messaging because it's not up in staging yet.
-FEDORA_MESSAGING_ENABLED = False

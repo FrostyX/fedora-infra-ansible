@@ -11,9 +11,8 @@
   vars:
 
   roles:
-  # RabbitMQ is not redeployed in staging yet
-  # - role: rabbit/user
-  #   username: "noggin{{ env_suffix }}"
+  - role: rabbit/user
+    username: "noggin{{ env_suffix }}"
 
   - role: openshift/project
     app: noggin
