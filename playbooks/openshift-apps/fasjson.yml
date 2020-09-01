@@ -52,12 +52,12 @@
     # The ipa-ldap delegation target is declared during IPA installation
 
   # Keytabs
-  #- role: openshift/keytab
-  #  app: fasjson
-  #  key: host
-  #  secret_name: fasjson-keytab-host
-  #  service: host
-  #  host: "fasjson{{ env_suffix }}.fedoraproject.org"
+  - role: openshift/keytab
+    app: fasjson
+    key: host
+    secret_name: fasjson-keytab-host
+    service: host
+    host: "fasjson{{ env_suffix }}.fedoraproject.org"
   - role: openshift/keytab
     app: fasjson
     key: http
