@@ -353,6 +353,8 @@ proxy33.fedoraproject.org
 proxy34.fedoraproject.org
 proxy35.fedoraproject.org
 proxy36.fedoraproject.org
+proxy37.fedoraproject.org
+proxy38.fedoraproject.org
 proxy101.iad2.fedoraproject.org
 proxy110.iad2.fedoraproject.org
 
@@ -500,6 +502,8 @@ proxy33.fedoraproject.org
 proxy34.fedoraproject.org
 proxy35.fedoraproject.org
 proxy36.fedoraproject.org
+proxy37.fedoraproject.org
+proxy38.fedoraproject.org
 
 [proxies_internal]
 proxy101.iad2.fedoraproject.org
