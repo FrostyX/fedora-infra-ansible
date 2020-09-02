@@ -1,0 +1,17 @@
+---
+# Skipping all the network stuff. Amazon does that all via DHCP.
+
+# This is consumed by the roles/fedora-web/main role
+sponsor: amazon
+datacenter: aws
+postfix_group: vpn
+vpn: true
+
+nrpe_procs_warn: 1200
+nrpe_procs_crit: 1400
+
+nagios_Check_Services:
+  swap: false
+
+public_ip: 13.233.183.170
+
