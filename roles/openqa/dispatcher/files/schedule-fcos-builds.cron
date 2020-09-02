@@ -4,4 +4,4 @@
 # various streams; if the current build has already been tested,
 # this will not create any new jobs
 
-for stream in stable testing next; do /usr/local/bin/fedora-openqa fcosbuild $stream > /dev/null 2>&1 || /usr/bin/true; done
+for stream in stable testing next; do /usr/local/bin/fedora-openqa fcosbuild --stream $stream > /dev/null 2>&1 || /usr/bin/true; done
