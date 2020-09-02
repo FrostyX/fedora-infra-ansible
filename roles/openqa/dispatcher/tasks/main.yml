@@ -371,6 +371,11 @@
   tags:
   - config
 
+- name: Set up cron job to schedule Fedora CoreOS build jobs
+  copy: src=schedule-fcos-builds.cron dest=/etc/cron.hourly/schedule-fcos-builds owner=root group=root mode=0755
+  tags:
+  - config
+
 # This is to deal with an annoying bug in fedora-messaging: sometimes
 # consumers seem to get stuck allegedly running fine but not parsing
 # any messages. So we'll restart all running consumers every day just

@@ -1,0 +1,7 @@
+#!/bin/sh
+
+# schedule openQA jobs for the current Fedora CoreOS builds in the
+# various streams; if the current build has already been tested,
+# this will not create any new jobs
+
+for stream in stable testing next; do /usr/local/bin/fedora-openqa fcosbuild $i > /dev/null 2>&1 || /usr/bin/true; done
