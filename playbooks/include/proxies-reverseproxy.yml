@@ -166,6 +166,7 @@
     balancer_name: app-os
     targettype: openshift
     keephost: true
+    when: env == "staging"
 
   - role: httpd/reverseproxy
     website: "id{{ env_suffix }}.fedoraproject.org"
