@@ -15,6 +15,10 @@
 *@fedoraproject.org bastion-iad._domainkey.fedoraproject.org
 *@lists.fedoraproject.org bastion-iad._domainkey.fedoraproject.org
 *@stg.fedoraproject.org bastion-iad._domainkey.fedoraproject.org
+*@aws.fedoraproject.org bastion-iad._domainkey.fedoraproject.org
+*@fedorahosted.org bastion-iad._domainkey.fedoraproject.org
+*@lists.fedorahosted.org bastion-iad._domainkey.fedoraproject.org
+pagure@pkgs.fedoraproject.org bastion-iad._domainkey.fedoraproject.org
 pagure@pagure.io bastion._domainkey.pagure.io
 
 # NON-WILDCARD EXAMPLE
