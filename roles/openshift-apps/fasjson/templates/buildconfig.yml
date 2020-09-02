@@ -19,6 +19,7 @@ spec:
       kind: ImageStreamTag
       name: fasjson:latest
   triggers:
+  - type: ConfigChange
   - type: ImageChange
   - type: GitHub
 {% if fasjson_stg_github_secret is defined and env == 'staging' %}

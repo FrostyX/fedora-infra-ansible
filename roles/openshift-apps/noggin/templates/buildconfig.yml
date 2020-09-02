@@ -29,6 +29,7 @@ spec:
       kind: ImageStreamTag
       name: noggin:latest
   triggers:
+  - type: ConfigChange
   - type: ImageChange
   - type: GitHub
 {% if noggin_stg_github_secret is defined and env == 'staging' %}
