@@ -33,11 +33,11 @@ buildvm-x86-31.iad2.fedoraproject.org
 buildvm-x86-32.iad2.fedoraproject.org
 
 [buildvm_stg]
-# buildvm-01.stg.iad2.fedoraproject.org
-# buildvm-02.stg.iad2.fedoraproject.org
-# buildvm-03.stg.iad2.fedoraproject.org
-# buildvm-04.stg.iad2.fedoraproject.org
-# buildvm-05.stg.iad2.fedoraproject.org
+buildvm-01.stg.iad2.fedoraproject.org
+buildvm-02.stg.iad2.fedoraproject.org
+buildvm-03.stg.iad2.fedoraproject.org
+buildvm-04.stg.iad2.fedoraproject.org
+buildvm-05.stg.iad2.fedoraproject.org
 
 [buildvm_aarch64_stg]
 # buildvm-aarch64-01.stg.arm.fedoraproject.org

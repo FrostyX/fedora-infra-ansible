@@ -1255,6 +1255,11 @@ buildvm-x86-02.iad2.fedoraproject.org
 buildvm-x86-03.iad2.fedoraproject.org
 buildvm-x86-04.iad2.fedoraproject.org
 buildvm-x86-05.iad2.fedoraproject.org
+buildvm-x86-01.stg.iad2.fedoraproject.org
+buildvm-x86-02.stg.iad2.fedoraproject.org
+buildvm-x86-03.stg.iad2.fedoraproject.org
+buildvm-x86-04.stg.iad2.fedoraproject.org
+buildvm-x86-05.stg.iad2.fedoraproject.org
 buildvm-x86-06.iad2.fedoraproject.org
 buildvm-x86-07.iad2.fedoraproject.org
 buildvm-x86-08.iad2.fedoraproject.org
