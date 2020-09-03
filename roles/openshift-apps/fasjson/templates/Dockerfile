@@ -37,7 +37,6 @@ RUN git clone https://github.com/fedora-infra/fasjson.git && \
     popd && \
     rm -rf fasjson
 RUN rm -f /etc/krb5.conf && ln -sf /etc/krb5/krb5.conf /etc/krb5.conf && \
-    ln -sf /etc/keytabs/host /etc/krb5.keytab && \
     rm -f /etc/openldap/ldap.conf && ln -sf /etc/ipa/ldap.conf /etc/openldap/ldap.conf
 EXPOSE 8080
 ENTRYPOINT bash /etc/fasjson/start.sh
