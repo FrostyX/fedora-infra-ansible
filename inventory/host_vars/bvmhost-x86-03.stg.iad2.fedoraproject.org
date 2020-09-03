@@ -14,3 +14,28 @@ mac3: 24:6e:96:b1:c7:f0
 mac4: 24:6e:96:b1:c7:f2
 
 br0_port0_mac: "{{ mac3 }}"
+
+network_connections:
+  - name: br0
+    state: up
+    type: bridge
+    autoconnect: yes
+    ip:
+      address: 
+      - "{{ br0_ip }}/24"
+      gateway4: "{{ br0_gw }}"
+      dns: 
+      - 10.3.163.33
+      - 10.3.163.34
+      dns_search: 
+      - stg.iad2.fedoraproject.org
+      - iad2.fedoraproject.org
+      - fedoraproject.org
+      dhcp4: no
+      auto6: no
+  - name: br0-port0
+    state: up
+    type: ethernet
+    master: br0
+    mac: "{{ br0_port0_mac }}"
+
