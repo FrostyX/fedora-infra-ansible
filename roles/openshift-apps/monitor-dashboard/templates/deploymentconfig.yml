@@ -20,7 +20,7 @@ spec:
             - "-openshift-service-account=grafana"
             - "-upstream=http://localhost:3000"
             - "-client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token"
-            - "-cookie-secret=SECRET"
+            - "-cookie-secret={{ 99999999 | random }}"
             - "-tls-cert=/etc/tls/private/tls.crt"
             - "-tls-key=/etc/tls/private/tls.key"
             - "-pass-basic-auth=false"
