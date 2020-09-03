@@ -88,6 +88,7 @@ root:		sysadmin-main
 
 # Mail blackholes for various services
 nobody:               /dev/null
+demarc-admin:	      /dev/null
 fedorawiki-noreply:   /dev/null
 extras-orphan:	      /dev/null
 orphan:               /dev/null
