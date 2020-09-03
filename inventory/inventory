@@ -574,11 +574,11 @@ smtp-mm-cc-rdu01.fedoraproject.org
 bvmhost-x86-01.stg.iad2.fedoraproject.org
 bvmhost-x86-02.stg.iad2.fedoraproject.org
 bvmhost-x86-03.stg.iad2.fedoraproject.org
-# buildvm-01.stg.iad2.fedoraproject.org
-# buildvm-02.stg.iad2.fedoraproject.org
-# buildvm-03.stg.iad2.fedoraproject.org
-# buildvm-04.stg.iad2.fedoraproject.org
-# buildvm-05.stg.iad2.fedoraproject.org
+buildvm-x86-01.stg.iad2.fedoraproject.org
+buildvm-x86-02.stg.iad2.fedoraproject.org
+buildvm-x86-03.stg.iad2.fedoraproject.org
+buildvm-x86-04.stg.iad2.fedoraproject.org
+buildvm-x86-05.stg.iad2.fedoraproject.org
 # buildvm-aarch64-01.stg.arm.fedoraproject.org
 # buildvm-armv7-01.stg.arm.fedoraproject.org
 # buildvm-ppc64le-01.stg.ppc.fedoraproject.org
