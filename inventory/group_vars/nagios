@@ -63,6 +63,7 @@ iad2_management_hosts:
   - dell-fx02-fc08.mgmt.iad2.fedoraproject.org
   - dell-fx02.mgmt.iad2.fedoraproject.org
   - openqa-x86-worker01.mgmt.iad2.fedoraproject.org
+  - qvmhost-x86-01.mgmt.iad2.fedoraproject.org
   - qvmhost-x86-02.mgmt.iad2.fedoraproject.org
   - vmhost-x86-01.mgmt.iad2.fedoraproject.org
   - vmhost-x86-02.mgmt.iad2.fedoraproject.org

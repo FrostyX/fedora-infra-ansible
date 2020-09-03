@@ -719,6 +719,7 @@ vmhost-x86-04.iad2.fedoraproject.org
 vmhost-x86-05.iad2.fedoraproject.org
 vmhost-x86-06.iad2.fedoraproject.org
 vmhost-x86-07.iad2.fedoraproject.org
+qvmhost-x86-01.iad2.fedoraproject.org
 qvmhost-x86-02.iad2.fedoraproject.org
 
 
@@ -1388,6 +1389,7 @@ proxy01.iad2.fedoraproject.org
 proxy10.iad2.fedoraproject.org
 proxy101.iad2.fedoraproject.org
 proxy110.iad2.fedoraproject.org
+qvmhost-x86-01.iad2.fedoraproject.org
 qvmhost-x86-02.iad2.fedoraproject.org
 rabbitmq01.iad2.fedoraproject.org
 rabbitmq02.iad2.fedoraproject.org
