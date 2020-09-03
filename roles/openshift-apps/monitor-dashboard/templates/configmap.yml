@@ -1,0 +1,26 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-datasources
+  labels:
+    app: monitor-dashboard
+data:
+  datasource.yml: |-
+    apiVersion: 1
+    datasources:
+      - name: Datanommer
+        type: postgres
+        url: db-datanommer01.iad2.fedoraproject.org:5432
+        database: datanommer
+        user: datanommer_ro
+        secureJsonData:
+          password: "{{ datanommer_ro_password }}"
+        jsonData:
+          sslmode: "disable" # disable/require/verify-ca/verify-full
+          maxOpenConns: 0         # Grafana v5.4+
+          maxIdleConns: 2         # Grafana v5.4+
+          connMaxLifetime: 14400  # Grafana v5.4+
+          postgresVersion: 12000 # 903=9.3, 904=9.4, 905=9.5, 906=9.6, 1000=10
+          timescaledb: false
+

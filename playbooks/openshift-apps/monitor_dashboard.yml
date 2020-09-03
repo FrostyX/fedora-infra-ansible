@@ -1,0 +1,31 @@
+- name: make the app be real
+  hosts: os_masters_stg[0]:os_masters
+  user: root
+  gather_facts: False
+
+  vars_files:
+    - /srv/web/infra/ansible/vars/global.yml
+    - "/srv/private/ansible/vars.yml"
+    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  roles:
+  - role: openshift/project
+    app: monitor-dashboard
+    description: POC for the dashboards
+    appowners:
+    - cverna
+    - pingou
+    - asaleh
+    - nphilipp
+    - scoady
+    - wwoods
+
+  - role: openshift/object
+    app: monitor-dashboard
+    template: configmap.yml
+    objectname: configmap.yml
+
+  - role: openshift/object
+    app: monitor-dashboard
+    template: deploymentconfig.yml
+    objectname: deploymentconfig.yml
