@@ -2,17 +2,17 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: grafana
+  name: dashboard
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: grafana
+      name: dashboard
   template:
     metadata:
       labels:
-        name: grafana
-      name: grafana
+        name: dashboard
+      name: dashboard
     spec:
       containers:
         - env:
@@ -32,14 +32,14 @@ spec:
               value: 'false'
             - name: GF_SECURITY_ADMIN_PASSWORD
               value: 'nbusr123'
-            - name: GF_SECURITY_ADMIN_user
+            - name: GF_SECURITY_ADMIN_USER
               value: 'admin'
             - name: GF_USERS_ALLOW_SIGN_UP
               value: 'false'
             - name: 'GF_USERS_AUTO_ASSIGN_ORG_ROLE'
               value: 'Admin'
           image: registry.hub.docker.com/grafana/grafana:latest
-          name: grafana
+          name: dashboard
           ports:
             - containerPort: 3000
           volumeMounts:
