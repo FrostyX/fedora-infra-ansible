@@ -37,7 +37,7 @@ arguments = {}
 [[bindings]]
 queue = "{{ fmc_queue_name }}"
 exchange = "amq.topic"
-routing_keys = ["{{ fmc_routing_keys }}"]
+routing_keys = "{{ fmc_routing_keys }}"
 
 [consumer_config]
 rawhide = {{FedoraRawhideNumber}}
