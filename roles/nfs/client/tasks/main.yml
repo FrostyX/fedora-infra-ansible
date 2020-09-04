@@ -133,7 +133,7 @@
 - name: nfs mount points (stg) staging koji
   mount: >
         name=/mnt/fedora_koji
-        src=10.5.128.139:/mnt/fedora_koji
+        src=10.3.167.64:/mnt/fedora_koji
         fstype=nfs4
         opts=rw,hard,bg,intr,noatime,nodev,nosuid,nfsvers=4
         passno=0
