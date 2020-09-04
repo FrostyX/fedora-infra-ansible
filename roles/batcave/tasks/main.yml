@@ -462,7 +462,7 @@
 # ansible utils includes our rbac-playbook
 #
 
-- name: install ansible_utils config
+- name: install the ansible_utils/rbac config
   copy: src={{ private }}/files/rbac/rbac.yaml dest=/etc/ansible_utils/rbac.yaml mode=0500
   tags:
   - rbac
