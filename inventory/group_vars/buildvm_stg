@@ -5,7 +5,6 @@ lvm_size: 150000
 mem_size: 10240
 max_mem_size: "{{ mem_size }}"
 num_cpus: 4
-datacenter: iad2
 dns: 10.3.163.33
 eth0_ip: 10.3.169.51
 gw: 10.3.169.254
@@ -40,9 +39,6 @@ csi_relationship: |
   * Relies on koji-hub, Packages, PkgDB, apache, fedmsg, fas, virthost, and is monitored by nagios
   * Several services rely on the builders, including koschei, Bodhi, Tagger, SCM, Darkserver.
   * Produces automated builds of packages for the architecture listed. Builders can be scaled by adding new
-
-# this is to enable nested virt, which we need for some builds
-virt_install_command: "{{ virt_install_command_one_nic }} --cpu=host-passthrough,+vmx"
 
 # These variables are for koji-containerbuild/osbs
 osbs_url: "osbs.stg.fedoraproject.org"
