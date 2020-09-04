@@ -6,9 +6,9 @@ callback = "fedora_minimal_compose:Consumer"
 passive_declares = true
 
 [tls]
-ca_cert = "/etc/fedora-messaging/cacert.pem"
-keyfile = "/etc/fedora-messaging/fmc-key.pem"
-certfile = "/etc/fedora-messaging/fmc-cert.pem"
+ca_cert = "/etc/pki/fedora-messaging/cacert.pem"
+keyfile = "/etc/pki/fedora-messaging/fmc-key.pem"
+certfile = "/etc/pki/fedora-messaging/fmc-cert.pem"
 
 [client_properties]
 app = "fmc"
