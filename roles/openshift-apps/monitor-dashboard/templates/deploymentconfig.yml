@@ -15,22 +15,6 @@ spec:
       name: grafana
     spec:
       containers:
-        - args:
-            - "-provider=openshift"
-            - "-openshift-service-account=grafana"
-            - "-upstream=http://localhost:3000"
-            - "-client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token"
-            - "-cookie-secret={{ 99999999 | random }}"
-            - "-tls-cert=/etc/tls/private/tls.crt"
-            - "-tls-key=/etc/tls/private/tls.key"
-            - "-pass-basic-auth=false"
-          image: registry.hub.docker.com/openshift/oauth-proxy:latest
-          name: oauth-proxy
-          ports:
-            - containerPort: 8443
-          volumeMounts:
-            - mountPath: /etc/tls/private
-              name: grafana-tls
         - env:
             - name: GF_INSTALL_PLUGINS
               value: "grafana-clock-panel,simpod-json-datasource,grafana-googlesheets-datasource"
@@ -45,7 +29,11 @@ spec:
             - name: GF_AUTH_PROXY_AUTO_SIGN_UP
               value: 'true'
             - name: GF_AUTH_DISABLE_LOGIN_FORM
-              value: 'true'
+              value: 'false'
+            - name: GF_SECURITY_ADMIN_PASSWORD
+              value: 'nbusr123'
+            - name: GF_SECURITY_ADMIN_user
+              value: 'admin'
             - name: GF_USERS_ALLOW_SIGN_UP
               value: 'false'
             - name: 'GF_USERS_AUTO_ASSIGN_ORG_ROLE'
@@ -57,11 +45,7 @@ spec:
           volumeMounts:
             - mountPath: /etc/grafana/provisioning/datasources
               name: grafana-datasources
-      serviceAccountName: grafana
       volumes:
-        - name: grafana-tls
-          secret:
-            secretName: grafana-tls
         - configMap:
             name: grafana-datasources
           name: grafana-datasources
