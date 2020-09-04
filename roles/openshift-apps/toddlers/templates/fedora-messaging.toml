@@ -79,6 +79,11 @@ dist_git_url = "https://src{{ env_suffix }}.fedoraproject.org"
 dist_git_token_seed = "private random string to change"
 dist_git_token = "private random string to change"
 
+#  Configuration file storing all the email overrides in the form of:
+# "foo@bar.com" = "bar@foo.org"
+# This is the same format as used by the distgit_bugzilla_sync cron/app
+email_overrides_file = "/etc/fedora-messaging/email_overrides.toml"
+
 [consumer_config.default.pdc_config]
 # Configuration to talk to PDC, as understood by pdc-client.
 server = "https://pdc.fedoraproject.org/rest_api/v1/"
@@ -95,11 +100,6 @@ dist_git_token = "{{ toddlers_flag_ci_token }}"
 dist_git_token = "{{ toddlers_flag_commit_build_token }}"
 
 [consumer_config.packager_bugzilla_sync]
-#  Configuration file storing all the email overrides in the form of:
-# "foo@bar.com" = "bar@foo.org"
-# This is the same format as used by the distgit_bugzilla_sync cron/app
-email_overrides_file = "/etc/fedora-messaging/email_overrides.toml"
-
 # List of accounts we do not want to report about
 ignorable_accounts = ["packagerbot", "zuul"]
 
