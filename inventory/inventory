@@ -107,8 +107,8 @@ virthost-cc-rdu03.fedoraproject.org
 #virthost-cloud01.fedorainfracloud.org
 #cloudvmhost-aarch64-01.fedorainfracloud.org
 copr-vmhost01.rdu-cc.fedoraproject.org
-vmhost-x86-06.rdu-cc.fedoraproject.org
-vmhost-x86-05.rdu-cc.fedoraproject.org
+vmhost-x86-cc-rdu06.rdu-cc.fedoraproject.org
+vmhost-x86-cc-rdu05.rdu-cc.fedoraproject.org
 
 [datagrepper]
 datagrepper01.iad2.fedoraproject.org
