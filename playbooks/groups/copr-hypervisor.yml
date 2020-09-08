@@ -1,0 +1,27 @@
+- name: Setup retrace hosts
+  hosts: copr_hypervisor
+  user: root
+  gather_facts: True
+
+  vars_files:
+   - /srv/web/infra/ansible/vars/global.yml
+   - "{{ private }}/vars.yml"
+   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  pre_tasks:
+    - import_tasks: "{{ tasks_path }}/yumrepos.yml"
+
+  tasks:
+    - import_role: name=base
+    - import_role: name=hosts
+    - import_role: name=fas_client
+    - import_role: name=rkhunter
+    - import_role: name=nagios_client
+    - import_role: name=openvpn/client
+    - import_role: name=sudo
+
+    - import_tasks: "{{ tasks_path }}/2fa_client.yml"
+    - import_tasks: "{{ tasks_path }}/motd.yml"
+
+  handlers:
+  - import_tasks: "{{ handlers_path }}/restart_services.yml"
