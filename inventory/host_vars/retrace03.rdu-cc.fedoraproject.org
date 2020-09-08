@@ -1,6 +1,6 @@
 ---
 datacenter: rdu-cc
-faf_server_name: retrace.fedoraproject.org/faf
+faf_server_name: retrace03.rdu-cc.fedoraproject.org/faf
 rs_use_faf_packages: true
 
 # we do not have enough storage on stg
