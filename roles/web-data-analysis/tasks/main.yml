@@ -104,6 +104,11 @@
   tags:
     - web-data
 
+- name: install countme user gitconfig
+  copy: src=countme.gitconfig dest=/srv/countme/.gitconfig mode=0664 owner=countme group=countme
+  tags:
+    - web-data
+
 - name: checkout mirrors-countme from git
   git:
     repo: https://pagure.io/mirrors-countme
