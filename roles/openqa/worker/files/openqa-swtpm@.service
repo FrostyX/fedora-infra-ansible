@@ -7,6 +7,7 @@ ExecStartPre=-/usr/bin/rm -rf /tmp/mytpm%I
 ExecStartPre=/usr/bin/mkdir -p /tmp/mytpm%I
 ExecStart=/usr/bin/swtpm socket --tpm2 --tpmstate dir=/tmp/mytpm%I --ctrl type=unixio,path=/tmp/mytpm%I/swtpm-sock --log level=20
 ExecReload=/bin/true
+Restart=on-success
 
 [Install]
 WantedBy=multi-user.target
