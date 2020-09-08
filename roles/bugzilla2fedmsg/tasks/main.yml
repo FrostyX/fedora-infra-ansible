@@ -7,6 +7,7 @@
   - python-moksha-hub
   - python-bugzilla2fedmsg
   - python-twisted-words
+  - python2-docutils
   tags:
   - packages
   - bugzilla2fedmsg
