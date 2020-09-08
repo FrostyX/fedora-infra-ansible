@@ -80,3 +80,20 @@
     name: rabbit/user
   vars:
      username: faf{{ env_suffix }}
+
+- name: CentOS Stream
+  run_once: true
+  include_role:
+    name: rabbit/queue
+  vars:
+    username: alt-src{{ env_suffix }}
+    queue_name: alt-src{{ env_suffix }}
+    # TTL: 10 days (in miliseconds)
+    message_ttl: 864000000
+    routing_keys:
+      # This routing key is for testing purposes only
+      - "org.centos.stream.#"
+    thresholds:
+      warning:  1000
+      critical: 10000
+
