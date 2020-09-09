@@ -508,6 +508,18 @@
   - pagure
 
 
+# Install hotfix for the notify.py file for
+# https://pagure.io/fedora-infrastructure/issue/9309
+
+- name: Install the hotfixed notify.py
+  copy: src=notify.py
+        dest=/usr/lib/python3.6/site-packages/pagure/lib/notify.py
+      owner=root group=root mode=0644
+  notify: restart httpd
+  tags:
+  - hotfix
+  - pagure
+
 # Ensure all the services are up and running
 
 - name: Start and enable httpd, postfix, pagure_milter

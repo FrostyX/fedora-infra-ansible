@@ -450,6 +450,10 @@ def send_email(
             msg["List-Archive"] = _build_url(
                 pagure_config["APP_URL"], _fullname_to_url(project_name)
             )
+            if project_name == "389-ds-base":
+                _log.info("Do not notify about 389-ds-base")
+                return
+
         if reporter is not None:
             msg["X-pagure-reporter"] = reporter
         if assignee is not None:
