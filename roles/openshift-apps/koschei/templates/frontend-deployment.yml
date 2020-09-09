@@ -37,13 +37,13 @@ spec:
           timeoutSeconds: 1
           initialDelaySeconds: 5
           httpGet:
-            path: /stats
+            path: /collections
             port: 8080
         livenessProbe:
           timeoutSeconds: 1
           initialDelaySeconds: 30
           httpGet:
-            path: /stats
+            path: /collections
             port: 8080
       volumes:
       - name: config
