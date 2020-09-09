@@ -37,6 +37,7 @@
   - batcave
   - config
   - fedora-messaging
+  when: inventory_hostname.startswith('batcave')
 
 - name: create folder where we'll place the certs
   file: path=/etc/pki/rabbitmq/ owner=root group=root mode=0755 state=directory
@@ -45,6 +46,7 @@
   - git/hooks
   - config
   - fedora-messaging
+  when: inventory_hostname.startswith('batcave')
 
 - name: install the rabbitmq certificates for batcave
   copy: src={{ item.src }}
@@ -71,6 +73,7 @@
   - git/hooks
   - config
   - fedora-messaging
+  when: inventory_hostname.startswith('batcave')
 
 - name: install the git hooks
   copy: src={{item}} dest=/usr/share/git-core/ mode=0755
