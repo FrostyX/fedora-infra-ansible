@@ -478,7 +478,7 @@ openqa-x86-worker01.iad2.fedoraproject.org
 pkgs01.iad2.fedoraproject.org
 
 [pkgs_stg]
-# pkgs01.stg.iad2.fedoraproject.org
+pkgs01.stg.iad2.fedoraproject.org
 
 [proxies_external]
 proxy01.iad2.fedoraproject.org
@@ -636,7 +636,7 @@ os-node05.stg.iad2.fedoraproject.org
 # osbs-aarch64-node02.stg.iad2.fedoraproject.org
 # packages03.stg.iad2.fedoraproject.org
 # pdc-web01.stg.iad2.fedoraproject.org
-# pkgs01.stg.iad2.fedoraproject.org
+pkgs01.stg.iad2.fedoraproject.org
 proxy01.stg.iad2.fedoraproject.org
 proxy02.stg.iad2.fedoraproject.org
 rabbitmq01.stg.iad2.fedoraproject.org

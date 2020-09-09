@@ -15,7 +15,7 @@
   - hosts
   - rkhunter
   - nagios_client
-  - fas_client
+  - { role: fas_client, when: env != "staging" }
   - collectd/base
   - sudo
   - apache
@@ -31,6 +31,7 @@
   - import_tasks: "{{ tasks_path }}/yumrepos.yml"
   - import_tasks: "{{ tasks_path }}/motd.yml"
   - import_tasks: "{{ tasks_path }}/2fa_client.yml"
+    when: env != "staging"
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
