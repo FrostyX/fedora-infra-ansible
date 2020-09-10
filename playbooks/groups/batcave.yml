@@ -20,7 +20,6 @@
   - sudo
   - collectd/base
   - role: git/hooks
-    when: datacenter != 'iad2'
   - role: cgit/base
     when: datacenter != 'iad2'
   - role: cgit/clean_lock_cron

@@ -51,7 +51,7 @@ def revs_between(head, base):
     if proc.returncode != 0:
         raise IOError('git rev-list failed: %r, err: %r' % (stdout, stderr))
 
-    for line in stdout.strip().split('\n'):
+    for line in stdout.decode('utf-8').strip().split('\n'):
         yield line.strip()
 
 
