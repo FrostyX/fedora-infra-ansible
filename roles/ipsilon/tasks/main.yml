@@ -1,3 +1,6 @@
+# NOTE: this is not used anymore since Ipsilon has been moved to OpenShift.
+# See playbooks/openshift-apps/ipsilon.yml and roles/openshift-apps/ipsilon/
+
 ---
 # Configuration for the ipsilon webapp
 
