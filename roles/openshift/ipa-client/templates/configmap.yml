@@ -11,3 +11,5 @@ data:
     {{ load_file('default.conf') | indent(4) }}
   ca.crt: |-
     {{ ipa_ca_cert | indent(4) }}
+  krb5.conf: |-
+    {{ load_file('krb5.conf') | indent(4) }}
