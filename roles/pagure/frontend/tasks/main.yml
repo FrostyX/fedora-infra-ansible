@@ -515,7 +515,7 @@
   copy: src=notify.py
         dest=/usr/lib/python3.6/site-packages/pagure/lib/notify.py
       owner=root group=root mode=0644
-  notify: restart httpd
+  notify: restart apache
   tags:
   - hotfix
   - pagure
