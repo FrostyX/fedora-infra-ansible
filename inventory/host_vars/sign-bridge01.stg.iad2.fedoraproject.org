@@ -3,8 +3,8 @@ nm: 255.255.255.0
 gw: 10.3.167.27
 dns: 10.3.163.33
 
-ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-7-iad2
-ks_repo: http://10.3.163.35/repo/rhel/RHEL7-x86_64/
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-8-iad2
+ks_repo: http://10.3.163.35/repo/rhel/RHEL8-x86_64/
 volgroup: /dev/vg_guests
 vmhost: bvmhost-x86-02.stg.iad2.fedoraproject.org
 datacenter: iad2
