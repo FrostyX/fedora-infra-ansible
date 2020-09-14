@@ -631,7 +631,7 @@ os-node05.stg.iad2.fedoraproject.org
 # osbs-aarch64-master01.stg.iad2.fedoraproject.org
 # osbs-aarch64-node01.stg.iad2.fedoraproject.org
 # osbs-aarch64-node02.stg.iad2.fedoraproject.org
-# pdc-web01.stg.iad2.fedoraproject.org
+pdc-web01.stg.iad2.fedoraproject.org
 pkgs01.stg.iad2.fedoraproject.org
 proxy01.stg.iad2.fedoraproject.org
 proxy02.stg.iad2.fedoraproject.org
@@ -812,7 +812,7 @@ pdc-web01.iad2.fedoraproject.org
 pdc-web02.iad2.fedoraproject.org
 
 [pdc_web_stg]
-# pdc-web01.stg.iad2.fedoraproject.org
+pdc-web01.stg.iad2.fedoraproject.org
 
 [maintainer_test]
 f31-test.fedorainfracloud.org

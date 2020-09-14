@@ -22,11 +22,12 @@
   - nagios_client
   - collectd/base
   - hosts
-  - fas_client
+  - { role: fas_client, when: env != "staging" }
   - sudo
 
   tasks:
   - import_tasks: "{{ tasks_path }}/2fa_client.yml"
+    when: env != "staging"
   - import_tasks: "{{ tasks_path }}/motd.yml"
 
 - name: stuff for the web nodes
