@@ -36,13 +36,13 @@ spec:
           git
 
       # Fedora specific stuff
-      RUN cd /tmp \
-          git clone --branch {{ env }} https://pagure.io/fedora-infra/ipsilon-fedora.git \
-          cd ipsilon-fedora \
+      RUN cd /tmp && \
+          git clone --branch {{ env }} https://pagure.io/fedora-infra/ipsilon-fedora.git && \
+          cd ipsilon-fedora && \
           ./install.sh
 
       # Cleanup
-      RUN dnf remove -y git
+      RUN dnf remove -y git && rm -rf /tmp/ipsilon-fedora
 
       # Set up krb5
       RUN rm -f /etc/krb5.conf && ln -sf /etc/ipsilon/krb5.conf /etc/krb5.conf
