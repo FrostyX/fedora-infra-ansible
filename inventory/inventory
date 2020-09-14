@@ -153,14 +153,13 @@ mailman02.iad2.fedoraproject.org
 mbs-frontend01.iad2.fedoraproject.org
 
 [mbs_frontend_stg]
-# mbs-frontend01.stg.iad2.fedoraproject.org
-# mbs-frontend02.stg.iad2.fedoraproject.org
+mbs-frontend01.stg.iad2.fedoraproject.org
 
 [mbs_backend]
 mbs-backend01.iad2.fedoraproject.org
 
 [mbs_backend_stg]
-# mbs-backend01.stg.iad2.fedoraproject.org
+mbs-backend01.stg.iad2.fedoraproject.org
 
 [mbs:children]
 mbs_frontend
@@ -604,8 +603,8 @@ db03.stg.iad2.fedoraproject.org
 ipa01.stg.iad2.fedoraproject.org
 koji01.stg.iad2.fedoraproject.org
 # mailman01.stg.iad2.fedoraproject.org
-# mbs-backend01.stg.iad2.fedoraproject.org
-# mbs-frontend01.stg.iad2.fedoraproject.org
+mbs-backend01.stg.iad2.fedoraproject.org
+mbs-frontend01.stg.iad2.fedoraproject.org
 # memcached01.stg.iad2.fedoraproject.org
 # mm-backend01.stg.iad2.fedoraproject.org
 # mm-crawler01.stg.iad2.fedoraproject.org
