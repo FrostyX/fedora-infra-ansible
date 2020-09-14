@@ -6,8 +6,6 @@ num_cpus: 2
 
 deployment_type: stg
 
-virt_install_command: "{{ virt_install_command_two_nic }}"
-
 tcp_ports: [ 80 ]
 fas_client_groups: sysadmin-noc,fi-apprentice,sysadmin-web,sysadmin-veteran
 
@@ -32,4 +30,3 @@ fedmsg_certs:
   - wiki.upload.complete
 
 nfs_mount_opts: "rw,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3"
-

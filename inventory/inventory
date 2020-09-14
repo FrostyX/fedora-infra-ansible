@@ -654,7 +654,7 @@ vmhost-x86-07.stg.iad2.fedoraproject.org
 vmhost-x86-08.stg.iad2.fedoraproject.org
 vmhost-x86-09.stg.iad2.fedoraproject.org
 vmhost-x86-10.stg.iad2.fedoraproject.org
-# wiki01.stg.iad2.fedoraproject.org
+wiki01.stg.iad2.fedoraproject.org
 
 # This is a list of hosts that are a little "friendly" with staging.
 # They are exempted from the iptables wall between staging and prod.
@@ -730,7 +730,7 @@ qvmhost-x86-02.iad2.fedoraproject.org
 
 
 [wiki_stg]
-# wiki01.stg.iad2.fedoraproject.org
+wiki01.stg.iad2.fedoraproject.org
 
 [wiki]
 wiki01.iad2.fedoraproject.org
