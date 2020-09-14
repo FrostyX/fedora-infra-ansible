@@ -25,7 +25,7 @@
 
 
 - name: drop and re-create the staging db entirely
-  hosts: db-koji01.stg.phx2.fedoraproject.org
+  hosts: db-koji01.stg.iad2.fedoraproject.org
   user: root
   become: yes
   become_user: postgres
@@ -40,12 +40,12 @@
       - container
       - createrepo
       - livemedia
-    - name: buildvm_aarch64_stg
-      arches: aarch64
-    - name: buildvm_armv7_stg
-      arches: armhfp
-    - name: buildvm_ppc64le_stg
-      arches: ppc64le
+#    - name: buildvm_aarch64_stg
+#      arches: aarch64
+#    - name: buildvm_armv7_stg
+#      arches: armhfp
+#    - name: buildvm_ppc64le_stg
+#      arches: ppc64le
     - name: buildvm_s390x_stg
       arches: s390x
   # Users allowed to use content generators, only in staging
