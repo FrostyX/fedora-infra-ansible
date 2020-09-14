@@ -413,7 +413,7 @@ ns13.rdu2.fedoraproject.org
 odcs-frontend01.iad2.fedoraproject.org
 
 [odcs_frontend_stg]
-# odcs-frontend01.stg.iad2.fedoraproject.org
+odcs-frontend01.stg.iad2.fedoraproject.org
 
 [odcs_backend:children]
 odcs_backend_general
@@ -426,7 +426,7 @@ odcs-backend01.iad2.fedoraproject.org
 odcs-backend-releng01.iad2.fedoraproject.org
 
 [odcs_backend_stg]
-# odcs-backend01.stg.iad2.fedoraproject.org
+odcs-backend01.stg.iad2.fedoraproject.org
 
 [odcs_stg:children]
 odcs_frontend_stg
@@ -612,8 +612,8 @@ mbs-frontend01.stg.iad2.fedoraproject.org
 # notifs-backend01.stg.iad2.fedoraproject.org
 # notifs-web01.stg.iad2.fedoraproject.org
 # notifs-web02.stg.iad2.fedoraproject.org
-# odcs-backend01.stg.iad2.fedoraproject.org
-# odcs-frontend01.stg.iad2.fedoraproject.org
+odcs-backend01.stg.iad2.fedoraproject.org
+odcs-frontend01.stg.iad2.fedoraproject.org
 os-control01.stg.iad2.fedoraproject.org
 os-master01.stg.iad2.fedoraproject.org
 os-master02.stg.iad2.fedoraproject.org
