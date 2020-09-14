@@ -15,12 +15,12 @@ copr_builder_key_name: "buildsys"
 copr_builder_security_groups: "ssh-anywhere-coprdev,default,ssh-from-persistent-coprdev"
 
 copr_builder_images:
-  x86_64: copr-builder-x86_64-f31-20200117_120726
+  x86_64: copr-builder-x86_64-f32-20200914_072608
   ppc64le: copr-builder-ppc64le-f31-20200117_132023
-  aarch64: copr-builder-20200120_133457
+  aarch64: copr-builder-aarch64-f32-20200914_073754
   aws:
-    x86_64: ami-09a4c035460759858 # copr-builder-x86_64-f31-20200421_131242
-    aarch64: ami-0acfbfbed95798259 # copr-builder-aarch64-f31-20200421_133814
+    x86_64: ami-018a5409ac8236e1c # copr-builder-x86_64-f32-20200914_072608
+    aarch64: ami-0971194ecdf78f485 # copr-builder-aarch64-f32-20200914_073754
 
 do_sign: "true"
 
