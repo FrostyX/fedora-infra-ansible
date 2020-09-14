@@ -916,7 +916,7 @@ copr_keygen_dev_aws
 copr_aws
 copr_dev_aws
 
-[copr_hypervisors]
+[copr_hypervisor]
 vmhost-copr01.rdu-cc.fedoraproject.org
 
 # [copr_hypervisors_aarch64]
