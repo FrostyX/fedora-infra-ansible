@@ -191,7 +191,7 @@ sign-vault01.iad2.fedoraproject.org
 autosign01.iad2.fedoraproject.org
 
 [autosign_stg]
-# autosign01.stg.iad2.fedoraproject.org
+autosign01.stg.iad2.fedoraproject.org
 
 [dbserver]
 db01.iad2.fedoraproject.org
@@ -563,7 +563,7 @@ smtp-mm-cc-rdu01.fedoraproject.org
 # All staging hosts should be in this group too.
 #
 [staging]
-# autosign01.stg.iad2.fedoraproject.org
+autosign01.stg.iad2.fedoraproject.org
 # badges-backend01.stg.iad2.fedoraproject.org
 # badges-web01.stg.iad2.fedoraproject.org
 # basset01.stg.iad2.fedoraproject.org
