@@ -2,6 +2,7 @@
 # Define resources for this group of hosts here.
 lvm_size: 750000
 mem_size: 49152
+max_mem_size: 131072
 num_cpus: 16
 
 # for systems that do not match the above - specify the same parameter in
