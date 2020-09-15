@@ -1,0 +1,28 @@
+data:
+  description: ELN base
+  license:
+    module: [MIT]
+  name: platform
+  profiles:
+    buildroot:
+      rpms: [bash, bzip2, coreutils, cpio, diffutils, fedora-release, findutils, gawk,
+        glibc-minimal-langpack, grep, gzip, info, make, patch, redhat-rpm-config,
+        rpm-build, sed, shadow-utils, tar, unzip, util-linux, which, xz]
+    srpm-buildroot:
+      rpms: [bash, fedora-release, fedpkg-minimal, glibc-minimal-langpack, gnupg2,
+        redhat-rpm-config, rpm-build, shadow-utils]
+  stream: eln
+  summary: ELN base
+  context: 00000000
+  version: 1
+  xmd:
+    mbs:
+      buildrequires: {}
+      commit: eln
+      requires: {}
+      koji_tag: module-eln-build
+      mse: TRUE
+      default_modules_scm_url: https://pagure.io/modularity/fedora-stg-module-defaults.git
+document: modulemd
+version: 1
+  
