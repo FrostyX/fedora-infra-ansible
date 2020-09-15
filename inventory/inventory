@@ -924,6 +924,7 @@ vmhost-copr01.rdu-cc.fedoraproject.org
 
 [pagure]
 pagure01.fedoraproject.org
+pagure02.fedoraproject.org
 
 [pagure_stg]
 pagure-stg01.fedoraproject.org
