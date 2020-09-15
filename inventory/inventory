@@ -174,7 +174,7 @@ mbs_backend_stg
 bodhi-backend01.iad2.fedoraproject.org
 
 [bodhi_backend_stg]
-# bodhi-backend01.stg.iad2.fedoraproject.org
+bodhi-backend01.stg.iad2.fedoraproject.org
 
 [sign_bridge]
 sign-bridge01.iad2.fedoraproject.org
@@ -214,7 +214,7 @@ db-koji01.stg.iad2.fedoraproject.org
 # badges-backend01.stg.iad2.fedoraproject.org
 # badges-web01.stg.iad2.fedoraproject.org
 # blockerbugs01.stg.iad2.fedoraproject.org
-# bodhi-backend01.stg.iad2.fedoraproject.org
+bodhi-backend01.stg.iad2.fedoraproject.org
 # busgateway01.stg.iad2.fedoraproject.org
 # datagrepper01.stg.iad2.fedoraproject.org
 # fedocal01.stg.iad2.fedoraproject.org
@@ -568,7 +568,7 @@ autosign01.stg.iad2.fedoraproject.org
 # basset01.stg.iad2.fedoraproject.org
 # bastion01.stg.iad2.fedoraproject.org
 # blockerbugs01.stg.iad2.fedoraproject.org
-# bodhi-backend01.stg.iad2.fedoraproject.org
+bodhi-backend01.stg.iad2.fedoraproject.org
 # bugzilla2fedmsg01.stg.iad2.fedoraproject.org
 bvmhost-x86-01.stg.iad2.fedoraproject.org
 bvmhost-x86-02.stg.iad2.fedoraproject.org
