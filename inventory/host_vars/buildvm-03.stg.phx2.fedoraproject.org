@@ -1,4 +1,0 @@
----
-vmhost: bvirthost01.stg.phx2.fedoraproject.org
-eth0_ip: 10.5.128.86
-gw: 10.5.128.254
