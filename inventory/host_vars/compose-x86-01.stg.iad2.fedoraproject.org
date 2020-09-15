@@ -1,14 +1,13 @@
 nm: 255.255.255.0
-gw: 10.5.128.254
-dns: 10.5.126.21
+gw: 10.3.167.254
+dns: 10.3.163.33
 
-ks_url: http://10.5.126.23/repo/rhel/ks/kvm-fedora-30
-ks_repo: http://10.5.126.23/pub/fedora/linux/releases/30/Server/x86_64/os/
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-fedora-32-iad2
+ks_repo: http://10.3.163.35/pub/fedora/linux/releases/32/Server/x86_64/os/
 
-volgroup: /dev/vg_virthost16
-eth0_ip: 10.5.128.89
-eth1_ip: 10.5.127.29
-vmhost: virthost05.stg.phx2.fedoraproject.org
+volgroup: /dev/vg_guests
+eth0_ip: 10.3.167.33
+vmhost: bvmhost-x86-03.stg.iad2.fedoraproject.org
 datacenter: staging
 
 fas_client_groups: sysadmin-releng,sysadmin-fedimg,modularity-wg,pungi-devel
@@ -18,8 +17,6 @@ koji_hub_nfs: "fedora_koji"
 kojipkgs_url: kojipkgs.fedoraproject.org
 kojihub_url: koji.stg.fedoraproject.org/kojihub
 kojihub_scheme: http
-
-virt_install_command: "{{ virt_install_command_two_nic }}"
 
 # These are consumed by a task in roles/fedmsg/base/main.yml
 fedmsg_certs:

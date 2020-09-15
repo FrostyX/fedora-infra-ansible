@@ -18,7 +18,7 @@ compose-rawhide01.iad2.fedoraproject.org
 compose-iot01.iad2.fedoraproject.org
 
 [releng_stg]
-# composer.stg.iad2.fedoraproject.org
+compose-x86-01.stg.iad2.fedoraproject.org
 
 [retrace]
 retrace03.rdu-cc.fedoraproject.org
@@ -584,7 +584,7 @@ buildvm-x86-05.stg.iad2.fedoraproject.org
 # buildvm-s390x-01.stg.s390.fedoraproject.org
 # busgateway01.stg.iad2.fedoraproject.org
 certgetter01.stg.iad2.fedoraproject.org
-# composer.stg.iad2.fedoraproject.org
+compose-x86-01.stg.iad2.fedoraproject.org
 copr-be-dev.aws.fedoraproject.org
 copr-dist-git-dev.aws.fedoraproject.org
 copr-fe-dev.aws.fedoraproject.org
