@@ -541,15 +541,11 @@ openqa01.iad2.fedoraproject.org
 [resultsdb:children]
 resultsdb_stg
 resultsdb_prod
-resultsdb_iad_prod
 
 [resultsdb_stg]
-#resultsdb-stg01.qa.fedoraproject.org
+resultsdb01.stg.iad2.fedoraproject.org
 
 [resultsdb_prod]
-#resultsdb01.qa.fedoraproject.org
-
-[resultsdb_iad_prod]
 resultsdb01.iad2.fedoraproject.org
 
 [smtp_mm]
@@ -566,7 +562,6 @@ autosign01.stg.iad2.fedoraproject.org
 # badges-backend01.stg.iad2.fedoraproject.org
 # badges-web01.stg.iad2.fedoraproject.org
 # basset01.stg.iad2.fedoraproject.org
-# bastion01.stg.iad2.fedoraproject.org
 # blockerbugs01.stg.iad2.fedoraproject.org
 bodhi-backend01.stg.iad2.fedoraproject.org
 # bugzilla2fedmsg01.stg.iad2.fedoraproject.org
@@ -596,9 +591,7 @@ db01.stg.iad2.fedoraproject.org
 db03.stg.iad2.fedoraproject.org
 oci-candidate-registry01.stg.iad2.fedoraproject.org
 oci-registry01.stg.iad2.fedoraproject.org
-# #fas01.stg.iad2.fedoraproject.org
 # fedimg01.stg.iad2.fedoraproject.org
-# fedocal01.stg.iad2.fedoraproject.org
 # github2fedmsg01.stg.iad2.fedoraproject.org
 ipa01.stg.iad2.fedoraproject.org
 koji01.stg.iad2.fedoraproject.org
@@ -611,7 +604,6 @@ mbs-frontend01.stg.iad2.fedoraproject.org
 # mm-frontend01.stg.iad2.fedoraproject.org
 # notifs-backend01.stg.iad2.fedoraproject.org
 # notifs-web01.stg.iad2.fedoraproject.org
-# notifs-web02.stg.iad2.fedoraproject.org
 odcs-backend01.stg.iad2.fedoraproject.org
 odcs-frontend01.stg.iad2.fedoraproject.org
 os-control01.stg.iad2.fedoraproject.org
@@ -637,7 +629,7 @@ proxy02.stg.iad2.fedoraproject.org
 rabbitmq01.stg.iad2.fedoraproject.org
 rabbitmq02.stg.iad2.fedoraproject.org
 rabbitmq03.stg.iad2.fedoraproject.org
-# resultsdb-stg01.qa.fedoraproject.org
+resultsdb01.stg.iad2.fedoraproject.org
 retrace-stg.aws.fedoraproject.org
 sign-bridge01.stg.iad2.fedoraproject.org
 sign-vault01.stg.iad2.fedoraproject.org
