@@ -19,12 +19,11 @@ spec:
           --enablerepo=updates-testing \
 {% endif %}
           ipsilon \
-          ipsilon-authfas \
           ipsilon-openid \
           ipsilon-saml2 \
           ipsilon-persona \
-          ipsilon-infofas \
           ipsilon-authgssapi \
+          ipsilon-authform \
           ipsilon-openidc \
           ipsilon-theme-Fedora \
           mod_auth_openidc \
