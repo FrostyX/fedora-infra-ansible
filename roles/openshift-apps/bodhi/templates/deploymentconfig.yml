@@ -59,7 +59,7 @@ items:
         - name: bodhi-web
           image: bodhi-base:latest
           command: ["gunicorn"]
-          args: ["--paste", "/etc/bodhi/production.ini", "-b", "0.0.0.0:8080", "-w", "4", "--log-level", "DEBUG", "-t", "60"]
+          args: ["--paste", "/etc/bodhi/production.ini", "-b", "0.0.0.0:8080", "-w", "4", "--log-level", "DEBUG", "-t", "180"]
           ports:
           - containerPort: 8080
           resources: {}

@@ -112,6 +112,7 @@
     host: "bodhi{{ env_suffix }}.fedoraproject.org"
     serviceport: web
     servicename: bodhi-web
+    annotations: "haproxy.router.openshift.io/timeout: 180s"
   - role: openshift/object
     app: bodhi
     template: deploymentconfig.yml
