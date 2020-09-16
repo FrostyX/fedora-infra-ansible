@@ -33,7 +33,8 @@
     shell: pg_dump -C {{ db }} |xz -c > /var/tmp/{{ db }}.dump.xz
 
     # Get the dump from `from` in the batcave
-  - fetch:
+  - name: Export the dump from the dbhost in prod to batcave
+    fetch:
      src: /var/tmp/{{ db }}.dump.xz
      dest: /var/tmp/
      flat: yes
@@ -70,16 +71,22 @@
 
   tasks:
     # push dump to stg from batcave
-  - copy:
+  - name: push the DB dump from batcave to the dbhost in stg
+    copy:
        src: /var/tmp/{{ db }}.dump.xz
        dest: /var/tmp/{{ db }}.dump.xz
 
-  - command: unxz /var/tmp/{{ db }}.dump.xz
+  - name: Unpack the archive
+    command: unxz /var/tmp/{{ db }}.dump.xz
              creates=/var/tmp/{{ db }}.dump
 
-  - command: dropdb {{ db }}
+  - name: Drop the postgresql database in staging
+    command: dropdb {{ db }}
     ignore_errors: yes
-  - command: createdb {{ db }}
+
+  - name: Create the postgresql database in staging
+    command: createdb {{ db }}
+
   - name: Import the prod db.  This will take quite a while.  Go get a snack!
     shell: cat /var/tmp/{{ db }}.dump | psql {{ db }}
 
@@ -129,5 +136,6 @@
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
   tasks:
-  - command: rm -f /var/tmp/{{ db }}.dump.xz
+  - name: remove the DB dump from batcave
+    command: rm -f /var/tmp/{{ db }}.dump.xz
 
