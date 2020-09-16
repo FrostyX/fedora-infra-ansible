@@ -1,6 +1,7 @@
 ---
 lvm_size: 20000
 mem_size: 40960
+max_mem_size: 65536
 num_cpus: 4
 nm: 255.255.255.0
 gw: 10.3.166.254
