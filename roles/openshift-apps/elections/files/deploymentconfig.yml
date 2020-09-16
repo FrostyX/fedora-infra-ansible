@@ -37,6 +37,9 @@ spec:
         ports:
         - containerPort: 8080
         resources: {}
+        env:
+          - name: KRB5_CONFIG
+            value: /etc/ipa/krb5.conf
         volumeMounts:
         - name: config-volume
           mountPath: /opt/app-root/config/
