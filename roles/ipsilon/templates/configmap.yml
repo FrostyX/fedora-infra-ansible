@@ -21,8 +21,8 @@ data:
      ticket_lifetime = 24h
      renew_lifetime = 7d
      forwardable = true
-     default_keytab_name = FILE:/etc/keytabs/ipsilon-keytab
-     default_client_keytab_name = FILE:/etc/keytabs/ipsilon-keytab
+     default_keytab_name = FILE:/etc/keytabs/service.keytab
+     default_client_keytab_name = FILE:/etc/keytabs/service.keytab
     [realms]
      {{ ipa_realm }} = {
       kdc = https://id{{ env_suffix }}.fedoraproject.org/KdcProxy

@@ -28,7 +28,7 @@
 
   - role: openshift/keytab
     app: ipsilon
-    key: ipsilon-keytab
+    key: service.keytab
     secret_name: ipsilon-keytab
     service: HTTP
     host: "id{{ env_suffix }}.fedoraproject.org"
