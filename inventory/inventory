@@ -75,7 +75,7 @@ blockerbugs01.stg.iad2.fedoraproject.org
 bugzilla2fedmsg01.iad2.fedoraproject.org
 
 [bugzilla2fedmsg_stg]
-# bugzilla2fedmsg01.stg.iad2.fedoraproject.org
+bugzilla2fedmsg01.stg.iad2.fedoraproject.org
 
 [bvirthost]
 # bvirthost01.stg.iad2.fedoraproject.org
@@ -568,7 +568,7 @@ autosign01.stg.iad2.fedoraproject.org
 # basset01.stg.iad2.fedoraproject.org
 blockerbugs01.stg.iad2.fedoraproject.org
 bodhi-backend01.stg.iad2.fedoraproject.org
-# bugzilla2fedmsg01.stg.iad2.fedoraproject.org
+bugzilla2fedmsg01.stg.iad2.fedoraproject.org
 bvmhost-x86-01.stg.iad2.fedoraproject.org
 bvmhost-x86-02.stg.iad2.fedoraproject.org
 bvmhost-x86-03.stg.iad2.fedoraproject.org
