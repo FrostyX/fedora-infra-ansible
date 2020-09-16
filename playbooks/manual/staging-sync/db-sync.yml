@@ -38,7 +38,7 @@
      flat: yes
 
 - name: bring staging services down
-  hosts: "{{ server or batcave }}"
+  hosts: "{{ server or 'batcave' }}"
   user: root
   any_errors_fatal: false
   vars_files:
@@ -81,7 +81,7 @@
     shell: cat /var/tmp/{{ db }}.dump | psql {{ db }}
 
 - name: bring staging services up
-  hosts: "{{ server or batcave }}"
+  hosts: "{{ server or 'batcave' }}"
   user: root
   any_errors_fatal: false
   vars_files:
