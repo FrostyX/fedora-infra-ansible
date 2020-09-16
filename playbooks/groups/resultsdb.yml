@@ -49,6 +49,9 @@
        - "org.centos.prod.ci.koji-build.test.complete"
        - "org.centos.prod.ci.koji-build.test.error"
      when: deployment_type == "prod"
+     thresholds:
+       warning: 10
+       critical: 100
      tags:
      - rabbit/queue
 
