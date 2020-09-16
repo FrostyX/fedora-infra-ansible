@@ -27,6 +27,7 @@ spec:
           volumes:
             - config-volume
             - elections-secret-volume
+            - ipa-config-volume
             - keytab-volume
   template:
     metadata:
@@ -59,6 +60,9 @@ spec:
         - name: fedora-messaging-cert-volume
           mountPath: /etc/pki/rabbitmq/cert
           readOnly: true
+        - name: ipa-config-volume
+          mountPath: /etc/ipa
+          readOnly: true
         - name: keytab-volume
           mountPath: /etc/keytabs
           readOnly: true
@@ -90,6 +94,9 @@ spec:
       - name: fedora-messaging-cert-volume
         secret:
           secretName: elections-fedora-messaging-crt
+      - name: ipa-config-volume
+        configMap:
+          name: ipa-client-config
       - name: keytab-volume
         secret:
           secretName: elections-keytab
