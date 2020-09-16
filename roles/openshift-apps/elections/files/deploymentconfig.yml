@@ -22,9 +22,12 @@ spec:
           env:
           - name: PYTHONPATH
             value: /opt/app-root/src
+          - name: KRB5_CONFIG
+            value: /etc/ipa/krb5.conf
           volumes:
             - config-volume
             - elections-secret-volume
+            - keytab-volume
   template:
     metadata:
       labels:
@@ -38,8 +41,8 @@ spec:
         - containerPort: 8080
         resources: {}
         env:
-          - name: KRB5_CONFIG
-            value: /etc/ipa/krb5.conf
+        - name: KRB5_CONFIG
+          value: /etc/ipa/krb5.conf
         volumeMounts:
         - name: config-volume
           mountPath: /opt/app-root/config/
