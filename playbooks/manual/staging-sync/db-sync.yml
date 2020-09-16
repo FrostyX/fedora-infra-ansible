@@ -40,7 +40,7 @@
 - name: bring staging services down
   hosts: "{{ server }}"
   user: root
-  when: server is defined
+  any_errors_fatal: false
   vars_files:
    - /srv/web/infra/ansible/vars/global.yml
    - "/srv/private/ansible/vars.yml"
