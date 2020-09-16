@@ -50,7 +50,8 @@
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
   tasks:
-  - service: name=httpd state=stopped
+  - name: stop apache
+    service: name=httpd state=stopped
     when: (server is defined) and (server|length > 0)
 
 - name: drop and re-create the staging db entirely
@@ -94,7 +95,8 @@
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
   tasks:
-  - service: name=httpd state=started
+  - name: restart apache
+    service: name=httpd state=started
     when: (server is defined) and (server|length > 0)
 
 - name: Remove the prod db dump now that we are done
