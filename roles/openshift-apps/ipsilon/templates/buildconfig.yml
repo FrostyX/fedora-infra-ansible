@@ -23,7 +23,7 @@ spec:
           ipsilon-saml2 \
           ipsilon-persona \
           ipsilon-authgssapi \
-          ipsilon-authform \
+          ipsilon-authldap \
           ipsilon-openidc \
           ipsilon-theme-Fedora \
           mod_auth_openidc \
