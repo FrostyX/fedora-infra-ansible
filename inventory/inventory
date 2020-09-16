@@ -140,7 +140,7 @@ fedocal02.iad2.fedoraproject.org
 github2fedmsg01.iad2.fedoraproject.org
 
 [github2fedmsg_stg]
-# github2fedmsg01.stg.iad2.fedoraproject.org
+github2fedmsg01.stg.iad2.fedoraproject.org
 
 [mailman]
 mailman01.iad2.fedoraproject.org
@@ -596,7 +596,7 @@ db03.stg.iad2.fedoraproject.org
 oci-candidate-registry01.stg.iad2.fedoraproject.org
 oci-registry01.stg.iad2.fedoraproject.org
 # fedimg01.stg.iad2.fedoraproject.org
-# github2fedmsg01.stg.iad2.fedoraproject.org
+github2fedmsg01.stg.iad2.fedoraproject.org
 ipa01.stg.iad2.fedoraproject.org
 koji01.stg.iad2.fedoraproject.org
 # mailman01.stg.iad2.fedoraproject.org
