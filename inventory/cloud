@@ -27,6 +27,8 @@ proxy35.fedoraproject.org
 proxy36.fedoraproject.org
 proxy37.fedoraproject.org
 proxy38.fedoraproject.org
+proxy39.fedoraproject.org
+proxy40.fedoraproject.org
 copr-be.aws.fedoraproject.org
 copr-be-dev.aws.fedoraproject.org
 copr-dist-git.aws.fedoraproject.org
