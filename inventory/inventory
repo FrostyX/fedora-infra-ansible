@@ -328,7 +328,7 @@ nuancier02.iad2.fedoraproject.org
 memcached01.iad2.fedoraproject.org
 
 [memcached_stg]
-# memcached01.stg.iad2.fedoraproject.org
+memcached01.stg.iad2.fedoraproject.org
 
 [mirrorlist_proxies]
 proxy01.iad2.fedoraproject.org
@@ -602,7 +602,7 @@ koji01.stg.iad2.fedoraproject.org
 # mailman01.stg.iad2.fedoraproject.org
 mbs-backend01.stg.iad2.fedoraproject.org
 mbs-frontend01.stg.iad2.fedoraproject.org
-# memcached01.stg.iad2.fedoraproject.org
+memcached01.stg.iad2.fedoraproject.org
 # mm-backend01.stg.iad2.fedoraproject.org
 # mm-crawler01.stg.iad2.fedoraproject.org
 # mm-frontend01.stg.iad2.fedoraproject.org
