@@ -32,6 +32,7 @@ spec:
           python-jinja2 \
           httpd \
           python3-mod_wsgi \
+          python3-fasjson-client \
           git
 
       # Fedora specific stuff
