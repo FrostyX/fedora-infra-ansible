@@ -22,6 +22,16 @@
     tags:
     - appowners
 
+  - role: openshift/keytab
+    app: elections
+    key: service.keytab
+    secret_name: elections-keytab
+    service: HTTP
+    host: "elections{{ env_suffix }}.fedoraproject.org"
+
+  - role: openshift/ipa-client
+    app: elections
+
   - role: openshift/object
     app: elections
     template: imagestream.yml

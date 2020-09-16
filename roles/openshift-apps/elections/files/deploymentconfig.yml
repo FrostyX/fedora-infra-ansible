@@ -53,6 +53,9 @@ spec:
         - name: fedora-messaging-cert-volume
           mountPath: /etc/pki/rabbitmq/cert
           readOnly: true
+        - name: keytab-volume
+          mountPath: /etc/keytabs
+          readOnly: true
         readinessProbe:
           timeoutSeconds: 1
           initialDelaySeconds: 5
@@ -81,6 +84,9 @@ spec:
       - name: fedora-messaging-cert-volume
         secret:
           secretName: elections-fedora-messaging-crt
+      - name: keytab-volume
+        secret:
+          secretName: elections-keytab
 
   triggers:
   - type: ConfigChange
