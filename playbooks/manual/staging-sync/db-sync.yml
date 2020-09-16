@@ -51,7 +51,7 @@
 
   tasks:
   - service: name=httpd state=stopped
-    when: server is defined
+    when: (server is defined) and (server|length > 0)
 
 - name: drop and re-create the staging db entirely
   hosts: "{{ dbhost }}.stg.iad2.fedoraproject.org"
@@ -95,7 +95,7 @@
 
   tasks:
   - service: name=httpd state=started
-    when: server is defined
+    when: (server is defined) and (server|length > 0)
 
 - name: Remove the prod db dump now that we are done
   hosts: "{{ dbhost }}.iad2.fedoraproject.org"
