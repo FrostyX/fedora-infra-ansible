@@ -13,20 +13,6 @@
 #           Can be a full hostname (foo01.iad2.fp.o) or a group, foo-stg
 # db     => The database name on both database server (must be the same)
 
-- name: bring staging services down
-  hosts: "{{ server }}"
-  user: root
-  when: server is defined
-  vars_files:
-   - /srv/web/infra/ansible/vars/global.yml
-   - "/srv/private/ansible/vars.yml"
-   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
-  handlers:
-  - import_tasks: "{{ handlers_path }}/restart_services.yml"
-
-  tasks:
-  - service: name=httpd state=stopped
-
 - name: dump the prod db out
   hosts: "{{ dbhost }}.iad2.fedoraproject.org"
   user: root
@@ -50,6 +36,20 @@
      src: /var/tmp/{{ db }}.dump.xz
      dest: /var/tmp/
      flat: yes
+
+- name: bring staging services down
+  hosts: "{{ server }}"
+  user: root
+  when: server is defined
+  vars_files:
+   - /srv/web/infra/ansible/vars/global.yml
+   - "/srv/private/ansible/vars.yml"
+   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+  handlers:
+  - import_tasks: "{{ handlers_path }}/restart_services.yml"
+
+  tasks:
+  - service: name=httpd state=stopped
 
 - name: drop and re-create the staging db entirely
   hosts: "{{ dbhost }}.stg.iad2.fedoraproject.org"
