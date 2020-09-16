@@ -69,7 +69,7 @@ bastion13.fedoraproject.org
 blockerbugs01.iad2.fedoraproject.org
 
 [blockerbugs_stg]
-# blockerbugs01.stg.iad2.fedoraproject.org
+blockerbugs01.stg.iad2.fedoraproject.org
 
 [bugzilla2fedmsg]
 bugzilla2fedmsg01.iad2.fedoraproject.org
@@ -213,7 +213,7 @@ db-koji01.stg.iad2.fedoraproject.org
 [postgres_clients_stg]
 # badges-backend01.stg.iad2.fedoraproject.org
 # badges-web01.stg.iad2.fedoraproject.org
-# blockerbugs01.stg.iad2.fedoraproject.org
+blockerbugs01.stg.iad2.fedoraproject.org
 bodhi-backend01.stg.iad2.fedoraproject.org
 # busgateway01.stg.iad2.fedoraproject.org
 # datagrepper01.stg.iad2.fedoraproject.org
@@ -566,7 +566,7 @@ autosign01.stg.iad2.fedoraproject.org
 # badges-backend01.stg.iad2.fedoraproject.org
 # badges-web01.stg.iad2.fedoraproject.org
 # basset01.stg.iad2.fedoraproject.org
-# blockerbugs01.stg.iad2.fedoraproject.org
+blockerbugs01.stg.iad2.fedoraproject.org
 bodhi-backend01.stg.iad2.fedoraproject.org
 # bugzilla2fedmsg01.stg.iad2.fedoraproject.org
 bvmhost-x86-01.stg.iad2.fedoraproject.org

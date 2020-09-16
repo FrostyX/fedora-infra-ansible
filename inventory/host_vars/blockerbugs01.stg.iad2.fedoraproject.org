@@ -1,0 +1,13 @@
+---
+nm: 255.255.255.0
+gw: 10.3.166.254
+dns: 10.3.163.33
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-fedora-32-iad2
+ks_repo: http://10.3.163.35/pub/fedora/linux/releases/32/Server/x86_64/os/
+volgroup: /dev/vg_guests
+eth0_ip: 10.3.166.37
+vmhost: vmhost-x86-08.stg.iad2.fedoraproject.org
+datacenter: iad2
+
+# This is the master node in stg, so it runs the cron job
+master_blockerbugs_node: True
