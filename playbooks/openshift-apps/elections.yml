@@ -1,3 +1,25 @@
+- name: setup the database
+  hosts: db01{{env_suffix}}.iad2.fedoraproject.org
+  gather_facts: no
+  become: yes
+  become_user: postgres
+  vars_files:
+  - /srv/web/infra/ansible/vars/global.yml
+  - /srv/private/ansible/vars.yml
+  - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  tasks:
+  - name: elections DB user
+    postgresql_user:
+      name: "{{ elections_db_user }}"
+      password: "{{ elections_db_pass }}"
+  - name: elections database creation
+    postgresql_db:
+      name: "{{ elections_db_name }}"
+      owner: "{{ elections_db_user }}"
+      encoding: UTF-8
+
+
 - name: make the app be real
   hosts: os_masters_stg[0]:os_masters[0]
   user: root
