@@ -10,7 +10,8 @@
 # server => The application server where apache will be turned off during the
 #           sync. /!\ it should be the *stg* server, not prod (the one you want
 #           to load the new DB for)
-#           Can be a full hostname (foo01.iad2.fp.o) or a group, foo-stg
+#           Can be a full hostname (foo01.iad2.fp.o) or a group (foo-stg) or an
+#           emptry string (''), for example if the app is running in openshift.
 # db     => The database name on both database server (must be the same)
 
 - name: dump the prod db out
@@ -76,6 +77,7 @@
              creates=/var/tmp/{{ db }}.dump
 
   - command: dropdb {{ db }}
+    ignore_errors: yes
   - command: createdb {{ db }}
   - name: Import the prod db.  This will take quite a while.  Go get a snack!
     shell: cat /var/tmp/{{ db }}.dump | psql {{ db }}
