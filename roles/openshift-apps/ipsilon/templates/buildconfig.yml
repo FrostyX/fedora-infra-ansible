@@ -45,6 +45,8 @@ spec:
 
       # Set up krb5
       RUN rm -f /etc/krb5.conf && ln -sf /etc/ipsilon/krb5.conf /etc/krb5.conf
+      # Set up LDAP
+      RUN rm -f /etc/openldap/ldap.conf && ln -sf /etc/ipa/ldap.conf /etc/openldap/ldap.conf
 
       RUN ln -s /etc/ipsilon/ipsilon.conf /var/lib/ipsilon/ipsilon.conf
 

@@ -33,6 +33,9 @@
     service: HTTP
     host: "id{{ env_suffix }}.fedoraproject.org"
 
+  - role: openshift/ipa-client
+    app: ipsilon
+
   - role: openshift/imagestream
     app: ipsilon
     imagename: ipsilon

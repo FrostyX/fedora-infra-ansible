@@ -37,6 +37,9 @@ spec:
         - name: config-volume
           mountPath: /etc/ipsilon
           readOnly: true
+        - name: ipa-config-volume
+          mountPath: /etc/ipa
+          readOnly: true
         - name: keytab-volume
           mountPath: /etc/keytabs
           readOnly: true
@@ -61,6 +64,9 @@ spec:
       - name: keytab-volume
         secret:
           secretName: ipsilon-keytab
+      - name: ipa-config-volume
+        configMap:
+          name: ipa-client-config
       - name: httpdir-volume
         emptyDir: {}
   triggers:
