@@ -1,13 +1,13 @@
 FROM fedora:32
 RUN curl -o /etc/yum.repos.d/infra-tags.repo https://infrastructure.fedoraproject.org/infra/ansible/files/common/fedora-infra-tags.repo
-env == "staging" %}
+{% if env == "staging" %}
 RUN curl -o /etc/yum.repos.d/infra-tags-stg.repo https://infrastructure.fedoraproject.org/infra/ansible/files/common/fedora-infra-tags-stg.repo
 RUN curl -o /etc/yum.repos.d/fedora-updates-testing.repo https://src.fedoraproject.org/rpms/fedora-repos/raw/master/f/fedora-updates-testing.repo
-if %}
+{% endif %}
 RUN dnf install -y \
-env == "staging" %}
+{% if env == "staging" %}
     --enablerepo=updates-testing \
-if %}
+{% endif %}
     ipsilon \
     ipsilon-openid \
     ipsilon-saml2 \
