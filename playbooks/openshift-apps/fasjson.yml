@@ -10,6 +10,12 @@
 
   vars:
 
+  pre_tasks:
+  - name: create a file with random content to prevent docker from caching the git clone
+    copy:
+      dest: /etc/openshift_apps/fasjson/random-file
+      content: "{{ now() }}"
+
   roles:
   - role: openshift/project
     app: fasjson
