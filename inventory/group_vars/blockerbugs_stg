@@ -30,7 +30,7 @@ blockerbugs_koji_url: "http://koji.fedoraproject.org/"
 # blockerbugs db details
 ############################################################
 
-blockerbugs_db_host_machine: db01.stg.phx2.fedoraproject.org
+blockerbugs_db_host_machine: db01.stg.iad2.fedoraproject.org
 blockerbugs_db_host: "{{ blockerbugs_db_host_machine }}"
 blockerbugs_db_port: 5432
 blockerbugs_db_name: blockerbugs
