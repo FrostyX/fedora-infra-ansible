@@ -28,9 +28,8 @@ RUN dnf install -y \
         python3-wheel && \
     dnf autoremove -y && \
     dnf clean all -y
-# Add a file with random content to prevent Docker from caching the git clone step.
-COPY random-file
-RUN rm -f random-file
+# Run a command with random content to prevent Docker from caching the git clone step.
+RUN echo {{ now() }}
 RUN git clone https://github.com/fedora-infra/fasjson.git && \
     pushd fasjson && \
     git checkout {{ (env == 'production')|ternary('stable', 'staging') }} && \
