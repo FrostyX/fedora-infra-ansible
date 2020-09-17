@@ -167,13 +167,53 @@
   - krb5
   when: ipa_initial
 
+# Reason for removing the next task: we don't store so much private information
+# now, and we can't disallow people from seeing other people's email address on
+# a case-by-case basis, it's either everyone or hand-picked services, but users
+# can't choose to let other users see their info or not.
+#
+# - name: Disable default permissions so we don't break our privacy policy
+#   command:
+#     argv:
+#       - ipa
+#       - permission-mod
+#       - System: Read User Addressbook Attributes
+#       - --bindtype=permission
+#   tags:
+#   - ipa/server
+#   - config
+#   when: ipa_initial
+#   register: output
+#   changed_when: "'Modified permission' in output.stdout"
+#   failed_when: "'no modifications to be performed' not in output.stderr and output.rc != 0"
+# 
+# # Because of the previous task, we must explicitely allow users to read their own data
+# - name: Allow users to read their own data
+#   command:
+#     argv:
+#       - ipa
+#       - selfservice-add
+#       - "Users can read their own addressbook attributes"
+#       - --permissions=read
+#       - --attrs=mail
+#       - --attrs=userCertificate
+#       - --attrs=ipaCertmapData
+#   tags:
+#   - ipa/server
+#   - config
+#   when: ipa_initial
+#   register: output
+#   changed_when: "'Added selfservice' in output.stdout"
+#   failed_when: "'already exists' not in output.stderr and output.rc != 0"
+
+# Set the default value back
 - name: Disable default permissions so we don't break our privacy policy
   command:
     argv:
       - ipa
       - permission-mod
       - System: Read User Addressbook Attributes
-      - --bindtype=permission
+      - --bindtype=all
   tags:
   - ipa/server
   - config
@@ -181,25 +221,6 @@
   register: output
   changed_when: "'Modified permission' in output.stdout"
   failed_when: "'no modifications to be performed' not in output.stderr and output.rc != 0"
-
-# Because of the previous task, we must explicitely allow users to read their own data
-- name: Allow users to read their own data
-  command:
-    argv:
-      - ipa
-      - selfservice-add
-      - "Users can read their own addressbook attributes"
-      - --permissions=read
-      - --attrs=mail
-      - --attrs=userCertificate
-      - --attrs=ipaCertmapData
-  tags:
-  - ipa/server
-  - config
-  when: ipa_initial
-  register: output
-  changed_when: "'Added selfservice' in output.stdout"
-  failed_when: "'already exists' not in output.stderr and output.rc != 0"
 
 - name: Configure password policy
   command: ipa pwpolicy-mod global_policy --maxlife=0 --minlife=0 --history=0 --minclasses=0 --minlength=0 --maxfail=0
