@@ -75,6 +75,12 @@
 - name: run /bin/copr-update-builder from copr-builder package
   shell: /usr/bin/copr-update-builder
 
+# On F32, rpkg-2.7 doesn't work with python3-rpkg-1.61
+# See https://bugzilla.redhat.com/show_bug.cgi?id=1879471
+# Until this gets resolved, let's stay on the older version
+- name: Make sure python3-rpkg-1.60 is installed because of RHBZ 1879471
+  dnf: state=present pkg="python3-rpkg-1.60"
+
 #- name: install the latest mock and mock-core-configs from updates-testing
 #  package: state=latest name={{ packages }}
 #  register: mock_updated
