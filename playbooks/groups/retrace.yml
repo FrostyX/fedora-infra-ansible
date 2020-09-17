@@ -92,7 +92,6 @@
         faf_web_openid_privileged_teams: "provenpackager,proventesters"
         faf_web_secret_key: "{{fedora_faf_web_secret_key}}"
         faf_spool_dir: /srv/faf/
-      when: datacenter == "aws"
     - import_role: name=abrt/faf-post
 
 - name: setup retrace server
@@ -123,5 +122,4 @@
         faf_fedmsg_ca_cert: /etc/fedora-messaging/faf/ca.crt
         faf_fedmsg_keyfile: /etc/fedora-messaging/faf/faf.key
         faf_fedmsg_certfile: /etc/fedora-messaging/faf/faf.crt
-      when: datacenter == "aws"
     - import_role: name=abrt/retrace-post
