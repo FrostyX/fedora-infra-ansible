@@ -18,9 +18,9 @@ $wgCaptchaClass = 'SimpleCaptcha';
 #$wgCaptchaDirectoryLevels = 0;
 #$wgCaptchaSecret = "{{ mediawikiCaptchaKey }}";
 
-$wgCaptchaTriggers['edit']          = true; 
-$wgCaptchaTriggers['create']        = true; 
-$wgCaptchaTriggers['addurl']        = true; 
+$wgCaptchaTriggers['edit']          = true;
+$wgCaptchaTriggers['create']        = true;
+$wgCaptchaTriggers['addurl']        = true;
 $wgCaptchaTriggers['createaccount'] = true;
 $wgCaptchaTriggers['badlogin']      = false;
 
@@ -353,7 +353,7 @@ $wgSquidServersNoPurge = array(
     "152.19.134.142",
     "2610:28:3090:3001:dead:beef:cafe:fed3",
     "192.168.1.14",
-    
+
     # proxy05
     "5.175.150.50",
     "2a00:d1a0:1::131",
@@ -439,8 +439,8 @@ $wgSquidServers = array(
 );
 $wgSquidMaxage = 21600;
 
-# Don't add rel="nofollow" 
-$wgNoFollowLinks = false; 
+# Don't add rel="nofollow"
+$wgNoFollowLinks = false;
 
 # This can be an array in version 1.14 and above.
 $wgAllowExternalImagesFrom = array("http://fedoraproject.org/", "http://docs.fedoraproject.org", "http://fedorahosted.org/", "http://fedorapeople.org", "http://fedoraplanet.org");
@@ -528,9 +528,15 @@ $wgOpenIDConnect_Config['https://id{{ env_suffix }}.fedoraproject.org/openidc/']
     'clientsecret' => '{{ fpwiki_prod_client_secret }}',
 {% endif %}
     'name' => "Fedora Authentication",
+{% if env == "staging" %}
     'scope' => [ 'openid', 'profile', 'email',
                  'https://id.fedoraproject.org/scope/groups',
                  'https://id.fedoraproject.org/scope/cla' ]
+{% else %}
+    'scope' => [ 'openid', 'profile', 'email',
+                 'https://id.fedoraproject.org/scope/groups',
+                 'https://id.fedoraproject.org/scope/agreements' ]
+{% endif %}
 ];
 $wgOpenIDConnect_UseRealNameAsUserName = false;
 $wgOpenIDConnect_UseEmailNameAsUserName = false;
