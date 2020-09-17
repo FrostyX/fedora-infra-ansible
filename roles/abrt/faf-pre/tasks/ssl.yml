@@ -3,6 +3,8 @@
   stat: path="/etc/letsencrypt/live/{{ item.key }}"
   register: le_stat_checks
   with_dict: "{{ letsencrypt.certificates }}"
+  when:
+  - letsencrypt is defined
 
 - name: stop httpd when letsencrypt has not been run
   service:                                                                                                               
