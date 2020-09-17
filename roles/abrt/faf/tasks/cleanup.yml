@@ -4,6 +4,8 @@
   loop: "{{ eol_opsys | selectattr('opsys') | selectattr('release') | list }}"
   become: yes
   become_user: faf
+  register: remove_eoled_output
+  failed_when: false
   changed_when: false
 
 - name: remove EOLed packages
@@ -11,10 +13,12 @@
   loop: "{{ eol_opsys | selectattr('opsys') | selectattr('release') | list }}"
   become: yes
   become_user: faf
+  failed_when: false
   changed_when: false
 
 - name: remove unassigned packages
   command: faf cleanup-unassigned -f
   become: yes
   become_user: faf
+  failed_when: false
   changed_when: false
