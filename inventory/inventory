@@ -619,10 +619,10 @@ os-node02.stg.iad2.fedoraproject.org
 os-node03.stg.iad2.fedoraproject.org
 os-node04.stg.iad2.fedoraproject.org
 os-node05.stg.iad2.fedoraproject.org
-# osbs-control01.stg.iad2.fedoraproject.org
-# osbs-master01.stg.iad2.fedoraproject.org
-# osbs-node01.stg.iad2.fedoraproject.org
-# osbs-node02.stg.iad2.fedoraproject.org
+osbs-control01.stg.iad2.fedoraproject.org
+osbs-master01.stg.iad2.fedoraproject.org
+osbs-node01.stg.iad2.fedoraproject.org
+osbs-node02.stg.iad2.fedoraproject.org
 # osbs-aarch64-master01.stg.iad2.fedoraproject.org
 # osbs-aarch64-node01.stg.iad2.fedoraproject.org
 # osbs-aarch64-node02.stg.iad2.fedoraproject.org
@@ -931,7 +931,7 @@ pagure-stg01.fedoraproject.org
 osbs-control01.iad2.fedoraproject.org
 
 [osbs_control_stg]
-# osbs-control01.stg.iad2.fedoraproject.org
+osbs-control01.stg.iad2.fedoraproject.org
 
 [osbs_nodes]
 osbs-node01.iad2.fedoraproject.org
@@ -954,7 +954,7 @@ osbs_masters
 #osbs_aarch64_masters
 
 [osbs_masters_stg]
-# osbs-master01.stg.iad2.fedoraproject.org
+osbs-master01.stg.iad2.fedoraproject.org
 
 [osbs_aarch64_masters_stg]
 # osbs-aarch64-master01.stg.iad2.fedoraproject.org
@@ -964,8 +964,8 @@ osbs_masters
 # osbs-aarch64-node02.stg.iad2.fedoraproject.org
 
 [osbs_nodes_stg]
-# osbs-node01.stg.iad2.fedoraproject.org
-# osbs-node02.stg.iad2.fedoraproject.org
+osbs-node01.stg.iad2.fedoraproject.org
+osbs-node02.stg.iad2.fedoraproject.org
 
 [osbs_stg:children]
 osbs_control_stg
