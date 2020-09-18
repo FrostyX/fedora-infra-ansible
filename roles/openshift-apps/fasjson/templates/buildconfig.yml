@@ -14,6 +14,9 @@ spec:
       {{ load_file('Dockerfile') | indent(6) }}
   strategy:
     type: Docker
+    dockerStrategy:
+      # Prevent Docker from caching the git clone step in the Dockerfile
+      noCache: true
   output:
     to:
       kind: ImageStreamTag
