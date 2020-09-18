@@ -4,7 +4,7 @@ gw: 10.3.167.254
 dns: 10.3.163.33
 eth0_ip: 10.3.167.39
 
-ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-7-osbs
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-7-osbs-iad2
 ks_repo: http://10.3.163.35/repo/rhel/RHEL7-x86_64/
 
 volgroup: /dev/vg_guests
