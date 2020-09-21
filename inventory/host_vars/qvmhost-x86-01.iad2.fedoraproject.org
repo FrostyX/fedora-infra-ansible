@@ -8,7 +8,33 @@ br0_dev: eno1
 
 dns: 10.3.163.33
 
-mac1: e4:43:4b:a8:b3:0e
-mac2: e4:43:4b:a8:b3:10
-mac3: e4:43:4b:a8:b3:2e
-mac4: e4:43:4b:a8:b3:2f
+mac1: e4:43:4b:a8:c1:fe
+mac2: e4:43:4b:a8:c2:00
+mac3: e4:43:4b:a8:c2:1e
+mac4: e4:43:4b:a8:c2:1f
+
+br0_port0_mac: "{{ mac1 }}"
+
+network_connections:
+  - name: br0
+    state: up
+    type: bridge
+    autoconnect: yes
+    ip:
+      address:
+      - "{{ br0_ip }}/24"
+      gateway4: "{{ br0_gw }}"
+      dns:
+      - 10.3.163.33
+      - 10.3.163.34
+      dns_search:
+      - iad2.fedoraproject.org
+      - fedoraproject.org
+      dhcp4: no
+      auto6: no
+  - name: br0-port0
+    state: up
+    type: ethernet
+    master: br0
+    mac: "{{ br0_port0_mac }}"
+
