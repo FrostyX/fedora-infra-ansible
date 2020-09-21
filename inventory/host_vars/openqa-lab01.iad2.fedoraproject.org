@@ -28,6 +28,7 @@ lvm_size: 1750000
 mem_size: 16384
 mem_size: 262144
 num_cpus: 60
+max_cpu: 60
 
 nrpe_procs_warn: 1000
 nrpe_procs_crit: 1200
