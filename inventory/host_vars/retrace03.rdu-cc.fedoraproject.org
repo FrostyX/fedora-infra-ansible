@@ -1,5 +1,6 @@
 ---
 datacenter: rdu-cc
+public_hostname: retrace03.rdu-cc.fedoraproject.org
 faf_server_name: retrace03.rdu-cc.fedoraproject.org/faf
 rs_use_faf_packages: true
 
