@@ -21,7 +21,7 @@
   tags:
   - config
 
-- name: install copr-frontend ssl vhost
+- name: install retrace ssl vhost
   template: src="httpd/retrace_ssl.conf.j2" dest="/etc/httpd/conf.d/retrace_ssl.conf"
   when: letsencrypt is defined
   tags:
