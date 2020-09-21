@@ -9,6 +9,16 @@ rs_internal_fedora_vers: [31, 32, rawhide]
 rs_internal_fedora_vers_removed: []
 rs_internal_arch_list: [source, x86_64, i386]
 
+# consumed by roles/copr/certbot
+letsencrypt:
+  predefined_deploy_script: httpd
+  certificates:
+    retrace03.rdu-cc.fedoraproject.org:
+      domains:
+      - retrace03.rdu-cc.fedoraproject.org
+      challenge_dir: /var/www/html
+      mail: msuchy@redhat.com
+
 nagios_Check_Services:
   nrpe: true
   sshd: true
