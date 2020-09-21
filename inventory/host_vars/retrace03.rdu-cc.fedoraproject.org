@@ -5,7 +5,7 @@ rs_use_faf_packages: true
 
 # we do not have enough storage on stg
 rs_internal_fedora_vers: [31, 32, rawhide]
-rs_internal_fedora_vers_removed: [27, 28, 29, 30]
+rs_internal_fedora_vers_removed: []
 rs_internal_arch_list: [source, x86_64, i386]
 
 nagios_Check_Services:
@@ -23,10 +23,7 @@ faf_opsys_list:
 
 # Clean-up packages of following EOLed operating systems
 eol_opsys:
-  - { opsys: "Fedora", release: "27"}
-  - { opsys: "Fedora", release: "28"}
-  - { opsys: "Fedora", release: "29"}
-  - { opsys: "Fedora", release: "30"}
+#  - { opsys: "Fedora", release: "30"}
 
 # GDPR SAR variables
 sar_script: '/usr/bin/faf sar'
