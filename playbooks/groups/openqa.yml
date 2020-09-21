@@ -1,7 +1,7 @@
-- import_playbook: "/srv/web/infra/ansible/playbooks/include/virt-create.yml myhosts=openqa:openqa_stg"
+- import_playbook: "/srv/web/infra/ansible/playbooks/include/virt-create.yml myhosts=openqa:openqa_lab"
 
 - name: setup base openQA host
-  hosts: openqa:openqa_stg
+  hosts: openqa:openqa_lab
   user: root
   gather_facts: True
 
@@ -31,7 +31,7 @@
    - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
 - name: configure fedora-messaging queues on openQA servers
-  hosts: openqa:openqa_stg
+  hosts: openqa:openqa_lab
   user: root
   gather_facts: True
 
@@ -139,7 +139,7 @@
     when: "checkcompose_env_suffix is defined"
 
 - name: set up openQA server data NFS mounts (staging)
-  hosts: openqa_stg
+  hosts: openqa_lab
 
   vars_files:
    - /srv/web/infra/ansible/vars/global.yml
@@ -149,12 +149,12 @@
   roles:
   - role: nfs/client
     mnt_dir: '/var/lib/openqa/testresults'
-    nfs_src_dir: 'fedora_openqa_stg/testresults'
+    nfs_src_dir: 'fedora_openqa_lab/testresults'
     nfs_mount_opts: 'rw,bg,nfsvers=3'
     tags: ['nfs_client']
   - role: nfs/client
     mnt_dir: '/var/lib/openqa/images'
-    nfs_src_dir: 'fedora_openqa_stg/images'
+    nfs_src_dir: 'fedora_openqa_lab/images'
     nfs_mount_opts: 'rw,bg,nfsvers=3'
     tags: ['nfs_client']
 
@@ -185,7 +185,7 @@
    - import_tasks: "{{ handlers_path }}/restart_services.yml"
 
 - name: configure openQA
-  hosts: openqa:openqa_stg
+  hosts: openqa:openqa_lab
   user: root
   gather_facts: True
 
