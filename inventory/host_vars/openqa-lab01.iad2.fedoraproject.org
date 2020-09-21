@@ -15,7 +15,7 @@ eth0_ip: 10.3.174.57
 ks_url: http://10.3.163.35/repo/rhel/ks/kvm-fedora-32-iad2
 ks_repo: http://10.3.163.35/pub/fedora/linux/releases/32/Server/x86_64/os/
 volgroup: /dev/vg_guests
-vmhost: qvmhost-x86-02.iad2.fedoraproject.org
+vmhost: qvmhost-x86-01.iad2.fedoraproject.org
 datacenter: iad2
 
 ############################################################
@@ -24,9 +24,10 @@ datacenter: iad2
 
 fas_client_groups: sysadmin-qa,sysadmin-main,sysadmin-noc,fi-apprentice,sysadmin-veteran
 
-lvm_size: 500000
+lvm_size: 1800000
 mem_size: 16384
-num_cpus: 10
+mem_size: 262144
+num_cpus: 60
 
-nrpe_procs_warn: 250
-nrpe_procs_crit: 300
+nrpe_procs_warn: 1000
+nrpe_procs_crit: 1200

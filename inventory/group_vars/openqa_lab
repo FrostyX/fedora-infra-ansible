@@ -43,7 +43,7 @@ openqa_repo: updates-testing
 
 wikitcms_token: "{{ private }}/files/openidc/staging/wikitcms.json"
 openqa_wikitcms_hostname: stg.fedoraproject.org
-openqa_resultsdb_url: http://resultsdb-stg01.qa.fedoraproject.org/resultsdb_api/api/v2.0/
+openqa_resultsdb_url: http://resultsdb-stg01.fedoraproject.org/resultsdb_api/api/v2.0/
 openqa_update_arches: ['x86_64', 'ppc64le']
 
 # FIXME: disable consumers that write to wiki until auth key

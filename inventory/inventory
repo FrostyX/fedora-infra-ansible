@@ -441,7 +441,7 @@ odcs_backend
 # common group for variables shared between prod and stg servers
 [openqa_common]
 openqa01.iad2.fedoraproject.org
-#openqa-stg01.iad2.fedoraproject.org
+openqa-lab01.iad2.fedoraproject.org
 
 [openqa]
 openqa01.iad2.fedoraproject.org
@@ -451,12 +451,13 @@ openqa-x86-worker01.iad2.fedoraproject.org
 openqa-x86-worker02.iad2.fedoraproject.org
 openqa-x86-worker04.iad2.fedoraproject.org
 
-# openqa-stg and openqa-stg-workers are pseudo-stg, see group_vars/openqa-stg for more details
-[openqa_stg]
-#openqa-stg01.iad2.fedoraproject.org
+# openqa-lab and openqa-lab-workers are pseudo-stg, see group_vars/openqa-stg for more details
+[openqa_lab]
+openqa-lab01.iad2.fedoraproject.org
 
-[openqa_stg_workers]
-#openqa-a64-worker01.iad2.fedoraproject.org
+[openqa_lab_workers]
+openqa-a64-worker03.iad2.fedoraproject.org
+openqa-p09-worker01.iad2.fedoraproject.org
 
 # the workers that can run networked jobs. each server should have *one* of these per arch
 [openqa_tap_workers]
@@ -522,7 +523,7 @@ proxy02.stg.iad2.fedoraproject.org
 
 [relvalconsumer_common]
 openqa01.iad2.fedoraproject.org
-#openqa-stg01.iad2.fedoraproject.org
+#openqa-lab01.iad2.fedoraproject.org
 
 # This group should only ever contain *ONE* system
 [relvalconsumer]
@@ -1095,7 +1096,7 @@ value01.iad2.fedoraproject.org
 # os-proxy02.fedorainfracloud.org
 
 [iad2]
-#openqa-a64-worker01.iad2.fedoraproject.org
+openqa-a64-worker01.iad2.fedoraproject.org
 #openqa-stg01.iad2.fedoraproject.org
 #autosign01.iad2.fedoraproject.org
 backup01.iad2.fedoraproject.org

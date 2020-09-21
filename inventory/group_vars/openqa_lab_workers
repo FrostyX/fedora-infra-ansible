@@ -1,6 +1,6 @@
-gw: 10.5.124.254
+gw: 10.3.174.254
 openqa_workers: 4
-openqa_hostname: openqa-stg01.iad2.fedoraproject.org
+openqa_hostname: openqa-lab01.iad2.fedoraproject.org
 openqa_key: "{{ stg_openqa_apikey }}"
 openqa_secret: "{{ stg_openqa_apisecret }}"
 

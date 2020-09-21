@@ -1,5 +1,5 @@
 - name: configure openQA workers
-  hosts: openqa_workers:openqa_hdds_workers:openqa_stg_workers
+  hosts: openqa_workers:openqa_hdds_workers:openqa_lab_workers
   user: root
   gather_facts: True
 
