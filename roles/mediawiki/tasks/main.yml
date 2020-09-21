@@ -214,6 +214,7 @@
   - mediawiki
 
 - name: Patch OpenIDConnect plugin to require CLA+1
+  when: env == "production"
   copy: src=OpenIDConnect.class.php
         dest=/srv/web/fp-wiki/extensions/OpenIDConnect/OpenIDConnect.class.php
   tags:
