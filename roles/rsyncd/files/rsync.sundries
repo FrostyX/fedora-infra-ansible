@@ -10,8 +10,8 @@ service rsync
         server          = /usr/bin/rsync
         server_args     = --daemon
         log_on_failure  += USERID
-        cps             = 250 5
-        instances       = 250
+        cps             = 900 5
+        instances       = 900
         per_source      = 100
 }
 
