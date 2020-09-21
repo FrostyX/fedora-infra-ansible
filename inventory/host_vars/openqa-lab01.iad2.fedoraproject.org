@@ -25,8 +25,8 @@ datacenter: iad2
 fas_client_groups: sysadmin-qa,sysadmin-main,sysadmin-noc,fi-apprentice,sysadmin-veteran
 
 lvm_size: 1750000
-mem_size: 16384
 mem_size: 262144
+max_mem_size: 383216
 num_cpus: 60
 max_cpu: 60
 
