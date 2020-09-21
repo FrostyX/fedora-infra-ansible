@@ -398,7 +398,7 @@ ALLOWDEVFILE=/dev/shm/squid-cf__readers.shm
 ALLOWDEVFILE=/dev/shm/squid-cf__queues.shm
 ALLOWDEVFILE=/dev/shm/squid-cf__metadata.shm
 {% endif %}
-{% if inventory_hostname in groups['virtservers'] or inventory_hostname in groups['openqa_workers'] or inventory_hostname in groups['openqa_stg_workers']  %}
+{% if inventory_hostname in groups['virtservers'] or inventory_hostname in groups['openqa_workers'] or inventory_hostname in groups['openqa_lab_workers']  %}
 # libvirt spice device makes a /dev/shm/spice file
 ALLOWDEVFILE=/dev/shm/spice.*
 {% endif %}

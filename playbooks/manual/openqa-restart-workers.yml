@@ -1,5 +1,5 @@
 - name: restart worker services on openQA worker hosts (production)
-  hosts: openqa_workers:openqa_stg_workers
+  hosts: openqa_workers:openqa_lab_workers
   user: root
   vars_files:
    - /srv/web/infra/ansible/vars/global.yml
