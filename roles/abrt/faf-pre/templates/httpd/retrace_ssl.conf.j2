@@ -6,13 +6,9 @@
     SSLHonorCipherOrder on
     Header always add Strict-Transport-Security "max-age=31536000; preload"
 
-    {% if not devel %}
-      # NA
-    {% else %}
     SSLCertificateFile    /etc/letsencrypt/live/{{ public_hostname }}/cert.pem
     SSLCertificateKeyFile  /etc/letsencrypt/live/{{ public_hostname }}/privkey.pem
     SSLCertificateChainFile /etc/letsencrypt/live/{{ public_hostname }}/fullchain.pem
-    {% endif %}
 
     ServerName {{ public_hostname }}
 
