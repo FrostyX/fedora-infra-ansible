@@ -5,7 +5,7 @@ faf_server_name: retrace.fedoraproject.org/faf
 rs_use_faf_packages: true
 
 # we do not have enough storage on stg
-rs_internal_fedora_vers: [31, 32, rawhide]
+rs_internal_fedora_vers: [33, 31, 32, rawhide]
 rs_internal_fedora_vers_removed: []
 rs_internal_arch_list: [source, x86_64, i386]
 

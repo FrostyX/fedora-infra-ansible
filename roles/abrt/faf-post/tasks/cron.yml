@@ -45,6 +45,7 @@
       - "30"
       - "31"
       - "32"
+      - "33"
 
   - name: remove obsolete probable fixes
     cron:
