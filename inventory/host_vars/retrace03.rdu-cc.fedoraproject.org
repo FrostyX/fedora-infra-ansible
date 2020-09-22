@@ -1,7 +1,7 @@
 ---
 datacenter: rdu-cc
 public_hostname: retrace03.rdu-cc.fedoraproject.org
-faf_server_name: retrace03.rdu-cc.fedoraproject.org/faf
+faf_server_name: retrace.fedoraproject.org/faf
 rs_use_faf_packages: true
 
 # we do not have enough storage on stg
@@ -16,6 +16,7 @@ letsencrypt:
     retrace03.rdu-cc.fedoraproject.org:
       domains:
       - retrace03.rdu-cc.fedoraproject.org
+      - retrace.fedoraproject.org
       challenge_dir: /var/www/html
       mail: msuchy@redhat.com
 
