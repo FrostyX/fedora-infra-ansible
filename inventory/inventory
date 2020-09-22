@@ -456,6 +456,7 @@ openqa-x86-worker04.iad2.fedoraproject.org
 openqa-lab01.iad2.fedoraproject.org
 
 [openqa_lab_workers]
+openqa-a64-worker01.iad2.fedoraproject.org
 openqa-a64-worker03.iad2.fedoraproject.org
 openqa-p09-worker01.iad2.fedoraproject.org
 
