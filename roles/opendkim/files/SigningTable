@@ -16,6 +16,8 @@
 *@lists.fedoraproject.org bastion-iad._domainkey.fedoraproject.org
 *@stg.fedoraproject.org bastion-iad._domainkey.fedoraproject.org
 *@aws.fedoraproject.org bastion-iad._domainkey.fedoraproject.org
+*@copr-fe.aws.fedoraproject.org bastion._domainkey.fedoraproject.org
+*@copr-fe-dev.aws.fedoraproject.org bastion._domainkey.fedoraproject.org
 *@fedorahosted.org bastion-iad._domainkey.fedoraproject.org
 *@lists.fedorahosted.org bastion-iad._domainkey.fedoraproject.org
 pagure@pkgs.fedoraproject.org bastion-iad._domainkey.fedoraproject.org
