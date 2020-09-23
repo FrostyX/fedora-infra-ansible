@@ -914,7 +914,7 @@ copr_aws
 copr_dev_aws
 
 [copr_hypervisor]
-vmhost-copr01.rdu-cc.fedoraproject.org
+vmhost-x86-copr01.rdu-cc.fedoraproject.org
 
 # [copr_hypervisors_aarch64]
 # virthost-aarch64-os01.fedorainfracloud.org
