@@ -31,7 +31,6 @@
 -A INPUT -p tcp -m tcp --dport 5666  -s 38.145.60.16 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 5666  -s 38.145.60.15 -j ACCEPT
 -A INPUT -p tcp -m tcp --dport 5666 -s 10.3.163.10 -j ACCEPT
--A INPUT -p tcp -m tcp --dport 5666 -s 10.5.126.241 -j ACCEPT
 
 {% if env != 'staging' and datacenter == 'phx2' and inventory_hostname not in groups['staging_friendly'] %}
 #
