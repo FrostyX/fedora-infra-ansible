@@ -55,6 +55,9 @@
    - "/srv/private/ansible/vars.yml"
    - "{{ vars_path }}/{{ ansible_distribution }}.yml"
 
+  vars:
+    ipsilon_db_host: "db-fas01{{ env_suffix }}.iad2.fedoraproject.org"
+
   roles:
   - ipsilon
 
