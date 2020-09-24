@@ -21,42 +21,42 @@
   - ipsilon
   - packages
 
-- name: Copy OpenID API extension
-  copy: src=api.py
-        dest=/usr/lib/python2.7/site-packages/ipsilon/providers/openid/extensions/api.py
-        owner=root group=root mode=0644
-  notify:
-  - reload apache
-  tags:
-  - ipsilon
+#- name: Copy OpenID API extension
+#  copy: src=api.py
+#        dest=/usr/lib/python2.7/site-packages/ipsilon/providers/openid/extensions/api.py
+#        owner=root group=root mode=0644
+#  notify:
+#  - reload apache
+#  tags:
+#  - ipsilon
 
-- name: Copy extended infofas
-  copy: src=infofas.py
-        dest=/usr/lib/python2.7/site-packages/ipsilon/info/infofas.py
-        owner=root group=root mode=0644
-  notify:
-  - reload apache
-  tags:
-  - ipsilon
+#- name: Copy extended infofas
+#  copy: src=infofas.py
+#        dest=/usr/lib/python2.7/site-packages/ipsilon/info/infofas.py
+#        owner=root group=root mode=0644
+#  notify:
+#  - reload apache
+#  tags:
+#  - ipsilon
 
-- name: Copy OpenID Connect scope registrations
-  copy: src=oidc_scopes/{{item}}.py
-        dest=/usr/lib/python2.7/site-packages/ipsilon/providers/openidc/plugins/{{item}}.py
-        owner=root group=root mode=0644
-  with_items:
-  - account-scopes
-  - mbs
-  - beaker
-  - waiverdb
-  - odcs
-  - wiki
-  - src
-  - fpdc
-  notify:
-  - reload apache
-  tags:
-  - ipsilon
-  - ipsilon/oidc_scopes
+#- name: Copy OpenID Connect scope registrations
+#  copy: src=oidc_scopes/{{item}}.py
+#        dest=/usr/lib/python2.7/site-packages/ipsilon/providers/openidc/plugins/{{item}}.py
+#        owner=root group=root mode=0644
+#  with_items:
+#  - account-scopes
+#  - mbs
+#  - beaker
+#  - waiverdb
+#  - odcs
+#  - wiki
+#  - src
+#  - fpdc
+#  notify:
+#  - reload apache
+#  tags:
+#  - ipsilon
+#  - ipsilon/oidc_scopes
 
 #- name: Copy OpenID Connect scope registrations (STAGING)
 #  copy: src=oidc_scopes/{{item}}.py
@@ -71,14 +71,14 @@
 #  - ipsilon
 #  - ipsilon/oidc_scopes
 
-- name: Apply hotfix for taiga to get POST results
-  copy: src=openid_server.py
-        dest=/usr/lib/python2.7/site-packages/openid/server/server.py
-        owner=root group=root mode=0644
-  notify:
-  - reload apache
-  tags:
-  - ipsilon
+#- name: Apply hotfix for taiga to get POST results
+#  copy: src=openid_server.py
+#        dest=/usr/lib/python2.7/site-packages/openid/server/server.py
+#        owner=root group=root mode=0644
+#  notify:
+#  - reload apache
+#  tags:
+#  - ipsilon
 
 - name: copy ipsilon templates
   copy: src=templates/
