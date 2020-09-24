@@ -17,7 +17,6 @@
   - ipsilon-openidc
   - mod_auth_gssapi
   - python-psycopg2
-  - libsemanage-python
   tags:
   - ipsilon
   - packages
