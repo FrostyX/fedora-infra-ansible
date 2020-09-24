@@ -18,7 +18,6 @@
   - rkhunter
   - nagios_client
   - hosts
-  - fas_client
   - rsyncd
   - sudo
   - { role: openvpn/client,
