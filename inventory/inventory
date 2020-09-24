@@ -295,7 +295,7 @@ ipa02.iad2.fedoraproject.org
 [ipa_stg]
 ipa01.stg.iad2.fedoraproject.org
 
-[ipsilon-stg]
+[ipsilon_stg]
 ipsilon01.stg.iad2.fedoraproject.org
 
 [ipsilon_dev]
