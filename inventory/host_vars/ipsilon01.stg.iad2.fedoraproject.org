@@ -4,7 +4,7 @@ gw: 10.3.166.254
 dns: 10.3.163.33
 
 ks_url: http://10.3.163.35/repo/rhel/ks/kvm-fedora-32-iad2
-http://10.3.163.35/pub/fedora/linux/releases/32/Server/x86_64/os/
+ks_repo: http://10.3.163.35/pub/fedora/linux/releases/32/Server/x86_64/os/
 
 volgroup: /dev/vg_guests
 eth0_ip: 10.3.166.30
