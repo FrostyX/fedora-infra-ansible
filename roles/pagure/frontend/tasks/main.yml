@@ -74,6 +74,16 @@
   - pagure
   - postgresql
 
+- name: create the pagure DB user
+  become_user: postgres
+  become: true
+  postgresql_user:
+     name: "{{ pagure_db_admin_user }}"
+     password: "{{ pagure_db_admin_pass }}"
+  tags:
+  - pagure
+  - postgresql
+
 - name: create the pagure database creation
   become_user: postgres
   become: true
