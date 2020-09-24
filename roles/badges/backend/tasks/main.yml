@@ -67,7 +67,7 @@
 
 - name: clone directory
   git:
-    repo:
+    repo: https://pagure.io/fedora-badges.git
     dest: /srv/badges_checkout
   tags:
   - badges
