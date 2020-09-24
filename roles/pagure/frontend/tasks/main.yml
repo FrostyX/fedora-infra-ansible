@@ -64,6 +64,23 @@
   tags:
   - pagure
 
+- name: create the pagure DB user
+  postgresql_user:
+     name: "{{ pagure_db_user }}"
+     password: "{{ pagure_db_pass }}"
+  tags:
+  - pagure
+  - postgresql
+
+- name: create the pagure database creation
+  postgresql_db:
+     name: "{{ pagure_db_name }}"
+     owner: "{{ pagure_db_user) }}"
+     encoding: UTF-8
+  tags:
+  - pagure
+  - postgresql
+
 - name: Put in robots.txt
   template: src=robots.txt.j2 dest=/var/www/html/robots.txt
   tags:
