@@ -1,3 +1,25 @@
+- name: setup the database
+  hosts: db01.iad2.fedoraproject.org:db01.stg.iad2.fedoraproject.org
+  gather_facts: no
+  become: yes
+  become_user: postgres
+  vars_files:
+  - /srv/web/infra/ansible/vars/global.yml
+  - /srv/private/ansible/vars.yml
+  - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  tasks:
+  - name: kerneltest DB user
+    postgresql_user:
+      name: "{{ (env == 'production')|ternary(kerneltest_db_user,kerneltest_stg_db_user) }}"
+      password: "{{ (env == 'production')|ternary(kerneltest_db_pass,kerneltest_stg_db_pass) }}"
+  - name: kerneltest database creation
+    postgresql_db:
+      name: "{{ kerneltest_db_name }}"
+      owner: "{{ (env == 'production')|ternary(kerneltest_db_user,kerneltest_stg_db_user) }}"
+      encoding: UTF-8
+
+
 - name: make the app be real
   hosts: os_masters_stg[0]
   user: root
