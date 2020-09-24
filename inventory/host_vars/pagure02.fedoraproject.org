@@ -22,7 +22,7 @@ datacenter: rdu-cc
 #
 
 shared_buffers: "512MB"
-effective_cache_size: 0
+effective_cache_size: 1
 temp_buffers: "8MB"
 max_stack_depth: "4MB"
 
