@@ -79,7 +79,7 @@
   become: true
   postgresql_db:
      name: "{{ pagure_db_name }}"
-     owner: "{{ pagure_db_user) }}"
+     owner: "{{ pagure_db_user }}"
      encoding: UTF-8
   tags:
   - pagure
