@@ -296,7 +296,7 @@ ipa02.iad2.fedoraproject.org
 ipa01.stg.iad2.fedoraproject.org
 
 [ipsilon-stg]
-ipsilon01.stg.phx2.fedoraproject.org
+ipsilon01.stg.iad2.fedoraproject.org
 
 [ipsilon_dev]
 iddev.fedorainfracloud.org
@@ -603,7 +603,7 @@ oci-registry01.stg.iad2.fedoraproject.org
 # fedimg01.stg.iad2.fedoraproject.org
 github2fedmsg01.stg.iad2.fedoraproject.org
 ipa01.stg.iad2.fedoraproject.org
-ipsilon01.stg.phx2.fedoraproject.org
+ipsilon01.stg.iad2.fedoraproject.org
 koji01.stg.iad2.fedoraproject.org
 # mailman01.stg.iad2.fedoraproject.org
 mbs-backend01.stg.iad2.fedoraproject.org
