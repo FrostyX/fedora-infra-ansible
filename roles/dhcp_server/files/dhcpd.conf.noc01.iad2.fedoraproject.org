@@ -1433,10 +1433,10 @@ host bvmhost-p08-03-mgmt {
      fixed-address 10.3.160.123;
      option host-name "bvmhost-p08-03";
 }
-host bvmhost-p08-04-mgmt {
+host bvmhost-p08-01-stg-mgmt {
      hardware ethernet 98:BE:94:4B:96:10;
      fixed-address 10.3.160.124;
-     option host-name "bvmhost-p08-04";
+     option host-name "bvmhost-p08-01-stg";
 }
 host bvmhost-p08-05-mgmt {
      hardware ethernet 98:BE:94:4B:94:C4;
