@@ -19,7 +19,7 @@
   - stunnel
   # Use haveged to ensure the server keeps some entropy
   - haveged
-  when: env != 'pagure-staging'
+  when: env != 'pagure-staging' and not inventory_hostname.startswith('pagure02')
   tags:
   - pagure
   - packages
@@ -42,14 +42,14 @@
   - stunnel
   # Use haveged to ensure the server keeps some entropy
   - haveged
-  when: env == 'pagure-staging'
+  when: env == 'pagure-staging' or inventory_hostname.startswith('pagure02')
   tags:
   - pagure
   - packages
 
 - name: install needed packages
   package: name={{ item }} state=present
-  when: env == 'pagure-staging'
+  when: env == 'pagure-staging' or inventory_hostname.startswith('pagure02')
   with_items:
   - pagure-theme-pagureio
   tags:
@@ -104,14 +104,14 @@
 - name: Create the "git" user
   command: useradd --move-home --login git --home /srv/git/
            creates=/srv/git/
-  when: env != 'pagure-staging'
+  when: env != 'pagure-staging' and not inventory_hostname.startswith('pagure02')
   tags:
   - pagure
 
 - name: Create the "git" user
   command: useradd --create-home --home-dir=/srv/git/  git
            creates=/srv/git/
-  when: env == 'pagure-staging'
+  when: env == 'pagure-staging' or inventory_hostname.startswith('pagure02')
   tags:
   - pagure
 
@@ -286,7 +286,7 @@
   package: name={{ item }} state=present
   with_items:
   - python2-fedora-messaging
-  when: env != 'pagure-staging'
+  when: env != 'pagure-staging' and not inventory_hostname.startswith('pagure02')
   tags:
   - pagure
   - fedora-messaging
@@ -295,7 +295,7 @@
   package: name={{ item }} state=present
   with_items:
   - python3-fedora-messaging
-  when: env == 'pagure-staging'
+  when: env == 'pagure-staging' or inventory_hostname.startswith('pagure02')
   tags:
   - pagure
   - fedora-messaging
@@ -404,7 +404,7 @@
   changed_when: "1 != 1"
   environment:
       PAGURE_CONFIG: /etc/pagure/pagure.cfg
-  when: env != 'pagure-staging'
+  when: env != 'pagure-staging' and not inventory_hostname.startswith('pagure02')
   tags:
   - web
   - pagure
@@ -414,7 +414,7 @@
   changed_when: "1 != 1"
   environment:
       PAGURE_CONFIG: /etc/pagure/pagure.cfg
-  when: env == 'pagure-staging'
+  when: env == 'pagure-staging' or inventory_hostname.startswith('pagure02')
   tags:
   - web
   - pagure
