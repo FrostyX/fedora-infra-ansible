@@ -31,7 +31,7 @@ def query(sockname):
     try:
         response = sock.recv(2048).strip().decode()
         lines = response.split('\n')
-        data = dict(line.split(':') for line in lines)
+        data = dict(map(str.strip, line.split(':')) for line in lines)
         data = {k:_numeric(v) for (k, v) in data.items()}
         return data
     except Exception as err:
