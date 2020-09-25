@@ -39,6 +39,7 @@
   - redis
   - python3-libsemanage
   - mod_ssl
+  - python3-mod_wsgi
   - stunnel
   # Use haveged to ensure the server keeps some entropy
   - haveged
