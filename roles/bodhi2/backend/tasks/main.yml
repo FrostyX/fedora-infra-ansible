@@ -34,6 +34,8 @@
       - make
       # needed for updates sync
       - rsync
+      # For staging the release candidate composes
+      - compose-utils
     state: present
   tags:
   - packages
