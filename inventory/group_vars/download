@@ -1,22 +1,29 @@
 ---
 dl_tier1:
-  - 71.19.151.18                       # prgmr.com / nb.zone
   - 128.171.104.148                    # mirror.ancl.hawaii.edu.
   - 129.101.198.59                     # University of Idaho
   - 129.21.171.98                      # kirby.main.ad.rit.edu.
   - 129.7.128.189                      # pubmirror1.math.uh.edu.
   - 129.7.128.190                      # pubmirror2.math.uh.edu.
   - 129.7.128.191                      # pubmirror3.math.uh.edu.
+  - 130.225.254.116                    # dotsrc.org
   - 130.239.17.3                       # its-ehm.its.umu.se.
+  - 137.138.120.188                    # cern
+  - 137.138.148.168                    # cern
+  - 137.138.44.122		       # cern
   - 140.247.173.57                     # pool-computing-servers.seas.harvard.edu.
+  - 147.75.101.1                       # ams.edge.kernel.org
+  - 147.75.197.195                     # ewr.edge.kernel.org
+  - 147.75.69.165                      # sjc.edge.kernel.org
   - 147.75.95.133                      # kernel.org apac
   - 149.11.118.8/29                    # Red Hat CZ
-  - 154.45.192.0/29                    # Red Hat CZ New
-  - 91.209.10.253                      # Red Hat CZ New Newer
-  - 66.187.233.206                     # Red Hat BOS
   - 152.19.134.145                     # vm6.fedora.ibiblio.org.
   - 152.19.134.195                     # vm15.fedora.ibiblio.org.
+  - 154.45.192.0/29                    # Red Hat CZ New
+  - 166.78.229.128                     # rackspace new infra
   - 182.255.111.7                      # dksn-k4.cdn.aarnet.edu.au.
+  - 188.184.104.133                    # cern
+  - 188.184.116.38                     # cern
   - 195.220.108.108                    # mandril.creatis.insa-lyon.fr.
   - 198.129.224.34                     # linux-src.es.net.
   - 199.6.1.170                        # isc.org
@@ -26,8 +33,13 @@ dl_tier1:
   - 208.96.144.68                      # University of Southern Indiana
   - 208.96.144.90                      # University of Southern Indiana
   - 213.175.37.8/29                    # ??
+  - 66.187.233.206                     # Red Hat BOS
+  - 71.19.151.18                       # prgmr.com / nb.zone
+  - 72.4.120.222                       # rackspace old infra
+  - 91.209.10.253                      # Red Hat CZ New Newer
   - 2001:388:1:4066:225:90ff:fec7:777e # ??
   - 2001:4DE8:C0FD::/48                # ??
+  - 2001:878:346::116                  # dotsrc.org
   - 2001:978:2:81::1:0/112             # ??
   - 2604:1380:3000:1500::1             # kernel.org apac
   - 2620:52:3:1:dead:beef:cafe:fed1    # download-cc-rdu01's ipv6 address
@@ -72,10 +84,3 @@ dl_tier1:
   - ultra.linux.cz                     # 195.113.15.27
   - wpi.edu                            # 130.215.36.26
   - zaphod.gtlib.gatech.edu            # 128.61.111.12
-  - 147.75.69.165                      # sjc.edge.kernel.org
-  - 147.75.197.195                     # ewr.edge.kernel.org
-  - 147.75.101.1                       # ams.edge.kernel.org
-  - 130.225.254.116                    # dotsrc.org
-  - 2001:878:346::116                  # dotsrc.org
-  - 166.78.229.128                     # rackspace new infra
-  - 72.4.120.222                       # rackspace old infra
