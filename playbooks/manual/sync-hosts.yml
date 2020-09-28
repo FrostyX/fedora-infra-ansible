@@ -1,0 +1,29 @@
+# Synchronizes files in /tmp/staging between remote hosts
+# The following variables need to be supplied with the 
+# --extra-vars flag for the playbook to work: 
+# 'remote_src_host', 'remote_dest_host'
+#
+# Example:
+# ansible-playbook sync-hosts.yml --extra-vars \
+#   "remote_src_host=bodhi-backend01.iad2.fedoraproject.org \
+#   remote_dest_host=sundries01.iad2.fedoraproject.org"
+---
+- hosts: localhost
+  user: root
+  
+  tasks:
+    
+    - name: copy files from remote_src_host to control node
+      run_once: yes
+      fetch: 
+        src: /tmp/staging 
+        dest: /tmp/staging 
+        flat: yes
+      validate_checksum: yes
+      when: "{{ inventory_hostname == 'remote_src_host' }}"
+      
+    - name: copy files from control node to remote_dest_host
+      copy: 
+        src: /tmp/staging 
+        dest: /tmp/staging
+      when: "{{ inventory_hostname == 'remote_dest_host' }}"
