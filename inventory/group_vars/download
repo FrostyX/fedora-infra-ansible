@@ -10,7 +10,7 @@ dl_tier1:
   - 130.239.17.3                       # its-ehm.its.umu.se.
   - 137.138.120.188                    # cern
   - 137.138.148.168                    # cern
-  - 137.138.44.122		       # cern
+  - 137.138.44.122                     # cern
   - 140.247.173.57                     # pool-computing-servers.seas.harvard.edu.
   - 147.75.101.1                       # ams.edge.kernel.org
   - 147.75.197.195                     # ewr.edge.kernel.org
