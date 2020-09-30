@@ -131,6 +131,7 @@
     - nosync
     - python3-gobject
     - fedora-messaging # needed by pungi to emit fedora-messages.
+    - python3-bugzilla # needed by ftbfs scrips/cron.
   tags:
   - releng
 
