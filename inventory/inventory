@@ -1316,6 +1316,7 @@ bvmhost-x86-01.stg.iad2.fedoraproject.org
 bvmhost-x86-02.stg.iad2.fedoraproject.org
 bvmhost-x86-03.stg.iad2.fedoraproject.org
 bvmhost-p08-01.stg.iad2.fedoraproject.org
+bvmhost-a64-01.stg.iad2.fedoraproject.org
 certgetter01.iad2.fedoraproject.org
 certgetter01.stg.iad2.fedoraproject.org
 compose-iot01.iad2.fedoraproject.org
