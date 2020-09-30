@@ -586,7 +586,10 @@ f{{ FedoraBranchedNumber }}.pre_beta.critpath.min_karma = 1
 f{{ FedoraBranchedNumber }}.pre_beta.critpath.stable_after_days_without_negative_karma = 14
 {% elif FedoraBranchedBodhi is defined and FedoraBranchedBodhi == 'postbeta' %}
 f{{ FedoraBranchedNumber }}.status = post_beta
-f{{ FedoraBranchedNumber }}.post_beta.mandatory_days_in_testing = 7
+#f{{ FedoraBranchedNumber }}.post_beta.mandatory_days_in_testing = 7
+#fesco has decided that since this cycle is so short, we will keep 3 days in testing until release.
+#This should change to 7 after release.
+f{{ FedoraBranchedNumber }}.post_beta.mandatory_days_in_testing = 3
 f{{ FedoraBranchedNumber }}.post_beta.critpath.min_karma = 2
 f{{ FedoraBranchedNumber }}.post_beta.critpath.stable_after_days_without_negative_karma = 14
 {% endif %}
