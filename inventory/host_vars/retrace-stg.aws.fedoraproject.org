@@ -38,7 +38,7 @@ letsencrypt:
       domains:
       - retrace-stg.aws.fedoraproject.org
       challenge_dir: /var/www/html
-      mail: ekulik@redhat.com
+      mail: mfabik@redhat.com
 
 nagios_Check_Services:
   mail: false
