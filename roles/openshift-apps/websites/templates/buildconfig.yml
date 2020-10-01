@@ -19,6 +19,7 @@ spec:
         python3-flask-babel \
         python3-flask-htmlmin \
         python3-cssutils \
+        python3-gnupg \
         rubygem-sass \
         babel \
         python3-jinja2 \
