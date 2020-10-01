@@ -1,6 +1,5 @@
 ---
 # Configuration for the pagure webapp
-
 - name: install needed packages
   package: name={{ item }} state=present
   with_items:
@@ -11,29 +10,7 @@
   - pagure-logcom
   - pagure-milters
   - pagure-webhook
-  - python-psycopg2
-  - python2-pygments2
-  - redis
-  - libsemanage-python
-  - mod_ssl
-  - stunnel
-  # Use haveged to ensure the server keeps some entropy
-  - haveged
-  when: env != 'pagure-staging' and not inventory_hostname.startswith('pagure02')
-  tags:
-  - pagure
-  - packages
-
-- name: install needed packages
-  package: name={{ item }} state=present
-  with_items:
-  - pagure
-  - pagure-ci
-  - pagure-ev
-  - pagure-loadjson
-  - pagure-logcom
-  - pagure-milters
-  - pagure-webhook
+  - pagure-theme-pagureio
   - python3-psycopg2
   - python3-pygments
   - redis
@@ -43,16 +20,6 @@
   - stunnel
   # Use haveged to ensure the server keeps some entropy
   - haveged
-  when: env == 'pagure-staging' or inventory_hostname.startswith('pagure02')
-  tags:
-  - pagure
-  - packages
-
-- name: install needed packages
-  package: name={{ item }} state=present
-  when: env == 'pagure-staging' or inventory_hostname.startswith('pagure02')
-  with_items:
-  - pagure-theme-pagureio
   tags:
   - pagure
   - packages
@@ -101,18 +68,9 @@
   tags:
   - pagure
 
-
-- name: Create the "git" user
-  command: useradd --move-home --login git --home /srv/git/
-           creates=/srv/git/
-  when: env != 'pagure-staging' and not inventory_hostname.startswith('pagure02')
-  tags:
-  - pagure
-
 - name: Create the "git" user
   command: useradd --create-home --home-dir=/srv/git/  git
            creates=/srv/git/
-  when: env == 'pagure-staging' or inventory_hostname.startswith('pagure02')
   tags:
   - pagure
 
@@ -286,17 +244,7 @@
 - name: install fedora-messaging as a dependency
   package: name={{ item }} state=present
   with_items:
-  - python2-fedora-messaging
-  when: env != 'pagure-staging' and not inventory_hostname.startswith('pagure02')
-  tags:
-  - pagure
-  - fedora-messaging
-
-- name: install fedora-messaging as a dependency
-  package: name={{ item }} state=present
-  with_items:
   - python3-fedora-messaging
-  when: env == 'pagure-staging' or inventory_hostname.startswith('pagure02')
   tags:
   - pagure
   - fedora-messaging
@@ -399,23 +347,11 @@
   notify:
   - restart apache
 
-
-- name: create the database scheme
-  command: /usr/bin/python2 /usr/share/pagure/pagure_createdb.py
-  changed_when: "1 != 1"
-  environment:
-      PAGURE_CONFIG: /etc/pagure/pagure.cfg
-  when: env != 'pagure-staging' and not inventory_hostname.startswith('pagure02')
-  tags:
-  - web
-  - pagure
-
 - name: create the database scheme
   command: /usr/bin/python3 /usr/share/pagure/pagure_createdb.py
   changed_when: "1 != 1"
   environment:
       PAGURE_CONFIG: /etc/pagure/pagure.cfg
-  when: env == 'pagure-staging' or inventory_hostname.startswith('pagure02')
   tags:
   - web
   - pagure
