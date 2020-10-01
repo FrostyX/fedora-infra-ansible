@@ -84,6 +84,7 @@
 
 - name: add cron for update
   cron:
+    name: "update checkout"
     job: /usr/local/bin/update_checkout.sh
     minute: "*/15"
   tags:
