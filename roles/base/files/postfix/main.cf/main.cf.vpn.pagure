@@ -688,3 +688,8 @@ message_size_limit = 20971520
 
 non_smtpd_milters = unix:/var/run/pagure/paguresock
 smtpd_milters = unix:/var/run/pagure/paguresock
+
+# The following are needed for postfix-3
+smtpd_relay_restrictions = ${{$compatibility_level} < {1} ? {} :{permit_mynetworks, permit_sasl_authenticated, defer_unauth_destination}}
+compatibility_level = 2
+
