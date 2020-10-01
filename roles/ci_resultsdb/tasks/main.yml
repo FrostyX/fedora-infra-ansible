@@ -13,6 +13,8 @@
   notify:
     - reload systemd
     - reload httpd
+  tags:
+  - config
         
 - name: Create /etc/ci-resultsdb-listener/
   file: name=/etc/ci-resultsdb-listener/
