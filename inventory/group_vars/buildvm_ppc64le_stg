@@ -20,7 +20,6 @@ datacenter: staging
 nfs_mount_opts: "rw,hard,bg,intr,noatime,nodev,nosuid,sec=sys,nfsvers=3"
 
 main_bridge: br1
-nfs_bridge: br3
 
 koji_hub_nfs: "fedora_koji"
 koji_server_url: "https://koji.stg.fedoraproject.org/kojihub"
@@ -39,8 +38,7 @@ csi_relationship: |
   * Several services rely on the builders, including koschei, Bodhi, Tagger, SCM, Darkserver.
   * Produces automated builds of packages for the architecture listed. Builders can be scaled by adding new
 
-# this is to enable nested virt, which we need for some builds
-virt_install_command: "{{ virt_install_command_one_nic }} --cpu=host-passthrough,+vmx"
+virt_install_command: "{{ virt_install_command_one_nic_unsafe }}"
 
 # These variables are for koji-containerbuild/osbs
 osbs_url: "osbs.stg.fedoraproject.org"
