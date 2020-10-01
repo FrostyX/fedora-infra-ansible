@@ -925,7 +925,6 @@ vmhost-x86-copr01.rdu-cc.fedoraproject.org
 # virthost-aarch64-os02.fedorainfracloud.org
 
 [pagure]
-pagure01.fedoraproject.org
 pagure02.fedoraproject.org
 
 [pagure_stg]
