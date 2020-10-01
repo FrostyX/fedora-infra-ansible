@@ -1,0 +1,106 @@
+---
+- name: check the selinux context of the git repo directory
+  command: matchpathcon /srv/git
+  register: distgitcontext
+  check_mode: no
+  changed_when: false
+  tags:
+  - config
+  - pagure
+  - selinux
+
+- name: set the SELinux policy for the distgit root directory
+  command: semanage fcontext -a -t gitosis_var_lib_t "/srv/git(/.*)?"
+  when: distgitcontext.stdout.find('gitosis_var_lib_t') == -1
+  tags:
+  - config
+  - pagure
+  - selinux
+
+- name: check the selinux context of the releases directory
+  command: matchpathcon /var/www/releases
+  register: distgitcontext
+  check_mode: no
+  changed_when: false
+  tags:
+  - config
+  - pagure
+  - selinux
+
+# Note: On Fedora its httpd_sys_content_rw_t - Don't we love confusions?
+- name: set the SELinux policy for the releases directory
+  command: semanage fcontext -a -t httpd_sys_rw_content_t "/var/www/releases(/.*)?"
+  when: distgitcontext.stdout.find('httpd_sys_rw_content_t') == -1
+  tags:
+  - config
+  - pagure
+  - selinux
+
+- name: copy over our custom selinux module
+  copy: src=selinux/pagure.te dest=/usr/local/share/pagure.te
+  register: selinux_module
+  tags:
+  - config
+  - pagure
+  - selinux
+
+- name: Build our custom selinux module
+  command: checkmodule -M -m -o /usr/local/share/pagure.mod /usr/local/share/pagure.te
+  when: selinux_module is changed
+  tags:
+  - config
+  - pagure
+  - selinux
+
+- name: Compile our custom selinux module
+  command: semodule_package -o /usr/local/share/pagure.pp -m /usr/local/share/pagure.mod
+  when: selinux_module is changed
+  tags:
+  - config
+  - pagure
+  - selinux
+
+- name: install our custom selinux module
+  command: semodule -i /usr/local/share/pagure.pp
+  when: selinux_module is changed
+  tags:
+  - config
+  - pagure
+  - selinux
+
+- name: set sebooleans so pagure can talk to the network (db + redis)
+  seboolean: name=httpd_can_network_connect
+                    state=true
+                    persistent=true
+  tags:
+  - config
+  - selinux
+  - pagure
+
+- name: set sebooleans so apache can send emails
+  seboolean: name=httpd_can_sendmail
+                    state=true
+                    persistent=true
+  tags:
+  - config
+  - selinux
+  - pagure
+
+- name: set sebooleans so pygit2 can read the git repos
+  seboolean: name=httpd_execmem
+                    state=true
+                    persistent=true
+  tags:
+  - config
+  - selinux
+  - pagure
+
+- name: set sebooleans so ssh can retrieve access info from apache
+  seboolean: name=nise_enabled
+                    state=true
+                    persistent=true
+  tags:
+  - config
+  - selinux
+  - pagure
+
