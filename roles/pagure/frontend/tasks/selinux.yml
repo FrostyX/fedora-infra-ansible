@@ -96,7 +96,7 @@
   - pagure
 
 - name: set sebooleans so ssh can retrieve access info from apache
-  seboolean: name=nise_enabled
+  seboolean: name=nis_enabled
                     state=true
                     persistent=true
   tags:
