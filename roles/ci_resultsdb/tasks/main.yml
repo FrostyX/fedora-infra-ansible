@@ -7,6 +7,13 @@
   tags:
   - packages
 
+- name: override httpd service to restart on failure
+  copy: dest=/etc/systemd/system/httpd.service
+        src=httpd.service
+  notify:
+    - reload systemd
+    - reload httpd
+        
 - name: Create /etc/ci-resultsdb-listener/
   file: name=/etc/ci-resultsdb-listener/
         state=directory
