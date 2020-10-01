@@ -42,7 +42,7 @@
    - "{{ vars_path }}/{{ ansible_distribution }}.yml"
 
   roles:
-  - pagure/frontend
+  - pagure
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
