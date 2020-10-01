@@ -577,15 +577,24 @@ bugzilla2fedmsg01.stg.iad2.fedoraproject.org
 bvmhost-x86-01.stg.iad2.fedoraproject.org
 bvmhost-x86-02.stg.iad2.fedoraproject.org
 bvmhost-x86-03.stg.iad2.fedoraproject.org
+bvmhost-p08-01.stg.iad2.fedoraproject.org
+bvmhost-a64-01.stg.iad2.fedoraproject.org
+buildvm-a64-01.stg.iad2.fedoraproject.org
+buildvm-a64-02.stg.iad2.fedoraproject.org
+buildvm-a64-03.stg.iad2.fedoraproject.org
+buildvm-a32-01.stg.iad2.fedoraproject.org
+buildvm-a32-02.stg.iad2.fedoraproject.org
+buildvm-a32-03.stg.iad2.fedoraproject.org
+buildvm-ppc64le-01.stg.iad2.fedoraproject.org
+buildvm-ppc64le-02.stg.iad2.fedoraproject.org
+buildvm-ppc64le-03.stg.iad2.fedoraproject.org
+buildvm-ppc64le-04.stg.iad2.fedoraproject.org
+buildvm-ppc64le-05.stg.iad2.fedoraproject.org
 buildvm-x86-01.stg.iad2.fedoraproject.org
 buildvm-x86-02.stg.iad2.fedoraproject.org
 buildvm-x86-03.stg.iad2.fedoraproject.org
 buildvm-x86-04.stg.iad2.fedoraproject.org
 buildvm-x86-05.stg.iad2.fedoraproject.org
-# buildvm-aarch64-01.stg.arm.fedoraproject.org
-# buildvm-armv7-01.stg.arm.fedoraproject.org
-# buildvm-ppc64le-01.stg.ppc.fedoraproject.org
-# buildvm-s390x-01.stg.s390.fedoraproject.org
 busgateway01.stg.iad2.fedoraproject.org
 certgetter01.stg.iad2.fedoraproject.org
 compose-x86-01.stg.iad2.fedoraproject.org
@@ -1115,6 +1124,9 @@ blockerbugs01.iad2.fedoraproject.org
 bodhi-backend01.iad2.fedoraproject.org
 bugzilla2fedmsg01.iad2.fedoraproject.org
 buildhw-a64-01.iad2.fedoraproject.org
+buildhw-a64-02.stg.iad2.fedoraproject.org
+buildhw-a64-03.stg.iad2.fedoraproject.org
+buildhw-a64-01.iad2.fedoraproject.org
 buildhw-a64-02.iad2.fedoraproject.org
 buildhw-a64-03.iad2.fedoraproject.org
 buildhw-a64-04.iad2.fedoraproject.org
@@ -1144,6 +1156,9 @@ buildhw-x86-14.iad2.fedoraproject.org
 buildhw-x86-15.iad2.fedoraproject.org
 buildhw-x86-16.iad2.fedoraproject.org
 buildvm-a32-01.iad2.fedoraproject.org
+buildvm-a32-01.stg.iad2.fedoraproject.org
+buildvm-a32-02.stg.iad2.fedoraproject.org
+buildvm-a32-03.stg.iad2.fedoraproject.org
 buildvm-a32-02.iad2.fedoraproject.org
 buildvm-a32-03.iad2.fedoraproject.org
 buildvm-a32-04.iad2.fedoraproject.org
@@ -1210,6 +1225,11 @@ buildvm-a64-31.iad2.fedoraproject.org
 buildvm-a64-32.iad2.fedoraproject.org
 buildvm-a64-33.iad2.fedoraproject.org
 buildvm-ppc64le-01.iad2.fedoraproject.org
+buildvm-ppc64le-01.stg.iad2.fedoraproject.org
+buildvm-ppc64le-02.stg.iad2.fedoraproject.org
+buildvm-ppc64le-03.stg.iad2.fedoraproject.org
+buildvm-ppc64le-04.stg.iad2.fedoraproject.org
+buildvm-ppc64le-05.stg.iad2.fedoraproject.org
 buildvm-ppc64le-02.iad2.fedoraproject.org
 buildvm-ppc64le-03.iad2.fedoraproject.org
 buildvm-ppc64le-04.iad2.fedoraproject.org
