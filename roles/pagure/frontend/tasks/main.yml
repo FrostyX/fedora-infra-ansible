@@ -548,6 +548,15 @@
   - web
   - pagure
 
+- name: set sebooleans so ssh can retrieve access info from apache
+  seboolean: name=nise_enabled
+                    state=true
+                    persistent=true
+  tags:
+  - selinux
+  - web
+  - pagure
+
 
 # Ensure all the services are up and running
 
