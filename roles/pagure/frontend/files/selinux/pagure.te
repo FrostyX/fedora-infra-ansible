@@ -11,8 +11,8 @@ require {
     type gitosis_var_lib_t;
     type httpd_log_t;
     type var_run_t;
-	class dir { add_name remove_name write };
-    class file { execute execute_no_trans getattr map open read rename unlink };
+    class dir { add_name remove_name write };
+    class file { create link setattr write execute execute_no_trans getattr map open read rename unlink };
     class sock_file write;
     class process execmem;
 }
