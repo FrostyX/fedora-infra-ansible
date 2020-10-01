@@ -38,7 +38,7 @@ csi_relationship: |
   * Several services rely on the builders, including koschei, Bodhi, Tagger, SCM, Darkserver.
   * Produces automated builds of packages for the architecture listed. Builders can be scaled by adding new
 
-virt_install_command: "{{ virt_install_command_one_nic_unsafe }}"
+virt_install_command: "{{ virt_install_command_ppc64le_one_nic_unsafe }}"
 
 # These variables are for koji-containerbuild/osbs
 osbs_url: "osbs.stg.fedoraproject.org"
