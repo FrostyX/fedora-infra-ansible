@@ -3,6 +3,9 @@ Fedora Infrastructure
 
 Welcome! This is the Fedora Infrastructure Ansible Pagure project.
 
+Pull requests and forks can be made against this repository hosted
+at https://pagure.io/fedora-infra/ansible
+
 This repository is also mirrored for production runs to
 https://infrastructure.fedoraproject.org/infra/ansible/
 but this is the working repository where changes are made.
