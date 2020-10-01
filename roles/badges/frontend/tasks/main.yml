@@ -11,6 +11,7 @@
   - python-memcached
   - python-rdflib
   - libsemanage-python
+  - git-core
   tags:
   - packages
   - badges
