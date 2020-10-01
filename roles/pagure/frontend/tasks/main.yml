@@ -539,6 +539,15 @@
   - web
   - pagure
 
+- name: set sebooleans so pygit2 can read the git repos
+  seboolean: name=httpd_execmem
+                    state=true
+                    persistent=true
+  tags:
+  - selinux
+  - web
+  - pagure
+
 
 # Ensure all the services are up and running
 
