@@ -198,6 +198,7 @@
   - restart libvirtd
   tags:
   - koji_builder
+  when: env != "staging"
 
 #
 # On primary we want to make a /mnt/koji link to /mnt/fedora_koji/koji
