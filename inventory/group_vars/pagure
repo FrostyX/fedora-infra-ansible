@@ -8,12 +8,14 @@ num_cpus: 16
 # for systems that do not match the above - specify the same parameter in
 # the host_vars/$hostname file
 
-tcp_ports: [ 22, 25, 80, 443,
-    8442, 8443, 8444, 8445,
-    # Used for the eventsource
-    8088,
-    # This is for the pagure public fedmsg relay
-    9940]
+#tcp_ports: [ 22, 25, 80, 443,
+#    8442, 8443, 8444, 8445,
+#    # Used for the eventsource
+#    8088,
+#    # This is for the pagure public fedmsg relay
+#    9940]
+#
+custom_rules: [ '-A INPUT -p tcp -m tcp -s 38.145.60.16 --dport 22 -j ACCEPT' ]
 
 stunnel_service: "eventsource"
 stunnel_source_port: 8088
