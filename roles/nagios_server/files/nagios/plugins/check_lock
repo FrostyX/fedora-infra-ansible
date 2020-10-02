@@ -1,17 +1,19 @@
-#!/usr/bin/python2
-
+#!/usr/bin/python
+ 
+from __future__ import print_function
 import fcntl
 import sys
-
+ 
 try:
     f = open('/mnt/koji/.nagios_test', 'r')
     f.close()
     f = open('/mnt/koji/.nagios_test', 'w')
-except IOError:
-    print "Could not create file"
+except IOError as e:
+    print(e)
+    print("Could not create file")
     sys.exit(2)
     
 fcntl.flock(f, fcntl.LOCK_EX)
 f.close()
-print "File Locked Successfully"
+print("File Locked Successfully")
 sys.exit(0)
