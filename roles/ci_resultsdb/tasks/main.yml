@@ -8,7 +8,7 @@
   - packages
 
 - name: make systemd drop-in override dir
-  file: name=/etc/systemd/system/httpd.d
+  file: name=/etc/systemd/system/httpd.service.d
         state=directory
         recurse=yes
         owner=root group=root
@@ -16,7 +16,7 @@
   - config
 
 - name: override httpd service to restart on failure
-  copy: dest=/etc/systemd/system/httpd.d/restart-on-fail.conf
+  copy: dest=/etc/systemd/system/httpd.service.d/restart-on-fail.conf
         src=restart-on-fail.conf
   notify:
     - reload systemd
