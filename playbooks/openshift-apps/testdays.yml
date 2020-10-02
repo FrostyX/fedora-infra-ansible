@@ -76,6 +76,13 @@
     file: service.yml
     objectname: service.yml
 
+  - role: openshift/route
+    app: testdays
+    routename: testdays
+    host: "testdays{{ env_suffix }}.fedoraproject.org"
+    serviceport: 8080-tcp
+    servicename: testdays
+
   - role: openshift/start-build
     app: testdays
     buildname: testdays-build
