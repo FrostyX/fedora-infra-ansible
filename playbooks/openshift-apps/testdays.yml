@@ -51,6 +51,7 @@
     description: The Fedora QE testdays application
     appowners:
     - pingou
+    - pingou_stg
     - frantisekz
     tags:
       - appowners
