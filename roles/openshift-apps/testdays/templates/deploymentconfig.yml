@@ -18,7 +18,7 @@ spec:
         failurePolicy: Abort
         execNewPod:
           containerName: testdays
-          command: ["/usr/bin/python3", "/opt/app-root/src/testdays/cli", "init_db"]
+          command: ["/usr/bin/python", "/opt/app-root/src/testdays/cli", "init_db"]
           env:
           - name: PYTHONPATH
             value: /opt/app-root/src
