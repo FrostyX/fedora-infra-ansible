@@ -34,9 +34,9 @@ spec:
         - name: POSTGRESQL_DATABASE
           value: "{{ }}"
         - name: POSTGRESQL_SERVICE_HOST
-          value: "{{ }}"
+          value: "db01{{ env_suffix }}.iad2.fedoraproject.org"
         - name: POSTGRESQL_SERVICE_PORT
-          value: "{{ }}"
+          value: "5432"
         - name: SECRET_KEY
           value: "{{ }}"
         - name: RESULTSDB_URL

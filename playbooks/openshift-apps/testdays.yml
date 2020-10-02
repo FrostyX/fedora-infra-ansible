@@ -1,3 +1,40 @@
+- name: prepare setting up the database
+  hosts: db01.stg.iad2.fedoraproject.org #:db01.iad2.fedoraproject.org
+  gather_facts: no
+  user: root
+
+  tasks:
+  - name: install psycopg2 for the postgresql ansible modules
+    package: name=python3-psycopg2 state=present
+    tags:
+    - packages
+
+- name: setup the database
+  hosts: db01.stg.iad2.fedoraproject.org #:db01.iad2.fedoraproject.org
+  gather_facts: no
+  become: yes
+  become_user: postgres
+  vars_files:
+  - /srv/web/infra/ansible/vars/global.yml
+  - "/srv/private/ansible/vars.yml"
+  - "/srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml"
+
+  tasks:
+  - name: Create the database user
+    postgresql_user:
+      name: "{{ testdays_db_user }}"
+      password: "{{ testdays_db_pass }}"
+  - name: Create the database itself
+    postgresql_db:
+      name: "{{ testdays_db_name  }}"
+      owner: "{{ testdays_db_user }}"
+      encoding: UTF-8
+  - name: Test the database creation
+    postgresql_db:
+      name: "{{ testdays_db_name  }}"
+      owner: "{{ testdays_db_user }}"
+      encoding: UTF-8
+
 - name: make the app be real
   hosts: os_masters_stg[0] #:os_masters[0]:
   user: root
