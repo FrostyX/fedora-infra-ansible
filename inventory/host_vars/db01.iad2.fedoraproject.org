@@ -56,8 +56,8 @@ dbs_to_backup:
 
 # These are normally group variables, but in this case db servers are often different
 lvm_size: 500000
-mem_size: 16384
-num_cpus: 10
+mem_size: 65536
+num_cpus: 24
 fas_client_groups: sysadmin-dba,sysadmin-noc,sysadmin-veteran
 
 #
@@ -72,6 +72,8 @@ nrpe_procs_warn: 800
 nrpe_procs_crit: 900
 
 db_backup_dir: ['/backups']
-shared_buffers: "4GB"
-effective_cache_size: "1GB"
+# Should be 0.25 of memory
+shared_buffers: "16GB"
+# Should be 0.80 of memory
+effective_cache_size: "50GB"
 max_stack_depth: "6MB"
