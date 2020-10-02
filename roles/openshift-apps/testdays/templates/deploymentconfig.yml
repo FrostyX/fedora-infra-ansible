@@ -28,17 +28,17 @@ spec:
         resources: {}
         env:
         - name: POSTGRESQL_USER
-          value: "{{ }}"
+          value: "{{ testdays_db_user }}"
         - name: POSTGRESQL_PASSWORD
-          value: "{{ }}"
+          value: "{{ testdays_db_pass }}"
         - name: POSTGRESQL_DATABASE
-          value: "{{ }}"
+          value: "{{ testdays_db_name }}"
         - name: POSTGRESQL_SERVICE_HOST
           value: "db01{{ env_suffix }}.iad2.fedoraproject.org"
         - name: POSTGRESQL_SERVICE_PORT
           value: "5432"
         - name: SECRET_KEY
-          value: "{{ }}"
+          value: "{{ testdays_secret_key }}"
         - name: RESULTSDB_URL
           value: "https://taskotron.fedoraproject.org/resultsdb/results"
         readinessProbe:
