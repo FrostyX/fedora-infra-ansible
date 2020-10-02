@@ -47,6 +47,8 @@ spec:
           value: "{{ testdays_secret_key }}"
         - name: RESULTSDB_URL
           value: "https://taskotron.fedoraproject.org/resultsdb/results"
+        - name: OPENSHIFT_PROD
+          value: 1
         readinessProbe:
           timeoutSeconds: 1
           initialDelaySeconds: 5
