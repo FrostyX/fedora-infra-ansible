@@ -22,7 +22,6 @@ spec:
       containers:
       - name: testdays
         image: testdays:latest
-        command: ["/opt/app-root/src/container_start.sh", "runserver"]
         ports:
         - containerPort: 80
         resources: {}
