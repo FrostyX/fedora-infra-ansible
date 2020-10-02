@@ -22,9 +22,9 @@ spec:
       containers:
       - name: testdays
         image: testdays:latest
-        command: ["container_start.sh", "runserver"]
+        command: ["/opt/app-root/src/container_start.sh", "runserver"]
         ports:
-        - containerPort: 8080
+        - containerPort: 80
         resources: {}
         env:
         - name: POSTGRESQL_USER
@@ -46,13 +46,13 @@ spec:
           initialDelaySeconds: 5
           httpGet:
             path: /
-            port: 8080
+            port: 80
         livenessProbe:
           timeoutSeconds: 1
           initialDelaySeconds: 30
           httpGet:
             path: /
-            port: 8080
+            port: 80
 
   triggers:
   - type: ConfigChange
