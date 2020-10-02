@@ -296,7 +296,7 @@
 
 - name: install nrpe check for rsyslogd
   template:
-    src: src={{ item }}.j2 dest=/etc/nrpe.d/{{ item }} owner=root group=root mode=0644
+    src={{ item }}.j2 dest=/etc/nrpe.d/{{ item }} owner=root group=root mode=0644
   with_items:
     - check_rsyslogd_proc.cfg
   notify:
