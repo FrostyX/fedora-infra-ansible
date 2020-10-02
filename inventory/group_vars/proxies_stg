@@ -57,12 +57,6 @@ custom_rules: [
     # yet as of 2015-04-27 (threebean).
     '-A INPUT -p tcp -m tcp --dport 9941 -s 104.207.133.220 -j ACCEPT',
 
-    # Allow retrace/faf to talk to the inbound fedmsg relay.
-    # retrace01.qa.fedoraproject.org
-    '-A INPUT -p tcp -m tcp --dport 9941 -s 209.132.181.28 -j ACCEPT',
-    # retrace02.qa.fedoraproject.org
-    '-A INPUT -p tcp -m tcp --dport 9941 -s 209.132.181.34 -j ACCEPT',
-
     # Allow resultsdb talk to the inbound fedmsg relay.
     '-A INPUT -p tcp -m tcp --dport 9941 -s 10.5.124.147 -j ACCEPT',
 

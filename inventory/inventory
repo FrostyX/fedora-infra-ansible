@@ -1087,7 +1087,6 @@ pkgs01.iad2.fedoraproject.org
 notifs-web01.iad2.fedoraproject.org
 #wiki01.iad2.fedoraproject.org
 value01.iad2.fedoraproject.org
-#retrace01.qa.fedoraproject.org
 
 # [nfs_servers]
 # storinator01.fedorainfracloud.org

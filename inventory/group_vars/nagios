@@ -102,7 +102,6 @@ iad2_external:
   - pkgs.fedoraproject.org
   - proxy01.fedoraproject.org
   - proxy10.fedoraproject.org
-  - retrace01.fedoraproject.org
   - secondary01.fedoraproject.org
 
 dns_external:
