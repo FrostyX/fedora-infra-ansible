@@ -40,12 +40,12 @@
       - container
       - createrepo
       - livemedia
-#    - name: buildvm_aarch64_stg
-#      arches: aarch64
-#    - name: buildvm_armv7_stg
-#      arches: armhfp
-#    - name: buildvm_ppc64le_stg
-#      arches: ppc64le
+    - name: buildvm_aarch64_stg
+      arches: aarch64
+    - name: buildvm_armv7_stg
+      arches: armhfp
+    - name: buildvm_ppc64le_stg
+      arches: ppc64le
     - name: buildvm_s390x_stg
       arches: s390x
   # Users allowed to use content generators, only in staging
