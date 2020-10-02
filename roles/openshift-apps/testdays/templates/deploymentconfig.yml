@@ -20,9 +20,6 @@ spec:
           containerName: testdays
           command: ["/usr/bin/python", "/opt/app-root/src/testdays/cli.py", "init_db"]
 #          command: ["/usr/bin/python", "/opt/app-root/src/testdays/cli.py", "upgrade_db"]
-          env:
-          - name: PYTHONPATH
-            value: /opt/app-root/src
   template:
     metadata:
       labels:
