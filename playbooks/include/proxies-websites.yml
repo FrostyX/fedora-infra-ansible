@@ -238,9 +238,10 @@
 
   - role: httpd/website
     site_name: testdays.fedoraproject.org
-    server_aliases: [testdays.qa.fedoraproject.org]
+    server_aliases: [testdays.qa.fedoraproject.org, testdays.stg.fedoraproject.org]
     sslonly: true
     cert_name: "{{wildcard_cert_name}}"
+    tags: testdays
 
   - role: httpd/website
     site_name: smolts.org
