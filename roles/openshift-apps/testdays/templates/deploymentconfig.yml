@@ -13,6 +13,15 @@ spec:
     deploymentconfig: testdays
   strategy:
     type: Recreate
+    recreateParams:
+      mid:
+        failurePolicy: Abort
+        execNewPod:
+          containerName: testdays
+          command: ["/usr/bin/python3", "/opt/app-root/src/testdays/cli", "init_db"]
+          env:
+          - name: PYTHONPATH
+            value: /opt/app-root/src
   template:
     metadata:
       labels:
