@@ -371,9 +371,16 @@ handlers = ["console"]
             [[consumer_config.koji_instances.primary.tags]]
             from = "eln-signing-pending"
             to = "eln-updates-testing-pending"
-            key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
+            key = "{{ (env == 'production')|ternary('fedora-34', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('45719a39', 'd300e724') }}"
 
+            [[consumer_config.koji_instances.primary.tags]]
+            from = "eln-modular-updates-candidate"
+            to = "eln-modular"
+            key = "{{ (env == 'production')|ternary('fedora-34', 'testkey') }}"
+            keyid = "{{ (env == 'production')|ternary('45719a39', 'd300e724') }}"
+            type = "modular"
+            
             # ELN Mass Rebuild
 
             [[consumer_config.koji_instances.primary.tags]]
