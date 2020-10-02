@@ -225,5 +225,6 @@
   cron:
     name: "ELN periodic compose"
     minute: "0"
-    job: "odcs --token=/etc/releng-odcs-oidc-token create-raw-config --compose-type=production --label=Alpha-0.1 eln eln"
+    hour: "*/3"
+    job: "odcs --token=/etc/releng-odcs-oidc-token create-raw-config --compose-type=production --label=Alpha-0.`date \"+\%s\"` eln eln"
   when: inventory_hostname.startswith('odcs-backend-releng')
