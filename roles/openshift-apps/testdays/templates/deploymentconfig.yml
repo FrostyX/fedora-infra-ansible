@@ -1,0 +1,66 @@
+---
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: testdays
+    service: testdays
+  name: testdays
+spec:
+  replicas: 1
+  selector:
+    app: testdays
+    deploymentconfig: testdays
+  strategy:
+    type: Recreate
+  template:
+    metadata:
+      labels:
+        app: testdays
+        deploymentconfig: testdays
+    spec:
+      containers:
+      - name: testdays
+        image: testdays:latest
+        command: ["container_start.sh", "runserver"]
+        ports:
+        - containerPort: 8080
+        resources: {}
+        env:
+        - name: POSTGRESQL_USER
+          value: "{{ }}"
+        - name: POSTGRESQL_PASSWORD
+          value: "{{ }}"
+        - name: POSTGRESQL_DATABASE
+          value: "{{ }}"
+        - name: POSTGRESQL_SERVICE_HOST
+          value: "{{ }}"
+        - name: POSTGRESQL_SERVICE_PORT
+          value: "{{ }}"
+        - name: SECRET_KEY
+          value: "{{ }}"
+        - name: RESULTSDB_URL
+          value: "https://taskotron.fedoraproject.org/resultsdb/results"
+        readinessProbe:
+          timeoutSeconds: 1
+          initialDelaySeconds: 5
+          httpGet:
+            path: /
+            port: 8080
+        livenessProbe:
+          timeoutSeconds: 1
+          initialDelaySeconds: 30
+          httpGet:
+            path: /
+            port: 8080
+
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange
+    imageChangeParams:
+      automatic: true
+      containerNames:
+      - testdays
+      from:
+        kind: ImageStreamTag
+        name: testdays:latest

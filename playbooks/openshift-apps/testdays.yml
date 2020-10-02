@@ -1,0 +1,44 @@
+- name: make the app be real
+  hosts: os_masters_stg[0] #:os_masters[0]:
+  user: root
+  gather_facts: False
+
+  vars_files:
+    - /srv/web/infra/ansible/vars/global.yml
+    - "/srv/private/ansible/vars.yml"
+    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  roles:
+  - role: openshift/project
+    app: testdays
+    description: The Fedora QE testdays application
+    appowners:
+    - pingou
+    - frantisekz
+    tags:
+      - appowners
+
+  - role: openshift/object
+    app: testdays
+    template: buildconfig.yml
+    objectname: buildconfig.yml
+
+  - role: openshift/object
+    app: testdays
+    template: deploymentconfig.yml
+    objectname: deploymentconfig.yml
+
+  - role: openshift/object
+    app: testdays
+    template: imagestream.yml
+    objectname: imagestream.yml
+
+  - role: openshift/object
+    app: testdays
+    file: service.yml
+    objectname: service.yml
+
+  - role: openshift/start-build
+    app: testdays
+    buildname: testdays-build
+    objectname: testdays-build

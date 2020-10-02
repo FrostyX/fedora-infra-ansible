@@ -1,0 +1,30 @@
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  name: testdays-build
+  labels:
+    environment: "testdays"
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: testdays:latest
+  source:
+    type: Git
+    git:
+      uri: https://pagure.io/fedora-qa/testdays-web.git
+{% if env == 'staging' %}
+      ref: "develop"
+{% else %}
+      ref: "production"
+{% endif %}
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        namespace: openshift
+        name: python:3.6
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange
