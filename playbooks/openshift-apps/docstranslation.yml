@@ -34,7 +34,7 @@
 
   - role: openshift/object
     app: docstranslation
-    template: cron.yml
+    file: cron.yml
     objectname: cron.yml
     tags:
       - deploy-cronjob
