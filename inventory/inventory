@@ -465,16 +465,16 @@ openqa-p09-worker01.iad2.fedoraproject.org
 
 # the workers that can run networked jobs. each server should have *one* of these per arch
 [openqa_tap_workers]
-openqa-a64-worker01.iad2.fedoraproject.org
 openqa-x86-worker01.iad2.fedoraproject.org
+openqa-a64-worker01.iad2.fedoraproject.org
 openqa-p09-worker01.iad2.fedoraproject.org
 
 # the workers that need rw access to the factory share to run createhdds. again,
-# only one per arch per instance should be present. usually x86_64 images are created
-# on the server, images for other arches on a worker.
+# only one per arch per instance should be present.
 [openqa_hdds_workers]
-#openqa-a64-worker01.iad2.fedoraproject.org
 openqa-x86-worker01.iad2.fedoraproject.org
+openqa-a64-worker01.iad2.fedoraproject.org
+openqa-p09-worker01.iad2.fedoraproject.org
 
 [packages]
 
