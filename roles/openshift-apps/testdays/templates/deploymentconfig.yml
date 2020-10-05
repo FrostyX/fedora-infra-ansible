@@ -20,7 +20,7 @@ spec:
           containerName: testdays
 # We only need to init the database the first time, after we just need to check
 # for DB upgrades
-#          command: ["python", "/opt/app-root/src/testdays/cli.py", "init_db"]
+          command: ["python", "/opt/app-root/src/testdays/cli.py", "init_db", "--destructive"]
           command: ["python", "/opt/app-root/src/testdays/cli.py", "upgrade_db"]
   template:
     metadata:
