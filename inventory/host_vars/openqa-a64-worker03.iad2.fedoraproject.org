@@ -30,7 +30,7 @@ ansible_ifcfg_disabled: ['eth0', 'eth2']
 openqa_hostname: openqa-stg01.iad2.fedoraproject.org
 
 # this is a powerful machine, can handle more openQA workers
-openqa_workers: 8
+openqa_workers: 15
 # firewall ports for server->worker websockets connections
 # this port is 'QEMUPORT plus 1'
 # QEMUPORT is:
