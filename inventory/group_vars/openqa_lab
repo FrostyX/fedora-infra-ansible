@@ -15,7 +15,6 @@ virt_install_command: "{{ virt_install_command_one_nic }} --cpu=host-passthrough
 external_hostname: openqa.stg.fedoraproject.org
 
 openqa_dbname: openqa-stg
-openqa_dbhost: db-qa03.qa.fedoraproject.org
 openqa_dbuser: openqastg
 openqa_dbpassword: "{{ stg_openqa_dbpassword }}"
 openqa_assetsize: 400
@@ -43,7 +42,7 @@ openqa_repo: updates-testing
 
 wikitcms_token: "{{ private }}/files/openidc/staging/wikitcms.json"
 openqa_wikitcms_hostname: stg.fedoraproject.org
-openqa_resultsdb_url: http://resultsdb-stg01.fedoraproject.org/resultsdb_api/api/v2.0/
+openqa_resultsdb_url: http://resultsdb01.stg.iad2.fedoraproject.org/resultsdb_api/api/v2.0/
 openqa_update_arches: ['x86_64', 'ppc64le']
 
 # FIXME: disable consumers that write to wiki until auth key
