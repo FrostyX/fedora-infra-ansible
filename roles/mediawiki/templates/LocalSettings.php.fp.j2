@@ -528,7 +528,7 @@ $wgOpenIDConnect_Config['https://id{{ env_suffix }}.fedoraproject.org/openidc/']
     'clientsecret' => '{{ fpwiki_prod_client_secret }}',
 {% endif %}
     'name' => "Fedora Authentication",
-{% if env == "staging" %}
+{% if env != "staging" %}
     'scope' => [ 'openid', 'profile', 'email',
                  'https://id.fedoraproject.org/scope/groups',
                  'https://id.fedoraproject.org/scope/cla' ]
