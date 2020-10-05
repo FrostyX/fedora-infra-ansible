@@ -8,13 +8,15 @@
   package: name={{ item }} state=present update_cache=yes
   with_items:
   - ipsilon
-  - ipsilon-authfas
   - ipsilon-openid
   - ipsilon-saml2
-  - ipsilon-persona
-  - ipsilon-infofas
-  - ipsilon-authgssapi
+  # - ipsilon-persona
   - ipsilon-openidc
+  - ipsilon-authgssapi
+  - ipsilon-authform
+  - ipsilon-infosssd
+  - ipsilon-theme-Fedora
+  - mod_auth_openidc
   - mod_auth_gssapi
   - python-psycopg2
   tags:
@@ -80,139 +82,212 @@
 #  tags:
 #  - ipsilon
 
-- name: copy ipsilon templates
-  copy: src=templates/
-        dest=/usr/share/ipsilon/templates-fedora
-        owner=ipsilon group=ipsilon mode=0666
-  notify:
-  - reload apache
+# - name: copy ipsilon templates
+#   copy: src=templates/
+#         dest=/usr/share/ipsilon/templates-fedora
+#         owner=ipsilon group=ipsilon mode=0666
+#   notify:
+#   - reload apache
+#   tags:
+#   - ipsilon
+# 
+# - name: copy ipsilon ui assets
+#   copy: src=ui-fedora/
+#         dest=/usr/share/ipsilon/ui/fedora
+#         owner=ipsilon group=ipsilon mode=0666
+#   notify:
+#   - reload apache
+#   tags:
+#   - ipsilon
+
+- name: Download Fedora-specific code
+  git:
+    repo: https://pagure.io/fedora-infra/ipsilon-fedora.git
+    dest: /opt/ipsilon-fedora
+    version: "{{ env }}"
+    force: yes
   tags:
   - ipsilon
 
-- name: copy ipsilon ui assets
-  copy: src=ui-fedora/
-        dest=/usr/share/ipsilon/ui/fedora
-        owner=ipsilon group=ipsilon mode=0666
-  notify:
-  - reload apache
+- name: Install Fedora-specific code
+  command:
+    cmd: ./install.sh
+    chdir: /opt/ipsilon-fedora
+    creates: /usr/lib/python3.8/site-packages/ipsilon/providers/openidc/plugins/account-scopes.py
   tags:
   - ipsilon
 
-- name: copy ipsilon configuration
-  template: src={{ item }}.conf
-            dest=/etc/ipsilon/{{ item }}.conf
-            owner=ipsilon group=ipsilon mode=0600
-  with_items:
-  - ipsilon
-  - configuration
+
+- name: Get admin ticket
+  shell: echo "{{ipa_admin_password}}" | kinit admin
+  check_mode: no
   tags:
   - ipsilon
-  - config
-  notify:
-  - restart apache
+
+- name: Install ipsilon
+  command:
+    cmd: ipsilon-server-install --admin-user {{ ipa_admin_user }} --ipa yes --openidc yes --openid yes --saml2 yes --info-sssd yes --form=yes
+    creates: /etc/ipsilon/idp/ipsilon.conf
+  tags:
+  - ipsilon
+
+- name: Destroy admin ticket
+  command: kdestroy -A
+  tags:
+  - ipsilon
+
+## - name: copy ipsilon configuration
+##   template:
+##     src: "ipsilon.conf"
+##     dest: "/etc/ipsilon/idp/ipsilon.conf"
+##     owner: ipsilon
+##     group: ipsilon
+##     mode: 0600
+##   tags:
+##   - ipsilon
+##   - config
+##   notify:
+##   - restart apache
+## 
+## - name: copy ipsilon admin configuration
+##   template:
+##     src: "configuration.conf"
+##     dest: "/etc/ipsilon/configuration.conf"
+##     owner: ipsilon
+##     group: ipsilon
+##     mode: 0600
+##   tags:
+##   - ipsilon
+##   - config
+##   notify:
+##   - restart apache
 
 - name: copy ipsilon OIDC client config
-  copy: src={{ private }}/files/ipsilon/openidc.{{env}}.static dest=/etc/ipsilon/openidc.static.cfg
-            owner=ipsilon group=ipsilon mode=0600
+  copy:
+    src: "{{ private }}/files/ipsilon/openidc.{{env}}.static"
+    dest: /etc/ipsilon/openidc.static.cfg
+    owner: ipsilon
+    group: ipsilon
+    mode: 0600
   tags:
   - ipsilon
   - config
   notify:
   - restart apache
 
-- name: copy ipsilon httpd config
-  template: src=ipsilon-httpd.conf.j2
-            dest=/etc/httpd/conf.d/ipsilon.conf
-  tags:
-  - ipsilon
+## - name: copy ipsilon httpd config
+##   template:
+##     src: "httpd.conf.{{ env }}.j2"
+##     dest: /etc/httpd/conf.d/ipsilon.conf
+##   tags:
+##   - ipsilon
 
-- name: Create Ipsilon config symlink
-  file: dest=/var/lib/ipsilon/ipsilon.conf
-        src=/etc/ipsilon/ipsilon.conf
-        state=link
-  tags:
-  - ipsilon
-  notify:
-  - reload apache
+# - name: Create Ipsilon config symlink
+#   file:
+#     dest: /var/lib/ipsilon/ipsilon.conf
+#     src: /etc/ipsilon/ipsilon.conf
+#     state: link
+#   tags:
+#   - ipsilon
+#   notify:
+#   - reload apache
 
-- name: create wellknown directory
-  file: path=/etc/ipsilon/wellknown state=directory
-        owner=ipsilon group=ipsilon mode=0755
-  tags:
-  - ipsilon
-  notify:
-  - reload apache
+# - name: create wellknown directory
+#   file: path=/etc/ipsilon/wellknown state=directory
+#         owner=ipsilon group=ipsilon mode=0755
+#   tags:
+#   - ipsilon
+#   notify:
+#   - reload apache
 
-- name: copy persona private key
-  copy: src={{ private }}/files/ipsilon/persona.key dest=/etc/ipsilon/persona.key
-        owner=ipsilon group=ipsilon mode=0600
-  when: env != "staging"
-  tags:
-  - ipsilon
-
-- name: copy persona public key
-  copy: src=browserid dest=/etc/ipsilon/wellknown/browserid
-        owner=ipsilon group=ipsilon mode=0644
-  when: env != "staging"
-  tags:
-  - ipsilon
-
-- name: copy persona STG private key
-  copy: src={{ private }}/files/ipsilon/persona.stg.key dest=/etc/ipsilon/persona.stg.key
-        owner=ipsilon group=ipsilon mode=0600
-  when: env == "staging"
-  tags:
-  - ipsilon
-
-- name: copy persona STG public key
-  copy: src=browserid.stg dest=/etc/ipsilon/wellknown/browserid
-        owner=ipsilon group=ipsilon mode=0644
-  when: env == "staging"
-  tags:
-  - ipsilon
+# - name: copy persona private key
+#   copy: src={{ private }}/files/ipsilon/persona.key dest=/etc/ipsilon/persona.key
+#         owner=ipsilon group=ipsilon mode=0600
+#   when: env != "staging"
+#   tags:
+#   - ipsilon
+# 
+# - name: copy persona public key
+#   copy: src=browserid dest=/etc/ipsilon/wellknown/browserid
+#         owner=ipsilon group=ipsilon mode=0644
+#   when: env != "staging"
+#   tags:
+#   - ipsilon
+# 
+# - name: copy persona STG private key
+#   copy: src={{ private }}/files/ipsilon/persona.stg.key dest=/etc/ipsilon/persona.stg.key
+#         owner=ipsilon group=ipsilon mode=0600
+#   when: env == "staging"
+#   tags:
+#   - ipsilon
+# 
+# - name: copy persona STG public key
+#   copy: src=browserid.stg dest=/etc/ipsilon/wellknown/browserid
+#         owner=ipsilon group=ipsilon mode=0644
+#   when: env == "staging"
+#   tags:
+#   - ipsilon
 
 - name: copy OIDC private key
-  copy: src={{ private }}/files/ipsilon/openidc.key dest=/etc/ipsilon/openidc.key
-        owner=ipsilon group=ipsilon mode=0600
+  copy:
+    src: "{{ private }}/files/ipsilon/openidc{{ env_suffix }}.key"
+    dest: /etc/ipsilon/openidc.key
+    owner: ipsilon
+    group: ipsilon
+    mode: 0600
   when: env != "staging"
   tags:
   - ipsilon
 
-- name: copy OIDC STG private key
-  copy: src={{ private }}/files/ipsilon/openidc.stg.key dest=/etc/ipsilon/openidc.stg.key
-        owner=ipsilon group=ipsilon mode=0600
-  when: env == "staging"
-  tags:
-  - ipsilon
+# - name: copy OIDC STG private key
+#   copy: src={{ private }}/files/ipsilon/openidc.stg.key dest=/etc/ipsilon/openidc.stg.key
+#         owner=ipsilon group=ipsilon mode=0600
+#   when: env == "staging"
+#   tags:
+#   - ipsilon
 
 - name: create SAML2 dir
-  file: path=/etc/ipsilon/saml2 state=directory mode=0700
-        owner=ipsilon group=ipsilon setype=httpd_var_lib_t
+  file:
+    path: /etc/ipsilon/saml2
+    state: directory
+    mode: 0700
+    owner: ipsilon
+    group: ipsilon
+    setype: httpd_var_lib_t
   tags:
   - ipsilon
 
 - name: copy SAML2 private key
-  copy: src={{ private }}/files/saml2/{{ env }}/keys/idp.key dest=/etc/ipsilon/saml2/idp.key
-        owner=ipsilon group=ipsilon mode=0600
+  copy:
+    src: "{{ private }}/files/saml2/{{ env }}/keys/idp.key"
+    dest: /etc/ipsilon/saml2/idp.key
+    owner: ipsilon
+    group: ipsilon
+    mode: 0600
   tags:
   - ipsilon
 
 - name: copy SAML2 public key
-  copy: src={{ private }}/files/saml2/{{ env }}/keys/idp.crt dest=/etc/ipsilon/saml2/idp.crt
-        owner=ipsilon group=ipsilon mode=0644
+  copy:
+    src: "{{ private }}/files/saml2/{{ env }}/keys/idp.crt"
+    dest: /etc/ipsilon/saml2/idp.crt
+    owner: ipsilon
+    group: ipsilon
+    mode: 0644
   tags:
   - ipsilon
 
 - name: set sebooleans so ipsilon can talk to the db
-  seboolean: name=httpd_can_network_connect_db
-                    state=true
-                    persistent=true
+  seboolean:
+    name: httpd_can_network_connect_db
+    state: true
+    persistent: true
   tags:
   - ipsilon
 
 - name: apply selinux type to the wsgi file
-  file: >
-    dest=/usr/libexec/ipsilon
-    setype=httpd_sys_content_t
+  file:
+    dest: /usr/libexec/ipsilon
+    setype: httpd_sys_content_t
   tags:
   - ipsilon

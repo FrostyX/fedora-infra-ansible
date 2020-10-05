@@ -1,0 +1,89 @@
+#RewriteEngine on
+#RewriteRule /.well-known/openid-configuration /openidc/.well-known/openid-configuration [PT]
+Redirect /.well-known/webfinger /webfinger
+Alias /.well-known /var/lib/ipsilon/idp/public/well-known
+Alias /cache /var/cache/ipsilon
+
+# This is for mapping $username.id.fp.o -> id.fp.o/id/$username
+RewriteEngine on
+RewriteMap lowercase int:tolower
+{% if env == "staging" %}
+RewriteCond ${lowercase:%{SERVER_NAME}} ^[a-z0-9-]+\.id\.stg\.fedoraproject\.org$
+RewriteRule ^(.+) ${lowercase:%{SERVER_NAME}}$1 [C]
+RewriteRule ^([a-z0-9-]+)\.id\.stg\.fedoraproject\.org/.* /openid/id/$1/ [PT]
+{% else %}
+RewriteCond ${lowercase:%{SERVER_NAME}} ^[a-z0-9-]+\.id\.fedoraproject\.org$
+RewriteRule ^(.+) ${lowercase:%{SERVER_NAME}}$1 [C]
+RewriteRule ^([a-z0-9-]+)\.id\.fedoraproject\.org/.* /openid/id/$1/ [PT]
+{% endif %}
+
+
+Alias /ui /usr/share/ipsilon/themes/Fedora
+#Alias /ui /usr/share/ipsilon/ui
+WSGIScriptAlias / /usr/libexec/ipsilon
+WSGIPassAuthorization On
+WSGIDaemonProcess ipsilon home=/var/lib/ipsilon processes=2 threads=2 maximum-requests=1000
+WSGIApplicationGroup %{GLOBAL}
+WSGISocketPrefix run/wsgi
+#WSGIRestrictStdout Off
+#WSGIRestrictSignal Off
+
+
+<Location />
+    WSGIProcessGroup ipsilon
+</Location>
+
+<Directory /usr/libexec>
+    Require all granted
+</Directory>
+
+<Directory /usr/share/ipsilon>
+    Options +SymLinksIfOwnerMatch
+    Require all granted
+</Directory>
+
+#<Directory /etc/ipsilon/wellknown>
+<Directory /var/lib/ipsilon/idp/public/well-known>
+    Require all granted
+</Directory>
+
+<Location /.well-known/browserid>
+    ForceType application/json
+</Location>
+
+<Directory "/var/cache/ipsilon">
+  SetHandler None
+  AllowOverride None
+  <IfModule mod_authz_core.c>
+    Require all granted
+  </IfModule>
+  <IfModule !mod_authz_core.c>
+    Order Allow,Deny
+    Allow from All
+  </IfModule>
+</Directory>
+
+<Location /login/gssapi/negotiate>
+    AuthName "GSSAPI Single Sign On Login"
+    #GssapiCredStore keytab:/etc/keytabs/service.keytab
+    GssapiCredStore keytab:/etc/httpd/conf/http.keytab
+    AuthType GSSAPI
+    # This is off because Apache (and thus mod_auth_gssapi) doesn't know this is proxied over TLS
+    GssapiSSLonly Off
+    GssapiLocalName on
+    Require valid-user
+    ErrorDocument 401 /login/gssapi/unauthorized
+    ErrorDocument 500 /login/gssapi/failed
+</Location>
+
+LoadModule intercept_form_submit_module modules/mod_intercept_form_submit.so
+LoadModule authnz_pam_module modules/mod_authnz_pam.so
+
+<Location /login/form>
+  InterceptFormPAMService ipsilon
+  InterceptFormLogin login_name
+  InterceptFormPassword login_password
+  # InterceptFormLoginSkip admin
+  # InterceptFormClearRemoteUserForSkipped on
+  InterceptFormPasswordRedact on
+</Location>

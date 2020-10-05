@@ -94,7 +94,7 @@ data:
     CoreDumpDirectory /tmp
 
     # Ipsilon stuff
-    {{ load_file('ipsilon-httpd.conf.j2') | indent() }}
+    {{ load_file('httpd.conf.production.j2') | indent() }}
   ipsilon.conf: |-
     {{ load_file('ipsilon.conf') | indent() }}
   configuration.conf: |-
