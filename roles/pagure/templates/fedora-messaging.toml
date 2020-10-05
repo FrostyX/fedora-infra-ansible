@@ -14,6 +14,8 @@ topic_prefix = "io.pagure.stg"
 {% else %}
 topic_prefix = "io.pagure.prod"
 {% endif %}
+publish_exchange = "amq.topic"
+
 
 [tls]
 ca_cert = "/etc/pki/rabbitmq/pagurecert/pagure.ca"
