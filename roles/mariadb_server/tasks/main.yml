@@ -69,3 +69,6 @@
   tags:
   - cron
   - mariadb-server
+
+- name: set domain_can_mmap_files so collectd and nagios work
+  seboolean: name=domain_can_mmap_files state=yes persistent=yes
