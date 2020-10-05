@@ -535,18 +535,18 @@ openqa01.iad2.fedoraproject.org
 openqa01.iad2.fedoraproject.org
 
 [relvalconsumer_test]
-#openqa-stg01.iad2.fedoraproject.org
+#openqa-lab01.iad2.fedoraproject.org
 
 [checkcompose_common]
 openqa01.iad2.fedoraproject.org
-#openqa-stg01.iad2.fedoraproject.org
+#openqa-lab01.iad2.fedoraproject.org
 
 # This group should only ever contain *ONE* system
 [checkcompose]
 openqa01.iad2.fedoraproject.org
 
 [checkcompose_stg]
-#openqa-stg01.iad2.fedoraproject.org
+#openqa-lab01.iad2.fedoraproject.org
 
 [resultsdb:children]
 resultsdb_stg
@@ -685,7 +685,7 @@ proxy01.iad2.fedoraproject.org
 proxy10.iad2.fedoraproject.org
 proxy101.iad2.fedoraproject.org
 proxy110.iad2.fedoraproject.org
-#openqa-stg01.iad2.fedoraproject.org
+#openqa-lab01.iad2.fedoraproject.org
 tang01.iad2.fedoraproject.org
 tang02.iad2.fedoraproject.org
 
