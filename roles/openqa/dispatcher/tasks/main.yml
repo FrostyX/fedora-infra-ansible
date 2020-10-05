@@ -220,15 +220,6 @@
   notify:
   - restart openqa consumers
 
-# For now, we only have enough ppc64/aarch64 workers for one instance,
-# so we have a variant WANTED file that we deploy based on a config
-# variable.
-- name: Install extra arch WANTED images config if enabled
-  copy: src=images.json.extraarches dest=/etc/fedora-openqa/images.json
-  when: openqa_extraarches|bool
-  notify:
-  - restart openqa scheduler consumer
-
 # FIXME: we should probably have the fedora-messaging consumers run as
 # someone other than root and then we'd need another token file for
 # them, as we used to have for the fedmsg user. But for now they run
@@ -240,6 +231,15 @@
 
 - name: Create fedora_openqa config directory
   file: path=/etc/fedora-openqa state=directory owner=root group=root mode=0755
+
+# For now, we only have enough ppc64/aarch64 workers for one instance,
+# so we have a variant WANTED file that we deploy based on a config
+# variable.
+- name: Install extra arch WANTED images config if enabled
+  copy: src=images.json.extraarches dest=/etc/fedora-openqa/images.json
+  when: openqa_extraarches|bool
+  notify:
+  - restart openqa scheduler consumer
 
 - name: Write schedule.conf
   template: src=schedule.conf.j2 dest=/etc/fedora-openqa/schedule.conf owner=root group=root mode=0644
