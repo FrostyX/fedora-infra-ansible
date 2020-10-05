@@ -1,20 +1,23 @@
-#!/usr/bin/python2
+#!/usr/bin/python
 """ check_supybot_plugin -- ensure that a plugin is loaded by supybot.
-
+ 
 Run like:
-
+ 
     check_supybot_plugin --target fedmsg
     check_supybot_plugin --target koji --debug
-
+ 
 """
-
+from __future__ import print_function
+ 
+from builtins import str
+from builtins import map
 import argparse
 import sys
 import socket
 import string
 import uuid
-
-
+ 
+ 
 def process_args():
     parser = argparse.ArgumentParser()
     parser.add_argument(
@@ -38,71 +41,71 @@ def process_args():
         help='Host to connect to.', dest='port',
     )
     return parser.parse_args()
-
+ 
 args = process_args()
-
+ 
 # Use a random nick so people can't mess with us
 if not args.nick:
     args.nick = 'nrpe-' + str(uuid.uuid4()).split('-')[0]
-
+ 
 name = "NRPE Bot"
 readbuffer = ""
-
+ 
 if not args.target:
-    print "UNKNOWN:  No 'target' specified."
+    print("UNKNOWN:  No 'target' specified.")
     sys.exit(3)
-
+ 
 args.target = args.target.lower()
-
+ 
 if args.debug:
-    print "connecting to %s/%i" % (args.host, args.port)
-
+    print("connecting to %s/%i" % (args.host, args.port))
+ 
 try:
     s = socket.socket()
     s.connect((args.host, args.port))
-
+ 
     if args.debug:
-        print "as %s/%s (%s)" % (args.nick, args.nick, name)
-
-    s.send("nick %s\r\n" % args.nick)
-    s.send("USER %s %s bla :%s\r\n" % (args.nick, args.host, name))
-
+        print("as %s/%s (%s)" % (args.nick, args.nick, name))
+ 
+    s.send(("nick %s\r\n" % args.nick).encode())
+    s.send(("USER %s %s bla :%s\r\n" % (args.nick, args.host, name)).encode())
+ 
     while 1:
-        readbuffer = readbuffer+s.recv(1024)
-        temp = string.split(readbuffer, "\n")
+        readbuffer = readbuffer+s.recv(1024).decode()
+        temp = str.split(readbuffer, "\n")
         readbuffer = temp.pop()
-
+ 
         for line in temp:
-            line = string.rstrip(line)
-
+            line = str.rstrip(line)
+ 
             if args.debug:
-                print " * ", line
-
-            line = string.split(line)
-
+                print(" * ", line)
+ 
+            line = str.split(line)
+ 
             if line[1] == 'MODE':
-                msg = "privmsg zodbot :list\r\n"
+                msg = "privmsg zodbot :list\r\n".encode()
                 if args.debug:
-                    print "sending:"
-                    print " ->", msg
+                    print("sending:")
+                    print(" ->", msg)
                 s.send(msg)
-
-            if line[1] == 'PRIVMSG' and line[0] != ':freenode-connect!frigg@freenode/utility-bot/frigg':
+ 
+            if line[0] == ':zodbot!supybot@fedora/bot/zodbot':
                 if args.debug:
-                    print "Got our response.."
-
-                plugins = map(str.lower, ' '.join(line[3:][1:]).split(', '))
-
+                    print("Got our response..")
+ 
+                plugins = list(map(str.lower, ' '.join(line[3:][1:]).split(', ')))
+ 
                 if args.target in plugins:
-                    print "OK"
-                    s.send("QUIT")
+                    print("OK")
+                    s.send("QUIT".encode())
                     sys.exit(0)
                 else:
-                    print "CRITICAL: %r not loaded by supybot" % args.target
-                    s.send("QUIT")
+                    print("CRITICAL: %r not loaded by supybot" % args.target)
+                    s.send("QUIT".encode())
                     sys.exit(2)
 except Exception as e:
-    print "UNKNOWN: ", str(e)
+    print("UNKNOWN: ", str(e))
     if args.debug:
         raise
     sys.exit(3)
