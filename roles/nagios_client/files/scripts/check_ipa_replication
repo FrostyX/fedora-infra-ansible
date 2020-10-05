@@ -39,7 +39,7 @@ try:
         ldap.SCOPE_SUBTREE, 
         '(objectclass=nsds5replicationagreement)',
         ['nsDS5ReplicaHost', 'nsds5replicaLastUpdateStatus'])
-except Exception, e:
+except Exception as e:
     plugin.status(critical)
     plugin.add_summary("Unable to initialize ldap connection: %s" % (e))
     plugin.exit()
