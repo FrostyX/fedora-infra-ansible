@@ -62,17 +62,14 @@
     mnt_dir: '/srv/docs'
     nfs_src_dir: 'openshift_{{ env_short }}_docs'
     mount_stg: true
-    when: '"sundries01" in ansible_fqdn'
   - role: nfs/client
     mnt_dir: '/srv/websites'
     nfs_src_dir: 'openshift_{{ env_short }}_websites'
     mount_stg: true
-    when: '"sundries01" in ansible_fqdn'
   - role: nfs/client
     mnt_dir: '/srv/web/review-stats'
     nfs_src_dir: 'openshift_{{ env_short }}_reviewstats'
     mount_stg: true
-    when: master_sundries_node|bool
 
   pre_tasks:
   - import_tasks: "{{ tasks_path }}/yumrepos.yml"
