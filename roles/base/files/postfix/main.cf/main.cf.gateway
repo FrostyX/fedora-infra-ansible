@@ -786,9 +786,11 @@ tls_random_source                       = dev:/dev/urandom
 tls_eecdh_strong_curve = prime256v1
 tls_eecdh_ultra_curve = secp384r1
 
-## Other configs from standard
-smtpd_milters           = inet:localhost:8891
-milter_default_action   = accept
+# Milter configuration
+milter_default_action = accept
+milter_protocol = 6
+smtpd_milters = inet:127.0.0.1:8891
+non_smtpd_milters = $smtpd_milters
 
 # Deny email from some domains
 smtpd_sender_restrictions = regexp:/etc/postfix/sender_access
@@ -802,3 +804,4 @@ message_size_limit = 20971520
 # as outlined http://www.postfix.org/SMTPD_ACCESS_README.html
 # At least one is required to receive email
 smtpd_relay_restrictions = permit_mynetworks, reject_unauth_destination
+

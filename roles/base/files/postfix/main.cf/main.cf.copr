@@ -691,8 +691,3 @@ inet_protocols = ipv4
 # send any email. ;(
 smtpd_recipient_restrictions = permit_mynetworks, reject_unauth_destination
 
-# Milter configuration
-milter_default_action = accept
-milter_protocol = 6
-smtpd_milters = inet:127.0.0.1:8891
-non_smtpd_milters = $smtpd_milters
