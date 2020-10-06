@@ -6,11 +6,12 @@ sudoers: "{{ private }}/files/sudo/qavirt-sudoers"
 nrpe_procs_warn: 1400
 nrpe_procs_crit: 1600
 
-# the if connected to the infra network on this box is em1
-ansible_ifcfg_infra_net_devices: [ 'em1' ]
+# the if connected to the infra network on this box is eno1
+ansible_ifcfg_infra_net_devices: [ 'eno1' ]
 eno1_ip: 10.3.174.24
 eno1_nm: 255.255.255.0
 gw: 10.3.174.254
+dns: 10.3.163.33
 nm: 255.255.255.0
 
 # openQA tap worker hosts (like this one) do stuff with ifcfg that base
