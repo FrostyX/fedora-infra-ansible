@@ -9,6 +9,7 @@
   - ipa-server
   - ipa-server-dns
   - ipa-fas
+  - pynag # needed for nagios checks
   tags:
   - ipa/server
   - packages
