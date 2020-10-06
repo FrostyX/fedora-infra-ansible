@@ -19,6 +19,7 @@
   - mod_auth_openidc
   - mod_auth_gssapi
   - python-psycopg2
+  - git
   tags:
   - ipsilon
   - packages
