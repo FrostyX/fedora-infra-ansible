@@ -72,16 +72,16 @@ try:
  
     while 1:
         readbuffer = readbuffer+s.recv(1024).decode()
-        temp = str.split(readbuffer, "\n")
+        temp = readbuffer.split("\n")
         readbuffer = temp.pop()
  
         for line in temp:
-            line = str.rstrip(line)
+            line = line.rstrip()
  
             if args.debug:
                 print(" * ", line)
  
-            line = str.split(line)
+            line = line.split()
  
             if line[1] == 'MODE':
                 msg = "privmsg zodbot :list\r\n".encode()
