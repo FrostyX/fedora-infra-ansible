@@ -19,7 +19,9 @@
   - mod_auth_openidc
   - mod_auth_gssapi
   - python-psycopg2
+  # For the playbook itself
   - git
+  - krb5-workstation
   tags:
   - ipsilon
   - packages
