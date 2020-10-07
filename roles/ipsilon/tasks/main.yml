@@ -141,7 +141,7 @@
          --saml2=yes
          --info-sssd=yes
          --form=yes
-    creates: /etc/ipsilon/ipsilon.conf
+    creates: /etc/ipsilon/root/ipsilon.conf
   tags:
   - ipsilon
 
@@ -153,7 +153,7 @@
 ## - name: copy ipsilon configuration
 ##   template:
 ##     src: "ipsilon.conf"
-##     dest: "/etc/ipsilon/ipsilon.conf"
+##     dest: "/etc/ipsilon/root/ipsilon.conf"
 ##     owner: ipsilon
 ##     group: ipsilon
 ##     mode: 0600
@@ -166,7 +166,7 @@
 ## - name: copy ipsilon admin configuration
 ##   template:
 ##     src: "configuration.conf"
-##     dest: "/etc/ipsilon/configuration.conf"
+##     dest: "/etc/ipsilon/root/configuration.conf"
 ##     owner: ipsilon
 ##     group: ipsilon
 ##     mode: 0600
@@ -179,7 +179,7 @@
 - name: copy ipsilon OIDC client config
   copy:
     src: "{{ private }}/files/ipsilon/openidc.{{env}}.static"
-    dest: /etc/ipsilon/openidc.static.cfg
+    dest: /etc/ipsilon/root/openidc.static.cfg
     owner: ipsilon
     group: ipsilon
     mode: 0600
@@ -192,14 +192,14 @@
 ## - name: copy ipsilon httpd config
 ##   template:
 ##     src: "httpd.conf.{{ env }}.j2"
-##     dest: /etc/httpd/conf.d/ipsilon.conf
+##     dest: /etc/ipsilon/root/idp.conf
 ##   tags:
 ##   - ipsilon
 
 # - name: Create Ipsilon config symlink
 #   file:
 #     dest: /var/lib/ipsilon/ipsilon.conf
-#     src: /etc/ipsilon/ipsilon.conf
+#     src: /etc/ipsilon/root/ipsilon.conf
 #     state: link
 #   tags:
 #   - ipsilon
@@ -207,7 +207,7 @@
 #   - reload apache
 
 # - name: create wellknown directory
-#   file: path=/etc/ipsilon/wellknown state=directory
+#   file: path=/etc/ipsilon/root/wellknown state=directory
 #         owner=ipsilon group=ipsilon mode=0755
 #   tags:
 #   - ipsilon
@@ -215,28 +215,28 @@
 #   - reload apache
 
 # - name: copy persona private key
-#   copy: src={{ private }}/files/ipsilon/persona.key dest=/etc/ipsilon/persona.key
+#   copy: src={{ private }}/files/ipsilon/persona.key dest=/etc/ipsilon/root/persona.key
 #         owner=ipsilon group=ipsilon mode=0600
 #   when: env != "staging"
 #   tags:
 #   - ipsilon
 # 
 # - name: copy persona public key
-#   copy: src=browserid dest=/etc/ipsilon/wellknown/browserid
+#   copy: src=browserid dest=/etc/ipsilon/root/wellknown/browserid
 #         owner=ipsilon group=ipsilon mode=0644
 #   when: env != "staging"
 #   tags:
 #   - ipsilon
 # 
 # - name: copy persona STG private key
-#   copy: src={{ private }}/files/ipsilon/persona.stg.key dest=/etc/ipsilon/persona.stg.key
+#   copy: src={{ private }}/files/ipsilon/persona.stg.key dest=/etc/ipsilon/root/persona.stg.key
 #         owner=ipsilon group=ipsilon mode=0600
 #   when: env == "staging"
 #   tags:
 #   - ipsilon
 # 
 # - name: copy persona STG public key
-#   copy: src=browserid.stg dest=/etc/ipsilon/wellknown/browserid
+#   copy: src=browserid.stg dest=/etc/ipsilon/root/wellknown/browserid
 #         owner=ipsilon group=ipsilon mode=0644
 #   when: env == "staging"
 #   tags:
@@ -245,7 +245,7 @@
 - name: copy OIDC private key
   copy:
     src: "{{ private }}/files/ipsilon/openidc{{ env_suffix }}.key"
-    dest: /etc/ipsilon/openidc.key
+    dest: /etc/ipsilon/root/openidc.key
     owner: ipsilon
     group: ipsilon
     mode: 0600
@@ -254,7 +254,7 @@
   - ipsilon
 
 # - name: copy OIDC STG private key
-#   copy: src={{ private }}/files/ipsilon/openidc.stg.key dest=/etc/ipsilon/openidc.stg.key
+#   copy: src={{ private }}/files/ipsilon/openidc.stg.key dest=/etc/ipsilon/root/openidc.stg.key
 #         owner=ipsilon group=ipsilon mode=0600
 #   when: env == "staging"
 #   tags:
@@ -262,7 +262,7 @@
 
 - name: create SAML2 dir
   file:
-    path: /etc/ipsilon/saml2
+    path: /etc/ipsilon/root/saml2
     state: directory
     mode: 0700
     owner: ipsilon
@@ -274,7 +274,7 @@
 - name: copy SAML2 private key
   copy:
     src: "{{ private }}/files/saml2/{{ env }}/keys/idp.key"
-    dest: /etc/ipsilon/saml2/idp.key
+    dest: /etc/ipsilon/root/saml2/idp.key
     owner: ipsilon
     group: ipsilon
     mode: 0600
@@ -284,7 +284,7 @@
 - name: copy SAML2 public key
   copy:
     src: "{{ private }}/files/saml2/{{ env }}/keys/idp.crt"
-    dest: /etc/ipsilon/saml2/idp.crt
+    dest: /etc/ipsilon/root/saml2/idp.crt
     owner: ipsilon
     group: ipsilon
     mode: 0644

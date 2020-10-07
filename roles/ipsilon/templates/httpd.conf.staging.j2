@@ -1,8 +1,10 @@
 #RewriteEngine on
 #RewriteRule /.well-known/openid-configuration /openidc/.well-known/openid-configuration [PT]
-Redirect /.well-known/webfinger /webfinger
+#Alias /ui /usr/share/ipsilon/themes/Fedora
+Alias /ui /usr/share/ipsilon/ui
 Alias /.well-known /var/lib/ipsilon/idp/public/well-known
 Alias /cache /var/cache/ipsilon
+Redirect /.well-known/webfinger /webfinger
 
 # This is for mapping $username.id.fp.o -> id.fp.o/id/$username
 RewriteEngine on
@@ -18,8 +20,6 @@ RewriteRule ^([a-z0-9-]+)\.id\.fedoraproject\.org/.* /openid/id/$1/ [PT]
 {% endif %}
 
 
-Alias /ui /usr/share/ipsilon/themes/Fedora
-#Alias /ui /usr/share/ipsilon/ui
 WSGIScriptAlias / /usr/libexec/ipsilon
 WSGIDaemonProcess ipsilon user=ipsilon group=ipsilon home=/var/lib/ipsilon display-name=ipsilon processes=2 threads=2 maximum-requests=1000
 # This header is required to be passed for OIDC client_secret_basic
@@ -45,8 +45,7 @@ WSGISocketPrefix run/wsgi
     Require all granted
 </Directory>
 
-#<Directory /etc/ipsilon/wellknown>
-<Directory /var/lib/ipsilon/idp/public/well-known>
+<Directory /var/lib/ipsilon/root/public/well-known>
     Require all granted
 </Directory>
 
