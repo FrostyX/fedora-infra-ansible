@@ -16,6 +16,7 @@
   - ipsilon-authform
   - ipsilon-infosssd
   - ipsilon-theme-Fedora
+  - ipsilon-tools-ipa
   - mod_auth_openidc
   - mod_auth_gssapi
   - python-psycopg2
