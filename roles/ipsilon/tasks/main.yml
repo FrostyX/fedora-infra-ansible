@@ -121,7 +121,8 @@
   tags:
   - ipsilon
 
-- include_role: ipa/client
+- include_role:
+    name: ipa/client
 
 - name: Get admin ticket
   shell: echo "{{ipa_admin_password}}" | kinit admin
