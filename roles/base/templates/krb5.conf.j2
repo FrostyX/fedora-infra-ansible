@@ -16,7 +16,7 @@
 [realms]
  {{ ipa_realm }} = {
 {% if ansible_distribution_major_version|default(0)|int == 6 and ansible_distribution == "RedHat" %}
-  kdc = ipa01{{ env_suffix }}.phx2.fedoraproject.org
+  kdc = ipa01{{ env_suffix }}.{{ datacenter }}.fedoraproject.org
 {% else %}
   kdc = https://id{{ env_suffix }}.fedoraproject.org/KdcProxy
 {% endif %}
@@ -31,7 +31,7 @@
  .fedoraproject.org = FEDORAPROJECT.ORG
  fedoraproject.org = FEDORAPROJECT.ORG
 {% if env == "staging" %}
- .stg.phx2.fedoraproject.org = STG.FEDORAPROJECT.ORG
+ .stg.{{ datacenter }}.fedoraproject.org = STG.FEDORAPROJECT.ORG
 {% endif %}
  .stg.fedoraproject.org = STG.FEDORAPROJECT.ORG
  stg.fedoraproject.org = STG.FEDORAPROJECT.ORG
