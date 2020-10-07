@@ -60,6 +60,7 @@ update build set volume_id=(select id from volume where name='prod') where volum
 -- files are not there; keeping rpminfo's ma
 delete from archive_rpm_components where rpm_id in (select id from rpminfo where build_id in (select id from build where state<>1));
 delete from image_listing where rpm_id in (select id from rpminfo where build_id in (select id from build where state<>1));
+delete from buildroot_listing where rpm_id in (select id from rpminfo where build_id in (select id from build where state<>1));
 delete from rpminfo where build_id in (select id from build where state<>1);
 
 -- expire any active buildroots
