@@ -2,41 +2,64 @@
   hosts: os_masters[0]:os_masters_stg[0]
   user: root
   gather_facts: False
-
+  vars:
+    app: docstranslation
   vars_files:
     - /srv/web/infra/ansible/vars/global.yml
     - "/srv/private/ansible/vars.yml"
     - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
 
-  roles:
-  - role: openshift/project
-    app: docstranslation
-    description: Documentation translation
-    appowners:
-    - asamalik
-    - darknao
-    - jibecfed
-    - misc
+  tasks:
+  - import_role:
+      name: openshift/project
+    vars:
+      description: Documentation translation
+      appowners:
+      - asamalik
+      - darknao
+      - jibecfed
+      - misc
     tags:
       - apply-appowners
 
-  - role: openshift/imagestream
-    app: docstranslation
-    imagename: builder
+  - name: Generate ssh keypair, if none exist
+    openssh_keypair:
+      path: "/etc/openshift_apps/{{ app }}/id_rsa_docs_trans"
+      mode: 0600
+      regenerate: never
+      type: rsa
+      size: 4096
+    register: r_ssh_key
 
-  - role: openshift/object
-    app: docstranslation
-    objectname: buildconfig.yml
-    file: buildconfig.yml
+  - import_role:
+      name: openshift/imagestream
+    vars:
+      imagename: builder
 
-  - role: openshift/start-build
-    app: docstranslation
-    buildname: docstranslation-build
+  - import_role:
+      name: openshift/object
+    vars:
+      objectname: buildconfig.yml
+      file: buildconfig.yml
 
-  - role: openshift/object
-    app: docstranslation
-    file: cron.yml
-    objectname: cron.yml
+  - import_role:
+      name: openshift/start-build
+    vars:
+      buildname: docstranslation-build
+
+  - import_role:
+      name: openshift/object
+    vars:
+      objectname: secrets.yml
+      template: secrets.yml
+    tags:
+      - deploy-secrets
+
+  - import_role:
+      name: openshift/object
+    vars:
+      file: cron.yml
+      objectname: cron.yml
     tags:
       - deploy-cronjob
 
@@ -44,8 +67,16 @@
 # actions to delete the project from OpenShift
 ###############################################
 # to run: sudo rbac-playbook -l os_masters_stg[0] -t delete openshift-apps/docstranslation.yml
-  - role: openshift/object-delete
-    app: docstranslation
-    objecttype: cronjob
-    objectname: cron
-    tags: [ never, delete ]
+  - import_role:
+      name: openshift/object-delete
+    vars:
+      objecttype: cronjob
+      objectname: cron
+    tags:
+    - never
+    - delete
+
+  post_tasks:
+  - name: Display git ssh key for adding in pagure
+    debug:
+      msg: "{{ r_ssh_key.public_key }}"
