@@ -129,8 +129,13 @@ $wgDBtype           = "mysql";
 $wgDBserver         = "db03";
 $wgDBname           = "fpo-mediawiki";
 $wgDBuser           = "fpo-mw-user";
+{% if env == "staging" %}
+$wgDBpassword       = "{{ stgfpoPassword }}";
+$wgDBport           = "3306";
+{% else %}
 $wgDBpassword       = "{{ fpoPassword }}";
 $wgDBport           = "5432";
+{% endif %}
 $wgDBprefix         = "en_";
 
 # MySQL table options to use during installation or update
