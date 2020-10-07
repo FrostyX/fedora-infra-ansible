@@ -1,0 +1,10 @@
+- name: Enroll system as IPA client
+  command:
+    cmd: ipa-client-install
+         --hostname={{ ansible_fqdn }}
+         --domain={{ ipa_realm | lower }}
+         --realm={{ ipa_realm }}
+         --server={{ ipa_server }}
+         -p admin -w {{ ipa_admin_password }}
+         -U -N --force-join
+    creates: /etc/ipa/default.conf
