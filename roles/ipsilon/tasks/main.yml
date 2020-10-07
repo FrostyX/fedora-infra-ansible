@@ -141,7 +141,6 @@
          --saml2=yes
          --info-sssd=yes
          --form=yes
-         --admin-dburi=configfile:///etc/ipsilon/configuration.conf
     creates: /etc/ipsilon/ipsilon.conf
   tags:
   - ipsilon
