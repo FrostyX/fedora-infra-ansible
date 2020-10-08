@@ -132,7 +132,7 @@
 
 - name: Install ipsilon
   command:
-    cmd: ipsilon-server-install 
+    cmd: ipsilon-server-install
          --root-instance
          --admin-user=admin
          --ipa=yes
@@ -250,7 +250,6 @@
     owner: ipsilon
     group: ipsilon
     mode: 0600
-  when: env != "staging"
   tags:
   - ipsilon
 

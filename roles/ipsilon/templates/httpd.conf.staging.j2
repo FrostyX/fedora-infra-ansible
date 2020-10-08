@@ -21,7 +21,7 @@ RewriteRule ^([a-z0-9-]+)\.id\.fedoraproject\.org/.* /openid/id/$1/ [PT]
 
 
 WSGIScriptAlias / /usr/libexec/ipsilon
-WSGIDaemonProcess ipsilon user=ipsilon group=ipsilon home=/var/lib/ipsilon display-name=ipsilon processes=2 threads=2 maximum-requests=1000
+WSGIDaemonProcess ipsilon user=ipsilon group=ipsilon home=/var/lib/ipsilon/root display-name=ipsilon processes=2 threads=2 maximum-requests=1000
 # This header is required to be passed for OIDC client_secret_basic
 WSGIPassAuthorization On
 # Without this, getting the private key in jwcrypto/jwk.py, line 430, fails
