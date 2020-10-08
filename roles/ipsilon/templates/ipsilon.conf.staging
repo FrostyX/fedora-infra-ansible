@@ -1,0 +1,28 @@
+[global]
+debug = {{ (env == 'production')|ternary('False', 'True') }}
+tools.log_request_response.on = False
+template_dir = "/usr/share/ipsilon/templates"
+theme_dir = "/usr/share/ipsilon/themes/Fedora"
+cache_dir = "/var/cache/ipsilon"
+cleanup_interval = 30
+db.conn.log = False
+db.echo = False
+
+# base.mount = ""
+base.dir = "/usr/share/ipsilon"
+admin.config.db = "configfile:///etc/ipsilon/root/configuration.conf"
+user.prefs.db = "postgresql://{{ ipsilon_db_user }}:{{ ipsilon_db_pass }}@{{ ipsilon_db_host }}/{{ ipsilon_db_prefs_name }}"
+transactions.db = "postgresql://{{ ipsilon_db_user }}:{{ ipsilon_db_pass }}@{{ ipsilon_db_host }}/{{ ipsilon_db_transactions_name }}"
+
+tools.sessions.on = True
+tools.sessions.name = "fedora_ipsilon_session_id"
+tools.sessions.storage_type = "sql"
+tools.sessions.storage_dburi = "postgresql://{{ ipsilon_db_user }}:{{ ipsilon_db_pass }}@{{ ipsilon_db_host }}/{{ ipsilon_db_sessions_name }}"
+tools.sessions.timeout = 15
+tools.sessions.httponly = True
+tools.sessions.secure = True
+tools.sessions.locking = 'explicit'
+
+tools.proxy.on = True
+tools.proxy.base = "https://id{{ env_suffix }}.fedoraproject.org"
+

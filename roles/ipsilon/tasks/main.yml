@@ -150,31 +150,31 @@
   tags:
   - ipsilon
 
-## - name: copy ipsilon configuration
-##   template:
-##     src: "ipsilon.conf"
-##     dest: "/etc/ipsilon/root/ipsilon.conf"
-##     owner: ipsilon
-##     group: ipsilon
-##     mode: 0600
-##   tags:
-##   - ipsilon
-##   - config
-##   notify:
-##   - restart apache
-## 
-## - name: copy ipsilon admin configuration
-##   template:
-##     src: "configuration.conf"
-##     dest: "/etc/ipsilon/root/configuration.conf"
-##     owner: ipsilon
-##     group: ipsilon
-##     mode: 0600
-##   tags:
-##   - ipsilon
-##   - config
-##   notify:
-##   - restart apache
+- name: copy ipsilon configuration
+  template:
+    src: "ipsilon.conf.{{ env }}"
+    dest: "/etc/ipsilon/root/ipsilon.conf"
+    owner: ipsilon
+    group: ipsilon
+    mode: 0600
+  tags:
+  - ipsilon
+  - config
+  notify:
+  - restart apache
+
+- name: copy ipsilon admin configuration
+  template:
+    src: "configuration.conf"
+    dest: "/etc/ipsilon/root/configuration.conf"
+    owner: ipsilon
+    group: ipsilon
+    mode: 0600
+  tags:
+  - ipsilon
+  - config
+  notify:
+  - restart apache
 
 - name: copy ipsilon OIDC client config
   copy:
@@ -189,12 +189,13 @@
   notify:
   - restart apache
 
-## - name: copy ipsilon httpd config
-##   template:
-##     src: "httpd.conf.{{ env }}.j2"
-##     dest: /etc/ipsilon/root/idp.conf
-##   tags:
-##   - ipsilon
+- name: copy ipsilon httpd config
+  template:
+    src: "httpd.conf.{{ env }}.j2"
+    dest: /etc/ipsilon/root/idp.conf
+  tags:
+  - ipsilon
+  - config
 
 # - name: Create Ipsilon config symlink
 #   file:

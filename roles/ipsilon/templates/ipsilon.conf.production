@@ -1,5 +1,5 @@
 [global]
-debug = True
+debug = {{ (env == 'production')|ternary('False', 'True') }}
 tools.log_request_response.on = False
 theme_dir = "/usr/share/ipsilon/themes/Fedora"
 template_dir = "/usr/share/ipsilon/templates"
@@ -24,9 +24,5 @@ tools.sessions.secure = True
 tools.sessions.locking = 'explicit'
 
 tools.proxy.on = True
-{% if env == 'staging' %}
-tools.proxy.base = "https://id.stg.fedoraproject.org"
-{% else %}
-tools.proxy.base = "https://id.fedoraproject.org"
-{% endif %}
+tools.proxy.base = "https://id{{ env_suffix }}.fedoraproject.org"
 

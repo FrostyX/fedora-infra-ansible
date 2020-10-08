@@ -96,7 +96,7 @@ data:
     # Ipsilon stuff
     {{ load_file('httpd.conf.production.j2') | indent() }}
   ipsilon.conf: |-
-    {{ load_file('ipsilon.conf') | indent() }}
+    {{ load_file('ipsilon.conf.production') | indent() }}
   configuration.conf: |-
     {{ load_file('configuration.conf') | indent() }}
   openidc.static.cfg: |-
