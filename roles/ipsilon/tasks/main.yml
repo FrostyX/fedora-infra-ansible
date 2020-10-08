@@ -196,6 +196,8 @@
   tags:
   - ipsilon
   - config
+  notify:
+  - restart apache
 
 # - name: Create Ipsilon config symlink
 #   file:
@@ -305,3 +307,25 @@
     setype: httpd_sys_content_t
   tags:
   - ipsilon
+
+- name: configure SSSd to forward additional attributes (1/2)
+  replace:
+    path: /etc/sssd/sssd.conf
+    regexp: ^ldap_user_extra_attrs = [\w,\s]+$
+    replace: ldap_user_extra_attrs = mail, street, locality, st, postalCode, telephoneNumber, givenname, sn, fasTimeZone, fasLocale, fasIRCNick, fasGPGKeyId, fasCreationTime, fasStatusNote, fasRHBZEmail, fasGitHubUsername, fasGitLabUsername, fasWebsiteURL, fasIsPrivate
+  tags:
+  - ipsilon
+  - config
+  notify:
+  - restart sssd
+
+- name: configure SSSd to forward additional attributes (2/2)
+  replace:
+    path: /etc/sssd/sssd.conf
+    regexp: ^user_attributes = [\w,\s+]+$
+    replace: user_attributes = +mail, +street, +locality, +st, +postalCode, +telephoneNumber, +givenname, +sn, +fasTimeZone, +fasLocale, +fasIRCNick, +fasGPGKeyId, +fasCreationTime, +fasStatusNote, +fasRHBZEmail, +fasGitHubUsername, +fasGitLabUsername, +fasWebsiteURL, +fasIsPrivate
+  tags:
+  - ipsilon
+  - config
+  notify:
+  - restart sssd
