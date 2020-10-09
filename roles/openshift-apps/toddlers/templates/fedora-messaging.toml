@@ -163,6 +163,10 @@ level = "DEBUG"
 propagate = false
 handlers = ["console"]
 
+[log_config.loggers.toddlers.plugins.pdc_import_compose]
+level = "DEBUG"
+propagate = false
+handlers = ["console"]
 
 [log_config.root]
 level = "ERROR"
