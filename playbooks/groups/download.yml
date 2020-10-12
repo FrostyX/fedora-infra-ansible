@@ -70,7 +70,7 @@
     copy: src="{{ files }}/download/sync-up-downloads.sh.cc-rdu01" dest=/usr/local/bin/sync-up-downloads owner=root group=root mode=755
     when: inventory_hostname == 'download-cc-rdu01.fedoraproject.org'
   - name: put in cron job for syncing
-    copy: src="{{ files }}/download/download-sync.cron.ib01"  dest=/etc/cron.d/download-sync owner=root group=root mode=644
+    copy: src="{{ files }}/download/download-sync.cron.cc-rdu01"  dest=/etc/cron.d/download-sync owner=root group=root mode=644
     when: inventory_hostname == 'download-cc-rdu01.fedoraproject.org'
 
   handlers:
