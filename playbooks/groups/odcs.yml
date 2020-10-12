@@ -143,14 +143,25 @@
     service: odcs
     owner_user: odcs
     owner_group: odcs
-    host: "odcs{{env_suffix}}.fedoraproject.org"
-  # keytab for odcs releng backend
+
+  handlers:
+  - import_tasks: "{{ handlers_path }}/restart_services.yml"
+
+- name: Configure ODCS releng backends
+  hosts: odcs_backend_releng
+  user: root
+  gather_facts: True
+
+  vars_files:
+   - /srv/web/infra/ansible/vars/global.yml
+   - "/srv/private/ansible/vars.yml"
+   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  roles:
   - role: keytab/service
     service: odcs
-    host: "odcs-backend-releng01.iad2.fedoraproject.org"
   - role: rabbit/user
     username: "fmc{{ env_suffix }}"
-    host: "odcs-backend-releng01.iad2.fedoraproject.org"
   - role: rabbit/queue
     username: "fmc{{ env_suffix }}"
     queue_name: "{{ fmc_queue_name }}"
@@ -158,9 +169,7 @@
     thresholds:
       warning: 100
       critical: 1000
-    host: "odcs-backend-releng01.iad2.fedoraproject.org"
-  - role: fmc
-    host: "odcs-backend-releng01.iad2.fedoraproject.org"
+  - fmc
 
   handlers:
   - import_tasks: "{{ handlers_path }}/restart_services.yml"
