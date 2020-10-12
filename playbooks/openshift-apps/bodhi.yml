@@ -45,6 +45,7 @@
     - cverna
     - abompard
     - pingou
+    - mattia
     tags:
       - apply-appowners
     when: env == "production"
@@ -59,6 +60,7 @@
     - scoady
     - asaleh
     - ryanlerch
+    - mattia
     tags:
       - apply-appowners
     when: env == "staging"
