@@ -23,6 +23,7 @@ RUN dnf install -y \
         python3-dns \
         python3-flask \
         python3-gssapi \
+        python3-requests-gssapi \
         python3-ldap \
         python3-pip \
         python3-wheel && \
