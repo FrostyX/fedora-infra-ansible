@@ -22,6 +22,6 @@
     notifempty
     compress
     postrotate
-        /usr/bin/killall -HUP lighttpd &>/dev/null || :
+        systemctl restart lighttpd.service &>/dev/null || :
     endscript
 }
