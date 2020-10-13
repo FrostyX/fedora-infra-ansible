@@ -208,7 +208,7 @@
 #   failed_when: "'already exists' not in output.stderr and output.rc != 0"
 
 # Set the default value back
-- name: Disable default permissions so we don't break our privacy policy
+- name: Restore the default permission on user addressbook attributes
   command:
     argv:
       - ipa
@@ -246,6 +246,101 @@
   - ipa/server
   - config
   when: ipa_initial
+
+# Certificate generation
+- name: Make a directory to store certificate profiles
+  file:
+    path: /etc/ipa/certprofiles
+    state: directory
+  tags:
+  - ipa/server
+  - config
+
+- name: Warn admins that this is not the canonical source
+  copy:
+    dest: /etc/ipa/certprofiles/README
+    content: "This is just a dump of the server values, which are accessible with ipa certprofile-find"
+  tags:
+  - ipa/server
+  - config
+
+#- name: Check if we should import or update the certificate profile
+#  stat:
+#    path: /etc/ipa/certprofiles/userCerts.conf
+#  register: st_profile
+
+- name: Copy the certificate profile for users
+  template:
+    src: userCerts.conf
+    dest: /etc/ipa/certprofiles/userCerts.conf
+  tags:
+  - ipa/server
+  - config
+
+- name: Create the certificate profile
+  command:
+    argv:
+      - ipa
+      - certprofile-import
+      - userCerts
+      - --desc=Profile for user certificates
+      - --store=true
+      - --file=/etc/ipa/certprofiles/userCerts.conf
+  tags:
+  - ipa/server
+  - config
+  #when: ipa_initial and not st_profile.stat.exists
+  when: ipa_initial
+  register: output
+  changed_when: "'Modified profile' in output.stdout"
+  failed_when: "'no modifications to be performed' not in output.stderr and output.rc != 0"
+
+- name: Update the certificate profile
+  command:
+    argv:
+      - ipa
+      - certprofile-mod
+      - userCerts
+      - --desc=Profile for user certificates
+      - --store=true
+      - --file=/etc/ipa/certprofiles/userCerts.conf
+  tags:
+  - ipa/server
+  - config
+  #when: ipa_initial and st_profile.stat.exists
+  when: ipa_initial
+  register: update_output
+  changed_when: "'Modified profile' in output.stdout"
+  failed_when: "'no modifications to be performed' not in output.stderr and output.rc != 0"
+
+# Create a new ACL linking the new profile and ipausers group (that all users are members of)
+- name: Create the CA ACL for the new certificate profile
+  command: ipa caacl-add userCerts
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+  register: output
+  changed_when: "'already exists' not in output.stdout"
+  failed_when: "'already exists' not in output.stdout and output.rc != 0"
+- name: Add the ipausers group to the CA ACL
+  command: ipa caacl-add-user userCerts --group ipausers
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+  register: output
+  changed_when: "'already exists' not in output.stdout"
+  failed_when: "'already exists' not in output.stdout and output.rc != 0"
+- name: Add the ipausers group to the CA ACL
+  command: ipa caacl-add-profile userCerts --certprofile userCerts
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+  register: output
+  changed_when: "'already exists' not in output.stdout"
+  failed_when: "'already exists' not in output.stdout and output.rc != 0"
 
 # Noggin user setup
 
