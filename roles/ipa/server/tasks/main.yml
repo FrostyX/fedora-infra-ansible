@@ -264,11 +264,6 @@
   - ipa/server
   - config
 
-#- name: Check if we should import or update the certificate profile
-#  stat:
-#    path: /etc/ipa/certprofiles/userCerts.conf
-#  register: st_profile
-
 - name: Copy the certificate profile for users
   template:
     src: userCerts.conf
@@ -289,11 +284,10 @@
   tags:
   - ipa/server
   - config
-  #when: ipa_initial and not st_profile.stat.exists
   when: ipa_initial
-  register: output
-  changed_when: "'Modified profile' in output.stdout"
-  failed_when: "'no modifications to be performed' not in output.stderr and output.rc != 0"
+  register: create_output
+  changed_when: "'already exists' not in create_output.stdout"
+  failed_when: "'already exists' not in create_output.stdout and create_output.rc != 0"
 
 - name: Update the certificate profile
   command:
@@ -307,11 +301,7 @@
   tags:
   - ipa/server
   - config
-  #when: ipa_initial and st_profile.stat.exists
-  when: ipa_initial
-  register: update_output
-  changed_when: "'Modified profile' in output.stdout"
-  failed_when: "'no modifications to be performed' not in output.stderr and output.rc != 0"
+  when: "ipa_initial and 'already exists' in create_output.stdout"
 
 # Create a new ACL linking the new profile and ipausers group (that all users are members of)
 - name: Create the CA ACL for the new certificate profile
