@@ -213,7 +213,7 @@
     argv:
       - ipa
       - permission-mod
-      - System: Read User Addressbook Attributes
+      - "System: Read User Addressbook Attributes"
       - --bindtype=all
   tags:
   - ipa/server
