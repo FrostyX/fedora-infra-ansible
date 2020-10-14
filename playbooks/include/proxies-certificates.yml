@@ -29,8 +29,8 @@
     when: env == "staging"
 
   - role: httpd/certificate
-    certname: wildcard-2017.app.os.stg.fedoraproject.org
-    SSLCertificateChainFile: wildcard-2017.app.os.stg.fedoraproject.org.intermediate.cert
+    certname: wildcard-2020.app.os.stg.fedoraproject.org
+    SSLCertificateChainFile: wildcard-2020.app.os.stg.fedoraproject.org.intermediate.cert
     when: env == "staging"
     tags:
     - app.os.fedoraproject.org
