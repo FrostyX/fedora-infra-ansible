@@ -34,9 +34,6 @@ retrace_stg_aws
 [certgetter]
 certgetter01.iad2.fedoraproject.org
 
-[certgetter_stg]
-certgetter01.stg.iad2.fedoraproject.org
-
 [backup]
 backup01.iad2.fedoraproject.org
 
@@ -604,7 +601,6 @@ buildvm-x86-03.stg.iad2.fedoraproject.org
 buildvm-x86-04.stg.iad2.fedoraproject.org
 buildvm-x86-05.stg.iad2.fedoraproject.org
 busgateway01.stg.iad2.fedoraproject.org
-certgetter01.stg.iad2.fedoraproject.org
 compose-x86-01.stg.iad2.fedoraproject.org
 copr-be-dev.aws.fedoraproject.org
 copr-dist-git-dev.aws.fedoraproject.org
@@ -683,7 +679,6 @@ batcave01.iad2.fedoraproject.org
 bastion01.iad2.fedoraproject.org
 bastion02.iad2.fedoraproject.org
 certgetter01.iad2.fedoraproject.org
-certgetter01.stg.iad2.fedoraproject.org
 log01.iad2.fedoraproject.org
 ns01.iad2.fedoraproject.org
 ns02.iad2.fedoraproject.org
