@@ -11,7 +11,7 @@ swap_file_path: /swap
 
 hostbase: copr-fe-dev-
 public_ip: 35.153.70.58
-root_auth_users: msuchy frostyx dturecek praiskup schlupov thrnciar
+root_auth_users: msuchy frostyx praiskup schlupov thrnciar
 description: copr frontend - dev instance
 
 # Copr vars
