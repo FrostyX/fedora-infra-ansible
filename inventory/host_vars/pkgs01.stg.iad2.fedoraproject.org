@@ -16,4 +16,4 @@ ssh_hostnames:
 baseiptables: False
 
 # DB used by pagure
-pagure_db_host: db01.stg.phx2.fedoraproject.org
+pagure_db_host: db01.stg.iad2.fedoraproject.org
