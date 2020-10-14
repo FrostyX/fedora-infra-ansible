@@ -14,7 +14,7 @@ db_backup_dir: ['/backup']
 #keypair: fedora-admin-20130801
 hostbase: copr-keygen-dev-
 public_ip: 52.202.64.55
-root_auth_users: msuchy frostyx praiskup schlupov thrnciar
+root_auth_users: msuchy frostyx praiskup schlupov
 description: copr key gen and sign host - prod instance
 
 nagios_Check_Services:

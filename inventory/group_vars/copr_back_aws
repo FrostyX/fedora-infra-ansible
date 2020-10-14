@@ -42,7 +42,7 @@ csi_relationship: |
   - Backend: Management of copr cloud infrastructure (OpenStack).
   - Small frontend with copr's public stats
 
-root_auth_users: msuchy pingou frostyx praiskup schlupov thrnciar
+root_auth_users: msuchy pingou frostyx praiskup schlupov
 
 tcp_ports: [ 22, 80, 443 ]
 

@@ -47,7 +47,7 @@ letsencrypt:
       challenge_dir: /var/lib/copr/public_html
       mail: copr-devel@lists.fedorahosted.org
 
-root_auth_users: msuchy pingou frostyx praiskup schlupov thrnciar
+root_auth_users: msuchy pingou frostyx praiskup schlupov
 
 tcp_ports: [ 22, 80, 443 ]
 

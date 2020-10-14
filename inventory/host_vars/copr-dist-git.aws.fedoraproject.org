@@ -16,7 +16,7 @@ ansible_ifcfg_blocklist: True
 #keypair: fedora-admin-20130801
 hostbase: copr-dist-git
 public_ip: 3.89.184.181
-root_auth_users: msuchy frostyx praiskup schlupov thrnciar
+root_auth_users: msuchy frostyx praiskup schlupov
 description: copr dist git - prod instance
 
 

@@ -11,7 +11,7 @@ swap_file_path: /swap
 
 hostbase: copr-fe-
 public_ip: 3.81.0.123
-root_auth_users: msuchy frostyx praiskup schlupov thrnciar
+root_auth_users: msuchy frostyx praiskup schlupov
 description: copr frontend server - prod instance
 
 # Copr vars

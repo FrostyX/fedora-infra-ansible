@@ -23,7 +23,6 @@ whitelist_emails:
   - msuchy@redhat.com
   - praiskup@redhat.com
   - jkadlcik@redhat.com
-  - thrnciar@redhat.com
   - schlupov@redhat.com
 
 copr_pagure_events:
