@@ -77,6 +77,10 @@ bugzilla2fedmsg01.iad2.fedoraproject.org
 [bugzilla2fedmsg_stg]
 bugzilla2fedmsg01.stg.iad2.fedoraproject.org
 
+[centos_ipa_client_stg]
+centos-ipa-client01.stg.iad2.fedoraproject.org
+centos-ipa-client02.stg.iad2.fedoraproject.org
+
 [bvirthost]
 # bvirthost01.stg.iad2.fedoraproject.org
 bvmhost-x86-01.iad2.fedoraproject.org
