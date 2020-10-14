@@ -36,8 +36,8 @@
     - app.os.fedoraproject.org
 
   - role: httpd/certificate
-    certname: wildcard-2017.app.os.fedoraproject.org
-    SSLCertificateChainFile: wildcard-2017.app.os.fedoraproject.org.intermediate.cert
+    certname: wildcard-2020.app.os.fedoraproject.org
+    SSLCertificateChainFile: wildcard-2020.app.os.fedoraproject.org.intermediate.cert
     tags:
     - app.os.fedoraproject.org
 
