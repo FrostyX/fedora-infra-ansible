@@ -6,10 +6,10 @@ dns: 10.3.163.33
 ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-8-iad2
 ks_repo: http://10.3.163.35/repo/rhel/RHEL8-x86_64/
 
-eth0_ip: 10.3.166.43
+eth0_ip: 10.3.166.42
 
 volgroup: /dev/vg_guests
-vmhost: vmhost-x86-10.stg.iad2.fedoraproject.org
+vmhost: vmhost-x86-09.stg.iad2.fedoraproject.org
 datacenter: iad2
 
 nagios_Can_Connect: false
