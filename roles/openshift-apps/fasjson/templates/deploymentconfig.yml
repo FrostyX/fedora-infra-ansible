@@ -26,62 +26,65 @@ spec:
         deploymentconfig: fasjson
     spec:
       containers:
-      - name: fasjson
-        imagePullPolicy: Always
-        ports:
-        - containerPort: 8080
-        volumeMounts:
-        - name: keytab-http-volume
-          mountPath: /etc/keytabs/http
-          subPath: http
-          readOnly: true
-        - name: krb-config-volume
-          mountPath: /etc/krb5
-          readOnly: true
-        - name: fasjson-config-volume
-          mountPath: /etc/fasjson
-          readOnly: true
-        - name: ipa-config-volume
-          mountPath: /etc/ipa
-          readOnly: true
-        - name: httpdir
-          mountPath: /httpdir
-        livenessProbe:
-          timeoutSeconds: 10
-          initialDelaySeconds: 10
-          periodSeconds: 60
-          httpGet:
-            path: /healthz/live
-            port: 8080
-        readinessProbe:
-          timeoutSeconds: 10
-          initialDelaySeconds: 5
-          periodSeconds: 60
-          httpGet:
-            path: /healthz/ready
-            port: 8080
+        - name: fasjson
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+          volumeMounts:
+            - name: keytab-http-volume
+              mountPath: /etc/keytabs/http
+              subPath: http
+              readOnly: true
+            - name: krb-config-volume
+              mountPath: /etc/krb5
+              readOnly: true
+            - name: fasjson-config-volume
+              mountPath: /etc/fasjson
+              readOnly: true
+            - name: ipa-config-volume
+              mountPath: /etc/ipa
+              readOnly: true
+            - name: httpdir
+              mountPath: /httpdir
+          env:
+            - name: FASJSON_CONFIG_PATH
+              value: "/etc/fasjson/fasjson.conf"
+          livenessProbe:
+            timeoutSeconds: 10
+            initialDelaySeconds: 10
+            periodSeconds: 60
+            httpGet:
+              path: /healthz/live
+              port: 8080
+          readinessProbe:
+            timeoutSeconds: 10
+            initialDelaySeconds: 5
+            periodSeconds: 60
+            httpGet:
+              path: /healthz/ready
+              port: 8080
       volumes:
-      - name: fasjson-config-volume
-        configMap:
-          name: fasjson-config
-      - name: keytab-http-volume
-        secret:
-          secretName: fasjson-keytab-http
-      - name: krb-config-volume
-        configMap:
-          name: krb5-config
-      - name: ipa-config-volume
-        configMap:
-          name: ipa-client-config
-      - name: httpdir
-        emptyDir: {}
+        - name: fasjson-config-volume
+          configMap:
+            name: fasjson-config
+        - name: keytab-http-volume
+          secret:
+            secretName: fasjson-keytab-http
+        - name: krb-config-volume
+          configMap:
+            name: krb5-config
+        - name: ipa-config-volume
+          configMap:
+            name: ipa-client-config
+        - name: httpdir
+          emptyDir: {}
   triggers:
-  - imageChangeParams:
-      automatic: true
-      containerNames:
-      - fasjson
-      from:
-        kind: ImageStreamTag
-        name: fasjson:latest
-    type: ImageChange
-  - type: ConfigChange
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - fasjson
+        from:
+          kind: ImageStreamTag
+          name: fasjson:latest
+      type: ImageChange
+    - type: ConfigChange
