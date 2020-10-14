@@ -332,6 +332,16 @@
   changed_when: "'already exists' not in output.stdout"
   failed_when: "'already exists' not in output.stdout and output.rc != 0"
 
+# HBAC
+
+- name: Don't allow all users to log into all hosts
+  command: ipa hbacrule-disable allow_all
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+  register: output
+
 # Noggin user setup
 
 - name: Register the proper noggin admin password
