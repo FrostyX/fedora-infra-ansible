@@ -965,15 +965,6 @@
 
 # pkgs.fp.o will be an alias of src.fp.o once we get everyone over to https
 # git push/pull. For now, we just want a cert via the certbot system.
-  - role: httpd/website
-    site_name: pkgs.fedoraproject.org
-    ssl: true
-    sslonly: true
-    certbot: true
-    certbot_addhost: pkgs02.phx2.fedoraproject.org
-    tags:
-    - pkgs.fedoraproject.org
-    when: env == "production" and "phx2" in inventory_hostname
 
   - role: httpd/website
     site_name: pkgs.fedoraproject.org
@@ -985,15 +976,15 @@
     - pkgs.fedoraproject.org
     when: env == "production" and "iad2" in inventory_hostname
 
-#  - role: httpd/website
-#    site_name: pkgs.stg.fedoraproject.org
-#    ssl: true
-#    sslonly: true
-#    certbot: true
-#    certbot_addhost: pkgs01.stg.phx2.fedoraproject.org
-#    tags:
-#    - pkgs.fedoraproject.org
-#    when: env == "staging" and "phx2" in inventory_hostname
+  - role: httpd/website
+    site_name: pkgs.stg.fedoraproject.org
+    ssl: true
+    sslonly: true
+    certbot: true
+    certbot_addhost: pkgs01.stg.iad2.fedoraproject.org
+    tags:
+    - pkgs.fedoraproject.org
+    when: env == "staging" and "iad2" in inventory_hostname
 
 # Askbeta -> ask redirects
   - role: httpd/website
