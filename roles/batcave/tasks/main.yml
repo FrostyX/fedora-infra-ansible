@@ -83,6 +83,7 @@
   - dnf                       # To get dnf reposync
   - dnf-plugins-core          # To get dnf reposync
   - fedora-messaging          # To send/receive messages on the amqp bus
+  - ansible-freeipa           # For the IPA server configuration tasks
   tags:
   - batcave
   - config
