@@ -130,7 +130,7 @@ faf_spool_dir: /var/spool/faf
 
 # Run the retrace in a Mock chroot (default), or a Podman container
 # (mock|podman)
-rs_retrace_environment: mock
+rs_retrace_environment: podman
 
 # Whether to enable e-mail notifications
 rs_email_notify: false
