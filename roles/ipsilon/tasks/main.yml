@@ -124,6 +124,26 @@
 - include_role:
     name: ipa/client
 
+- name: Add the ipsilon HBAC service in IPA
+  ipahbacsvc:
+    name: ipsilon
+    description: Ipsilon authentication service
+    ipaadmin_password: "{{ ipa_admin_password }}"
+  delegate_to: "{{ ipa_server }}"
+  tags:
+  - ipsilon
+
+- name: Allow login through ipsilon
+  ipahbacrule:
+    name: ipsilon_login
+    description: Login through ipsilon
+    hbacsvc:
+    - ipsilon
+    ipaadmin_password: "{{ ipa_admin_password }}"
+  delegate_to: "{{ ipa_server }}"
+  tags:
+  - ipsilon
+
 - name: Get admin ticket
   shell: echo "{{ipa_admin_password}}" | kinit admin
   check_mode: no
@@ -142,22 +162,6 @@
          --info-sssd=yes
          --form=yes
     creates: /etc/ipsilon/root/ipsilon.conf
-  tags:
-  - ipsilon
-
-- name: Add the ipsilon HBAC service in IPA
-  ipahbacsvc:
-    name: ipsilon
-    description: Ipsilon authentication service
-  tags:
-  - ipsilon
-
-- name: Allow login through ipsilon
-  ipahbacrule:
-    name: ipsilon_login
-    description: Login through ipsilon
-    hbacsvc:
-    - ipsilon
   tags:
   - ipsilon
 
