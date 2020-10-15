@@ -1,5 +1,38 @@
 - import_playbook: "/srv/web/infra/ansible/playbooks/include/virt-create.yml myhosts=ipsilon:ipsilon_stg"
 
+# This next block configures IPA, it only needs to be run on one member of the cluster
+- name: setup IPA
+  hosts: ipa[0]:ipa_stg[0]
+  user: root
+  gather_facts: True
+
+  vars_files:
+   - /srv/web/infra/ansible/vars/global.yml
+   - "/srv/private/ansible/vars.yml"
+   - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  tasks:
+  - name: Add the ipsilon HBAC service in IPA
+    ipahbacsvc:
+      name: ipsilon
+      description: Ipsilon authentication service
+      ipaadmin_password: "{{ ipa_admin_password }}"
+    tags:
+    - ipsilon
+
+  - name: Allow login through ipsilon
+    ipahbacrule:
+      name: ipsilon
+      description: Login through ipsilon
+      hbacsvc:
+      - ipsilon
+      usercategory: all
+      host: "{{ (env == 'production')|ternary(groups['ipa'], groups['ipa_stg']) }}"
+      ipaadmin_password: "{{ ipa_admin_password }}"
+    tags:
+    - ipsilon
+
+
 - name: make the box be real
   hosts: ipsilon:ipsilon_stg
   user: root
