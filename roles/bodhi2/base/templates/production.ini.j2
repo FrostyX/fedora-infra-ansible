@@ -698,7 +698,7 @@ sqlalchemy.url = postgresql://bodhi2:{{ bodhi2Password }}@db-bodhi.phx2.fedorapr
 {% elif env == 'production' and datacenter == 'iad2' %}
 sqlalchemy.url = postgresql://bodhi2:{{ bodhi2Password }}@db-bodhi.iad2.fedoraproject.org/bodhi2
 {% elif env == 'staging' %}
-sqlalchemy.url = postgresql://bodhi2:{{ bodhi2PasswordSTG }}@pgbdr.stg.phx2.fedoraproject.org/bodhi2
+sqlalchemy.url = postgresql://bodhi2:{{ bodhi2PasswordSTG }}@db01.stg.iad2.fedoraproject.org/bodhi2
 {% endif %}
 
 ##
