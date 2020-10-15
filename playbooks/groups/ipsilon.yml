@@ -27,7 +27,7 @@
       hbacsvc:
       - ipsilon
       usercategory: all
-      host: "{{ (env == 'production')|ternary(groups['ipa'], groups['ipa_stg']) }}"
+      host: "{{ (env == 'production')|ternary(groups['ipsilon'], groups['ipsilon_stg']) }}"
       ipaadmin_password: "{{ ipa_admin_password }}"
     tags:
     - ipsilon
