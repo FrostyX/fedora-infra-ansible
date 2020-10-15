@@ -145,6 +145,22 @@
   tags:
   - ipsilon
 
+- name: Add the ipsilon HBAC service in IPA
+  ipahbacsvc:
+    name: ipsilon
+    description: Ipsilon authentication service
+  tags:
+  - ipsilon
+
+- name: Allow login through ipsilon
+  ipahbacrule:
+    name: ipsilon_login
+    description: Login through ipsilon
+    hbacsvc:
+    - ipsilon
+  tags:
+  - ipsilon
+
 - name: Destroy admin ticket
   command: kdestroy -A
   tags:
