@@ -6,6 +6,7 @@ nm_controlled_resolv: True
 ansible_ifcfg_blocklist: True
 public_ip: 3.228.218.234
 datacenter: aws
+vpn: True
 
 public_hostname: retrace-stg.aws.fedoraproject.org
 faf_server_name: retrace-stg.aws.fedoraproject.org/faf
