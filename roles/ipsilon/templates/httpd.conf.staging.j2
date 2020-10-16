@@ -12,11 +12,11 @@ RewriteMap lowercase int:tolower
 {% if env == "staging" %}
 RewriteCond ${lowercase:%{SERVER_NAME}} ^[a-z0-9_-]+\.id\.stg\.fedoraproject\.org$
 RewriteRule ^(.+) ${lowercase:%{SERVER_NAME}}$1 [C]
-RewriteRule ^([a-z0-9-]+)\.id\.stg\.fedoraproject\.org/.* /openid/id/$1/ [PT]
+RewriteRule ^([a-z0-9_-]+)\.id\.stg\.fedoraproject\.org/.* /openid/id/$1/ [PT]
 {% else %}
 RewriteCond ${lowercase:%{SERVER_NAME}} ^[a-z0-9_-]+\.id\.fedoraproject\.org$
 RewriteRule ^(.+) ${lowercase:%{SERVER_NAME}}$1 [C]
-RewriteRule ^([a-z0-9-]+)\.id\.fedoraproject\.org/.* /openid/id/$1/ [PT]
+RewriteRule ^([a-z0-9_-]+)\.id\.fedoraproject\.org/.* /openid/id/$1/ [PT]
 {% endif %}
 
 
