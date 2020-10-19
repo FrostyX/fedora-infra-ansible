@@ -39,8 +39,6 @@ spec:
               mountPath: "/etc/test-auth"
               readOnly: true
           env:
-            - name: APP_MODULE
-              value: test_auth:application
             - name: TESTAUTH_SETTINGS
               value: "/etc/test-auth/test-auth.cfg"
             # - name: SCRIPT_NAME
