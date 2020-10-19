@@ -1,0 +1,67 @@
+- name: make the app be real
+  hosts: os_masters[0]:os_masters_stg[0]
+  user: root
+  gather_facts: False
+
+  vars_files:
+    - /srv/web/infra/ansible/vars/global.yml
+    - "/srv/private/ansible/vars.yml"
+    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  vars:
+
+  roles:
+    - role: openshift/project
+      app: test-auth
+      description: "Authentication testing"
+      appowners:
+        - abompard
+      tags:
+        - apply-appowners
+
+    - role: openshift/imagestream
+      app: test-auth
+      imagename: test-auth
+
+    - role: openshift/object
+      app: test-auth
+      template: buildconfig.yml
+      objectname: buildconfig.yml
+
+    - role: openshift/object
+      app: test-auth
+      template: configmap.yml
+      objectname: configmap.yml
+
+    - role: openshift/object
+      app: test-auth
+      file: service.yml
+      objectname: service.yml
+
+    # - role: openshift/route
+    #   app: test-auth
+    #   routename: test-auth
+    #   host: "admin{{ env_suffix }}.fedoraproject.org"
+    #   path: "/test-auth"
+    #   serviceport: web
+    #   servicename: test-auth
+    #   annotations:
+    #     haproxy.router.openshift.io/timeout: 5m
+    - role: openshift/route
+      app: test-auth
+      routename: test-auth
+      host: "test-auth.app.os{{ env_suffix }}.fedoraproject.org"
+      serviceport: web
+      servicename: test-auth
+      annotations:
+        haproxy.router.openshift.io/timeout: 5m
+
+    - role: openshift/object
+      app: test-auth
+      template: secret-webhook.yml
+      objectname: secret-webhook.yml
+
+    - role: openshift/object
+      app: test-auth
+      template: deploymentconfig.yml
+      objectname: deploymentconfig.yml

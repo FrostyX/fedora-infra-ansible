@@ -1,0 +1,41 @@
+apiVersion: build.openshift.io/v1
+kind: BuildConfig
+metadata:
+  name: test-auth
+  labels:
+    app: test-auth
+    build: test-auth
+spec:
+  runPolicy: Serial
+  source:
+    type: Git
+    git:
+      uri: https://github.com/abompard/test-auth.git
+{% if env == "staging" %}
+      ref: main
+{% else %}
+      ref: stable
+{% endif %}
+    contextDir: /
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
+        kind: ImageStreamTag
+        name: python:3.6
+        namespace: openshift
+  output:
+    to:
+      kind: ImageStreamTag
+      name: test-auth:latest
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange
+  - type: GitHub
+{% if test_auth_stg_github_secret is defined and env == 'staging' %}
+    github:
+      secret: "{{ test_auth_stg_github_secret }}"
+{% elif test_auth_github_secret is defined and env == 'production' %}
+    github:
+      secret: "{{ test_auth_github_secret }}"
+{% endif %}

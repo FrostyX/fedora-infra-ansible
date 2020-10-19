@@ -1,0 +1,59 @@
+apiVersion: apps.openshift.io/v1
+kind: DeploymentConfig
+metadata:
+  name: test-auth
+  labels:
+    app: test-auth
+spec:
+  replicas: 1
+  selector:
+    app: test-auth
+    deploymentconfig: test-auth
+  strategy:
+    type: Rolling
+    activeDeadlineSeconds: 21600
+    rollingParams:
+      intervalSeconds: 1
+      maxSurge: 25%
+      maxUnavailable: 25%
+      timeoutSeconds: 600
+      updatePeriodSeconds: 1
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: test-auth
+        deploymentconfig: test-auth
+    spec:
+      containers:
+        - name: test-auth
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              #protocol: TCP
+          #resources: {}
+          #terminationMessagePath: /dev/termination-log
+          #terminationMessagePolicy: File
+          volumeMounts:
+            - name: test-auth-config-volume
+              mountPath: "/etc/test-auth"
+              readOnly: true
+          env:
+            - name: TESTAUTH_SETTINGS
+              value: "/etc/test-auth/test-auth.cfg"
+            # - name: SCRIPT_NAME
+            #   value: "/test-auth"
+      volumes:
+        - name: test-auth-config-volume
+          configMap:
+            name: test-auth-config
+  triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+          - test-auth
+        from:
+          kind: ImageStreamTag
+          name: test-auth:latest
+      type: ImageChange
+    - type: ConfigChange
