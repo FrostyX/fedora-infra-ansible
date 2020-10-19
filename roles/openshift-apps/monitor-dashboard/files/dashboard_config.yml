@@ -1,0 +1,12 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-dashboards
+  labels:
+    app: monitor-dashboard
+data:
+  dashboard_monitor_gating.json:
+      {{ load_file('dashboard_monitor_gating.json') | indent }}
+  dashboard_anitya.json:
+      {{ load_file('dashboard_anitya.json') | indent }}

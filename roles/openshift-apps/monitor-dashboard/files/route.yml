@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: monitor-dashboard-web
+  labels:
+    app: monitor-dashboard
+spec:
+  #host: waiverdb.stg.fedoraproject.org
+  port:
+    targetPort: web
+  to:
+    kind: Service
+    name: monitor-dashboard-web
+  tls:
+    termination: edge
+    insecureEdgeTerminationPolicy: Redirect

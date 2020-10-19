@@ -27,5 +27,25 @@
 
   - role: openshift/object
     app: monitor-dashboard
+    template: dashboard_provision_config.yml
+    objectname: dashboard_provision_config.yml
+
+  - role: openshift/object
+    app: monitor-dashboard
+    template: dashboard_config.yml
+    objectname: dashboard_config.yml
+
+  - role: openshift/object
+    app: monitor-dashboard
+    file: service.yml
+    objectname: service.yml
+
+  - role: openshift/object
+    app: monitor-dashboard
+    file: route.yml
+    objectname: route.yml
+
+  - role: openshift/object
+    app: monitor-dashboard
     template: deploymentconfig.yml
     objectname: deploymentconfig.yml
