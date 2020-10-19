@@ -27,12 +27,12 @@
 
   - role: openshift/object
     app: monitor-dashboard
-    template: dashboard_provision_config.yml
+    file: dashboard_provision_config.yml
     objectname: dashboard_provision_config.yml
 
   - role: openshift/object
     app: monitor-dashboard
-    template: dashboard_config.yml
+    file: dashboard_config.yml
     objectname: dashboard_config.yml
 
   - role: openshift/object
