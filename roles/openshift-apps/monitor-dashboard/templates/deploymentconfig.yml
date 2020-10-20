@@ -12,6 +12,8 @@ spec:
     metadata:
       labels:
         name: dashboard
+        app: dashboard
+        service: web
       name: dashboard
     spec:
       containers:
