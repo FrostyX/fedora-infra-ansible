@@ -44,15 +44,15 @@ spec:
             - containerPort: 3000
           volumeMounts:
             - mountPath: /etc/grafana/provisioning/datasources
-              name: grafana-datasources-provision
+              name: grafana-datasources
             - mountPath: /etc/grafana/provisioning/dashboards
               name: grafana-dashboards-provision
             - mountPath: /var/lib/grafana/dashboards
               name: grafana-dashboards
       volumes:
         - configMap:
-            name: grafana-datasources-provision
-          name: grafana-datasources-provision
+            name: grafana-datasources
+          name: grafana-datasources
         - configMap:
             name: grafana-dashboards-provision
           name: grafana-dashboards-provision
