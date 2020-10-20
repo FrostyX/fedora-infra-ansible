@@ -38,7 +38,7 @@
 
   - role: openshift/object
     app: monitor-dashboard
-    file: secret.yml
+    template: secret.yml
     objectname: secret.yml
 
   - role: openshift/object
