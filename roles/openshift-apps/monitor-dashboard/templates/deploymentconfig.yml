@@ -18,8 +18,8 @@ spec:
     spec:
       containers:
         - envFrom:
-          - secretRef:
-            name: datanommer-secret
+            - secretRef:
+              name: datanommer-secret
           env:
             - name: GF_INSTALL_PLUGINS
               value: "grafana-clock-panel,simpod-json-datasource,grafana-googlesheets-datasource"
