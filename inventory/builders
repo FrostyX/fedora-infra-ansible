@@ -183,7 +183,7 @@ bvmhost-a64-09.iad2.fedoraproject.org
 bvmhost-a64-10.iad2.fedoraproject.org
 bvmhost-a64-11.iad2.fedoraproject.org
 bvmhost-a64-01.stg.iad2.fedoraproject.org
-#bvmhost-a64-osbs-01.arm.fedoraproject.org
+bvmhost-a64-osbs-01.iad2.fedoraproject.org
 # ppc
 bvmhost-p09-01.iad2.fedoraproject.org
 bvmhost-p09-02.iad2.fedoraproject.org
