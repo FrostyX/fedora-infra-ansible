@@ -8,6 +8,6 @@ metadata:
     app: monitor-dashboard
 data:
   dashboard_monitor_gating.json: |-
-      {{ load_file('dashboard_monitor_gating.json') }}
+      {{ load_file('dashboard_monitor_gating.json.j2') }}
   dashboard_anitya.json: |-
-      {{ load_file('dashboard_anitya.json') }}
+      {{ load_file('dashboard_anitya.json.j2') }}
