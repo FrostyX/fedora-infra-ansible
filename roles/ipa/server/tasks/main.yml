@@ -159,6 +159,19 @@
   - ipa/server
   - config
 
+- name: Set the expiration date for the admin user
+  ipauser:
+    name: admin
+    password: "{{ ipa_admin_password }}"
+    # Password expiration date will be a Friday 13th in 30 years. I'm sure we'll remember that.
+    passwordexpiration: "2050-05-13 00:00:00"
+    update_password: on_create
+    ipaadmin_password: "{{ ipa_admin_password }}"
+  tags:
+  - ipa/server
+  - config
+  when: ipa_initial
+
 - name: Get admin ticket
   shell: echo "{{ipa_admin_password}}" | kinit admin
   tags:
@@ -347,6 +360,9 @@
 - name: Register the proper noggin admin password
   set_fact:
     noggin_password: "{{ (env == 'production')|ternary(noggin_admin_password, noggin_stg_admin_password) }}"
+  tags:
+  - ipa/server
+  - config
 
 - name: Create noggin user
   ipa_user:
