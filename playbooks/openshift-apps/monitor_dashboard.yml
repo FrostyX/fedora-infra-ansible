@@ -35,6 +35,12 @@
     template: dashboard_config.yml
     objectname: dashboard_config.yml
 
+
+  - role: openshift/object
+    app: monitor-dashboard
+    file: secret.yml
+    objectname: secret.yml
+
   - role: openshift/object
     app: monitor-dashboard
     file: service.yml
