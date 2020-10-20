@@ -32,7 +32,7 @@
 
   - role: openshift/object
     app: monitor-dashboard
-    file: dashboard_config.yml
+    template: dashboard_config.yml
     objectname: dashboard_config.yml
 
   - role: openshift/object
