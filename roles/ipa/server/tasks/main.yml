@@ -427,7 +427,7 @@
     - "Self-service Portal Administrators"
     user:
     - noggin
-    ipa_host: localhost
+    ipa_host: "{{ ansible_fqdn }}"
     ipa_user: admin
     ipa_pass: "{{ipa_admin_password}}"
     validate_certs: no
@@ -452,7 +452,7 @@
     user:
     - admin
     - fas_sync
-    ipa_host: localhost
+    ipa_host: "{{ ansible_fqdn }}"
     ipa_user: admin
     ipa_pass: "{{ipa_admin_password}}"
     validate_certs: no
