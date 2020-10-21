@@ -334,8 +334,8 @@
   - config
   when: ipa_initial
   register: output
-  changed_when: "'already exists' not in output.stderr"
-  failed_when: "'already exists' not in output.stderr and output.rc != 0"
+  changed_when: "'is already a member' not in output.stdout"
+  failed_when: "'is already a member' not in output.stdout and output.rc != 0"
 - name: Add the ipausers group to the CA ACL
   command: ipa caacl-add-profile userCerts --certprofile userCerts
   tags:
@@ -343,8 +343,8 @@
   - config
   when: ipa_initial
   register: output
-  changed_when: "'already exists' not in output.stderr"
-  failed_when: "'already exists' not in output.stderr and output.rc != 0"
+  changed_when: "'is already a member' not in output.stdout"
+  failed_when: "'is already a member' not in output.stdout and output.rc != 0"
 
 # HBAC
 
