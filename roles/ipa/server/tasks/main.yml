@@ -237,14 +237,18 @@
   failed_when: "'no modifications to be performed' not in output.stderr and output.rc != 0"
 
 - name: Configure password policy
-  command: ipa pwpolicy-mod global_policy --maxlife=0 --minlife=0 --history=0 --minclasses=0 --minlength=0 --maxfail=0
+  ipapwpolicy:
+    minlife: 0
+    maxlife: 0
+    history: 0
+    minclasses: 0
+    minlength: 0
+    maxfail: 0
+    ipaadmin_password: "{{ ipa_admin_password }}"
   tags:
   - ipa/server
   - config
   when: ipa_initial
-  register: pwpolicy_output
-  changed_when: "'no modifications to be performed' not in pwpolicy_output.stderr"
-  failed_when: "'no modifications to be performed' not in pwpolicy_output.stderr and pwpolicy_output.rc != 0"
 
 - name: Create fas_sync user
   ipauser:
@@ -296,8 +300,8 @@
   - config
   when: ipa_initial
   register: create_output
-  changed_when: "'already exists' not in create_output.stdout"
-  failed_when: "'already exists' not in create_output.stdout and create_output.rc != 0"
+  changed_when: "'already exists' not in create_output.stderr"
+  failed_when: "'already exists' not in create_output.stderr and create_output.rc != 0"
 
 - name: Update the certificate profile
   command:
@@ -311,7 +315,7 @@
   tags:
   - ipa/server
   - config
-  when: "ipa_initial and 'already exists' in create_output.stdout"
+  when: "ipa_initial and 'already exists' in create_output.stderr"
 
 # Create a new ACL linking the new profile and ipausers group (that all users are members of)
 - name: Create the CA ACL for the new certificate profile
@@ -321,8 +325,8 @@
   - config
   when: ipa_initial
   register: output
-  changed_when: "'already exists' not in output.stdout"
-  failed_when: "'already exists' not in output.stdout and output.rc != 0"
+  changed_when: "'already exists' not in output.stderr"
+  failed_when: "'already exists' not in output.stderr and output.rc != 0"
 - name: Add the ipausers group to the CA ACL
   command: ipa caacl-add-user userCerts --group ipausers
   tags:
@@ -330,8 +334,8 @@
   - config
   when: ipa_initial
   register: output
-  changed_when: "'already exists' not in output.stdout"
-  failed_when: "'already exists' not in output.stdout and output.rc != 0"
+  changed_when: "'already exists' not in output.stderr"
+  failed_when: "'already exists' not in output.stderr and output.rc != 0"
 - name: Add the ipausers group to the CA ACL
   command: ipa caacl-add-profile userCerts --certprofile userCerts
   tags:
@@ -339,8 +343,8 @@
   - config
   when: ipa_initial
   register: output
-  changed_when: "'already exists' not in output.stdout"
-  failed_when: "'already exists' not in output.stdout and output.rc != 0"
+  changed_when: "'already exists' not in output.stderr"
+  failed_when: "'already exists' not in output.stderr and output.rc != 0"
 
 # HBAC
 
@@ -389,8 +393,8 @@
   - config
   when: ipa_initial
   register: output
-  changed_when: "'already exists' not in output.stdout"
-  failed_when: "'already exists' not in output.stdout and output.rc != 0"
+  changed_when: "'already exists' not in output.stderr"
+  failed_when: "'already exists' not in output.stderr and output.rc != 0"
 
 - name: Setup the noggin privilege
   command:
