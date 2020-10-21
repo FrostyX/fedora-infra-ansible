@@ -389,6 +389,14 @@ handlers = ["console"]
             key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('9570ff31', 'd300e724') }}"
 
+            # ELN Side tags
+
+            [consumer_config.koji_instances.primary.tags.sidetags]
+            pattern = 'eln-build-side-<seq_id>'
+            from = '<sidetag>-signing-pending'
+            to = '<sidetag>-testing-pending'
+            trusted_taggers = ['bodhi']
+
             # openh264 signing
 
             [[consumer_config.koji_instances.primary.tags]]
