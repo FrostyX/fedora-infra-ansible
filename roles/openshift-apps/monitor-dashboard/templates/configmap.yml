@@ -16,7 +16,7 @@ data:
         default: true
         user: datanommer_ro
         secureJsonData:
-          password: "$DATANOMER_PWD"
+          password: {{ datanommer_ro_password }}
         jsonData:
           sslmode: "disable" # disable/require/verify-ca/verify-full
           maxOpenConns: 0         # Grafana v5.4+
