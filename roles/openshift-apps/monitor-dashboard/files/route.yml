@@ -12,5 +12,5 @@ spec:
     kind: Service
     name: monitor-dashboard-web
   tls:
-    termination: edge
+    termination: reencrypt
     insecureEdgeTerminationPolicy: Redirect

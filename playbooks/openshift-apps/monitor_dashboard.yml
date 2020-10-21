@@ -46,10 +46,10 @@
     objectname: route_serviceaccount.yml
 
 # Route already present, will figure updating later
-#  - role: openshift/object
-#    app: monitor-dashboard
-#    file: route.yml
-#    objectname: route.yml
+  - role: openshift/object
+    app: monitor-dashboard
+    file: route.yml
+    objectname: route.yml
 
   - role: openshift/object
     app: monitor-dashboard
