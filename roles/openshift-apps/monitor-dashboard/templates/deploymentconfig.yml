@@ -17,6 +17,22 @@ spec:
       name: dashboard
     spec:
       containers:
+        - args:
+            - "-provider=openshift"
+            - "-openshift-service-account=monitor-dashboard-web"
+            - "-upstream=http://localhost:3000"
+            - "-client-secret-file=/var/run/secrets/kubernetes.io/serviceaccount/token"
+            - "-cookie-secret=9876543210"
+            - "-tls-cert=/etc/tls/private/tls.crt"
+            - "-tls-key=/etc/tls/private/tls.key"
+            - "-pass-basic-auth=false"
+          image: registry.hub.docker.com/openshift/oauth-proxy:latest
+          name: oauth-proxy
+          ports:
+            - containerPort: 8443
+          volumeMounts:
+            - mountPath: /etc/tls/private
+              name: grafana-tls    
         - env:
             - name: GF_INSTALL_PLUGINS
               value: "grafana-clock-panel,simpod-json-datasource,grafana-googlesheets-datasource"
@@ -41,7 +57,7 @@ spec:
             - name: 'GF_USERS_AUTO_ASSIGN_ORG_ROLE'
               value: 'Admin'
             - name: 'V'
-              value: '6'
+              value: '7'
           image: registry.hub.docker.com/grafana/grafana:latest
           name: dashboard
           ports:
@@ -53,7 +69,11 @@ spec:
               name: grafana-dashboards-provision
             - mountPath: /var/lib/grafana/dashboards
               name: grafana-dashboards
+      serviceAccountName: monitor-dashboard-web
       volumes:
+        - name: grafana-tls
+          secret:
+            secretName: grafana-tls
         - configMap:
             name: grafana-datasources
           name: grafana-datasources

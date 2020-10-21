@@ -4,11 +4,13 @@ metadata:
   name: monitor-dashboard-web
   labels:
     app: dashboard
+  annotations:
+    service.alpha.openshift.io/serving-cert-secret-name: grafana-tls
 spec:
   selector:
     app: dashboard
     service: web
   ports:
   - name: web
-    port: 8080
-    targetPort: 3000
+    port: 8443
+    targetPort: 8443
