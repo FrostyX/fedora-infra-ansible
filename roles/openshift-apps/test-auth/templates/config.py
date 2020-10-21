@@ -14,5 +14,5 @@ SESSION_COOKIE_SECURE = True
 
 # Auth
 OIDC_CLIENT_SECRETS = "/etc/test-auth/oidc.json"
-OIDC_SCOPES = ['openid', 'email', 'profile', 'https://id.fedoraproject.org/scope/groups', 'https://id.fedoraproject.org/scope/agreements']
 OPENID_ENDPOINT = "https://id{{ env_suffix }}.fedoraproject.org/openid/"
+FAS_OPENID_ENDPOINT = "https://id{{ env_suffix }}.fedoraproject.org/openid/"
