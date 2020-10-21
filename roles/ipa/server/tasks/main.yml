@@ -247,14 +247,11 @@
   failed_when: "'no modifications to be performed' not in pwpolicy_output.stderr and pwpolicy_output.rc != 0"
 
 - name: Create fas_sync user
-  ipa_user:
+  ipauser:
     name: fas_sync
     givenname: FAS
     sn: Sync
-    ipa_host: localhost
-    ipa_user: admin
-    ipa_pass: "{{ipa_admin_password}}"
-    validate_certs: no
+    ipaadmin_password: "{{ ipa_admin_password }}"
   tags:
   - ipa/server
   - config
@@ -365,18 +362,16 @@
   - config
 
 - name: Create noggin user
-  ipa_user:
+  ipauser:
     name: noggin
     givenname: Noggin
     sn: User
     password: "{{ (env == 'production')|ternary(noggin_admin_password, noggin_stg_admin_password) }}"
     # Password expiration date will be a Friday 13th in 30 years. I'm sure we'll remember that.
     # (if unset, IPA will assume the password is expired because it hasn't been set by the user themselves)
-    krbpasswordexpiration: 20500513000000
-    ipa_host: localhost
-    ipa_user: admin
-    ipa_pass: "{{ipa_admin_password}}"
-    validate_certs: no
+    passwordexpiration: "2050-05-13 00:00:00"
+    update_password: on_create
+    ipaadmin_password: "{{ ipa_admin_password }}"
   tags:
   - ipa/server
   - config
