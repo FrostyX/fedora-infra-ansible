@@ -356,6 +356,15 @@
   when: ipa_initial
   register: output
 
+- name: Destroy admin ticket
+  command: kdestroy -A
+  tags:
+  - ipa/server
+  - keytab
+  - config
+  - krb5
+  when: ipa_initial
+
 # Noggin user setup
 
 - name: Register the proper noggin admin password
@@ -382,80 +391,57 @@
   when: ipa_initial
 
 - name: Create the noggin privilege
-  command:
-    argv:
-      - ipa
-      - privilege-add
-      - Self-service Portal Administrators
-      - --desc=Noggin admin users
+  ipaprivilege:
+    name: Self-service Portal Administrators
+    description: Noggin admin users
+    ipaadmin_password: "{{ ipa_admin_password }}"
   tags:
   - ipa/server
   - config
   when: ipa_initial
-  register: output
-  changed_when: "'already exists' not in output.stderr"
-  failed_when: "'already exists' not in output.stderr and output.rc != 0"
 
 - name: Setup the noggin privilege
-  command:
-    argv:
-      - ipa
-      - privilege-add-permission
-      - Self-service Portal Administrators
-      - "--permissions=System: Modify Users"
-      - "--permissions=System: Change User password"
-      - "--permissions=System: Add Stage User"
-      - "--permissions=System: Read Stage Users"
-      - "--permissions=System: Modify Stage User"
-      - "--permissions=System: Modify User RDN"
-      - "--permissions=System: Remove Stage User"
-      - "--permissions=System: Add Users"
-      - "--permissions=System: Add User to default group"
+  ipaprivilege:
+    name: Self-service Portal Administrators
+    permission:
+    - "System: Modify Users"
+    - "System: Change User password"
+    - "System: Add Stage User"
+    - "System: Read Stage Users"
+    - "System: Modify Stage User"
+    - "System: Modify User RDN"
+    - "System: Remove Stage User"
+    - "System: Add Users"
+    - "System: Add User to default group"
+    action: member
+    ipaadmin_password: "{{ ipa_admin_password }}"
   tags:
   - ipa/server
   - config
   when: ipa_initial
-  register: output
-  changed_when: "'Number of permissions added 0' not in output.stdout"
-  failed_when: "'Number of permissions added 0' not in output.stdout and output.rc != 0"
 
 - name: Create the noggin role
-  ipa_role:
+  iparole:
     name: "Self-service Portal Administrator"
     description: "Noggin admin user"
-    privilege:
-    - "Self-service Portal Administrators"
     user:
     - noggin
-    ipa_host: localhost
-    ipa_user: admin
-    ipa_pass: "{{ipa_admin_password}}"
-    validate_certs: no
+    privilege:
+    - "Self-service Portal Administrators"
+    ipaadmin_password: "{{ ipa_admin_password }}"
   tags:
   - ipa/server
   - config
-  when: ipa_initial
-
-- name: Destroy admin ticket
-  command: kdestroy -A
-  tags:
-  - ipa/server
-  - keytab
-  - config
-  - krb5
   when: ipa_initial
 
 
 - name: Set the members of the admin group
-  ipa_group:
+  ipagroup:
     name: admins
     user:
     - admin
     - fas_sync
-    ipa_host: localhost
-    ipa_user: admin
-    ipa_pass: "{{ipa_admin_password}}"
-    validate_certs: no
+    ipaadmin_password: "{{ ipa_admin_password }}"
   tags:
   - ipa/server
   - config
