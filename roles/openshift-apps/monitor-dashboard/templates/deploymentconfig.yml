@@ -17,10 +17,7 @@ spec:
       name: dashboard
     spec:
       containers:
-        - envFrom:
-            - secretRef:
-              name: datanommer-secret
-          env:
+        - env:
             - name: GF_INSTALL_PLUGINS
               value: "grafana-clock-panel,simpod-json-datasource,grafana-googlesheets-datasource"
             - name: GF_AUTH_BASIC_ENABLED
