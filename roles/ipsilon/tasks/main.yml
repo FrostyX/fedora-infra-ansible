@@ -312,7 +312,7 @@
   replace:
     path: /etc/sssd/sssd.conf
     regexp: ^ldap_user_extra_attrs = [\w,\s]+$
-    replace: ldap_user_extra_attrs = mail, street, locality, st, postalCode, telephoneNumber, givenname, sn, fasTimeZone, fasLocale, fasIRCNick, fasGPGKeyId, fasCreationTime, fasStatusNote, fasRHBZEmail, fasGitHubUsername, fasGitLabUsername, fasWebsiteURL, fasIsPrivate
+    replace: ldap_user_extra_attrs = mail, street, locality, st, postalCode, telephoneNumber, givenname, sn, fasTimeZone, fasLocale, fasIRCNick, fasGPGKeyId, fasCreationTime, fasStatusNote, fasRHBZEmail, fasGitHubUsername, fasGitLabUsername, fasWebsiteURL, fasIsPrivate, ipaSshPubKey
   tags:
   - ipsilon
   - config
@@ -323,7 +323,7 @@
   replace:
     path: /etc/sssd/sssd.conf
     regexp: ^user_attributes = [\w,\s+]+$
-    replace: user_attributes = +mail, +street, +locality, +st, +postalCode, +telephoneNumber, +givenname, +sn, +fasTimeZone, +fasLocale, +fasIRCNick, +fasGPGKeyId, +fasCreationTime, +fasStatusNote, +fasRHBZEmail, +fasGitHubUsername, +fasGitLabUsername, +fasWebsiteURL, +fasIsPrivate
+    replace: user_attributes = +mail, +street, +locality, +st, +postalCode, +telephoneNumber, +givenname, +sn, +fasTimeZone, +fasLocale, +fasIRCNick, +fasGPGKeyId, +fasCreationTime, +fasStatusNote, +fasRHBZEmail, +fasGitHubUsername, +fasGitLabUsername, +fasWebsiteURL, +fasIsPrivate, +ipaSshPubKey
   tags:
   - ipsilon
   - config
