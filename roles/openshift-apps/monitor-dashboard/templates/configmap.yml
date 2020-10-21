@@ -13,11 +13,11 @@ data:
         type: postgres
         url: db-datanommer01.iad2.fedoraproject.org:5432
         database: datanommer
-        default: true
         user: datanommer_ro
         secureJsonData:
           password: {{ datanommer_ro_password }}
         jsonData:
+          default: true
           sslmode: "disable" # disable/require/verify-ca/verify-full
           maxOpenConns: 0         # Grafana v5.4+
           maxIdleConns: 2         # Grafana v5.4+
