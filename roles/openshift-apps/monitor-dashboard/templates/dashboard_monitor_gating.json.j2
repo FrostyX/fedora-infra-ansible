@@ -15,8 +15,8 @@
   "editable": true,
   "gnetId": null,
   "graphTooltip": 0,
-  "id": 1,
-  "iteration": 1601285697167,
+  "id": 2,
+  "iteration": 1603378842428,
   "links": [],
   "panels": [
     {
@@ -30,7 +30,7 @@
       },
       "gridPos": {
         "h": 5,
-        "w": 24,
+        "w": 18,
         "x": 0,
         "y": 0
       },
@@ -74,12 +74,360 @@
       "type": "text"
     },
     {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                15
+              ],
+              "type": "lt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "max"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "10m",
+        "frequency": "10m",
+        "handler": 1,
+        "message": "Less than 10 runs in the last day.",
+        "name": "Tests per day alert",
+        "noDataState": "keep_state",
+        "notifications": [
+          {
+            "uid": "l7OKaKpGk"
+          }
+        ]
+      },
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Datanommer",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {
+            "align": null,
+            "filterable": false
+          },
+          "mappings": [],
+          "thresholds": {
+            "mode": "absolute",
+            "steps": [
+              {
+                "color": "green",
+                "value": null
+              },
+              {
+                "color": "red",
+                "value": 80
+              }
+            ]
+          }
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 18,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 41,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.2.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "select now() as time, count(*) from messages where topic like '%gating%end%' and \"timestamp\" > now() - interval '1 day'\r\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "lt",
+          "value": 15
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Test runs last 24 hours",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
+      "alert": {
+        "alertRuleTags": {},
+        "conditions": [
+          {
+            "evaluator": {
+              "params": [
+                5
+              ],
+              "type": "gt"
+            },
+            "operator": {
+              "type": "and"
+            },
+            "query": {
+              "params": [
+                "A",
+                "5m",
+                "now"
+              ]
+            },
+            "reducer": {
+              "params": [],
+              "type": "avg"
+            },
+            "type": "query"
+          }
+        ],
+        "executionErrorState": "alerting",
+        "for": "5m",
+        "frequency": "1m",
+        "handler": 1,
+        "message": "More than 5 failures",
+        "name": "Failures last 24 hours alert",
+        "noDataState": "no_data",
+        "notifications": []
+      },
+      "aliasColors": {},
+      "bars": false,
+      "dashLength": 10,
+      "dashes": false,
+      "datasource": "Datanommer",
+      "description": "",
+      "fieldConfig": {
+        "defaults": {
+          "custom": {}
+        },
+        "overrides": []
+      },
+      "fill": 1,
+      "fillGradient": 0,
+      "gridPos": {
+        "h": 5,
+        "w": 3,
+        "x": 21,
+        "y": 0
+      },
+      "hiddenSeries": false,
+      "id": 43,
+      "legend": {
+        "avg": false,
+        "current": false,
+        "max": false,
+        "min": false,
+        "show": true,
+        "total": false,
+        "values": false
+      },
+      "lines": true,
+      "linewidth": 1,
+      "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
+      "percentage": false,
+      "pluginVersion": "7.2.1",
+      "pointradius": 2,
+      "points": false,
+      "renderer": "flot",
+      "seriesOverrides": [],
+      "spaceLength": 10,
+      "stack": false,
+      "steppedLine": false,
+      "targets": [
+        {
+          "format": "time_series",
+          "group": [],
+          "metricColumn": "none",
+          "rawQuery": true,
+          "rawSql": "select now() as time, count(*) from messages where topic like '%gating%end%fail' and \"timestamp\" > now() - interval '1 day'\r\n",
+          "refId": "A",
+          "select": [
+            [
+              {
+                "params": [
+                  "value"
+                ],
+                "type": "column"
+              }
+            ]
+          ],
+          "timeColumn": "time",
+          "where": [
+            {
+              "name": "$__timeFilter",
+              "params": [],
+              "type": "macro"
+            }
+          ]
+        }
+      ],
+      "thresholds": [
+        {
+          "colorMode": "critical",
+          "fill": true,
+          "line": true,
+          "op": "gt",
+          "value": 5
+        }
+      ],
+      "timeFrom": null,
+      "timeRegions": [],
+      "timeShift": null,
+      "title": "Failures last 24 hours",
+      "tooltip": {
+        "shared": true,
+        "sort": 0,
+        "value_type": "individual"
+      },
+      "type": "graph",
+      "xaxis": {
+        "buckets": null,
+        "mode": "time",
+        "name": null,
+        "show": true,
+        "values": []
+      },
+      "yaxes": [
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        },
+        {
+          "format": "short",
+          "label": null,
+          "logBase": 1,
+          "max": null,
+          "min": null,
+          "show": true
+        }
+      ],
+      "yaxis": {
+        "align": false,
+        "alignLevel": null
+      }
+    },
+    {
       "datasource": "Datanommer",
       "description": "Percentage of successful runs (as noted by monitor-gating sending org.fedoraproject.prod.monitor-gating.$test.end.success message) out of all of org.fedoraproject.prod.monitor-gating.$test.end.* messages ",
       "fieldConfig": {
         "defaults": {
           "custom": {},
-          "mappings": [],
+          "mappings": [
+            {
+              "from": "",
+              "id": 1,
+              "text": "",
+              "to": "",
+              "type": 1
+            }
+          ],
           "max": 100,
           "min": 0,
           "thresholds": {
@@ -112,19 +460,19 @@
             "mean"
           ],
           "fields": "/^percent_ci_done$/",
-          "values": false
+          "values": true
         },
         "showThresholdLabels": true,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
-          "format": "time_series",
+          "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "with c as (select date(\"timestamp\") as time, count(*) as finished_gating_runs from messages where topic like '%gating%$test%.end.%' group by time),\r\ns as (select date(\"timestamp\") as time, count(*) as ci_completed from messages where topic like '%gating%$test%.end%succe%'  group by time)\r\nselect s.time as time, (s.ci_completed*100)/c.finished_gating_runs as percent_ci_done from c,s where $__timeFilter(c.time) and  c.time = s.time order by time",
+          "rawSql": "with c as (select count(*) as finished_gating_runs from messages where topic like '%gating%$test%.end.%' and $__timeFilter(\"timestamp\")),\r\ns as (select count(*) as ci_completed from messages where topic like '%gating%$test%.end%succe%'  and $__timeFilter(\"timestamp\"))\r\nselect (s.ci_completed*100)/c.finished_gating_runs as percent_ci_done from c,s\r\n",
           "refId": "A",
           "select": [
             [
@@ -195,14 +543,14 @@
         "showThresholdLabels": true,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
-          "format": "time_series",
+          "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "with c as (select date(\"timestamp\") as time, count(*) as finished_gating_runs from messages where topic like '%gating%$test%.end.%' group by time),\r\ns as (select date(\"timestamp\") as time, count(*) as ci_completed from messages where (topic like '%gating%$test%.end%fail%' and _msg::jsonb#>>'{output_text}' ~ '.*Pushing changes\\s+\\[DONE\\]') or topic like '%gating%$test%.end%succe%'  group by time)\r\nselect s.time as time, (s.ci_completed*100)/c.finished_gating_runs as percent_ci_done from c,s where $__timeFilter(c.time) and c.time = s.time order by time",
+          "rawSql": "with t as (select * from messages where topic like 'org.fedoraproject.prod.monitor-gating.$test%' and $__timeFilter(\"timestamp\")),\r\nc as (select count(*) as finished_gating_runs from t where topic like '%end%'),\r\ns as (select count(*) as ci_completed from t where (topic like '%succeeded' or ((topic like '%failed' or topic like '%error') and _msg::jsonb#>>'{output_text}' ~ '.*Pushing changes\\s+\\[DONE\\].*')))\r\nselect ((s.ci_completed)*100)/c.finished_gating_runs as percent_ci_done from c,s",
           "refId": "A",
           "select": [
             [
@@ -272,14 +620,14 @@
         "showThresholdLabels": true,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
-          "format": "time_series",
+          "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "with c as (select date(\"timestamp\") as time, count(*) as finished_gating_runs from messages where topic like '%gating%$test%.end.%' group by time),\r\ns as (select date(\"timestamp\") as time, count(*) as ci_completed from messages where (topic like '%gating%$test%.end%fail%' and _msg::jsonb#>>'{output_text}' ~ '.*uilding the package.+\\[DONE\\]') or topic like '%gating%$test%.end%succe%'  group by time)\r\nselect s.time as time, (s.ci_completed*100)/c.finished_gating_runs as percent_ci_done from c,s where c.time = s.time order by time",
+          "rawSql": "with t as (select * from messages where topic like 'org.fedoraproject.prod.monitor-gating.$test%' and $__timeFilter(\"timestamp\")),\r\nc as (select count(*) as finished_gating_runs from t where topic like '%end%'),\r\ns as (select count(*) as ci_completed from t where (topic like '%succeeded' or ((topic like '%failed' or topic like '%error') and _msg::jsonb#>>'{output_text}' ~ '.*uilding the package.+\\[DONE\\]')))\r\nselect ((s.ci_completed)*100)/c.finished_gating_runs as percent_ci_done from c,s",
           "refId": "A",
           "select": [
             [
@@ -350,14 +698,14 @@
         "showThresholdLabels": true,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
-          "format": "time_series",
+          "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "with c as (select date(\"timestamp\") as time, count(*) as finished_gating_runs from messages where topic like '%gating%$test%.end.%' group by time),\r\ns as (select date(\"timestamp\") as time, count(*) as ci_completed from messages where (topic like '%gating%$test%.end%fail%' and _msg::jsonb#>>'{output_text}' ~ 'bodhi[^\\n]+\\[DONE\\]') or topic like '%gating%$test%.end%succe%'  group by time)\r\nselect s.time as time, (s.ci_completed*100)/c.finished_gating_runs as percent_ci_done from c,s where $__timeFilter(c.time) and   c.time = s.time order by time",
+          "rawSql": "with t as (select * from messages where topic like 'org.fedoraproject.prod.monitor-gating.$test%' and $__timeFilter(\"timestamp\")),\r\nc as (select count(*) as finished_gating_runs from t where topic like '%end%'),\r\ns as (select count(*) as ci_completed from t where (topic like '%succeeded' or ((topic like '%failed' or topic like '%error') and _msg::jsonb#>>'{output_text}' ~ 'bodhi[^\\n]+\\[DONE\\]')))\r\nselect ((s.ci_completed)*100)/c.finished_gating_runs as percent_ci_done from c,s",
           "refId": "A",
           "select": [
             [
@@ -428,14 +776,14 @@
         "showThresholdLabels": true,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
-          "format": "time_series",
+          "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "with c as (select date(\"timestamp\") as time, count(*) as finished_gating_runs from messages where topic like '%gating%$test%.end.%' group by time),\r\ns as (select date(\"timestamp\") as time, count(*) as ci_completed from messages where (topic like '%gating%$test%.end%fail%' and _msg::jsonb#>>'{output_text}' LIKE '%CI (complete) results in datagrepper returned error%') or topic like '%gating%$test%.end%succe%'  group by time)\r\nselect s.time as time, (s.ci_completed*100)/c.finished_gating_runs as percent_ci_done from c,s where $__timeFilter(c.time) and c.time = s.time order by time",
+          "rawSql": "with t as (select * from messages where topic like 'org.fedoraproject.prod.monitor-gating.$test%' and $__timeFilter(\"timestamp\")),\r\nc as (select count(*) as finished_gating_runs from t where topic like '%end%'),\r\ns as (select count(*) as ci_completed from t where (topic like '%succeeded' or ((topic like '%failed' or topic like '%error') and _msg::jsonb#>>'{output_text}' LIKE '%CI (complete) results in datagrepper returned error%')))\r\nselect ((s.ci_completed)*100)/c.finished_gating_runs as percent_ci_done from c,s",
           "refId": "A",
           "select": [
             [
@@ -506,14 +854,14 @@
         "showThresholdLabels": true,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
-          "format": "time_series",
+          "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "with c as (select date(\"timestamp\") as time, count(*) as finished_gating_runs from messages where topic like '%gating%$test%.end.%' group by time),\r\ns as (select date(\"timestamp\") as time, count(*) as ci_completed from messages where (topic like '%gating%$test%.end%fail%' and _msg::jsonb#>>'{output_text}' ~ 'resultsdb results in datagrepper returned FAILED[^\\n]+\\[DONE\\]') or topic like '%gating%$test%.end%succe%'  group by time)\r\nselect s.time as time, (s.ci_completed*100)/c.finished_gating_runs as percent_ci_done from c,s where $__timeFilter(c.time) and  c.time = s.time order by time",
+          "rawSql": "with t as (select * from messages where topic like 'org.fedoraproject.prod.monitor-gating.$test%' and $__timeFilter(\"timestamp\")),\r\nc as (select count(*) as finished_gating_runs from t where topic like '%end%'),\r\ns as (select count(*) as ci_completed from t where (topic like '%succeeded' or ((topic like '%failed' or topic like '%error') and _msg::jsonb#>>'{output_text}' ~ 'resultsdb results in datagrepper returned FAILED[^\\n]+\\[DONE\\]')))\r\nselect ((s.ci_completed)*100)/c.finished_gating_runs as percent_ci_done from c,s",
           "refId": "A",
           "select": [
             [
@@ -584,14 +932,14 @@
         "showThresholdLabels": true,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
-          "format": "time_series",
+          "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "with c as (select date(\"timestamp\") as time, count(*) as finished_gating_runs from messages where topic like '%gating%$test%.end.%' group by time),\r\ns as (select date(\"timestamp\") as time, count(*) as ci_completed from messages where (topic like '%gating%$test%.end%fail%' and _msg::jsonb#>>'{output_text}' ~ 'greenwave results in datagrepper returned False[^\\n]+\\[DONE\\]') or topic like '%gating%$test%.end%succe%'  group by time)\r\nselect s.time as time, (s.ci_completed*100)/c.finished_gating_runs as percent_ci_done from c,s where $__timeFilter(c.time) and  c.time = s.time order by time",
+          "rawSql": "with t as (select * from messages where topic like 'org.fedoraproject.prod.monitor-gating.$test%' and $__timeFilter(\"timestamp\")),\r\nc as (select count(*) as finished_gating_runs from t where topic like '%end%'),\r\ns as (select count(*) as ci_completed from t where (topic like '%succeeded' or ((topic like '%failed' or topic like '%error') and _msg::jsonb#>>'{output_text}' ~ 'greenwave results in datagrepper returned False[^\\n]+\\[DONE\\]')))\r\nselect ((s.ci_completed)*100)/c.finished_gating_runs as percent_ci_done from c,s",
           "refId": "A",
           "select": [
             [
@@ -662,14 +1010,14 @@
         "showThresholdLabels": true,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
-          "format": "time_series",
+          "format": "table",
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "with c as (select date(\"timestamp\") as time, count(*) as finished_gating_runs from messages where topic like '%gating%$test%.end.%' group by time),\r\ns as (select date(\"timestamp\") as time, count(*) as ci_completed from messages where (topic like '%gating%$test%.end%fail%' and _msg::jsonb#>>'{output_text}' ~ 'greenwave results in datagrepper returned True[^\\n]+\\[DONE\\]') or topic like '%gating%$test%.end%succe%'  group by time)\r\nselect s.time as time, (s.ci_completed*100)/c.finished_gating_runs as percent_ci_done from c,s where $__timeFilter(c.time) and c.time = s.time order by time",
+          "rawSql": "with t as (select * from messages where topic like 'org.fedoraproject.prod.monitor-gating.$test%' and $__timeFilter(\"timestamp\")),\r\nc as (select count(*) as finished_gating_runs from t where topic like '%end%'),\r\ns as (select count(*) as ci_completed from t where (topic like '%succeeded' or ((topic like '%failed' or topic like '%error') and _msg::jsonb#>>'{output_text}' ~ 'greenwave results in datagrepper returned True[^\\n]+\\[DONE\\]')))\r\nselect ((s.ci_completed)*100)/c.finished_gating_runs as percent_ci_done from c,s",
           "refId": "A",
           "select": [
             [
@@ -736,7 +1084,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -812,7 +1160,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -888,7 +1236,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -964,7 +1312,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -1040,7 +1388,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -1116,7 +1464,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -1192,7 +1540,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -1269,7 +1617,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -1343,7 +1691,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -1420,7 +1768,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -1496,7 +1844,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -1572,7 +1920,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -1650,7 +1998,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -1727,7 +2075,7 @@
         "showThresholdLabels": false,
         "showThresholdMarkers": true
       },
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "targets": [
         {
           "format": "time_series",
@@ -1795,8 +2143,11 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -1810,7 +2161,7 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "select timestamp as time, CAST(array_to_string(REGEXP_MATCHES(_msg::jsonb->'output'->>-1, 'Ran for (\\d+).*'),'') as integer)/60  from messages where topic like '%gating%$test%.end.%' order by time",
+          "rawSql": "select timestamp as time, CAST(array_to_string(REGEXP_MATCHES(_msg::jsonb->'output'->>-1, 'Ran for (\\d+).*'),'') as integer)/60  from messages where topic like '%gating%$test%.end.%' and $__timeFilter(\"timestamp\") order by time",
           "refId": "A",
           "select": [
             [
@@ -1923,8 +2274,11 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2051,8 +2405,11 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2179,8 +2536,11 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2307,8 +2667,11 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2435,8 +2798,11 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2547,8 +2913,11 @@
       "lines": true,
       "linewidth": 1,
       "nullPointMode": "null",
+      "options": {
+        "alertThreshold": true
+      },
       "percentage": false,
-      "pluginVersion": "7.1.5",
+      "pluginVersion": "7.2.1",
       "pointradius": 2,
       "points": false,
       "renderer": "flot",
@@ -2562,34 +2931,8 @@
           "group": [],
           "metricColumn": "none",
           "rawQuery": true,
-          "rawSql": "with c as (select date(\"timestamp\") as time, count(*) as finished_gating_runs from messages where topic like '%gating%$test%.end.%' group by time),\ns as (select date(\"timestamp\") as time, count(*) as successful_gating_runs from messages where topic like '%gating%$test%.end%succe%' group by time)\nselect s.time as time, (s.successful_gating_runs*100)/c.finished_gating_runs as percent_succesful from c,s where c.time = s.time order by time",
+          "rawSql": "with t as (select date(\"timestamp\") as time, topic from messages where $__timeFilter(\"timestamp\") and topic like '%gating%'),\nc as (select time, count(*) as finished_gating_runs from t where topic like '%gating%$test%.end.%' group by time),\ns as (select time, count(*) as successful_gating_runs from t where topic like '%gating%$test%.end%succe%' group by time)\nselect s.time as time, (s.successful_gating_runs*100)/c.finished_gating_runs as percent_succesful from c,s where c.time = s.time order by time",
           "refId": "A",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "with c as (select date(\"timestamp\") as time, count(*) as finished_gating_runs from messages where topic like '%gating%$test%.end.%' group by time),\r\ns as (select date(\"timestamp\") as time, count(*) as ci_completed from messages where (topic like '%gating%$test%.end%fail%' and _msg::jsonb#>>'{output_text}' LIKE '%CI (complete) results in datagrepper returned error%') or topic like '%gating%$test%.end%succe%'  group by time)\r\nselect s.time as time, (s.ci_completed*100)/c.finished_gating_runs as percent_ci_done from c,s where c.time = s.time order by time",
-          "refId": "B",
           "select": [
             [
               {
@@ -2615,170 +2958,6 @@
       "timeRegions": [],
       "timeShift": null,
       "title": "Monitor Gating Success Percentage",
-      "tooltip": {
-        "shared": true,
-        "sort": 0,
-        "value_type": "individual"
-      },
-      "type": "graph",
-      "xaxis": {
-        "buckets": null,
-        "mode": "time",
-        "name": null,
-        "show": true,
-        "values": []
-      },
-      "yaxes": [
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        },
-        {
-          "format": "short",
-          "label": null,
-          "logBase": 1,
-          "max": null,
-          "min": null,
-          "show": true
-        }
-      ],
-      "yaxis": {
-        "align": false,
-        "alignLevel": null
-      }
-    },
-    {
-      "aliasColors": {},
-      "bars": false,
-      "dashLength": 10,
-      "dashes": false,
-      "datasource": "Datanommer",
-      "fieldConfig": {
-        "defaults": {
-          "custom": {}
-        },
-        "overrides": []
-      },
-      "fill": 1,
-      "fillGradient": 0,
-      "gridPos": {
-        "h": 12,
-        "w": 24,
-        "x": 0,
-        "y": 89
-      },
-      "hiddenSeries": false,
-      "id": 2,
-      "legend": {
-        "avg": false,
-        "current": false,
-        "max": false,
-        "min": false,
-        "show": true,
-        "total": false,
-        "values": false
-      },
-      "lines": true,
-      "linewidth": 1,
-      "nullPointMode": "null",
-      "percentage": false,
-      "pluginVersion": "7.1.5",
-      "pointradius": 2,
-      "points": false,
-      "renderer": "flot",
-      "seriesOverrides": [],
-      "spaceLength": 10,
-      "stack": false,
-      "steppedLine": false,
-      "targets": [
-        {
-          "format": "time_series",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "select date(\"timestamp\") as time, count(*) as finished_gating_runs from messages where topic like '%gating%$test%.end.%' group by time",
-          "refId": "A",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "select date(\"timestamp\") as time, count(*) as successful_gating_runs from messages where topic like '%gating%$test%.end%succe%' group by time",
-          "refId": "B",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        },
-        {
-          "format": "time_series",
-          "group": [],
-          "metricColumn": "none",
-          "rawQuery": true,
-          "rawSql": "select date(\"timestamp\") as time, count(*) as ci_completed from messages where (topic like '%gating%$test%.end%fail%' and _msg::jsonb#>>'{output_text}' LIKE '%CI (complete) results in datagrepper returned error%') or topic like '%gating%$test%.end%succe%'  group by time",
-          "refId": "C",
-          "select": [
-            [
-              {
-                "params": [
-                  "value"
-                ],
-                "type": "column"
-              }
-            ]
-          ],
-          "timeColumn": "time",
-          "where": [
-            {
-              "name": "$__timeFilter",
-              "params": [],
-              "type": "macro"
-            }
-          ]
-        }
-      ],
-      "thresholds": [],
-      "timeFrom": null,
-      "timeRegions": [],
-      "timeShift": null,
-      "title": "Monitor Gating",
       "tooltip": {
         "shared": true,
         "sort": 0,
@@ -2854,8 +3033,8 @@
     ]
   },
   "time": {
-    "from": "2020-03-22T19:35:01.854Z",
-    "to": "2020-05-25T21:23:27.434Z"
+    "from": "now-2d",
+    "to": "now"
   },
   "timepicker": {
     "refresh_intervals": [
@@ -2874,5 +3053,5 @@
   "timezone": "",
   "title": "Monitor Gating",
   "uid": "6q2qpcvGz",
-  "version": 24
+  "version": 1
 }

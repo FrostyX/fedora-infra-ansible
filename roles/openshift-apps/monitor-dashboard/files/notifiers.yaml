@@ -1,0 +1,27 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: grafana-notifiers
+  labels:
+    app: monitor-dashboard
+data:
+  notifiers.yml: |-
+    notifiers:
+      - name: Monitor Gating Dashboard Alerts
+        type: googlechat
+        uid: l7OKaKpGk
+        # either
+        org_id: 1
+        is_default: false
+        send_reminder: false
+        frequency: 1h
+        disable_resolve_message: false
+        # See `Supported Settings` section for settings supported for each
+        # alert notification type.
+        settings:
+          uploadImage: false
+          autoResolve: true
+          httpMethod: POST
+          severity: critical
+          url: https://chat.googleapis.com/v1/spaces/AAAAgMlYYeQ/messages?key=AIzaSyDdI0hCZtE6vySjMm-WEfRq3CPzqKqqsHI&token=bu44RPo8FAICEBrtCkvAzuwe9Pnvcq1PJVfaIvMqtVk%3D
