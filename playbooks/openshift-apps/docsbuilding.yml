@@ -16,6 +16,7 @@
     - asamalik
     - jibecfed
     - dustymabe
+    - pingou
     tags:
       - apply-appowners
   - role: openshift/imagestream
