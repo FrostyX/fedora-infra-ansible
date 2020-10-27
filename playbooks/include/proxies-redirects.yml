@@ -806,6 +806,15 @@
     tags:
     - askbeta.fedoraproject.org
 
+  # iot redirect
+  - role: httpd/redirect
+    shortname: 01-iot
+    website: "iot{{ env_suffix }}.fedoraproject.org"
+    path: /
+    target: https://getfedora.org/iot/
+    tags:
+    - iot.fedoraproject.org
+
   # coreos redirects
   - role: httpd/redirect
     shortname: 01-coreos
