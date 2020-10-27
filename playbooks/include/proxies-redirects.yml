@@ -316,7 +316,7 @@
     website: labs.fedoraproject.org
     regex: /(.*)prerelease.*$
     target: https://labs.stg.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env == 'staging'
 
   - role: httpd/redirectmatch
@@ -324,7 +324,7 @@
     website: spins.fedoraproject.org
     regex: /(.*)prerelease.*$
     target: https://spins.stg.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env == 'staging'
 
   - role: httpd/redirectmatch
@@ -332,7 +332,7 @@
     website: arm.fedoraproject.org
     regex: /(.*)prerelease.*$
     target: https://arm.stg.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env == 'staging'
 
   - role: httpd/redirectmatch
@@ -340,7 +340,7 @@
     website: labs.fedoraproject.org
     regex: /prerelease.*$
     target: https://labs.stg.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env == 'staging'
 
   - role: httpd/redirectmatch
@@ -348,7 +348,7 @@
     website: spins.fedoraproject.org
     regex: /prerelease.*$
     target: https://spins.stg.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env == 'staging'
 
   - role: httpd/redirectmatch
@@ -356,7 +356,7 @@
     website: arm.fedoraproject.org
     regex: /prerelease.*$
     target: https://arm.stg.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env == 'staging'
 
   - role: httpd/redirectmatch
@@ -390,7 +390,7 @@
     website: labs.fedoraproject.org
     regex: /(.*)/prerelease.*$
     target: https://labs.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env != 'staging'
 
   - role: httpd/redirectmatch
@@ -398,7 +398,7 @@
     website: spins.fedoraproject.org
     regex: /(.*)/prerelease.*$
     target: https://spins.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env != 'staging'
 
   - role: httpd/redirectmatch
@@ -406,7 +406,7 @@
     website: arm.fedoraproject.org
     regex: /(.*)/prerelease.*$
     target: https://arm.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env != 'staging'
 
   - role: httpd/redirectmatch
@@ -414,7 +414,7 @@
     website: labs.fedoraproject.org
     regex: /prerelease.*$
     target: https://labs.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env != 'staging'
 
   - role: httpd/redirectmatch
@@ -422,7 +422,7 @@
     website: spins.fedoraproject.org
     regex: /prerelease.*$
     target: https://spins.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env != 'staging'
 
   - role: httpd/redirectmatch
@@ -430,7 +430,7 @@
     website: arm.fedoraproject.org
     regex: /prerelease.*$
     target: https://arm.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env != 'staging'
 
   - role: httpd/redirectmatch
@@ -438,7 +438,7 @@
     website: alt.fedoraproject.org
     regex: /prerelease.*$
     target: https://alt.fedoraproject.org/$1
-    redirectmatch_enabled: false
+    redirectmatch_enabled: true
     when: env != 'staging'
 
 # end of prod prerelease
