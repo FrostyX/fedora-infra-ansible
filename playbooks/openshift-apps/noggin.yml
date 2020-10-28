@@ -71,7 +71,7 @@
 
   - role: openshift/object
     app: noggin
-    file: service.yml
+    template: service.yml
     objectname: service.yml
 
   - role: openshift/route
