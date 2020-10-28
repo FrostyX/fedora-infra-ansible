@@ -125,7 +125,7 @@
     - web-data
 
 - name: install mirrors-countme from git checkout
-  command: "pip install --no-index --no-deps /srv/countme/mirrors-countme"
+  command: "pip3 install --no-index --no-deps /srv/countme/mirrors-countme"
   when: "gitcountme is changed"
   tags:
     - web-data
