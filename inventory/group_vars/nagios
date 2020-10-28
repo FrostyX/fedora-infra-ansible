@@ -117,4 +117,4 @@ dns_external:
 # where it is an enormous group not needed.
 # Exclude these ansible host groups in hostgroups/all.cfg
 exclude_iad2_hostgroups:
-  - nixnagios
+  - centos_ipa_client_stg
