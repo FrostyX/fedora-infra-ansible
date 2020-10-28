@@ -53,6 +53,7 @@ dl_tier1:
   - frisal.switch.ch                   # 130.59.113.36
   - ftp.heanet.ie                      # 193.1.193.64
   - ftp.linux.cz                       # 147.251.48.205
+  - 2001:718:801:230::cd               # ftp.linux.cz ipv6 address
   - ftp.nrc.ca                         # 132.246.2.21
   - jobbot1.ibiblio.org                # 152.19.134.30
   - josephine.hrz.tu-chemnitz.de       # 134.109.228.48
