@@ -94,6 +94,12 @@
     - packages
     - web-data
 
+- name: make countme group
+  group:
+    name: countme
+  tags:
+    - web-data
+
 - name: make countme user
   user:
     name: countme
