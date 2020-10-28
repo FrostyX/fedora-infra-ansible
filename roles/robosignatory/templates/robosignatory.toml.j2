@@ -380,7 +380,7 @@ handlers = ["console"]
             key = "{{ (env == 'production')|ternary('fedora-34', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('45719a39', 'd300e724') }}"
             type = "modular"
-            
+
             # ELN Mass Rebuild
 
             [[consumer_config.koji_instances.primary.tags]]
@@ -445,13 +445,13 @@ handlers = ["console"]
 
         [consumer_config.ostree_refs."fedora/stable/x86_64/iot"]
         directory = "/mnt/fedora_koji/koji/compose/iot/repo/"
-        key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
+        key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
         [consumer_config.ostree_refs."fedora/stable/aarch64/iot"]
         directory = "/mnt/fedora_koji/koji/compose/iot/repo/"
-        key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
+        key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
         [consumer_config.ostree_refs."fedora/stable/armhfp/iot"]
         directory = "/mnt/fedora_koji/koji/compose/iot/repo/"
-        key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
+        key = "{{ (env == 'production')|ternary('fedora-33', 'testkey') }}"
 
         [consumer_config.ostree_refs."fedora/29/x86_64/atomic-host"]
         directory = "/mnt/fedora_koji/koji/compose/ostree/repo/"
