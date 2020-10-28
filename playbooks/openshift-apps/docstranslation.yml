@@ -10,7 +10,8 @@
     - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
 
   tasks:
-  - import_role:
+  - name: Define Project
+    include_role:
       name: openshift/project
     vars:
       description: Documentation translation
@@ -31,23 +32,27 @@
       size: 4096
     register: r_ssh_key
 
-  - import_role:
+  - name: Define imagestream
+    include_role:
       name: openshift/imagestream
     vars:
       imagename: builder
 
-  - import_role:
+  - name: Define buildconfig
+    include_role:
       name: openshift/object
     vars:
       objectname: buildconfig.yml
       file: buildconfig.yml
 
-  - import_role:
+  - name: Start build
+    include_role:
       name: openshift/start-build
     vars:
       buildname: docstranslation-build
 
-  - import_role:
+  - name: Define secrets
+    include_role:
       name: openshift/object
     vars:
       objectname: secrets.yml
@@ -55,7 +60,8 @@
     tags:
       - deploy-secrets
 
-  - import_role:
+  - name: Define cron job
+    include_role:
       name: openshift/object
     vars:
       file: cron.yml
@@ -67,7 +73,8 @@
 # actions to delete the project from OpenShift
 ###############################################
 # to run: sudo rbac-playbook -l os_masters_stg[0] -t delete openshift-apps/docstranslation.yml
-  - import_role:
+  - name: Delete cron jobs
+    include_role:
       name: openshift/object-delete
     vars:
       objecttype: cronjob
