@@ -31,7 +31,7 @@ MAIL_DEFAULT_SENDER = "Fedora Account System <fas@fedoraproject.org>"
 MAIL_SERVER = "bastion.fedoraproject.org"
 
 # Theme
-THEME = "fas"
+THEME = "{{ noggin_theme }}"
 
 # Those file should be mounted from OpenShift secrets
 FREEIPA_ADMIN_PASSWORD = from_file('/etc/noggin-secrets/ipa-admin')

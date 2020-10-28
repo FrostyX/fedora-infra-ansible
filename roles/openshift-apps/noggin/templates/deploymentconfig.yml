@@ -3,11 +3,11 @@ kind: DeploymentConfig
 metadata:
   name: noggin
   labels:
-    app: noggin
+    app: {{ app }}
 spec:
   replicas: 1
   selector:
-    app: noggin
+    app: {{ app }}
     deploymentconfig: noggin
   strategy:
     type: Rolling
@@ -22,7 +22,7 @@ spec:
     metadata:
       creationTimestamp: null
       labels:
-        app: noggin
+        app: {{ app }}
         deploymentconfig: noggin
     spec:
       containers:

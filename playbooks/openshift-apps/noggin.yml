@@ -64,6 +64,7 @@
     app: noggin
     template: configmap.yml
     objectname: configmap.yml
+    noggin_theme: fas
 
   - role: openshift/ipa-client
     app: noggin

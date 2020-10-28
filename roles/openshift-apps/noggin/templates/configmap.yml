@@ -9,7 +9,7 @@ items:
   metadata:
     name: noggin-config
     labels:
-      app: noggin
+      app: {{ app }}
   data:
     noggin.cfg: |-
       {{ load_file('noggin.cfg.py') | indent(6) }}
@@ -20,7 +20,7 @@ items:
   metadata:
     name: wsgi-script
     labels:
-      app: noggin
+      app: {{ app }}
   data:
     wsgi.py: |-
       {{ load_file('wsgi.py') | indent(6) }}
@@ -30,7 +30,7 @@ items:
   metadata:
     name: fedora-messaging-config
     labels:
-      app: noggin
+      app: {{ app }}
   data:
     config.toml: |-
       {{ load_file('fedora-messaging.toml') | indent(6) }}

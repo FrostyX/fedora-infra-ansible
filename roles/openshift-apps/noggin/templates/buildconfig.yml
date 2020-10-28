@@ -3,7 +3,7 @@ kind: BuildConfig
 metadata:
   name: noggin
   labels:
-    app: noggin
+    app: {{ app }}
     build: noggin
 spec:
   runPolicy: Serial

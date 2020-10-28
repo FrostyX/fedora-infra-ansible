@@ -3,12 +3,12 @@ kind: Service
 metadata:
   name: noggin-web
   labels:
-    app: noggin
+    app: {{ app }}
 spec:
   ports:
     - name: web
       port: 8080
       targetPort: 8080
   selector:
-    app: noggin
+    app: {{ app }}
     deploymentconfig: noggin
