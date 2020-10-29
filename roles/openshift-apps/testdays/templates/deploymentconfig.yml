@@ -31,7 +31,7 @@ spec:
       - name: testdays
         image: testdays:latest
         command: ["gunicorn"]
-        args: ["-b", "0.0.0.0:80", "-w", "4", "--log-level", "DEBUG", "-t", "180", "testdays:wsgi"]
+        args: ["-b", "0.0.0.0:8080", "-w", "4", "--log-level", "DEBUG", "-t", "180", "testdays:wsgi"]
         ports:
         - containerPort: 80
         resources: {}
