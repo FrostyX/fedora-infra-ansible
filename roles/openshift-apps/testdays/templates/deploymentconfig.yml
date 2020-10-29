@@ -33,7 +33,7 @@ spec:
         command: ["gunicorn"]
         args: ["-b", "0.0.0.0:8080", "-w", "4", "--log-level", "DEBUG", "-t", "180", "testdays"]
         ports:
-        - containerPort: 80
+        - containerPort: 8080
         resources: {}
         env:
         - name: POSTGRESQL_USER
