@@ -18,7 +18,7 @@
 
 - name: Set crypto-policy on fedora 33 and higher hosts to allow 2fa to work
   command: "update-crypto-policies --set LEGACY"
-  when: "(ansible_distribution_major_version|int >= 33) and (currentcryptopolicy.stdout.find("LEGACY") == -1 or cryptopolicyapplied.rc != 0)"
+  when: "ansible_distribution_major_version|int >= 33 and (currentcryptopolicy.stdout.find('LEGACY') == -1 or cryptopolicyapplied.rc != 0)"
   tags:
   - crypto-policies
   - base/crypto-policies
