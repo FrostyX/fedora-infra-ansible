@@ -1,10 +1,24 @@
+- name: Check current crypto-policy
+  command: "update-crypto-policies --show"
+  register: currentcryptopolicy
+  failed_when: "1 != 1"
+  changed_when: "1 != 1"
+  tags:
+  - crypto-policies
+  - base/crypto-policies
+
+- name: Check if policy is applied
+  command: "update-crypto-policies --is-applied"
+  register: cryptopolicyapplied
+  failed_when: "1 != 1"
+  changed_when: "1 != 1"
+  tags:
+  - crypto-policies
+  - base/crypto-policies
+
 - name: Set crypto-policy on fedora 33 and higher hosts to allow 2fa to work
-  template:
-    dest: /etc/crypto-policies/config
-    src: crypto-policies-config
-    owner: root
-    mode: 644
-  when: ansible_distribution_major_version|int >= 33
+  command: "update-crypto-policies --set LEGACY"
+  when: "(ansible_distribution_major_version|int >= 33) and (currentcryptopolicy.stdout.find("LEGACY") == -1 or cryptopolicyapplied.rc != 0)"
   tags:
   - crypto-policies
   - base/crypto-policies
