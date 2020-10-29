@@ -33,9 +33,6 @@ openqa_webapi_plugins: FedoraMessaging FedoraUpdateRestart
 openqa_env_suffix: .stg
 openqa_env: staging
 
-# for now, we have the 'extra' arches (ppc64 and aarch64) on stg
-openqa_extraarches: true
-
 # install openQA from updates-testing - this is staging, we live
 # ON THE EDGE (radical guitar riff)
 openqa_repo: updates-testing
@@ -43,6 +40,7 @@ openqa_repo: updates-testing
 wikitcms_token: "{{ private }}/files/openidc/staging/wikitcms.json"
 openqa_wikitcms_hostname: stg.fedoraproject.org
 openqa_resultsdb_url: http://resultsdb01.stg.iad2.fedoraproject.org/resultsdb_api/api/v2.0/
+openqa_compose_arches: x86_64,aarch64,ppc64le
 openqa_update_arches: ['x86_64', 'ppc64le']
 
 # FIXME: disable consumers that write to wiki until auth key

@@ -7,12 +7,10 @@
 ##      string - The public hostname of the openQA server (used in
 ##               links back from ResultsDB and wiki results)
 ##      default - ansible_nodename
-# - openqa_extraarches
-##      bool - when this is set, this instance will be configured to
-##             create jobs for 'extra' arches beyond x86_64 (currently
-##             ppc64 and aarch64). Only set it if this instance will
-##             have worker hosts for those arches
-##      default - false
+# - openqa_compose_arches
+##        string - Comma-separated list of arches to schedule compose
+##                 tests for
+##        default - x86_64
 #
 # Optional vars
 # - wikitcms_token
@@ -231,15 +229,6 @@
 
 - name: Create fedora_openqa config directory
   file: path=/etc/fedora-openqa state=directory owner=root group=root mode=0755
-
-# For now, we only have enough ppc64/aarch64 workers for one instance,
-# so we have a variant WANTED file that we deploy based on a config
-# variable.
-- name: Install extra arch WANTED images config if enabled
-  copy: src=images.json.extraarches dest=/etc/fedora-openqa/images.json
-  when: openqa_extraarches|bool
-  notify:
-  - restart openqa scheduler consumer
 
 - name: Write schedule.conf
   template: src=schedule.conf.j2 dest=/etc/fedora-openqa/schedule.conf owner=root group=root mode=0644

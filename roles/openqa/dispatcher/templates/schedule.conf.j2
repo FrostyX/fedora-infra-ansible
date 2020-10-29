@@ -1,23 +1,6 @@
 [report]
 resultsdb_url: {{ openqa_resultsdb_url }}
-{% if deployment_type is defined and deployment_type == 'prod' %}
-wiki_hostname: fedoraproject.org
-[consumers]
-prod_oqa_hostname: {{ openqa_hostname }}
-prod_oqa_baseurl: https://{{ external_hostname|default(ansible_nodename) }}
-prod_wiki_hostname: fedoraproject.org
-prod_wiki_report: true
-prod_rdb_url: {{ openqa_resultsdb_url }}
-prod_rdb_report: true
-{% elif deployment_type is defined and deployment_type == 'stg' %}
-wiki_hostname: stg.fedoraproject.org
-[consumers]
-# as we use the production scheduler
-prod_oqa_hostname: {{ openqa_hostname }}
-stg_oqa_hostname: {{ openqa_hostname }}
-stg_oqa_baseurl: https://{{ external_hostname|default(ansible_nodename) }}
-stg_wiki_hostname: stg.fedoraproject.org
-stg_wiki_report: true
-stg_rdb_url: {{ openqa_resultsdb_url }}
-stg_rdb_report: true
-{% endif %}
+wiki_hostname: {{ openqa_wikitcms_hostname }}
+
+[schedule]
+arches: {{ openqa_compose_arches }}
