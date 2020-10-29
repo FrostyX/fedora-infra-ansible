@@ -581,3 +581,6 @@
   - base
   - config
   - python3alternative
+
+- name: Set crypto-policy to LEGACY on fedora 33 hosts to get 2fa working
+  import_tasks: crypto-policies.yml
