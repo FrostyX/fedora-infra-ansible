@@ -12,10 +12,11 @@ spec:
   source:
     type: Git
     git:
-#      uri: https://pagure.io/fedora-qa/testdays-web.git
-      uri: https://pagure.io/forks/pingou/fedora-qa/testdays-web.git
+      uri: https://pagure.io/fedora-qa/testdays-web.git
+#      uri: https://pagure.io/forks/pingou/fedora-qa/testdays-web.git
 {% if env == 'staging' %}
-      ref: "develop"
+#      ref: "develop"
+      ref: "oc_tryout"
 {% else %}
       ref: "production"
 {% endif %}
