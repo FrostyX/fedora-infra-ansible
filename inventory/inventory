@@ -460,9 +460,13 @@ openqa-lab01.iad2.fedoraproject.org
 
 [openqa_lab_workers]
 openqa-a64-worker01.iad2.fedoraproject.org
+# BROKEN: there's another box on the same VLAN asking for the same IP address
+# smooge has a ticket open to fix it
+#openqa-a64-worker02.iad2.fedoraproject.org
 openqa-a64-worker03.iad2.fedoraproject.org
 openqa-p09-worker01.iad2.fedoraproject.org
-openqa-p09-worker02.iad2.fedoraproject.org
+# BROKEN: waiting on smooge to get IBM to fix it
+#openqa-p09-worker02.iad2.fedoraproject.org
 openqa-x86-worker04.iad2.fedoraproject.org
 
 # the workers that can run networked jobs. each server should have *one* of these per arch
