@@ -18,8 +18,8 @@ spec:
         failurePolicy: Abort
         execNewPod:
           containerName: testdays
-# We only need to init the database the first time, after we just need to check
-# for DB upgrades
+          # We only need to init the database the first time, after we just need to check
+          # for DB upgrades
           command: ["python", "/opt/app-root/src/testdays/cli.py", "init_db"]
   template:
     metadata:
@@ -30,6 +30,8 @@ spec:
       containers:
       - name: testdays
         image: testdays:latest
+        command: ["gunicorn"]
+        args: ["-b", "0.0.0.0:80", "-w", "4", "--log-level", "DEBUG", "-t", "180", "testdays:wsgi"]
         ports:
         - containerPort: 80
         resources: {}
