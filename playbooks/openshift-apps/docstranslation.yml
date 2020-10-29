@@ -27,10 +27,14 @@
     openssh_keypair:
       path: "/etc/openshift_apps/{{ app }}/id_rsa_docs_trans"
       mode: 0600
-      regenerate: never
       type: rsa
       size: 4096
     register: r_ssh_key
+
+  - name: Retrieve ssh priv key
+    slurp:
+      path: r_ssh_key.filename
+    register: r_docs_priv_key
 
   - name: Define imagestream
     include_role:
