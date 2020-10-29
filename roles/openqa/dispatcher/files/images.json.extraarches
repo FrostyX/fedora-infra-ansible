@@ -153,6 +153,22 @@
     },
     {
         "match": {
+            "subvariant": "Server",
+            "type": "raw-xz",
+            "format": "raw.xz",
+            "arch": "aarch64"
+        }
+    },
+    {
+        "match": {
+            "subvariant": "Workstation",
+            "type": "raw-xz",
+            "format": "raw.xz",
+            "arch": "aarch64"
+        }
+    },
+    {
+        "match": {
             "subvariant": "Cloud_Base",
             "type": "qcow2",
             "format": "qcow2",
