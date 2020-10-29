@@ -127,6 +127,14 @@
     },
     {
         "match": {
+            "subvariant": "Minimal",
+            "type": "raw-xz",
+            "format": "raw.xz",
+            "arch": "aarch64"
+        }
+    },
+    {
+        "match": {
             "subvariant": "Server",
             "type": "boot",
             "format": "iso",
