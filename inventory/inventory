@@ -962,7 +962,7 @@ osbs-node02.iad2.fedoraproject.org
 [osbs_masters]
 osbs-master01.iad2.fedoraproject.org
 
-#[osbs_aarch64_masters]
+[osbs_aarch64_masters]
 #osbs-aarch64-master01.arm.fedoraproject.org
 
 #[osbs_aarch64_nodes]
@@ -973,7 +973,7 @@ osbs_control
 osbs_nodes
 osbs_masters
 #osbs_aarch64_nodes
-#osbs_aarch64_masters
+osbs_aarch64_masters
 
 [osbs_masters_stg]
 osbs-master01.stg.iad2.fedoraproject.org
