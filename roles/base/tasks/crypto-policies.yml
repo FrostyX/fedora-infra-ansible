@@ -16,7 +16,8 @@
   - crypto-policies
   - base/crypto-policies
 
-- debug:
+- name: debug debug
+  debug:
     msg: "admv is {{ ansible_distribution_major_version }} ccp is {{ currentcryptopolicy.stdout }} cpa is {{ cryptopolicyapplied.rc }} "
 
 - name: Set crypto-policy on fedora 33 and higher hosts to allow 2fa to work
