@@ -26,9 +26,6 @@ openqa_tap_iface: eth0
 ansible_ifcfg_allowlist: ['{{ openqa_tap_iface }}', 'eth1', 'eth2', 'eth3', 'eth4', 'eth5', 'eth6', 'eth7', 'eth8', 'eth9']
 ansible_ifcfg_disabled: ['eth1', 'eth2', 'eth3', 'eth4', 'eth5', 'eth6', 'eth7', 'eth8', 'eth9']
 
-# this is an IAD box, use IAD host
-openqa_hostname: openqa-lab01.iad2.fedoraproject.org
-
 # this is a powerful machine, can handle more openQA workers
 openqa_workers: 15
 # firewall ports for server->worker websockets connections
