@@ -454,6 +454,7 @@ openqa01.iad2.fedoraproject.org
 openqa-x86-worker01.iad2.fedoraproject.org
 openqa-x86-worker02.iad2.fedoraproject.org
 openqa-a64-worker02.iad2.fedoraproject.org
+openqa-a64-worker03.iad2.fedoraproject.org
 
 # openqa-lab and openqa-lab-workers are pseudo-stg, see group_vars/openqa-stg for more details
 [openqa_lab]
@@ -461,7 +462,6 @@ openqa-lab01.iad2.fedoraproject.org
 
 [openqa_lab_workers]
 openqa-a64-worker01.iad2.fedoraproject.org
-openqa-a64-worker03.iad2.fedoraproject.org
 openqa-p09-worker01.iad2.fedoraproject.org
 # BROKEN: waiting on smooge to get IBM to fix it
 #openqa-p09-worker02.iad2.fedoraproject.org
