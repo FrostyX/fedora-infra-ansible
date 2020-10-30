@@ -213,11 +213,16 @@
 
 - name: Create exports file
   template: src=exports.j2 dest=/etc/exports.d/openqa.exports owner=root group=root mode=0644
+  register: exportsfile
   tags:
   - config
 
 - name: Enable and start NFS server
   service: name=nfs-server enabled=yes state=started
+
+- name: Refresh exports
+  command: exportfs -r
+  when: exportsfile is changed
 
 - name: Set up Apache config
   template: src=openqa.conf.httpd.j2 dest=/etc/httpd/conf.d/openqa.conf owner=root group=root mode=0644

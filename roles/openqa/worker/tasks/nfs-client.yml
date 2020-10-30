@@ -14,6 +14,7 @@
 
 - name: Create mount unit
   template: src=var-lib-openqa-share.mount.j2 dest=/etc/systemd/system/var-lib-openqa-share.mount owner=root group=root mode=0644
+  register: sharemount
   tags:
   - config
 
@@ -22,3 +23,7 @@
   with_items:
   - var-lib-openqa-share.mount
   - remote-fs.target
+
+- name: Restart mount if unit changed
+  systemd: name=var-lib-openqa-share.mount state=started daemon_reload=yes
+  when: sharemount is changed
