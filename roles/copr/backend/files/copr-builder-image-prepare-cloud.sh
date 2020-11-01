@@ -67,7 +67,7 @@ test -n "$vm_name"
 ip=$(sed -n 's/.*VM_IP=\([0-9\.]\+\).*/\1/p' "$logfile" | head -1)
 test -n "$ip"
 
-fedora=$(ssh "root@$ip" 'rpm --eval %fedora')
+fedora=$(ssh "fedora@$ip" 'rpm --eval %fedora')
 
 new_volume_name="copr-builder-$arch-f$fedora-$(date +"%Y%m%d_%H%M%S")"
 
