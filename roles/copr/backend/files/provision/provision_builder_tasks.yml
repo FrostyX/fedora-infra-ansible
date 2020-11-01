@@ -129,12 +129,6 @@
     state: stopped
     enabled: no
 
-- name: Disable systemd-resolved service (rhbz 1710699)
-  systemd:
-    name: systemd-resolved.service
-    state: stopped
-    enabled: no
-
 - name: mount cache filesystem on /var/cache/mock
   mount: path=/var/cache/mock state=mounted src=mock_cache_tmpfs fstype=tmpfs opts="size=32G"
   when: mock_var_cache_tmpfs is defined
