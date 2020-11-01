@@ -737,3 +737,11 @@
     keephost: true
     tags: fpdc
 
+  - role: httpd/reverseproxy
+    website: testdays.fedoraproject.org
+    destname: testdays
+    balancer_name: app-os
+    targettype: openshift
+    keephost: true
+    tags: testdays
+    when: env == "staging"

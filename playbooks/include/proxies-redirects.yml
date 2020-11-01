@@ -572,6 +572,7 @@
     shortname: testdays
     website: testdays.fedoraproject.org
     target: https://testdays-testdays.apps.os.fedorainfracloud.org
+    when: env != 'staging'
 
   # Cloudy bits
   - role: httpd/redirect
