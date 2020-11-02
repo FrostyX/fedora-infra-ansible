@@ -31,34 +31,34 @@ spec:
   - type: ConfigChange
   - type: ImageChange
 ---
-  apiVersion: v1
-  kind: BuildConfig
-  metadata:
-    name: resultsdb-build
-    labels:
-      environment: "resultsdb"
-  spec:
-    output:
-      to:
+apiVersion: v1
+kind: BuildConfig
+metadata:
+  name: resultsdb-build
+  labels:
+    environment: "resultsdb"
+spec:
+  output:
+    to:
+      kind: ImageStreamTag
+      name: resultsdb:latest
+  source:
+    type: Git
+    git:
+      uri: https://pagure.io/taskotron/resultsdb.git
+{% if env == 'staging' %}
+#      ref: "develop"
+      ref: "openshift_WIP"
+{% else %}
+      ref: "master"
+{% endif %}
+  strategy:
+    type: Source
+    sourceStrategy:
+      from:
         kind: ImageStreamTag
-        name: resultsdb:latest
-    source:
-      type: Git
-      git:
-        uri: https://pagure.io/taskotron/resultsdb.git
-  {% if env == 'staging' %}
-  #      ref: "develop"
-        ref: "openshift_WIP"
-  {% else %}
-        ref: "master"
-  {% endif %}
-    strategy:
-      type: Source
-      sourceStrategy:
-        from:
-          kind: ImageStreamTag
-          namespace: openshift
-          name: python:3.6
-    triggers:
-    - type: ConfigChange
-    - type: ImageChange
+        namespace: openshift
+        name: python:3.6
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange
