@@ -8,3 +8,14 @@ spec:
     local: false
 status:
   dockerImageRepository: ""
+---
+apiVersion: v1
+kind: ImageStream
+metadata:
+  name: resultsdb
+spec:
+  lookupPolicy:
+    local: false
+status:
+  dockerImageRepository: ""
+

@@ -34,6 +34,20 @@
       name: "{{ testdays_db_name  }}"
       owner: "{{ testdays_db_user }}"
       encoding: UTF-8
+  - name: Create the database user (resultsdb)
+    postgresql_user:
+      name: "{{ resultsdb_testdays_db_user }}"
+      password: "{{ resultsdb_testdays_db_pass }}"
+  - name: Create the database itself (resultsdb)
+    postgresql_db:
+      name: "{{ resultsdb_testdays_db_name  }}"
+      owner: "{{ resultsdb_testdays_db_user }}"
+      encoding: UTF-8
+  - name: Test the database creation (resultsdb)
+    postgresql_db:
+      name: "{{ resultsdb_testdays_db_name  }}"
+      owner: "{{ resultsdb_testdays_db_user }}"
+      encoding: UTF-8
 
 - name: make the app be real
   hosts: os_masters_stg[0] #:os_masters[0]:
@@ -82,6 +96,18 @@
     host: "testdays{{ env_suffix }}.fedoraproject.org"
     serviceport: 8080-tcp
     servicename: testdays
+
+  - role: openshift/object
+    app: resultsdb
+    file: service.yml
+    objectname: service.yml
+
+  - role: openshift/route
+    app: resultsdb
+    routename: resultsdb
+    host: "testdays-rdb{{ env_suffix }}.fedoraproject.org"
+    serviceport: 8080-tcp
+    servicename: resultsdb
 
   - role: openshift/start-build
     app: testdays
