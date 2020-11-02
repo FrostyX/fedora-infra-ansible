@@ -74,75 +74,75 @@ spec:
         kind: ImageStreamTag
         name: testdays:latest
 ---
-  apiVersion: v1
-  kind: DeploymentConfig
-  metadata:
-    labels:
-      app: resultsdb
-      service: resultsdb
-    name: resultsdb
-  spec:
-    replicas: 1
-    selector:
-      app: resultsdb
-      deploymentconfig: resultsdb
-    strategy:
-      type: Recreate
-      recreateParams:
-        mid:
-          failurePolicy: Abort
-          execNewPod:
-            containerName: resultsdb
-            # We only need to init the database the first time, after we just need to check
-            # for DB upgrades
-            command: ["python", "/opt/app-root/src/resultsdb/cli.py", "init_db"]
-    template:
-      metadata:
-        labels:
-          app: resultsdb
-          deploymentconfig: resultsdb
-      spec:
-        containers:
-        - name: resultsdb
-          image: resultsdb:latest
-          ports:
-          - containerPort: 8080
-          resources: {}
-          env:
-          - name: POSTGRESQL_USER
-            value: "{{ resultsdb_testdays_db_user }}"
-          - name: POSTGRESQL_PASSWORD
-            value: "{{ resultsdb_testdays_db_pass }}"
-          - name: POSTGRESQL_DATABASE
-            value: "{{ resultsdb_testdays_db_name }}"
-          - name: POSTGRESQL_SERVICE_HOST
-            value: "db01{{ env_suffix }}.iad2.fedoraproject.org"
-          - name: POSTGRESQL_SERVICE_PORT
-            value: "5432"
-          - name: SECRET_KEY
-            value: "{{ resultsdb_testdays_secret_key }}"
-          - name: OPENSHIFT_PROD
-            value: "1"
-          readinessProbe:
-            timeoutSeconds: 1
-            initialDelaySeconds: 5
-            httpGet:
-              path: /
-              port: 8080
-          livenessProbe:
-            timeoutSeconds: 1
-            initialDelaySeconds: 30
-            httpGet:
-              path: /
-              port: 8080
+apiVersion: v1
+kind: DeploymentConfig
+metadata:
+  labels:
+    app: resultsdb
+    service: resultsdb
+  name: resultsdb
+spec:
+  replicas: 1
+  selector:
+    app: resultsdb
+    deploymentconfig: resultsdb
+  strategy:
+    type: Recreate
+    recreateParams:
+      mid:
+        failurePolicy: Abort
+        execNewPod:
+          containerName: resultsdb
+          # We only need to init the database the first time, after we just need to check
+          # for DB upgrades
+          command: ["python", "/opt/app-root/src/resultsdb/cli.py", "init_db"]
+  template:
+    metadata:
+      labels:
+        app: resultsdb
+        deploymentconfig: resultsdb
+    spec:
+      containers:
+      - name: resultsdb
+        image: resultsdb:latest
+        ports:
+        - containerPort: 8080
+        resources: {}
+        env:
+        - name: POSTGRESQL_USER
+          value: "{{ resultsdb_testdays_db_user }}"
+        - name: POSTGRESQL_PASSWORD
+          value: "{{ resultsdb_testdays_db_pass }}"
+        - name: POSTGRESQL_DATABASE
+          value: "{{ resultsdb_testdays_db_name }}"
+        - name: POSTGRESQL_SERVICE_HOST
+          value: "db01{{ env_suffix }}.iad2.fedoraproject.org"
+        - name: POSTGRESQL_SERVICE_PORT
+          value: "5432"
+        - name: SECRET_KEY
+          value: "{{ resultsdb_testdays_secret_key }}"
+        - name: OPENSHIFT_PROD
+          value: "1"
+        readinessProbe:
+          timeoutSeconds: 1
+          initialDelaySeconds: 5
+          httpGet:
+            path: /
+            port: 8080
+        livenessProbe:
+          timeoutSeconds: 1
+          initialDelaySeconds: 30
+          httpGet:
+            path: /
+            port: 8080
 
-    triggers:
-    - type: ConfigChange
-    - type: ImageChange
-      imageChangeParams:
-        automatic: true
-        containerNames:
-        - resultsdb
-        from:
-          kind: ImageStreamTag
-          name: resultsdb:latest
+  triggers:
+  - type: ConfigChange
+  - type: ImageChange
+    imageChangeParams:
+      automatic: true
+      containerNames:
+      - resultsdb
+      from:
+        kind: ImageStreamTag
+        name: resultsdb:latest
