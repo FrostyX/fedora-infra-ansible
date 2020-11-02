@@ -121,6 +121,8 @@ spec:
             value: "5432"
           - name: SECRET_KEY
             value: "{{ resultsdb_testdays_secret_key }}"
+          - name: RESULTSDB_URL
+            value: "resultsdb.testdays.svc.cluster.local:8080/api/v2.0"
           - name: OPENSHIFT_PROD
             value: "1"
           readinessProbe:
