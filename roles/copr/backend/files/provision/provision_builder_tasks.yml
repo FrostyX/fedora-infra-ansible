@@ -38,6 +38,12 @@
   when:
     - prepare_base_image is defined
 
+# https://fedoraproject.org/wiki/Changes/StrongCryptoSettings
+- name: fallback to the LEGACY crypto policies
+  command: update-crypto-policies --set LEGACY
+  when:
+    - prepare_base_image is defined
+
 - package_facts: manager=auto
 
 - name: install copr-builder and other latest packages
