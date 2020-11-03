@@ -201,7 +201,6 @@
   # Ipsilon is moving back to a VM in staging
   - role: httpd/reverseproxy
     website: "id{{ env_suffix }}.fedoraproject.org"
-    website: id.stg.fedoraproject.org
     destname: id
     proxyurl: http://localhost:10020
     keephost: true
