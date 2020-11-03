@@ -39,8 +39,8 @@
     - prepare_base_image is defined
 
 # https://fedoraproject.org/wiki/Changes/StrongCryptoSettings
-- name: fallback to the LEGACY crypto policies
-  command: update-crypto-policies --set LEGACY
+- name: fallback to the legacy crypto policies
+  command: update-crypto-policies --set DEFAULT:FEDORA32
   when:
     - prepare_base_image is defined
 
