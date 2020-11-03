@@ -47,7 +47,7 @@
 - package_facts: manager=auto
 
 - name: install copr-builder and other latest packages
-  dnf: state=latest pkg="{{ packages }}"
+  dnf: state=latest pkg={{ packages }}
   vars:
     packages:
     - copr-builder
