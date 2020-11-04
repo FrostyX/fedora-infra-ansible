@@ -13,6 +13,9 @@
   - jq
   - geolite2-city
   - geolite2-country
+  - cargo
+  - postgresql-devel
+  - git
   tags:
   - packages
 
@@ -138,3 +141,38 @@
 # The mirrormanager user is created by the mirrormanager2-backend RPM
 # Just adding it the existing user to the ftpsync group.
 - user: name=mirrormanager groups=ftpsync append=yes
+
+- name: install generate-mirrorlist-cache configuration file
+  template:
+    src: generate-mirrorlist-cache.cfg
+    dest: /etc/mirrormanager/generate-mirrorlist-cache.cfg
+    owner: mirrormanager
+    group: mirrormanager
+    mode: 0600
+- name: create /srv/mirrorlist-server.git
+  file: path=/var/log/mirrormanager state=directory owner=mirrormanager group=mirrormanager mode=0755
+- name: checkout mirrorlist-server
+  git:
+    repo: https://github.com/adrianreber/mirrorlist-server.git
+    version: 3.0.1
+    dest: /srv/mirrorlist-server.git
+  become: yes
+  become_user: mirrormanager
+  register: mirrorlist_server_downloaded
+- name: build generate-mirrorlist-cache
+  command: "cargo build --release --bin generate-mirrorlist-cache"
+  args:
+    chdir: /srv/mirrorlist-server.git
+  become: yes
+  become_user: mirrormanager
+  register: mirrorlist_server_built
+  when: "mirrorlist_server_downloaded is changed"
+- name: install generate-mirrorlist-cache
+  copy:
+    src: /srv/mirrorlist-server.git/target/release/generate-mirrorlist-cache
+    dest: /usr/local/bin/generate-mirrorlist-cache
+    remote_src: yes
+    owner: root
+    group: root
+    mode: 755
+  when: "mirrorlist_server_built is changed"
