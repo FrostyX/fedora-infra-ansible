@@ -13,12 +13,12 @@ MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@op
 {% endif %}
 
 HostKey /etc/ssh/ssh_host_rsa_key
-{% if not ansible_hostname.startswith(('pkgs01','pagure01')) %}
+{% if not ansible_hostname.startswith(('pkgs01','pagure02')) %}
 HostKey /etc/ssh/ssh_host_ed25519_key
 {% endif %}
 
 HostCertificate /etc/ssh/ssh_host_rsa_key-cert.pub
-{% if not ansible_hostname.startswith(('pkgs01','pagure01')) %}
+{% if not ansible_hostname.startswith(('pkgs01','pagure02')) %}
 HostCertificate /etc/ssh/ssh_host_ed25519_key-cert.pub
 {% endif %}
 
