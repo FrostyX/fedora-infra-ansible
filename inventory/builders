@@ -42,12 +42,10 @@ buildvm-x86-05.stg.iad2.fedoraproject.org
 [buildvm_aarch64_stg]
 buildvm-a64-01.stg.iad2.fedoraproject.org
 buildvm-a64-02.stg.iad2.fedoraproject.org
-buildvm-a64-03.stg.iad2.fedoraproject.org
 
 [buildvm_armv7_stg]
 buildvm-a32-01.stg.iad2.fedoraproject.org
 buildvm-a32-02.stg.iad2.fedoraproject.org
-buildvm-a32-03.stg.iad2.fedoraproject.org
 
 [buildvm_s390x_stg]
 buildvm-s390x-01.stg.s390.fedoraproject.org
