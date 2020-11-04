@@ -15,5 +15,8 @@ openqa_env: staging
 # staging, we live ON THE EDGE (radical guitar riff)
 openqa_repo: updates-testing
 
+# 2020-11 git bump, dep
+openqa_scratch: ["54880919", "54872388", "54879672", "54878601"]
+
 deployment_type: stg
 freezes: false
