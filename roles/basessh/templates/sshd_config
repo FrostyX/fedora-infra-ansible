@@ -13,10 +13,14 @@ MACs hmac-sha2-512-etm@openssh.com,hmac-sha2-256-etm@openssh.com,umac-128-etm@op
 {% endif %}
 
 HostKey /etc/ssh/ssh_host_rsa_key
+{% if ansible_hostname != 'pkgs01' %}
 HostKey /etc/ssh/ssh_host_ed25519_key
+{% endif %}
 
 HostCertificate /etc/ssh/ssh_host_rsa_key-cert.pub
+{% if ansible_hostname != 'pkgs01' %}
 HostCertificate /etc/ssh/ssh_host_ed25519_key-cert.pub
+{% endif %}
 
 SyslogFacility AUTHPRIV
 LogLevel VERBOSE
