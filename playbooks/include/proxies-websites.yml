@@ -818,6 +818,13 @@
     when: env == "production"
 
   - role: httpd/website
+    site_name: testdays.fedorainfracloud.org
+    cert_name: testdays.fedorainfracloud.org
+    certbot: true
+    when: env == "production"
+    tags: testdays-fic
+
+  - role: httpd/website
     site_name: data-analysis.fedoraproject.org
     server_aliases: [data-analysis.stg.fedoraproject.org]
     sslonly: true
