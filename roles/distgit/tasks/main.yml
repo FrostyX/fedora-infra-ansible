@@ -232,13 +232,6 @@
   tags:
   - distgit
 
-- name: set the selinux boolean nis_enabled
-  seboolean: name=nis_enabled persistent=yes state=yes
-  tags:
-  - distgit
-  - config
-  - selinux
-
 - name: set the selinux boolean git_cgi_use_nfs
   seboolean: name=git_cgi_use_nfs persistent=yes state=yes
   tags:
@@ -298,17 +291,6 @@
 # Three tasks for handling our selinux policy for upload.cgi
 - name: ensure a directory exists for our SELinux policy
   file: dest=/usr/local/share/selinux/ state=directory
-  tags: selinux
-
-- name: copy over our custom selinux policy for pagure
-  copy: src=pagure.pp dest=/usr/local/share/selinux/pagure.pp
-  register: selinux_module
-  tags: selinux
-  when: env == "staging"
-
-- name: install our custom selinux policy for pagure
-  command: semodule -i /usr/local/share/selinux/pagure.pp
-  when: selinux_module is changed and env == "staging"
   tags: selinux
 
 - name: copy over our custom selinux policy
