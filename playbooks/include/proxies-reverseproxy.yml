@@ -743,4 +743,3 @@
     targettype: openshift
     keephost: true
     tags: testdays
-    when: env == "staging"

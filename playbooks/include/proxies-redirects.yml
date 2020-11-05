@@ -568,12 +568,6 @@
     website: boot.fedoraproject.org
     target: https://fedoraproject.org/wiki/Infrastructure/graveyard
 
-  - role: httpd/redirect
-    shortname: testdays
-    website: testdays.fedoraproject.org
-    target: https://testdays-testdays.apps.os.fedorainfracloud.org
-    when: env != 'staging'
-
   # Cloudy bits
   - role: httpd/redirect
     shortname: cloud-front-page
