@@ -207,32 +207,11 @@
   tags:
   - pagure
 
-- name: set sebooleans so pagure can talk to the db
-  seboolean: name=httpd_can_network_connect_db
-                    state=true
-                    persistent=true
-  tags:
-  - selinux
-  - web
-  - pagure
+# Configure SELinux in dist-git/pagure
 
-- name: set sebooleans so apache can send emails
-  seboolean: name=httpd_can_sendmail
-                    state=true
-                    persistent=true
+- import_tasks: "{{tasks_path}}../roles/pagure/tasks/selinux.yml"
   tags:
   - selinux
-  - web
-  - pagure
-
-- name: set sebooleans so pagure can talk to libgit2
-  seboolean: name=httpd_execmem
-                    state=true
-                    persistent=true
-  tags:
-  - selinux
-  - web
-  - pagure
 
 # HOTFIX: adjust bugzilla overrides
 #- name: HOTFIX - adjust bugzilla overrides
