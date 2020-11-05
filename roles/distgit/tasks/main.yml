@@ -157,29 +157,6 @@
   tags:
   - distgit
 
-- name: check the selinux context of the distgit root directory
-  command: matchpathcon /srv/git
-  register: distgitcontext
-  check_mode: no
-  changed_when: false
-  tags:
-  - config
-  - distgit
-  - selinux
-
-- name: set the SELinux policy for the distgit root directory
-  command: semanage fcontext -a -t git_content_t "/srv/git(/.*)?"
-  when: distgitcontext.stdout.find('git_content_t') == -1
-  tags:
-  - config
-  - distgit
-  - selinux
-
-- name: create the distgit root directory (/srv/git/repositories)
-  file: dest=/srv/git/repositories state=directory mode=2775 group=packager
-  tags:
-  - distgit
-
 # These should all map to pkgdb namespaces
 - name: create our namespace directories inside there..
   file: dest=/srv/git/repositories/{{item}} state=directory mode=2775 group=packager
