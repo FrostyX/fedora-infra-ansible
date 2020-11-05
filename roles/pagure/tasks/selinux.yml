@@ -10,12 +10,12 @@
   - selinux
 
 - debug:
-  msg: distgitcontext.stdout
+    msg: distgitcontext.stdout
   tags:
     - selinux
 
 - debug:
-  msg: distgitcontext.stdout.find('gitosis_var_lib_t')
+    msg: distgitcontext.stdout.find('gitosis_var_lib_t')
   tags:
     - selinux
 
