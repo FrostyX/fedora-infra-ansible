@@ -209,7 +209,7 @@
 
 # Configure SELinux in dist-git/pagure
 
-- import_tasks: "{{tasks_path}}../roles/pagure/tasks/selinux.yml"
+- import_tasks: "{{tasks_path}}/../roles/pagure/tasks/selinux.yml"
   tags:
   - selinux
 
