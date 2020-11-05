@@ -13,12 +13,10 @@ spec:
     type: Git
     git:
       uri: https://pagure.io/fedora-qa/testdays-web.git
-#      uri: https://pagure.io/forks/pingou/fedora-qa/testdays-web.git
 {% if env == 'staging' %}
-#      ref: "develop"
-      ref: "oc_tryout"
+      ref: "develop"
 {% else %}
-      ref: "production"
+      ref: "master"
 {% endif %}
   strategy:
     type: Source
@@ -47,10 +45,9 @@ spec:
     git:
       uri: https://pagure.io/taskotron/resultsdb.git
 {% if env == 'staging' %}
-#      ref: "develop"
       ref: "openshift_WIP"
 {% else %}
-      ref: "master"
+      ref: "openshift_WIP"
 {% endif %}
   strategy:
     type: Source
