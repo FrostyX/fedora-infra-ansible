@@ -9,6 +9,16 @@
   - pagure
   - selinux
 
+- debug:
+  msg: distgitcontext.stdout
+  tags:
+    - selinux
+
+- debug:
+  msg: distgitcontext.stdout.find('gitosis_var_lib_t')
+  tags:
+    - selinux
+
 - name: set the SELinux policy for the distgit root directory
   command: semanage fcontext -a -t gitosis_var_lib_t "/srv/git(/.*)?"
   when: distgitcontext.stdout.find('gitosis_var_lib_t') == -1
