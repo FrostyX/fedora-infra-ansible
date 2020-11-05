@@ -97,3 +97,23 @@
       warning:  1000
       critical: 10000
 
+# CENTOS GITLAB BEGIN
+- name: CentOS Gitlab User
+  run_once: true
+  include_role:
+    name: rabbit/user
+  vars:
+     username: gitlab-centos
+
+- name: CentOS Gitlab Queue
+  run_once: true
+  include_role:
+    name: rabbit/queue
+  vars:
+    username: gitlab-centos
+    queue_name: gitlab-centos
+    # TTL: 10 days (in miliseconds)
+    message_ttl: 864000000
+    routing_keys:
+      - "org.fedoraproject.{{ env_suffix }}.gitlab-centos.#"
+# CENTOS GITLAB END
