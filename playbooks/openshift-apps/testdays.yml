@@ -97,13 +97,6 @@
     serviceport: 8080-tcp
     servicename: testdays
 
-  - role: openshift/route
-    app: resultsdb
-    routename: resultsdb
-    host: "testdays-rdb{{ env_suffix }}.fedoraproject.org"
-    serviceport: 8080-tcp
-    servicename: resultsdb
-
   - role: openshift/start-build
     app: testdays
     buildname: testdays-build
