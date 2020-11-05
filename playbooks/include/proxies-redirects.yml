@@ -87,6 +87,12 @@
     target: https://jenkins-fedora-infra.apps.ci.centos.org/
     tags: jenkins
 
+  - role: httpd/redirect
+    shortname: testdays-fic
+    website: testdats.fedorainfracloud.org
+    target: https://testdays.fedoraproject.org/
+    tags: testdays-fic
+
   - role: httpd/redirectmatch
     shortname: fpaste
     website: fpaste.org
