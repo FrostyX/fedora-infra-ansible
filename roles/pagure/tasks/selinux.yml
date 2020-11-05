@@ -9,12 +9,14 @@
   - pagure
   - selinux
 
-- debug:
+- name: show the output of distgitcontext
+  debug:
     msg: distgitcontext.stdout
   tags:
     - selinux
 
-- debug:
+- name: show if we find gitosis_var_lib_t in distgitcontext
+  debug:
     msg: distgitcontext.stdout.find('gitosis_var_lib_t')
   tags:
     - selinux
