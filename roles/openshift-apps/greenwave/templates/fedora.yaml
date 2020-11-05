@@ -101,6 +101,7 @@ product_versions:
   - fedora-epel-8-modular
   - fedora-epel-7
   - fedora-epel-6
+  - fedora-eln
 decision_context: bodhi_update_push_testing
 subject_type: koji_build
 rules: []
@@ -127,6 +128,7 @@ product_versions:
   - fedora-epel-8-modular
   - fedora-epel-7
   - fedora-epel-6
+  - fedora-eln
 decision_context: bodhi_update_push_stable
 subject_type: koji_build
 rules: []
