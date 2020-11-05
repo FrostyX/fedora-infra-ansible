@@ -89,7 +89,7 @@
 
   - role: httpd/redirect
     shortname: testdays-fic
-    website: testdats.fedorainfracloud.org
+    website: testdays.fedorainfracloud.org
     target: https://testdays.fedoraproject.org/
     tags: testdays-fic
 
