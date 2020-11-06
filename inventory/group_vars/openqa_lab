@@ -47,7 +47,7 @@ openqa_compose_arches: x86_64,aarch64,ppc64le
 openqa_update_arches: ['x86_64', 'ppc64le']
 
 # all our workers need NFS access
-openqa_nfs_workers: {{ groups['openqa_lab_workers'] }}
+openqa_nfs_workers: "{{ groups['openqa_lab_workers'] }}"
 
 # FIXME: disable consumers that write to wiki until auth key
 # is working again:

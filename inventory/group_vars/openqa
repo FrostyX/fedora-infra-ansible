@@ -27,7 +27,7 @@ openqa_compose_arches: x86_64,aarch64
 openqa_update_arches: ['x86_64']
 
 # all our workers need NFS access
-openqa_nfs_workers: {{ groups['openqa_workers'] }}
+openqa_nfs_workers: "{{ groups['openqa_workers'] }}"
 
 deployment_type: prod
 freezes: false
