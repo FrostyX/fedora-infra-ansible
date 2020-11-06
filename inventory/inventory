@@ -484,14 +484,14 @@ openqa-a64-worker01.iad2.fedoraproject.org
 openqa-p09-worker01.iad2.fedoraproject.org
 
 # common group for variables shared between all openQA boxes
-[openqa_all_common]
+[openqa_all_common:children]
 openqa
 openqa_lab
 openqa_workers
 openqa_lab_workers
 
 # common group for variables shared between prod and stg servers
-[openqa_servers_common]
+[openqa_servers_common:children]
 openqa
 openqa_lab
 
