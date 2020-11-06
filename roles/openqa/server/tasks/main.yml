@@ -196,7 +196,7 @@
   file: path=/root/openqa_fedora_tools state=absent
 
 - name: Create asset directories
-  file: path={{ item }} state=directory owner=geekotest group=geekotest mode=0755
+  file: path={{ item }} state=directory owner=geekotest group=geekotest mode=0775
   with_items:
   - /var/lib/openqa/share/factory/iso
   - /var/lib/openqa/share/factory/iso/fixed
