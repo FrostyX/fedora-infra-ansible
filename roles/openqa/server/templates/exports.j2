@@ -1,1 +1,1 @@
-/var/lib/openqa/share {% for host in {{ openqa_nfs_workers }} %} {{ host }}(rw,insecure,no_root_squash) {% endfor %}
+/var/lib/openqa/share {% for host in openqa_nfs_workers %} {{ host }}(rw,insecure,no_root_squash) {% endfor %}
