@@ -2,7 +2,7 @@
 HOST = http://{{ openqa_hostname|default('localhost') }}
 {% if openqa_worker_class is defined %}
 WORKER_CLASS = {{ openqa_worker_class }}
-{% elif openqa_tap is defined and openqa_tap %}
+{% elif openqa_tap|bool %}
 {% if ansible_architecture == 'ppc64' or ansible_architecture == 'ppc64le' %}
 WORKER_CLASS = tap,tpm,qemu_ppc64le,qemu_ppc64
 {% elif ansible_architecture == 'aarch64' %}

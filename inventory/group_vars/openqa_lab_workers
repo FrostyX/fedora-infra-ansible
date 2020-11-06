@@ -18,5 +18,8 @@ openqa_repo: updates-testing
 # 2020-11 git bump, dep
 openqa_scratch: ["54880919", "54872388", "54879672", "54878601"]
 
+# we are all NFS workers for now at least
+openqa_nfs_worker: true
+
 deployment_type: stg
 freezes: false

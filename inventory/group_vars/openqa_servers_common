@@ -1,9 +1,7 @@
-# here we keep variables that are the same between prod and staging
+# here we keep variables that are the same between prod and lab
 # openQA servers. these are mostly things that are set as variables
 # in the plays so we can change them over time and also so the plays
 # can be used for non-infra deployments.
-
-openqa_static_uid: 601
 
 openqa_hostname: localhost
 openqa_email: adamwill@fedoraproject.org

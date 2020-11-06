@@ -1,0 +1,9 @@
+# here we keep variables that are used on all openQA boxes, servers
+# and workers, prod and lab.
+
+# this is UID and GID of geekotest on the server (the user openQA
+# runs as). The asset dirs are owned by this user and group. We also
+# create geekotest on the workers with this GID and add _openqa-worker
+# to that group, so os-autoinst can write to the asset dirs, which it
+# needs to do when uncompressing compressed disk assets.
+openqa_static_uid: 601

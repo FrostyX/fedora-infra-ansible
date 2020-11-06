@@ -11,7 +11,8 @@ openqa_secret: "{{ prod_openqa_apisecret }}"
 openqa_env_suffix:
 openqa_env: production
 
-# These boxes are F30+, so we need Python 3 ansible
+# we are all NFS workers for now at least
+openqa_nfs_worker: true
 
 deployment_type: prod
 freezes: false

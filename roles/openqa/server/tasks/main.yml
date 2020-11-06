@@ -80,6 +80,12 @@
 ##               be able to run scratch builds to see if a new release is
 ##               really bad before submitting it as an update, we don't want
 ##               to send new builds to updates-testing if they have problems
+# - openqa_nfs_workers
+##      list -   A list of hostnames of workers that will share the factory
+##               directory via NFS. All these will be granted rw access to
+##               the share (they need write access to be able to decompress
+##               compressed disk images on the fly). If not defined, the
+##               factory dir will not be shared via NFS at all.
 
 # If openqa_dbhost is set, the other openqa_db* variables must be too,
 # and the server will be configured to use a pgsql database accordingly.
@@ -190,7 +196,7 @@
   file: path=/root/openqa_fedora_tools state=absent
 
 - name: Create asset directories
-  file: path={{ item }} state=directory owner=geekotest group=root mode=0755
+  file: path={{ item }} state=directory owner=geekotest group=geekotest mode=0755
   with_items:
   - /var/lib/openqa/share/factory/iso
   - /var/lib/openqa/share/factory/iso/fixed
@@ -214,11 +220,13 @@
 - name: Create exports file
   template: src=exports.j2 dest=/etc/exports.d/openqa.exports owner=root group=root mode=0644
   register: exportsfile
+  when: openqa_nfs_workers is defined
   tags:
   - config
 
 - name: Enable and start NFS server
   service: name=nfs-server enabled=yes state=started
+  when: openqa_nfs_clients is defined
 
 - name: Refresh exports
   command: exportfs -r

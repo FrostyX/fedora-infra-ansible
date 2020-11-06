@@ -10,11 +10,24 @@
 ##      string - Repo to enable when updating openQA packages. Set to
 ##               'updates-testing' to use packages from updates-testing
 ##      default - 'updates', which is effectively a no-op
-
-# Optional vars
+# - openqa_nfs_worker
+##      bool - whether this worker expects to share the factory dir with
+##             the server via NFS. If set, the nfs-client task will be
+##             run to set up the share. The worker should also be included
+##             in the server's openqa_nfs_clients var so it is granted
+##             access to the share
+##      default - false
+# - openqa_hdds_worker
+##      bool - whether this worker creates base disk images for a shared
+##             factory dir. There should be only *one* of these per arch
+##             per deployment
+##      default - false
 # - openqa_tap
 ##      bool - whether this is the tap- and swtpm-enabled host or not
 ##             each deployment should have *one* tap-capable worker host
+##      default - false
+
+# Optional vars
 # - openqa_rngd
 ##      string - if set to any value, rng-tools package will be
 ##               installed and rngd.service enabled/started
@@ -28,6 +41,14 @@
 ##               be able to run scratch builds to see if a new release is
 ##               really bad before submitting it as an update, we don't want
 ##               to send new builds to updates-testing if they have problems
+# - openqa_static_uid
+##       int - a static ID for the geekotest group if desired. this is useful
+##             for NFS mounting openQA data files. The _openqa_worker user,
+##             which os-autoinst runs as, will be added to this group. The
+##             idea is that the same group with the same GID exists on the
+##             NFS server and is the group of the shared asset directories,
+##             so os-autoinst can write to the shared asset directories,
+##             which it needs to do when uncompressing compressed disk assets
 
 - name: Remove scratch repo directory
   file: path=/var/tmp/scratchrepo state=absent
@@ -82,6 +103,14 @@
   tags:
   - packages
 
+- name: Create geekotest group with static GID
+  group: "name=geekotest gid={{ openqa_static_uid }} system=yes"
+  when: "openqa_static_uid is defined"
+
+- name: Add _openqa_worker user to geekotest group
+  user: name=_openqa-worker groups=geekotest append=yes
+  when: "openqa_static_uid is defined"
+
 - name: Install UEFI firmware package (x86_64 only)
   package: name=edk2-ovmf state=present
   tags:
@@ -129,10 +158,10 @@
   when: "openqa_rngd is defined and openqa_rngd"
 
 - include_tasks: nfs-client.yml
-  when: openqa_hostname is defined and openqa_hostname != "localhost"
+  when: openqa_nfs_worker|bool
 
 - include_tasks: tap-setup.yml
-  when: openqa_tap is defined and openqa_tap
+  when: openqa_tap|bool
 
 # this is kinda lazy - we could have a separate openqa_swtpm var so we
 # we could potentially separate tap worker hosts from swtpm ones - but
@@ -141,7 +170,7 @@
 # for now it's fine to just assume the tap host(s) is/are also the
 # swtpm host(s)
 - include_tasks: swtpm-setup.yml
-  when: openqa_tap is defined and openqa_tap
+  when: openqa_tap|bool
 
 - name: openQA client config
   template: src=client.conf.j2 dest=/etc/openqa/client.conf owner=_openqa-worker group=root mode=0600
@@ -156,7 +185,7 @@
   - config
 
 - include_tasks: createhdds.yml
-  when: "inventory_hostname in groups['openqa_hdds_workers']"
+  when: openqa_hdds_worker|bool
 
 - name: Enable and start worker services
   service: name=openqa-worker@{{ item }} enabled=yes state=started

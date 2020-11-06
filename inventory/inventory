@@ -442,11 +442,6 @@ odcs_backend_stg
 odcs_frontend
 odcs_backend
 
-# common group for variables shared between prod and stg servers
-[openqa_common]
-openqa01.iad2.fedoraproject.org
-openqa-lab01.iad2.fedoraproject.org
-
 [openqa]
 openqa01.iad2.fedoraproject.org
 
@@ -477,7 +472,7 @@ openqa-x86-worker04.iad2.fedoraproject.org
 openqa-a64-worker01.iad2.fedoraproject.org
 openqa-p09-worker01.iad2.fedoraproject.org
 
-# the workers that need rw access to the factory share to run createhdds. again,
+# the workers that run createhdds to create the base disk images. Again,
 # only one per arch per instance should be present.
 [openqa_hdds_workers]
 # prod
@@ -487,6 +482,18 @@ openqa-a64-worker02.iad2.fedoraproject.org
 openqa-x86-worker04.iad2.fedoraproject.org
 openqa-a64-worker01.iad2.fedoraproject.org
 openqa-p09-worker01.iad2.fedoraproject.org
+
+# common group for variables shared between all openQA boxes
+[openqa_all_common]
+openqa
+openqa_lab
+openqa_workers
+openqa_lab_workers
+
+# common group for variables shared between prod and stg servers
+[openqa_servers_common]
+openqa
+openqa_lab
 
 [packages]
 

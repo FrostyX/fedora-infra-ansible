@@ -1,3 +1,6 @@
 openqa_hostname: localhost
 openqa_repo: updates
 openqa_createhdds_branch: master
+openqa_nfs_worker: false
+openqa_tap: false
+openqa_hdds_worker: false
