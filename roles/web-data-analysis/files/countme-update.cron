@@ -1,1 +1,2 @@
+MAILTO=root@fedoraproject.org
 0 09  * * * countme /usr/local/bin/countme-update.sh > /dev/null
