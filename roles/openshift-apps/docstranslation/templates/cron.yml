@@ -19,10 +19,12 @@ spec:
             - /workspace/build.py
             - "--clone_sources"
             - "true"
+{#          Both environment get commit disabled for safety reasons for now
+            TODO: Set these to true on production when old app is removed from sundries #}
             - "--commit_l10n"
-            - "true"
+            - "{% if env == 'staging' %}false{% else %}false{% endif %}"
             - "--commit_tsources"
-            - "true"
+            - "{% if env == 'staging' %}false{% else %}false{% endif %}"
             - "--clone-po4a"
             env: []
             volumeMounts: 

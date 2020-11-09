@@ -4,6 +4,7 @@
   gather_facts: False
   vars:
     app: docstranslation
+    ssh_key_path: "{{ private }}/files/id_rsa_docstrans_{{ env_short }}"
   vars_files:
     - /srv/web/infra/ansible/vars/global.yml
     - "/srv/private/ansible/vars.yml"
@@ -23,18 +24,14 @@
     tags:
       - apply-appowners
 
-  - name: Generate ssh keypair, if none exist
+  - name: Generate new ssh keypair, if none exist
     openssh_keypair:
-      path: "/etc/openshift_apps/{{ app }}/id_rsa_docs_trans"
+      path: "{{ ssh_key_path }}"
       mode: "600"
       type: rsa
       size: 4096
     register: r_ssh_key
-
-  - name: Retrieve ssh priv key
-    slurp:
-      path: r_ssh_key.filename
-    register: r_docs_priv_key
+    delegate_to: localhost
 
   - name: Define imagestream
     include_role:
@@ -47,7 +44,7 @@
       name: openshift/object
     vars:
       objectname: buildconfig.yml
-      file: buildconfig.yml
+      template: buildconfig.yml
 
   - name: Start build
     include_role:
@@ -68,7 +65,7 @@
     include_role:
       name: openshift/object
     vars:
-      file: cron.yml
+      template: cron.yml
       objectname: cron.yml
     tags:
       - deploy-cronjob
@@ -88,6 +85,6 @@
     - delete
 
   post_tasks:
-  - name: Display git ssh key for adding in pagure
+  - name: "Display git ssh key for adding in pagure"
     debug:
-      msg: "{{ r_ssh_key.public_key }}"
+      msg: "{{ env }}: {{ r_ssh_key.public_key }}"

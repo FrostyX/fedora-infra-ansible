@@ -11,7 +11,11 @@ spec:
   source:
     git:
       uri: "https://pagure.io/fedora-docs/translations-scripts.git"
+{%    if env == 'staging' %}
+      ref: staging
+{%    else %}
       ref: master
+{%    endif %}
   strategy:
     type: Docker
   output:
