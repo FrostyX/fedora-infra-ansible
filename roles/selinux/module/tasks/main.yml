@@ -1,0 +1,42 @@
+---
+
+# Builds and install a custom SELinux policy module.
+#
+# The policy file (.te) should be in the source of the
+#
+# Required parameters:
+#
+#   - policy_file (str): the file containing custom SELinux policy to build and
+#                        install.
+#   - policy_name (str): the name of the custom SELinux policy to build and
+#                        install.
+
+
+
+- name: copy over our custom selinux module
+  copy: src="{{ policy_file }}" dest="/usr/local/share/{{ policy_name }}.te"
+  register: selinux_module
+  tags:
+    - selinux
+    - selinux/module
+
+- name: Build our custom selinux module
+  command: checkmodule -M -m -o /usr/local/share/{{ policy_name }}.mod /usr/local/share/{{ policy_name }}.te
+  when: selinux_module is changed
+  tags:
+    - selinux
+    - selinux/module
+
+- name: Compile our custom selinux module
+  command: semodule_package -o /usr/local/share/{{ policy_name }}.pp -m /usr/local/share/{{ policy_name }}.mod
+  when: selinux_module is changed
+  tags:
+    - selinux
+    - selinux/module
+
+- name: install our custom selinux module
+  command: semodule -i /usr/local/share/{{ policy_name }}.pp
+  when: selinux_module is changed
+  tags:
+    - selinux
+    - selinux/module
