@@ -4,7 +4,7 @@
   gather_facts: False
   vars:
     app: docstranslation
-    ssh_key_path: "{{ private }}/files/id_rsa_docstrans_{{ env_short }}"
+    ssh_key_path: "{{ private }}/files/docstranslation/id_rsa_docstrans_{{ env_short }}"
   vars_files:
     - /srv/web/infra/ansible/vars/global.yml
     - "/srv/private/ansible/vars.yml"
@@ -23,15 +23,6 @@
       - misc
     tags:
       - apply-appowners
-
-  - name: Generate new ssh keypair, if none exist
-    openssh_keypair:
-      path: "{{ ssh_key_path }}"
-      mode: "600"
-      type: rsa
-      size: 4096
-    register: r_ssh_key
-    delegate_to: localhost
 
   - name: Define imagestream
     include_role:
@@ -83,8 +74,3 @@
     tags:
     - never
     - delete
-
-  post_tasks:
-  - name: "Display git ssh key for adding in pagure"
-    debug:
-      msg: "{{ env }}: {{ r_ssh_key.public_key }}"
