@@ -53,7 +53,7 @@
   include_role:
     name: selinux/module
   vars:
-    policy_file: files/pagure.te
+    policy_file: files/selinux/pagure.te
     policy_name: pagure
   tags:
     - selinux
