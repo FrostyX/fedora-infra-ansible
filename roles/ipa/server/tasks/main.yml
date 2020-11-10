@@ -510,3 +510,14 @@
   tags:
   - ipa/server
   - config
+
+# The httpd service should not be started with systemd, the ipa service will
+# start it. If systemd starts it, it will run before IPA is available and
+# KdcProxy will be disabled because it can't reach LDAP.
+- name: Disable the httpd service
+  service:
+    name: httpd
+    enabled: no
+  tags:
+  - ipa/server
+  - config
