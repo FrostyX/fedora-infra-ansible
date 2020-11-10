@@ -8,9 +8,9 @@ require {
 	type shadow_t;
 	type var_t;
 	type git_content_t;
-	class process setrlimit;
+	class process { noatsecure rlimitinh setrlimit siginh };
 	class capability { audit_write dac_read_search net_admin setgid setuid sys_resource };
-	class netlink_audit_socket { create nlmsg_relay };
+	class netlink_audit_socket { create nlmsg_relay read write };
 	class file { create getattr link open read rename setattr unlink write };
 	class dir { add_name create getattr remove_name rmdir search write };
 }
