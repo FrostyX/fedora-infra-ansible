@@ -320,6 +320,8 @@
   vars:
     policy_file: files/http_policy.te
     policy_name: http_policy
+  tags:
+    - selinux
 
 - name: setup grokmirror for repos
   package: name=python3-grokmirror state=installed
