@@ -313,6 +313,14 @@
   when: nfs_selinux_module is changed
   tags: selinux
 
+- name: Install another one of our own SELinux policy
+  run_once: true
+  include_role:
+    name: selinux/module
+  vars:
+    policy_file: files/http_policy.te
+    policy_name: http_policy
+
 - name: setup grokmirror for repos
   package: name=python3-grokmirror state=installed
   tags:
