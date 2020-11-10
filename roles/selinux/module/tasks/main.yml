@@ -20,6 +20,12 @@
     - selinux
     - selinux/module
 
+- name: debug the state of selinux_module
+  debug:
+    var: selinux_module
+  tags:
+    - selinux
+
 - name: Build our custom selinux module
   command: checkmodule -M -m -o /usr/local/share/{{ policy_name }}.mod /usr/local/share/{{ policy_name }}.te
   when: selinux_module is changed
