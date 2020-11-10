@@ -5,12 +5,19 @@
   package: name={{ item }} state=present
   with_items:
   - varnish
+  - make
   tags:
   - varnish
   - packages
 
 - name: set some varnishd selinux boolean
   seboolean: name=varnishd_connect_any persistent=yes state=yes
+  tags:
+  - varnish
+  - selinux
+
+- name: set domain_can_mmap_files selinux boolean
+  seboolean: name=domain_can_mmap_files persistent=yes state=yes
   tags:
   - varnish
   - selinux
