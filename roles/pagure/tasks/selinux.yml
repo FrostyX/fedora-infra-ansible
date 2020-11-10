@@ -49,7 +49,6 @@
   - selinux
 
 - name: Install the pagure SELinux policy
-  run_once: true
   include_role:
     name: selinux/module
   vars:

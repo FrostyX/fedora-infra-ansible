@@ -314,7 +314,6 @@
   tags: selinux
 
 - name: Install another one of our own SELinux policy
-  run_once: true
   include_role:
     name: selinux/module
   vars:
