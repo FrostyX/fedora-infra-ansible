@@ -10,6 +10,7 @@ require {
 	type unconfined_t;
 	type httpd_suexec_t;
 	type shadow_t;
+    type var_t;
 	class dir { add_name create getattr remove_name rmdir search write };
 	class file { create getattr link open read rename setattr unlink write };
 	class capability { audit_write dac_read_search net_admin setgid setuid sys_resource };
