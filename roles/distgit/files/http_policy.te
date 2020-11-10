@@ -1,18 +1,20 @@
 module http_policy 1.2;
 
 require {
-	type gitosis_var_lib_t;
-	type httpd_suexec_t;
-	type httpd_sys_script_t;
 	type httpd_t;
-	type shadow_t;
-	type var_t;
+	type chkpwd_t;
+	type httpd_sys_script_t;
+	type gitosis_var_lib_t;
 	type git_content_t;
-	class process { noatsecure rlimitinh setrlimit siginh };
-	class capability { audit_write dac_read_search net_admin setgid setuid sys_resource };
-	class netlink_audit_socket { create nlmsg_relay read write };
-	class file { create getattr link open read rename setattr unlink write };
+	type init_t;
+	type unconfined_t;
+	type httpd_suexec_t;
+	type shadow_t;
 	class dir { add_name create getattr remove_name rmdir search write };
+	class file { create getattr link open read rename setattr unlink write };
+	class capability { audit_write dac_read_search net_admin setgid setuid sys_resource };
+	class process { noatsecure rlimitinh setrlimit siginh };
+	class netlink_audit_socket { create nlmsg_relay read write };
 }
 
 #============= httpd_suexec_t ==============
@@ -36,4 +38,8 @@ allow httpd_t gitosis_var_lib_t:file { create link unlink write };
 allow httpd_t httpd_suexec_t:process { noatsecure rlimitinh siginh };
 allow httpd_t self:capability net_admin;
 allow httpd_t var_t:file { getattr open read };
+
+#============= init_t ==============
+allow init_t chkpwd_t:process siginh;
+allow init_t unconfined_t:process siginh;
 
