@@ -1,3 +1,19 @@
+module http_policy 1.0;
+
+require {
+	type gitosis_var_lib_t;
+	type httpd_sys_script_t;
+	type httpd_t;
+	type shadow_t;
+	type var_t;
+	type git_content_t;
+	class process setrlimit;
+	class capability { audit_write dac_read_search setgid setuid sys_resource };
+	class netlink_audit_socket { create nlmsg_relay };
+	class file { create getattr link open read rename setattr unlink write };
+	class dir { add_name create getattr remove_name rmdir search write };
+}
+
 #============= httpd_sys_script_t ==============
 allow httpd_sys_script_t git_content_t:dir search;
 allow httpd_sys_script_t gitosis_var_lib_t:dir { getattr search };
