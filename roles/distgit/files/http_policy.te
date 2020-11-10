@@ -1,4 +1,4 @@
-module http_policy 1.0;
+module http_policy 1.1;
 
 require {
 	type gitosis_var_lib_t;
@@ -27,4 +27,5 @@ allow httpd_t git_content_t:dir { add_name remove_name write };
 allow httpd_t git_content_t:file { create rename setattr unlink write };
 allow httpd_t gitosis_var_lib_t:dir { add_name create remove_name rmdir write };
 allow httpd_t gitosis_var_lib_t:file { create link rename unlink write };
+allow httpd_t var_t:file { getattr open read };
 
