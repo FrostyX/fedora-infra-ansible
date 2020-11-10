@@ -48,37 +48,17 @@
   - pagure
   - selinux
 
-- name: copy over our custom selinux module
-  copy: src=selinux/pagure.te dest=/usr/local/share/pagure.te
-  register: selinux_module
+- name: Install the pagure SELinux policy
+  run_once: true
+  include_role:
+    name: selinux/module
+  vars:
+    policy_file: files/pagure.te
+    policy_name: pagure
   tags:
-  - config
-  - pagure
-  - selinux
-
-- name: Build our custom selinux module
-  command: checkmodule -M -m -o /usr/local/share/pagure.mod /usr/local/share/pagure.te
-  when: selinux_module is changed
-  tags:
-  - config
-  - pagure
-  - selinux
-
-- name: Compile our custom selinux module
-  command: semodule_package -o /usr/local/share/pagure.pp -m /usr/local/share/pagure.mod
-  when: selinux_module is changed
-  tags:
-  - config
-  - pagure
-  - selinux
-
-- name: install our custom selinux module
-  command: semodule -i /usr/local/share/pagure.pp
-  when: selinux_module is changed
-  tags:
-  - config
-  - pagure
-  - selinux
+    - selinux
+    - config
+    - pagure
 
 - name: set sebooleans so pagure can talk to the network (db + redis)
   seboolean: name=httpd_can_network_connect
