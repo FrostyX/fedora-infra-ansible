@@ -11,7 +11,7 @@ PUBLIC_DATA_DIR=/var/www/html/csv-reports/countme
 PUBLIC_TOTALS_DB=$PUBLIC_DATA_DIR/totals.db
 PUBLIC_TOTALS_CSV=$PUBLIC_DATA_DIR/totals.csv
 
-# Names of the update commands (if not in $PATH..)
+# Names of the update commands. They should be in PATH somewhere..
 UPDATE_RAWDB=countme-update-rawdb.sh
 UPDATE_TOTALS=countme-update-totals.sh
 
@@ -70,6 +70,11 @@ if [ -d "$COUNTME_CHECKOUT" ]; then
     cd $COUNTME_CHECKOUT
     PATH="$COUNTME_CHECKOUT:$COUNTME_CHECKOUT/scripts:$PATH"
 fi
+
+# Hardcoding /usr/local/bin here is hacky; should be pulled from pip, but
+# parsing pip output is nontrivial, and my father always told me:
+# "Son, life's too damn short write a RFC2822 parser in bash."
+PATH="$PATH:/usr/local/bin"
 
 # Check for required commands
 command -v $UPDATE_RAWDB  >/dev/null || die "can't find '$UPDATE_RAWDB'"
