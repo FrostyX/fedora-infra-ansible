@@ -150,7 +150,7 @@
     group: mirrormanager
     mode: 0600
 - name: create /srv/mirrorlist-server.git
-  file: path=/var/log/mirrormanager state=directory owner=mirrormanager group=mirrormanager mode=0755
+  file: path=/srv/mirrorlist-server.git state=directory owner=mirrormanager group=mirrormanager mode=0755
 - name: checkout mirrorlist-server
   git:
     repo: https://github.com/adrianreber/mirrorlist-server.git
