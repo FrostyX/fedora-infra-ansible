@@ -917,12 +917,14 @@ copr-fe-dev.aws.fedoraproject.org
 
 [copr_back_dev_aws]
 copr-be-dev.aws.fedoraproject.org
+107.20.83.139
 
 [copr_keygen_aws]
 copr-keygen.aws.fedoraproject.org
 
 [copr_keygen_dev_aws]
 copr-keygen-dev.aws.fedoraproject.org
+34.230.33.105
 
 [copr_dist_git_dev_aws]
 copr-dist-git-dev.aws.fedoraproject.org
