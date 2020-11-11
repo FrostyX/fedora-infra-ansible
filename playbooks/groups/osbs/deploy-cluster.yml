@@ -150,6 +150,14 @@
         user: root
         key: "{{ lookup('file', '{{private}}/files/osbs/{{env}}/control_key.pub') }}"
 
+    - name: Create file for eth0 config
+      file:
+        path: "/etc/sysconfig/network-scripts/ifcfg-eth0"
+        state: touch
+        mode: 0644
+        owner: root
+        group: root
+
     # This is required for OpenShift built-in SkyDNS inside the overlay network
     # of the cluster
     - name: ensure NM_CONTROLLED is set to "yes" for osbs cluster
