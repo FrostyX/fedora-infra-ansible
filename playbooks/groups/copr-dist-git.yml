@@ -48,6 +48,7 @@
 
   roles:
   - base
+  - copr/copr-devel-server
   - copr/dist_git
 
   handlers:

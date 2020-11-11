@@ -52,6 +52,7 @@
   # Roles are run first, before tasks, regardless of where you place them here.
   roles:
   - base
+  - copr/copr-devel-server
   - copr/backend
   - nagios_client
   - role: messaging/base

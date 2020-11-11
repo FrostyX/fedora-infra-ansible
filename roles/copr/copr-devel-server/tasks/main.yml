@@ -1,0 +1,14 @@
+---
+- name: make sure dnf-plugins-core are installed
+  package: name=dnf-plugins-core state=present
+  when:
+    - devel|bool
+
+- name: enable @copr/copr when on devel machine
+  command:
+    cmd: dnf copr -y enable {{ item }}
+    warn: false
+  with_items:
+    - "@copr/copr"
+  when:
+    - devel|bool

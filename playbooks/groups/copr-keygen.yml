@@ -50,5 +50,6 @@
 
   roles:
   - base
+  - copr/copr-devel-server
   - copr/keygen
   - nagios_client
