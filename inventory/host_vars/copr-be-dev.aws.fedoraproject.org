@@ -2,7 +2,7 @@ swap_file_size_mb: 8192
 swap_file_path: /swap
 
 hostbase: copr-be-dev-
-public_ip: 52.44.175.77
+public_ip: 107.20.83.139
 
 nagios_Check_Services:
   mail: false
