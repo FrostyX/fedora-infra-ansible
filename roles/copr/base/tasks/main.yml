@@ -33,6 +33,9 @@
   copy: src=sysconfig.crond dest=/etc/sysconfig/crond
   notify: restart crond
 
+- name: install anacrontab
+  package: name=cronie-anacron state=present
+
 - name: configure anacrond to not send mails to root user
   lineinfile: dest=/etc/anacrontab
               backup=yes
