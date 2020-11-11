@@ -15,7 +15,7 @@ swap_file_path: /swap
 #image: "{{ fedora31_x86_64 }}"
 #keypair: fedora-admin-20130801
 hostbase: copr-dist-git-dev-
-public_ip: 35.153.206.59
+public_ip: 18.232.82.216
 root_auth_users: msuchy frostyx praiskup schlupov
 description: copr dist git - dev instance
 
