@@ -51,10 +51,11 @@
 - name: install backend helper scripts
   template: src={{ item }} dest=/usr/local/bin/{{ item }} mode=0755
   with_items:
-  - sync_pkl_to_mirrorlists.sh
+  - sync_cache_to_mirrorlists.sh
   - handle_propagation.sh
   - create_maps.sh
   - create_statistics.sh
+  - update-mirrorlist-server
   tags:
   - mirrormanager/backend
 
