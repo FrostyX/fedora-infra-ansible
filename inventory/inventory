@@ -913,7 +913,7 @@ copr-dist-git.aws.fedoraproject.org
 
 [copr_front_dev_aws]
 # stg machine in AWS
-copr-fe-dev.aws.fedoraproject.org
+copr-fe-dev.aws.fedoraproject.org birthday=yes
 
 [copr_back_dev_aws]
 copr-be-dev.aws.fedoraproject.org
@@ -926,7 +926,7 @@ copr-keygen.aws.fedoraproject.org
 copr-keygen-dev.aws.fedoraproject.org birthday=yes
 
 [copr_dist_git_dev_aws]
-copr-dist-git-dev.aws.fedoraproject.org
+copr-dist-git-dev.aws.fedoraproject.org birthday=yes
 
 [copr_aws:children]
 copr_front_aws
