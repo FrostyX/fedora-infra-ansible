@@ -8,11 +8,12 @@
    - /srv/private/ansible/vars.yml
    - /srv/private/ansible/files/openstack/passwords.yml
   tasks:
-  - import_tasks: "{{ tasks_path }}/persistent_cloud.yml"
-    when: datacenter != 'aws'
+  # - import_tasks: "{{ tasks_path }}/persistent_cloud.yml"
+  #   when: datacenter != 'aws'
 
   - import_tasks: "{{ tasks_path }}/aws_cloud.yml"
     when: datacenter == 'aws'
+
   - import_tasks: "{{ tasks_path }}/swap.yml"
     when:
       - datacenter == 'aws'
