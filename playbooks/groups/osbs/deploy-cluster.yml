@@ -140,22 +140,10 @@
         name:
           - tar
           - rsync
-          - dbus-python
+          - python3-dbus
           - NetworkManager
-          - libselinux-python
-          - python2-pyyaml
-      when: env == "staging"
-    - name: Install necessary packages that openshift-ansible needs
-      package:
-        state: installed
-        name:
-          - tar
-          - rsync
-          - dbus-python
-          - NetworkManager
-          - libselinux-python
+          - python3-libselinux
           - python3-PyYAML
-      when: env == "production"
 
     - name: Deploy controller public ssh keys to osbs cluster hosts
       authorized_key:
