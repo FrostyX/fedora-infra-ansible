@@ -10,7 +10,7 @@ swap_file_size_mb: 4096
 swap_file_path: /swap
 
 hostbase: copr-fe-dev-
-public_ip: 35.153.70.58
+public_ip: 54.162.233.242
 root_auth_users: msuchy frostyx praiskup schlupov
 description: copr frontend - dev instance
 
