@@ -886,7 +886,6 @@
     server_aliases: [stg.release-monitoring.org]
     tags:
     - release-monitoring.org
-    when: env == "production"
 
   - role: httpd/website
     site_name: lists.pagure.io
