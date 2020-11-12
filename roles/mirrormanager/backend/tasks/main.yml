@@ -154,7 +154,7 @@
 - name: checkout mirrorlist-server
   git:
     repo: https://github.com/adrianreber/mirrorlist-server.git
-    version: 3.0.1
+    version: 3.0.2
     dest: /srv/mirrorlist-server.git
   become: yes
   become_user: mirrormanager
