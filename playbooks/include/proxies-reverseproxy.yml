@@ -719,6 +719,16 @@
     targettype: openshift
     keephost: true
     tags: release-montoring.org
+    when: env == "production"
+
+  - role: httpd/reverseproxy
+    website: stg.release-monitoring.org
+    destname: stg.release-monitoring
+    balancer_name: app-os
+    targettype: openshift
+    keephost: true
+    tags: release-montoring.org
+    when: env == "staging"
 
   - role: httpd/reverseproxy
     website: whatcanidoforfedora.org
