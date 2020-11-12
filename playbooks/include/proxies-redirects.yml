@@ -810,7 +810,7 @@
   # iot redirect
   - role: httpd/redirect
     shortname: 01-iot
-    website: "iot{{ env_suffix }}.fedoraproject.org"
+    website: "iot.fedoraproject.org"
     path: /
     target: https://getfedora.org/iot/
     tags:
@@ -819,7 +819,7 @@
   # coreos redirects
   - role: httpd/redirect
     shortname: 01-coreos
-    website: "coreos{{ env_suffix }}.fedoraproject.org"
+    website: "coreos.fedoraproject.org"
     path: /
     target: https://getfedora.org/coreos/
     tags:
@@ -827,7 +827,7 @@
 
   - role: httpd/redirect
     shortname: 00-coreosfaq
-    website: "coreos{{ env_suffix }}.fedoraproject.org"
+    website: "coreos.fedoraproject.org"
     path: /blogs/faq.html
     target: https://docs.fedoraproject.org/en-US/fedora-coreos/faq/
     tags:
