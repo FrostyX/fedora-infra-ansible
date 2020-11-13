@@ -902,14 +902,14 @@ buildvmhost
 #virthost_cloud
 
 [copr_front_aws]
-copr-fe.aws.fedoraproject.org birthday=yes
+copr-fe.aws.fedoraproject.org
 
 [copr_back_aws]
 copr-be.aws.fedoraproject.org
 copr-be-temp.aws.fedoraproject.org birthday=yes
 
 [copr_dist_git_aws]
-copr-dist-git.aws.fedoraproject.org birthday=yes
+copr-dist-git.aws.fedoraproject.org
 
 [copr_front_dev_aws]
 # stg machine in AWS
