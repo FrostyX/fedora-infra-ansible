@@ -115,5 +115,5 @@
     # TTL: 10 days (in miliseconds)
     message_ttl: 864000000
     routing_keys:
-      - "org.fedoraproject.{{ env_suffix }}.gitlab-centos.#"
+      - "org.centos.{{ env_suffix }}.gitlab.#"
 # CENTOS GITLAB END
