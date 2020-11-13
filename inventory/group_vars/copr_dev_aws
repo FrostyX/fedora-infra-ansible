@@ -14,8 +14,7 @@ copr_backend_ips: ["107.20.83.139", "172.30.2.207"]
 keygen_host: "34.230.33.105"
 
 backend_base_url: "https://download.copr-dev.fedorainfracloud.org"
-
-#postfix_group: copr
+postfix_group: copr
 
 frontend_base_url: "https://copr-fe-dev.cloud.fedoraproject.org"
 dist_git_base_url: "copr-dist-git-dev.fedorainfracloud.org"
