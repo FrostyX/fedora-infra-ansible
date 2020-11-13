@@ -8,4 +8,5 @@ volgroup: /dev/vg_guests
 eth0_ip: 10.3.166.21
 vmhost: vmhost-x86-01.stg.iad2.fedoraproject.org
 datacenter: iad2
-ipa_initial: true
+## REMEMBER ONLY SET THIS TO TRUE WHEN WIPING SYSTEM TO MINIMUM
+ipa_initial: false

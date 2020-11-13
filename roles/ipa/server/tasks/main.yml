@@ -452,6 +452,7 @@
     user:
     - admin
     - fas_sync
+    - arrfab
     ipa_host: "{{ ansible_fqdn }}"
     ipa_user: admin
     ipa_pass: "{{ipa_admin_password}}"
