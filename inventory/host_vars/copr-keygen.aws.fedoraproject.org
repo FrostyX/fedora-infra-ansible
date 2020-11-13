@@ -13,7 +13,7 @@ db_backup_dir: ['/backup']
 #image: "{{ fedora31_x86_64 }}"
 #keypair: fedora-admin-20130801
 hostbase: copr-keygen-dev-
-public_ip: 52.202.64.55
+public_ip: 54.83.48.73
 root_auth_users: msuchy frostyx praiskup schlupov
 description: copr key gen and sign host - prod instance
 

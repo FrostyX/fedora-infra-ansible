@@ -9,8 +9,8 @@ _forward_src: "forward"
 # don't forget to update ip in ./copr-keygen, due to custom firewall rules
 
 # eth0, eth1
-copr_backend_ips: ["34.227.76.72", "172.30.2.166"]
-keygen_host: "52.202.64.55"
+copr_backend_ips: ["52.44.175.77", "172.30.2.203"]
+keygen_host: "54.83.48.73"
 
 backend_base_url: "https://download.copr.fedorainfracloud.org"
 postfix_group: copr
