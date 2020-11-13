@@ -906,7 +906,7 @@ copr-fe.aws.fedoraproject.org
 
 [copr_back_aws]
 copr-be.aws.fedoraproject.org
-copr-be-temp.aws.fedoraproject.org birthday=yes
+copr-be-temp.aws.fedoraproject.org
 
 [copr_dist_git_aws]
 copr-dist-git.aws.fedoraproject.org
