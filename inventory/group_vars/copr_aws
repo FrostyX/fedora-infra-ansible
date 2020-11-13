@@ -22,7 +22,7 @@ ansible_ifcfg_blocklist: true
 
 copr_aws_region: us-east-1
 
-services_disabled: false
+services_disabled: true
 nm_controlled_resolv: True
 
 builders:
