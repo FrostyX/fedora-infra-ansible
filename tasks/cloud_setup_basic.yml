@@ -6,6 +6,7 @@
   - ntp
   - libsemanage-python
   - libselinux-python
+  - iptables
   when: ansible_distribution_major_version|int < 8 and ansible_distribution == 'RedHat'
   tags:
   - packages
