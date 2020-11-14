@@ -15,21 +15,22 @@ spec:
           containers:
           - name: translate
             image: docker-registry.default.svc:5000/docstranslation/builder:latest
-            command: 
-            - /workspace/build.py
+            args: 
             - "--clone_sources"
-            - "true"
-{#          Both environment get commit disabled for safety reasons for now
-            TODO: Set these to true on production when old app is removed from sundries #}
             - "--commit_l10n"
-            - "{% if env == 'staging' %}false{% else %}false{% endif %}"
             - "--commit_tsources"
-            - "{% if env == 'staging' %}false{% else %}false{% endif %}"
+{%          if env == 'staging' %}
+            - "--nopush"
+{%          endif %}
             - "--clone-po4a"
             env: []
             volumeMounts: 
             - name: ssh-config-volume
               mountPath: /workspace/.ssh
+              readOnly: true
+            - name: mail-config-volume
+              mountPath: /workspace/config.ini
+              subPath: config.ini
               readOnly: true
           restartPolicy: Never
           startingDeadlineSeconds: 600
@@ -37,3 +38,6 @@ spec:
           - name: ssh-config-volume
             secret:
               secretName: ssh-config
+          - name: mail-config-volume
+            configMap:
+              name: mail-config

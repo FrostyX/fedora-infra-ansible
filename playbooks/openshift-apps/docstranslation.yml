@@ -52,6 +52,15 @@
     tags:
       - deploy-secrets
 
+  - name: Define configMap
+    include_role:
+      name: openshift/object
+    vars:
+      objectname: configmap.yml
+      template: configmap.yml
+    tags:
+      - deploy-config
+
   - name: Define cron job
     include_role:
       name: openshift/object

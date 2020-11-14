@@ -1,0 +1,17 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: mail-config
+  labels:
+    app: {{ app }}
+data:
+  config.ini: |
+    [mail]
+    relayHost=bastion.fedoraproject.org
+{%  if env == 'staging' %}
+    subjectPrefix=[docstranslation staging]
+    recipient=darknao
+{%  else %}
+    subjectPrefix=[docstranslation]
+    recipient=jibecfed
+{%  endif %}
