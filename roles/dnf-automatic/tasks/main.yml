@@ -83,7 +83,7 @@
     when: automaticative is failed and ansible_distribution_major_version|int >= 29 and ansible_distribution == 'Fedora'
 
   - name: disable silly makecache timer
-    systemd: name=dnf-makecache masked=yes
+    systemd: name=dnf-makecache.timer masked=yes
     ignore_errors: true
 
   when: ansible_pkg_mgr == 'dnf'
