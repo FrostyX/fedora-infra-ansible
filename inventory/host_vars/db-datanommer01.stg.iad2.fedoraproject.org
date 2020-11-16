@@ -1,0 +1,38 @@
+---
+nm: 255.255.255.0
+gw: 10.3.166.254
+dns: 10.3.163.33
+ks_url: http://10.3.163.35/repo/rhel/ks/kvm-rhel-8-iad2
+ks_repo: http://10.3.163.35/repo/rhel/RHEL8-x86_64/
+volgroup: /dev/vg_guests
+eth0_ip: 10.3.166.59
+vmhost: vmhost-x86-10.stg.iad2.fedoraproject.org
+datacenter: iad2
+
+# This is a generic list, monitored by collectd
+databases:
+- datanommer
+
+# This is a more strict list, to be made publicly available
+dbs_to_backup:
+- datanommer
+
+# These are normally group variables, but in this case db servers are often different
+lvm_size: 1000000
+mem_size: 65536
+num_cpus: 8
+tcp_ports: [ 5432, 443 ]
+fas_client_groups: sysadmin-dba,sysadmin-noc,sysadmin-veteran
+
+# kernel SHMMAX value
+kernel_shmmax: 68719476736
+
+db_backup_dir: ['/backups']
+shared_buffers: "4GB"
+effective_cache_size: "12GB"
+
+# GDPR SAR variables - datanommer/datagrepper
+sar_script: /usr/local/bin/datagrepper_sar.py
+sar_script_user: root
+sar_output_file: datagrepper.csv
+sar_huge: true
