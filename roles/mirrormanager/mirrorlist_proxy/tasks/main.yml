@@ -1,33 +1,9 @@
 ---
-# tasklist for setting up the mirrorlist app as a container on proxies
+# tasklist for setting up the mirrorlist app on the proxies
 
 
 - name: add mirrormanager user - uid {{ mirrormanager_uid }}
   user: name=mirrormanager uid={{ mirrormanager_uid }} state=present home=/home/mirrormanager createhome=yes
-  tags:
-  - mirrorlist_proxy
-
-- name: add mirrormanager subdirectories
-  file: dest="{{item}}" mode=0755 state=directory owner=mirrormanager group=mirrormanager
-  with_items:
-    - /home/mirrormanager/rundir
-    - /home/mirrormanager/rundir/libpod
-  tags:
-  - mirrorlist_proxy
-
-- name: mirrormanager subgid
-  lineinfile:
-    dest: /etc/subgid
-    regexp: "^mirrormanager:"
-    line: "mirrormanager:{{ mirrormanager_subgid }}"
-  tags:
-  - mirrorlist_proxy
-
-- name: mirrormanager subuid
-  lineinfile:
-    dest: /etc/subuid
-    regexp: "^mirrormanager:"
-    line: "mirrormanager:{{ mirrormanager_subuid }}"
   tags:
   - mirrorlist_proxy
 
@@ -46,7 +22,6 @@
   - /srv/mirrorlist/data
   - /srv/mirrorlist/data/mirrorlist1
   - /srv/mirrorlist/data/mirrorlist2
-  - /srv/mirrorlist/data/mirrorlist3
   - /var/log/mirrormanager
   tags:
   - mirrorlist_proxy
@@ -57,7 +32,6 @@
   - /srv/mirrorlist/data
   - /srv/mirrorlist/data/mirrorlist1
   - /srv/mirrorlist/data/mirrorlist2
-  - /srv/mirrorlist/data/mirrorlist3
   tags:
   - mirrorlist_proxy
 
@@ -84,23 +58,6 @@
   tags:
   - mirrorlist_proxy
 
-- name: Ensure log file for content exists
-  file: dest="{{item}}" owner=mirrormanager group=mirrormanager mode=0755 state=touch
-  with_items:
-  - /var/log/mirrormanager/mirrorlist3.service.log
-  when: datacenter == 'iad2'
-  tags:
-  - mirrorlist_proxy
-
-- name: for the rust based mirrorlist server chown log files
-  file: dest="{{item}}" owner=mirrormanager group=mirrormanager
-  with_items:
-  - /var/log/mirrormanager/mirrorlist3.service.log
-  when: datacenter == 'iad2'
-  tags:
-  - mirrorlist_proxy
-
-
 - name: set logrotate_read_inside_containers so logrotate works
   seboolean: name=logrotate_read_inside_containers state=yes persistent=yes
   tags:
@@ -111,27 +68,13 @@
   tags:
   - mirrorlist_proxy
 
-- name: Install podman
-  package: name={{item}} state=present
-  with_items:
-  - podman
-  tags:
-  - mirrorlist_proxy
-
-- name: Pull mirrorlist image
-  command: podman pull -q  "{{ mirrorlist_container_image }}"
-  tags:
-  - mirrorlist_proxy
-  check_mode: yes
-
 - name: install mirrorlist-server package
-  package: name={{ item }} state=present enablerepo=epel-testing
+  package: name={{ item }} state=present
   with_items:
   - mirrorlist-server
   tags:
   - packages
   - mirrorlist_proxy
-  when: ansible_distribution_major_version|int >= 31
 
 # We deploy two service files. Both listen on a different port, so that we can switch
 # them out as part of the protobuf cache deployment without having any local downtime.
@@ -145,18 +88,6 @@
   notify:
   - reload systemd
 
-# We deploy two service files. Both listen on a different port, so that we can switch
-# them out as part of the protobuf cache deployment without having any local downtime.
-- name: Deploy service files for m3
-  template: src=mirrorlist.service.j2 dest=/etc/systemd/system/mirrorlist{{ item }}.service
-  with_items:
-  - 3
-  tags:
-  - mirrorlist_proxy
-  notify:
-  - reload systemd
-  when: datacenter == 'iad2'
-
 # enable both of them to run on boot
 - name: Enable mirrorlist1
   service: name=mirrorlist1 enabled=yes
@@ -168,30 +99,24 @@
   tags:
   - mirrorlist_proxy
 
-- name: Enable mirrorlist3
-  service: name=mirrorlist3 enabled=yes
-  tags:
-  - mirrorlist_proxy
-  when: datacenter == 'iad2'
-
 # install our cron script to handle hourly new protbuf cache changes.
-- name: install script to restart mirrorlist containers on protobuf cache changes
-  template: src=restart-mirrorlist-containers.j2 dest=/usr/local/bin/restart-mirrorlist-containers mode=0755
+- name: install script to restart mirrorlist processes on protobuf cache changes
+  copy: src=restart-mirrorlist-processes dest=/usr/local/bin/restart-mirrorlist-processes mode=0755
   tags:
   - mirrorlist_proxy
 
 - name: Setup hourly cron at for mirrorlist restarts
-  cron: name="restart-mirrorlist-containers" minute="20" user="root"
-        job="/usr/local/bin/restart-mirrorlist-containers"
-        cron_file=restart-mirrorlist-containers
+  cron: name="restart-mirrorlist-processes" minute="20" user="root"
+        job="/usr/local/bin/restart-mirrorlist-processes"
+        cron_file=restart-mirrorlist-processes
   tags:
   - mirrorlist_proxy
 
-- name: Set cron MAILTO for restart-mirrorlist-containers
+- name: Set cron MAILTO for restart-mirrorlist-processes
   cronvar:
     name: MAILTO
     value: "root@fedoraproject.org,adrian@lisas.de"
-    cron_file: restart-mirrorlist-containers
+    cron_file: restart-mirrorlist-processes
   tags:
   - mirrorlist_proxy
 

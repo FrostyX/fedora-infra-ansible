@@ -1,18 +1,12 @@
 #!/bin/bash
 
 #
-# This job handles hourly restarting mirrorlist container(s) and making sure all is well.
-#
-# Starting with Fedora 31 this no longer uses containers.
+# This job handles restarting the mirrorlist process and making sure all is well.
 #
 
-##
-## Docker ports for mirrors
+## ports for mirrorlist processes
 mirrorlist1="http://localhost:18081/metalink?repo=rawhide&arch=x86_64"
 mirrorlist2="http://localhost:18082/metalink?repo=rawhide&arch=x86_64"
-{% if datacenter == 'iad2' %}
-mirrorlist3="http://localhost:18083/metalink?repo=rawhide&arch=x86_64"
-{% endif %}
 
 TIME_DRAIN=30
 TIME_RESTART=5
@@ -26,15 +20,6 @@ if [ ! -f /srv/mirrorlist/data/mirrorlist2/global_netblocks.txt ];
 then
 	cp /srv/mirrorlist/data/mirrorlist1/* /srv/mirrorlist/data/mirrorlist2/
 fi
-
-{% if datacenter == 'iad2' %}
-# We have more mirror containers here
-if [ ! -f /srv/mirrorlist/data/mirrorlist3/global_netblocks.txt ];
-then
-	cp /srv/mirrorlist/data/mirrorlist1/* /srv/mirrorlist/data/mirrorlist3/
-fi
-{% endif %}
-
 
 ## Check that protbuf cache is newer than old protobuf cache
 if [ /srv/mirrorlist/data/mirrorlist1/mirrorlist_cache.proto -nt /srv/mirrorlist/data/mirrorlist2/mirrorlist_cache.proto ]; then
@@ -58,16 +43,6 @@ if [ $? != 0 ]; then
 	exit 1
 fi
 
-{% if datacenter == 'iad2' %}
-# check mirrorlist3 (old protbuf cache and see that it's processing ok)
-curl -q -H mirrors.fedoraproject.org ${mirrorlist3} -s -f --retry 50 --retry-delay 10 --retry-connrefused --retry-max-time 180 | grep "sha512" >/dev/null
-if [ $? != 0 ]; then
-	echo "ERROR: mirrorlist3 not processing correctly"
-	exit 1
-fi
-{% endif %}
-
-
 # Drain mirrorlist1. This is safe since we assured that local2 is serving
 echo "enable server mirror-lists-backend/mirrorlist-local2" | nc -U /var/run/haproxy-admin >& /dev/null
 echo "set server mirror-lists-backend/mirrorlist-local1 state drain" | nc -U /var/run/haproxy-admin >& /dev/null
@@ -80,11 +55,6 @@ systemctl stop mirrorlist1
 sleep 1
 systemctl start mirrorlist1
 if [[ ${?} -ne 0 ]]; then
-{% if ansible_distribution_major_version|int < 31  %}
-    # We have seen this to fail because podman was not able to completely
-    # remove the container for some reason. First try this:
-    sudo -u mirrormanager /usr/bin/podman rm mirrorlist1.service --storage --force
-{% endif %}
     systemctl start mirrorlist1
     if [[ ${?} -ne 0 ]]; then
         echo "Unable to start mirrorlist1"
@@ -130,32 +100,3 @@ if [ $? != 0 ]; then
 fi
 
 echo "enable server mirror-lists-backend/mirrorlist-local2" | nc -U /var/run/haproxy-admin >& /dev/null
-
-{% if datacenter == 'iad2' %}
-# copy new protbuf cache to mirrorlist3
-cp -a /srv/mirrorlist/data/mirrorlist1/* /srv/mirrorlist/data/mirrorlist3/
-
-# Drain mirrorlist3
-echo "set server mirror-lists-backend/mirrorlist-local3 state drain" | nc -U /var/run/haproxy-admin >& /dev/null
-sleep ${TIME_DRAIN}
-echo "disable server mirror-lists-backend/mirrorlist-local3" | nc -U /var/run/haproxy-admin >& /dev/null
-sleep ${TIME_DISABLE}
-
-# restart mirrorlist3
-systemctl stop mirrorlist3
-sleep 1
-systemctl start mirrorlist3
-if [[ ${?} -ne 0 ]]; then
-    echo "Unable to start mirrorlist3"
-    exit 1
-fi
-
-sleep ${TIME_RESTART}
-curl -q -H mirrors.fedoraproject.org ${mirrorlist3} -o/dev/null -s -f --retry 50 --retry-delay 10 --retry-connrefused --retry-max-time 180
-if [ $? != 0 ]; then
-	echo "ERROR: mirrorlist3 did not restart correctly"
-	exit 1
-fi
-
-echo "enable server mirror-lists-backend/mirrorlist-local3" | nc -U /var/run/haproxy-admin >& /dev/null
-{% endif %}

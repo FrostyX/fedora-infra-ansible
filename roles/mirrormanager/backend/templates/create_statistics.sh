@@ -6,7 +6,6 @@ FRONTENDS="{% for host in groups['mm_frontend'] %} {{ host }} {% endfor %}"
 INPUT="/var/log/mirrormanager/mirrorlist.log"
 CONTAINER1="/var/log/mirrormanager/mirrorlist1.service.log"
 CONTAINER2="/var/log/mirrormanager/mirrorlist2.service.log"
-CONTAINER3="/var/log/mirrormanager/mirrorlist3.service.log"
 
 if [ "$1" == "yesterday" ]; then
 	STATISTICS="/usr/bin/mirrorlist_statistics -o 1"
@@ -24,11 +23,9 @@ trap "rm -f ${OUTPUT}/*; rmdir ${OUTPUT}" QUIT TERM INT HUP EXIT
 for s in ${MIRRORLIST_PROXIES}; do
 	ssh $s "( cat $CONTAINER1 | grep -v 127.0.0.1 | gzip -4 )" >> ${OUTPUT}/mirrorlist.log.gz
 	ssh $s "( cat $CONTAINER2 | grep -v 127.0.0.1 | gzip -4 )" >> ${OUTPUT}/mirrorlist.log.gz
-	ssh $s "( cat $CONTAINER3 | grep -v 127.0.0.1 | gzip -4 )" >> ${OUTPUT}/mirrorlist.log.gz 2>/dev/null
 	if [ "$1" == "yesterday" ]; then
 		ssh $s "( xzcat $CONTAINER1-${DATE}.xz | grep -v 127.0.0.1 | gzip -4 )" >> ${OUTPUT}/mirrorlist.log.gz
 		ssh $s "( xzcat $CONTAINER2-${DATE}.xz | grep -v 127.0.0.1 | gzip -4 )" >> ${OUTPUT}/mirrorlist.log.gz
-		ssh $s "( xzcat $CONTAINER3-${DATE}.xz | grep -v 127.0.0.1 | gzip -4 )" >> ${OUTPUT}/mirrorlist.log.gz 2>/dev/null
 	fi
 done
 
