@@ -40,7 +40,7 @@
   copy: src=backend.cron dest=/etc/cron.d/mm2_backend.cron
   tags:
   - config
-  when: env != 'staging' and datacenter != 'iad2'
+  when: env != 'staging'
 
 - name: install backend helper scripts
   copy: src={{ item }} dest=/usr/local/bin/{{ item }} mode=0755
