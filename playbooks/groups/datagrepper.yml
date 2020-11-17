@@ -17,7 +17,7 @@
   - rkhunter
   - nagios_client
   - hosts
-  - fas_client
+  - { role: fas_client, when: env != "staging" }
   - collectd/base
   - { role: fedmsg/base,
       when: deployment_type == "prod" }
