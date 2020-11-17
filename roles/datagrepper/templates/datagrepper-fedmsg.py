@@ -9,14 +9,10 @@ config = {
     # and we don't want *read* operations on that database to slow down all our
     # other apps.
     {% if env == "staging" %}
-    'datanommer.sqlalchemy.url': 'postgresql://{{ datanommerDBUser }}:{{ datanommerDBPassword }}@db-datanommer.stg.phx2.fedoraproject.org/datanommer',
+    'datanommer.sqlalchemy.url': 'postgresql://{{ datanommerDBUser }}:{{ datanommerDBPassword }}@db-datanommer01.stg.iad2.fedoraproject.org/datanommer',
     'fedmenu_url': 'https://apps.stg.fedoraproject.org/fedmenu',
     'fedmenu_data_url': 'https://apps.stg.fedoraproject.org/js/data.js',
-    {% elif datacenter == 'phx2' %}
-    'datanommer.sqlalchemy.url': 'postgresql://{{ datanommerDBUser }}:{{ datanommerDBPassword }}@db-datanommer02.phx2.fedoraproject.org/datanommer',
-    'fedmenu_url': 'https://apps.fedoraproject.org/fedmenu',
-    'fedmenu_data_url': 'https://apps.fedoraproject.org/js/data.js',
-    {% elif datacenter == 'iad2' %}
+    {% else %}
     'datanommer.sqlalchemy.url': 'postgresql://{{ datanommerDBUser }}:{{ datanommerDBPassword }}@db-datanommer01.iad2.fedoraproject.org/datanommer',
     'fedmenu_url': 'https://apps.fedoraproject.org/fedmenu',
     'fedmenu_data_url': 'https://apps.fedoraproject.org/js/data.js',
