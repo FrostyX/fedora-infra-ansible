@@ -33,8 +33,6 @@ RUN git clone https://github.com/fedora-infra/fasjson.git && \
     pushd fasjson && \
     git checkout {{ (env == 'production')|ternary('stable', 'staging') }} && \
     pip-3 install . && \
-    mkdir -p /usr/share/fasjson && \
-    cp ansible/roles/fasjson/files/fasjson.wsgi /usr/share/fasjson && \
     popd && \
     rm -rf fasjson
 RUN rm -f /etc/krb5.conf && ln -sf /etc/krb5/krb5.conf /etc/krb5.conf && \
