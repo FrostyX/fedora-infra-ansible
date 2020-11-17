@@ -15,6 +15,9 @@ PUBLIC_TOTALS_CSV=$PUBLIC_DATA_DIR/totals.csv
 UPDATE_RAWDB=countme-update-rawdb.sh
 UPDATE_TOTALS=countme-update-totals.sh
 
+# How we're gonna call git - our local repo dir is LOCAL_DATA_DIR
+_GIT="git -C $LOCAL_DATA_DIR"
+
 # Copy with atomic overwrite
 atomic_copy() {
     local src="$1" dst="$2"
@@ -94,12 +97,13 @@ set -e
 _run $UPDATE_RAWDB --rawdb $RAW_DB
 _run $UPDATE_TOTALS --rawdb $RAW_DB --totals-db $TOTALS_DB --totals-csv $TOTALS_CSV
 
-# Update local git repo
+# If needed: init local git repo and mark file(s) to be tracked therein
 if [ ! -d $LOCAL_DATA_DIR/.git ]; then
-    _run git init $LOCAL_DATA_DIR
-    _run git -C $LOCAL_DATA_DIR add -N $(realpath $TOTALS_CSV --relative-to $LOCAL_DATA_DIR)
+    _run $_GIT init
+    _run $_GIT add -N $(realpath $TOTALS_CSV --relative-to $LOCAL_DATA_DIR)
 fi
-_run git -C $LOCAL_DATA_DIR commit -a -m "$(date -u +%F) update"
+# If any tracked files were updated, commit changes
+_run $_GIT diff --quiet || _run $_GIT commit -a -m "$(date -u +%F) update"
 
 # Copy new data into place
 _run atomic_copy $TOTALS_DB $PUBLIC_TOTALS_DB
