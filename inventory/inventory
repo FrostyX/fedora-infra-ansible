@@ -621,6 +621,7 @@ copr-dist-git-dev.aws.fedoraproject.org
 copr-fe-dev.aws.fedoraproject.org
 copr-keygen-dev.aws.fedoraproject.org
 datagrepper01.stg.iad2.fedoraproject.org
+db-datanommer01.stg.iad2.fedoraproject.org
 db-fas01.stg.iad2.fedoraproject.org
 db-koji01.stg.iad2.fedoraproject.org
 db01.stg.iad2.fedoraproject.org
