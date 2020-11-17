@@ -42,20 +42,24 @@
   - config
   when: env != 'staging' and datacenter != 'iad2'
 
-- name: install the umdl-required script
-  copy: src=umdl-required dest=/usr/local/bin/umdl-required mode=0755
+- name: install backend helper scripts
+  copy: src={{ item }} dest=/usr/local/bin/{{ item }} mode=0755
+  with_items:
+  - umdl-required
+  - update-mirrorlist-server
+  tags:
+  - mirrormanager/backend
 
 - name: install the umdl-required logrotate file
   copy: src=mm2_umdl-required.logrotate dest=/etc/logrotate.d/mm2_umdl-required mode=644
 
-- name: install backend helper scripts
+- name: install backend helper scripts from template
   template: src={{ item }} dest=/usr/local/bin/{{ item }} mode=0755
   with_items:
   - sync_cache_to_mirrorlists.sh
   - handle_propagation.sh
   - create_maps.sh
   - create_statistics.sh
-  - update-mirrorlist-server
   tags:
   - mirrormanager/backend
 
