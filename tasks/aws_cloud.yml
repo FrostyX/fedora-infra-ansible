@@ -140,8 +140,3 @@
 
 - name: Include SSH config
   import_role: name=basessh
-
-# we need this to allow initial postfix service start
-- name: setup a temporary hostname
-  hostname: name={{ inventory_hostname }}
-  when: birthday is defined
