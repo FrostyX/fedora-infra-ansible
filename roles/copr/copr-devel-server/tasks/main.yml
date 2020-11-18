@@ -6,7 +6,7 @@
 
 - name: enable @copr/copr when on devel machine
   command:
-    cmd: dnf copr -y enable {{ item }}
+    cmd: dnf copr -y remove {{ item }}
     warn: false
   with_items:
     - "@copr/copr"
