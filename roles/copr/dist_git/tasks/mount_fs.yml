@@ -25,11 +25,5 @@
     - swap.fstab
     - swap
 
-- name: Mount swap
-  command: "swapon -a"
-  tags:
-    - swap.file.swapon
-    - swap
-
 - name: mount tmp on tmpfs
   mount: name=/tmp src=tmpfs fstype=tmpfs state=mounted opts=defaults,size=39G,nr_inodes=2g
