@@ -1,14 +1,16 @@
 ---
-- name: make sure dnf-plugins-core are installed
-  package: name=dnf-plugins-core state=present
-  when:
-    - devel|bool
+# Tasks that we want to execute only on the devel Copr instance
 
-- name: enable @copr/copr when on devel machine
-  command:
-    cmd: dnf copr -y remove {{ item }}
-    warn: false
-  with_items:
-    - "@copr/copr"
-  when:
-    - devel|bool
+# - name: make sure dnf-plugins-core are installed
+#   package: name=dnf-plugins-core state=present
+#   when:
+#     - devel|bool
+#
+# - name: enable @copr/copr when on devel machine
+#   command:
+#     cmd: dnf copr -y remove {{ item }}
+#     warn: false
+#   with_items:
+#     - "@copr/copr"
+#   when:
+#     - devel|bool
