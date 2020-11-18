@@ -1,8 +1,6 @@
 ---
 devel: true
 
-birthday: yes
-
 copr_messaging: false
 
 datacenter: aws
