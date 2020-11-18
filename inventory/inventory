@@ -922,7 +922,7 @@ copr-fe-dev.aws.fedoraproject.org
 
 ### WHEN ADDING OR REMOVING TEMP HOSTS ADD/REMOVE IN inventory/cloud file
 [copr_back_dev_aws]
-copr-be-dev.aws.fedoraproject.org birthday=yes
+copr-be-dev.aws.fedoraproject.org
 copr-be-dev-temp.aws.fedoraproject.org
 
 ### WHEN ADDING OR REMOVING TEMP HOSTS ADD/REMOVE IN inventory/cloud file
@@ -931,7 +931,7 @@ copr-keygen.aws.fedoraproject.org
 
 ### WHEN ADDING OR REMOVING TEMP HOSTS ADD/REMOVE IN inventory/cloud file
 [copr_keygen_dev_aws]
-copr-keygen-dev.aws.fedoraproject.org birthday=yes
+copr-keygen-dev.aws.fedoraproject.org
 
 ### WHEN ADDING OR REMOVING TEMP HOSTS ADD/REMOVE IN inventory/cloud file
 [copr_dist_git_dev_aws]
