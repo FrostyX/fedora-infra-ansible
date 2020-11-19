@@ -8,7 +8,7 @@ koschei_container_image: quay.io/koschei/koschei:fedora-stage
 koschei_topurl: https://koschei.stg.fedoraproject.org
 # koschei database on pgbdr.stg is in inconsistent state, so we're
 # using non-BDR db01.stg for now.
-koschei_pgsql_hostname: db01.stg.phx2.fedoraproject.org
+koschei_pgsql_hostname: db01.stg.iad2.fedoraproject.org
 koschei_koji_hub: koji.stg.fedoraproject.org
 koschei_kojipkgs: koji.stg.fedoraproject.org
 koschei_koji_web: koji.stg.fedoraproject.org
