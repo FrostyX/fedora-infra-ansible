@@ -47,8 +47,6 @@ qvmhost-x86-01.iad2.fedoraproject.org
 qvmhost-x86-02.iad2.fedoraproject.org
 openqa-x86-worker01.iad2.fedoraproject.org
 openqa-x86-worker02.iad2.fedoraproject.org
-openqa-a64-worker02.iad2.fedoraproject.org
-openqa-a64-worker03.iad2.fedoraproject.org
 ## Virt
 vmhost-x86-01.iad2.fedoraproject.org
 vmhost-x86-01.stg.iad2.fedoraproject.org
@@ -95,14 +93,6 @@ bvmhost-p08-01.stg.iad2.fedoraproject.org
 # [storinator]
 # storinator01.fedorainfracloud.org
 
-[cavium]
-# 2 thunderx2 machines on loan for builders
-#buildvmhost-aarch64-01.arm.fedoraproject.org
-#buildvmhost-aarch64-02.arm.fedoraproject.org
-# 2 thunderx1 machines on loan for copr builders
-# virthost-aarch64-os01.fedorainfracloud.org
-# virthost-aarch64-os02.fedorainfracloud.org
-
 [aarch64]
 bvmhost-a64-01.iad2.fedoraproject.org
 bvmhost-a64-02.iad2.fedoraproject.org
@@ -124,7 +114,8 @@ buildhw-a64-09.iad2.fedoraproject.org
 buildhw-a64-11.iad2.fedoraproject.org
 buildhw-a64-19.iad2.fedoraproject.org
 buildhw-a64-20.iad2.fedoraproject.org
-
+openqa-a64-worker02.iad2.fedoraproject.org
+openqa-a64-worker03.iad2.fedoraproject.org
 
 [hardware:children]
 powerpc
@@ -132,5 +123,4 @@ dells
 ibms
 appliedmicro
 # storinator
-cavium
 aarch64
