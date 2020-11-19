@@ -37,9 +37,6 @@ openqa_env: staging
 # ON THE EDGE (radical guitar riff)
 openqa_repo: updates-testing
 
-# 2020-11 git bump, dep
-openqa_scratch: ["54880919", "54872388"]
-
 wikitcms_token: "{{ private }}/files/openidc/staging/wikitcms.json"
 openqa_wikitcms_hostname: stg.fedoraproject.org
 openqa_resultsdb_url: http://resultsdb01.stg.iad2.fedoraproject.org/resultsdb_api/api/v2.0/
