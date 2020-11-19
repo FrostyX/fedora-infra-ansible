@@ -1,43 +1,17 @@
 [dells]
 osuosl01.fedoraproject.org
-# bvirthost01.phx2.fedoraproject.org
-# bvirthost01.stg.phx2.fedoraproject.org
-# bvirthost04.phx2.fedoraproject.org
-# bvirthost05.phx2.fedoraproject.org
-# bvirthost12.phx2.fedoraproject.org
-# bvirthost13.phx2.fedoraproject.org
-# bvirthost14.phx2.fedoraproject.org
-# bvirthost15.phx2.fedoraproject.org
-# virthost01.stg.phx2.fedoraproject.org
-# virthost02.stg.phx2.fedoraproject.org
-# virthost03.stg.phx2.fedoraproject.org
-# virthost04.stg.phx2.fedoraproject.org
-# virthost05.stg.phx2.fedoraproject.org
-# virthost01.phx2.fedoraproject.org
-# virthost02.phx2.fedoraproject.org
-#autosign02.phx2.fedoraproject.org
-# virthost04.phx2.fedoraproject.org
-# virthost12.phx2.fedoraproject.org
-# virthost14.phx2.fedoraproject.org
-# virthost15.phx2.fedoraproject.org
-# virthost17.phx2.fedoraproject.org
-# virthost18.phx2.fedoraproject.org
-# virthost19.phx2.fedoraproject.org
-# virthost21.phx2.fedoraproject.org
-# virthost22.phx2.fedoraproject.org
 ibiblio01.fedoraproject.org
-#ibiblio04.fedoraproject.org
 ibiblio05.fedoraproject.org
-#virthost-comm01.qa.fedoraproject.org
-#virthost-comm03.qa.fedoraproject.org
-#virthost-comm04.qa.fedoraproject.org
-#osuosl03.fedoraproject.org
 # ssh often disabled
 #autosign01.iad2.fedoraproject.org
 virthost-rdu01.fedoraproject.org
 #virthost-rdu02.fedoraproject.org
 virthost-cc-rdu01.fedoraproject.org
 virthost-cc-rdu02.fedoraproject.org
+vmhost-x86-cc-rdu05.rdu-cc.fedoraproject.org
+vmhost-x86-cc-rdu06.rdu-cc.fedoraproject.org
+vmhost-x86-copr01.rdu-cc.fedoraproject.org
+## Builders IAD
 buildhw-x86-01.iad2.fedoraproject.org
 buildhw-x86-02.iad2.fedoraproject.org
 buildhw-x86-03.iad2.fedoraproject.org
@@ -54,6 +28,45 @@ buildhw-x86-13.iad2.fedoraproject.org
 buildhw-x86-14.iad2.fedoraproject.org
 buildhw-x86-15.iad2.fedoraproject.org
 buildhw-x86-16.iad2.fedoraproject.org
+bvmhost-x86-01.iad2.fedoraproject.org
+bvmhost-x86-02.iad2.fedoraproject.org
+bvmhost-x86-03.iad2.fedoraproject.org
+bvmhost-x86-04.iad2.fedoraproject.org
+bvmhost-x86-05.iad2.fedoraproject.org
+bvmhost-x86-06.iad2.fedoraproject.org
+bvmhost-x86-07.iad2.fedoraproject.org
+bvmhost-x86-08.iad2.fedoraproject.org
+bvmhost-x86-01.stg.iad2.fedoraproject.org
+bvmhost-x86-02.stg.iad2.fedoraproject.org
+bvmhost-x86-03.stg.iad2.fedoraproject.org
+##
+bkernel01.iad2.fedoraproject.org
+bkernel02.iad2.fedoraproject.org
+## QA
+qvmhost-x86-01.iad2.fedoraproject.org
+qvmhost-x86-02.iad2.fedoraproject.org
+openqa-x86-worker01.iad2.fedoraproject.org
+openqa-x86-worker02.iad2.fedoraproject.org
+openqa-a64-worker02.iad2.fedoraproject.org
+openqa-a64-worker03.iad2.fedoraproject.org
+## Virt
+vmhost-x86-01.iad2.fedoraproject.org
+vmhost-x86-01.stg.iad2.fedoraproject.org
+vmhost-x86-02.iad2.fedoraproject.org
+vmhost-x86-02.stg.iad2.fedoraproject.org
+vmhost-x86-03.iad2.fedoraproject.org
+vmhost-x86-03.stg.iad2.fedoraproject.org
+vmhost-x86-04.iad2.fedoraproject.org
+vmhost-x86-04.stg.iad2.fedoraproject.org
+vmhost-x86-05.iad2.fedoraproject.org
+vmhost-x86-05.stg.iad2.fedoraproject.org
+vmhost-x86-06.iad2.fedoraproject.org
+vmhost-x86-06.stg.iad2.fedoraproject.org
+vmhost-x86-07.iad2.fedoraproject.org
+vmhost-x86-07.stg.iad2.fedoraproject.org
+vmhost-x86-08.stg.iad2.fedoraproject.org
+vmhost-x86-09.stg.iad2.fedoraproject.org
+vmhost-x86-10.stg.iad2.fedoraproject.org
 
 [ibms]
 virthost-cc-rdu03.fedoraproject.org
@@ -65,10 +78,9 @@ bvmhost-p09-01.iad2.fedoraproject.org
 bvmhost-p09-02.iad2.fedoraproject.org
 bvmhost-p09-03.iad2.fedoraproject.org
 bvmhost-p09-04.iad2.fedoraproject.org
-#ppc8-01.ppc.fedoraproject.org
-#ppc8-02.ppc.fedoraproject.org
-#ppc8-03.ppc.fedoraproject.org
-#ppc8-04.ppc.fedoraproject.org
+openqa-p09-worker01.iad2.fedoraproject.org
+bvmhost-p08-03.iad2.fedoraproject.org
+bvmhost-p08-01.stg.iad2.fedoraproject.org
 
 [appliedmicro]
 # buildhw-aarch64-01.arm.fedoraproject.org
@@ -91,19 +103,7 @@ bvmhost-p09-04.iad2.fedoraproject.org
 # virthost-aarch64-os01.fedorainfracloud.org
 # virthost-aarch64-os02.fedorainfracloud.org
 
-[emag]
-#buildvmhost-aarch64-10.arm.fedoraproject.org
-#buildvmhost-aarch64-11.arm.fedoraproject.org
-#buildvmhost-aarch64-12.arm.fedoraproject.org
-#buildvmhost-aarch64-13.arm.fedoraproject.org
-#buildvmhost-aarch64-14.arm.fedoraproject.org
-#buildvmhost-aarch64-15.arm.fedoraproject.org
-#buildvmhost-aarch64-16.arm.fedoraproject.org
-#buildvmhost-aarch64-17.arm.fedoraproject.org
-#buildvmhost-aarch64-18.arm.fedoraproject.org
-#buildvmhost-a64-osbs-01.arm.fedoraproject.org
-#openqa-aarch64-01.qa.fedoraproject.org
-#openqa-aarch64-03.qa.fedoraproject.org
+[aarch64]
 bvmhost-a64-01.iad2.fedoraproject.org
 bvmhost-a64-02.iad2.fedoraproject.org
 bvmhost-a64-03.iad2.fedoraproject.org
@@ -111,6 +111,19 @@ bvmhost-a64-04.iad2.fedoraproject.org
 bvmhost-a64-05.iad2.fedoraproject.org
 bvmhost-a64-06.iad2.fedoraproject.org
 bvmhost-a64-07.iad2.fedoraproject.org
+buildhw-a64-01.iad2.fedoraproject.org
+buildhw-a64-02.iad2.fedoraproject.org
+buildhw-a64-03.iad2.fedoraproject.org
+buildhw-a64-04.iad2.fedoraproject.org
+buildhw-a64-05.iad2.fedoraproject.org
+buildhw-a64-06.iad2.fedoraproject.org
+buildhw-a64-07.iad2.fedoraproject.org
+buildhw-a64-08.iad2.fedoraproject.org
+buildhw-a64-09.iad2.fedoraproject.org
+#buildhw-a64-10.iad2.fedoraproject.org
+buildhw-a64-11.iad2.fedoraproject.org
+buildhw-a64-19.iad2.fedoraproject.org
+buildhw-a64-20.iad2.fedoraproject.org
 
 
 [hardware:children]
@@ -120,4 +133,4 @@ ibms
 appliedmicro
 # storinator
 cavium
-emag
+aarch64
