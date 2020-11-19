@@ -187,7 +187,7 @@
       when: etcosbs_kt_stat.stat.exists == false
 
     - name: pull fedora required docker images
-      command: "docker pull fedora:latest"
+      command: "docker pull registry.fedoraproject.org/fedora:latest"
       register: docker_pull_fedora
       changed_when: "'Downloaded newer image' in docker_pull_fedora.stdout"
 
