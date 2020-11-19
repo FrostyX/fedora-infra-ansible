@@ -11,6 +11,10 @@ openqa_secret: "{{ prod_openqa_apisecret }}"
 openqa_env_suffix:
 openqa_env: production
 
+# 2020-11: we're deploying prod from u-t ATM because I don't
+# want to wait a week to push stable 
+openqa_repo: updates-testing
+
 # we are all NFS workers for now at least
 openqa_nfs_worker: true
 

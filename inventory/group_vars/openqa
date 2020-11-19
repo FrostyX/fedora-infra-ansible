@@ -20,6 +20,10 @@ openqa_webapi_plugins: FedoraMessaging FedoraUpdateRestart
 openqa_env_suffix:
 openqa_env: production
 
+# 2020-11: we're deploying prod from u-t ATM because I don't
+# want to wait a week to push stable
+openqa_repo: updates-testing
+
 wikitcms_token: "{{ private }}/files/openidc/production/wikitcms.json"
 openqa_wikitcms_hostname: fedoraproject.org
 openqa_resultsdb_url: http://resultsdb01.iad2.fedoraproject.org/resultsdb_api/api/v2.0/
