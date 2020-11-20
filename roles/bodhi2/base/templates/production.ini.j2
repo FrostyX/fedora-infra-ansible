@@ -579,6 +579,8 @@ fedora_modular.mandatory_days_in_testing = 7
 {% if FedoraBranchedBodhi is defined and FedoraBranchedBodhi == 'preenable' %}
 f{{ FedoraBranchedNumber }}.status = pre_beta
 f{{ FedoraBranchedNumber }}.pre_beta.mandatory_days_in_testing = 0
+f{{ FedoraBranchedNumber }}.pre_beta.critpath.min_karma = 0
+f{{ FedoraBranchedNumber }}.pre_beta.critpath.stable_after_days_without_negative_karma = 0
 {% elif FedoraBranchedBodhi is defined and FedoraBranchedBodhi == 'prebeta' %}
 f{{ FedoraBranchedNumber }}.status = pre_beta
 f{{ FedoraBranchedNumber }}.pre_beta.mandatory_days_in_testing = 3
