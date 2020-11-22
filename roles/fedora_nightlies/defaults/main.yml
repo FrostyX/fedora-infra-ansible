@@ -1,0 +1,9 @@
+fedora_nightlies_amqp_passive: false
+fedora_nightlies_amqp_url: "amqps://fedora:@rabbitmq.fedoraproject.org/%2Fpublic_pubsub"
+fedora_nightlies_amqp_cacert: /etc/fedora-messaging/cacert.pem
+fedora_nightlies_amqp_key: /etc/fedora-messaging/fedora-key.pem
+fedora_nightlies_amqp_cert: /etc/fedora-messaging/fedora-cert.pem
+fedora_nightlies_amqp_routing_keys: ["org.fedoraproject.prod.openqa.job.done", "org.fedoraproject.prod.pungi.compose.status.change"]
+fedora_nightlies_amqp_mailfrom: "root@{{ external_hostname }}"
+fedora_nightlies_amqp_smtp: localhost
+fedora_nightlies_disabled: false

@@ -196,12 +196,13 @@
 
 # relvalconsumer isn't particularly related to openQA in any way, we
 # just put that role on these boxes. There's nowhere more obviously
-# correct for it, really.
+# correct for it, really. Ditto fedora_nightlies
   roles:
    - { role: openqa/server, tags: ['openqa_server'] }
    - { role: openqa/dispatcher, tags: ['openqa_dispatcher'] }
    - { role: check-compose, tags: ['check-compose'], when: "checkcompose_env_suffix is defined" }
    - { role: relvalconsumer, tags: ['relvalconsumer'], when: "relvalconsumer_env_suffix is defined" }
+   - { role: fedora_nightlies, tags: ['fedora_nightlies'], when: "fedora_nightlies_amqp_queue is defined" }
 
   handlers:
    - import_tasks: "{{ handlers_path }}/restart_services.yml"

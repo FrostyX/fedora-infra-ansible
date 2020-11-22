@@ -1,0 +1,118 @@
+# fedora-messaging consumer configuration file for fedora_nightlies
+# (nightly image static site generator). See fedora_nightlies main.yml
+# comments for details on the variables that must be set here.
+#
+# This file is in the TOML format.
+
+amqp_url = "{{ fedora_nightlies_amqp_url }}"
+{% if fedora_nightlies_amqp_passive|bool %}
+passive_declares = true
+{% endif %}
+callback = "fedora_nightlies:NightlyConsumer"
+
+[tls]
+ca_cert = "{{ fedora_nightlies_amqp_cacert }}"
+keyfile = "{{ fedora_nightlies_amqp_key }}"
+certfile = "{{ fedora_nightlies_amqp_cert }}"
+
+[client_properties]
+app = "Fedora nightly image static site generator (fedora_nightlies)"
+app_url = "https://pagure.io/fedora_nightlies"
+app_contacts_email = ["adamwill@fedoraproject.org", "qa-devel@lists.fedoraproject.org"]
+
+[exchanges."amq.topic"]
+type = "topic"
+durable = true
+auto_delete = false
+arguments = {}
+
+[queues."{{ fedora_nightlies_amqp_queue }}"]
+durable = false
+auto_delete = true
+exclusive = true
+arguments = {}
+
+[[bindings]]
+queue = "{{ fedora_nightlies_amqp_queue }}"
+exchange = "amq.topic"
+routing_keys = [{% for key in fedora_nightlies_amqp_routing_keys %}"{{ key }}",{% endfor %}]
+# need this to receive messages from ZMQ->AMQP bridge
+[[bindings]]
+queue = "{{ fedora_nightlies_amqp_queue }}"
+exchange = "zmq.topic"
+routing_keys = [{% for key in fedora_nightlies_amqp_routing_keys %}"{{ key }}",{% endfor %}]
+
+[consumer_config]
+# JSON data file location. If not set, default
+# /var/lib/fedora_nightlies/nightlies.json will be used
+#datafile = "/tmp/nightlies.json"
+# HTML output file location. If not set, default
+# /var/www/fedora_nightlies/nightlies.html will be used
+#htmlfile = "/tmp/nightlies.html"
+
+[qos]
+prefetch_size = 0
+prefetch_count = 25
+
+[log_config]
+version = 1
+disable_existing_loggers = true
+
+[log_config.formatters.simple]
+format = "[%(levelname)s %(name)s] %(message)s"
+
+[log_config.handlers.console]
+class = "logging.StreamHandler"
+formatter = "simple"
+stream = "ext://sys.stdout"
+
+{% if fedora_nightlies_amqp_mailto is defined %}
+[log_config.handlers.email]
+class = "logging.handlers.SMTPHandler"
+formatter = "simple"
+level = "ERROR"
+mailhost = "{{ fedora_nightlies_amqp_smtp }}"
+fromaddr = "{{ fedora_nightlies_amqp_mailfrom }}"
+toaddrs = [{% for key in fedora_nightlies_amqp_mailto %}"{{ key }}",{% endfor %}]
+subject = "fedora_nightlies error"
+{% endif %}
+
+[log_config.loggers.NightlyConsumer]
+level = "INFO"
+propagate = false
+{% if fedora_nightlies_amqp_mailto is defined %}
+handlers = ["console", "email"]
+{% else %}
+handlers = ["console"]
+{% endif %}
+
+[log_config.loggers.fedora_messaging]
+level = "INFO"
+propagate = false
+{% if fedora_nightlies_amqp_mailto is defined %}
+handlers = ["console", "email"]
+{% else %}
+handlers = ["console"]
+{% endif %}
+
+[log_config.loggers.twisted]
+level = "INFO"
+propagate = false
+{% if fedora_nightlies_amqp_mailto is defined %}
+handlers = ["console", "email"]
+{% else %}
+handlers = ["console"]
+{% endif %}
+
+[log_config.loggers.pika]
+level = "WARNING"
+propagate = false
+handlers = ["console"]
+
+[log_config.root]
+level = "ERROR"
+{% if fedora_nightlies_amqp_mailto is defined %}
+handlers = ["console", "email"]
+{% else %}
+handlers = ["console"]
+{% endif %}

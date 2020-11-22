@@ -1,0 +1,5 @@
+# Restart handler for our fedora-messaging consumers
+- name: Conditionally restart fedora_nightlies consumer service
+  command: /usr/local/bin/conditional-restart.sh fm-consumer@fedora_nightlies
+  listen:
+  - restart fedora_nightlies
