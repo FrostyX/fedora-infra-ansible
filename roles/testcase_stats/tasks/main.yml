@@ -6,6 +6,9 @@
 # - testcase_stats_output_dir
 ##      string - Directory where the output should be written.
 
+- name: Include vars
+  include_vars: dir=/srv/web/infra/ansible/vars/all/ ignore_files=README
+
 - name: Install required packages
   package:
     name: relval
