@@ -26,7 +26,7 @@
   template: src=testcase_stats.cron dest=/etc/cron.hourly/testcase_stats owner=root group=root mode=0755
 
 - name: Set up Apache config
-  file: src=fedora_nightlies.conf.httpd dest=/etc/httpd/conf.d/01-fedora_nightlies.conf owner=root group=root mode=0644
+  copy: src=fedora_nightlies.conf.httpd dest=/etc/httpd/conf.d/01-fedora_nightlies.conf owner=root group=root mode=0644
   notify:
   - reload httpd
   tags:
