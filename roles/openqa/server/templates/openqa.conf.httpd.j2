@@ -7,5 +7,5 @@
     ProxyPass /apache-status !
 {% endif %}
     Include conf.d/openqa-common.inc
-    Include conf.d/openqa-extras-*.inc
+    IncludeOptional conf.d/openqa-extras-*.inc
 </VirtualHost>
