@@ -1,6 +1,12 @@
 # This role installs relval (if needed) and deploys a cron drop-in to
 # run `relval testcase-stats` for the next Fedora release once an hour
-# and dump the output to a configured location.
+# and dump the output to a configured location. It also drops an httpd
+# config snippet to enable directory indexing and override proxying
+# for the location on openQA servers (like the one we expect this role
+# to be deployed on). It doesn't actually configure the server to serve
+# the directory out - we're currently relying on the openQA Apache
+# config to do that, if this role gets split out from the openQA server
+# we would need to change that.
 
 # Required vars
 # - testcase_stats_output_dir
@@ -18,3 +24,10 @@
 
 - name: Deploy the cronjob
   template: src=testcase_stats.cron dest=/etc/cron.hourly/testcase_stats owner=root group=root mode=0755
+
+- name: Set up Apache config
+  file: src=fedora_nightlies.conf.httpd dest=/etc/httpd/conf.d/01-fedora_nightlies.conf owner=root group=root mode=0644
+  notify:
+  - reload httpd
+  tags:
+  - config
