@@ -46,12 +46,12 @@ routing_keys = [{% for key in fedora_nightlies_amqp_routing_keys %}"{{ key }}",{
 # JSON data file location. If not set, default
 # /var/lib/fedora_nightlies/nightlies.json will be used
 {% if fedora_nightlies_amqp_data_file is defined %}
-datafile = {{ fedora_nightlies_amqp_data_file }}
+datafile = "{{ fedora_nightlies_amqp_data_file }}"
 {% endif %}
 # HTML output file location. If not set, default
 # /var/www/fedora_nightlies/nightlies.html will be used
 {% if fedora_nightlies_amqp_html_file is defined %}
-htmlfile = {{ fedora_nightlies_amqp_html_file }}
+htmlfile = "{{ fedora_nightlies_amqp_html_file }}"
 {% endif %}
 
 [qos]
