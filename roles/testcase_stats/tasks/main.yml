@@ -11,9 +11,15 @@
 # Required vars
 # - testcase_stats_output_dir
 ##      string - Directory where the output should be written.
+# - FedoraCycleNumber
+##      int - the current Fedora release number. Report will be
+##            produced for the release *after* this one.
 
+# We seem to need this to get FedoraCycleNumber in Fedora infra. If
+# you're running this role elsewhere, make your own arrangements
 - name: Include vars
   include_vars: dir=/srv/web/infra/ansible/vars/all/ ignore_files=README
+  when: "deployment_type is defined"
 
 - name: Install required packages
   package:
