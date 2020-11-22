@@ -1,0 +1,4 @@
+#!/bin/sh
+relval testcase-stats --release {{ FedoraCycleNumber|int + 1 }} --out {{ testcase_stats_output_dir }}/{{ FedoraCycleNumber|int + 1 }} > /dev/null 2>&1
+chmod 0755 {{ testcase_stats_output_dir }}/{{ FedoraCycleNumber|int + 1 }}
+restorecon -r {{ testcase_stats_output_dir }}/{{ FedoraCycleNumber|int + 1 }}

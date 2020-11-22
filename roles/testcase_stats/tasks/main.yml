@@ -1,0 +1,17 @@
+# This role installs relval (if needed) and deploys a cron drop-in to
+# run `relval testcase-stats` for the next Fedora release once an hour
+# and dump the output to a configured location.
+
+# Required vars
+# - testcase_stats_output_dir
+##      string - Directory where the output should be written.
+
+- name: Install required packages
+  package:
+    name: relval
+    state: present
+  tags:
+  - packages
+
+- name: Deploy the cronjob
+  template: src=testcase_stats.cron dest=/etc/cron.hourly/testcase_stats owner=root group=root mode=0755

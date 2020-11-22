@@ -570,6 +570,9 @@ openqa01.iad2.fedoraproject.org
 [fedora_nightlies]
 openqa01.iad2.fedoraproject.org
 
+[testcase_stats]
+openqa01.iad2.fedoraproject.org
+
 [resultsdb:children]
 resultsdb_stg
 resultsdb_prod
