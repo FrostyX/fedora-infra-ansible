@@ -138,6 +138,22 @@
     tags: ['rabbit']
     when: "checkcompose_env_suffix is defined"
 
+    # fedora_nightlies queue, we still use openqa auth for this as it's
+    # easy that way
+  - role: rabbit/queue
+    username: "openqa"
+    queue_name: "openqa_fedora_nightlies"
+    routing_keys:
+        - "org.fedoraproject.prod.openqa.job.done"
+        - "org.fedoraproject.prod.pungi.compose.status.change"
+    write_queues:
+        - "ci"
+        - "openqa"
+    vars:
+      env: "production"
+    tags: ['rabbit']
+    when: "fedora_nightlies_amqp_queue is defined"
+
 - name: set up openQA server data NFS mounts (staging)
   hosts: openqa_lab
 
