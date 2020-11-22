@@ -148,8 +148,10 @@
   service: name=fm-consumer@fedora_nightlies enabled=yes state=started
   when: not fedora_nightlies_disabled|bool
 
+# This is also icky and assumes something is Including this config snippet,
+# i.e. a Fedora infra-y openQA server. But making it better is a bit hard
 - name: Set up Apache config
-  copy: src=fedora_nightlies.conf.httpd dest=/etc/httpd/conf.d/fedora_nightlies.conf owner=root group=root mode=0644
+  copy: src=openqa-extras-fedora_nightlies.inc.httpd dest=/etc/httpd/conf.d/openqa-extras-fedora_nightlies.inc owner=root group=root mode=0644
   notify:
   - reload httpd
   tags:
