@@ -66,6 +66,12 @@
 ##      string - Fedora Infrastructure thing; for this role, applies an
 ##               infra-specific tweak to httpd config. Don't set it outside
 ##               Fedora infra.
+# - fedora_nightlies_amqp_data_file
+##      string - Full path of JSON file to generate/read. If not set,
+##               fedora_nightlies default will be used
+# - fedora_nightlies_amqp_html_file
+##      string - Full path of HTML file to generate. If not set,
+##               fedora_nightlies default will be used
 
 
 - name: Install required packages
@@ -147,12 +153,3 @@
 - name: Enable and start fedora-messaging fedora_nightlies
   service: name=fm-consumer@fedora_nightlies enabled=yes state=started
   when: not fedora_nightlies_disabled|bool
-
-# This is also icky and assumes something is Including this config snippet,
-# i.e. a Fedora infra-y openQA server. But making it better is a bit hard
-- name: Set up Apache config
-  copy: src=openqa-extras-fedora_nightlies.inc.httpd dest=/etc/httpd/conf.d/openqa-extras-fedora_nightlies.inc owner=root group=root mode=0644
-  notify:
-  - reload httpd
-  tags:
-  - config

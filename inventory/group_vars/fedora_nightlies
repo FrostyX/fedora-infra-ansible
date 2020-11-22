@@ -2,15 +2,14 @@
 # to create queues on the infra AMQP broker, by broker config
 fedora_nightlies_amqp_passive: true
 
-# fedora-messaging job scheduler settings: most of these are the same
-# for prod and stg as they both must listen for prod messages. Only
-# the queue names differs
+# fedora-messaging job scheduler settings
 fedora_nightlies_amqp_url: "amqps://openqa:@rabbitmq.fedoraproject.org/%2Fpubsub"
 fedora_nightlies_amqp_cacert: /etc/fedora-messaging/cacert.pem
 fedora_nightlies_amqp_key: /etc/pki/fedora-messaging/openqa-key.pem
 fedora_nightlies_amqp_cert: /etc/pki/fedora-messaging/openqa-cert.pem
 fedora_nightlies_amqp_queue: "openqa_fedora_nightlies"
 fedora_nightlies_amqp_routing_keys: ["org.fedoraproject.prod.openqa.job.done", "org.fedoraproject.prod.pungi.compose.status.change"]
+fedora_nightlies_amqp_html_file: /usr/share/openqa/public/nightlies.html
 
 # fedora-messaging email error reporting settings
 fedora_nightlies_amqp_mailto: ["adamwill@fedoraproject.org"]
