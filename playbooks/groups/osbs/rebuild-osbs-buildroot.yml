@@ -2,7 +2,7 @@
 # OSBS. This is useful when we want to update some dependencies in the image.
 
 - name: rebuild the osbs buildroot image.
-  hosts: osbs_nodes:osbs_nodes_stg:osbs_aarch64_nodes_stg
+  hosts: osbs_nodes:osbs_nodes_stg:osbs_aarch64_nodes_stg:osbs_aarch64_nodes
   gather_facts: false
   user: root
 
