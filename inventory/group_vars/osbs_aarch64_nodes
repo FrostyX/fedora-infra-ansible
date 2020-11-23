@@ -1,0 +1,20 @@
+---
+# Define resources for this group of hosts here.
+lvm_size: 60000
+mem_size: 8192
+max_mem_size: "{{ mem_size }}"
+num_cpus: 2
+max_cpu: "{{ num_cpus }}"
+virt_install_command: "{{ virt_install_command_aarch64_one_nic }}"
+
+tcp_ports: [ 80, 443, 8443, 10250]
+
+openshift_node_labels: {'region': 'primary', 'zone': 'default'}
+
+nagios_Check_Services:
+  nrpe: true
+  sshd: true
+  named: false
+  dhcpd: false
+  httpd: false
+  swap: false
