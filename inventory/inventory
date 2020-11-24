@@ -851,9 +851,11 @@ pdc-web01.stg.iad2.fedoraproject.org
 [maintainer_test]
 f31-test.fedorainfracloud.org
 f32-test.fedorainfracloud.org
+f33-test.fedorainfracloud.org
 rawhide-test.fedorainfracloud.org
 el6-test.fedorainfracloud.org
 el7-test.fedorainfracloud.org
+el8-test.fedorainfracloud.org
 ppc64le-test.fedorainfracloud.org
 
 #[aarch64_test]

@@ -1,0 +1,2 @@
+datacenter: aws
+inventory_hostname: "f33-test.fedorainfracloud.org"
