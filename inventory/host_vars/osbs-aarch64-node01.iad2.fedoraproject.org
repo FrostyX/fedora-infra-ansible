@@ -1,11 +1,11 @@
 ---
 nm: 255.255.255.0
-gw: 10.3.169.254
+gw: 10.3.170.254
 dns: 10.3.163.33
 ks_url: http://10.3.163.35/repo/rhel/ks/kvm-fedora-33-aarch64-osbs
 ks_repo: http://10.3.163.35/pub/fedora/linux/releases/33/Everything/aarch64/os/
 volgroup: /dev/vg_guests
-eth0_ip: 10.3.167.132
+eth0_ip: 10.3.170.148
 vmhost: bvmhost-a64-osbs-01.iad2.fedoraproject.org
 datacenter: iad2
 host_group: osbs-aarch64-nodes
