@@ -92,30 +92,6 @@ handlers = ["console"]
 
             # Temporary tags
 
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f31-kde"
-            to = "f31-kde"
-            key = "{{ (env == 'production')|ternary('fedora-31', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('3c3359c4', 'd300e724') }}"
-
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f31-gnome"
-            to = "f31-gnome"
-            key = "{{ (env == 'production')|ternary('fedora-31', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('3c3359c4', 'd300e724') }}"
-
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f31-python"
-            to = "f31-python"
-            key = "{{ (env == 'production')|ternary('fedora-31', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('3c3359c4', 'd300e724') }}"
-
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f30-kde"
-            to = "f30-kde"
-            key = "{{ (env == 'production')|ternary('fedora-30', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('cfc659b9', 'd300e724') }}"
-
             # Infra tags
 
             [[consumer_config.koji_instances.primary.tags]]
@@ -143,12 +119,6 @@ handlers = ["console"]
             keyid = "{{ (env == 'production')|ternary('47dd8ef9', 'd300e724') }}"
 
             [[consumer_config.koji_instances.primary.tags]]
-            from = "f31-infra-candidate"
-            to = "f31-infra-stg"
-            key = "{{ (env == 'production')|ternary('fedora-infra', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('47dd8ef9', 'd300e724') }}"
-
-            [[consumer_config.koji_instances.primary.tags]]
             from = "f32-infra-candidate"
             to = "f32-infra-stg"
             key = "{{ (env == 'production')|ternary('fedora-infra', 'testkey') }}"
@@ -168,18 +138,6 @@ handlers = ["console"]
 
 
             # Gated coreos-pool tag
-
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f30-coreos-signing-pending"
-            to = "coreos-pool"
-            key = "{{ (env == 'production')|ternary('fedora-30', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('cfc659b9', 'd300e724') }}"
-
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f31-coreos-signing-pending"
-            to = "coreos-pool"
-            key = "{{ (env == 'production')|ternary('fedora-31', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('3c3359c4', 'd300e724') }}"
 
             [[consumer_config.koji_instances.primary.tags]]
             from = "f32-coreos-signing-pending"
@@ -297,19 +255,6 @@ handlers = ["console"]
             keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
             type = "modular"
 
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f31-signing-pending"
-            to = "f31-updates-testing-pending"
-            key = "{{ (env == 'production')|ternary('fedora-31', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('3c3359c4', 'd300e724') }}"
-
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f31-modular-signing-pending"
-            to = "f31-modular-updates-testing-pending"
-            key = "{{ (env == 'production')|ternary('fedora-31', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('3c3359c4', 'd300e724') }}"
-            type = "modular"
-
             #epel8 modular tags
             [[consumer_config.koji_instances.primary.tags]]
             from = "epel8-modular-signing-pending"
@@ -416,12 +361,6 @@ handlers = ["console"]
             to = "f32-openh264"
             key = "{{ (env == 'production')|ternary('fedora-32', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('12c944d0', 'd300e724') }}"
-
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "f31-openh264"
-            to = "f31-openh264"
-            key = "{{ (env == 'production')|ternary('fedora-31', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('3c3359c4', 'd300e724') }}"
 
             # f33-rebuild
             [[consumer_config.koji_instances.primary.tags]]

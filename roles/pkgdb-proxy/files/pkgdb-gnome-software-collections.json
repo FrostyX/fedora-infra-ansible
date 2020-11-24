@@ -41,7 +41,7 @@
       "dist_tag": ".fc31",
       "koji_name": "f31",
       "name": "Fedora",
-      "status": "Active",
+      "status": "EOL",
       "version": "31"
     },
     {
