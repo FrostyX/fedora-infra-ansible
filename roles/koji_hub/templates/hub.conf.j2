@@ -93,12 +93,12 @@ Plugins = fedmsg-koji-plugin runroot_hub hub_containerbuild tag2distrepo sidetag
 [policy]
 
 tag =
-    user mbs/mbs.fedoraproject.org && tag module-* && package kernel shim grub2 pesign :: allow
-    user mbs/mbs.fedoraproject.org && fromtag module-* && package kernel shim grub2 pesign :: allow
-    user bodhi && tag *-override && package kernel shim grub2 pesign :: allow
-    has_perm autosign && fromtag *-pending && package kernel shim grub2 pesign :: allow
-    has_perm autosign && fromtag *-candidate && package kernel shim grub2 pesign :: allow
-    has_perm secure-boot && package kernel shim grub2 pesign :: allow
+    user mbs/mbs.fedoraproject.org && tag module-* && package kernel shim grub2 pesign fwupd :: allow
+    user mbs/mbs.fedoraproject.org && fromtag module-* && package kernel shim grub2 pesign fwupd :: allow
+    user bodhi && tag *-override && package kernel shim grub2 pesign fwupd :: allow
+    has_perm autosign && fromtag *-pending && package kernel shim grub2 pesign fwupd :: allow
+    has_perm autosign && fromtag *-candidate && package kernel shim grub2 pesign fwupd :: allow
+    has_perm secure-boot && package kernel shim grub2 pesign fwupd :: allow
     # CoreOS continuous builds, https://pagure.io/releng/issue/8165
     operation tag && tag f*-coreos-continuous && has_perm coreos-continuous :: allow
     operation untag && fromtag f*-coreos-continuous && has_perm coreos-continuous :: allow
@@ -110,7 +110,7 @@ tag =
     operation tag && tag eln* && has_perm eln :: allow
     operation untag && fromtag eln* && has_perm eln :: allow
     # deny tagging secureboot packages that are not related to coreos-continuous and eln
-    package kernel shim grub2 pesign :: deny
+    package kernel shim grub2 pesign fwupd :: deny
 # Allow people to tag stuff into infra-candidate if they're infra
     tag *-infra-candidate && has_perm infra :: allow
     tag *-infra-candidate :: deny
