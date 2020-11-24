@@ -53,19 +53,19 @@ osbs_conf_worker_clusters:
     openshift_url: "https://osbs.fedoraproject.org/"
     verify_ssl: 'false'
 
-#  aarch64:
-#  - name: aarch64
-#    max_concurrent_builds: 1
-#    openshift_url: "https://osbs-aarch64-master01.arm.fedoraproject.org:8443/"
-#    verify_ssl: 'false'
+  aarch64:
+  - name: aarch64
+    max_concurrent_builds: 1
+    openshift_url: "https://osbs-aarch64-master01.arm.fedoraproject.org:8443/"
+    verify_ssl: 'false'
 
 
 osbs_platform_descriptors:
 - platform: x86_64
   architecture: amd64
 
-# - platform: aarch64
-#   architecture: arm64
+- platform: aarch64
+  architecture: arm64
 
 _osbs_reactor_config_map:
     version: 1
@@ -76,9 +76,9 @@ _osbs_reactor_config_map:
         max_concurrent_builds: 2
         enabled: True
 
-#      aarch64:
-#      - name: "aarch64"
-#        max_concurrent_builds: 1
+      aarch64:
+      - name: "aarch64"
+        max_concurrent_builds: 1
 
     clusters_client_config_dir: "/var/run/secrets/atomic-reactor/client-config-secret"
 
@@ -146,7 +146,7 @@ _osbs_reactor_config_map:
 
     worker_token_secrets:
     - x86-64-orchestrator
-#    - aarch64-orchestrator
+    - aarch64-orchestrator
     - client-config-secret
 
     skip_koji_check_for_base_image: True
