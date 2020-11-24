@@ -22,7 +22,7 @@ logfile=/var/log/kojira/kojira.log
 with_src=no
 
 ; We want a srpms repo for rawhide only
-separate_source_tags=f{{ FedoraRawhideNumber }}-build
+separate_source_tags=f{{ FedoraRawhideNumber }}-build,eln-build
 
 ; prevent repo cleanup from stalling repo regen
 ;prune_batch_size=1
