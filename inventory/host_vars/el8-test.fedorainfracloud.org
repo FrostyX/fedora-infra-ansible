@@ -17,3 +17,4 @@ ansible_ssh_user: centos
 ansible_become: true
 ansible_become_user: root
 ansible_become_method: sudo
+baseiptables: false
