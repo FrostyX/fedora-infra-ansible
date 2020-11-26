@@ -82,6 +82,9 @@ rules:
 --- !Policy
 id: "no_requirements_testing"
 product_versions:
+  - fedora-34-modular
+  - fedora-34-containers
+  - fedora-34-flatpaks
   - fedora-33-modular
   - fedora-33-containers
   - fedora-33-flatpaks
@@ -109,6 +112,9 @@ rules: []
 --- !Policy
 id: "no_requirements_for_stable"
 product_versions:
+  - fedora-34-modular
+  - fedora-34-containers
+  - fedora-34-flatpaks
   - fedora-33-modular
   - fedora-33-containers
   - fedora-33-flatpaks
