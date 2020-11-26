@@ -34,7 +34,7 @@
 
 
 - name: post-install node host osbs tasks
-  hosts: osbs_masters:osbs_masters_stg:osbs_nodes_stg:osbs_nodes:osbs_aarch64_nodes_stg:osbs_aarch64_nodes
+  hosts: osbs_masters:osbs_masters_stg:osbs_aarch64_masters:osbs_nodes_stg:osbs_nodes:osbs_aarch64_nodes_stg:osbs_aarch64_nodes
   tags:
     - osbs-post-install
   vars_files:
