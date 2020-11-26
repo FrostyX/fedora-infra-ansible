@@ -13,7 +13,14 @@
     - /srv/web/infra/ansible/roles/openshift-apps/message-tagging-service/vars/{{ env }}.yml
 
   roles:
-  - openshift/project
+  - role: openshift/project
+    app: message-tagging-service
+    description: A tagging service tagging builds in koji, used by modularity
+    appowners:
+    - cqi
+    - pingou
+    tags:
+      - appowners
 
   - role: openshift/keytab
     secret_name: keytab
