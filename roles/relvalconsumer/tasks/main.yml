@@ -148,7 +148,7 @@
   check_mode: no
 
 - name: Install relvalconsumer
-  command: "python3 setup.py install --nodeps"
+  command: "python3 setup.py install"
   args:
     chdir: /root/relvalconsumer
   when: "gitrvc is changed or instrvc.rc != 0"
