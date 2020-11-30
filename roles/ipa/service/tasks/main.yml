@@ -1,26 +1,20 @@
 ---
 - name: Create host entry
-  delegate_to: localhost
-  ipa_host:
+  delegate_to: "{{ ipa_server }}"
+  ipahost:
+    ipaadmin_password: "{{ ipa_admin_password }}"
     name: "{{ host }}"
     force: yes
-    ipa_host: "{{ ipa_server }}"
-    ipa_user: admin
-    ipa_pass: "{{ipa_admin_password}}"
-    validate_certs: no
   tags:
   - config
   - krb5
 
 - name: Create service entry
-  delegate_to: localhost
-  ipa_service:
+  delegate_to: "{{ ipa_server }}"
+  ipaservice:
+    ipaadmin_password: "{{ ipa_admin_password }}"
     name: "{{ service }}/{{ host }}"
     force: yes
-    ipa_host: "{{ ipa_server }}"
-    ipa_user: admin
-    ipa_pass: "{{ipa_admin_password}}"
-    validate_certs: no
   tags:
   - config
   - krb5
