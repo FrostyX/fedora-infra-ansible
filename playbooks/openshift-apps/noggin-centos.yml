@@ -80,7 +80,8 @@
   - role: openshift/route
     app: noggin-centos
     routename: noggin
-    host: "accounts{{ env_suffix }}.centos.org"
+    # host: "accounts{{ env_suffix }}.centos.org"
+    host: "aco.app.os{{ env_suffix }}.fedoraproject.org"
     serviceport: web
     servicename: noggin-web
     annotations:
