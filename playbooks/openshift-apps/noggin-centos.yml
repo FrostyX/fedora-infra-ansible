@@ -15,7 +15,7 @@
     username: "noggin{{ env_suffix }}"
 
   - role: openshift/project
-    app: noggin
+    app: noggin-centos
     description: "Self-service account portal"
     appowners:
     - abompard
@@ -24,7 +24,7 @@
       - apply-appowners
     when: env == "production"
   - role: openshift/project
-    app: noggin
+    app: noggin-centos
     description: "Self-service account portal"
     appowners:
     - abompard
@@ -36,46 +36,46 @@
     when: env == "staging"
 
   - role: openshift/secret-file
-    app: noggin
+    app: noggin-centos
     secret_name: fedora-messaging-ca
     key: cacert.pem
     privatefile: "rabbitmq/{{env}}/pki/ca.crt"
   - role: openshift/secret-file
-    app: noggin
+    app: noggin-centos
     secret_name: fedora-messaging-crt
     key: noggin-cert.pem
     privatefile: "rabbitmq/{{env}}/pki/issued/noggin{{env_suffix}}.crt"
   - role: openshift/secret-file
-    app: noggin
+    app: noggin-centos
     secret_name: fedora-messaging-key
     key: noggin-key.pem
     privatefile: "rabbitmq/{{env}}/pki/private/noggin{{env_suffix}}.key"
 
   - role: openshift/imagestream
-    app: noggin
+    app: noggin-centos
     imagename: noggin
 
   - role: openshift/object
-    app: noggin
+    app: noggin-centos
     template: buildconfig.yml
     objectname: buildconfig.yml
 
   - role: openshift/object
-    app: noggin
+    app: noggin-centos
     template: configmap.yml
     objectname: configmap.yml
     noggin_theme: centos
 
   - role: openshift/ipa-client
-    app: noggin
+    app: noggin-centos
 
   - role: openshift/object
-    app: noggin
+    app: noggin-centos
     template: service.yml
     objectname: service.yml
 
   - role: openshift/route
-    app: noggin
+    app: noggin-centos
     routename: noggin
     host: "accounts{{ env_suffix }}.centos.org"
     serviceport: web
@@ -84,24 +84,24 @@
       haproxy.router.openshift.io/timeout: 5m
 
   - role: openshift/object
-    app: noggin
+    app: noggin-centos
     template: secrets.yml
     objectname: secrets.yml
 
   - role: openshift/object
-    app: noggin
+    app: noggin-centos
     template: secret-webhook.yml
     objectname: secret-webhook.yml
 
   - role: openshift/object
-    app: noggin
+    app: noggin-centos
     template: deploymentconfig.yml
     objectname: deploymentconfig.yml
 
   # - role: openshift/start-build
-  #   app: noggin
+  #   app: noggin-centos
   #   buildname: noggin
 
   # - role: openshift/rollout
-  #   app: noggin
+  #   app: noggin-centos
   #   dcname: noggin
