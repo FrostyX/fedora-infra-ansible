@@ -69,7 +69,7 @@ spec:
           value: "deploy.wsgi"
         - name: APP_CONFIG
           value: "/etc/noggin/gunicorn.conf.py"
-        {% if subdir %}
+        {% if subdir is defined %}
         - name: SCRIPT_NAME
           value: "{{ subdir }}"
         {% endif %}
