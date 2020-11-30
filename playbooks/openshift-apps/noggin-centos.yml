@@ -56,12 +56,14 @@
     imagename: noggin
 
   - role: openshift/object
-    app: noggin-centos
+    app: noggin
+    os_app: noggin-centos
     template: buildconfig.yml
     objectname: buildconfig.yml
 
   - role: openshift/object
-    app: noggin-centos
+    app: noggin
+    os_app: noggin-centos
     template: configmap.yml
     objectname: configmap.yml
     noggin_theme: centos
@@ -70,7 +72,8 @@
     app: noggin-centos
 
   - role: openshift/object
-    app: noggin-centos
+    app: noggin
+    os_app: noggin-centos
     template: service.yml
     objectname: service.yml
 
@@ -84,17 +87,20 @@
       haproxy.router.openshift.io/timeout: 5m
 
   - role: openshift/object
-    app: noggin-centos
+    app: noggin
+    os_app: noggin-centos
     template: secrets.yml
     objectname: secrets.yml
 
   - role: openshift/object
-    app: noggin-centos
+    app: noggin
+    os_app: noggin-centos
     template: secret-webhook.yml
     objectname: secret-webhook.yml
 
   - role: openshift/object
-    app: noggin-centos
+    app: noggin
+    os_app: noggin-centos
     template: deploymentconfig.yml
     objectname: deploymentconfig.yml
 
