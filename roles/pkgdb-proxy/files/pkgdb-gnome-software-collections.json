@@ -415,7 +415,7 @@
       "dist_tag": ".el6",
       "koji_name": "dist-6E-epel",
       "name": "Fedora EPEL",
-      "status": "Active",
+      "status": "EOL",
       "version": "6"
     },
     {

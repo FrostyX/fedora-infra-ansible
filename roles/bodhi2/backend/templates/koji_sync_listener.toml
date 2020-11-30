@@ -52,7 +52,6 @@ taglist = [
     "epel8-playground",
     "epel8-modular",
     "epel7",
-    "dist-6E-epel",
     "module-package-list",
     "modular",
 ]

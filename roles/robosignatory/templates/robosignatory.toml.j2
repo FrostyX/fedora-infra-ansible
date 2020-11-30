@@ -95,12 +95,6 @@ handlers = ["console"]
             # Infra tags
 
             [[consumer_config.koji_instances.primary.tags]]
-            from = "epel6-infra-candidate"
-            to = "epel6-infra-stg"
-            key = "{{ (env == 'production')|ternary('fedora-infra', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('47dd8ef9', 'd300e724') }}"
-
-            [[consumer_config.koji_instances.primary.tags]]
             from = "epel7-infra-candidate"
             to = "epel7-infra-stg"
             key = "{{ (env == 'production')|ternary('fedora-infra', 'testkey') }}"
@@ -302,14 +296,6 @@ handlers = ["console"]
             to = "epel7-testing-pending"
             key = "{{ (env == 'production')|ternary('epel-7', 'testkey') }}"
             keyid = "{{ (env == 'production')|ternary('352c64e5', 'd300e724') }}"
-
-            # Non-gated bodhi triggered
-
-            [[consumer_config.koji_instances.primary.tags]]
-            from = "dist-6E-epel-testing-candidate"
-            to = "dist-6E-epel-testing-candidate"
-            key = "{{ (env == 'production')|ternary('epel-6', 'testkey') }}"
-            keyid = "{{ (env == 'production')|ternary('0608b895', 'd300e724') }}"
 
             # ELN signing
 
