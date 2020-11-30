@@ -1,0 +1,107 @@
+- name: make the app be real
+  hosts: os_masters[0]:os_masters_stg[0]
+  user: root
+  gather_facts: False
+
+  vars_files:
+    - /srv/web/infra/ansible/vars/global.yml
+    - "/srv/private/ansible/vars.yml"
+    - /srv/web/infra/ansible/vars/{{ ansible_distribution }}.yml
+
+  vars:
+
+  roles:
+  - role: rabbit/user
+    username: "noggin{{ env_suffix }}"
+
+  - role: openshift/project
+    app: noggin
+    description: "Self-service account portal"
+    appowners:
+    - abompard
+    - pingou
+    tags:
+      - apply-appowners
+    when: env == "production"
+  - role: openshift/project
+    app: noggin
+    description: "Self-service account portal"
+    appowners:
+    - abompard
+    - pingou
+    - nils
+    - ryanlerch
+    tags:
+      - apply-appowners
+    when: env == "staging"
+
+  - role: openshift/secret-file
+    app: noggin
+    secret_name: fedora-messaging-ca
+    key: cacert.pem
+    privatefile: "rabbitmq/{{env}}/pki/ca.crt"
+  - role: openshift/secret-file
+    app: noggin
+    secret_name: fedora-messaging-crt
+    key: noggin-cert.pem
+    privatefile: "rabbitmq/{{env}}/pki/issued/noggin{{env_suffix}}.crt"
+  - role: openshift/secret-file
+    app: noggin
+    secret_name: fedora-messaging-key
+    key: noggin-key.pem
+    privatefile: "rabbitmq/{{env}}/pki/private/noggin{{env_suffix}}.key"
+
+  - role: openshift/imagestream
+    app: noggin
+    imagename: noggin
+
+  - role: openshift/object
+    app: noggin
+    template: buildconfig.yml
+    objectname: buildconfig.yml
+
+  - role: openshift/object
+    app: noggin
+    template: configmap.yml
+    objectname: configmap.yml
+    noggin_theme: centos
+
+  - role: openshift/ipa-client
+    app: noggin
+
+  - role: openshift/object
+    app: noggin
+    template: service.yml
+    objectname: service.yml
+
+  - role: openshift/route
+    app: noggin
+    routename: noggin
+    host: "accounts{{ env_suffix }}.centos.org"
+    serviceport: web
+    servicename: noggin-web
+    annotations:
+      haproxy.router.openshift.io/timeout: 5m
+
+  - role: openshift/object
+    app: noggin
+    template: secrets.yml
+    objectname: secrets.yml
+
+  - role: openshift/object
+    app: noggin
+    template: secret-webhook.yml
+    objectname: secret-webhook.yml
+
+  - role: openshift/object
+    app: noggin
+    template: deploymentconfig.yml
+    objectname: deploymentconfig.yml
+
+  # - role: openshift/start-build
+  #   app: noggin
+  #   buildname: noggin
+
+  # - role: openshift/rollout
+  #   app: noggin
+  #   dcname: noggin
