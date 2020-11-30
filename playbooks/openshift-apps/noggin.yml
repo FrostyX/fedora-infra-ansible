@@ -65,6 +65,7 @@
     template: configmap.yml
     objectname: configmap.yml
     noggin_theme: fas
+    subdir: "/accounts"
 
   - role: openshift/ipa-client
     app: noggin
@@ -98,6 +99,7 @@
     app: noggin
     template: deploymentconfig.yml
     objectname: deploymentconfig.yml
+    subdir: "/accounts"
 
   # - role: openshift/start-build
   #   app: noggin

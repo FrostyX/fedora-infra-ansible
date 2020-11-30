@@ -7,8 +7,10 @@ def from_file(path):
     return open(path, 'r').read().strip()
 
 
+{% if subdir %}
 # Deployed to a subpath
-APPLICATION_ROOT = '/accounts/'
+APPLICATION_ROOT = '{{ subdir }}/'
+{% endif %}
 
 # IPA settings
 FREEIPA_SERVERS = ['{{ ipa_server }}']

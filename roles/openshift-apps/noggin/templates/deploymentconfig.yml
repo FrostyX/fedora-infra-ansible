@@ -69,21 +69,23 @@ spec:
           value: "deploy.wsgi"
         - name: APP_CONFIG
           value: "/etc/noggin/gunicorn.conf.py"
+        {% if subdir %}
         - name: SCRIPT_NAME
-          value: "/accounts"
+          value: "{{ subdir }}"
+        {% endif %}
         readinessProbe:
           timeoutSeconds: 10
           initialDelaySeconds: 5
           periodSeconds: 60
           httpGet:
-            path: /accounts/healthz/ready
+            path: "{{ subdir }}/healthz/ready"
             port: 8080
         livenessProbe:
           timeoutSeconds: 10
           initialDelaySeconds: 10
           periodSeconds: 60
           httpGet:
-            path: /accounts/healthz/live
+            path: "{{ subdir }}/healthz/live"
             port: 8080
       volumes:
       - name: noggin-config-volume
