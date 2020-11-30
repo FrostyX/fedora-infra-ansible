@@ -69,10 +69,10 @@ spec:
           value: "deploy.wsgi"
         - name: APP_CONFIG
           value: "/etc/noggin/gunicorn.conf.py"
-        {% if subdir is defined %}
+{% if subdir is defined %}
         - name: SCRIPT_NAME
           value: "{{ subdir }}"
-        {% endif %}
+{% endif %}
         readinessProbe:
           timeoutSeconds: 10
           initialDelaySeconds: 5
