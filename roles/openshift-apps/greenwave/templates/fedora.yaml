@@ -50,36 +50,6 @@ rules:
   - !PassingTestCaseRule {test_case_name: compose.server_role_deploy_domain_controller, scenario: "fedora.Server-dvd-iso.x86_64.64bit"}
 
 --- !Policy
-id: "taskotron_release_critical_tasks_for_testing"
-product_versions:
-  - fedora-rawhide
-  - fedora-34
-  - fedora-33
-  - fedora-32
-  - fedora-31
-  - fedora-30
-  - fedora-29
-decision_context: bodhi_update_push_testing
-subject_type: koji_build
-rules:
-  - !RemoteRule {}
-
---- !Policy
-id: "taskotron_release_critical_tasks_for_stable"
-product_versions:
-  - fedora-rawhide
-  - fedora-34
-  - fedora-33
-  - fedora-32
-  - fedora-31
-  - fedora-30
-  - fedora-29
-decision_context: bodhi_update_push_stable
-subject_type: koji_build
-rules:
-  - !RemoteRule {}
-
---- !Policy
 id: "no_requirements_testing"
 product_versions:
   - fedora-34-modular
@@ -91,19 +61,12 @@ product_versions:
   - fedora-32-modular
   - fedora-32-containers
   - fedora-32-flatpaks
-  - fedora-31-modular
-  - fedora-31-containers
-  - fedora-31-flatpaks
-  - fedora-30-modular
-  - fedora-30-containers
-  - fedora-30-flatpaks
-  - fedora-29-modular
-  - fedora-29-containers
-  - fedora-29-flatpaks
+  - fedora-34
+  - fedora-33
+  - fedora-32
   - fedora-epel-8
   - fedora-epel-8-modular
   - fedora-epel-7
-  - fedora-epel-6
   - fedora-eln
 decision_context: bodhi_update_push_testing
 subject_type: koji_build
@@ -121,15 +84,9 @@ product_versions:
   - fedora-32-modular
   - fedora-32-containers
   - fedora-32-flatpaks
-  - fedora-31-modular
-  - fedora-31-containers
-  - fedora-31-flatpaks
-  - fedora-30-modular
-  - fedora-30-containers
-  - fedora-30-flatpaks
-  - fedora-29-modular
-  - fedora-29-containers
-  - fedora-29-flatpaks
+  - fedora-34
+  - fedora-33
+  - fedora-32
   - fedora-epel-8
   - fedora-epel-8-modular
   - fedora-epel-7
@@ -147,9 +104,6 @@ product_versions:
   - fedora-34
   - fedora-33
   - fedora-32
-  - fedora-31
-  - fedora-30
-  - fedora-29
 decision_context: bodhi_update_push_testing
 subject_type: bodhi_update
 rules:
@@ -162,9 +116,6 @@ product_versions:
   - fedora-34
   - fedora-33
   - fedora-32
-  - fedora-31
-  - fedora-30
-  - fedora-29
 decision_context: bodhi_update_push_stable
 subject_type: bodhi_update
 rules:
