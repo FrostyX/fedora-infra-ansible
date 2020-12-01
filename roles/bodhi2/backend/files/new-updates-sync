@@ -13,7 +13,6 @@ import fedora_messaging.api
 import fedora_messaging.config
 import fedora_messaging.exceptions
 
-from pathlib import Path
 
 logging.basicConfig(level=logging.ERROR)
 logger = logging.getLogger('updates-sync')
@@ -394,20 +393,6 @@ def sync_single_release(release):
 
     return needssync
 
-def update_epel_release_latest(releases):
-    for release in releases:
-        if 'epel' in release:
-            for path in Path(RELEASES[release]['repos']['epel']['to'][0]['dest']).rglob('epel-release*noarch*'):
-                if 'Packages' in str(path):
-                    dest = '/pub/epel/epel-release-latest-' + release[4]+ '.noarch.rpm'
-                    if os.path.exists(dest):
-                        if not os.path.exists(os.readlink(dest)):
-                            os.remove(dest)
-                            os.symlink(path, dest)
-                            break
-                    else:
-                        os.symlink(path, dest)
-                        break
 
 def main():
     parser = argparse.ArgumentParser()
@@ -433,7 +418,7 @@ def main():
     to_update = list(set(to_update))
     logger.info('Filelists to update: %s', to_update)
     update_fullfilelist(to_update)
-    update_epel_release_latest(args.releases)
+
 
 if __name__ == '__main__':
     main()
