@@ -50,7 +50,57 @@ rules:
   - !PassingTestCaseRule {test_case_name: compose.server_role_deploy_domain_controller, scenario: "fedora.Server-dvd-iso.x86_64.64bit"}
 
 --- !Policy
-id: "no_requirements_testing"
+# _kojibuild_ policies are for koji_build subjects; Fedora CI tests run at
+# at the Koji build level and report results which will be found by these
+# policies. We must have at least one kojibuild policy for each Fedora
+# version Bodhi might operate on (because ignore_missing_policy is false
+# for the koji_build subject type, as config stands at 2020-11, so Bodhi
+# will fail if it queries Greenwave and no koji_build policy matches the
+# query terms).
+
+# _update_ policies are for bodhi_update subjects; Fedora openQA tests run
+# at the Bodhi update level and report results which will be found by these
+# policies. ignore_missing_policy is true for the bodhi_update subject type
+# (in upstream Greenwave default config, as of 2020-11) so it is OK for
+# there not to be any matching policy of this type that matches when Bodhi
+# queries.
+
+# note that policies are *additive*. If a query matches multiple of these
+# policies, all the rules in all the matched policies are applied.
+
+id: "fedora_mainline_kojibuild_remoterule"
+product_versions:
+  - fedora-rawhide
+  - fedora-34
+  - fedora-33
+  - fedora-32
+decision_context: bodhi_update_push_testing
+subject_type: koji_build
+rules:
+  # this means "apply gating configs in package repos"
+  # see Greenwave docs/policies.rst for more details
+  - !RemoteRule {}
+
+--- !Policy
+id: "fedora_mainline_kojibuild_remoterule"
+product_versions:
+  - fedora-rawhide
+  - fedora-34
+  - fedora-33
+  - fedora-32
+decision_context: bodhi_update_push_stable
+subject_type: koji_build
+rules:
+  # this means "apply gating configs in package repos"
+  # see Greenwave docs/policies.rst for more details
+  - !RemoteRule {}
+
+--- !Policy
+id: "kojibuild_no_requirements_testing"
+  # this is a null policy, it enforces no requirements. It is needed
+  # because at least one policy must match for koji_build subjects.
+  # if a query matches this policy and no other, no requirements will
+  # be applied
 product_versions:
   - fedora-34-modular
   - fedora-34-containers
@@ -61,9 +111,6 @@ product_versions:
   - fedora-32-modular
   - fedora-32-containers
   - fedora-32-flatpaks
-  - fedora-34
-  - fedora-33
-  - fedora-32
   - fedora-epel-8
   - fedora-epel-8-modular
   - fedora-epel-7
@@ -73,7 +120,11 @@ subject_type: koji_build
 rules: []
 
 --- !Policy
-id: "no_requirements_for_stable"
+id: "kojibuild_no_requirements_stable"
+  # this is a null policy, it enforces no requirements. It is needed
+  # because at least one policy must match for koji_build subjects.
+  # if a query matches this policy and no other, no requirements will
+  # be applied
 product_versions:
   - fedora-34-modular
   - fedora-34-containers
@@ -84,9 +135,6 @@ product_versions:
   - fedora-32-modular
   - fedora-32-containers
   - fedora-32-flatpaks
-  - fedora-34
-  - fedora-33
-  - fedora-32
   - fedora-epel-8
   - fedora-epel-8-modular
   - fedora-epel-7
@@ -97,8 +145,7 @@ subject_type: koji_build
 rules: []
 
 --- !Policy
-# openQA policies
-id: "openqa_release_critical_tasks_for_testing"
+id: "fedora_mainline_update_rules_for_testing"
 product_versions:
   - fedora-rawhide
   - fedora-34
@@ -107,10 +154,12 @@ product_versions:
 decision_context: bodhi_update_push_testing
 subject_type: bodhi_update
 rules:
+  # this means "apply gating configs in package repos"
+  # see Greenwave docs/policies.rst for more details
   - !RemoteRule {}
 
 --- !Policy
-id: "openqa_release_critical_tasks_for_stable"
+id: "fedora_mainline_update_rules_for_stable"
 product_versions:
   - fedora-rawhide
   - fedora-34
@@ -119,4 +168,6 @@ product_versions:
 decision_context: bodhi_update_push_stable
 subject_type: bodhi_update
 rules:
+  # this means "apply gating configs in package repos"
+  # see Greenwave docs/policies.rst for more details
   - !RemoteRule {}
