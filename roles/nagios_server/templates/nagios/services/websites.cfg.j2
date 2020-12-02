@@ -109,14 +109,14 @@ define service {
 }
 
 define service {
-  hostgroup_name        proxies
+  host_name             proxy01.fedoraproject.org, proxy10.fedoraproject.org
   service_description   http-oci-registry-api
   check_command         check_website_ssl!registry.fedoraproject.org!/v2/_catalog!fedora
   use                   websitetemplate
 }
 
 define service {
-  hostgroup_name        proxies
+  host_name             proxy01.fedoraproject.org, proxy10.fedoraproject.org
   service_description   http-oci-registry-webui
   check_command         check_website_ssl!registry.fedoraproject.org!/repo/fedora/tags/!rawhide
   use                   websitetemplate
