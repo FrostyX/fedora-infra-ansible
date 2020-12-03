@@ -1,4 +1,6 @@
 #!/bin/bash
+
+## Setup basic environment variables.
 HOMEDIR=/mnt/fedora/app/fi-repo/rhel/rhel8
 BINDIR=/usr/local/bin
 
@@ -7,6 +9,10 @@ DATE=$(date -Ih | sed 's/+.*//')
 
 DATEDIR=${HOMEDIR}/koji/${DATE}
 
+##
+## Make a directory for where the new tree will live. Use a new date
+## so that we can roll back to an older release or stop updates for
+## some time if needed. 
 if [ -d ${DATEDIR} ]; then
     echo "Directory already exists. Please remove or fix"
     exit
@@ -14,6 +20,9 @@ else
 mkdir -p ${DATEDIR}
 fi
 
+##
+## Go through each architecture and 
+## 
 for ARCH in ${ARCHES}; do
     # The archdir is where we daily download updates for rhel8
     ARCHDIR=${HOMEDIR}/${ARCH}

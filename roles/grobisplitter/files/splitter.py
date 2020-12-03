@@ -12,32 +12,33 @@ import tempfile
 import os
 import subprocess
 import sys
+import logging
 
 # Look for a specific version of modulemd. The 1.x series does not
 # have the tools we need.
 try:
     gi.require_version('Modulemd', '2.0')
-    from gi.repository import Modulemd
-except:
-    print("We require newer vesions of modulemd than installed..")
-    sys.exit(0)
-    
-mmd = Modulemd
+    from gi.repository import Modulemd as mmd
+except ValueError:
+    print("libmodulemd 2.0 is not installed..")
+    sys.exit(1)
 
-# This code is from Stephen Gallagher to make my other caveman code
-# less icky.
-def _get_latest_streams (mymod, stream):
+# We only want to load the module metadata once. It can be reused as often as required
+_idx = None
+
+def _get_latest_streams(mymod, stream):
     """
     Routine takes modulemd object and a stream name.
     Finds the lates stream from that and returns that as a stream
-    object. 
+    object.
     """
     all_streams = mymod.search_streams(stream, 0)
     latest_streams = mymod.search_streams(stream,
-                                          all_streams[0].props.version) 
-    
+                                          all_streams[0].props.version)
+
     return latest_streams
-    
+
+
 def _get_repoinfo(directory):
     """
     A function which goes into the given directory and sets up the
@@ -54,6 +55,46 @@ def _get_repoinfo(directory):
         r = h.perform()
         return r.getinfo(librepo.LRR_YUM_REPO)
 
+
+def _get_modulemd(directory=None, repo_info=None):
+    """
+    Retrieve the module metadata from this repository.
+    :param directory: The path to the repository. Must contain repodata/repomd.xml and modules.yaml.
+    :param repo_info: An already-acquired repo_info structure
+    :return: A Modulemd.ModulemdIndex object containing the module metadata from this repository.
+    """
+
+    # Return the cached value
+    global _idx
+    if _idx:
+        return _idx
+
+    # If we don't have a cached value, we need either directory or repo_info
+    assert directory or repo_info
+
+    if directory:
+        directory = os.path.abspath(directory)
+        repo_info = _get_repoinfo(directory)
+
+    if 'modules' not in repo_info:
+        return None
+
+    _idx = mmd.ModuleIndex.new()
+
+    with gzip.GzipFile(filename=repo_info['modules'], mode='r') as gzf:
+        mmdcts = gzf.read().decode('utf-8')
+        res, failures = _idx.update_from_string(mmdcts, True)
+        if len(failures) != 0:
+            raise Exception("YAML FAILURE: FAILURES: %s" % failures)
+        if not res:
+            raise Exception("YAML FAILURE: res != True")
+
+    # Ensure that every stream in the index is using v2
+    _idx.upgrade_streams(mmd.ModuleStreamVersionEnum.TWO)
+
+    return _idx
+
+
 def _get_hawkey_sack(repo_info):
     """
     A function to pull in the repository sack from hawkey.
@@ -66,8 +107,9 @@ def _get_hawkey_sack(repo_info):
 
     primary_sack = hawkey.Sack()
     primary_sack.load_repo(hk_repo, build_cache=False)
-    
+
     return primary_sack
+
 
 def _get_filelist(package_sack):
     """
@@ -77,9 +119,11 @@ def _get_filelist(package_sack):
     """
     pkg_list = {}
     for pkg in hawkey.Query(package_sack):
-        nevr="%s-%s:%s-%s.%s"% (pkg.name,pkg.epoch,pkg.version,pkg.release,pkg.arch)
+        nevr = "%s-%s:%s-%s.%s" % (pkg.name, pkg.epoch,
+                                   pkg.version, pkg.release, pkg.arch)
         pkg_list[nevr] = pkg.location
     return pkg_list
+
 
 def _parse_repository_non_modular(package_sack, repo_info, modpkgset):
     """
@@ -97,20 +141,14 @@ def _parse_repository_non_modular(package_sack, repo_info, modpkgset):
         pkgs.add(pkg.location)
     return pkgs
 
-def _parse_repository_modular(repo_info,package_sack):
+
+def _parse_repository_modular(repo_info, package_sack):
     """
     Returns a dictionary of packages indexed by the modules they are
     contained in.
     """
     cts = {}
-    idx = mmd.ModuleIndex()
-    with gzip.GzipFile(filename=repo_info['modules'], mode='r') as gzf:
-        mmdcts = gzf.read().decode('utf-8')
-        res, failures = idx.update_from_string(mmdcts, True)
-        if len(failures) != 0:
-            raise Exception("YAML FAILURE: FAILURES: %s" % failures)
-        if not res:
-            raise Exception("YAML FAILURE: res != True")
+    idx = _get_modulemd(repo_info=repo_info)
 
     pkgs_list = _get_filelist(package_sack)
     idx.upgrade_streams(2)
@@ -124,14 +162,14 @@ def _parse_repository_modular(repo_info,package_sack):
                 else:
                     continue
             cts[stream.get_NSVCA()] = templ
-                
+
     return cts
 
 
 def _get_modular_pkgset(mod):
     """
     Takes a module and goes through the moduleset to determine which
-    packages are inside it. 
+    packages are inside it.
     Returns a list of packages
     """
     pkgs = set()
@@ -141,6 +179,7 @@ def _get_modular_pkgset(mod):
             pkgs.add(pkg)
 
     return list(pkgs)
+
 
 def _perform_action(src, dst, action):
     """
@@ -160,6 +199,7 @@ def _perform_action(src, dst, action):
     elif action == 'symlink':
         os.symlink(src, dst)
 
+
 def validate_filenames(directory, repoinfo):
     """
     Take a directory and repository information. Test each file in
@@ -176,107 +216,175 @@ def validate_filenames(directory, repoinfo):
     return isok
 
 
-def get_default_modules(directory):
+def _get_recursive_dependencies(all_deps, idx, stream, ignore_missing_deps):
+    if stream.get_NSVCA() in all_deps:
+        # We've already encountered this NSVCA, so don't go through it again
+        logging.debug('Already included {}'.format(stream.get_NSVCA()))
+        return
+
+    # Store this NSVCA/NS pair
+    local_deps = all_deps
+    local_deps.add(stream.get_NSVCA())
+
+    logging.debug("Recursive deps: {}".format(stream.get_NSVCA()))
+
+    # Loop through the dependencies for this stream
+    deps = stream.get_dependencies()
+
+    # At least one of the dependency array entries must exist in the repo
+    found_dep = False
+    for dep in deps:
+        # Within an array entry, all of the modules must be present in the
+        # index
+        found_all_modules = True
+        for modname in dep.get_runtime_modules():
+            # Ignore "platform" because it's special
+            if modname == "platform":
+                logging.debug('Skipping platform')
+                continue
+            logging.debug('Processing dependency on module {}'.format(modname))
+
+            mod = idx.get_module(modname)
+            if not mod:
+                # This module wasn't present in the index.
+                found_module = False
+                continue
+
+            # Within a module, at least one of the requested streams must be
+            # present
+            streamnames = dep.get_runtime_streams(modname)
+            found_stream = False
+            for streamname in streamnames:
+                stream_list = _get_latest_streams(mod, streamname)
+                for inner_stream in stream_list:
+                    try:
+                        _get_recursive_dependencies(
+                            local_deps, idx, inner_stream, ignore_missing_deps)
+                    except FileNotFoundError as e:
+                        # Could not find all of this stream's dependencies in
+                        # the repo
+                        continue
+                    found_stream = True
+
+            # None of the streams were found for this module
+            if not found_stream:
+                found_all_modules = False
+
+        # We've iterated through all of the modules; if it's still True, this
+        # dependency is consistent in the index
+        if found_all_modules:
+            found_dep = True
+
+    # We were unable to resolve the dependencies for any of the array entries.
+    # raise FileNotFoundError
+    if not found_dep and not ignore_missing_deps:
+        raise FileNotFoundError(
+            "Could not resolve dependencies for {}".format(
+                stream.get_NSVCA()))
+
+    all_deps.update(local_deps)
+
+
+def get_default_modules(directory, ignore_missing_deps):
     """
     Work through the list of modules and come up with a default set of
-    modules which would be the minimum to output. 
-    Returns a set of modules 
+    modules which would be the minimum to output.
+    Returns a set of modules
     """
-    directory = os.path.abspath(directory)
-    repo_info = _get_repoinfo(directory)
 
-    provides = set()
-    contents = set()
-    if 'modules' not in repo_info:
-        return contents
-    idx = mmd.ModuleIndex()
-    with gzip.GzipFile(filename=repo_info['modules'], mode='r') as gzf:
-        mmdcts = gzf.read().decode('utf-8')
-        res, failures = idx.update_from_string(mmdcts, True)
-        if len(failures) != 0:
-            raise Exception("YAML FAILURE: FAILURES: %s" % failures)
-        if not res:
-            raise Exception("YAML FAILURE: res != True")
+    all_deps = set()
 
-    idx.upgrade_streams(2)
+    idx = _get_modulemd(directory)
+    if not idx:
+        return all_deps
 
-    # OK this is cave-man no-sleep programming. I expect there is a
-    # better way to do this that would be a lot better. However after
-    # a long long day.. this is what I have.
-
-    # First we oo through the default streams and create a set of
-    # provides that we can check against later.
-    for modname in idx.get_default_streams():
+    for modname, streamname in idx.get_default_streams().items():
+        # Only the latest version of a stream is important, as that is the only one that DNF will consider in its
+        # transaction logic. We still need to handle each context individually.
         mod = idx.get_module(modname)
-        # Get the default streams and loop through them.
-        stream_set = mod.get_streams_by_stream_name(
-            mod.get_defaults().get_default_stream())
+        stream_set = _get_latest_streams(mod, streamname)
         for stream in stream_set:
-            tempstr = "%s:%s" % (stream.props.module_name,
-                                 stream.props.stream_name)
-            provides.add(tempstr)
+            # Different contexts have different dependencies
+            try:
+                logging.debug("Processing {}".format(stream.get_NSVCA()))
+                _get_recursive_dependencies(all_deps, idx, stream, ignore_missing_deps)
+                logging.debug("----------")
+            except FileNotFoundError as e:
+                # Not all dependencies could be satisfied
+                print(
+                    "Not all dependencies for {} could be satisfied. {}. Skipping".format(
+                        stream.get_NSVCA(), e))
+                continue
+
+    logging.debug('Default module streams: {}'.format(all_deps))
+
+    return all_deps
 
 
-    # Now go through our list and build up a content lists which will
-    # have only modules which have their dependencies met
-    tempdict = {}
-    for modname in idx.get_default_streams():
-        mod = idx.get_module(modname)
-        # Get the default streams and loop through them.
-        # This is a sorted list with the latest in it. We could drop
-        # looking at later ones here in a future version. (aka lines
-        # 237 to later)
-        stream_set = mod.get_streams_by_stream_name(
-            mod.get_defaults().get_default_stream())
-        for stream in stream_set:
-            ourname = stream.get_NSVCA()
-            tmp_name = "%s:%s" % (stream.props.module_name,
-                                 stream.props.stream_name)
-            # Get dependencies is a list of items. All of the modules
-            # seem to only have 1 item in them, but we should loop
-            # over the list anyway.
-            for deps in stream.get_dependencies():
-                isprovided = True # a variable to say this can be added.
-                for mod in deps.get_runtime_modules():
-                    tempstr=""
-                    # It does not seem easy to figure out what the
-                    # platform is so just assume we will meet it.
-                    if mod != 'platform':
-                        for stm in deps.get_runtime_streams(mod):
-                            tempstr = "%s:%s" %(mod,stm)
-                            if tempstr not in provides:
-                                # print( "%s : %s not found." % (ourname,tempstr))
-                                isprovided = False
-                    if isprovided:
-                        if tmp_name in tempdict:
-                            # print("We found %s" % tmp_name)
-                            # Get the stream version we are looking at
-                            ts1=ourname.split(":")[2]
-                            # Get the stream version we stored away
-                            ts2=tempdict[tmp_name].split(":")[2]
-                            # See if we got a newer one. We probably
-                            # don't as it is a sorted list but we
-                            # could have multiple contexts which would
-                            # change things.
-                            if ( int(ts1) > int(ts2) ):
-                                # print ("%s > %s newer for %s", ts1,ts2,ourname)
-                                tempdict[tmp_name] = ourname
-                        else:
-                            # print("We did not find %s" % tmp_name)
-                            tempdict[tmp_name] = ourname
-    # OK we finally got all our stream names we want to send back to
-    # our calling function. Read them out and add them to the set.
-    for indx in tempdict:
-        contents.add(tempdict[indx])
+def _pad_svca(svca, target_length):
+    """
+    If the split() doesn't return all values (e.g. arch is missing), pad it
+    with `None`
+    """
+    length = len(svca)
+    svca.extend([None] * (target_length - length))
+    return svca
 
-    return contents
+
+def _dump_modulemd(modname, yaml_file):
+    idx = _get_modulemd()
+    assert idx
+
+    # Create a new index to hold the information about this particular
+    # module and stream
+    new_idx = mmd.ModuleIndex.new()
+
+    # Add the module streams
+    module_name, *svca = modname.split(':')
+    stream_name, version, context, arch = _pad_svca(svca, 4)
+
+    logging.debug("Dumping YAML for {}, {}, {}, {}, {}".format(
+        module_name, stream_name, version, context, arch))
+
+    mod = idx.get_module(module_name)
+    streams = mod.search_streams(stream_name, int(version), context, arch)
+
+    # This should usually be a single item, but we'll be future-compatible
+    # and account for the possibility of having multiple streams here.
+    for stream in streams:
+        new_idx.add_module_stream(stream)
+
+    # Add the module defaults
+    defs = mod.get_defaults()
+    if defs:
+        new_idx.add_defaults(defs)
+
+    # libmodulemd doesn't currently expose the get_translation()
+    # function, but that will be added in 2.8.0
+    try:
+        # Add the translation object
+        translation = mod.get_translation()
+        if translation:
+            new_idx.add_translation(translation)
+    except AttributeError as e:
+        # This version of libmodulemd does not yet support this function.
+        # Just ignore it.
+        pass
+
+    # Write out the file
+    try:
+        with open(yaml_file, 'w') as output:
+            output.write(new_idx.dump_to_string())
+    except PermissionError as e:
+        logging.error("Could not write YAML to file: {}".format(e))
+        raise
 
 
 def perform_split(repos, args, def_modules):
     for modname in repos:
         if args.only_defaults and modname not in def_modules:
             continue
-        
+
         targetdir = os.path.join(args.target, modname)
         os.mkdir(targetdir)
 
@@ -287,8 +395,12 @@ def perform_split(repos, args, def_modules):
                 os.path.join(targetdir, pkgfile),
                 args.action)
 
+        # Extract the modular metadata for this module
+        if modname != 'non_modular':
+            _dump_modulemd(modname, os.path.join(targetdir, 'modules.yaml'))
 
-def create_repos(target, repos,def_modules, only_defaults):
+
+def create_repos(target, repos, def_modules, only_defaults):
     """
     Routine to create repositories. Input is target directory and a
     list of repositories.
@@ -297,9 +409,19 @@ def create_repos(target, repos,def_modules, only_defaults):
     for modname in repos:
         if only_defaults and modname not in def_modules:
             continue
+
+        targetdir = os.path.join(target, modname)
+
         subprocess.run([
-            'createrepo_c', os.path.join(target, modname),
+            'createrepo_c', targetdir,
             '--no-database'])
+        if modname != 'non_modular':
+            subprocess.run([
+                'modifyrepo_c',
+                '--mdtype=modules',
+                os.path.join(targetdir, 'modules.yaml'),
+                os.path.join(targetdir, 'repodata')
+            ])
 
 
 def parse_args():
@@ -309,6 +431,8 @@ def parse_args():
     """
     parser = argparse.ArgumentParser(description='Split repositories up')
     parser.add_argument('repository', help='The repository to split')
+    parser.add_argument('--debug', help='Enable debug logging',
+                        action='store_true', default=False)
     parser.add_argument('--action', help='Method to create split repos files',
                         choices=('hardlink', 'symlink', 'copy'),
                         default='hardlink')
@@ -318,6 +442,11 @@ def parse_args():
     parser.add_argument('--create-repos', help='Create repository metadatas',
                         action='store_true', default=False)
     parser.add_argument('--only-defaults', help='Only output default modules',
+                        action='store_true', default=False)
+    parser.add_argument('--ignore-missing-default-deps',
+                        help='When using --only-defaults, do not skip '
+                             'default streams whose dependencies cannot be '
+                             'resolved within this repository',
                         action='store_true', default=False)
     return parser.parse_args()
 
@@ -337,6 +466,7 @@ def setup_target(args):
         else:
             os.mkdir(args.target)
 
+
 def parse_repository(directory):
     """
     Parse a specific directory, returning a dict with keys module NSVC's and
@@ -353,26 +483,30 @@ def parse_repository(directory):
     # If we have a repository with no modules we do not want our
     # script to error out but just remake the repository with
     # everything in a known sack (aka non_modular).
-     
+
     if 'modules' in repo_info:
-        mod = _parse_repository_modular(repo_info,package_sack)
+        mod = _parse_repository_modular(repo_info, package_sack)
         modpkgset = _get_modular_pkgset(mod)
     else:
         mod = dict()
         modpkgset = set()
 
-    non_modular = _parse_repository_non_modular(package_sack,repo_info, 
-                                  modpkgset) 
+    non_modular = _parse_repository_non_modular(package_sack, repo_info,
+                                                modpkgset)
     mod['non_modular'] = non_modular
 
-    ## We should probably go through our default modules here and
-    ## remove them from our mod. This would cut down some code paths.
+    # We should probably go through our default modules here and
+    # remove them from our mod. This would cut down some code paths.
 
     return mod
 
+
 def main():
-    # Determine what the arguments are and 
+    # Determine what the arguments are and
     args = parse_args()
+
+    if args.debug:
+        logging.basicConfig(level=logging.DEBUG)
 
     # Go through arguments and act on their values.
     setup_target(args)
@@ -380,18 +514,20 @@ def main():
     repos = parse_repository(args.repository)
 
     if args.only_defaults:
-        def_modules = get_default_modules(args.repository)
+        def_modules = get_default_modules(args.repository, args.ignore_missing_default_deps)
     else:
         def_modules = set()
-    def_modules.add('non_modular')        
-    
+
+    def_modules.add('non_modular')
+
     if not args.skip_missing:
         if not validate_filenames(args.repository, repos):
             raise ValueError("Package files were missing!")
     if args.target:
         perform_split(repos, args, def_modules)
         if args.create_repos:
-            create_repos(args.target, repos,def_modules,args.only_defaults)
+            create_repos(args.target, repos, def_modules, args.only_defaults)
+
 
 if __name__ == '__main__':
     main()
