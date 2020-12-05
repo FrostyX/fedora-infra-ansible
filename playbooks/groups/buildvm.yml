@@ -28,6 +28,7 @@
         nfs_src_dir: "{{ koji_hub_nfs }}",
         when: "env == 'staging' or createrepo or 'runroot' in group_names and not inventory_hostname.startswith('buildvm-s390x')",
       }
+    - koji_builder
     - role: nfs/client
       mnt_dir: '/mnt/koji/ostree'
       nfs_src_dir: 'fedora_ostree_content/ostree'
@@ -60,7 +61,6 @@
 
     - { role: fas_client, when: not inventory_hostname.startswith('bkernel') and env == 'production' }
     - { role: sudo, when: not inventory_hostname.startswith('bkernel') and env == 'production' }
-    - koji_builder
     - role: keytab/service
       kt_location: /etc/kojid/kojid.keytab
       service: compile
