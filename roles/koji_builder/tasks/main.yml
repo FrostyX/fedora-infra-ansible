@@ -230,6 +230,7 @@
   template: src=builders/site-defaults.cfg dest=/etc/mock/site-defaults.cfg mode=0644 owner=root group=mock
   tags:
   - koji_builder
+  - site-defaults
 
 # x86_64 builders run both x86_64 and i686 builds, that requires multilib
 # version of nosync installed to fully take advantage of nosync
