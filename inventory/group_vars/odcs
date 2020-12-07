@@ -15,6 +15,10 @@ odcs_raw_config_urls:
   cccc:
     url: https://pagure.io/fedora-ci/cccc-merged-configs.git
     config_filename: cccc.conf
+  releng_compose_ci:
+    url: https://pagure.io/fedora-ci/compose-ci-pipeline.git
+    config_filename: compose_ci.conf
+    raw_config_wrapper: /etc/odcs/custom_compose_raw_config_wrapper.conf
 
 # Default queues for general ODCS backends.
 odcs_celery_queues:

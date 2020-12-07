@@ -358,3 +358,16 @@
   - odcs/backend
   - odcs/frontend
 
+- name: copy the custom_compose_raw_config_wrapper.conf file.
+  copy:
+    src: "{{ roles_path }}/odcs/base/files/odcs/custom_compose_raw_config_wrapper.conf"
+    dest: /etc/odcs/custom_compose_raw_config_wrapper.conf
+    owner: odcs-server
+    group: odcs-server
+    mode: 0640
+  notify:
+  - restart odcs-celery-backend
+  when: inventory_hostname.startswith('odcs-backend')
+  tags:
+  - odcs
+  - odcs/backend
