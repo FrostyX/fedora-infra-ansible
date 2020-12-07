@@ -46,7 +46,6 @@ dl_tier1:
   - archive.linux.duke.edu             # 152.3.102.53
   - auslistsdr01.us.dell.com           # 143.166.224.62
   - auslistsprd01.us.dell.com          # 143.166.82.43
-  - bonaparte.hrz.tu-chemnitz.de       # 134.109.228.109
   - download-ib01.fedoraproject.org    # 152.19.134.145
   - download-cc-rdu01.fedoraproject.org    # 8.43.85.72
   - fedora.c3sl.ufpr.br                # 200.236.31.8
@@ -56,7 +55,8 @@ dl_tier1:
   - 2001:718:801:230::cd               # ftp.linux.cz ipv6 address
   - ftp.nrc.ca                         # 132.246.2.21
   - jobbot1.ibiblio.org                # 152.19.134.30
-  - josephine.hrz.tu-chemnitz.de       # 134.109.228.48
+  - elba.hrz.tu-chemnitz.de            # 134.109.228.48 / 2001:638:911:b0e:134:109:228:48
+  - waterloo.hrz.tu-chemnitz.de        # 134.109.228.1 / 2001:638:911:b0e:134:109:228:1
   - lists.us.dell.com                  # 143.166.82.43
   - mirror.gtlib.gatech.edu            # 128.61.111.11
   - mirror.hiwaay.net                  # 216.180.99.217
