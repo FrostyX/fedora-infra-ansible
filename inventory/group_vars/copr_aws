@@ -31,3 +31,5 @@ builders:
         x86_64: [100,15,15]
         armhfp: [20,3,3]
         aarch64: [20,6,6]
+
+rpm_vendor_copr_name: Fedora Copr
