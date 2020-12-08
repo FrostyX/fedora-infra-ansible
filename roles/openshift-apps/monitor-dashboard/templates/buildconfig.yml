@@ -11,7 +11,21 @@ items:
     runPolicy: Serial
     source:
       dockerfile: |-
-        {{ load_file('dockerfile-datagrepper') | indent(8) }}
+        FROM fedora:32
+        LABEL \
+          name="datagrepper" \
+          vendor="Fedora Infrastructure" \
+          license="MIT"
+        RUN dnf -y install fedora-messaging python3 python3-fedmsg python3-gunicorn python3-pip python3-psycopg2 git
+        RUN git clone https://github.com/fedora-infra/datagrepper.git /srv/datanommer && \
+            cd /srv/datanommer && \
+            python3 -m pip install -r requirements.txt && \
+            python3 -m pip install . --no-use-pep517 && \
+            mkdir -p /usr/share/datagrepper && \
+            cp /srv/datanommer/apache/datagrepper.wsgi /usr/share/datagrepper/datagrepper.wsgi && \
+            cp /srv/datanommer/fedmsg.d/example-datagrepper.py /etc/fedmsg.d/datagrepper.py
+        env DATAGREPPER_CONFIG=/srv/datanommer/apache/datagrepper.cfg
+        CMD ["gunicorn", "-b", "0.0.0.0:8080", "-w", "4", "--log-level", "DEBUG", "-t", "180", "datagrepper.app:app"]
       type: Dockerfile
     strategy:
       type: Docker
