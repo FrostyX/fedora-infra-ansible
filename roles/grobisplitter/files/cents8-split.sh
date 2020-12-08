@@ -7,7 +7,7 @@ BINDIR=/usr/local/bin
 ARCHES="aarch64 ppc64le x86_64"
 DATE=$(date -Ih | sed 's/+.*//')
 
-KOJIDIR=/mnt/fedora/app/fi-repo/centos/stream8-kojitarget/koji
+KOJIDIR=/mnt/fedora/app/fi-repo/centos/stream8-kojitarget
 DATEDIR=${KOJIDIR}/${DATE}
 
 ##
@@ -92,9 +92,13 @@ ln -s ${DATE} staged
 
 
 for ARCH in ${ARCHES}; do
-    pushd latest/
+    if [[ -d latest/ ]]; then
+	pushd latest/
+    else
+	mkdir latest/
+    fi
     mkdir -p ${ARCH}
-    dnf --disablerepo=\* --enablerepo=CS-8-001 --repofrompath=CS-8-001,https://infrastructure.fedoraproject.org/repo/centos/stream8-kojitarget/${ARCH}/CS-8-001/ reposync -a ${ARCH} -a noarch -p ${ARCH} --newest --delete  &> /dev/null
+    dnf --disablerepo=\* --enablerepo=CS-8-001 --repofrompath=CS-8-001,https://infrastructure.fedoraproject.org/repo/centos/stream8-kojitarget/staged/${ARCH}/CS-8-001/ reposync -a ${ARCH} -a noarch -p ${ARCH} --newest --delete  &> /dev/null
     if [[ $? -eq 0 ]]; then
 	cd ${ARCH}/CS-8-001
 	createrepo_c .  &> /dev/null
