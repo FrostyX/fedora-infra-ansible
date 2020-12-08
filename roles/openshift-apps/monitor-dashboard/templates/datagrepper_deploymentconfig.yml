@@ -18,7 +18,7 @@ spec:
     spec:
       containers:
         - command: ["gunicorn"]
-        - args:
+          args:
             - "-b"
             - "0.0.0.0:8080"
             - "-w"
@@ -28,7 +28,7 @@ spec:
             - "-t"
             - "180"
             - "datagrepper.app:app"
-          image: registry.hub.docker.com/openshift/oauth-proxy:latest
+          image: datagrepper:latest
           name: oauth-proxy
           ports:
             - containerPort: 8080
