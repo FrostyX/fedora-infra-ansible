@@ -103,17 +103,17 @@
   include_role:
     name: rabbit/user
   vars:
-     username: gitlab-centos
+     username: gitlab-centos{{ env_suffix }}
 
 - name: CentOS Gitlab Queue
   run_once: true
   include_role:
     name: rabbit/queue
   vars:
-    username: gitlab-centos
-    queue_name: gitlab-centos
+    username: gitlab-centos{{ env_suffix }}
+    queue_name: gitlab-centos{{ env_suffix }}
     # TTL: 10 days (in miliseconds)
     message_ttl: 864000000
     routing_keys:
-      - "org.centos{{ env_suffix }}.gitlab.#"
+      - "org.centos.{{ env_short }}.gitlab.#"
 # CENTOS GITLAB END
