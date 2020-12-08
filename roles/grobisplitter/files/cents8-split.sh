@@ -21,15 +21,11 @@ mkdir -p ${DATEDIR}
 fi
 
 ##
-## Go through each architecture and 
+## Go through each architecture and split out the trees. This is done
+## differently than RHEL because we don't use reposync to get the files
 ## 
 for ARCH in ${ARCHES}; do
     # The archdir is where we daily download updates for rhel8
-    ARCHDIR=${HOMEDIR}/${ARCH}
-    if [ ! -d ${ARCHDIR} ]; then
-	echo "Unable to find ${ARCHDIR}"
-	exit
-    fi
 
     # We consolidate all of the default repositories and remerge them
     # in a daily tree. This allows us to point koji at a particular
@@ -44,17 +40,17 @@ for ARCH in ${ARCHES}; do
     fi
 
     # Begin splitting the various packages into their subtrees
-    ${BINDIR}/splitter.py --action hardlink --target CS-8-001 BaseOS/${ARCHDIR}/os/ --only-defaults &> /dev/null
+    ${BINDIR}/splitter.py --action hardlink --target CS-8-001 ${HOMEDIR}/BaseOS/${ARCH}/os/ --only-defaults &> /dev/null
     if [ $? -ne 0 ]; then
 	echo "splitter ${ARCH} baseos failed"
 	exit
     fi
-    ${BINDIR}/splitter.py --action hardlink --target CS-8-002 AppStream/${ARCHDIR}/os/ --only-defaults &> /dev/null
+    ${BINDIR}/splitter.py --action hardlink --target CS-8-002 ${HOMEDIR}/AppStream/${ARCH}/os/ --only-defaults &> /dev/null
     if [ $? -ne 0 ]; then
 	echo "splitter ${ARCH} appstream failed"
 	exit
     fi
-    ${BINDIR}/splitter.py --action hardlink --target CS-8-003 PowerTools/${ARCHDIR}/os/ &> /dev/null
+    ${BINDIR}/splitter.py --action hardlink --target CS-8-003 ${HOMEDIR}/PowerTools/${ARCH}/os/ &> /dev/null
     if [ $? -ne 0 ]; then
 	echo "splitter ${ARCH} codeready failed"
 	exit
