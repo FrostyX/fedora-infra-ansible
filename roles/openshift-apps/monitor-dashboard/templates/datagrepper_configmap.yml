@@ -1,0 +1,49 @@
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: datagrepper
+  labels:
+    app: datagrepper
+data:
+  datagrepper.py: |-
+    # Configuration for the datagrepper webapp.
+    config = {
+        # We don't actually want to run the datanommer consumer on this machine.
+        'datanommer.enabled': False,
+
+        # Note that this is connecting to db02.  That's fine for now, but we want to
+        # move the db for datanommer to a whole other db host in the future.  We
+        # expect the amount of data it generates to grow pretty steadily over time
+        # and we don't want *read* operations on that database to slow down all our
+        # other apps.
+        'datanommer.sqlalchemy.url': 'postgresql://datanommer_ro:{{ datanommer_ro_password }}@db-datanommer01.iad2.fedoraproject.org/datanommer',
+        'fedmenu_url': 'https://apps.fedoraproject.org/fedmenu',
+        'fedmenu_data_url': 'https://apps.fedoraproject.org/js/data.js',
+
+        # Only allow ajax/websockets connections back to our domains.
+        # https://github.com/fedora-infra/datagrepper/pull/192
+        'content_security_policy': 'connect-src https://*.fedoraproject.org wss://*.fedoraproject.org'
+    }
+  daragrepper.cfg: |-
+    from datetime import timedelta
+
+    ### Secret key for the Flask application
+    SECRET_KEY = '{{ datagrepperCookieSecret }}'
+
+    ### Unhappy mako
+    MAKO_OUTPUT_ENCODING='utf-8'
+
+    DATAGREPPER_BASE_URL='https://apps.fedoraproject.org/datagrepper/'
+
+    DATAGREPPER_CACHE_BACKEND='dogpile.cache.memcached'
+
+    DATAGREPPER_CACHE_KWARGS={'arguments': {'url': ['memcached01.phx2.fedoraproject.org:11211']}}
+
+    SQLALCHEMY_DATABASE_URI='postgresql+psycopg2://{{ datagrepper_app_user }}:{{ datagrepper_app_password }}@db01.iad2.fedoraproject.org:5432/datagrepper'
+
+    DATAGREPPER_OPENID_ENDPOINT='id.fedoraproject.org'
+
+    RUNNER_LOCKFILE='/var/run/fedmsg/datagrepper.lock'
+    JOB_OUTPUT_DIR='/var/cache/datagrepper'
+    JOB_EXPIRY=timedelta(days=7)

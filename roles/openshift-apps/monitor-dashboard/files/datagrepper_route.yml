@@ -1,0 +1,16 @@
+apiVersion: v1
+kind: Route
+metadata:
+  name: daragrepper
+  labels:
+    app: daragrepper
+spec:
+  #host: waiverdb.stg.fedoraproject.org
+  port:
+    targetPort: daragrepper
+  to:
+    kind: Service
+    name: daragrepper
+  tls:
+    termination: Edge
+    insecureEdgeTerminationPolicy: Redirect

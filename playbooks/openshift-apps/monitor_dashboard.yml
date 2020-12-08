@@ -37,8 +37,18 @@
 
   - role: openshift/object
     app: monitor-dashboard
+    template: datagrepper_config.yml
+    objectname: datagrepper_config.yml
+
+  - role: openshift/object
+    app: monitor-dashboard
     file: service.yml
     objectname: service.yml
+
+  - role: openshift/object
+    app: monitor-dashboard
+    file: datagrepper_service.yml
+    objectname: datagrepper_service.yml
 
   - role: openshift/object
     app: monitor-dashboard
@@ -50,6 +60,16 @@
     app: monitor-dashboard
     file: route.yml
     objectname: route.yml
+
+  - role: openshift/object
+    app: monitor-dashboard
+    file: datagrepper_route.yml
+    objectname: datagrepper_route.yml
+
+  - role: openshift/object
+    app: monitor-dashboard
+    template: datagrepper_deploymentconfig.yml
+    objectname: datagrepper_deploymentconfig.yml
 
   - role: openshift/object
     app: monitor-dashboard

@@ -1,0 +1,48 @@
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: dashboard
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      name: dashboard
+  template:
+    metadata:
+      labels:
+        name: dashboard
+        app: dashboard
+        service: web
+      name: dashboard
+    spec:
+      containers:
+        - command: ["gunicorn"]
+        - args:
+            - "-b"
+            - "0.0.0.0:8080"
+            - "-w"
+            - "4"
+            - "--log-level"
+            - "DEBUG"
+            - "-t"
+            - "180"
+            - "datagrepper.app:app"
+          image: registry.hub.docker.com/openshift/oauth-proxy:latest
+          name: oauth-proxy
+          ports:
+            - containerPort: 8080
+          env:
+            - name: "DATAGREPPER_CONFIG"
+              value: "/srv/datanommer/apache/datagrepper.cfg"
+          volumeMounts:
+            - mountPath: /etc/fedmsg.d/datagrepper.py
+              subpath: datagrepper.py  
+              name: datagrepper
+            - mountPath: /srv/datanommer/fedmsg.d/daragrepper.cfg
+              subpath: daragrepper.cfg  
+              name: datagrepper  
+      volumes:
+        - configMap:
+            name: datagrepper
+          name: datagrepper
