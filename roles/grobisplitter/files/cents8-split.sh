@@ -56,12 +56,18 @@ for ARCH in ${ARCHES}; do
 	echo "splitter ${ARCH} codeready failed"
 	exit
     fi
+    ${BINDIR}/splitter.py --action hardlink --target CS-8-004 ${HOMEDIR}/Devel/${ARCH}/os/ &> /dev/null
+    if [ $? -ne 0 ]; then
+	echo "splitter ${ARCH} devel failed"
+	exit
+    fi
 
     # Copy the various module trees into CS-8-001 where we want them
     # to work.
     echo "Moving data to ${ARCH}/CS-8-001"
     cp -anlr CS-8-002/* CS-8-001
     cp -anlr CS-8-003/* CS-8-001
+    cp -anlr CS-8-004/* CS-8-001
     # Go into the main tree
     pushd CS-8-001
 
@@ -70,7 +76,7 @@ for ARCH in ${ARCHES}; do
     popd
 
     # Cleanup the trash 
-    rm -rf CS-8-002 CS-8-003
+    rm -rf CS-8-002 CS-8-003 CS-8-004
 #loop to the next
 done
 
