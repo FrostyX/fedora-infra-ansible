@@ -91,6 +91,9 @@
     description: "ZeroMQ <-> AMQP bridges"
     appowners:
     - abompard
+    - pingou
+    tags:
+      - appowners
 
   - role: openshift/secret-file
     app: messaging-bridges
