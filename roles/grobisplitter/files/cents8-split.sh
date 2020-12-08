@@ -96,6 +96,7 @@ for ARCH in ${ARCHES}; do
 	pushd latest/
     else
 	mkdir latest/
+	pushd latest/
     fi
     mkdir -p ${ARCH}
     dnf --disablerepo=\* --enablerepo=CS-8-001 --repofrompath=CS-8-001,https://infrastructure.fedoraproject.org/repo/centos/stream8-kojitarget/staged/${ARCH}/CS-8-001/ reposync -a ${ARCH} -a noarch -p ${ARCH} --newest --delete  &> /dev/null
