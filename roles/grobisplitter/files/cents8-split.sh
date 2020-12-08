@@ -7,7 +7,8 @@ BINDIR=/usr/local/bin
 ARCHES="aarch64 ppc64le x86_64"
 DATE=$(date -Ih | sed 's/+.*//')
 
-DATEDIR=${HOMEDIR}/koji/${DATE}
+KOJIDIR=/mnt/fedora/app/fi-repo/centos/stream8-kojitarget/koji
+DATEDIR=${KOJIDIR}/${DATE}
 
 ##
 ## Make a directory for where the new tree will live. Use a new date
@@ -74,7 +75,7 @@ for ARCH in ${ARCHES}; do
 done
 
 ## Set up the builds so they are pointing to the last working version
-cd ${HOMEDIR}/koji/
+cd ${KOJIDIR}
 if [[ -e staged ]]; then
     if [[ -h staged ]]; then
 	rm -f staged
@@ -93,7 +94,7 @@ ln -s ${DATE} staged
 for ARCH in ${ARCHES}; do
     pushd latest/
     mkdir -p ${ARCH}
-    dnf --disablerepo=\* --enablerepo=CS-8-001 --repofrompath=CS-8-001,https://infrastructure.fedoraproject.org/repo/rhel/rhel8/koji/staged/${ARCH}/CS-8-001/ reposync -a ${ARCH} -a noarch -p ${ARCH} --newest --delete  &> /dev/null
+    dnf --disablerepo=\* --enablerepo=CS-8-001 --repofrompath=CS-8-001,https://infrastructure.fedoraproject.org/repo/centos/stream8-kojitarget/${ARCH}/CS-8-001/ reposync -a ${ARCH} -a noarch -p ${ARCH} --newest --delete  &> /dev/null
     if [[ $? -eq 0 ]]; then
 	cd ${ARCH}/CS-8-001
 	createrepo_c .  &> /dev/null
