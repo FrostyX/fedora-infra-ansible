@@ -2,19 +2,19 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: dashboard
+  name: datgrepper
 spec:
   replicas: 1
   selector:
     matchLabels:
-      name: dashboard
+      name: datgrepper
   template:
     metadata:
       labels:
-        name: dashboard
-        app: dashboard
+        name: datgrepper
+        app: datgrepper
         service: web
-      name: dashboard
+      name: datgrepper
     spec:
       containers:
         - command: ["gunicorn"]
