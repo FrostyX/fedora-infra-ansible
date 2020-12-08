@@ -359,17 +359,18 @@ def _dump_modulemd(modname, yaml_file):
     if defs:
         new_idx.add_defaults(defs)
 
-    # libmodulemd doesn't currently expose the get_translation()
-    # function, but that will be added in 2.8.0
-    try:
-        # Add the translation object
-        translation = mod.get_translation()
-        if translation:
-            new_idx.add_translation(translation)
-    except AttributeError as e:
-        # This version of libmodulemd does not yet support this function.
-        # Just ignore it.
-        pass
+    ## This is in the upstream but does not work in 2.9. commented out
+    # # libmodulemd doesn't currently expose the get_translation()
+    # # function, but that will be added in 2.8.0
+    # try:
+    #     # Add the translation object
+    #     translation = mod.get_translation()
+    #     if translation:
+    #         new_idx.add_translation(translation)
+    # except AttributeError as e:
+    #     # This version of libmodulemd does not yet support this function.
+    #     # Just ignore it.
+    #     pass
 
     # Write out the file
     try:
