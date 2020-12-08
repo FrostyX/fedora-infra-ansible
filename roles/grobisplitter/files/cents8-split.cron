@@ -1,0 +1,1 @@
+10 10  * * * root /usr/local/bin/centos-stream8-split.sh
