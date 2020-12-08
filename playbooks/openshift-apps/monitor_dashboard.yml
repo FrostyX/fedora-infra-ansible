@@ -37,8 +37,8 @@
 
   - role: openshift/object
     app: monitor-dashboard
-    template: datagrepper_config.yml
-    objectname: datagrepper_config.yml
+    template: datagrepper_configmap.yml
+    objectname: datagrepper_configmap.yml
 
   - role: openshift/object
     app: monitor-dashboard
