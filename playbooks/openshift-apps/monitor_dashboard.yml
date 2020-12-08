@@ -35,6 +35,12 @@
     template: dashboard_config.yml
     objectname: dashboard_config.yml
 
+
+  - role: openshift/object
+    app: monitor-dashboard
+    template: buildconfig.yml
+    objectname: buildconfig.yml
+
   - role: openshift/object
     app: monitor-dashboard
     template: datagrepper_configmap.yml
