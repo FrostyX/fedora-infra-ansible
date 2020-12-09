@@ -1,59 +1,64 @@
 ---
-apiVersion: apps/v1
-kind: Deployment
+kind: DeploymentConfig
+apiVersion: v1
 metadata:
-  name: datgrepper
+  name: datagrepper
+  labels:
+    app: datagrepper
 spec:
+  strategy:
+    resources: {}
   replicas: 1
+  test: false
   selector:
-    matchLabels:
-      name: datgrepper
+    deploymentconfig: datagrepper
+    app: datagrepper
   template:
     metadata:
       labels:
-        name: datgrepper
-        app: datgrepper
-        service: datgrepper
-      name: datgrepper
+        name: datagrepper
+        app: datagrepper
+        service: datagrepper
+      name: datagrepper
     spec:
-      containers:
-        - command: ["gunicorn"]
-          args:
-            - "-b"
-            - "0.0.0.0:8080"
-            - "-w"
-            - "4"
-            - "--log-level"
-            - "DEBUG"
-            - "-t"
-            - "175"
-            - "datagrepper.app:app"
-          image: datagrepper:latest
-          name: datagrepper
-          ports:
-            - containerPort: 8080
-          env:
-            - name: "DATAGREPPER_CONFIG"
-              value: "/srv/datanommer/apache/datagrepper.cfg"
-          volumeMounts:
-            - mountPath: /etc/fedmsg.d/datagrepper.py
-              subpath: datagrepper.py  
-              name: datagrepper
-            - mountPath: /srv/datanommer/fedmsg.d/datagrepper.cfg
-              subpath: datagrepper.cfg  
-              name: datagrepper  
       volumes:
         - configMap:
             name: datagrepper
           name: datagrepper
-    triggers:
-    - imageChangeParams:
-        automatic: true
-        containerNames:
-        - datagrepper
-        from:
-          kind: ImageStreamTag
-          name: datagrepper:latest
-          namespace: monitor-dashboard
-      type: ImageChange
-    - type: ConfigChange
+      containers:
+      - name: datagrepper
+        image: datagrepper
+	command: ["gunicorn"]
+        args:
+        - "-b"
+        - "0.0.0.0:8080"
+        - "-w"
+        - "4"
+        - "--log-level"
+        - "DEBUG"
+        - "-t"
+        - "175"
+        - "datagrepper.app:app"
+        ports:
+        - containerPort: 8080
+        env:
+        - name: "DATAGREPPER_CONFIG"
+          value: "/srv/datanommer/apache/datagrepper.cfg"
+        volumeMounts:
+        - mountPath: /etc/fedmsg.d/datagrepper.py
+          subpath: datagrepper.py  
+          name: datagrepper
+        - mountPath: /srv/datanommer/fedmsg.d/datagrepper.cfg
+          subpath: datagrepper.cfg  
+          name: datagrepper  
+  triggers:
+  - type: ImageChange
+    imageChangeParams:
+      automatic: true
+      containerNames:
+      - datagrepper
+      from:
+        kind: ImageStreamTag
+        name: datagrepper:latest
+        namespace: monitor-dashboard
+  - type: ConfigChange
