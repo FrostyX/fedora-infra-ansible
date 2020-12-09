@@ -11,8 +11,7 @@ spec:
   replicas: 1
   test: false
   selector:
-    deploymentconfig: datagrepper
-    app: datagrepper
+    name: datagrepper
   template:
     metadata:
       labels:
