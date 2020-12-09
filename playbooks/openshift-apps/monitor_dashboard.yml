@@ -44,7 +44,7 @@
 
   - role: openshift/object
     app: monitor-dashboard
-    template: imagestream.yml
+    file: imagestream.yml
     objectname: imagestream.yml
 
   - role: openshift/object
