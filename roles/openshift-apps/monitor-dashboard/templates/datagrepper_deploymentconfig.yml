@@ -26,7 +26,7 @@ spec:
             - "--log-level"
             - "DEBUG"
             - "-t"
-            - "170"
+            - "175"
             - "datagrepper.app:app"
           image: datagrepper:latest
           name: oauth-proxy
@@ -46,3 +46,14 @@ spec:
         - configMap:
             name: datagrepper
           name: datagrepper
+    triggers:
+    - imageChangeParams:
+        automatic: true
+        containerNames:
+        - datagrepper
+        from:
+          kind: ImageStreamTag
+          name: datagrepper:latest
+          namespace: monitor-dashboard
+      type: ImageChange
+    - type: ConfigChange
