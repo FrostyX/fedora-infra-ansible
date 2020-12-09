@@ -3,7 +3,7 @@ items:
 - apiVersion: v1
   kind: ImageStream
   metadata:
-    name: dataggrepper
+    name: datagrepper
     labels:
       build: datagrepper
 kind: List
