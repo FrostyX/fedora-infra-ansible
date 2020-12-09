@@ -28,7 +28,7 @@ spec:
       containers:
       - name: datagrepper
         image: datagrepper
-	command: ["gunicorn"]
+        command: ["gunicorn"]
         args:
         - "-b"
         - "0.0.0.0:8080"
