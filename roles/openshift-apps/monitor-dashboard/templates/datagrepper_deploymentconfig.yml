@@ -13,7 +13,7 @@ spec:
       labels:
         name: datgrepper
         app: datgrepper
-        service: web
+        service: datgrepper
       name: datgrepper
     spec:
       containers:
@@ -29,7 +29,7 @@ spec:
             - "175"
             - "datagrepper.app:app"
           image: datagrepper:latest
-          name: oauth-proxy
+          name: datagrepper
           ports:
             - containerPort: 8080
           env:
@@ -39,8 +39,8 @@ spec:
             - mountPath: /etc/fedmsg.d/datagrepper.py
               subpath: datagrepper.py  
               name: datagrepper
-            - mountPath: /srv/datanommer/fedmsg.d/daragrepper.cfg
-              subpath: daragrepper.cfg  
+            - mountPath: /srv/datanommer/fedmsg.d/datagrepper.cfg
+              subpath: datagrepper.cfg  
               name: datagrepper  
       volumes:
         - configMap:
