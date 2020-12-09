@@ -41,6 +41,12 @@
     template: buildconfig.yml
     objectname: buildconfig.yml
 
+
+  - role: openshift/object
+    app: monitor-dashboard
+    template: imagestream.yml
+    objectname: imagestream.yml
+
   - role: openshift/object
     app: monitor-dashboard
     template: datagrepper_configmap.yml
