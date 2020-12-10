@@ -23,14 +23,16 @@
 # policies, all the relevant test results are retrieved, and rules in all
 # the matched policies are applied.
 
-# This is a "null" policy: it enforces no rules, its purpose is just to
+# These are "null" policies: they enforce no rules, the purpose is just to
 # exist, so that we always have at least one policy that matches
-# queries for the 'koji_build' subject type and the covered versions and
+# queries for the covered subject types and the covered versions and
 # contexts. This is a fallback for Bodhi queries that we know will run
 # and expect a successful result, but which Greenwave will error on if
-# no policy matches. Note no "null" policy is needed for subject_type
-# bodhi_update because Greenwave by default ignores missing policies for
-# that subject type.
+# no policy matches. Note having no "null" policy for subject_type
+# bodhi_update would not cause an error because Greenwave by default
+# ignores missing policies for that subject type, but if there is no
+# policy match Greenwave won't send Bodhi the test results, and we do want
+# that.
 --- !Policy
 id: "kojibuild_bodhipush_no_requirements"
 product_versions:
@@ -41,9 +43,21 @@ decision_contexts:
 subject_type: koji_build
 rules: []
 
-# The "remoterule" policies apply policies configured in individual
+--- !Policy
+id: "bodhiupdate_bodhipush_no_requirements"
+product_versions:
+  - fedora-*
+decision_contexts:
+  - bodhi_update_push_testing
+  - bodhi_update_push_stable
+subject_type: bodhi_update
+rules: []
+
+# The "remoterule" policy applies policies configured in individual
 # package repositories. See Greenwave docs/policies.rst and
-# https://docs.fedoraproject.org/en-US/ci/gating/ for details.
+# https://docs.fedoraproject.org/en-US/ci/gating/ for details. Note
+# we don't have a remoterule policy for bodhi_update subject type
+# because Greenwave doesn't consider it to support remote rules.
 --- !Policy
 id: "kojibuild_bodhipush_remoterule"
 product_versions:
@@ -55,20 +69,6 @@ decision_contexts:
   - bodhi_update_push_testing
   - bodhi_update_push_stable
 subject_type: koji_build
-rules:
-  - !RemoteRule {}
-
---- !Policy
-id: "bodhiupdate_bodhipush_remoterule"
-product_versions:
-  - fedora-rawhide
-  - fedora-34
-  - fedora-33
-  - fedora-32
-decision_contexts:
-  - bodhi_update_push_testing
-  - bodhi_update_push_stable
-subject_type: bodhi_update
 rules:
   - !RemoteRule {}
 
