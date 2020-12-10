@@ -213,6 +213,7 @@
       copy:
         dest: /etc/systemd/system/docker.service.d/override.conf
         content: |
+
           [Service]
           LimitNOFILE=1048576
       notify: restart and reload docker service
