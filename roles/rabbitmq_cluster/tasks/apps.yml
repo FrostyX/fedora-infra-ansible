@@ -117,3 +117,12 @@
     routing_keys:
       - "org.centos.{{ env_short }}.gitlab.#"
 # CENTOS GITLAB END
+
+# CENTOS KOJI BEGIN
+- name: CentOS Koji User
+  run_once: true
+  include_role:
+    name: rabbit/user
+  vars:
+     username: koji-centos{{ env_suffix }}
+# CENTOS KOJI END
