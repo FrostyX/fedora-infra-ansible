@@ -193,3 +193,14 @@
 
     - name: enable nrpe for monitoring (noc01)
       iptables: action=insert chain=INPUT destination_port=5666 protocol=tcp source=10.3.163.10 state=present jump=ACCEPT
+
+    - name: Set ulimit for docker
+      copy:
+        dest: /etc/systemd/system/docker.service.d/override.conf
+        content: |
+          [Service]
+          LimitNOFILE=1048576
+      notify: restart and reload docker service
+
+
+
