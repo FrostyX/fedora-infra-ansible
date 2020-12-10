@@ -833,6 +833,14 @@
     tags:
     - coreos.fedoraproject.org
 
+  - role: httpd/redirect
+    shortname: 00-coreosbuild
+    website: "builds.coreos.fedoraproject.org"
+    path: /
+    target: https://builds.coreos.fedoraproject.org/browser
+    tags:
+    - builds.coreos.fedoraproject.org
+
   # redirects for Taskotron decomissioning
   - role: httpd/redirect
     shortname: taskotron-landing
