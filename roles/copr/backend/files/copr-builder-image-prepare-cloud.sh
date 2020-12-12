@@ -96,7 +96,7 @@ EOF
 elif test $cloud = aws; then
     instance_id=$(aws ec2 describe-instances \
         --query "Reservations[].Instances[].InstanceId" \
-        --filter Name=tag-key,Values=Name,Name=tag-value,Values="$vm_name" \
+        --filter Name=tag-key,Values=Name Name=tag-value,Values="$vm_name" \
         --output text
     )
 
