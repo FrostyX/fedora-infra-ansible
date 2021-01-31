@@ -138,3 +138,15 @@
 - name: mount cache filesystem on /var/cache/mock
   mount: path=/var/cache/mock state=mounted src=mock_cache_tmpfs fstype=tmpfs opts="size=32G"
   when: mock_var_cache_tmpfs is defined
+
+- name: Collect facts about builder hardware
+  setup:
+    gather_subset:
+    - hardware
+
+- name: Make sure that swap is available
+  assert:
+    that:
+      - ansible_memory_mb.real.total >= 15244
+    fail_msg: "Swap is not available, the builder is unusable"
+    success_msg: "Swap seems to be available for this builder"
